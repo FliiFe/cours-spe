@@ -31,6 +31,7 @@
 \newtheorem*{prop}{Proposition}
 \newtheorem{csq}{Conséquence}[subsection]
 \renewcommand{\thecsq}{\arabic{csq}}
+\newtheorem*{cor}{Corollaire}
 \newtheorem*{exo}{Exercice}
 \newtheorem*{notation}{Notation}
 
@@ -672,6 +673,7 @@ On considère l'application linéaire \[
 Si $P\land Q=1$, alors pour $U, V\in\mathrm{Ker}\varphi$, on a $Q\;|\;U$ et $P\;|\;V$ donc $U=V=0$ en comparant les degrés. Sinon, si $P\land Q=\Delta$ non constant, alors $\varphi(Q/\Delta, -P/\Delta)=0$. Ainsi, $\varphi$ est un isomorphisme si et seulement si $P\land Q=1$
 
 La matrice de $\varphi$ dans la base $(X^{q-1}, 0), \cdots, (X, 0), (1, 0), (0, X^{p-1}), \cdots, (0, 1)$ est \[
+% Attention pas la même base que les notes du prof ! Comme ça le copier/collé de wikipedia marche bien :-)
 \begin{pmatrix}a_{p}&0&\cdots &0&b_{q}&0&\cdots &0\\a_{p-1}&a_{p}&\ddots &\vdots &\vdots &b_{q}&\ddots &\vdots \\\vdots &a_{p-1}&\ddots &0&\vdots &&\ddots &0\\\vdots &\vdots &\ddots &a_{p}&b_{1}&&&b_{q}\\a_{0}&&&a_{p-1}&b_{0}&\ddots &\vdots &\vdots \\0&\ddots &&\vdots &0&\ddots &b_{1}&\vdots \\\vdots &\ddots &a_{0}&\vdots &\vdots &\ddots &b_{0}&b_{1}\\0&\cdots &0&a_{0}&0&\cdots &0&b_{0}\\\end{pmatrix}=:R(P, Q)
 \]
 On appelle résultant de $P$ et $Q$ le déterminant de cette matrice. Ainsi, \[
@@ -1075,7 +1077,7 @@ est petit. On peut donc s'intéresser aux choix des $x_i$ minimisant $\|\omega\|
 
 \begin{thm}[Weierstrass]
     Si $f$ est continue de $[a, b]$ dans $\mathbb C$ alors il existe une suite $(P_n)$ de fonctions polynômiales telle que \[
-        P_n\overset{CVU}{\underset{[a, b]}\longrightarrow} f
+        P_n\xrightarrow[{[a, b]}]{CVU} f
     \]
 \end{thm}
 
@@ -1190,7 +1192,48 @@ On construit ainsi deux suites $(x_n)_n\in E^{\mathbb N}$, $(r_n)\in\mathbb {R_+
         \mathcal B_f(x_n, r_n)\subset O_n, \quad r_n\leq \dfrac 1n
     \end{cases}
 \]
-Pour $m>n$, % je me charge de la fin du poly (comme ça je pige en même temps ce que le prof écrit)
+Pour $m>n$, $x_m\in\mathcal B_f(x_m, r_m)\subset\mathcal B_f(x_n, r_n)$ donc \[
+    \|x_m-x_n\|\leq \frac 1n
+\]
+donc $(x_n)$ de Cauchy donc convergente vers $x$.
+
+Pour $m$ fixé, APCR $x_n\in\mathcal B_f(x_m, r_m)$ fermé donc $x\in\mathcal B_f(x_m, r_m)\subset O_m$ donc $x\in O_m$ pour tout $m$. Ainsi, \[
+    x\in\bigcap_{n\in\mathbb N}O_n
+\]
+et $x\in\mathcal B_f(x_0, r_0)\subset U$ donc $x\in U$ et donc \[
+    U\cap\left(\bigcap_{n\in\mathbb N}O_n\right)
+\]
+pour tout ouvert $U$.
+
+\begin{cor}
+Si $(F_n)_n$ est une suite de fermés d'intérieurs vides alors \[
+    \bigcup_{n\in\mathbb N}F_n
+\] est d'intérieur vide.
+\end{cor}
+
+% je me charge de la fin du poly (comme ça je pige en même temps ce que le prof écrit)
 \end{proof}
+
+\subsection{Incomplétude de $\mathbb R[X]$}
+
+On supose qu'il existe une norme $\|\cdot \|$ telle que $(\mathbb R[X], \|\cdot \|)$ est complet (i.e. toutes les suites de Cauchy convergent)
+
+\begin{itemize}
+    \item $E_n=\Vect(1, \cdots, X^n$ est un fermé (s.e.v. de dimension finie)
+    \item \[
+    \forall P\in E_n, \forall \varepsilon>0, \quad P+\frac{X^{n+1}}k\xrightarrow[k\to+\infty]{} P
+    \] donc APCR \[
+        P+\frac{X^{n+1}}k \in \mathcal B_0(P, \varepsilon)
+    \]
+    donc $\mathcal B_o(P, \varepsilon)\not\subset E_n$ et $E_n$ d'intérieur vide.
+    \item Par le théorème de Baire, \[
+        \underbrace{\bigcap_{n\in\mathbb N} E_n}_{\text{intérieur vide}}=\underbrace{\mathbb R[X]}_{\text{intérieur non vide}}
+    \]
+    absurde.
+\end{itemize}
+
+Il n'existe donc aucune norme pour laquelle $\mathbb R[X]$ est complet.
+
+En particulier, $(X_k)_k$ est une base qu'on peut orthonormaliser par le procédé de Gram-Schmidt en une base $(P_k)_k$ qui est totale, sans que $\mathbb R[X]$ soit complet.
 
 \end{document}
