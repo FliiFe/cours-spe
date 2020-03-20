@@ -994,6 +994,47 @@ Si $K\subset L$ alors $L$ est un $K$-ev et si $L$ est de dimension finie sur $K$
 Si $b$ est racine d'une équation polynômiale à coefficients dans $\mathbb Q[a]$, il l'est aussi d'une équation polynômiale à coefficients dans $\mathbb Q$.
 \end{rem}
 
+\section{Polynômes orthogonaux}
+
+On note $p: I\longrightarrow \mathbb R_+^\star$ continue telle que pour tout entier naturel $k$, $t\longmapsto t^kp(t)$ est intégrable sur $I$. Dans ce cas, \[
+    (P|Q)=\int_Ip(t)P(t)Q(t)\;\mathrm dt
+\]
+est bien définit et est un produit scalaire sur $\mathbb R[X]$
+
+\begin{prop}
+Il existe une unique famille $(P_k)_k$ de polynômes unitaires tels que
+\begin{itemize}
+    \item $\forall k\in\mathbb N, \quad \deg P_k=k$
+    \item les $P_k$ sont deux à deux orthogonaux
+\end{itemize}
+\end{prop}
+
+\begin{proof}
+Le procédé de Gram-Schmidt appliqué à la base canonique donne l'existence. Si $(P_k)$ convient alors
+\begin{itemize}
+    \item $P_0=1$ (unitaire de degré $0$)
+    \item Si $P_0, \cdots, P_k$ conviennent, alors \[
+        P_{k+1}=\underbrace{X^{k+1}}_{unitaire} + \underbrace{\lambda_0P_0+\cdots +\lambda_k P_k}_{\deg \leq k \text{ se décompose sur }P_0, \cdots, P_k}
+    \]
+et l'orthogonalité détermine de manière unique les $\lambda_i$
+\end{itemize}
+\end{proof}
+
+\subsection{Récurrence d'ordre 2}
+
+\begin{prop}
+La famille des $(P_n)_n$ vérifie pour $n\geq 2$ \[
+    P_n(X)=-(X+\lambda_{n-1})P_{n-1}(X)-\mu_{n-2}P_{n-2}(X)=0
+\]
+avec \[
+    \lambda_{n-1}=-\frac{(XP_{n-1}|P_{n-1})}{\|P_{n-1}\|^2}, \quad \mu_{n-2}=-\frac{\|P_{n-1}\|^2}{\|P_{n-2}\|^2}
+\]
+\end{prop}
+
+\begin{proof}
+Pour $Q\in\Vect(P_0, \cdots, P_{n-2})=\mathbb R_{n-2}[X]$, $(XP_n|Q)=(P_n|XQ)=0$ car $XQ\in\mathbb R_{n-1}[X]$.
+\end{proof}
+
 \section{Formules d'interpolation}
 
 \subsection{Rappels}
