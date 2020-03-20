@@ -18,7 +18,7 @@ jobs:
       with:
         root_file: polynomes.tex
     - name: Upload result
-      uses: actions/upload-artifact@v1.0.0
+      uses: actions/upload-artifact@v2-preview
       with:
         name: polynomes.pdf
         path: polynomes.pdf
