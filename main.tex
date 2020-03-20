@@ -671,7 +671,7 @@ On considère l'application linéaire \[
 \]
 Si $P\land Q=1$, alors pour $U, V\in\mathrm{Ker}\varphi$, on a $Q\;|\;U$ et $P\;|\;V$ donc $U=V=0$ en comparant les degrés. Sinon, si $P\land Q=\Delta$ non constant, alors $\varphi(Q/\Delta, -P/\Delta)=0$. Ainsi, $\varphi$ est un isomorphisme si et seulement si $P\land Q=1$
 
-La matrice de $\varphi$ dans la base $(1, 0), (X, 0), \cdots, (X^{q-1}, 0), (0, 1), \cdots, (0, X^{p-1})$ est \[
+La matrice de $\varphi$ dans la base $(X^{q-1}, 0), \cdots, (X, 0), (1, 0), (0, X^{p-1}), \cdots, (0, 1)$ est \[
 \begin{pmatrix}a_{p}&0&\cdots &0&b_{q}&0&\cdots &0\\a_{p-1}&a_{p}&\ddots &\vdots &\vdots &b_{q}&\ddots &\vdots \\\vdots &a_{p-1}&\ddots &0&\vdots &&\ddots &0\\\vdots &\vdots &\ddots &a_{p}&b_{1}&&&b_{q}\\a_{0}&&&a_{p-1}&b_{0}&\ddots &\vdots &\vdots \\0&\ddots &&\vdots &0&\ddots &b_{1}&\vdots \\\vdots &\ddots &a_{0}&\vdots &\vdots &\ddots &b_{0}&b_{1}\\0&\cdots &0&a_{0}&0&\cdots &0&b_{0}\\\end{pmatrix}=:R(P, Q)
 \]
 On appelle résultant de $P$ et $Q$ le déterminant de cette matrice. Ainsi, \[
@@ -1186,9 +1186,11 @@ $U\cap O_0$ est un ouvert non vide donc il existe $x_0\in U\cap O_0$ et $2a_0>0$
 \end{itemize}
 On construit ainsi deux suites $(x_n)_n\in E^{\mathbb N}$, $(r_n)\in\mathbb {R_+^\star}^{\mathbb N}$ telles que \[
     \begin{cases}
-        \mathcal B_f(x_n, r_n)\subset \mathcal B_f(x_{n-1}, r_{n-1})\subset \cdots \subset \mathcal B_f(x_0, r_0)
+        \mathcal B_f(x_n, r_n)\subset \mathcal B_f(x_{n-1}, r_{n-1})\subset \cdots \subset \mathcal B_f(x_0, r_0) \\
+        \mathcal B_f(x_n, r_n)\subset O_n, \quad r_n\leq \dfrac 1n
     \end{cases}
 \]
+Pour $m>n$, % je me charge de la fin du poly (comme ça je pige en même temps ce que le prof écrit)
 \end{proof}
 
 \end{document}
