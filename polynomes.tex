@@ -91,7 +91,7 @@
 $\mathbb K$ désigne un corps (donc commutatif). Un polynôme de $\mathbb K[X]$ s'écrit $P$ ou $P(X)$, l'évaluation en $a\in\mathbb K$ de $P$ se note $P(a)$. L'application \[
     P\in\mathbb K[X] \longmapsto (a\longmapsto P(a)\in\mathbb K)
 \]
-est un morphisme d'algèbres qui est injectif si $\mathbb K$ est injectif. Pour $P\in\mathbb K[X]\setminus \{0\}$, $a\in\mathbb K$ est une racine de $P$ ssi \[
+est un morphisme d'algèbres qui est injectif si $\mathbb K$ est infini. Pour $P\in\mathbb K[X]\setminus \{0\}$, $a\in\mathbb K$ est une racine de $P$ ssi \[
     P(a)=0\iff (X-a)\;|\;P
 \]
 et $a$ est racine de multiplicité $\alpha \geq 1$ ssi \[
@@ -168,7 +168,7 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
     \begin{itemize}
         \item $P\in \mathbb C[X]$ non constant a même racine que $\frac1{\deg P}P$ donc on suppose $P$ unitaire.
         \item Si $P(X)=a_0+\cdots, a_{n-1}X^{n-1}+X^n$, et $M=\max |a_i|$, alors pour $|z|\geq M+2$, \begin{align*}
-                |P(z)|&\geq |z|^n-M\frac{|z|^n-2}{|z|-1}=\frac{|z|^{n+1}-|z|^n-M|z|^n+M}{|z|-1}\\
+                |P(z)|&\geq |z|^n-M\frac{|z|^n-1}{|z|-1}=\frac{|z|^{n+1}-|z|^n-M|z|^n+M}{|z|-1}\\
                       &\geq \frac{|z|^n}{|z|-1} \left( |z|-1-M \right)\geq \frac{|z|^n}{|z|-1}\left(1-\frac M{M+1}\right)\geq \frac{(M+2)^n}{M+1}>M
             \end{align*}
         \item \begin{align*}
@@ -1034,6 +1034,8 @@ avec \[
 \begin{proof}
 Pour $Q\in\Vect(P_0, \cdots, P_{n-2})=\mathbb R_{n-2}[X]$, $(XP_n|Q)=(P_n|XQ)=0$ car $XQ\in\mathbb R_{n-1}[X]$.
 \end{proof}
+
+\todo{Finir cette partie}
 
 \section{Formules d'interpolation}
 
