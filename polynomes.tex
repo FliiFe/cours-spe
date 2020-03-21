@@ -169,7 +169,7 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
         \item $P\in \mathbb C[X]$ non constant a même racine que $\frac1{\deg P}P$ donc on suppose $P$ unitaire.
         \item Si $P(X)=a_0+\cdots, a_{n-1}X^{n-1}+X^n$, et $M=\max |a_i|$, alors pour $|z|\geq M+2$, \begin{align*}
                 |P(z)|&\geq |z|^n-M\frac{|z|^n-1}{|z|-1}=\frac{|z|^{n+1}-|z|^n-M|z|^n+M}{|z|-1}\\
-                      &\geq \frac{|z|^n}{|z|-1} \left( |z|-1-M \right)\geq \frac{|z|^n}{|z|-1}\left(1-\frac M{M+1}\right)\geq \frac{(M+2)^n}{M+1}>M
+                      &\geq \frac{|z|^n}{|z|-1} \left( |z|-1-M \right)\geq |z|^n\left(1-\frac M{M+1}\right)\geq \frac{(M+2)^n}{M+1}>M
             \end{align*}
         \item \begin{align*}
                 \inf_{\mathbb C}|P|&=\min\left(\underbrace{\inf_{|z|>M+2}|P(z)|}_{>M}, \underbrace{\inf_{|z|\leq M+2}|P(z)|}_{\leq |P(0)|\leq M}\right) \\&=\inf _{|z|\leq M+2}|P(z)|
@@ -268,7 +268,7 @@ Or $r+s\leq n$ absurde et donc $P = Q$
 \begin{proof}[Résolution]
     On suppose que $P$ convient et $(X+1)P(X-1)-(X-1)P(X)=\lambda$. \begin{itemize}
         \item $2P(-1)=\lambda$ et $2P(0)=\lambda$ donc $P(0)=P(-1)$
-        \item $Q(X)=P(X)-\frac\lambda 2$ s'annule en $-1$ et $0$ donc $Q(X)=X(X+1)A(X)$ ie $P(X)=X(X+1)A(X)+\frac\lambda 2$.
+        \item $Q(X)=P(X)-\frac\lambda 2$ s'annule en $-1$ et $0$ donc $Q(X)=X(X+1)A(X)$ i.e.  $P(X)=X(X+1)A(X)+\frac\lambda 2$.
         \item \[
                 (X+1)((X-1)X A(X-1)+\frac\lambda2)-(X-1)X(X+1)A(X)-(X-1)\frac\lambda2=\lambda
             \]
