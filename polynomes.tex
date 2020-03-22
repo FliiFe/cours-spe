@@ -60,9 +60,6 @@
 \lhead{\rightmark}
 \renewcommand{\headrulewidth}{1pt}
 
-
-
-
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\Vect}{Vect}
@@ -145,7 +142,7 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
     \]
 \end{rem}
 
-\section{Factorisation des polynomes}
+\section{Factorisation des polynômes}
 
 \subsection{Rappels}
 
@@ -161,13 +158,13 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \subsection{Théorème de d'Alembert-Gauss}
 
 \begin{thm}
-    Tout polynome non constant de $\mathbb C[X]$ admet au moins une racine
+    Tout polynôme non constant de $\mathbb C[X]$ admet au moins une racine
 \end{thm}
 
 \begin{proof}[Preuve de Gauss]
     \begin{itemize}
         \item $P\in \mathbb C[X]$ non constant a même racine que $\frac1{\deg P}P$ donc on suppose $P$ unitaire.
-        \item Si $P(X)=a_0+\cdots, a_{n-1}X^{n-1}+X^n$, et $M=\max |a_i|$, alors pour $|z|\geq M+2$, \begin{align*}
+        \item Si $P(X)=a_0+\cdots+ a_{n-1}X^{n-1}+X^n$, et $M=\max |a_i|$, alors pour $|z|\geq M+2$, \begin{align*}
                 |P(z)|&\geq |z|^n-M\frac{|z|^n-1}{|z|-1}=\frac{|z|^{n+1}-|z|^n-M|z|^n+M}{|z|-1}\\
                       &\geq \frac{|z|^n}{|z|-1} \left( |z|-1-M \right)\geq |z|^n\left(1-\frac M{M+1}\right)\geq \frac{(M+2)^n}{M+1}>M
             \end{align*}
@@ -183,7 +180,7 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
                 \frac{P^{(k)}(z_0)}{P(z_0)k!}=\rho e^{i\theta}, \quad h=\epsilon e^{-i\frac{\theta+\pi}k}
             \]
             on obtient \[
-                P(z_0+\epsilon e^{-i\frac\theta k})=\underbrace{P(z_0)\underbrace{\left(1 \epsilon^k \rho + o(\epsilon^k)\right)}_{|\;\;|<1}}_{|\;\;|<|P(z_0)|}
+                P(z_0+\epsilon e^{-i\frac\theta k})=\underbrace{P(z_0)\underbrace{\left(1 - \epsilon^k \rho + o(\epsilon^k)\right)}_{|\;\;|<1}}_{|\;\;|<|P(z_0)|}
             \]
             absurde.
     \end{itemize}
