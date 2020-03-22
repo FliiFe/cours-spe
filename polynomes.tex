@@ -1029,11 +1029,37 @@ avec \[
 \]
 \end{prop}
 
-\begin{proof}
-Pour $Q\in\Vect(P_0, \cdots, P_{n-2})=\mathbb R_{n-2}[X]$, $(XP_n|Q)=(P_n|XQ)=0$ car $XQ\in\mathbb R_{n-1}[X]$.
+\begin{proof} On note $E_i=\mathbb R_i[X]$.
+Pour $Q\in\Vect(P_0, \cdots, P_{n-2})=\mathbb R_{n-2}[X]$, $(XP_n|Q)=(P_n|XQ)=0$ car $XQ\in\mathbb R_{n-1}[X]$. On a alors \[
+    P_n(X)-XP_{n-1}(X)\in E_{n-3}^\bot 
+\]
+or $\deg (P_n-XP_{n-1})\leq n-1$ (simplification du coef dominant) donc \[
+    P_n(X)-XP_{n-1}(X)=\lambda_{n-1}P_{n-1}(X)+\cdots +\lambda_0P_0(X)
+\]
+et on a $P_n-XP_{n-1}\bot P_0, \cdots, P_{n-3}$ donc $\lambda_0=\cdots =\lambda_{n-3}=0$. On en déduit, \[
+    \lambda_{n-1}(P_{n-1}|P_{n-1})=(P_n|P_{n-1})-(XP_{n-1}|P_{n-1})
+\]
+et \[
+    \lambda_{n-2}(P_{n-2}|P_{n-2})=\underbrace{(P_n|P_{n-2})}_{=0}-(XP_{n-1}|P_{n-2})=-(P_{n-1}|\underbrace{XP_{n-2}}_{P_{n-1}+\in E_{n-2}})=-(P_{n-1}|P_{n-1})
+\]
+d'où la conclusion avec $\mu_{n-2}=\lambda_{n-2}$
 \end{proof}
 
-\todo{Finir cette partie}
+\subsection{Changements de signes}
+
+On appelle changement de signe d'un polynôme un point $x_0$ tel que $(x-x_0)P(x)$ est de signe constant au voisinage de $x_0$. On note $N_I(P)$ le nombre de changements de signes de $P$ sur l'intervalle $I$
+
+Supposons $N_I(P_n)=p<n$. On note $x_1, \cdots, x_p$ les changements de signes et \[
+    (P_n | \underbrace{(X-x_1)\cdots (X-x_p)}_{\in E_{n-1}})=0=\int_Ip(t)\underbrace{P_n(t)(t-x_1)\cdots (t-x_p)}_{\text{signe constant}}\;\mathrm dt
+\]
+donc \[
+    \forall t\in I, p(t)P_n(t)(t-x_1)\cdots (t-x_p)=0
+\]
+et $P_n$=0 absurde. Donc $N_I(P_n)=n$ et $P_n$ est scindé à racines simples, toutes dans $I$.
+
+\subsection{Entrelacement des racines}
+
+\todo{cette partie}
 
 \section{Formules d'interpolation}
 
@@ -1251,8 +1277,6 @@ Si $(F_n)_n$ est une suite de fermés d'intérieurs vides alors \[
     \bigcup_{n\in\mathbb N}F_n
 \] est d'intérieur vide.
 \end{cor}
-
-% je me charge de la fin du poly (comme ça je pige en même temps ce que le prof écrit)
 \end{proof}
 
 \subsection{Incomplétude de $\mathbb R[X]$}
