@@ -201,7 +201,7 @@ On suppose par l'absurde que $P\neq Q$ et par exemple $n=\deg P\geq \deg Q=m$. O
     \deg P=n\geq \deg(P-Q)\geq r+s \quad\text{car }P-Q\text{ s'annule en $u_i$ et $v_j$ et }P-Q\neq 0
 \]
 On a $P'=(P+1)'$ done $P'$ a $n-r$ racines dans les $u_i$ avec multiplicité, et $n-s$ dans les $n_j$ donc \[
-    n-r+n-s\leq \deg P'=n-1\iff n-1\leq r + s
+    n-r+n-s\leq \deg P'=n-1\iff n+1\leq r + s
 \]
 Or $r+s\leq n$ absurde et donc $P = Q$
 
@@ -318,7 +318,7 @@ Il est possible de calculer $S_1, \cdots, S_{n-1}$ par des formules de récurren
             k\sigma_k=\sum_{i=1}^k(-1)^{i-1}\sigma_{k-i}S_i
         \]
     \item On note $P$ le polynôme $P/\dom P$\[
-            P(x)=\prod_{i=1}^n(x-x_i)=\frac1{a_n}\sum_{k=0}^na_kx^k=\sigma_{k=0}^n\sigma_{n-k}(-1)^{n-k}x^k
+            P(x)=\prod_{i=1}^n(x-x_i)=\frac1{a_n}\sum_{k=0}^na_kx^k=\sum_{k=0}^n\sigma_{n-k}(-1)^{n-k}x^k
         \]
         d'où \[
             x^nP\left(\frac1x\right)=\underbrace{\prod_{k=1}^n(1-xx_k)}_{Q(x)}=\sum_{k=0}^n\sigma_{n-k}(-1)^{n-k}x^{n-k}=\sum_{k=0}^n\sigma_k(-1)^kx^k
@@ -460,14 +460,14 @@ Ainsi, $a_0, \cdots, a_n\in\mathbb Z$ et la réciproque est évidente. On a ains
 
 \begin{proof}[Résolution]
     Le cas des polynômes constants est immédiat. On note $P(z)=a_0+\cdots +a_nz^n$. On a \[
-        P(e^{i\theta})\overline{P(e^{i\theta})}=1\implies P(e^{i\theta})\overline P(e^{-i\theta})=1 \implies P(e^i\theta)\overline P(e^{-i\theta})e^{in\theta}=e^{in\theta}
+        P(e^{i\theta})\overline{P(e^{i\theta})}=1\implies P(e^{i\theta})\overline P(e^{-i\theta})=1 \implies P(e^{i\theta})\overline P(e^{-i\theta})e^{in\theta}=e^{in\theta}
     \]
     Si on note $Q(X)=\overline P\left(\frac1X\right)X^n=\bar a_0X^n+\cdots +\bar a_n$ alors $PQ-X^n$ s'annule sur $\mathbb U$ donc est nul donc $P(X)\;|\;X^n$, $\deg P=n$ et $P=\lambda X^n$, où $\lambda=P(1)\in\mathbb U$. La réciproque est claire.
 \end{proof}
 
 \begin{exo}
     Variantes \begin{itemize}
-        \item $P(\mathbb R)\subset \mathbb R[X]$. Solution: Formule de Gregory, interpolation de Lagrange, polynôme conjugué, ...
+        \item $P(\mathbb C)\subset R$. Solution: Formule de Gregory, interpolation de Lagrange, polynôme conjugué, ...
         \item $P(\mathbb Q)\subset \mathbb Q$. Solution: Formule de Gregory
         \item $P(\mathbb Q)\subset \mathbb R\setminus \mathbb Q$ et $P(\mathbb R\setminus \mathbb Q)\subset \mathbb Q$
         \item $P(\mathbb Q)=\mathbb Q$
@@ -677,7 +677,7 @@ La matrice de $\varphi$ dans la base $(X^{q-1}, 0), \cdots, (X, 0), (1, 0), (0, 
 \begin{pmatrix}a_{p}&0&\cdots &0&b_{q}&0&\cdots &0\\a_{p-1}&a_{p}&\ddots &\vdots &\vdots &b_{q}&\ddots &\vdots \\\vdots &a_{p-1}&\ddots &0&\vdots &&\ddots &0\\\vdots &\vdots &\ddots &a_{p}&b_{1}&&&b_{q}\\a_{0}&&&a_{p-1}&b_{0}&\ddots &\vdots &\vdots \\0&\ddots &&\vdots &0&\ddots &b_{1}&\vdots \\\vdots &\ddots &a_{0}&\vdots &\vdots &\ddots &b_{0}&b_{1}\\0&\cdots &0&a_{0}&0&\cdots &0&b_{0}\\\end{pmatrix}=:R(P, Q)
 \]
 On appelle résultant de $P$ et $Q$ le déterminant de cette matrice. Ainsi, \[
-    P\leq Q\neq 1 \iff \det R(P, Q)=0
+    P\land Q\neq 1 \iff \det R(P, Q)=0
 \]
 
 \section{Polynômes irréductibles}
