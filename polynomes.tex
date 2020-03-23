@@ -369,9 +369,9 @@ et on a les propriétés de stabilité suivantes.
 
 \vspace{.2cm}
 
- Plus généralement, si $D$ est l'opérateur de dérivation polynomiale, pour $Q\in\mathcal S$ alors 
+ Plus généralement, si $D$ est l'opérateur de dérivation polynomiale, pour $Q\in\mathcal S$ alors
 \begin{itemize}
-    \item 
+    \item
 \[
     Q(X)=\lambda (X-b_1)\cdots (X-b_p)
 \]
@@ -392,7 +392,7 @@ et pour $P\in\mathcal S$, $Q(D)(P)\in\mathcal S$.
         x_1<y_1<\cdots <x_{n-1}<y_{n-1}<x_n
     \]
     Il y a lors deux cas: $Q$ possède une racine $y_n>x_n$, ou $Q$ a $n-1$ racines réelles. On se place dans le premier cas (l'autre se traite similairement).
-    
+
     Comme $\lambda, \mu\in\mathbb R$ sont quelconques, on peut supposer $P$ et $Q$ unitaires donc \[
         P(X)=(X-x_1)\cdots (X-x_n) \qquad Q(X)=(X-y_1)\cdots (X-y_n)
     \]
@@ -518,7 +518,7 @@ Bilan les racines de $P$ sont dans le disque $D(0, M+1)$
 
 \begin{proof}
     Pour $x>0$, $f(x)=-\frac{P(x)}{x^n}=\frac{b_0}{x^n}+\cdots + \frac{b_{n-1}}{x}-1$ est décroissante.
-    
+
     \begin{center}
         \begin{tikzpicture}
             \tkzTabInit{$x$ / 1 , $f(x)$ / 1}{$0$, $a$, $+\infty$}
@@ -586,7 +586,7 @@ On a donc \[
         \end{cases}
     \]
     tant que $U_k\neq 0$
-    
+
     On vérifie par récurrence que $U_k=X^{u_k}-1$. Les cas $k=0, 1$ sont immédiats. On a $u_{k+1}+au_k=u_{k-1}$ donc par HR si $U_k\neq 0$ (ie $u_k\neq 0$), alors \[
         U_{k-1}=U^{u_{k+1}}X^{au_k}-1=\underbrace{X^{u_{k+1}}-1}_{\deg < \deg U_k}+\underbrace{X^{u_{k+1}}\left(X^{au_k}-1\right)}_{\text{divisible par } U_n}
     \]
@@ -615,7 +615,7 @@ On se donne $P_1, \cdots, P_n$ deux à deux premiers entre eux et $R_1, \cdots, 
     Si $P\in\mathbb C[X]$ non nul, alors \[
         \deg P=\deg \left(P\land P'\right)+n_0(P)
     \]
-    où $n_0(P)=\#Z_{\mathbb C}(P)$. 
+    où $n_0(P)=\#Z_{\mathbb C}(P)$.
 \end{lmm}
 
 \begin{proof}
@@ -712,7 +712,7 @@ Si le polynôme est irréductible dans $Q[X]$ alors il l'est dans $\mathbb Z[X]$
 absurde.
 \end{proof}
 
-\subsection{Critère d'Einsenstein} 
+\subsection{Critère d'Einsenstein}
 
 \begin{res}[Critère d'Eisenstein]
 On note $P=p_nX^n+\cdots + p_0\in\mathbb Z[X]$ non constant de degré $n$. Si $p$ est premier tel que \[
@@ -937,10 +937,10 @@ $A$ est un corps
     \item $1\in A$ en tant que racine de $X-1$
     \item Soient $x, y\in A$, $p=\deg \mu_x, q=\deg \mu_y$. Pour tout $n\in\mathbb N$, \[
         \begin{cases}
-            x^n\in\Vect_{\mathbb Q}(1, x, \cdots, x^{p-1}) \\ y^n\in\Vect_{\mathbb Q}(1, y, \cdots, y^{q-1}) 
+            x^n\in\Vect_{\mathbb Q}(1, x, \cdots, x^{p-1}) \\ y^n\in\Vect_{\mathbb Q}(1, y, \cdots, y^{q-1})
         \end{cases}\quad\text{ donc }\quad  x^ny^n, (x+y)^n\in\Vect_{\mathbb Q}(x^iy^j, i<q, j<q)
     \]
-    
+
     Les familles $((x-y)^n)_n$ et $((xy)^n)_n$ sont liées donc $x-y, xy\in A$.
     \item Si $x\in A$ non nul et si on note $E=\Vect_{\mathbb Q}(1, x, \cdots, x^{p-1})$ alors \[
         \varphi: z\in E\longmapsto xz\in E
@@ -1031,7 +1031,7 @@ avec \[
 
 \begin{proof} On note $E_i=\mathbb R_i[X]$.
 Pour $Q\in\Vect(P_0, \cdots, P_{n-2})=\mathbb R_{n-2}[X]$, $(XP_n|Q)=(P_n|XQ)=0$ car $XQ\in\mathbb R_{n-1}[X]$. On a alors \[
-    P_n(X)-XP_{n-1}(X)\in E_{n-3}^\bot 
+    P_n(X)-XP_{n-1}(X)\in E_{n-3}^\bot
 \]
 or $\deg (P_n-XP_{n-1})\leq n-1$ (simplification du coef dominant) donc \[
     P_n(X)-XP_{n-1}(X)=\lambda_{n-1}P_{n-1}(X)+\cdots +\lambda_0P_0(X)
@@ -1059,7 +1059,15 @@ et $P_n$=0 absurde. Donc $N_I(P_n)=n$ et $P_n$ est scindé à racines simples, t
 
 \subsection{Entrelacement des racines}
 
-\todo{cette partie}
+On note \[
+    w_n(x)=\left|\begin{matrix}P_n(x) & P_{n+1}(x)\\ P_n'(x) & P_{n+1}'(x)\end{matrix}\right|=P_n(x)P_{n+1}'(x)-P_n'(x)P_{n+1}(x)
+\]
+On a $w_0\equiv 1$ et après calcul avec la relation de récurrence, \[
+    w_n(x)=P_n(x)^2\underbrace{-\mu_{n-1}}_{>0}w_{n-1}(x)
+\]
+donc comme $w_0>0$, on en déduit que pour tout $x, n$, $w_n(x)>0$. Notons $\alpha < \beta$ deux racines consécutives de $P_{n+1}$. \[
+    P_{n+1}'(\alpha)P_n(\alpha)>0\qquad \text{ et }\qquad P_{n+1}'(\beta)P_n(\beta)>0
+\] or $P_{n+1}$ de signe constant sur $]\alpha, \beta[$ et donc $P_{n+1}'(\alpga)P_{n+1}'(\beta)<0$ (car sinon il y aurait changement de signe). Ainsi, $P_n(\alpha)P_n(\beta)<0$ donc $P_n$ s'annule sur $]\alpha, \beta[$. On a ainsi trouvé $n$ racines de $P_n$, une entre chaque racine de $P_{n+1}$: il y a entrelacement des racines
 
 \section{Formules d'interpolation}
 
@@ -1118,10 +1126,10 @@ l'interpolation de Lagrange de $f$. On veut estimer $f(x)-P(x)$. On note $x\in [
 où $\lambda_x$ tel que $g(x)=0$ (ajout d'une racine supplémentaire). Rolle itéré donne:
 
 \begin{itemize}
-    \item 
+    \item
 $g$ s'annule en $x_1, \cdots, x_n, x$ ($n+1$ points)
 \item $\cdots$
-\item 
+\item
 $g^{(n)}$ s'annule au moins une fois en $c_n$
 \end{itemize}
 
@@ -1172,7 +1180,7 @@ D'après la formule d'interpolation de Lagrange en $z_1, \cdots, z_n$, \begin{al
 \end{align*}
 
 On fait tendre $z$ vers $1$. \[
-    tP'(t)=\sum_{k=1}^n\varphi(z_k, t)\frac{2}{z_k-1}\frac{z_k}n= 
+    tP'(t)=\sum_{k=1}^n\varphi(z_k, t)\frac{2}{z_k-1}\frac{z_k}n=
     \frac1n\sum_{k=1}^nP(-tz_k)\frac{2z_k}{(z_k-1)^2}-\frac{P(t)}{n}\sum_{k=1}^n\frac{2z_k}{(z_k-1)^2}
 \]
 Il nous reste à évaluer ce dernier terme. On reprend la formule précédente avec $P(t)=t^n$. \[
@@ -1247,7 +1255,7 @@ $(E, \|\;\|)$ un e.v.n tel que toute suite de Cauchy converge.Si $(O_n)_n$ est u
 \begin{proof}
 On note $U$ ouvert de $E$.
 \begin{itemize}
-    \item 
+    \item
 $U\cap O_0$ est un ouvert non vide donc il existe $x_0\in U\cap O_0$ et $2a_0>0$ tel que $\mathcal B_o(x_o, 2a_o)\subset U\cap O_0$ et donc $\mathcal B_f(x_0, a_0)\subset U\cap O_0$. On note $r_0=\min(a_0, 1)$.
 \item $\mathcal B_o(a_0, r_0)\cap O_1$ ouvert non vide donc il existe $x_1$ et $a_1>0$ tels que $\mathcal B_f(x_1, a_1)\subset \mathcal B_0(x_0, r_0)\cap O_1$ et on note $r_1=\min\left(a_1, \frac12\right)$
 
