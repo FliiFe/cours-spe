@@ -16,7 +16,7 @@ jobs:
     - name: Compilation
       uses: dante-ev/latex-action@v0.2.0
       with:
-        root_file: ./*.tex
+        root_file: ""
     - name: Upload result
       uses: actions/upload-artifact@v2-preview
       with:
