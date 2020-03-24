@@ -47,8 +47,7 @@ jobs:
         release_name: Version du ${{ steps.current-date.outputs.formattedTime }}
         draft: false
         prerelease: false
-    - name: Upload Release Asset
-      id: upload-release-asset 
+    - name: Release polynomes
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -56,4 +55,13 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./polynomes.pdf
         asset_name: polynomes.pdf
+        asset_content_type: application/pdf
+    - name: Release calculdiff
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./calculdiff.pdf
+        asset_name: calculdiff.pdf
         asset_content_type: application/pdf
