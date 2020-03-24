@@ -22,3 +22,38 @@ jobs:
       with:
         name: cours.zip
         path: ./*.pdf
+    - name: Get current time
+      uses: srfrnk/current-time@master
+      id: current-time
+      with:
+        format: YYYY-MM-DD-HH-mm-ss
+    - name: Get current time
+      uses: srfrnk/current-time@master
+      id: current-date
+      with:
+        format: YYYY-MM-DD
+    - name: Create release tag
+      uses: anothrNick/github-tag-action@1.17.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        CUSTOM_TAG: ${{ steps.current-time.outputs.formattedTime }}
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.current-time.outputs.formattedTime }}
+        release_name: Version du ${{ steps.current-date.outputs.formattedTime }}
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./polynomes.pdf
+        asset_name: polynomes.pdf
+        asset_content_type: application/pdf
