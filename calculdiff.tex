@@ -1,0 +1,211 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{stmaryrd}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{tikz,tkz-tab}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{fancyhdr}
+\usepackage[normalem]{ulem}
+\usepackage[hidelinks]{hyperref}
+
+\AtBeginDocument{\def\labelitemi{$\bullet$}}
+\setlist[itemize]{leftmargin=.5cm}
+\setlist[enumerate]{leftmargin=.7cm}
+
+\theoremstyle{definition}
+\newtheorem*{thm}{Théorème}
+\newtheorem*{thmdef}{Théorème -- Définition}
+\newtheorem*{dfn}{Définition}
+\newtheorem*{defprop}{Définition -- Proposition}
+\newtheorem*{lmm}{Lemme}
+\newtheorem*{rem}{Remarque}
+\newtheorem*{res}{Résultat}
+\newtheorem*{prop}{Proposition}
+\newtheorem{csq}{Conséquence}[subsection]
+\renewcommand{\thecsq}{\arabic{csq}}
+\newtheorem*{cor}{Corollaire}
+\newtheorem*{exo}{Exercice}
+\newtheorem*{notation}{Notation}
+
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{(\emph{\alph{subsection}})}
+
+\titleformat*{\section}{\Large\bfseries}
+\titleformat*{\subsection}{\large\bfseries}
+
+\setlength{\cftsecnumwidth}{0.6cm}
+\renewcommand{\cftsecpresnum}{}
+\renewcommand{\cftsecaftersnum}{}
+
+\addto\captionsfrench{
+  \renewcommand{\contentsname}%
+    {Plan du cours}%
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ --\ \textsc{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\headrulewidth}{1pt}
+\rhead{Page \thepage}
+\cfoot{}
+\lhead{\rightmark}
+\renewcommand{\headrulewidth}{1pt}
+
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+
+\newcommand{\todo}[1]{{\color{red}À faire: #1}}
+
+\tocloftpagestyle{empty}
+
+\begin{document}
+
+~
+
+\vspace{1cm}
+
+\begin{center}
+\textbf{\LARGE Compléments sur les polynômes} \\[1em]
+\end{center}
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+\setcounter{page}{1}
+\section{Notions, Définitions}
+
+$E$ est un $\mathbb R$-e.v de dimension $n$ (donc isomorphe à $\mathbb R^n$), $F$ un sev de $E$ et $\Omega$ un ouvert de $E$.
+
+\begin{rem}
+Pour $a\in\Omega, v\in E, \exists \epsilon>0, \forall t\in ]-\epsilon, \epsilon[, a+tv\in\Omega$ (par définition d'un ouvert)
+\end{rem}
+
+\begin{dfn}
+On note $f:\Omega \longrightarrow F$. On dira que $f$ possède une dérivée en $a\in\Omega$ selon $v\in E$ si \[
+    \lim_{\substack{t\to 0\\ t\neq 0}}\frac{f(a+tv)-f(a)}t
+\] existe. On note cette limite $D_vf(a)$.
+
+Si $\mathcal B=(e_1,\cdots, e_n)$ base de $E$ et $f$ a une dérivée en $a\in\Omega$ selon $e_{i_0}$ alors on appelle $i_0$-ième dérivée partielle $D_{e_{i_0}}f(a)$, notée \[
+    \frac{\partial f}{\partial x_{i_0}}(a)\qquad \text{ ou }\qquad \partial_{i_0}f(a)
+\]
+\end{dfn}
+
+\begin{rem}
+Pour $\mathcal B=(e_1, \cdots, e_n)$ on note $x\underset{\mathcal B}{\longleftrightarrow}(x_1, \cdot, x_n)$ et on a $f(x)=f(x_1e_1+\cdots + x_ne_n)$ qu'on note abusivement $f(x_1, \cdots, x_n)$. \[
+    \frac{f(x+te_1)-f(x)}{t}=\frac{f(x_1+t, x_2, \cdots, x_n)-f(x_1, \cdots, x_n)}{t}
+\]
+Pour calculer $\partial_if(a)$, on fait comme si les autres variables étaient constantes et on dérive par rapport à $x_i$.
+\end{rem}
+
+\begin{rem}
+$D_v$ est linéaire
+\end{rem}
+
+\begin{rem}
+Avoir une dérivée en $a$ n'implique pas la continuité en $a$. Contre-exemple: \[
+    f(x, y)=\begin{cases}
+    \frac{y^2}x &\text{ si }x\neq 0\\ y & \text{ sinon}
+    \end{cases}
+\]
+\end{rem}
+
+\section{Différentielle}
+
+\begin{defprop}
+On note $f:\Omega\longrightarrow F, a\in \Omega$. \begin{enumerate}
+    \item On dira que $f$ est différentiable en $a$ s'il existe $\varphi\in\mathcal L(E, F), \epsilon>0$ tels que \[
+        \forall h\in\mathcal B_o(0, \epsilon), f(a+h)=f(a)+\varphi(h)+o_0(h)
+    \]
+    Dans ce cas $\varphi$ est unique et se note $\mathrm df_a$
+    \item Si $f$ est différentiable en $a$ alors $f$ est continue en $a$
+    \item Si $f$ est différentiable en $a$ alors $f$ a une dérivée en $a$ selon tout $v$ et \[
+        D_vf(a)=df_a(v)
+    \]
+\end{enumerate}
+\end{defprop}
+
+\begin{proof} ~
+\begin{enumerate}
+    \item Si $\varphi, \psi$ conviennent, $\varphi(tv)-\psi(tv)=o_0(tv)$ ie \[
+        \varphi(v)-\psi(v)=o_0(v)\xrightarrow[t\to 0]{}0
+    \]
+    d'où $\varphi\equiv \psi$.
+    \item $f(a+h)=f(a)+\varphi(h)+o_0(h)\xrightarrow[h\to 0]{}f(a)$
+    \item \[
+        \frac{f(a+tv)-f(a)}{t}=\mathrm df_a(v)+o_0(v)\xrightarrow[\substack{t\to 0\\t\neq 0}]{}\mathrm df_a(v)
+    \]
+\end{enumerate}
+\end{proof}
+
+\begin{thmdef}
+~ \begin{enumerate}
+    \item Soit $f\in\mathcal L(E, F)$ et $a\in E$. La fonction $f$ est différentiable en $a$ et $df_a=f$.
+    \item Si $\mathcal B=(e_1, \cdots, e_n)$ est une base de $E$ et si $\pi_i$ est l'application $i$-ième coordonnée alors $\forall a\in E, \mathrm d\pi_i=\pi_i$ se dépend pas de $a$. On note cette application $\mathrm dx_i$.
+    \item Si $\mathcal B$ est une base de $E$ et $f$ est différentiable en $a$ alors \[
+        \mathrm df_a=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)\mathrm dx_i
+    \]
+\end{enumerate}
+\end{thmdef}
+
+\begin{proof} ~
+\begin{enumerate}
+    \item $f(a+h)=f(a)+f(h)$
+    \item Ok
+    \item $h=h_1e_1+\cdots +h_ne_n$, \[
+        \mathrm df_a(h)=h_1\mathrm df_a(e_1)+\cdots +h_n\mathrm df_a(e_n)=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)\mathrm dx_i
+    \]
+\end{enumerate}
+\end{proof}
+
+\begin{rem}
+Pour une fonction $f:\mathbb R\longrightarrow F$, $f'(a)=\mathrm df_a(1)$
+\end{rem}
+
+\section{Calculs de différentielles}
+
+\subsection{$f(x, y)=y^2/x$ si $x\neq 0$, $y$ sinon}
+
+\[
+\frac{\partial f}{\partial x}(0, 0)=0 \qquad\qquad \frac{\partial f}{\partial y}(0, 1)=f(0, 1)=1
+\]
+donc \[
+\frac{\partial f}{\partial x}(0, 0) \mathrm dx+ \frac{\partial f}{\partial y}(0, 1)\mathrm dy
+\]
+existe mais $f$ est non différentiable car non $\mathcal C^0$
+
+\subsection{$f:A\in\mathcal M_n(\mathbb R)\longmapsto A^2$}
+
+\[
+    f(A+H)=f(A)+AH+HA+H^2
+\]
+et pour une norme sous-multiplicative, $\|H^2\|\leq \|H\|^2=o_0(H)$ donc \[
+    \mathrm df_A(H)=AH+HA
+\]
+
+\subsection{$f:M\in GL_n(\mathbb R)\longmapsto M^{-1}$}
+
+On fixe $M\in GL_n(\mathbb R)$. Alors $\exists \epsilon >0 / \mathcal B_o(M, \epsilon)\subset GL_n(\mathbb R)$. Pour $H$ dans $\mathcal B_o(0, \epsilon)$, \[
+    M+H\in\mathcal B_o(M, \epsilon)
+\]
+et \[
+    \left((M+H)^{-1}-M^{-1}\right)(M+H)=I_n-M^{-1}(M+H)=-M^{-1}H
+    \] donc
+    \begin{align*}
+    (M+H)^{-1}-M^{-1}&=-M^{-1}H(M+H)^{-1}\\&=-M^{-1}HM^{-1}+M^{-1}Ho_0(1)\\&=\underbrace{-M^{-1}HM^{-1}}_{\mathrm df_M(H)}+o_0(H)
+\end{align*}
+
+\end{document}
