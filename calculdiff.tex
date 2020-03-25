@@ -277,7 +277,7 @@ On développe $f(a+h)=B(f_1(a_1+h_1), f_2(a_2+h_2))$
         \det(A+H)=\det(A)+\det(H_1, C_2, \cdots, C_n)+\cdots + \det(C_1, \cdots, C_{n-1}, H_n)+o_0(H)
     \]
     On en déduit \begin{align*}
-        \mathrm d\varphi_A(H) &= \subset_{j=1}^n \det(C_1, \cdots, H_i, \cdots, C_n)\\
+        \mathrm d\varphi_A(H) &= \sum_{j=1}^n \det(C_1, \cdots, H_i, \cdots, C_n)\\
         &= \sum_{j=1}^n\sum_{i=1}^n(-1)^{i+j}h_{i, j}\Delta_{i, j}(A) \\
         &= \Tr(\Com(A)^\intercal H)
     \end{align*}
