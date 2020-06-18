@@ -1,0 +1,81 @@
+\usepackage[french]{babel}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{stmaryrd}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{tikz,tkz-tab}
+\usepackage{titlesec}
+\usepackage[french]{minitoc}
+\usepackage{tocloft}
+\usepackage{fancyhdr}
+\usepackage[normalem]{ulem}
+\usepackage[hidelinks]{hyperref}
+
+\AtBeginDocument{\def\labelitemi{$\bullet$}}
+\setlist[itemize]{leftmargin=.5cm}
+\setlist[enumerate]{leftmargin=.7cm}
+
+\theoremstyle{definition}
+\newtheorem*{thm}{Théorème}
+\newtheorem*{thmdef}{Théorème -- Définition}
+\newtheorem*{dfn}{Définition}
+\newtheorem*{defprop}{Définition -- Proposition}
+\newtheorem*{lmm}{Lemme}
+\newtheorem*{rem}{Remarque}
+\newtheorem*{ex}{Exemple}
+\newtheorem*{res}{Résultat}
+\newtheorem*{prop}{Proposition}
+\newtheorem{csq}{Conséquence}[subsection]
+\renewcommand{\thecsq}{\arabic{csq}}
+\newtheorem*{cor}{Corollaire}
+\newtheorem*{exo}{Exercice}
+\newtheorem*{notation}{Notation}
+
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{(\emph{\alph{subsection}})}
+
+\titleformat*{\section}{\Large\bfseries}
+\titleformat*{\subsection}{\large\bfseries}
+
+\setlength{\cftsecnumwidth}{0.6cm}
+\renewcommand{\cftsecpresnum}{}
+\renewcommand{\cftsecaftersnum}{}
+
+
+\ifsolo
+\addto\captionsfrench{
+  \renewcommand{\contentsname}%
+    {Plan du cours}%
+}
+\else
+\renewcommand{\thechapter}{\Roman{chapter}}
+\mtcsetoffset{minitoc}{-2em}
+\renewcommand{\cftsecfont}{\small\bfseries}
+\setcounter{tocdepth}{1}
+\fi
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ --\ \textsc{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\headrulewidth}{1pt}
+\rhead{Page \thepage}
+\cfoot{}
+\lhead{\rightmark}
+\renewcommand{\headrulewidth}{1pt}
+
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Com}{Com}
+
+\newcommand{\todo}[1]{{\color{red}À faire: #1}}
+
+\tocloftpagestyle{empty}
