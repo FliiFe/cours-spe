@@ -5,7 +5,8 @@
 \usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{stmaryrd}
-\usepackage{color}
+\usepackage{tikz} 
+\usepackage{xcolor}
 \usepackage{parskip}
 \usepackage{tikz,tkz-tab}
 \ifsolo
@@ -16,6 +17,7 @@
 \fi
 \usepackage{tocloft}
 \usepackage{fancyhdr}
+\usepackage{lmodern}
 \usepackage[normalem]{ulem}
 \usepackage[hidelinks]{hyperref}
 
@@ -76,13 +78,41 @@
 \renewcommand{\headrulewidth}{1pt}
 
 \DeclareMathOperator{\dom}{dom}
-\DeclareMathOperator{\ord}{ord}
-\DeclareMathOperator{\Vect}{Vect}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\diff}{\mathrm{d}}
 \DeclareMathOperator{\img}{Im}
 \DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Com}{Com}
 
 \newcommand{\todo}[1]{{\color{red}À faire: #1}}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}~}
+
+\newcommand{\hyp}{\circled{H}}
+\newcommand{\conc}{\circled{C}}
+
+\newcommand{\Hyp}{~\\[.1cm] \circled{H}\hspace{1em}}
+\newcommand{\Conc}{~\\[.1cm] \circled{C}\hspace{1em}}
+
+\newcommand*{\colorboxed}{}
+\def\colorboxed#1#{%
+  \colorboxedAux{#1}%
+}
+\newcommand*{\colorboxedAux}[3]{%
+  % #1: optional argument for color model
+  % #2: color specification
+  % #3: formula
+  \begingroup
+    \colorlet{cb@saved}{.}%
+    \color#1{#2}%
+    \boxed{%
+      \color{cb@saved}%
+      #3%
+    }%
+  \endgroup
+}
 
 \tocloftpagestyle{empty}
