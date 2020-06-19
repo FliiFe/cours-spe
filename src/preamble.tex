@@ -5,18 +5,16 @@
 \usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{stmaryrd}
-\usepackage{tikz} 
 \usepackage{xcolor}
 \usepackage{parskip}
 \usepackage{tikz,tkz-tab}
+\usepackage{titleps}
 \ifsolo
-\usepackage{titlesec}
 \else
 \usepackage{lastpage}
 \usepackage[french]{minitoc}
 \fi
 \usepackage{tocloft}
-\usepackage{fancyhdr}
 \usepackage{lmodern}
 \usepackage[normalem]{ulem}
 \usepackage[hidelinks]{hyperref}
@@ -44,10 +42,6 @@
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{(\emph{\alph{subsection}})}
 
-\ifsolo
-\titleformat*{\section}{\Large\bfseries}
-\titleformat*{\subsection}{\large\bfseries}
-\fi
 
 \setlength{\cftsecnumwidth}{0.6cm}
 \renewcommand{\cftsecpresnum}{}
@@ -67,15 +61,12 @@
 \setlength{\cftchapnumwidth}{1.4cm}
 \fi
 
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ --\ \textsc{#1}}}
-\renewcommand{\subsectionmark}[1]{}
-\renewcommand{\headrulewidth}{1pt}
-\rhead{Page \thepage\ifsolo\else~/~\pageref{LastPage}\fi}
-\cfoot{}
-\lhead{\rightmark}
-\renewcommand{\headrulewidth}{1pt}
+\newpagestyle{main}{
+  \setheadrule{1pt}
+  \ifsolo\else \setfootrule{1pt}\fi
+  \sethead{\thesection ~--~\textsc{\sectiontitle}}{}{Page \thepage\ifsolo\else~/~\pageref{LastPage}\fi}
+  \setfoot{\ifsolo\else\textbf{Chapitre \thechapter} : \textsc{\chaptertitle}\fi}{}{}
+}
 
 \DeclareMathOperator{\dom}{dom}
 \newcommand{\ord}{\mathrm{ord}}
@@ -116,3 +107,4 @@
 }
 
 \tocloftpagestyle{empty}
+\pagestyle{main}
