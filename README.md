@@ -3,7 +3,7 @@
 
 Je met dans ce repo quelques cours de maths spé que j'ai tapé à partir de mes notes manuscrites. Il peut parfois y avoir des petites erreurs: prévenez moi (par mail, avec une issue ou une pull request) si vous en repérez !
 
-Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière version en date des polys est toujours disponible [ici](https://github.com/FliiFe/cours-spe/releases/latest).
+Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière version en date des polys est toujours disponible [ici](https://github.com/FliiFe/cours-spe/releases/latest) (le fichier `cours-complet.pdf` contient tous les chapitres, les autres fichiers sont les chapitres compilés séparément).
 
 ## Chapitres tapés
 
