@@ -15,8 +15,8 @@ jobs:
 
     - name: Compilation
       uses: dante-ev/latex-action@v0.2.0
-      args: '-xelatex -latexoption=-file-line-error -latexoption=-interaction=nonstopmode'
       with:
+        args: '-xelatex -latexoption=-file-line-error -latexoption=-interaction=nonstopmode'
         root_file: ""
     - name: Upload result
       uses: actions/upload-artifact@v2-preview
