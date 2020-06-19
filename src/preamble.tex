@@ -8,8 +8,12 @@
 \usepackage{color}
 \usepackage{parskip}
 \usepackage{tikz,tkz-tab}
-% \usepackage{titlesec}
+\ifsolo
+\usepackage{titlesec}
+\else
+\usepackage{lastpage}
 \usepackage[french]{minitoc}
+\fi
 \usepackage{tocloft}
 \usepackage{fancyhdr}
 \usepackage[normalem]{ulem}
@@ -38,8 +42,10 @@
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{(\emph{\alph{subsection}})}
 
-% \titleformat*{\section}{\Large\bfseries}
-% \titleformat*{\subsection}{\large\bfseries}
+\ifsolo
+\titleformat*{\section}{\Large\bfseries}
+\titleformat*{\subsection}{\large\bfseries}
+\fi
 
 \setlength{\cftsecnumwidth}{0.6cm}
 \renewcommand{\cftsecpresnum}{}
@@ -64,7 +70,7 @@
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ --\ \textsc{#1}}}
 \renewcommand{\subsectionmark}[1]{}
 \renewcommand{\headrulewidth}{1pt}
-\rhead{Page \thepage}
+\rhead{Page \thepage\ifsolo\else~/~\pageref{LastPage}\fi}
 \cfoot{}
 \lhead{\rightmark}
 \renewcommand{\headrulewidth}{1pt}
