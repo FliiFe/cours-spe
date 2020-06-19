@@ -8,7 +8,7 @@
 \usepackage{color}
 \usepackage{parskip}
 \usepackage{tikz,tkz-tab}
-\usepackage{titlesec}
+% \usepackage{titlesec}
 \usepackage[french]{minitoc}
 \usepackage{tocloft}
 \usepackage{fancyhdr}
@@ -38,8 +38,8 @@
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{(\emph{\alph{subsection}})}
 
-\titleformat*{\section}{\Large\bfseries}
-\titleformat*{\subsection}{\large\bfseries}
+% \titleformat*{\section}{\Large\bfseries}
+% \titleformat*{\subsection}{\large\bfseries}
 
 \setlength{\cftsecnumwidth}{0.6cm}
 \renewcommand{\cftsecpresnum}{}
@@ -56,6 +56,7 @@
 \mtcsetoffset{minitoc}{-2em}
 \renewcommand{\cftsecfont}{\small\bfseries}
 \setcounter{tocdepth}{1}
+\setlength{\cftchapnumwidth}{1.4cm}
 \fi
 
 \pagestyle{fancy}
