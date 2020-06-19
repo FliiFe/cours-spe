@@ -251,3 +251,32 @@ On développe $f(a+h)=B(f_1(a_1+h_1), f_2(a_2+h_2))$
 \begin{rem}
     Si $f:\Omega\subset E\to F$ est $a\in\Omega$, $v\in E$ alors $\varphi:t \longmapsto f(a+tv)$ est définie au $\mathcal V(0)$ et $\varphi'(t)=\diff f_{a+tv}(v)$
 \end{rem}
+
+\needspace{5cm}
+\section{Applications de classe {$\mathcal C^1$}}
+
+\begin{thmdef}
+    \Hyp $f:\Omega\subset E\longrightarrow F$
+    \begin{concenum}
+    \item On dira que $f$ est $\mathcal C^1$ sur $\Omega$ si $f$ est différentiable sur $\Omega$ et si $a\in\Omega \longmapsto \diff f_a\in\mathcal L(E, F)$ est $\mathcal C^0$
+        \item Une fonction $\mathcal C^1$ est continue
+        \item On note $\mathcal B=(e_1, \cdots, e_n)$ une base de $E$, $\mathcal C=(u_1, \cdots, u_m)$ une base de $F$ et $f=(f_1, \cdots, f_m)$. Il y a équivalence entre: \begin{enumerate}
+            \item $f$ est $\mathcal C^1$ sur $\Omega$
+            \item Les $f_i$ ont toutes leurs dérivées partielles sur $\Omega$ et les $\partial_jf_i$ sont $\mathcal C^0$ sur $\Omega$
+        \end{enumerate}
+    \item On note $\mathcal C^1(\Omega, F)$ l'ensemble de ces fonctions
+    \end{concenum}
+\end{thmdef}
+
+\begin{proof}~
+    \begin{enumerate}
+        \setcounter{enumi}{1}
+        \item Les fonctions $\mathcal C^1$ sont différentiables donc continues.
+        \item $(a) \implies (b)$: \[
+                J_f(a)=\mathcal M_{\mathcal B, \mathcal C}(\diff f_a)= \left( \frac{\partial f_i}{\partial x_j} (a) \right)_{\substack{1\leq i\leq m\\1\leq j\leq n}}
+            \]
+            est continue par rapport à $a$ par hypothèse.
+
+            $(b) \implies (a)$: \todo{ce sens là}
+    \end{enumerate}
+\end{proof}

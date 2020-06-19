@@ -16,6 +16,8 @@
 \fi
 \usepackage{tocloft}
 \usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{needspace}
 \usepackage[normalem]{ulem}
 \usepackage[hidelinks]{hyperref}
 
@@ -87,6 +89,14 @@
 
 \newcommand{\Hyp}{~\\[.1cm] \circled{H}\hspace{1em}}
 \newcommand{\Conc}{~\\[.1cm] \circled{C}\hspace{1em}}
+\newenvironment{concenum}{
+~\\[0.1cm]\begin{tabular}{@{}lp{15cm}} \conc & \vspace{-.45cm}
+\begin{enumerate}[leftmargin=.5cm]
+}
+{
+\end{enumerate}
+\end{tabular}
+}
 
 \newcommand*{\colorboxed}{}
 \def\colorboxed#1#{%
