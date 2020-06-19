@@ -65,3 +65,12 @@ jobs:
         asset_path: ./calculdiff.pdf
         asset_name: calculdiff.pdf
         asset_content_type: application/pdf
+    - name: Release cours
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./cours.pdf
+        asset_name: cours-complet.pdf
+        asset_content_type: application/pdf
