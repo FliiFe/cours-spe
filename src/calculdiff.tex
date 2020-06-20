@@ -53,7 +53,7 @@ Avoir une dérivée en $a$ n'implique pas la continuité en $a$. Contre-exemple:
 \section{Différentielle}
 
 \begin{defprop}
-On note $f:\Omega\longrightarrow F, a\in \Omega$. \begin{enumerate}
+\Hyp $f:\Omega\longrightarrow F$, $a\in \Omega$. \begin{concenum}
     \item On dira que $f$ est différentiable en $a$ s'il existe $\varphi\in\mathcal L(E, F), \epsilon>0$ tels que \[
         \forall h\in\mathcal B_o(0, \epsilon), f(a+h)=f(a)+\varphi(h)+o_0(h)
     \]
@@ -62,7 +62,7 @@ On note $f:\Omega\longrightarrow F, a\in \Omega$. \begin{enumerate}
     \item Si $f$ est différentiable en $a$ alors $f$ a une dérivée en $a$ selon tout $v$ et \[
         D_vf(a)=df_a(v)
     \]
-\end{enumerate}
+\end{concenum}
 \end{defprop}
 
 \begin{proof} ~
@@ -150,6 +150,7 @@ et \[
 {$f:A\in\mathcal M_n(\mathbb R)\longmapsto A^\intercal A$}
 \end{exo}
 
+\needspace{5\baselineskip}
 \subsection{Interprétation matricielle}
 
 \begin{thmdef}
