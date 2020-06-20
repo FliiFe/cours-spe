@@ -6,6 +6,7 @@
 \usepackage{enumitem}
 \usepackage{stmaryrd}
 \usepackage{xcolor}
+\usepackage{etoolbox}
 \usepackage{parskip}
 \usepackage{tikz,tkz-tab}
 \usepackage{titleps}
@@ -40,6 +41,9 @@
 \newtheorem*{cor}{Corollaire}
 \newtheorem*{exo}{Exercice}
 \newtheorem*{notation}{Notation}
+
+\AtBeginEnvironment{thmdef}{\Needspace{5\baselineskip}}
+\AtBeginEnvironment{defprop}{\Needspace{5\baselineskip}}
 
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{(\emph{\alph{subsection}})}
