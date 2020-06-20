@@ -237,7 +237,7 @@ On développe $f(a+h)=B(f_1(a_1+h_1), f_2(a_2+h_2))$
     On va identifier le coefficient $i, j$. \begin{align*}
         & \left[ J_{g\circ f}(a) \right]_{i, j}=\sum_{k=1}^m \left[ J_g(f(a)) \right]_{i, k} \left[ J_f(a) \right]_{k, j} \\ 
         \iff & \frac{\partial (g_i\circ f)}{\partial x_j} (a)=\sum_{k=1}^m \frac{\partial g_i}{\partial y_k}(f(a)) \frac{\partial f_k}{\partial x_j} (a) \\
-        \iff & \colorboxed{red}{\partial_i (g_i\circ f)(a)=\sum_{k=1}^m\partial_kg_i(f(a))\partial_jf_k(a)} \quad \text{ \emph{(règle de la chaîne)} }
+        \iff & \colorboxed{red}{\partial_j (g_i\circ f)(a)=\sum_{k=1}^m\partial_kg_i(f(a))\partial_jf_k(a)} \quad \text{ \emph{(règle de la chaîne)} }
     \end{align*}
 
     En particulier, si $p = n = 1$, $\varphi:t\in \mathbb R\to g(f_1(t), \cdots, f_m(t))$ alors \[
