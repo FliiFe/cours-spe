@@ -16,13 +16,13 @@ jobs:
     - name: Compilation
       uses: dante-ev/latex-action@v0.2.0
       with:
-        args: '-xelatex -latexoption=-file-line-error -latexoption=-interaction=nonstopmode'
+        args: '-latexoption=-file-line-error -latexoption=-interaction=nonstopmode'
         root_file: ""
     - name: Upload result
       uses: actions/upload-artifact@v2-preview
       with:
         name: cours.zip
-        path: ./*.pdf
+        path: ./build/*.pdf
     - name: Get current time
       uses: srfrnk/current-time@master
       id: current-time
@@ -54,7 +54,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./polynomes.pdf
+        asset_path: ./build/polynomes.pdf
         asset_name: polynomes.pdf
         asset_content_type: application/pdf
     - name: Release calculdiff
@@ -63,7 +63,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./calculdiff.pdf
+        asset_path: ./build/calculdiff.pdf
         asset_name: calculdiff.pdf
         asset_content_type: application/pdf
     - name: Release cours
@@ -72,6 +72,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./cours.pdf
+        asset_path: ./build/cours.pdf
         asset_name: cours-complet.pdf
         asset_content_type: application/pdf
