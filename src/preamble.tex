@@ -24,6 +24,9 @@
 \usepackage[hidelinks]{hyperref}
 
 \makeindex[intoc,columns=2,options={-s indexstyle.ist}]
+\makeatletter
+\def\@idxitem{\par\hangindent 0pt}
+\makeatother
 
 \AtBeginDocument{\def\labelitemi{$\bullet$}}
 \setlist[itemize]{leftmargin=.5cm}
