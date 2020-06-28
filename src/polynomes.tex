@@ -92,7 +92,7 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 
 \subsection{Théorème de d'Alembert-Gauss}
 
-\begin{thm}
+\begin{thm}[D'Alembert-Gauss] \index{D'Alembert-Gauss (théorème de -- )}
     Tout polynôme non constant de $\mathbb C[X]$ admet au moins une racine
 \end{thm}
 
@@ -215,6 +215,8 @@ Or $r+s\leq n$ absurde et donc $P = Q$
 
 \subsection{Relations de Viète}
 
+\index{Viète!relations}
+
 Pour $x_1, \cdots, x_n\in\mathbb C$ on note: \[
     \sigma_i(x_1, \cdots, x_n)=\sum_{\substack{I\subset \llbracket 1, n\rrbracket\\|I|=i}}\prod_{l\in I}x_l
 \]
@@ -235,7 +237,7 @@ et \[
 
 \subsection{Somme de Newton}
 
-On note $P(X)=a_nX^n+\cdots+a_0$ un polynôme de $\mathbb C[X]$, $x_1, \cdots, x_n$ ses racines. On note $S_k=x_1^k+\cdots + x_n^k$ appelée $k-$ième somme de Newton.
+On note $P(X)=a_nX^n+\cdots+a_0$ un polynôme de $\mathbb C[X]$, $x_1, \cdots, x_n$ ses racines. On note $S_k=x_1^k+\cdots + x_n^k$ appelée $k-$ième somme de Newton \index{Newton!sommes}.
 
 Pour $k\geq n$, \begin{align*}
     a_nS_k+a_{n-1}S_{k-1}+\cdots + a_0S_{k-n}&=a_nx_1^k+\cdots +a_0x_1^{k-n}+\cdots +a_nx_n^k+\cdots +a_0x_n^{k-n} \\ &=x_1^{k-n}P(x_1)+\cdots + x_n^{k-n}P(x_n)=0
@@ -371,7 +373,7 @@ Ainsi, $a_0, \cdots, a_n\in\mathbb Z$ et la réciproque est évidente. On a ains
 \]
 
 \begin{rem}
-    On a aussi établi la formule de Gregory \[
+    On a aussi établi la formule de Gregory\index{Gregory (formule de -- )} \[
         P(X)=\sum_{k\geq 0}\Delta^kP(0)\binom Xk
     \]
 \end{rem}
@@ -428,6 +430,8 @@ Soit $P\in\mathbb S$. Dans la décomposition de $P$ en irréductibles de $\mathb
 
 \subsection{Théorème de Gauss-Lucas}
 
+\index{Gauss-Lucas (théorème de -- )}
+
 On note $P\in\mathbb C[X]$ avec $n=\deg P\geq 2$. On va montrer que si $z_1, \cdots, z_n$ sont les racines de $P$ (répétées avec multiplicités) alors les racines de $P'$ sont dans l'enveloppe convexe de $z_1, \cdots, s_n$. On a:
 \[
     \frac{P'}P(z)=\frac{\alpha_1}{z-z_1}+\cdots +\frac{\alpha_p}{z-z_p}
@@ -439,6 +443,8 @@ Donc $z$ est bien un barycentre de $z_1, \cdots, z_n$.
 
 \subsection{Borne de Cauchy}
 
+\index{Cauchy!borne}
+
 On note $P(z)=z^n+a_{n-1}z^{n-1}+\cdots+a_0\in\mathbb C[X]$ et on pose $M=\max_{i\leq n-1}\limits |a_i|$. On note $z\in\mathbb C$ tel que $|z|>M+1$. Par l'absurde si $P(z)=0$ alors \begin{align*}
     |z^n|=|a_{n-1}z^{n-1}+\cdots +a_0|\leq M\frac{|z|^n-1}{|z|-1} &\implies |z|^{n+1}-|z|^n\leq M|z|^n-M \\ &\implies |z| |z|^n\leq (M+1)|z|^n \\ &\implies |z|\leq M+1\quad\text{ absurde }
 \end{align*}
@@ -447,6 +453,7 @@ Bilan les racines de $P$ sont dans le disque $D(0, M+1)$
 \subsection{Enestrom-Kakeya}
 
 \begin{res}[Cauchy]
+    \index{Cauchy!localisation de racines}
     Si $P(x)=x^n-b_{n-1}x^{n-1}-\cdots -b_0$ est un polynôme tel que les $b_i$ sont positifs non tous nuls alors $P$ a une seule racine $a$ dans $\mathbb R_+^\star$, $a$ est racine simple et $\mathbb Z_{\mathbb C}(P)\subset \mathcal B_f(0, a)$.
 \end{res}
 
@@ -469,6 +476,7 @@ Bilan les racines de $P$ sont dans le disque $D(0, M+1)$
 \end{proof}
 
 \begin{res}[Enestrom-Kakeya]
+    \index{Enestrom-Kakeya (théorème de -- )}
     Si $P(x)=a_{n-1}x^{n-1}+\cdots +a_0$ est un polynôme à coefficients strictement positifs, alors si $e$ est une racine complexe de $P$, \[
         \delta=\min_{i\leq n-1}\frac{a_{i-1}}{a_i} \leq |z|\leq \max_{i\leq n-1}\frac{a_{i-1}}{a_i}=\gamma
     \]
@@ -482,6 +490,8 @@ Bilan les racines de $P$ sont dans le disque $D(0, M+1)$
 \end{proof}
 
 \subsection{Disques de Gershgorin}
+
+\index{Gershgorin!disques}
 
 On se donne $A\in\mathcal M_n(\mathbb C)$ et $\lambda\neq a_{1, 1}, \cdots, a_{n, n}$. On note $D=\mathrm{diag} (a_{1, 1}, \cdots, a_{n, n})$ et $E=A-D$. Si $\lambda$ est valeur propre, alors \[
     A_\lambda=\underbrace{A-\lambda I_n}_{\text{non inversible}}=\underbrace{D-\lambda I_n}_{\text{inversible}}+E
@@ -503,6 +513,8 @@ On a donc \[
 \section{Arithmétique des polynômes}
 
 \subsection{Division euclidienne}
+
+\index{division euclidienne}
 
 \begin{exo}
     Effectuer la division euclidienne de $X^n-1$ par $X^m-1$, pour $n, m\geq 1$
@@ -531,6 +543,8 @@ On a donc \[
 
 \subsection{Théorème chinois}
 
+\index{chinois (théorème)}
+
 \begin{exo}
 On se donne $P_1, \cdots, P_n$ deux à deux premiers entre eux et $R_1, \cdots, R_n\in\mathbb C[X]$. Montrer qu'il existe $Q_1, \cdots, Q_n$ tels que \[
     P_1Q_1+R_1=\cdots=P_nQ_n+R_n
@@ -546,6 +560,7 @@ On se donne $P_1, \cdots, P_n$ deux à deux premiers entre eux et $R_1, \cdots, 
 
 \subsection{Théorèmes de Mason, Snyder, et Fermat}
 \begin{lmm}[Snyder]
+    \index{Snyder!théorème}
     Si $P\in\mathbb C[X]$ non nul, alors \[
         \deg P=\deg \left(P\land P'\right)+n_0(P)
     \]
@@ -562,6 +577,7 @@ On se donne $P_1, \cdots, P_n$ deux à deux premiers entre eux et $R_1, \cdots, 
 \end{proof}
 
 \begin{lmm}[Mason]
+    \index{Mason!théorème}
     Si $A, B, C$ sont des polynômes complexes deux à deux premiers entre eux avec $A+B=C$ et $(A', B', C')\neq (0, 0, 0)$, alors \[
         \deg C\leq n_0(ABC)-1
     \]
@@ -586,6 +602,7 @@ et par le résultat précédent \[
 \end{proof}
 
 \begin{thm}[Fermat]
+    \index{Fermat!grand théorème (version polynômiale)}
     Si $A, B, C\in\mathbb C[X]$ non constants, $A$ et $B$ premiers entre eux et $A^n+B^n=C^n$ alors $n\leq 2$
 \end{thm}
 
@@ -596,6 +613,8 @@ On note $p=\max (\deg A, \deg B, \deg C)$ et \[
 \end{proof}
 
 \subsection{Résultant}
+
+\index{résultant}
 
 On note $P=a_pX^p+\cdots + a_0$, $Q=b_qX^q+\cdots + b_0$ de degrés respectifs $p, q$.
 
@@ -614,7 +633,11 @@ On appelle résultant de $P$ et $Q$ le déterminant de cette matrice. Ainsi, \[
 
 \section{Polynômes irréductibles}
 
+\index{polynômes!irréductibles}
+
 \subsection{Contenu de Gauss}
+
+\index{Gauss!contenu}
 
 On note $P(X)=a_nX^n+\cdots + a_0\in\mathbb Z[X]$ de degré $n\geq 1$. On appelle contenu de $P$ le nombre \[
     a_n\land\cdots\land a_0
@@ -647,6 +670,8 @@ absurde.
 \end{proof}
 
 \subsection{Critère d'Einsenstein}
+
+\index{Einsenstein (critère de -- )}
 
 \begin{res}[Critère d'Eisenstein]
 On note $P=p_nX^n+\cdots + p_0\in\mathbb Z[X]$ non constant de degré $n$. Si $p$ est premier tel que \[
@@ -711,6 +736,8 @@ donc $-2$ carré.
 
 \section{Polynômes cyclotomiques (HP)}
 
+\index{polynômes!cyclotomiques}
+
 \begin{dfn}
 Soit $n\geq 1$. \begin{itemize}
     \item On appelle racine primitive $n$-ième de l'unité tout générateur de $\mathbb U_n$. On note $\mathbb P_n$ ces racines.
@@ -761,7 +788,7 @@ On raisonne par récurrence sur $n$ pour le caractère entier, le reste est imm�
 
 \subsection{Expression de $\mu_n$}
 
-On introduit la fonction arithmétique de Möbius \[
+On introduit la fonction arithmétique de Möbius\index{Möbius!fonction arithmétique} \[
     \mu(n)=\begin{cases}
         1 &\text{si } n=1 \\
         (-1)^k &\text{si }n\text{ produit de $k$ premiers distincts}\\
@@ -822,6 +849,8 @@ c'est absurde, donc $\ord a = m$. Puis $m=\ord a\;|\;p-1$ donc $p$ est un terme 
 
 \subsection{Irréductibilité}
 
+\index{polynômes!irréductibles}
+
 Nous allons montrer que les polynômes cyclotomiques sont irréductibles par un argument de Landau.
 
 On note $\alpha$ une racine primirive $n$-ième de l'unité et $P$ son polynôme minimal. La suite $(P(\alpha^k))_{k\in\mathbb N}$ est $n$-périodique à valeurs dasn $\mathbb Z[\alpha]$ et chacun des termes s'écrit  de manière unique $Q_k(\alpha)$ pour un polynôme $Q_k$ de degré $<\deg P$.
@@ -845,6 +874,7 @@ On note $m$ premier avec $n$, $N$ le produit des premiers $\leq A$. On a $m+nN=m
 Ainsi les $(\alpha^{m})$ avec $m\land n=1$ sont racines de $P$ donc $\mu_n(X) \;|\; P(X)$. $\mu_n(\alpha)=0$ donc $P$ divise $\mu_m$, donc $P=\mu_m$. C'est un polynôme minimal donc irréductible.
 
 \section{Nombres algébriques}
+\index{nombres algébriques}
 
 Si $K\subset L$ sont deux corps alors on dit que $a\in L$ est algébrique sur $K$ s'il existe $P\in\mathbb K[X]$ non nul tel que $P(a)=0$.
 
@@ -860,6 +890,7 @@ est un idéal non réduit à $\{0\}$ de $K[X]$ euclidien donc principal, donc il
 \end{rem}
 
 \subsection{Structure de corps}
+\index{nombres algébriques!structure}
 
 \begin{res}
 $A$ est un corps
@@ -885,6 +916,8 @@ $A$ est un corps
 
 \subsection{Règle de multiplicativité des degrés}
 
+\index{multiplicativité des degrés}
+
 On note $a$ algébrique sur $K$ de degré $d$. \[
     \varphi: P\in K[X] \longmapsto P(a)
 \]
@@ -902,6 +935,7 @@ Si $K\subset L$ alors $L$ est un $K$-ev et si $L$ est de dimension finie sur $K$
 \end{dfn}
 
 \begin{prop}
+    \index{nombres algébriques!transitivité}
 \begin{enumerate}
     \item Soit $K\subset L\subset N$ trois corps. Si $\dim_L N, \dim_K L<+\infty$ alors $\dim_K N<+\infty$ et \[
         [N:K]=[N:L]\times [L:K]
@@ -927,6 +961,7 @@ Si $b$ est racine d'une équation polynômiale à coefficients dans $\mathbb Q[a
 \end{rem}
 
 \section{Polynômes orthogonaux}
+\index{polynômes!orthogonaux}
 
 On note $p: I\longrightarrow \mathbb R_+^\star$ continue telle que pour tout entier naturel $k$, $t\longmapsto t^kp(t)$ est intégrable sur $I$. Dans ce cas, \[
     (P|Q)=\int_Ip(t)P(t)Q(t)\;\mathrm dt
@@ -942,7 +977,7 @@ Il existe une unique famille $(P_k)_k$ de polynômes unitaires tels que
 \end{prop}
 
 \begin{proof}
-Le procédé de Gram-Schmidt appliqué à la base canonique donne l'existence. Si $(P_k)$ convient alors
+    Le procédé de Gram-Schmidt\index{Gram-Schmidt!procédé} appliqué à la base canonique donne l'existence. Si $(P_k)$ convient alors
 \begin{itemize}
     \item $P_0=1$ (unitaire de degré $0$)
     \item Si $P_0, \cdots, P_k$ conviennent, alors \[
@@ -1004,6 +1039,8 @@ donc comme $w_0>0$, on en déduit que pour tout $x, n$, $w_n(x)>0$. Notons $\alp
 \] or $P_{n+1}$ de signe constant sur $]\alpha, \beta[$ et donc $P_{n+1}'(\alpha)P_{n+1}'(\beta)<0$ (car sinon il y aurait changement de signe). Ainsi, $P_n(\alpha)P_n(\beta)<0$ donc $P_n$ s'annule sur $]\alpha, \beta[$. On a ainsi trouvé $n$ racines de $P_n$, une entre chaque racine de $P_{n+1}$: il y a entrelacement des racines
 
 \section{Formules d'interpolation}
+
+\index{Lagrange!interpolation}
 
 \subsection{Rappels}
 
@@ -1085,6 +1122,7 @@ est petit. On peut donc s'intéresser aux choix des $x_i$ minimisant $\|\omega\|
 \section{Suites de polynômes}
 
 \begin{thm}[Weierstrass]
+    \index{Weierstrass!théorème sur l'approximation polynômiale}
     Si $f$ est continue de $[a, b]$ dans $\mathbb C$ alors il existe une suite $(P_n)$ de fonctions polynômiales telle que \[
         P_n\xrightarrow[{[a, b]}]{CVU} f
     \]
@@ -1099,6 +1137,8 @@ Le résultat est faux sur un intervalle autre qu'un segment.
 \end{rem}
 
 \subsection{Inégalité de Bernstein}
+
+\index{Bernstein!inégalité}
 
 \begin{lmm}
 Si $z_1, \cdots, z_n$ sont les racines du polynôme $z^n+1$ et $P$ polynôme réel de degré $n$, alors pour tout $t\in\mathbb C$, \[
@@ -1148,6 +1188,8 @@ ce qui termine la preuve.
 
 \subsection{Théorème d'oscillation de Tchebychev}
 
+\index{Tchebychev!théorème d'oscillation}
+
 On note $C_n$ le $n$-ième polynôme de Tchebychev et $T_n=\dfrac{C_n}{2^{n-1}}$ de sorte que $T_n$ est unitaire.
 
 \begin{res}
@@ -1183,6 +1225,9 @@ On en déduit que $Q$ s'annule au moins $n$ fois et $\deg Q\leq n-1$ donc $Q=0$,
 \subsection{Le théorème de Baire}
 
 \begin{res}
+    \index{Baire!théorème}
+    \index{Cauchy!suites}
+    \index{espace complet}
 $(E, \|\;\|)$ un e.v.n tel que toute suite de Cauchy converge.Si $(O_n)_n$ est une suite d'ouverts denses de $E$ alors $\cap O_n$ est dense.
 \end{res}
 

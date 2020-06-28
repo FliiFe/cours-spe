@@ -19,8 +19,11 @@
 \usepackage{lmodern}
 \usepackage{enumitem}
 \usepackage{needspace}
+\usepackage{imakeidx}
 \usepackage[normalem]{ulem}
 \usepackage[hidelinks]{hyperref}
+
+\makeindex[intoc,columns=2,options={-s indexstyle.ist}]
 
 \AtBeginDocument{\def\labelitemi{$\bullet$}}
 \setlist[itemize]{leftmargin=.5cm}
@@ -46,7 +49,7 @@
 \AtBeginEnvironment{defprop}{\Needspace{5\baselineskip}}
 
 \renewcommand{\thesection}{\arabic{section}}
-\renewcommand{\thesubsection}{(\emph{\alph{subsection}})}
+\renewcommand{\thesubsection}{(\!\emph{\alph{subsection}})}
 
 
 \setlength{\cftsecnumwidth}{0.6cm}
