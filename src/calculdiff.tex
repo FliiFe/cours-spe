@@ -278,6 +278,66 @@ On développe $f(a+h)=B(f_1(a_1+h_1), f_2(a_2+h_2))$
             \]
             est continue par rapport à $a$ par hypothèse.
 
-            $(b) \implies (a)$: \todo{ce sens là}
+            $(b) \implies (a)$: Il suffit de montrer que $f$ est différentiable sur $\Omega$. On commence par le cas $F=\mathbb R$. \begin{align*}
+                f(a+h)-f(a) = \phantom{+} & f(a_1+h_1, \cdots, a_n+h_n)-f(a_1, a_2+h_2, \cdots, a_n+h_n) \\
+                            + & f(a_1, a_2+h_2, \cdots, a_n+h_n)-f(a_1, \cdots, a_i, a_{i+1}+h_{i+1}, \cdots, a_n+h_n) \\
+                            + & f(a_1, \cdots, a_i, a_{i+1}+h_{i+1}, \cdots, a_n+h_n) + \cdots \\
+                            + & f(a_1, \cdots, a_{n-1}, a_n+h_n)-f(a_1, \cdots, a_n)
+            \end{align*}
+            et chaque ligne est fonction d'une seule variable, donc le théorème des accroissements finis donne 
+            \begin{align*}
+                \exists c_{i,h}\in]a_i,a_i+h_i[, \quad f(a+h)-f(a)=\phantom+ &
+                    h_1\frac{\partial f}{\partial x_1}(c_{1,h}, a_2+h_2, \cdots, a_n+h_n)\\
+                + & h_2 \frac{\partial f}{\partial x_2}(a_1, c_{2,h},a_3+h_3,\cdots, a_n+h_n)\\
+                + & \hspace{2cm}\vdots \\
+                + & \underbrace{h_n \frac{\partial f}{\partial x_n} (a_1, \cdots, a_{n-1}, c_{n,h})}_{\longrightarrow h_n \frac{\partial f}{\partial x_n}(a) \text{ donc } =h_n \frac{\partial f}{\partial x_n}(a)+o(1) } \\
+                =\phantom + & \underbrace{h_1 \frac{\partial f}{\partial x_1}(a)+\cdots + h_n \frac{\partial f}{\partial x_n} (a) }_{\text{AL}}  + \underbrace{h_1o(1)+\cdots h_no(1)}_{o(h)}
+            \end{align*}
+            donc $f$ est différentiable sur $\Omega$. Si $F\neq R$ on raisonne coordonnée par coordonnée.
     \end{enumerate}
 \end{proof}
+
+\begin{prop} ~
+    \begin{enumerate}
+        \item $\mathcal C^1(\Omega, F)$ est un $\mathbb R$-e.v.
+        \item Si $\mathcal C$ base de $F$ est $f:\Omega\longrightarrow F$ donnée par $f=(f_1, \cdots, f_n)$ (dans $\mathcal C$) alors il y a équivalence entre \begin{enumerate}
+            \item $f$ est $\mathcal C^1$
+            \item Les $f_i$ sont toutes $\mathcal C^1$
+        \end{enumerate}
+    \item Si $f:\Omega\longrightarrow F$ et $g: \Omega'\supset f(\Omega)\longrightarrow G$ sont $\mathcal C^1$ alors $g\circ f$ aussi
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+    1. et 2. sont faciles, 3. est déjà vu.
+\end{proof}
+
+\begin{thm}
+    \Hyp $f:\Omega\subset E\longrightarrow \mathbb R$, $a,b\in\Omega$ tels que $[a, b]\subset \Omega$
+    \begin{concenum}
+    \item \[ f(b)-f(a)=\int_0^1\mathrm df_{(1-t)a+tb}(b-a)\diff t\]
+    \item Si $\nop \diff f_x\nop\leq M$ pour $x\in[a, b]$ alors $|f(b)-f(a)|\leq M\|b-a\|$
+    \end{concenum}
+\end{thm}
+
+\begin{proof}
+    \begin{enumerate}
+        \item $\varphi:t\longmapsto f(a+t(b-a))$ est telle que $\varphi'(t)=df_{(1-t)a+tb}(b-a)$ et \[
+                f(b)-f(a)=\varphi(1)-\varphi(0)=\int_0^1\varphi'
+            \]
+        \item \[
+                |f(b)-f(a)|\leq \int_0^1\|\diff f_{(1-t)a+tb}(b-a)\|\diff t\leq M\int_0^1\|b-a\|\diff t
+            \]
+    \end{enumerate}
+\end{proof}
+
+\section{Étude de régularité}
+
+\subsection{$f:(x, y)\longmapsto \min(x^2, y^2)$}
+
+D'abord, \[
+    f(x, y)=\frac{x^2+y^2-|x^2-y^2|}2
+\]
+donc $f$ est $\mathcal C^0$. On note $\Delta$ le fermé $\{(x, y)\in\mathbb R^2, x^2=y^2\}$, $\mathbb R^2\setminus \Delta$ est ouvert de $f\in \mathcal C^1(\mathbb R^2\setminus \Delta, \mathbb R)$ comme composée de fonctions $\mathcal C^1$.
+
+Il reste à savoir si $f$ est différentiable sur $\Delta$ et si éventuellement la différentielle est continue.
