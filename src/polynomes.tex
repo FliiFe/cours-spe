@@ -491,7 +491,7 @@ Bilan les racines de $P$ sont dans le disque $D(0, M+1)$
 
 \subsection{Disques de Gershgorin}
 
-\index{Gershgorin!disques}
+\index{Gershgorin (disques -- )}
 
 On se donne $A\in\mathcal M_n(\mathbb C)$ et $\lambda\neq a_{1, 1}, \cdots, a_{n, n}$. On note $D=\mathrm{diag} (a_{1, 1}, \cdots, a_{n, n})$ et $E=A-D$. Si $\lambda$ est valeur propre, alors \[
     A_\lambda=\underbrace{A-\lambda I_n}_{\text{non inversible}}=\underbrace{D-\lambda I_n}_{\text{inversible}}+E
@@ -560,7 +560,7 @@ On se donne $P_1, \cdots, P_n$ deux à deux premiers entre eux et $R_1, \cdots, 
 
 \subsection{Théorèmes de Mason, Snyder, et Fermat}
 \begin{lmm}[Snyder]
-    \index{Snyder!théorème}
+    \index{Snyder (théorème de -- )}
     Si $P\in\mathbb C[X]$ non nul, alors \[
         \deg P=\deg \left(P\land P'\right)+n_0(P)
     \]
@@ -577,7 +577,7 @@ On se donne $P_1, \cdots, P_n$ deux à deux premiers entre eux et $R_1, \cdots, 
 \end{proof}
 
 \begin{lmm}[Mason]
-    \index{Mason!théorème}
+    \index{Mason (théorème de -- )}
     Si $A, B, C$ sont des polynômes complexes deux à deux premiers entre eux avec $A+B=C$ et $(A', B', C')\neq (0, 0, 0)$, alors \[
         \deg C\leq n_0(ABC)-1
     \]
@@ -669,9 +669,9 @@ Si le polynôme est irréductible dans $Q[X]$ alors il l'est dans $\mathbb Z[X]$
 absurde.
 \end{proof}
 
-\subsection{Critère d'Einsenstein}
+\subsection{Critère d'Eisenstein}
 
-\index{Einsenstein (critère de -- )}
+\index{Eisenstein (critère de -- )}
 
 \begin{res}[Critère d'Eisenstein]
 On note $P=p_nX^n+\cdots + p_0\in\mathbb Z[X]$ non constant de degré $n$. Si $p$ est premier tel que \[
@@ -977,7 +977,7 @@ Il existe une unique famille $(P_k)_k$ de polynômes unitaires tels que
 \end{prop}
 
 \begin{proof}
-    Le procédé de Gram-Schmidt\index{Gram-Schmidt!procédé} appliqué à la base canonique donne l'existence. Si $(P_k)$ convient alors
+    Le procédé de Gram-Schmidt appliqué à la base canonique donne l'existence. Si $(P_k)$ convient alors
 \begin{itemize}
     \item $P_0=1$ (unitaire de degré $0$)
     \item Si $P_0, \cdots, P_k$ conviennent, alors \[
@@ -1122,7 +1122,7 @@ est petit. On peut donc s'intéresser aux choix des $x_i$ minimisant $\|\omega\|
 \section{Suites de polynômes}
 
 \begin{thm}[Weierstrass]
-    \index{Weierstrass!théorème sur l'approximation polynômiale}
+    \index{Weierstrass (théorème de -- )}
     Si $f$ est continue de $[a, b]$ dans $\mathbb C$ alors il existe une suite $(P_n)$ de fonctions polynômiales telle que \[
         P_n\xrightarrow[{[a, b]}]{CVU} f
     \]
@@ -1189,6 +1189,7 @@ ce qui termine la preuve.
 \subsection{Théorème d'oscillation de Tchebychev}
 
 \index{Tchebychev!théorème d'oscillation}
+\index{Tchebychev!polynômes}
 
 On note $C_n$ le $n$-ième polynôme de Tchebychev et $T_n=\dfrac{C_n}{2^{n-1}}$ de sorte que $T_n$ est unitaire.
 
@@ -1225,10 +1226,10 @@ On en déduit que $Q$ s'annule au moins $n$ fois et $\deg Q\leq n-1$ donc $Q=0$,
 \subsection{Le théorème de Baire}
 
 \begin{res}
-    \index{Baire!théorème}
+    \index{Baire (théorème de -- )}
     \index{Cauchy!suites}
     \index{espace complet}
-$(E, \|\;\|)$ un e.v.n tel que toute suite de Cauchy converge.Si $(O_n)_n$ est une suite d'ouverts denses de $E$ alors $\cap O_n$ est dense.
+    $(E, \|\;\|)$ un e.v.n tel que toute suite de Cauchy converge (complet). Si $(O_n)_n$ est une suite d'ouverts denses de $E$ alors $\cap O_n$ est dense.
 \end{res}
 
 \begin{proof}

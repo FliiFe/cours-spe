@@ -22,7 +22,7 @@ Pour $a\in\Omega, v\in E, \exists \epsilon>0, \forall t\in ]-\epsilon, \epsilon[
 \end{rem}
 
 \begin{dfn}
-On note $f:\Omega \longrightarrow F$. On dira que $f$ possède une dérivée en $a\in\Omega$ selon $v\in E$ si \[
+    On note $f:\Omega \longrightarrow F$. On dira que $f$ possède une dérivée\index{dérivée partielle} en $a\in\Omega$ selon $v\in E$ si \[
     \lim_{\substack{t\to 0\\ t\neq 0}}\frac{f(a+tv)-f(a)}t
 \] existe. On note cette limite $D_vf(a)$.
 
@@ -32,7 +32,7 @@ Si $\mathcal B=(e_1,\cdots, e_n)$ base de $E$ et $f$ a une dérivée en $a\in\Om
 \end{dfn}
 
 \begin{rem}
-Pour $\mathcal B=(e_1, \cdots, e_n)$ on note $x\underset{\mathcal B}{\longleftrightarrow}(x_1, \cdot, x_n)$ et on a $f(x)=f(x_1e_1+\cdots + x_ne_n)$ qu'on note abusivement $f(x_1, \cdots, x_n)$. \[
+Pour $\mathcal B=(e_1, \cdots, e_n)$ on note $x\underset{\mathcal B}{\longleftrightarrow}(x_1, \cdots, x_n)$ et on a $f(x)=f(x_1e_1+\cdots + x_ne_n)$ qu'on note abusivement $f(x_1, \cdots, x_n)$. \[
     \frac{f(x+te_1)-f(x)}{t}=\frac{f(x_1+t, x_2, \cdots, x_n)-f(x_1, \cdots, x_n)}{t}
 \]
 Pour calculer $\partial_if(a)$, on fait comme si les autres variables étaient constantes et on dérive par rapport à $x_i$.
@@ -54,7 +54,7 @@ Avoir une dérivée en $a$ n'implique pas la continuité en $a$. Contre-exemple:
 
 \begin{defprop}
 \Hyp $f:\Omega\longrightarrow F$, $a\in \Omega$. \begin{concenum}
-    \item On dira que $f$ est différentiable en $a$ s'il existe $\varphi\in\mathcal L(E, F), \epsilon>0$ tels que \[
+\item On dira que $f$ est différentiable\index{différentielle} en $a$ s'il existe $\varphi\in\mathcal L(E, F), \epsilon>0$ tels que \[
         \forall h\in\mathcal B_o(0, \epsilon), f(a+h)=f(a)+\varphi(h)+o_0(h)
     \]
     Dans ce cas $\varphi$ est unique et se note $\diff f_a$
@@ -155,7 +155,7 @@ et \[
 
 \begin{thmdef}
 On note $f:\Omega\to \mathbb R^m$, $\Omega\subset \mathbb R^n$, on écrit $f=(f_1, \cdots, f_m)$. On suppose que $f$ est différentiable en $a\in\Omega$ et on note $\mathcal C_n$ (resp. $\mathcal C_m$) la base canonique de $\mathbb R^n$ (resp. $\mathbb R^m$). Alors: \begin{enumerate}
-    \item On appelle matrice jacobienne de $f$ en $a$ la matrice \[
+    \item On appelle matrice jacobienne\index{jacobienne (matrice -- )} de $f$ en $a$ la matrice \[
         J_f(a)=\left(\frac{\partial f_i}{\partial x_j}(a)\right)_{\substack{1\leq i\leq n\\ 1\leq j\leq n}}
     \]
     \item Si $x\underset{\mathcal C_n}{\longleftrightarrow}X$ alors \[
@@ -177,7 +177,7 @@ On note $f:\Omega\to \mathbb R^m$, $\Omega\subset \mathbb R^n$, on écrit $f=(f_
 \section{Opérations sur les différentielles}
 
 \begin{prop}
-Si $f,g:\omega\subset E\to F$ sont différentiables en $a$, alors pour $\lambda\in\mathbb R$, $\lambda f+g$ est différentiable en $a$ et $\diff (\lambda f+g)_a=\lambda df_a+\diff g_a$
+    Si $f,g:\omega\subset E\to F$ sont différentiables en $a$, alors pour $\lambda\in\mathbb R$, $\lambda f+g$ est différentiable en $a$ et $\diff (\lambda f+g)_a=\lambda df_a+\diff g_a$ \index{différentielle!opérations}
 \end{prop}
 
 \begin{prop}
@@ -212,7 +212,7 @@ On développe $f(a+h)=B(f_1(a_1+h_1), f_2(a_2+h_2))$
 
 \begin{prop}
     \Hyp $f : \Omega \subset E \to F$ différentiable en $a$ telle que $f(\Omega)\subset \Omega'$, $g : \Omega'\subset F \to G$ différentiable en $f(a)$
-    \Conc $g\circ f$ est différentiable en $a$ et $\diff (g\circ f)_a=\diff g_{f(a)}\circ \diff f_a$
+    \Conc $g\circ f$ est différentiable en $a$ et $\diff (g\circ f)_a=\diff g_{f(a)}\circ \diff f_a$ \index{différentielle!composition}
 \end{prop}
 
 \begin{proof}
@@ -254,7 +254,7 @@ On développe $f(a+h)=B(f_1(a_1+h_1), f_2(a_2+h_2))$
 \end{rem}
 
 \needspace{5cm}
-\section{Applications de classe {$\mathcal C^1$}}
+\section{Applications de classe \texorpdfstring{$\mathcal C^1$}{C1}}
 
 \begin{thmdef}
     \Hyp $f:\Omega\subset E\longrightarrow F$
@@ -333,7 +333,7 @@ On développe $f(a+h)=B(f_1(a_1+h_1), f_2(a_2+h_2))$
 
 \section{Étude de régularité}
 
-\subsection{$f:(x, y)\longmapsto \min(x^2, y^2)$}
+\subsection{\texorpdfstring{$f:(x, y)\longmapsto \min(x^2, y^2)$}{f(x, y)=min(x², y²)}}
 
 D'abord, \[
     f(x, y)=\frac{x^2+y^2-|x^2-y^2|}2
@@ -341,3 +341,120 @@ D'abord, \[
 donc $f$ est $\mathcal C^0$. On note $\Delta$ le fermé $\{(x, y)\in\mathbb R^2, x^2=y^2\}$, $\mathbb R^2\setminus \Delta$ est ouvert de $f\in \mathcal C^1(\mathbb R^2\setminus \Delta, \mathbb R)$ comme composée de fonctions $\mathcal C^1$.
 
 Il reste à savoir si $f$ est différentiable sur $\Delta$ et si éventuellement la différentielle est continue.
+
+\begin{align*}
+    f(x+h, x+k)-f(x,x) &= \frac{(x+h)^2+(x+k)^2-|(x+h)^2-(x+k)^2|}{2}-x^2 \\
+                       &= x(h+k)+\frac{h^2+k^2}2 - \left|x(h+k)+ \frac{h^2-k^2}{2}  \right| \\
+\end{align*}
+Pour $k=0$, \[
+    \frac{f(x+h, x)-f(x, x)}h=x+\frac h2-\frac{\left|xh+\frac{h^2}2\right|}h\xrightarrow[h\to0\pm]{}x\pm|x|
+\]
+
+Donc $f$ n'a pas de dérivée partielle par rapport à $x$ en $(x, x)$ pour $x\in\Delta\setminus\{0\}\defeq\Delta^\star$ (idem en $(x, -x)$) donc n'est pas différentiable sur les points de $\Delta$.
+
+En $(0, 0)$, $f$ est différentiable car $0\leq f(x, y)\leq x^2+y^2=o(\|(x, y)\|_2)$ donc $f(x, y)=f(0, 0)+0+o((x, y))$ et $\diff f_{(0, 0)}=0$
+
+Ainsi $(x, y)\longmapsto \diff f_{(x, y)}$ est définie sur $\mathbb R^2\setminus \Delta^\star$. Elle est continue sur $\mathbb R^2\setminus \Delta$, puis on va montrer qu'elle est continue en $(0, 0)$. On note $(x_0, y_0)\in\mathbb R^2\setminus \Delta$ tels que $x_0^2>y_0^2$ donc au voisinage de $(x_0, y_0)$, $f(x, y)=y^2$ et $\diff f_{(x_0, y_0)}=2y_0\diff y$ puis sinon $\diff f_{(x_0, y_0)}=2x_0\diff x$. Dans tous les cas, $\diff f_{(x, y)}\xrightarrow[(x, y)\to 0]{}0=\diff f_{(0, 0)}$ donc la différentielle est continue sur son domaine de définition.
+
+\subsection{Domaine de continuité}
+
+On pose \[
+    f:(x, y)\longmapsto \begin{cases}
+        \dfrac{x^2y^2}{x^2+y^2} &\text{ si } (x, y)\neq (0, 0) \\
+        0 &\text{ sinon }
+    \end{cases}
+\]
+
+$f$ est clairement continue sur $\mathbb R^2\setminus\{(0, 0)\}$ puis $x^2y^2\leq (x^2+y^2)^2$ donc $0\leq f(x)\leq x^2+y^2=o((x, y))$ donc $f$ continue en $0$
+
+\subsection{Une fonction différentiable non \texorpdfstring{$\mathcal C^1$}{C1}}
+
+On pose \[
+    f:(x, y)\longmapsto \begin{cases}
+        \displaystyle (x^2+y^2)\sin \left( \frac{1}{\sqrt{x^2+y^2}}  \right) &\text{ si } (x, y)\neq (0, 0) \\
+        0 &\text{ sinon }
+    \end{cases}
+\]
+La fonction est clairement $\mathcal C^1$ sur $\mathbb R^2\setminus\{0\}$ puis $f(x, y)=o_0((x, y))$ donc $\diff f_0=0$ et $f$ est différentiable. Il reste à voir si la différentielle est continue en $(0, 0)$.
+
+Puis, \[
+    \frac{\partial f}{\partial x} (x, y)= \begin{cases}
+        \displaystyle 2x\sin \left( \frac{1}{\sqrt{x^2+y^2}} \right)-\frac x{\sqrt{x^2+y^2}}\cos \left( \frac{1}{\sqrt{x^2+y^2}}  \right) &\text{ si } (x, y)\neq (0, 0) \\ 0 &\text{ sinon }
+    \end{cases}
+\]
+et \[
+    \frac{\partial f}{\partial x} (x, 0)\xnrightarrow[x\to 0]{} 0
+\]
+donc $f$ n'est pas $\mathcal C^1$
+
+\subsection{Expression intégrale}
+
+On considère $g:\mathbb R^2\to \mathbb R$ de classe $\mathcal C^1$ et \[
+    F:x\longmapsto \int_0^xg(x, t)\diff t
+\]
+
+On va montrer que $F$ est $\mathcal C^1$ et on va calculer $F'$.
+On a \[
+    F(x) \underset{t=ux}=\int_0^1g(x, ux)\diff u
+\]
+On note donc $h: (x, u) \longmapsto g(x, ux)$ et $F$ est $\mathcal C^1$ par théorème de dérivation sous le signe somme puis \begin{align*}
+    F'(x)&=\int_0^1 g(x, ux)\diff u+x\int_0^1\frac{\partial g}{\partial x}(x, ux)\diff u+x\int_0^1\frac{\partial g}{\partial t}(x, ux)\diff u \\
+         &= \int_0^1\frac{\partial}{\partial t}(ug(x, ux))+x\int_0^1 \frac{\partial g}{\partial x} (x, ux)\diff u \\ &= g(x, x)+\int_0^x \frac{\partial g}{\partial x}(x, t)\diff t
+\end{align*}
+
+\section{Caractérisation des fonctions constantes}
+
+On se place dans $E$ et on note $\Omega$ un ouvert connexe par arcs de $E$, et $f:\Omega \to F$. On note $\mathcal B=(e_1, \cdots, e_n)$ une base de $E$. On va montrer que $f$ est constante sur $\Omega$ si et seulement si $f$ est $\mathcal C^0$ et a toutes ses dérivées partielles nulles.
+
+\begin{itemize}
+    \item ($\implies$) Direct
+    \item ($\impliedby$) Par hypothèse, $\partial_if =0$ est continue donc $f$ est $\mathcal C^1$ donc pour $[a, b]\subset \Omega$, \[
+            f(b)-f(a)=\int_0^1\diff f_{(1-t)a+tb}(b-a)\diff t=0\implies f(b)=f(a)
+        \]
+
+        Vu ce qui précède, $f$ est constante sur toutes les boules invertes incluses dans $\Omega$. On prend $a\in\Omega$ et on note \[
+            \mathcal E=\{x\in\Omega, f(x)=f(a)\}.
+        \]
+        Cet ensemble est un fermé en tant que préimage par une application continue ($f$) par le fermé $\{f(a)\}$. C'est aussi un ouvert car pour $x_0\in\mathcal E$, $f$ est constante sur une boule ouverte centrée en $x_0$ donc par définition de $\mathcal E$, cette boule est dans $\mathcal E$.
+
+        On note $h=\1_{\mathcal E}$ de sorte que $h^{-1}(\{0\})=\Omega\setminus \mathcal E$, $h^{-1}(\{1\})=\Omega$, $h^{-1}(\emptyset)=\emptyset$. Ainsi, $h$ est continue car la préimage d'un fermé est un fermé (induit). Ainsi, $h(\Omega)$ est connexe par arcs donc $h(\Omega)=\{1\}$ car $\mathcal E$ non vide et $\Omega=\mathcal E$
+\end{itemize}
+
+
+\textbf{Autre méthode:} Il suffit de montrer que $\Omega$ est connexe par arcs polygonaux. On fixe $a\in\Omega$ et on note $\mathcal E=\{x\in\Omega, \; \text{il existe un arc polygonal entre }a \text{ et } x\}$. C'est un ouvert (même justification que dans la méthode d'avant). Si $(\alpha_n)$ est une suite de $\mathcal E$ convergente vers $\alpha\in\Omega$, alors APCR $\alpha_n$ est dans une boule incluse dans $\Omega$ centrée en $\alpha$, puis il suffit de relier $\alpha_n$ et $\alpha$ dans $\Omega$ pour conclure que $\alpha\in\mathcal E$. Ainsi c'est un ouvert fermé de $\Omega$ donc c'est $\Omega$ (déjà fait)
+
+\section{Extrema -- Gradient}
+
+Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
+
+\begin{thmdef}
+    \Hyp $f:\Omega\to\mathbb R$ différentiable en $a\in\Omega$
+    \begin{concenum}
+    \item $\diff f_a$ est une forme linéaire
+    \item Il existe un unique $w\in E$ tel que \[
+            \forall x\in E, \qquad \diff f_a(x)=(w|x)
+        \]
+        Ce vecteur est appelé gradient\index{gradient} de $f$ en $a$ et se note $\nabla f(a), \overrightarrow{\mathrm{grad}} f(a), \dots$
+    \item Si $\mathcal B=(e_1, \cdots, e_n)$ est une base ON de $E$ alors \[
+            \nabla f(a)=\sum_{i=1}^n\partial_i f(a)e_i
+        \]
+    \end{concenum}
+\end{thmdef}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Trivial
+        \item C'est une application du théorème de représentation de Riesz\index{Riesz (théorème de représentation de -- )}
+        \item \[
+                \diff f_a(x)=\sum_{i=1}^n\partial_if(a)\underbrace{\diff x_i(x)}_{(e_i|x)}
+            \]
+    \end{enumerate}
+\end{proof}
+
+\begin{rem}[Interprétation géométrique]
+    On note $u\in E$ unitaire. \[ f(a+tu)=f(a)+\diff f_a(tu)+o_0(t)=f(a)+t (\nabla f(a)|u) +o_0(t).\] Pour $a$ fixé tel que $\nabla f(a)\neq 0$, $(\nabla f(a)|u)$ est maximal pour $u=\dfrac{\nabla f(a)}{\|\nabla f(a)\|}$ et dans ce cas $(\nabla f(a)|u)=\|\nabla f(a)\|$
+\end{rem}
+
+\begin{rem}[Égalité des accroissements finis]
+    
+\end{rem}

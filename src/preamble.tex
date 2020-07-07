@@ -1,6 +1,7 @@
 \usepackage[french]{babel}
 \usepackage[a4paper, margin=2cm]{geometry}
 \usepackage{amsmath}
+\usepackage{bbm}
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{enumitem}
@@ -85,10 +86,31 @@
 \newcommand{\Vect}{\mathrm{Vect}}
 \newcommand{\diff}{\mathrm{d}}
 \newcommand{\nop}{\|\hspace{-1pt}|}
+\newcommand{\defeq}{\,\widehat=\,}
+\newcommand{\1}{\mathbbm{1}}
 \DeclareMathOperator{\img}{Im}
 \DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Com}{Com}
+
+\makeatletter
+\newcommand*{\xnrightarrow}[2][]{%
+  \ext@arrow 0359\nrightarrowfill@{#1}{#2}%
+}
+\newcommand*{\nrightarrowfill@}{%
+    \narrowfill@\relbar\relbar\rightarrow{\not \relbar}
+}
+\newcommand*{\narrowfill@}[5]{%
+  $\m@th\thickmuskip0mu\medmuskip\thickmuskip\thinmuskip\thickmuskip
+  \relax#5#1\mkern-8mu%
+  \cleaders\hbox{$#5\mkern-2mu#2\mkern-2mu$}\hfill
+  \mkern-5mu %
+  #4%
+  \mkern-5mu %
+  \cleaders\hbox{$#5\mkern-2mu#2\mkern-2mu$}\hfill
+  \mkern-7mu#3$%
+}
+\makeatother
 
 \newcommand{\todo}[1]{{\color{red}À faire: #1}}
 
