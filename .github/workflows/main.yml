@@ -17,7 +17,7 @@ jobs:
       with:
         pre_compile: make all
         extra_system_packages: make
-        root_file: cours.pdf
+        root_file: cours.tex
     - name: Upload result
       uses: actions/upload-artifact@v2-preview
       with:
