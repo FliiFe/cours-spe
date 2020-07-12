@@ -534,3 +534,77 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
     \end{center}
 
 \end{ex}
+
+\begin{exo}
+    On note $S=\{x\in\mathbb R^n, \quad \|x\|=1\}$ la sphère unité. On suppose $f:\mathbb R^n\to \mathbb R$ différentiable sur son domaine de définition et constante sur $S$. Montrer qu'il existe $x_0\in\mathbb R^n$ tel que \[
+        \|x\|<1 \qquad\text{ et }\qquad \diff f_{x_0}=0
+    \]
+\end{exo}
+
+\begin{proof}[Résolution]
+    $\mathcal B_f(0, 1)$ est un compact donc $f$ est bornée et atteint ses bornes (son minimum en $\alpha$ et son maximum en $\beta$ par exemple) sur cette boule.
+    \begin{itemize}
+        \item Si $f(\alpha)=f(\beta)$ alors $f$ est constante et $x_0=0$ convient
+        \item Si $f(\alpha)<f(\beta)$ alors $\alpha$ ou $\beta$ n'est pas dans $S$ et ce point convient.
+    \end{itemize}
+\end{proof}
+
+\begin{center}
+    \begin{tikzpicture}
+            \begin{axis}[
+                colormap name=viridis,
+                % 3d box,
+                width=14cm,
+                view={25}{20},
+                axis equal image,
+                enlargelimits=false,
+                grid=major,
+                domain=-1.5:1.5,
+                samples=41,
+                yticklabels={,,},
+                xticklabels={,,},
+                zticklabels={,,},
+                xlabel=$x$,
+                ylabel=$y$,
+                zlabel={$f(x, y)$},
+                ]
+                \addplot3 [y domain = -0.3:0.3, domain = 0.1:0.7, samples=2, surf, opacity=0.4, color=black] {-1.03};
+                \addplot3 [y domain = -1.5:1.5, surf]
+                    {(1-exp(1.4-x*x-y*y))*x*exp(-x*x-y*y)*max(1.4-x*x-y*y, 0)};
+                \addplot3[color=black,
+                    samples=40,
+                    domain=2.83:8.20,
+                    line width=2.0pt,samples y=0]
+                ({sqrt(1.4)*cos(deg(x))}, {sqrt(1.4)*sin(deg(x))}, 0);
+                \addplot3[mark=*] coordinates {(-0.40,0,1.03)};
+                \addplot3[mark=*] coordinates {(0.39,0,-1.03)};
+                \addplot3 [y domain = -0.3:0.3, domain = -0.7:-0.1, samples=2, surf, opacity=0.4, color=black] {1.03};
+            \end{axis}
+    \end{tikzpicture}
+\end{center}
+
+\begin{rem}
+    C'est une généralisation possible du théorème de Rolle\index{Rolle!généralisation}. Plus généralement, si $K$ est un compact d'intérieur non vide de $\mathbb R^n$ tel que $f:\mathbb R^n\to\mathbb R$ différentiable est constante sur $\partial K=K\setminus \mathring K$, alors il existe $x\in\mathring K$ tel que $\diff f_x=0$
+\end{rem}
+
+\section{Application à la géométrie}
+
+\begin{dfn}
+    On note $X\subseteq E$ non vide, $x\in X$ et $v\in E$. On dira que $v$ est un vecteur tangent à $X$ en $x$ s'il existe un $\varepsilon>0$ et $\gamma\in\mathcal D^1(]-\varepsilon, \varepsilon[, X)$ tel que $\gamma (0)=x$, $\gamma'(0)=v$
+\end{dfn}
+
+\begin{ex}~
+    \begin{enumerate}
+        \item On note $\mathcal C$ le cercle unité (dans le plan) et $(x_0, y_0)\in\mathcal C$. \begin{itemize}
+            \item Si $(\alpha, \beta)$ tangent à $\mathcal C$ en $(x_0, y_0)$ alors il existe $\gamma$ dérivable telle que $\gamma(0)=(x_0, y_0)$ et en dérivant la relation $(\gamma(t)\;|\;\gamma(t))=1$ on a $2(\gamma(t)\;|\;\gamma'(t))=0$ donc $((x_0, y_0)\;|\;(\alpha, \beta))=0$
+            \item Si $(x_0, y_0)\perp (\alpha, \beta)$, on note $(x_0, y_0)=(\cos\theta, \sin\theta)$ et on pose \[
+                \begin{matrix}
+                    \gamma : & [-1, 1] & \longrightarrow & \mathcal C\hspace{3.5cm} \\
+                              & t & \longmapsto & (\cos(\theta+tu), \sin(\theta+tv))
+                \end{matrix}
+                \]
+                et $\gamma$ est dérivable, $\gamma(0)=(x_0, y_0)$, et $\gamma'(0)=(-uy_0, vx_0)$ colinéaire à $(\alpha, \beta)$ d'où l'équivalence.
+        \end{itemize}
+        La droite $(x_0, y_0)^{\perp}$ est l'ensemble des vecteurs tangents en $(x_0, y_0)$. L'espace tangent associé est la droite affine $\mathcal D=(x_0, y_0)+(x_0, y_0)^{\perp}$
+    \end{enumerate}
+\end{ex}

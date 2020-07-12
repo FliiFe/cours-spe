@@ -54,7 +54,7 @@
 \AtBeginEnvironment{defprop}{\Needspace{5\baselineskip}}
 
 \renewcommand{\thesection}{\arabic{section}}
-\renewcommand{\thesubsection}{(\!\emph{\alph{subsection}})}
+\renewcommand{\thesubsection}{\emph{\alph{subsection}})}
 
 
 \setlength{\cftsecnumwidth}{0.6cm}
@@ -89,6 +89,7 @@
 \newcommand{\nop}{\|\hspace{-1pt}|}
 \newcommand{\defeq}{\,\widehat=\,}
 \newcommand{\1}{\mathbbm{1}}
+\renewcommand{\mathring}[1]{\overset\circ{#1}}
 \DeclareMathOperator{\img}{Im}
 \DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\Tr}{Tr}
