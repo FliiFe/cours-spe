@@ -569,5 +569,30 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
             \gamma: t\in]-1, 1[\longmapsto (x_0+t\alpha, y_0+t\beta, f(x_0+t\alpha, y_0+t\beta))
         \]
         convient.
+
+    \item \emph{Cas des lignes de niveau}. On note $f:\Omega\to \mathbb R$, $X_a=f^{-1}(a)$. On suppose $X_a$ non-vide et $\gamma:~]-\varepsilon, \varepsilon[ \to X_a$ dérivable avec $\gamma(0)=t_0$, $\gamma'(0)=v$. En dérivant la relation $f\circ gamma=a$ on a \[\forall x\in ]-\varepsilon; \varepsilon[, \quad \diff f_{\gamma(x)}\circ \gamma'(x)=0\]
+        donc pour $x=0$, $\diff f_{t_0}(v)=0=(\nabla f(t_0)\;|\;v)$
     \end{enumerate}
 \end{ex}
+
+\section{Calcul de vecteurs tangents}
+
+\subsection{Vecteurs tangents à $O_n(\mathbb R)$ en $I_n$}
+
+On veut déterminer les vecteurs tangents à $X=O_n(\mathbb R)$ en $I_n$. On se donne \[
+    \gamma: ]-\varepsilon; \varepsilon[ \longrightarrow O_n(\mathbb R)
+\]
+dérivable telle que $\gamma (0)=I_n$. \begin{itemize}
+    \item $\forall x\in ]-\varepsilon; \varepsilon[, \qquad \gamma(t)\in O_n(\mathbb R)$, i.e. $\gamma(t)^{\top}\gamma(t)=I_n$. En dérivant: \[
+            \gamma'(t)^\top\gamma(t)+\gamma(t)^\top\gamma'(t)=0\implies \gamma'(0)^\top+\gamma(0)=0 \implies \gamma'(0)\in \mathcal{AS}_n(\mathbb R)
+        \]
+    \item On note $A\in\mathcal M_n(\mathbb R)$ antisymétrique et $\gamma:t\in ~]-1, 1[~\longmapsto e^{tA}$ de sorte que $\gamma(t)\in O_n(\mathbb R)$ (facile à vérifier en écrivant l'exponentielle comme somme d'une série), $\gamma(0)=I_n$ et $\gamma'(0)=A$ donc $A$ est tangent à $X$ en $I_n$.
+\end{itemize}
+
+\subsection{Vecteurs tangents à $\mathrm{GL}_n(\mathbb R)$ en $I_n$}
+
+$\mathrm{GL}_n(\mathbb R)$ est un ouvert donc tous les vecteurs sont tangents à $I_n$.
+
+\subsection{Vecteurs tangents à $\mathrm{SL}_n(\mathbb R)$ en $I_n$}
+
+
