@@ -4,7 +4,7 @@
 \vspace{1cm}
 
 \begin{center}
-\textbf{\LARGE Calcul différentiel} \\[1em]
+    \textbf{\LARGE Calcul différentiel} \\[1em]
 \end{center}
 \tableofcontents
 \else
@@ -18,111 +18,111 @@
 $E$ est un $\mathbb R$-e.v de dimension $n$ (donc isomorphe à $\mathbb R^n$), $F$ un sev de $E$ et $\Omega$ un ouvert de $E$.
 
 \begin{rem}
-Pour $a\in\Omega, v\in E, \exists \epsilon>0, \forall t\in ]-\epsilon, \epsilon[, a+tv\in\Omega$ (par définition d'un ouvert)
+    Pour $a\in\Omega, v\in E, \exists \epsilon>0, \forall t\in ]-\epsilon, \epsilon[, a+tv\in\Omega$ (par définition d'un ouvert)
 \end{rem}
 
 \begin{dfn}
     On note $f:\Omega \longrightarrow F$. On dira que $f$ possède une dérivée\index{dérivée partielle} en $a\in\Omega$ selon $v\in E$ si \[
-    \lim_{\substack{t\to 0\\ t\neq 0}}\frac{f(a+tv)-f(a)}t
-\] existe. On note cette limite $D_vf(a)$.
+        \lim_{\substack{t\to 0\\ t\neq 0}}\frac{f(a+tv)-f(a)}t
+    \] existe. On note cette limite $D_vf(a)$.
 
-Si $\mathcal B=(e_1,\cdots, e_n)$ base de $E$ et $f$ a une dérivée en $a\in\Omega$ selon $e_{i_0}$ alors on appelle $i_0$-ième dérivée partielle $D_{e_{i_0}}f(a)$, notée \[
-    \frac{\partial f}{\partial x_{i_0}}(a)\qquad \text{ ou }\qquad \partial_{i_0}f(a)
-\]
+    Si $\mathcal B=(e_1,\cdots, e_n)$ base de $E$ et $f$ a une dérivée en $a\in\Omega$ selon $e_{i_0}$ alors on appelle $i_0$-ième dérivée partielle $D_{e_{i_0}}f(a)$, notée \[
+        \frac{\partial f}{\partial x_{i_0}}(a)\qquad \text{ ou }\qquad \partial_{i_0}f(a)
+    \]
 \end{dfn}
 
 \begin{rem}
-Pour $\mathcal B=(e_1, \cdots, e_n)$ on note $x\underset{\mathcal B}{\longleftrightarrow}(x_1, \cdots, x_n)$ et on a $f(x)=f(x_1e_1+\cdots + x_ne_n)$ qu'on note abusivement $f(x_1, \cdots, x_n)$. \[
-    \frac{f(x+te_1)-f(x)}{t}=\frac{f(x_1+t, x_2, \cdots, x_n)-f(x_1, \cdots, x_n)}{t}
-\]
-Pour calculer $\partial_if(a)$, on fait comme si les autres variables étaient constantes et on dérive par rapport à $x_i$.
+    Pour $\mathcal B=(e_1, \cdots, e_n)$ on note $x\underset{\mathcal B}{\longleftrightarrow}(x_1, \cdots, x_n)$ et on a $f(x)=f(x_1e_1+\cdots + x_ne_n)$ qu'on note abusivement $f(x_1, \cdots, x_n)$. \[
+        \frac{f(x+te_1)-f(x)}{t}=\frac{f(x_1+t, x_2, \cdots, x_n)-f(x_1, \cdots, x_n)}{t}
+    \]
+    Pour calculer $\partial_if(a)$, on fait comme si les autres variables étaient constantes et on dérive par rapport à $x_i$.
 \end{rem}
 
 \begin{rem}
-$D_v$ est linéaire
+    $D_v$ est linéaire
 \end{rem}
 
 \begin{rem}
-Avoir une dérivée en $a$ n'implique pas la continuité en $a$. Contre-exemple: \[
-    f(x, y)=\begin{cases}
-    \frac{y^2}x &\text{ si }x\neq 0\\ y & \text{ sinon}
-    \end{cases}
-\]
+    Avoir une dérivée en $a$ n'implique pas la continuité en $a$. Contre-exemple: \[
+        f(x, y)=\begin{cases}
+            \frac{y^2}x &\text{ si }x\neq 0\\ y & \text{ sinon}
+        \end{cases}
+    \]
 \end{rem}
 
 \section{Différentielle}
 
 \begin{defprop}
-\Hyp $f:\Omega\longrightarrow F$, $a\in \Omega$. \begin{concenum}
-\item On dira que $f$ est différentiable\index{différentielle} en $a$ s'il existe $\varphi\in\mathcal L(E, F), \epsilon>0$ tels que \[
-        \forall h\in\mathcal B_o(0, \epsilon), f(a+h)=f(a)+\varphi(h)+o_0(h)
-    \]
-    Dans ce cas $\varphi$ est unique et se note $\diff f_a$
+    \Hyp $f:\Omega\longrightarrow F$, $a\in \Omega$. \begin{concenum}
+    \item On dira que $f$ est différentiable\index{différentielle} en $a$ s'il existe $\varphi\in\mathcal L(E, F), \epsilon>0$ tels que \[
+            \forall h\in\mathcal B_o(0, \epsilon), f(a+h)=f(a)+\varphi(h)+o_0(h)
+        \]
+        Dans ce cas $\varphi$ est unique et se note $\diff f_a$
     \item Si $f$ est différentiable en $a$ alors $f$ est continue en $a$
     \item Si $f$ est différentiable en $a$ alors $f$ a une dérivée en $a$ selon tout $v$ et \[
-        D_vf(a)=df_a(v)
-    \]
-\end{concenum}
+            D_vf(a)=df_a(v)
+        \]
+    \end{concenum}
 \end{defprop}
 
 \begin{proof} ~
-\begin{enumerate}
-    \item Si $\varphi, \psi$ conviennent, $\varphi(tv)-\psi(tv)=o_0(tv)$ ie \[
-        \varphi(v)-\psi(v)=o_0(v)\xrightarrow[t\to 0]{}0
-    \]
-    d'où $\varphi\equiv \psi$.
-    \item $f(a+h)=f(a)+\varphi(h)+o_0(h)\xrightarrow[h\to 0]{}f(a)$
-    \item \[
-        \frac{f(a+tv)-f(a)}{t}=\diff f_a(v)+o_0(v)\xrightarrow[\substack{t\to 0\\t\neq 0}]{}\diff f_a(v)
-    \]
-\end{enumerate}
+    \begin{enumerate}
+        \item Si $\varphi, \psi$ conviennent, $\varphi(tv)-\psi(tv)=o_0(tv)$ ie \[
+                \varphi(v)-\psi(v)=o_0(v)\xrightarrow[t\to 0]{}0
+            \]
+            d'où $\varphi\equiv \psi$.
+        \item $f(a+h)=f(a)+\varphi(h)+o_0(h)\xrightarrow[h\to 0]{}f(a)$
+        \item \[
+                \frac{f(a+tv)-f(a)}{t}=\diff f_a(v)+o_0(v)\xrightarrow[\substack{t\to 0\\t\neq 0}]{}\diff f_a(v)
+            \]
+    \end{enumerate}
 \end{proof}
 
 \begin{thmdef}
-~ \begin{enumerate}
-    \item Soit $f\in\mathcal L(E, F)$ et $a\in E$. La fonction $f$ est différentiable en $a$ et $df_a=f$.
-    \item Si $\mathcal B=(e_1, \cdots, e_n)$ est une base de $E$ et si $\pi_i$ est l'application $i$-ième coordonnée alors $\forall a\in E, \diff \pi_i=\pi_i$ se dépend pas de $a$. On note cette application $\diff x_i$.
-    \item Si $\mathcal B$ est une base de $E$ et $f$ est différentiable en $a$ alors \[
-        \diff f_a=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)\diff x_i
-    \]
-\end{enumerate}
+    ~ \begin{enumerate}
+        \item Soit $f\in\mathcal L(E, F)$ et $a\in E$. La fonction $f$ est différentiable en $a$ et $df_a=f$.
+        \item Si $\mathcal B=(e_1, \cdots, e_n)$ est une base de $E$ et si $\pi_i$ est l'application $i$-ième coordonnée alors $\forall a\in E, \diff \pi_i=\pi_i$ se dépend pas de $a$. On note cette application $\diff x_i$.
+        \item Si $\mathcal B$ est une base de $E$ et $f$ est différentiable en $a$ alors \[
+                \diff f_a=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)\diff x_i
+            \]
+    \end{enumerate}
 \end{thmdef}
 
 \begin{proof} ~
-\begin{enumerate}
-    \item $f(a+h)=f(a)+f(h)$
-    \item Ok
-    \item $h=h_1e_1+\cdots +h_ne_n$, \[
-        \diff f_a(h)=h_1\diff f_a(e_1)+\cdots +h_n\diff f_a(e_n)=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)\diff x_i
-    \]
-\end{enumerate}
+    \begin{enumerate}
+        \item $f(a+h)=f(a)+f(h)$
+        \item Ok
+        \item $h=h_1e_1+\cdots +h_ne_n$, \[
+                \diff f_a(h)=h_1\diff f_a(e_1)+\cdots +h_n\diff f_a(e_n)=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)\diff x_i
+            \]
+    \end{enumerate}
 \end{proof}
 
 \begin{rem}
-Pour une fonction $f:\mathbb R\longrightarrow F$, $f'(a)=\diff f_a(1)$
+    Pour une fonction $f:\mathbb R\longrightarrow F$, $f'(a)=\diff f_a(1)$
 \end{rem}
 
 \section{Calculs de différentielles}
 
 \subsection{Quelques exemples}
 \begin{ex} Étude en $0$ de
-\[
-    f(x, y)=\begin{cases}
-    \frac{y^2}x &\text{ si }x\neq 0\\ y & \text{ sinon}
-    \end{cases}
-\]
+    \[
+        f(x, y)=\begin{cases}
+            \frac{y^2}x &\text{ si }x\neq 0\\ y & \text{ sinon}
+        \end{cases}
+    \]
 \end{ex}
 
 \[
-\frac{\partial f}{\partial x}(0, 0)=0 \qquad\qquad \frac{\partial f}{\partial y}(0, 0)=f(0, 1)=1
+    \frac{\partial f}{\partial x}(0, 0)=0 \qquad\qquad \frac{\partial f}{\partial y}(0, 0)=f(0, 1)=1
 \]
 donc \[
-\frac{\partial f}{\partial x}(0, 0) \diff x+ \frac{\partial f}{\partial y}(0, 0)\diff y
+    \frac{\partial f}{\partial x}(0, 0) \diff x+ \frac{\partial f}{\partial y}(0, 0)\diff y
 \]
 existe mais $f$ est non différentiable car non $\mathcal C^0$
 
 \begin{ex} Calcul de la différentielle de
-{$f:A\in\mathcal M_n(\mathbb R)\longmapsto A^2$}
+    {$f:A\in\mathcal M_n(\mathbb R)\longmapsto A^2$}
 \end{ex}
 
 \[
@@ -133,7 +133,7 @@ et pour une norme sous-multiplicative, $\|H^2\|\leq \|H\|^2=o_0(H)$ donc \[
 \]
 
 \begin{ex} Calcul de la différentielle de
-{$f:M\in GL_n(\mathbb R)\longmapsto M^{-1}$}
+    {$f:M\in GL_n(\mathbb R)\longmapsto M^{-1}$}
 \end{ex}
 
 On fixe $M\in GL_n(\mathbb R)$. Alors $\exists \epsilon >0 / \mathcal B_o(M, \epsilon)\subset GL_n(\mathbb R)$. Pour $H$ dans $\mathcal B_o(0, \epsilon)$, \[
@@ -141,37 +141,37 @@ On fixe $M\in GL_n(\mathbb R)$. Alors $\exists \epsilon >0 / \mathcal B_o(M, \ep
 \]
 et \[
     \left((M+H)^{-1}-M^{-1}\right)(M+H)=I_n-M^{-1}(M+H)=-M^{-1}H
-    \] donc
-    \begin{align*}
+\] donc
+\begin{align*}
     (M+H)^{-1}-M^{-1}&=-M^{-1}H(M+H)^{-1}\\&=-M^{-1}HM^{-1}+M^{-1}Ho_0(1)\\&=\underbrace{-M^{-1}HM^{-1}}_{\diff f_M(H)}+o_0(H)
 \end{align*}
 
 \begin{exo} Calcul de la différentielle de
-{$f:A\in\mathcal M_n(\mathbb R)\longmapsto A^\intercal A$}
+    {$f:A\in\mathcal M_n(\mathbb R)\longmapsto A^\intercal A$}
 \end{exo}
 
 \needspace{5\baselineskip}
 \subsection{Interprétation matricielle}
 
 \begin{thmdef}
-On note $f:\Omega\to \mathbb R^m$, $\Omega\subset \mathbb R^n$, on écrit $f=(f_1, \cdots, f_m)$. On suppose que $f$ est différentiable en $a\in\Omega$ et on note $\mathcal C_n$ (resp. $\mathcal C_m$) la base canonique de $\mathbb R^n$ (resp. $\mathbb R^m$). Alors: \begin{enumerate}
-    \item On appelle matrice jacobienne\index{jacobienne (matrice -- )} de $f$ en $a$ la matrice \[
-        J_f(a)=\left(\frac{\partial f_i}{\partial x_j}(a)\right)_{\substack{1\leq i\leq n\\ 1\leq j\leq n}}
-    \]
-    \item Si $x\underset{\mathcal C_n}{\longleftrightarrow}X$ alors \[
-        \diff f_a(x)\underset{\mathcal C_m}\longleftrightarrow J_f(a)X
-    \]
-\end{enumerate}
+    On note $f:\Omega\to \mathbb R^m$, $\Omega\subset \mathbb R^n$, on écrit $f=(f_1, \cdots, f_m)$. On suppose que $f$ est différentiable en $a\in\Omega$ et on note $\mathcal C_n$ (resp. $\mathcal C_m$) la base canonique de $\mathbb R^n$ (resp. $\mathbb R^m$). Alors: \begin{enumerate}
+        \item On appelle matrice jacobienne\index{jacobienne (matrice -- )} de $f$ en $a$ la matrice \[
+                J_f(a)=\left(\frac{\partial f_i}{\partial x_j}(a)\right)_{\substack{1\leq i\leq n\\ 1\leq j\leq n}}
+            \]
+        \item Si $x\underset{\mathcal C_n}{\longleftrightarrow}X$ alors \[
+                \diff f_a(x)\underset{\mathcal C_m}\longleftrightarrow J_f(a)X
+            \]
+    \end{enumerate}
 \end{thmdef}
 
 \begin{proof}
-\[
-    \diff f_a(x)=\sum_{i=1}^n\underbrace{\frac{\partial f}{\partial x_i}(x)}_{\displaystyle \left(\frac{\partial f_1}{\partial x_i}(x), \cdots, \frac{\partial f_m}{\partial x_i}(x)\right)}\overbrace{\diff x_i(x)}^{=x_i} \qquad \underset{\mathcal C_n}{\longleftrightarrow}\qquad \begin{pmatrix}
-    \sum_{i=1}^n\limits \frac{\partial f_1}{\partial x_i}(a)x_i \\
-    \vdots \\
-    \sum_{i=1}^n\limits \frac{\partial f_m}{\partial x_i}(a)x_i 
-    \end{pmatrix}=J_f(a)X
-\]
+    \[
+        \diff f_a(x)=\sum_{i=1}^n\underbrace{\frac{\partial f}{\partial x_i}(x)}_{\displaystyle \left(\frac{\partial f_1}{\partial x_i}(x), \cdots, \frac{\partial f_m}{\partial x_i}(x)\right)}\overbrace{\diff x_i(x)}^{=x_i} \qquad \underset{\mathcal C_n}{\longleftrightarrow}\qquad \begin{pmatrix}
+            \sum_{i=1}^n\limits \frac{\partial f_1}{\partial x_i}(a)x_i \\
+            \vdots \\
+            \sum_{i=1}^n\limits \frac{\partial f_m}{\partial x_i}(a)x_i
+        \end{pmatrix}=J_f(a)X
+    \]
 \end{proof}
 
 \section{Opérations sur les différentielles}
@@ -186,26 +186,26 @@ On note $f:\Omega\to \mathbb R^m$, $\Omega\subset \mathbb R^n$, on écrit $f=(f_
 \end{prop}
 
 \begin{proof}
-On développe $f(a+h)=B(f_1(a_1+h_1), f_2(a_2+h_2))$
+    On développe $f(a+h)=B(f_1(a_1+h_1), f_2(a_2+h_2))$
 \end{proof}
 
 \begin{ex} ~
-\begin{itemize}
-    \item $(E, (\; |\; ))$ euclidien, $\varphi:(x, y)\longmapsto (x|y)$ \[
-        \diff \varphi_{(x, y)}(h, k)=(h|y)+(x|k)
-    \]
-    \item $\varphi = \det $. On note \[
-        A = (C_1 \cdots C_n) \quad H=(H_1 \cdots H_n)
-    \]
-    alors \[
-        \det(A+H)=\det(A)+\det(H_1, C_2, \cdots, C_n)+\cdots + \det(C_1, \cdots, C_{n-1}, H_n)+o_0(H)
-    \]
-    On en déduit \begin{align*}
-        \diff \varphi_A(H) &= \sum_{j=1}^n \det(C_1, \cdots, H_i, \cdots, C_n)\\
-        &= \sum_{j=1}^n\sum_{i=1}^n(-1)^{i+j}h_{i, j}\Delta_{i, j}(A) \\
-        &= \Tr(\Com(A)^\intercal H)
-    \end{align*}
-\end{itemize}
+    \begin{itemize}
+        \item $(E, (\; |\; ))$ euclidien, $\varphi:(x, y)\longmapsto (x|y)$ \[
+                \diff \varphi_{(x, y)}(h, k)=(h|y)+(x|k)
+            \]
+        \item $\varphi = \det $. On note \[
+                A = (C_1 \cdots C_n) \quad H=(H_1 \cdots H_n)
+            \]
+            alors \[
+                \det(A+H)=\det(A)+\det(H_1, C_2, \cdots, C_n)+\cdots + \det(C_1, \cdots, C_{n-1}, H_n)+o_0(H)
+            \]
+            On en déduit \begin{align*}
+                \diff \varphi_A(H) &= \sum_{j=1}^n \det(C_1, \cdots, H_i, \cdots, C_n)\\
+                                   &= \sum_{j=1}^n\sum_{i=1}^n(-1)^{i+j}h_{i, j}\Delta_{i, j}(A) \\
+                                   &= \Tr(\Com(A)^\intercal H)
+            \end{align*}
+    \end{itemize}
 \end{ex}
 
 \section{Composition des fonctions différentielles}
@@ -235,7 +235,7 @@ On développe $f(a+h)=B(f_1(a_1+h_1), f_2(a_2+h_2))$
         \underbrace{J_{g\circ f}(a)}_{\in\mathcal M_{p,n}} = \underbrace{J_g(f(a))}_{\in\mathcal M_{p,m}}\underbrace{J_f(a)}_{\in \mathcal M_{m,n}}
     \]
     On va identifier le coefficient $i, j$. \begin{align*}
-        & \left[ J_{g\circ f}(a) \right]_{i, j}=\sum_{k=1}^m \left[ J_g(f(a)) \right]_{i, k} \left[ J_f(a) \right]_{k, j} \\ 
+        & \left[ J_{g\circ f}(a) \right]_{i, j}=\sum_{k=1}^m \left[ J_g(f(a)) \right]_{i, k} \left[ J_f(a) \right]_{k, j} \\
         \iff & \frac{\partial (g_i\circ f)}{\partial x_j} (a)=\sum_{k=1}^m \frac{\partial g_i}{\partial y_k}(f(a)) \frac{\partial f_k}{\partial x_j} (a) \\
         \iff & \colorboxed{red}{\partial_j (g_i\circ f)(a)=\sum_{k=1}^m\partial_kg_i(f(a))\partial_jf_k(a)} \quad \text{ \emph{(règle de la chaîne)} }
     \end{align*}
@@ -260,41 +260,41 @@ On développe $f(a+h)=B(f_1(a_1+h_1), f_2(a_2+h_2))$
     \Hyp $f:\Omega\subset E\longrightarrow F$
     \begin{concenum}
     \item On dira que $f$ est $\mathcal C^1$ sur $\Omega$ si $f$ est différentiable sur $\Omega$ et si $a\in\Omega \longmapsto \diff f_a\in\mathcal L(E, F)$ est $\mathcal C^0$
-        \item Une fonction $\mathcal C^1$ est continue
-        \item On note $\mathcal B=(e_1, \cdots, e_n)$ une base de $E$, $\mathcal C=(u_1, \cdots, u_m)$ une base de $F$ et $f=(f_1, \cdots, f_m)$. Il y a équivalence entre: \begin{enumerate}
-            \item $f$ est $\mathcal C^1$ sur $\Omega$
-            \item Les $f_i$ ont toutes leurs dérivées partielles sur $\Omega$ et les $\partial_jf_i$ sont $\mathcal C^0$ sur $\Omega$
-        \end{enumerate}
-    \item On note $\mathcal C^1(\Omega, F)$ l'ensemble de ces fonctions
-    \end{concenum}
+    \item Une fonction $\mathcal C^1$ est continue
+    \item On note $\mathcal B=(e_1, \cdots, e_n)$ une base de $E$, $\mathcal C=(u_1, \cdots, u_m)$ une base de $F$ et $f=(f_1, \cdots, f_m)$. Il y a équivalence entre: \begin{enumerate}
+        \item $f$ est $\mathcal C^1$ sur $\Omega$
+        \item Les $f_i$ ont toutes leurs dérivées partielles sur $\Omega$ et les $\partial_jf_i$ sont $\mathcal C^0$ sur $\Omega$
+    \end{enumerate}
+\item On note $\mathcal C^1(\Omega, F)$ l'ensemble de ces fonctions
+\end{concenum}
 \end{thmdef}
 
 \begin{proof}~
     \begin{enumerate}
         \setcounter{enumi}{1}
-        \item Les fonctions $\mathcal C^1$ sont différentiables donc continues.
-        \item $(a) \implies (b)$: \[
-                J_f(a)=\mathcal M_{\mathcal B, \mathcal C}(\diff f_a)= \left( \frac{\partial f_i}{\partial x_j} (a) \right)_{\substack{1\leq i\leq m\\1\leq j\leq n}}
-            \]
-            est continue par rapport à $a$ par hypothèse.
+    \item Les fonctions $\mathcal C^1$ sont différentiables donc continues.
+    \item $(a) \implies (b)$: \[
+            J_f(a)=\mathcal M_{\mathcal B, \mathcal C}(\diff f_a)= \left( \frac{\partial f_i}{\partial x_j} (a) \right)_{\substack{1\leq i\leq m\\1\leq j\leq n}}
+        \]
+        est continue par rapport à $a$ par hypothèse.
 
-            $(b) \implies (a)$: Il suffit de montrer que $f$ est différentiable sur $\Omega$. On commence par le cas $F=\mathbb R$. \begin{align*}
-                f(a+h)-f(a) = \phantom{+} & f(a_1+h_1, \cdots, a_n+h_n)-f(a_1, a_2+h_2, \cdots, a_n+h_n) \\
-                            + & f(a_1, a_2+h_2, \cdots, a_n+h_n)-f(a_1, \cdots, a_i, a_{i+1}+h_{i+1}, \cdots, a_n+h_n) \\
-                            + & f(a_1, \cdots, a_i, a_{i+1}+h_{i+1}, \cdots, a_n+h_n) + \cdots \\
-                            + & f(a_1, \cdots, a_{n-1}, a_n+h_n)-f(a_1, \cdots, a_n)
-            \end{align*}
-            et chaque ligne est fonction d'une seule variable, donc le théorème des accroissements finis donne 
-            \begin{align*}
-                \exists c_{i,h}\in]a_i,a_i+h_i[, \quad f(a+h)-f(a)=\phantom+ &
-                    h_1\frac{\partial f}{\partial x_1}(c_{1,h}, a_2+h_2, \cdots, a_n+h_n)\\
-                + & h_2 \frac{\partial f}{\partial x_2}(a_1, c_{2,h},a_3+h_3,\cdots, a_n+h_n)\\
-                + & \hspace{2cm}\vdots \\
-                + & \underbrace{h_n \frac{\partial f}{\partial x_n} (a_1, \cdots, a_{n-1}, c_{n,h})}_{\longrightarrow h_n \frac{\partial f}{\partial x_n}(a) \text{ donc } =h_n \frac{\partial f}{\partial x_n}(a)+o(1) } \\
-                =\phantom + & \underbrace{h_1 \frac{\partial f}{\partial x_1}(a)+\cdots + h_n \frac{\partial f}{\partial x_n} (a) }_{\text{AL}}  + \underbrace{h_1o(1)+\cdots h_no(1)}_{o(h)}
-            \end{align*}
-            donc $f$ est différentiable sur $\Omega$. Si $F\neq R$ on raisonne coordonnée par coordonnée.
-    \end{enumerate}
+        $(b) \implies (a)$: Il suffit de montrer que $f$ est différentiable sur $\Omega$. On commence par le cas $F=\mathbb R$. \begin{align*}
+            f(a+h)-f(a) = \phantom{+} & f(a_1+h_1, \cdots, a_n+h_n)-f(a_1, a_2+h_2, \cdots, a_n+h_n) \\
+            + & f(a_1, a_2+h_2, \cdots, a_n+h_n)-f(a_1, \cdots, a_i, a_{i+1}+h_{i+1}, \cdots, a_n+h_n) \\
+            + & f(a_1, \cdots, a_i, a_{i+1}+h_{i+1}, \cdots, a_n+h_n) + \cdots \\
+            + & f(a_1, \cdots, a_{n-1}, a_n+h_n)-f(a_1, \cdots, a_n)
+        \end{align*}
+        et chaque ligne est fonction d'une seule variable, donc le théorème des accroissements finis donne
+        \begin{align*}
+            \exists c_{i,h}\in]a_i,a_i+h_i[, \quad f(a+h)-f(a)=\phantom+ &
+            h_1\frac{\partial f}{\partial x_1}(c_{1,h}, a_2+h_2, \cdots, a_n+h_n)\\
+            + & h_2 \frac{\partial f}{\partial x_2}(a_1, c_{2,h},a_3+h_3,\cdots, a_n+h_n)\\
+            + & \hspace{2cm}\vdots \\
+            + & \underbrace{h_n \frac{\partial f}{\partial x_n} (a_1, \cdots, a_{n-1}, c_{n,h})}_{\longrightarrow h_n \frac{\partial f}{\partial x_n}(a) \text{ donc } =h_n \frac{\partial f}{\partial x_n}(a)+o(1) } \\
+            =\phantom + & \underbrace{h_1 \frac{\partial f}{\partial x_1}(a)+\cdots + h_n \frac{\partial f}{\partial x_n} (a) }_{\text{AL}}  + \underbrace{h_1o(1)+\cdots h_no(1)}_{o(h)}
+        \end{align*}
+        donc $f$ est différentiable sur $\Omega$. Si $F\neq R$ on raisonne coordonnée par coordonnée.
+\end{enumerate}
 \end{proof}
 
 \begin{prop} ~
@@ -305,7 +305,7 @@ On développe $f(a+h)=B(f_1(a_1+h_1), f_2(a_2+h_2))$
             \item Les $f_i$ sont toutes $\mathcal C^1$
         \end{enumerate}
     \item Si $f:\Omega\longrightarrow F$ et $g: \Omega'\supset f(\Omega)\longrightarrow G$ sont $\mathcal C^1$ alors $g\circ f$ aussi
-    \end{enumerate}
+\end{enumerate}
 \end{prop}
 
 \begin{proof}
@@ -455,6 +455,82 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
     On note $u\in E$ unitaire. \[ f(a+tu)=f(a)+\diff f_a(tu)+o_0(t)=f(a)+t (\nabla f(a)|u) +o_0(t).\] Pour $a$ fixé tel que $\nabla f(a)\neq 0$, $(\nabla f(a)|u)$ est maximal pour $u=\dfrac{\nabla f(a)}{\|\nabla f(a)\|}$ et dans ce cas $(\nabla f(a)|u)=\|\nabla f(a)\|$
 \end{rem}
 
-\begin{rem}[Égalité des accroissements finis]
-    
+\begin{rem}[Égalité des accroissements finis\index{accroissements finis!égalité}]
+    On note $f:\Omega\to E$ différentiable, et $[a, b]\subset \Omega$. On note \[ g:t\in[0, 1]\longmapsto f((1-t)a+tb)\in\mathbb R \]
+    \begin{itemize}
+        \item $g$ est continue sur $[0, 1]$, dérivable sur $]0, 1[$ (car dérivable sur $[0, 1]$)
+        \item On applique l'égalité des accroissements finis à $g$: \[
+                \exists t_0\in ]0, 1[, \quad g(1)-g(0)=g'(t_0)
+            \]
+            soit encore \[
+                f(b)-f(a)=\diff f_{(1-t_0)a+t_0b}(b-a)=(\nabla f(\underbrace{(1-t_0)a+t_0b}_{\defeq c})\;|\;b-a)
+            \]
+    \end{itemize}
+    Ainsi, il existe $c\in ]a, b[$ tel que $f(b)-f(a)=\diff f_c(b-a)$
 \end{rem}
+
+\begin{thmdef}
+    \Hyp $f:\Omega\subset E\to \mathbb R, a\in \Omega$, $f$ différentiable en $a$.
+    \begin{concenum}
+    \item On dira que $f$ a un point critique\index{point critique} en $a$ si $\diff f_a=0$ (i.e. si $\nabla f(a)=0$ avec un produit scalaire)
+    \item Si $a$ est un extremum local de $f$ alors $a$ est un point critique de $f$.
+    \end{concenum}
+\end{thmdef}
+
+\begin{proof}
+    \begin{enumerate}
+        \setcounter{enumi}{1}
+    \item On note $u\in E$, $\varphi: t\longmapsto f(a+tu)$ est définie sur un intervalle du type $]-\varepsilon, \varepsilon[$, et $\varphi$ atteint un extremum local en $0$. Ainsi, $\varphi'(0)=0=\diff f_a(u)$ vrai pour tout $u$ donc $\diff f_a=0$
+\end{enumerate}
+\end{proof}
+
+\begin{ex}
+    On pose \[
+        f:(x, y)\longmapsto (x^2+y^2)\exp(x^2-y^2)
+    \]
+    Cette fonction est $\mathcal C^1$ et si $(x, y)$ est un extremum alors \[
+        \begin{cases}
+            \displaystyle \frac{\partial f}{\partial x}(x, y)=\exp(x^2-y^2)2x(1+(x^2+y^2)) =0 \\[1em]
+            \displaystyle \frac{\partial f}{\partial y}(x, y)=\exp(x^2-y^2)2y(1-(x^2+y^2)) =0 \\
+            \end{cases} \iff \begin{cases}
+            x=0 \\ y(1-y^2)=0
+            \end{cases} \iff \begin{cases}
+            x=0\\
+            y\in \llbracket -1, 1\rrbracket
+        \end{cases}
+    \]
+    Il reste à vérifier si les trois points sont bien des extrema. \begin{itemize}
+        \item $(0, 0)$ est un minimum global
+        \item On fait l'étude en $(0, 1)$. \[
+                \underbrace{f(h, 1+k)-f(0, 1)}_{\Delta(h, k)}=2e^{-1}(h^2-k^2)+o_0(\|(h, k)\|)
+            \]
+            et $\Delta(h, 0)>0$ pour $h>0$ assez petit, $\Delta(0, k)<0$ pour $k>0$ assez petit donc $\Delta$ change de signe au voisinage de $(0, 1)$ donc $(0, 1)$ n'est pas un extremum (c'est un point selle).
+        \item De même, $(0, -1)$ n'est pas un extremum.
+    \end{itemize}
+
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                colormap name=viridis,
+                % 3d box,
+                width=15cm,
+                view={25}{20},
+                axis equal image,
+                % enlargelimits=false,
+                grid=major,
+                domain=-0.5:0.5,
+                samples=15,
+                yticklabels={,$-1$,,$0$,,$1$},
+                xticklabels={,,,$0$},
+                zticklabels={,,},
+                xlabel=$x$,
+                ylabel=$y$,
+                zlabel={$f(x, y)$},
+                ]
+                \addplot3 [y domain = -1.2:1.2, surf]
+                    {(x*x+y*y)*exp(x*x-y*y)};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+
+\end{ex}

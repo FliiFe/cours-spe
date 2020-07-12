@@ -10,6 +10,7 @@
 \usepackage{etoolbox}
 \usepackage{parskip}
 \usepackage{tikz,tkz-tab}
+\usepackage{pgfplots}
 \usepackage{titleps}
 \ifsolo
 \else
@@ -151,3 +152,8 @@
 
 \tocloftpagestyle{empty}
 \pagestyle{main}
+
+\pgfplotsset{compat=1.16,
+  colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
+}
+\pgfkeys{/pgf/plot/gnuplot call={cd build && gnuplot}}
