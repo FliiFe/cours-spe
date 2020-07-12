@@ -15,9 +15,8 @@ jobs:
     - name: Compilation
       uses: xu-cheng/latex-action@v2
       with:
-        args: all
-        compiler: make
-        root_file: ' '
+        pre_copile: make all
+        root_file: cours.pdf
     - name: Upload result
       uses: actions/upload-artifact@v2-preview
       with:
@@ -54,7 +53,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/polynomes.pdf
+        asset_path: ./target/polynomes.pdf
         asset_name: polynomes.pdf
         asset_content_type: application/pdf
     - name: Release calculdiff
@@ -63,7 +62,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/calculdiff.pdf
+        asset_path: ./target/calculdiff.pdf
         asset_name: calculdiff.pdf
         asset_content_type: application/pdf
     - name: Release cours
@@ -72,6 +71,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/cours.pdf
+        asset_path: ./target/cours.pdf
         asset_name: cours-complet.pdf
         asset_content_type: application/pdf
