@@ -15,7 +15,7 @@ jobs:
     - name: Compilation
       uses: xu-cheng/latex-action@v2
       with:
-        pre_copile: make all
+        pre_compile: make all
         root_file: cours.pdf
     - name: Upload result
       uses: actions/upload-artifact@v2-preview
