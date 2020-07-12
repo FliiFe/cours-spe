@@ -1,0 +1,35 @@
+\documentclass[tikz]{standalone}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usepackage{tkz-euclide}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        ticks=none,
+        axis lines = middle,
+        axis line style={->},
+        ymin=-2,
+        ymax=2,
+        xmin=-2,
+        xmax=2,
+        xlabel={$x$},
+        ylabel={$y$},
+        axis equal image
+        ]
+        \addplot[domain=-2:3] {-x+sqrt(2)};
+        \addplot[domain=0:0.7071] {x};
+        \addplot[mark=*, mark size=1pt] coordinates {({1/sqrt(2)},{1/sqrt(2)})};
+        \addplot[domain=-180:180, samples=50, smooth] ({cos(x)},{sin(x)});
+        \path
+            ({1/sqrt(2)},{1/sqrt(2)})node (B){}
+            (0,0)node (A){}
+            (1,0)node (P){};
+
+    \end{axis}
+    \tkzMarkAngle(P,A,B);
+    \tkzLabelAngle(P,A,B){$\theta$};
+
+\end{tikzpicture}
+\end{document}

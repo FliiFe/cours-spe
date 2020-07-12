@@ -1,3 +1,5 @@
+src/figures/*.pdf
+target/*
 build/*
 *.mtc
 *.pdf

@@ -10,14 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
     - name: Compilation
-      uses: dante-ev/latex-action@v0.2.0
+      uses: xu-cheng/latex-action@v2
       with:
-        args: '-pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode'
-        root_file: ""
+        args: all
+        compiler: make
+        root_file: ' '
     - name: Upload result
       uses: actions/upload-artifact@v2-preview
       with:

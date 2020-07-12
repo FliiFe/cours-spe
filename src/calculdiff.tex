@@ -509,28 +509,7 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
     \end{itemize}
 
     \begin{center}
-        \begin{tikzpicture}
-            \begin{axis}[
-                colormap name=viridis,
-                % 3d box,
-                width=15cm,
-                view={25}{20},
-                axis equal image,
-                % enlargelimits=false,
-                grid=major,
-                domain=-0.5:0.5,
-                samples=15,
-                yticklabels={,$-1$,,$0$,,$1$},
-                xticklabels={,,,$0$},
-                zticklabels={,,},
-                xlabel=$x$,
-                ylabel=$y$,
-                zlabel={$f(x, y)$},
-                ]
-                \addplot3 [y domain = -1.2:1.2, surf]
-                    {(x*x+y*y)*exp(x*x-y*y)};
-            \end{axis}
-        \end{tikzpicture}
+        \includegraphics{src/figures/calculdiff-point-critique-ex.pdf}
     \end{center}
 
 \end{ex}
@@ -550,37 +529,7 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
 \end{proof}
 
 \begin{center}
-    \begin{tikzpicture}
-            \begin{axis}[
-                colormap name=viridis,
-                % 3d box,
-                width=14cm,
-                view={25}{20},
-                axis equal image,
-                enlargelimits=false,
-                grid=major,
-                domain=-1.5:1.5,
-                samples=41,
-                yticklabels={,,},
-                xticklabels={,,},
-                zticklabels={,,},
-                xlabel=$x$,
-                ylabel=$y$,
-                zlabel={$f(x, y)$},
-                ]
-                \addplot3 [y domain = -0.3:0.3, domain = 0.1:0.7, samples=2, surf, opacity=0.4, color=black] {-1.03};
-                \addplot3 [y domain = -1.5:1.5, surf]
-                    {(1-exp(1.4-x*x-y*y))*x*exp(-x*x-y*y)*max(1.4-x*x-y*y, 0)};
-                \addplot3[color=black,
-                    samples=40,
-                    domain=2.83:8.20,
-                    line width=2.0pt,samples y=0]
-                ({sqrt(1.4)*cos(deg(x))}, {sqrt(1.4)*sin(deg(x))}, 0);
-                \addplot3[mark=*] coordinates {(-0.40,0,1.03)};
-                \addplot3[mark=*] coordinates {(0.39,0,-1.03)};
-                \addplot3 [y domain = -0.3:0.3, domain = -0.7:-0.1, samples=2, surf, opacity=0.4, color=black] {1.03};
-            \end{axis}
-    \end{tikzpicture}
+    \includegraphics{src/figures/calculdiff-rolle.pdf}
 \end{center}
 
 \begin{rem}
@@ -606,5 +555,19 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
                 et $\gamma$ est dérivable, $\gamma(0)=(x_0, y_0)$, et $\gamma'(0)=(-uy_0, vx_0)$ colinéaire à $(\alpha, \beta)$ d'où l'équivalence.
         \end{itemize}
         La droite $(x_0, y_0)^{\perp}$ est l'ensemble des vecteurs tangents en $(x_0, y_0)$. L'espace tangent associé est la droite affine $\mathcal D=(x_0, y_0)+(x_0, y_0)^{\perp}$
+        \begin{center}
+            \includegraphics{src/figures/calculdiff-espace-tangent-cercle.pdf}
+        \end{center}
+
+    \item $E=\mathbb R^3$, $f:\mathbb R^2\to \mathbb R$ différentiable, $X=\{(x, y, f(x, y)), \quad x,y\in\mathbb R\}$. Le vecteur $(\alpha, \beta, \lambda)$ est tangent à $X$ en $(x_0, y_0, f(x_0, y_0))$ si et seulement si \[
+            \lambda= \frac{\partial f}{\partial x} (x_0, y_0)\alpha + \frac{\partial f}{\partial y}(x_0, y_0)\beta \tag{$\star$}
+        \]
+        En effet, si $(\alpha, \beta, \nu)$ tangent alors on note $\gamma$ l'arc associé et $z(t)-f(x(t), y(t))=0$ donc en dérivant \[
+            z'(t)- \frac{\partial f}{\partial x} (x(t), y(t))x'(t)- \frac{\partial f}{\partial y} (x(t), y(t))y'(t)
+        \]
+        donc on a bien $(\star)$. Puis, si $(\alpha, \beta, \lambda)$ satisfait $(\star)$ alors \[
+            \gamma: t\in]-1, 1[\longmapsto (x_0+t\alpha, y_0+t\beta, f(x_0+t\alpha, y_0+t\beta))
+        \]
+        convient.
     \end{enumerate}
 \end{ex}
