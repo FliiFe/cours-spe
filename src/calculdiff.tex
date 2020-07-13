@@ -700,8 +700,86 @@ On note $f:\mathbb R^2\to \mathbb R $ de classe $\mathcal C^2$, et \[
     \end{matrix}
 \]
 
-On appelle laplacien de $f$ la fonction \[
+On appelle laplacien\index{laplacien} de $f$ la fonction \[
     \Delta f: (x, y)\longmapsto \frac{\partial^2f}{\partial x^2}(x, y)+ \frac{\partial^2 f}{\partial y^2}(x, y)  
 \]
 
-On veut calculer $(\Delta f)^\star$ en fonction de $f^\star$
+On veut calculer $(\Delta f)^\star$ en fonction de $f^\star$.
+
+\begin{itemize}
+    \item \[
+            \frac{\partial f^\star}{\partial \rho} (\rho, \theta)= \left( \frac{\partial f}{\partial x}  \right)^\star (\rho, \theta)\cos \theta+ \left( \frac{\partial f}{\partial y}  \right)^\star (\rho, \theta)\sin\theta
+        \]
+    \item \[
+            \frac{\partial f^\star}{\partial \theta}(\rho, \theta)= \left( \frac{\partial f}{\partial x}  \right)^\star (\rho, \theta)(-\rho\sin\theta)+ \left( \frac{\partial f}{\partial y}  \right)^\star (\rho, \theta)\rho\cos\theta
+        \]
+    \item \[
+        \frac{\partial^2 f^\star}{\partial \rho^2} (\rho, \theta)= \left( \frac{\partial^2f}{\partial x^2}  \right)^\star (\rho, \theta)\cos^2\theta + \left( \frac{\partial^2f}{\partial x\partial y}  \right)^\star (\rho, \theta)\cos\theta\sin\theta \]\[ + \left( \frac{\partial^2 f}{\partial y\partial x}  \right)^\star(\rho, \theta)\sin\theta\cos\theta + \left( \frac{\partial^2f}{\partial y^2}  \right)(\rho, \theta)\sin^2\theta
+        \]
+    \item \begin{align*}
+            \frac{\partial^2f^\star}{\partial \theta^2} (\rho, \theta) &=
+            -\rho \left( \frac{\partial f}{\partial x}  \right)^\star(\rho, \theta)\cos \theta -\rho \left( \frac{\partial f}{\partial y}  \right)^\star (\rho, \theta)\sin\theta \\
+                                                                       &\phantom{= } + \left( \frac{\partial ^2f}{\partial x^2}  \right)^\star (\rho, \theta)\rho^2\sin^2\theta+ \left( \frac{\partial ^2f}{\partial y\partial x}  \right)^\star (\rho, \theta)(-\rho^2\sin\theta\cos\theta) \\ 
+                                                                       &\phantom{= } + \left( \frac{\partial^2f}{\partial x\partial y}  \right)^\star (\rho, \theta)(-\rho^2\sin\theta\cos\theta)+ \left( \frac{\partial^2f}{\partial y^2}  \right)^\star (\rho, \theta)\rho^2\cos^2\theta
+    \end{align*}
+\end{itemize}
+
+Donc pour $\rho \neq 0$, \[
+    \frac{1}{\rho^2} \frac{\partial^2f^\star}{\partial\theta^2} (\rho, \theta)+ \frac{\partial^2f}{\partial \rho^2} (\rho, \theta)=(\Delta f)^\star (\rho, \theta)-\frac1\rho\frac{\partial f^\star}{\partial \rho}(\rho, \theta)
+\]
+d'où \[
+    (\Delta f)^\star (\rho, \theta)=\frac1{\rho^2}\frac{\partial^2f^\star}{\partial\theta^2}(\rho, \theta)+\frac{\partial^2f^\star}{\partial \rho^2}(\rho, \theta)+\frac1\rho \frac{\partial f^\star}{\partial \rho}(\rho, \theta)
+\]
+
+\begin{exo}
+    Déterminer les $g\in\mathcal C^2(\mathbb R_+^\star, \mathbb R)$ tel que $f:(x_1, \cdots, x_n)\in\mathbb R^n\setminus \{0\}\longmapsto g(x_1^2+ \cdots+ x_n^2)$ est harmonique ($\Delta f=0$)
+\end{exo}
+
+\begin{proof}[Résolution]
+    Soit $g$ solution. Alors \[
+        \frac{\partial f}{\partial x_i}(x)=g'(x_1^2+\cdots+x_n^2) 2x_i
+    \]
+    et \[
+        \frac{\partial ^2 f}{\partial x_i^2}(x)=g''(x_1^2+\cdots+x_n^2)4x_i^2+2g'(x_1^2+\cdots +x_n^2) 
+    \]
+    donc \[
+        \Delta f=0\iff \forall x\in\mathbb R^n\setminus \{0\}, \quad \sum_{i=1}^ng''(\|x\|^2)4x_i^2+2g'(\|x\|^2)=0 \iff 4\|x\|^2g''(\|x\|^2)+2g'(\|x\|^2)n=0
+    \]
+    donc \[
+        \Delta f=0\iff \forall r>0, \quad 4rg''(r)+2ng'(r)=0\iff \cdots \iff \exists A, B, \quad g:r\longmapsto B+\frac{A}{r^{n/2-1}}
+    \]
+\end{proof}
+
+\section{Régression linéaire}
+
+On dispose de données expérimentales $(x_{i, 1}, \cdots, x_{i, p}, y_i)$ avec $i\in\llbracket 1, n\rrbracket$. On sait que les vraies valeurs $(\bar x_{i, 1}, \cdots, \bar x_{i, p}, \bar y_i)$ vérifient une relation du type \[
+    \bar y_i=\beta_1\bar x_{i, 1}+\cdots+\beta_p\bar x_{i, p}
+\]
+
+On veut connaitre les $\beta_i$ à l'aide des mesures effectuées. On note: \[
+    X=(x_{i, j})_{\substack{1\leq i\leq n\\ 1\leq j\leq p}} \qquad \bar X=(\bar x_{i, j})_{\substack{1\leq i\leq n\\ 1\leq j\leq p}} \qquad \Gamma= \begin{pmatrix}
+        \beta_1\\ \vdots\\\beta_p
+    \end{pmatrix} \qquad Y= \begin{pmatrix}
+        y_1\\\vdots\\ y_n
+    \end{pmatrix}\qquad \bar Y= \begin{pmatrix}
+        \bar y_1\\\vdots\\ \bar y_n
+    \end{pmatrix}
+\]
+de sorte que $\bar Y=\bar X\Gamma$. On connait $X$ et $Y$, on veut approcher $\Gamma$. On va trouver $B$ qui minimise $\|Y-XB\|$ et on va montrer que si $\rg X=p$ alors il y a une unique solution minimale donnée par \[
+    B=(X^\top X)^{-1}X^\top Y
+\]
+
+\begin{itemize}
+    \item On note $f:B\longmapsto \|Y-BX\|^2$ de sorte que \[
+            f(B+H)=\|Y\|^2-2(Y\;|\;XB)-2(Y\;|\;XH)+\|XB\|^2+2(XB\;|\;XH)+\underbrace{\|XH\|^2}_{o_0(H)}
+        \]
+        donc \[
+            \diff f_B(H)=2(XB-Y\;|\;XH)=-2(X^\top Y\;|\; H)+2(X^\top XB\;|\;H)
+        \]
+    \item $B$ point critique $\iff \forall H, (-X^\top Y+X^\top XB\;|\;H)=0 \iff X^\top XB=X^\top Y$
+    \item Si $p=\rg X$ alors $\dim\Ker X=0$ et $X$ est une matrice injective. \[
+            B\in \Ker(X^\top X)\iff X^\top XB=0\implies B^\top X^\top XB=0\implies \|XB\|^2=0\implies B=0
+        \]
+        donc $X^\top X$ est inversible.
+    \item $B$ point critique $\iff B=(X^\top X)^{-1}X^\top Y$
+\end{itemize}
