@@ -335,10 +335,14 @@ et \[
 
 \subsection{\texorpdfstring{$f:(x, y)\longmapsto \min(x^2, y^2)$}{f(x, y)=min(x², y²)}}
 
+\begin{center}
+    \includegraphics{src/figures/calculdiff-regularite-min-carres.pdf}
+\end{center}
+
 D'abord, \[
     f(x, y)=\frac{x^2+y^2-|x^2-y^2|}2
 \]
-donc $f$ est $\mathcal C^0$. On note $\Delta$ le fermé $\{(x, y)\in\mathbb R^2, x^2=y^2\}$, $\mathbb R^2\setminus \Delta$ est ouvert de $f\in \mathcal C^1(\mathbb R^2\setminus \Delta, \mathbb R)$ comme composée de fonctions $\mathcal C^1$.
+donc $f$ est $\mathcal C^0$. On note $\Delta$ le fermé $\{(x, y)\in\mathbb R^2, x^2=y^2\}$, $\mathbb R^2\setminus \Delta$ est ouvert et $f\in \mathcal C^1(\mathbb R^2\setminus \Delta, \mathbb R)$ comme composée de fonctions $\mathcal C^1$.
 
 Il reste à savoir si $f$ est différentiable sur $\Delta$ et si éventuellement la différentielle est continue.
 
@@ -365,6 +369,10 @@ On pose \[
     \end{cases}
 \]
 
+\begin{center}
+    \includegraphics{src/figures/calculdiff-regularite-fonction-continue.pdf}
+\end{center}
+
 $f$ est clairement continue sur $\mathbb R^2\setminus\{(0, 0)\}$ puis $x^2y^2\leq (x^2+y^2)^2$ donc $0\leq f(x)\leq x^2+y^2=o((x, y))$ donc $f$ continue en $0$
 
 \subsection{Une fonction différentiable non \texorpdfstring{$\mathcal C^1$}{C1}}
@@ -375,6 +383,11 @@ On pose \[
         0 &\text{ sinon }
     \end{cases}
 \]
+
+\begin{center}
+    \includegraphics{src/figures/calculdiff-regularite-diff-non-c1.pd}
+\end{center}
+
 La fonction est clairement $\mathcal C^1$ sur $\mathbb R^2\setminus\{0\}$ puis $f(x, y)=o_0((x, y))$ donc $\diff f_0=0$ et $f$ est différentiable. Il reste à voir si la différentielle est continue en $(0, 0)$.
 
 Puis, \[

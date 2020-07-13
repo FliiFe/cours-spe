@@ -1,4 +1,4 @@
-.PHONY: clean all
+.PHONY: clean all figures
 
 PDFS := target/cours.pdf target/calculdiff.pdf target/polynomes.pdf
 figures := $(patsubst %.tex,%.pdf,$(wildcard src/figures/*.tex))
@@ -19,6 +19,7 @@ clean:
 	rm -rf target build
 	cd src/figures && latexmk -C
 
+figures: $(figures)
 
 .SECONDEXPANSION:
 PER := %
