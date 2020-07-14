@@ -812,7 +812,8 @@ d'où \[
 \]
 donc les solutions sont de la forme $f(x, y)=a \!\!\,\left( \sqrt{x^2+y^2} \right)\exp \left( k\arctan \left( \frac yx \right) \right)$, qui convient si elle est $\mathcal C^1$ (i.e. si $a$ est $\mathcal C^1$)
 
-\section{Méthode de gradient}
+\section{Méthodes de gradient}
+
 
 On note $J:\mathbb R^n\to \mathbb R$ minorée $\mathcal C^1$ et on suppose qu'elle atteint sa borne inférieure en un point $x^\star$.
 
@@ -822,6 +823,8 @@ On note $J:\mathbb R^n\to \mathbb R$ minorée $\mathcal C^1$ et on suppose qu'el
 et on va prendre $v=-\nabla J(x_n)$ de sorte que $x_{n+1}=x_n-t_n\nabla J(x_n)$, $t_n>0$ à choisir
 
 \subsection{Méthode de gradient conjugué}
+
+\index{gradient!méthode de gradient conjugué}
 
 On note $A\in S_p^{++}(\mathbb R)$, $b\in\mathbb R^p$ et \[
     \begin{matrix}
@@ -864,3 +867,79 @@ soit encore \[
 \]
 si $x_n\neq x_{n+1}$. On a égalité si $x_n=x_{n+1}$.  
 Si $(x_n)$ ne prend pas la valeur $x^\star$ alors $(J(x_n))$ est décroissante minorée donc converge. On a alors $Ax_n-b\longrightarrow 0$ donc $x_n\longrightarrow x^\star$.
+
+\subsection{Méthode de gradient à pas optimal}
+\index{gradient!méthode de gradient à pas optimal}
+
+Soit $f:\mathbb R^n\to \mathbb R$ de classe $\mathcal C^1$ telle que \[
+    \exists \alpha > 0, \forall u, v\in\mathbb R^n, (\nabla f(u)-\nabla f(v)\;|\; u-v)\geq \alpha\|u-v\|^2
+\]
+
+\begin{enumerate}
+    \item On va établir que \[
+            \forall u, v\in\mathbb R^n, f(u)\geq f(v)+(\nabla f(u)\;|\;v-u)+\frac\alpha2\|v-u\|^2
+        \]
+        et en déduire que $f$ a un minimum global.
+
+        \begin{align*}
+            f(v)-f(u) &= \int_0^1\diff f_{(1-t)v+tu}(v-u)\diff t \\
+                      &= \int_0^1(\nabla f((1-t)v+tu)\;|\; v-u) \diff t \\ 
+                      &\geq \int_0^1(\nabla f(u)\;|\;v-u)+\alpha(1-t)\|v-u\|^2\diff t \\
+                      &=(\nabla f(u)\;|\;v-u)+\frac{\alpha\|v-u\|^2}2
+        \end{align*}
+        puis \[
+            f(v)\geq f(u)-\|\nabla f(u)\|\cdot\|v-u\|+\frac\alpha2\|v-u\|^2\xrightarrow[\|v\|\to+\infty]{}+\infty
+        \]
+        Donc $f$ possède un minimum global (car pour une boule fermée centrée en $0$ assez grande, la borne inférieure globale est la borne inférieure sur cette boule compacte donc c'est un minimum par continuité de $f$).
+    \item On va montrer l'unicité du minimum.
+
+        Si $x^\star$ et $v^\star$ sont tels que $f(x^\star)=f(v^\star)=\min f$ alors \[
+            \nabla f(v^\star)=\nabla f(v^\star)=0\implies 0\geq \alpha\|x^\star-v^\star\|^2\implies x^\star=v^\star
+        \]
+    \item On souhaite approcher $x^\star$.
+        \begin{enumerate}
+            \item Soit $u\in\mathbb R^n\setminus\{x^\star\}$. On va montrer que $\varphi_u:t\longmapsto f(y+t\nabla f(u))$ admet un minimum global.
+
+                On a \[
+                    \varphi_u'(t)=\diff f_{u+t\nabla f(u)}(\nabla f(u))=(\nabla f(u+t\nabla f(u))\;|\;\nabla f(u))
+                \]
+                et \begin{align*}
+                    (t-s)(\varphi_u'(t)-\varphi_u'(s))&=(\nabla f(\underbrace{u+t\nabla f(u)}_{u'})-\nabla f(\underbrace{u+s\nabla f(u)}_{v'})\;|\;\underbrace{(t-s)\nabla f(u)}_{u'-v'}) \\
+                                                      &\geq \alpha\|v'-u'\|^2=\alpha(t-s)^2\|\nabla f(u)\|^2\geq 0
+                \end{align*}
+                donc $\phi_u'$ est croissante et $\varphi_u$ est convexe. Puis, \begin{align*}
+                    \varphi_u'(t)-\varphi_u'(s)\geq \alpha(t-s)\|\nabla f(u)\|^2 &\xrightarrow[t\to+\infty]{} +\infty \\ &\xrightarrow[s\to-\infty]{}+\infty
+                \end{align*}
+                donc $\phi_u'$ est croissante surjective dans $\mathbb R$ d'où l'unicité et l'existence du minimum de $\varphi_u$.
+            \item On considère le schéma numérique suivant: \[
+                    \begin{cases}
+                        u_0\in\mathbb R^n\\
+                        u_{p+1}=u_p &\text{ si }u_p=x^\star \text{ (on suppose que cela n'arrive pas) }\\
+                        u_{p+1}=u_p+t_p\nabla f(u_p) &\text{ sinon }
+                    \end{cases}
+                \]
+                où $t_p$ minimise $\varphi_{u_p}$. On va montrer que $(u_k)$ converge vers $x^\star$.
+
+                \[
+                    \varphi'_{u_k}(t_k)=0\implies (\nabla f(u_{k+1})\;|\;\nabla f(u_k))=0
+                \]
+                d'où \[
+                    f(u_k)\geq f(u_{k+1})+\underbrace{(\nabla f(u_{k+1})\;|\; u_k-u_{k+1})}_{=0}+\frac\alpha2\|u_k-u_{k+1}\|^2
+                \]
+                donc \[
+                    f(u_k)-f(u_{k+1})\geq 0
+                \]
+                donc $(f(u_k))_k$ est décroissante minorée donc converge. Puis \[
+                    \underbrace{f(u_k)-f(u_{k+1})}_{\longrightarrow 0}\geq \frac\alpha2\|u_k-u_{k+1}\|^2
+                \]
+                or $(u_k)$ bornée car sinon $(f(u_k))$ non convergente. On note $R$ un majorant de $(\|u_k\|)$ et $\nabla f$ est uniformément continue sur $\mathcal B_f (0, R+)$ donc \[
+                    \nabla f(u_{k+1})-\nabla f(u_k)=\nabla f(u_k+u_{k+1}-u_k)-\nabla f(u_k) \xrightarrow[k\to+\infty ]{} 0
+                \]
+                or \[
+                    \|\nabla f(u_{k+1})-\nabla f(u_k)\|^2=\|\nabla f(u_{k+1})\|^2+\|\nabla f(u_k)\|^2\xrightarrow[k\to+\infty]{}0
+                \]
+                donc $\|\nabla f(u_k)\|\to 0$. Enfin, \[
+                    (\underbrace{\nabla f(u_k)}_{\to 0}-\underbrace{\nabla f(x^\star)}_{=0}\;|\;u_k-x^\star)\geq \alpha\|u_k-x^\star\| ^2
+                \] d'où $u_k\to x^\star$
+        \end{enumerate}
+\end{enumerate}

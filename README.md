@@ -26,5 +26,5 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 - [ ] Les équations différentielles
 - [ ] Espaces préhilbertiens réels
 - [ ] Fonctions de plusieurs variables
-- [x] Calcul différentiel (partiellement)
+- [x] Calcul différentiel
 - [x] Complément sur les polynomes
