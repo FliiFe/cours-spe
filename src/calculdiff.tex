@@ -796,3 +796,71 @@ de sorte que $\bar Y=\bar X\Gamma$. On connait $X$ et $Y$, on veut approcher $\G
         donc $X^\top X$ est inversible.
     \item $B$ point critique $\iff B=(X^\top X)^{-1}X^\top Y$
 \end{itemize}
+
+\section{Exemple d'équation aux dérivées partielles}
+
+On va déterminer les solution $f\in\mathcal C^1(\mathbb R_+^\star\times \mathbb R, \mathbb R)$ tels que \[
+    x \frac{\partial f}{\partial y} (x, y)-y \frac{\partial f}{\partial x} (x, y)=k f(x, y)
+\]
+
+Pour $r\in\mathbb R^\star$, $\theta\in\left]-\frac\pi2,\frac\pi2\right[$, $f^\star(r, \theta)=f(r\cos\theta,r\sin\theta)$. Donc: \[
+    \frac{\partial f^\star}{\partial \theta} (r, \theta)=-r\sin\theta \left(\frac{\partial f}{\partial x}\right)^\star (r, \theta)+r\cos \theta \left(\frac{\partial f}{\partial y}\right)^\star (r,\theta)=kf^\star(r,\theta)
+\]
+
+d'où \[
+    f \text{ solution }\iff \forall r>0, \exists a(r)\;/\; \forall \theta \in \left]-\frac\pi2,\frac\pi2\right[,\quad f^\star(r\theta)=a(r)\exp(k\theta)
+\]
+donc les solutions sont de la forme $f(x, y)=a \!\!\,\left( \sqrt{x^2+y^2} \right)\exp \left( k\arctan \left( \frac yx \right) \right)$, qui convient si elle est $\mathcal C^1$ (i.e. si $a$ est $\mathcal C^1$)
+
+\section{Méthode de gradient}
+
+On note $J:\mathbb R^n\to \mathbb R$ minorée $\mathcal C^1$ et on suppose qu'elle atteint sa borne inférieure en un point $x^\star$.
+
+\textbf{Idée:} On va construire une suite $(x_n)$ telle que $J(x_n)\to J(x^\star)$. On a \[
+    J(x_n+tv)=J(x_n)+t(\nabla J(x_n)\;|\; v)+o_0(tv)
+\]
+et on va prendre $v=-\nabla J(x_n)$ de sorte que $x_{n+1}=x_n-t_n\nabla J(x_n)$, $t_n>0$ à choisir
+
+\subsection{Méthode de gradient conjugué}
+
+On note $A\in S_p^{++}(\mathbb R)$, $b\in\mathbb R^p$ et \[
+    \begin{matrix}
+        J: & \mathbb R^p & \longrightarrow & \mathbb R \\
+           & x & \longmapsto & \dfrac12(Ax\;|\;x)-(b\;|\;x)
+    \end{matrix}
+\]
+La fonction $J$ est $\mathcal C^1$ et \[
+    J(x)\geq \frac 12 \underbrace{\lambda_1}_{\min \Sp(A)>0}\|x\|^2-\|b\|\cdot \|x\| \implies J(x)\xrightarrow[\|x\|\to +\infty]{}+\infty
+\]
+par conséquent, $J$ atteint son minimum (i.e. $x^\star$ existe) car atteint sur un compact du type $\mathcal B_f(0, R)$.
+
+On a \[
+    \diff J_x(h)=(Ax-b\;|\;h)
+\]
+et $\diff J_{x^\star}=0$ donc $x^\star=A^{-1}b$
+
+On va mettre en place une méthode de descente de gradient. \[
+    J(x+t\nabla J(x))=J(x)+ t (Ax-b\;|\;\nabla J(x))+\frac12t^2(A\nabla J(x)\;|\;\nabla J(x))
+\]
+Cette fonction de $t$ atteint un minimum lorsque \[
+    (Ax-b\;|\;\nabla J(x))+t(A\nabla J(x)\;|\; \nabla J(x))=0 \iff t=-\frac{(Ax-b\;|\;\nabla J(x))}{(A\nabla J(x)\;|\; \nabla J(x))}
+\]
+
+Or $\diff J_x(h)=(Ax-b\;|\;h)=(\nabla J(x)\;|\; h)$ donc $\nabla J(x)=Ax-b$. On construit alors $(x_n)$ comme suit: \begin{itemize}
+    \item $x_0$ est quelconque
+    \item $x_{n+1}=x_n+t_n\nabla J(x)$ avec \[
+            t_n = \begin{cases}
+                -\dfrac{\|Ax_n-b\|^2}{(A(Ax_n-b)\;|\;Ax_n-b)} &\text{ si } Ax_n-b\neq 0 \\[1em]
+                \hspace{2cm}0 &\text{ sinon }
+            \end{cases}
+        \]
+\end{itemize}
+
+On a \[
+    J(x_{n+1})=J(x_n) + t_n\|Ax_n-b\|^2 +\frac12t_n^2(A(Ax_n-b)\;|\;Ax_n-b)
+\]
+soit encore \[
+    J(x_{n+1})=J(x_n) -\frac{\|Ax_n-b\|^4}{2(A(Ax_n-b)\;|\;Ax_n-b)} \leq J(x_n)
+\]
+si $x_n\neq x_{n+1}$. On a égalité si $x_n=x_{n+1}$.  
+Si $(x_n)$ ne prend pas la valeur $x^\star$ alors $(J(x_n))$ est décroissante minorée donc converge. On a alors $Ax_n-b\longrightarrow 0$ donc $x_n\longrightarrow x^\star$.
