@@ -22,7 +22,7 @@ jobs:
       uses: actions/upload-artifact@v2-preview
       with:
         name: cours.zip
-        path: ./build/*.pdf
+        path: ./target/*.pdf
     - name: Get current time
       uses: srfrnk/current-time@master
       id: current-time
@@ -74,4 +74,13 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./target/cours.pdf
         asset_name: cours-complet.pdf
+        asset_content_type: application/pdf
+    - name: Release cours
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/algebre-generale.pdf
+        asset_name: algebre-generale.pdf
         asset_content_type: application/pdf
