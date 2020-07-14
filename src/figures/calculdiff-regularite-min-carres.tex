@@ -14,7 +14,7 @@
                 % enlargelimits=false,
                 grid=major,
                 domain=-1.2:1.2,
-                samples=41,
+                samples=75,
                 yticklabels={,$-1$,$0$,$1$},
                 xticklabels={,$-1$,,$0$,,$1$},
                 zticklabels={,,},
@@ -27,14 +27,14 @@
                 \addplot3[domain=-0.19:1.2, samples=10, smooth, samples y =0, line width=1pt] ({-x}, {x}, {x^2});
                 \addplot3[domain=0.53:1.2, samples=10, smooth, samples y =0, line width=1pt] ({x}, {x}, {x^2});
                 \addplot3[domain=-1.2:0.12, samples=10, smooth, samples y =0, line width=1pt] ({x}, {x}, {x^2});
-                \addplot3[domain=-0.58:0.13, samples=10, smooth, samples y =0, line width=1pt] ({x}, 0, 0);
-                \addplot3[domain=1.01:1.2, samples=10, smooth, samples y =0, line width=1pt] ({x}, 0, 0);
-                \addplot3[domain=-1.2:0.6, samples=10, smooth, samples y =0, line width=1pt] (0, {x}, 0);
+                \addplot3[domain=-0.58:0.13, samples=2, smooth, samples y =0, line width=1pt] ({x}, 0, 0);
+                \addplot3[domain=1.01:1.2, samples=2, smooth, samples y =0, line width=1pt] ({x}, 0, 0);
+                \addplot3[domain=-1.2:0.6, samples=2, smooth, samples y =0, line width=1pt] (0, {x}, 0);
                 \addplot3[domain=-1.2:1.2, samples=10, smooth, samples y =0, line width=1pt] ({x}, -1.2, {x^2});
                 \addplot3[domain=-1.2:1.2, samples=10, smooth, samples y =0, line width=1pt] (1.2, {x}, {x^2});
                 \addplot3[domain=-1.2:-0.1, samples=10, smooth, samples y =0, line width=1pt] (-1.2, {x}, {x^2});
-                \addplot3[domain=0.32:1.2, samples=10, smooth, samples y =0, line width=1pt] (-1.2, {x}, {x^2});
-                \addplot3[domain=-1.2:-0.13, samples=10, smooth, samples y =0, line width=1pt] ({x}, 1.2, {x^2});
+                \addplot3[domain=0.32:1.2, samples=5, smooth, samples y =0, line width=1pt] (-1.2, {x}, {x^2});
+                \addplot3[domain=-1.2:-0.13, samples=5, smooth, samples y =0, line width=1pt] ({x}, 1.2, {x^2});
             \end{axis}
         \end{tikzpicture}
 \end{document}

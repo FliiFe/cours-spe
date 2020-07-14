@@ -12,7 +12,7 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 - [ ] Familles sommables
 - [ ] Intégration sur un intervalle quelconque
 - [ ] Suites et séries de fonctions
-- [ ] Algèbre générale
+- [x] Algèbre générale (partiellement)
 - [ ] Arithmétique
 - [ ] Réduction des endomorphismes
 - [ ] Analyse réelle et fonctions convexes

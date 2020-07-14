@@ -1,0 +1,116 @@
+
+\ifsolo
+~
+
+\vspace{1cm}
+
+\begin{center}
+    \textbf{\LARGE Algèbre générale} \\[1em]
+\end{center}
+\tableofcontents
+\else
+\minitoc
+\fi
+\thispagestyle{empty}
+
+\ifsolo \newpage \setcounter{page}{1} \fi
+\section{Groupes}
+
+\textbf{Rappel.} $(G, \star)$ est un groupe\index{groupe} ssi \begin{itemize}
+    \item $\star$ est une loi de composition interne associative
+    \item $\star$ a un neutre dans $G$
+    \item Tous les éléments de $G$ ont un inverse dans $G$ pour $\star$
+\end{itemize}
+
+\begin{notation}
+    Si $\star$ est commutative, on la notera en général $+$ et l'inverse sera alors noté $-x$. Sinon, on notera souvent la loi $\cdot$ et l'inverse $x^{-1}$. Le neutre de $G$ se note $e_G$ (parfois $0_G$ ou $0$ dans le cas d'une loi notée additivement)
+\end{notation}
+
+Si $G$ est de cardinal fini, alors on note $|G|$ ou $\#G$ son cardinal.
+
+\section{Constructeurs de groupes}
+
+\begin{prop}~
+    \begin{enumerate}
+        \item Si $(G, \cdot)$ est un groupe et $X$ un ensemble non vide alors on muni l'ensemble de fonction de $X$ dans $G$ de la loi $\star$ en posant \[
+                \forall f, g: X\longrightarrow G, \quad f\star g:x\longmapsto f(x)\cdot g(x)
+            \]
+            $(\mathcal F(X, G), \star)$ est alors un groupe.
+        \item Soit $(G, \land)$, $(G', \star)$ deux groupes. On munit $G\times G'$ de la loi $\cdot$ en posant \[
+                (x, x')\cdot (y, y')=(x\land x', y\star y')
+            \]
+            $(G\times G', \cdot)$ est alors un groupe.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+    Facile mais pénible.
+\end{proof}
+
+\section{Sous-groupes}
+
+\begin{thmdef}
+    \Hyp $(G, \cdot)$ un groupe, $H\subset G$
+    \Conc On dira que $H$ est un sous-groupe\index{sous-groupe} de $G$ si $H\neq \emptyset$, $\cdot$ est une l.c.i. sur $H$ et $(H, \cdot)$ est un groupe. Dans ce cas, $e_H=e_G$. Il y a équivalence entre: \begin{enumerate}[label=(\alph*)]
+        \item $H$ est un sous-groupe de $G$
+        \item $H\subset G$, $H\neq \emptyset$ et $\forall x, y\in H, x\cdot y^{-1}\in H$
+    \end{enumerate}
+\end{thmdef}
+
+\begin{notation}
+    $(G, \cdot)$ groupe, $H\subset G$, $a\in G$. \[
+        aH=\{a\cdot h, \quad h\in H\}
+    \]
+    \[
+        H^{-1}={h^{-1}, \quad h\in H}
+    \]
+    et si $A\subset G$,
+    \[
+        AH = \{a\cdot h, \quad a\in A, h\in H\}
+    \]
+\end{notation}
+
+Ainsi $H\subseteq G$ est un sous-groupe de $G$ si et seulement si $H\neq \emptyset$ et $HH^{-1}\subseteq H$
+
+\begin{exo}
+    Soient $H, K$ des sous-groupes de $G$. Montret que $HK$ est un sous groupe si et seulement si $HK=KH$.
+\end{exo}
+
+\begin{proof}[Résolution]
+    Si $HK$ sous-groupe de $G$ alors $HK=(HK)^{-1}=K^{-1}H^{-1}=KH$. Si $HK=KH$ alors $HK(HK)^{-1}=HKK^{-1}H=HKKH=HHKK\subseteq HK$
+\end{proof}
+
+\subsection{Centre d'un groupe}
+
+\begin{dfn}
+    Le centre d'un groupe\index{centre (d'un groupe)}\index{sous-groupe!centre} $G$ est le groupe \[
+        Z(G)=\{x\in G, \quad \forall y\in G, xy=yx\}
+    \]
+\end{dfn}
+
+\begin{rem}
+    C'est un sous-groupe de $G$, on peut le vérifier manuellement.
+\end{rem}
+
+\subsection{Normalisateur}
+
+On note $H$ un sous-groupe de $G$. On appelle \textbf{normalisateur}\index{normalisateur} de $H$ l'ensemble \[
+    N(H)=\{x\in G, \quad xHx^{-1}=H\}
+\]
+On peut vérifier que c'est un sous-groupe de $G$. On dira que $H$ est un sous-groupe distingué \index{sous-groupe!distingué} de $G$ si $N(H)=G$.
+
+\begin{rem}
+    On note $\mathcal R$ la relation \[
+        x\mathcal Ry\iff y^{-1}x\in H
+    \]
+    C'est bien une relation d'équivalence (réfléxive symétrique transitive) et si $a\in H$, $x\in \bar a \iff x\in aH$. De même, $x\mathcal R'y\iff xy^{-1}\in H$ définit une autre relation d'équivalence dont les classes sont les $Ha$. Lorsque $H$ est distingué (on notera $H\triangleleft G$), $aH=Ha$
+\end{rem}
+
+\subsection{Sous-groupe de torsion}
+
+Soit $G$ un groupe \emph{abélien}. On note \[
+    \tau(G)=\{g\in G, \quad \exists n\in\mathbb N^\star, g^n=e_G\}
+\]
+C'est un sous-groupe\footnote{on a besoin de l'hypothèse de commutativité de $G$, ça n'est pas vrai sinon} de $G$ appelé sous-groupe de torsion\index{sous-groupe!de torsion}.
+
+\subsection{Sous-groupes de $\mathbb Z$ et $\mathbb R$}
