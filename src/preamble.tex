@@ -7,6 +7,7 @@
 \usepackage{enumitem}
 \usepackage{stmaryrd}
 \usepackage{xcolor}
+\usepackage{mdframed}
 \usepackage{etoolbox}
 \usepackage{parskip}
 \usepackage{tikz,tkz-tab}
@@ -34,21 +35,36 @@
 \setlist[itemize]{leftmargin=.5cm}
 \setlist[enumerate]{leftmargin=.7cm}
 
+\newcommand{\newthm}[2]{
+    \newenvironment{#1}[1][]
+    {\needspace{3cm}\par\noindent\normalfont\ifstrempty{##1}{\textbf{#2.}}{\textbf{#2} (##1).}\par\nopagebreak%
+      \begin{mdframed}[
+         linewidth=1pt,
+         linecolor=black,
+         bottomline=false,topline=false,rightline=false,
+         innerrightmargin=0pt,innertopmargin=0pt,innerbottommargin=0pt,
+         innerleftmargin=1em,
+         skipabove=.5\baselineskip
+       ]}
+      {\end{mdframed}}
+}
+
+
 \theoremstyle{definition}
-\newtheorem*{thm}{Théorème}
-\newtheorem*{thmdef}{Théorème -- Définition}
-\newtheorem*{dfn}{Définition}
-\newtheorem*{defprop}{Définition -- Proposition}
-\newtheorem*{lmm}{Lemme}
-\newtheorem*{rem}{Remarque}
+\newthm{thm}{Théorème}
+\newthm{thmdef}{Théorème -- Définition}
+\newthm{dfn}{Définition}
+\newthm{defprop}{Définition -- Proposition}
+\newthm{lmm}{Lemme}
+\newthm{rem}{Remarque}
+\newthm{res}{Résultat}
+\newthm{prop}{Proposition}
+\newthm{cor}{Corollaire}
+\newthm{exo}{Exercice}
+\newthm{notation}{Notation}
 \newtheorem*{ex}{Exemple}
-\newtheorem*{res}{Résultat}
-\newtheorem*{prop}{Proposition}
 \newtheorem{csq}{Conséquence}[subsection]
 \renewcommand{\thecsq}{\arabic{csq}}
-\newtheorem*{cor}{Corollaire}
-\newtheorem*{exo}{Exercice}
-\newtheorem*{notation}{Notation}
 
 \AtBeginEnvironment{thmdef}{\Needspace{5\baselineskip}}
 \AtBeginEnvironment{defprop}{\Needspace{5\baselineskip}}
@@ -83,7 +99,6 @@
 }
 
 \DeclareMathOperator{\dom}{dom}
-\newcommand{\ord}{\mathrm{ord}}
 \newcommand{\Vect}{\mathrm{Vect}}
 \newcommand{\Sp}{\mathrm{Sp}}
 \newcommand{\diff}{\mathrm{d}}
@@ -94,9 +109,13 @@
 \renewcommand{\bar}[1]{\overline{#1}}
 \newcommand{\img}{\mathrm{Im}}
 \newcommand{\rg}{\mathrm{rg}}
+\newcommand{\ord}{\mathrm{ord}}
 \newcommand{\Ker}{\mathrm{Ker}}
 \newcommand{\Tr} {\mathrm{Tr}}
 \newcommand{\Com}{\mathrm{Com}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
 
 \makeatletter
 \newcommand*{\xnrightarrow}[2][]{%

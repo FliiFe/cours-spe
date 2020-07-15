@@ -23,7 +23,7 @@ figures: $(figures)
 
 .SECONDEXPANSION:
 PER := %
-target/%.pdf: %.tex $$(patsubst $$(PER).tex,$$(PER).pdf,$$(wildcard src/figures/%-*.tex))
+target/%.pdf: %.tex src/preamble.tex $$(patsubst $$(PER).tex,$$(PER).pdf,$$(wildcard src/figures/%-*.tex))
 	latexmk -pdf $<
 	cp build/$(@F) $@
 

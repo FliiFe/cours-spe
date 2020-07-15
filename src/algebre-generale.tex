@@ -1,15 +1,15 @@
 
 \ifsolo
-~
+    ~
 
-\vspace{1cm}
+    \vspace{1cm}
 
-\begin{center}
-    \textbf{\LARGE Algèbre générale} \\[1em]
-\end{center}
-\tableofcontents
+    \begin{center}
+        \textbf{\LARGE Algèbre générale} \\[1em]
+    \end{center}
+    \tableofcontents
 \else
-\minitoc
+    \minitoc
 \fi
 \thispagestyle{empty}
 
@@ -51,7 +51,7 @@ Si $G$ est de cardinal fini, alors on note $|G|$ ou $\#G$ son cardinal.
 
 \begin{thmdef}
     \Hyp $(G, \cdot)$ un groupe, $H\subset G$
-    \Conc On dira que $H$ est un sous-groupe\index{sous-groupe} de $G$ si $H\neq \emptyset$, $\cdot$ est une l.c.i. sur $H$ et $(H, \cdot)$ est un groupe. Dans ce cas, $e_H=e_G$. Il y a équivalence entre: \begin{enumerate}[label=(\alph*)]
+    \Conc On dira que $H$ est un sous-groupe\index{groupe!sous-groupe} de $G$ si $H\neq \emptyset$, $\cdot$ est une l.c.i. sur $H$ et $(H, \cdot)$ est un groupe. Dans ce cas, $e_H=e_G$. Il y a équivalence entre: \begin{enumerate}[label=(\alph*)]
         \item $H$ est un sous-groupe de $G$
         \item $H\subset G$, $H\neq \emptyset$ et $\forall x, y\in H, x\cdot y^{-1}\in H$
     \end{enumerate}
@@ -83,7 +83,7 @@ Ainsi $H\subseteq G$ est un sous-groupe de $G$ si et seulement si $H\neq \emptys
 \subsection{Centre d'un groupe}
 
 \begin{dfn}
-    Le centre d'un groupe\index{centre (d'un groupe)}\index{sous-groupe!centre} $G$ est le groupe \[
+    Le centre d'un groupe\index{centre (d'un groupe)}\index{groupe!sous-groupe!centre} $G$ est le groupe \[
         Z(G)=\{x\in G, \quad \forall y\in G, xy=yx\}
     \]
 \end{dfn}
@@ -97,7 +97,7 @@ Ainsi $H\subseteq G$ est un sous-groupe de $G$ si et seulement si $H\neq \emptys
 On note $H$ un sous-groupe de $G$. On appelle \textbf{normalisateur}\index{normalisateur} de $H$ l'ensemble \[
     N(H)=\{x\in G, \quad xHx^{-1}=H\}
 \]
-On peut vérifier que c'est un sous-groupe de $G$. On dira que $H$ est un sous-groupe distingué \index{sous-groupe!distingué} de $G$ si $N(H)=G$.
+On peut vérifier que c'est un sous-groupe de $G$. On dira que $H$ est un sous-groupe distingué \index{groupe!sous-groupe!distingué} de $G$ si $N(H)=G$.
 
 \begin{rem}
     On note $\mathcal R$ la relation \[
@@ -111,6 +111,285 @@ On peut vérifier que c'est un sous-groupe de $G$. On dira que $H$ est un sous-g
 Soit $G$ un groupe \emph{abélien}. On note \[
     \tau(G)=\{g\in G, \quad \exists n\in\mathbb N^\star, g^n=e_G\}
 \]
-C'est un sous-groupe\footnote{on a besoin de l'hypothèse de commutativité de $G$, ça n'est pas vrai sinon} de $G$ appelé sous-groupe de torsion\index{sous-groupe!de torsion}.
+C'est un sous-groupe\footnote{on a besoin de l'hypothèse de commutativité de $G$, ça n'est pas vrai sinon} de $G$ appelé sous-groupe de torsion\index{groupe!sous-groupe!de torsion}.
 
 \subsection{Sous-groupes de $\mathbb Z$ et $\mathbb R$}
+
+On va montrer que les sous-groupe de $\mathbb Z$ sont de la forme $d\mathbb Z$, et $d$ est unique au signe près.
+On va pour cela montrer la propriété plus générale suivante (hors-programme): si $A$ est un anneau euclidien, alors c'est un anneau principal.
+
+\begin{dfn}[Hors-Programme]
+    Un anneau $A$ commutatif est dit euclidien\index{anneau!euclidien} lorsqu'il existe une application $v:A^\star \to \mathbb N$ qui satisfait les propriétés suivantes:
+    \begin{enumerate}
+        \item \[
+                \forall (a, b)\in A\times A^\star, \exists q, r\in A, \qquad a=qb+r\quad \text{ et } \quad r=0\text{ ou } v(r)<v(b)
+            \]
+        \item \[
+                \forall a, b\in A^\star, \qquad v(b)\leq v(ab)
+            \]
+    \end{enumerate}
+    Une telle application sera appelée \textbf{stathme euclidien}\index{anneau!euclidien!stathme, préstathme} sur $A$. Une application qui ne satisfait que la première propriété sera appelée \textbf{préstathme euclidien} sur $A$.
+
+    Un anneau $A$ commutatif sera dit principal\index{anneau!principal} lorsque tous ses idéaux\footnote{notion abordée plus en détail dans la section \textbf{Idéal d'un anneau}} (sous-groupes $I$ de $(A, +)$ tels que pour tout $a\in A$, $aI\subset I$) sont principaux (i.e. de la forme $aA$)
+\end{dfn}
+
+L'anneau $\mathbb Z$ est euclidien (la valeur absolue est un stathme euclidien sur $\mathbb Z$). Si $H$ est un sous-groupe de $\mathbb Z$ alors pour tout $k\in\mathbb Z$, $kH=H+H+\cdots +H\subset H$ donc $H$ est un idéal de l'anneau $\mathbb Z$. Il sera donc suffisant de montrer que tout anneau euclidien est principal.
+
+\begin{prop}[Hors-Programme]
+    Un anneau euclidien est principal
+\end{prop}
+
+\begin{proof}
+    Soit $A$ un anneau commutatif euclidien (de stathme $v$), et $I$ un idéal de $A$. On va montrer que $I$ s'écrit $aA$ pour un $a\in A$. Si $I=\{0\}$ alors $a=0$ convient.
+
+    On suppose $I\neq \{0\}$. L'ensemble $v(I\setminus\{0\})$ admet un minimum, on note $a\in I\setminus\{0\}$ un élément minimal pour $v$. On a clairement $aA\subset I$ car $a\in I$ et $I$ idéal. On prend $b\in I$ et \[
+        \exists q, r, \qquad b=qa+r\quad \text{ et }\quad r=0\text{ ou }v(r)<v(a).
+    \]
+    On a $r=b-qa\in I$ donc $v(r)<v(a)$ est impossible par définition de $a$, donc $r=0$ et $b=qa$. On a donc $I\subset aA$ d'où $aA=I$
+\end{proof}
+
+\begin{rem}
+    Si $I$ est un idéal principal, il s'écrit $I=aA$. S'il s'écrit également $a'A$ alors $a\;|\;a'$ et $a'\;|\;a$ donc $a=\varepsilon a'$ pour $\varepsilon\in\mathcal U(A)$ (le groupe des inversibles de $A$). Dans $\mathbb Z$, les inversibles sont $-1$ et $1$, d'où l'unicité du générateur positif.
+\end{rem}
+
+\begin{rem}
+    On aurait pu écrire la démonstration directement pour $A=\mathbb Z$, $v:x\mapsto |x|$
+\end{rem}
+
+On va maintenant montrer qu'un sous groupe $H$ non trivial de $\mathbb R$ est soit dense dans $\mathbb R$ soit de la forme $a\mathbb Z$. On note $\ell=\inf H\cap \mathbb R_+^\star$. Il y a deux cas: \begin{itemize}
+    \item $\ell>0$. Si $l\not\in H$ alors il existe $a\in\mathbb R_+^\star$ tel que $a\in ]\ell, 2\ell[$ et $a\in H$, il existe $b\in H$ tel que $b\in ]\ell, a[$ donc $a-b\in H\cap \mathbb R_+^\star$ ce qui est absurde car $a-b>\ell$ par définition de $\ell$. Donc $\ell \in H$ et $\ell \mathbb Z\subset H$. Pour l'autre inclusion, fait comme pour $\mathbb Z$: on écrit $x=\lfloor x/\ell \rfloor \ell + r$ et $r=0$.
+    \item $\ell=0$. Soient $0<x<y$. Il existe $\alpha\in\mathbb H\cap \mathbb R_+^\star$ tel que $0<\alpha<y-x$ et \[
+            x<\underbrace{\floor{\frac x\alpha}+\alpha}_{\in H}<x+y-x=y
+        \]
+        donc $H$ est dense dans $\mathbb R$ (les autres configurations de $x$ et $y$ se traitent similairement)
+\end{itemize}
+
+Par exemple, $a\mathbb Z+b\mathbb Z$ est dense dans $\mathbb R$ si et seulement si $\frac ab\not\in \mathbb Q$, de sorte que $ \cos(\mathbb N) $ est dense dans $\mathbb R$ car $\mathbb Z+2\pi\mathbb Z$ est dense dans $\mathbb R$
+
+\section{Opérations sur les sous-groupes}
+
+\begin{prop}
+    \Hyp $(H_i)_{i\in I}$ famille de sous-groupes de $G$
+    \Conc L'ensemble \[
+        \bigcap_{i\in I}H_i
+    \]
+    est un sous-groupe de $G$
+\end{prop}
+
+\begin{rem}
+    En général, l'union de deux sous-groupes n'est pas un sous-groupe
+\end{rem}
+
+\section{Sous-groupes engendrés}
+
+\begin{thmdef}
+    \Hyp $(G, \cdot)$ un groupe, $A\subset G$, $S_A=\{H\in\mathcal P(G), A\subset H, H\text{ sg de }G\}$
+    \begin{concenum}
+    \item On appelle sous-groupe engendré\index{groupe!engendré} par $A$ l'ensemble \[
+            \langle A\rangle = \bigcap_{H\in S_A}H
+        \]
+    \item Si $H$ est un sous-groupe de $G$ contenant $A$ alors $\langle A\rangle \subseteq H$
+    \item \[
+            \langle A\rangle =\{e_G\}\cup \{x_1\cdots x_n, \quad n\in\mathbb N, x_1, \cdots, x_n\in A\cup A^{-1}\}
+        \]
+    \end{concenum}
+\end{thmdef}
+
+\begin{proof}~
+    \begin{enumerate}
+        \setcounter{enumi}{2}
+    \item On note $E=\{e_G\}\cup \{x_1\cdots x_n, \quad n\in\mathbb N, x_1, \cdots, x_n\in A\cup A^{-1}\}$. On a \[
+            E\subset \langle A\rangle\qquad \text{ car }A,A^{-1}\subset \langle A\rangle
+        \]
+        et $A\subset E$ donc $\langle A\rangle \subset E$ par 2. donc $E=\langle A\rangle$
+\end{enumerate}
+\end{proof}
+
+\begin{ex}
+    \begin{itemize}
+        \item $\langle \exp \left( \frac{2i\pi}n \right)\rangle=\mathbb U_n$
+        \item $\mathbb Z=\langle 1\rangle = \langle 2, 3\rangle$
+        \item $\mathfrak S_n=\langle \tau_{1,2}, (1\;\cdots\; n)\rangle$
+    \end{itemize}
+\end{ex}
+
+\begin{dfn}
+    Un groupe $G$ est dit monogène\index{groupe!monogène} s'il existe $a\in G$ tel que $G=\langle a\rangle$. Si de plus $G$ est fini, on dira qu'il est cyclique\index{groupe!cyclique}
+\end{dfn}
+
+
+\section{Morphismes}
+
+\begin{dfn}
+    Soient $(G,\cdot), (G',\star)$ deux groupes. Une application $f:G\to G'$ est un morphisme ssi \[
+        \forall x, y\in G, f(x\cdot y)=f(x)\star f(y)
+    \]
+\end{dfn}
+
+\begin{notation}
+    $f:G\to G'$ est un endomorphisme ssi c'est un morphisme. C'est un isomorphisme si c'est une bijection. Si $G=G'$, on dira qu'un morphisme de $G$ dans $G'$ est un endomorphisme de $G$. Un endomorphisme bijectif est appelé automorphisme. On note $\Hom (G, G')$ l'ensemble des morphisme de $G$ dans $G'$ et $\Aut(G)$ l'ensemble des automorphismes de $G$.\index{groupe!isomorphisme} \index{groupe!endomorphisme}
+\end{notation}
+
+\begin{prop}
+    \Hyp $f\in\Hom(G, G')$
+    \begin{concenum}
+    \item $f(e_G)=e_G$
+    \item $\forall x\in G, \quad f(x^{-1})=f(x)^{-1}$
+    \item On note $\Ker f=f^{-1}(\{e_G\})$. \begin{enumerate}
+            \item $\Ker f$ est un sous groupe de $G$
+            \item $f$ est injective si et seulement si $\Ker f=\{e_G\}$
+        \end{enumerate}
+    \item $f^{-1}$ est un isomorphisme si $f$ est un isomorphisme.
+    \item $g\circ f$ est un morphisme si $f:G\to G'$ et $g:G'\to G''$ le sont
+    \end{concenum}
+\end{prop}
+
+\begin{csq}
+    $(\Aut(G), \circ)$ est un groupe
+\end{csq}
+
+\begin{csq}
+    Les $i_a:x\in G\longmapsto axa^{-1}$ pour $a\in G$ sont appelés automorphismes intérieurs\index{groupe!automorphismes intérieurs}. $\varphi:a\longmapsto i_a$ est un morphisme.
+\end{csq}
+
+Les morphismes ont la propriété intéressante suivante:
+
+\begin{prop}
+    L'image et la préimage d'un groupe par un morphisme est un groupe.
+\end{prop}
+
+\begin{proof}
+    Facile mais pénible
+\end{proof}
+
+\section{Groupes finis}
+
+\subsection{Théorème de Lagrange}
+
+\index{Lagrange!théorème}
+
+On note $G$ un groupe fini et $H$ un sous groupe de $G$. On va montrer que $|H|$ divise $|G|$. On a vu que \[
+    x\mathcal Ry\iff x^{-1}y\in H
+\]
+définit une relation d'équivalence sur $G$, les classes d'équivalence forment donc une partition de $G$. On a ainsi ($\sqcup$ désigne l'union disjointe) \[
+    G=\bigsqcup_{i=1}^p a_iH \implies |G|=p|H|
+\]
+
+\subsection{\texorpdfstring{$|G|=|\Ker f|\cdot |\img f|$}{\#G=\#Ker f × \#Im f}}
+
+On note $G$ un groupe fini et $f:G\to G'$ un morphisme. On note $\img f=\{y_1, \cdots, y_p\}$ de sorte que \[
+    G=\bigsqcup_{i=1}^p f^{-1}(\{y_i\}) \implies |G|=\sum_{i=1}^p \left| f^{-1}(\{y_i\}) \right|
+\]
+On se donne $y\in \img f$ fixé et $x\in f^{-1}(\{y\})$. On pose \[
+    \varphi: t\in \Ker f\longmapsto xt\in f^{-1}(\{y\}).
+\]
+Cette application est injective et si $u\in f^{-1}(\{y\})$ alors $u=\varphi(x^{-1}u)$ donc elle est aussi surjective. Elle est donc bijective, d'où \[
+    |f^{-1}(\{y\})|=|\Ker f|\quad \implies \quad |G|=|\Ker f|\cdot |\img f|
+\]
+
+\subsection{Ordre d'un élément}
+
+\begin{defprop}
+    \Hyp $G$ un groupe fini, $a\in G$
+    \begin{concenum}
+    \item $\varphi:\mathbb Z\longrightarrow G, n\longmapsto a^n$ est un morphisme. Il existe un unique entier naturel non nul tel que $\Ker \varphi=d\mathbb Z$, qu'on appelle \textbf{ordre} de $a$ dans $G$\index{groupe!ordre}, noté $\ord_G (a)$ ou $\ord (a)$
+    \item $\ord (a)=|\langle a\rangle|=\min\{n\in\mathbb N^\star, a^n=e_G\}$
+    \item $a^n=e_G \iff \ord(a)\;|\; n$ et \[
+            \ord(a^p)=\frac{\ord (a)}{p\land \ord (a)}
+        \]
+    \end{concenum}
+\end{defprop}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item $\varphi$ n'est pas injective car $G$ fini donc $\Ker \varphi$ est un sous-groupe non trivial de $\mathbb Z$, ce qui conclut
+        \item $d=\min \Ker\varphi\cap \mathbb N^\star=\min\{n\in\mathbb N^\star, a^n=e_G\}$ puis \[
+                a^k=a^{dq+r}=a^r
+            \] avec $r\in\llbracket 0, d-1\rrbracket$ donc $\langle a\rangle = \{e_G, a, \cdots, a^{d-1}\}$ et pour $0\leq r_1<r_2<d$, $a^{r_1}=a^{r_2} \implies r_2-r_1\in d\mathbb Z\cap \rrbracket 0, d-1 \llbracket $ absurde donc $|\langle a \rangle |=d$
+        \item $a^n=e_G\iff n\in\Ker \varphi=d\mathbb Z\iff d\;|\;n$ puis \[
+                \left( a^p \right)^{\frac{\ord (a)}{p\land \ord(a)}}=a^{k\ord(a)}=e_G\quad \text{ donc }\quad \ord(a^p)\;\Big|\;\frac{\ord(a)}{p\land\ord(a)}
+            \]
+            et \[
+                (a^p)^{\ord (a^p)}=e_G \implies \ord(a)\;\Big|\;p\ord (a^p) \implies \frac{\ord(a)}{p\land \ord(a)}\;\Big|\; \frac{p}{p\land \ord(a)}\times \ord(a^p)
+            \]
+            donc par le lemme de Gauss, \[
+                \frac{\ord(a)}{p\land \ord(a)}\;\Big|\; \ord(a^p)
+            \]
+            d'où l'égalité
+    \end{enumerate}
+\end{proof}
+
+\begin{rem}
+    Si $G$ est fini abélien et $a, b\in G$, \[
+        (ab)^{\ord(a)\lor \ord(b)}=e_G\implies \ord (ab)\;|\; \ord(a)\lor \ord(b)
+    \]
+    Si $\ord (a)$ et $\ord (b)$ sont premiers entre eux alors \[
+        (ab)^{\ord(ab)\ord (b)}=e_G=a^{\ord(ab)\ord(b)}\implies \ord (a)\;|\;\ord (b)\ord(ab)\underset{\text{Gauss}}\implies \ord(a)\;|\;\ord(ab)
+    \]
+    et par symétrie, $\ord(b)\;|\;\ord (ab)$ don $\ord(ab)=\ord(a)\ord(b)$
+\end{rem}
+
+\begin{prop}
+    \Hyp $(G, \cdot)$ groupe fini, $a\in G$
+    \Conc $\ord(a)\;|\;\# G$
+\end{prop}
+
+\begin{proof}
+    C'est évident avec le théorème de Lagrange. Sinon, \[
+        \prod_{x\in G}x=\prod_{x\in G}ax=a^{|G|}\prod_{x\in G}x \implies a^{|G|}=e_G
+    \]
+\end{proof}
+
+\subsection{Groupe de cardinal $p^2$}
+
+On note $p$ un nombre premier et on suppose que $G$ est un groupe d'ordre $p^2$. Les seuls ordres possibles sont $1, p$ et $p^2$. S'il y a un élément d'ordre $p^2$, alors $G=\langle a\rangle$ est abélien et $a^p$ est d'ordre $p$. Sinon, tous les éléments sont d'ordres $p$. Dans les deux cas, il y a un élément d'ordre $p$.
+
+\subsection{Groupe de cardinal divisible par $p$}
+
+On note $p$ premier et $G$ un groupe d'ordre $kp$. On va montrer qu'il existe un élément d'ordre $p$. Il suffit de montrer qu'un élément est d'ordre $p$. On note \[
+    E=\{(x_1, \cdots, x_p)\in G^p, \quad x_1 \cdots x_p=e_G\}\qquad \qquad \#E=\#G^{p-1}.
+\]
+Cet ensemble est stable par permutation circulaire (car $x_1\cdots x_p=e_G \implies x_2\cdots x_px_1=e_G$). On note $\sigma$ la permutation circulaire $(1\;\; 2 \;\; \cdots \;\; p)$. On va faire agir $\langle \sigma \rangle$ sur $E$. Pour $C\in \mathfrak S_n$, $x=(x_1, \cdots, x_p)\in E$, on note $C.x=(x_{\sigma(1)}, \cdots, x_{\sigma(p)})$.
+
+Pour $x\in E$, on note $O_x=\{C.x, C\in\langle \sigma\rangle\}$ l'orbite de $x$. La relation $x\mathcal Ry\iff y\in O_x$ est une relation d'équivalence sur $E$ de sorte que les $O_x$ forment une partition de $E$. On note \[
+    \varphi_x:c\in \langle \sigma \rangle \longmapsto c.x\in O_x.
+\]
+Si $\varphi_x$ est injective alors $O_x=\img \varphi_x$ et $|O_x|=|\langle \sigma \rangle|=p$. Sinon, il existe $1\leq k_1 < k_2\leq p$ tel que $\sigma^{k_1}.x=\sigma^{k_2}.x$ donc $\sigma^{k_2-k_1}.x=x$. On a alors $\forall n\geq 0, \sigma^n.x=\sigma^{n+k_2-k_1}.x$ donc $\forall i\in\llbracket 1, p\rrbracket$, $x_i=x_{i+n(k_2-k_1)\pmod p}$ or $k_2-k_1$ engendre $(\mathbb Z_p, +)$ (car $p$ premier) donc $(n(k_2-k_1))_n$ parcoure tous les entiers modulo $p$ et $x=(x_1, \cdots, x_1)$, d'où finalement $\#O_x=1$
+
+Ainsi, les orbites sont de cardinal $p$ ou $1$. On note $O_{x_1}, \cdots, O_{x_r}$ les orbites de cardinal $p$ et $O_{x_1'}, \cdots, O_{x_s'}$ celles de cardinal $1$. On a \[
+    \#E=rp+s=\#G^{p-1}\equiv 0\pmod p \implies r\equiv 0\pmod p
+\]
+donc $r\geq p\geq 2$ et il existe $x=(a, \cdots, a)\neq (e_G, \cdots, e_G)$ dans $E$, donc $a^p=e_G$ et $a\neq e_G$ donc $\ord (a)=p$ (car $p$ premier n'est divisible que par $1$ et $p$).
+
+\subsection{Moyenne dans un groupe}
+
+On note $E$ un $K$-e.v., $G$ un sous-groupe de $\mathrm{GL}(E)$ fini d'ordre $n$. On note \[
+    p= \frac{1}{|G|} \sum_{g\in G} g
+\]
+Si $g_0\in G$, alors $g\longmapsto g_0\circ g$ est bijective et \[
+    g_0 p=\frac1{|G|}\sum_{g\in G}g_0 g=p=pg_0
+\]
+donc \[
+    p\circ p=p\circ \left( \frac1{|G|}\sum_{g\in G} g\right)=\frac1{|G|}\sum_{g\in G}\underbrace{pg}_{=p}=\frac1{|G|}|G|p=p
+\]
+donc $p$ est un projecteur
+
+
+\begin{exo}
+    \begin{itemize}
+        \item ~[3/2] On note $f\in \mathcal L(E)$, \[
+                f^\star = \frac1{|G|}\sum_{g\in G}g^{-1}\circ f\circ g
+            \]
+            Montrer que $f^\star$ commute avec les éléments de $G$ et $f^{\star\star}=f^\star$
+        \item ~[5/2] Montrer que si $F$ est un s.e.v stable par tous les éléments de $G$ alors il a un supplémentaire stable par tous les éléments de $G$.
+    \end{itemize}
+\end{exo}
+
+\section{Groupes cycliques}
+
+\begin{dfn}
+    Un groupe cyclique est un groupe fini monogène\index{groupe!cyclique}
+\end{dfn}
+
+\subsection{Sous-groupes d'un groupe cyclique}
+
