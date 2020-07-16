@@ -75,7 +75,7 @@ jobs:
         asset_path: ./target/cours.pdf
         asset_name: cours-complet.pdf
         asset_content_type: application/pdf
-    - name: Release cours
+    - name: Release algebre
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -83,4 +83,13 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./target/algebre-generale.pdf
         asset_name: algebre-generale.pdf
+        asset_content_type: application/pdf
+    - name: Release arithmétique
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/arithmetique.pdf
+        asset_name: arithmetique.pdf
         asset_content_type: application/pdf
