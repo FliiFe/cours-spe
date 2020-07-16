@@ -8,7 +8,10 @@ all: $(PDFS)
 src/figures/%.pdf: src/figures/%.tex
 	cd src/figures/ && latexmk -pdf $(<F) && latexmk -c $(<F)
 
-target/cours.pdf: $(figures)
+target/cours.pdf: cours.tex src/preamble.tex $(figures)
+	@echo Dependencies $^
+	latexmk -pdf $<
+	cp build/$(@F) $@
 
 $(PDFS): | target
 
@@ -23,7 +26,7 @@ figures: $(figures)
 
 .SECONDEXPANSION:
 PER := %
-target/%.pdf: %.tex src/preamble.tex $$(patsubst $$(PER).tex,$$(PER).pdf,$$(wildcard src/figures/%-*.tex))
+target/%.pdf: %.tex src/preamble.tex src/%.tex $$(patsubst $$(PER).tex,$$(PER).pdf,$$(wildcard src/figures/%-*.tex))
 	latexmk -pdf $<
 	cp build/$(@F) $@
 
