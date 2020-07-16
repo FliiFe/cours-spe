@@ -354,7 +354,7 @@ Cet ensemble est stable par permutation circulaire (car $x_1\cdots x_p=e_G \impl
 Pour $x\in E$, on note $O_x=\{C.x, C\in\langle \sigma\rangle\}$ l'orbite de $x$. La relation $x\mathcal Ry\iff y\in O_x$ est une relation d'équivalence sur $E$ de sorte que les $O_x$ forment une partition de $E$. On note \[
     \varphi_x:c\in \langle \sigma \rangle \longmapsto c.x\in O_x.
 \]
-Si $\varphi_x$ est injective alors $O_x=\img \varphi_x$ et $|O_x|=|\langle \sigma \rangle|=p$. Sinon, il existe $1\leq k_1 < k_2\leq p$ tel que $\sigma^{k_1}.x=\sigma^{k_2}.x$ donc $\sigma^{k_2-k_1}.x=x$. On a alors $\forall n\geq 0, \sigma^n.x=\sigma^{n+k_2-k_1}.x$ donc $\forall i\in\llbracket 1, p\rrbracket$, $x_i=x_{i+n(k_2-k_1)\pmod p}$ or $k_2-k_1$ engendre $(\mathbb Z_p, +)$ (car $p$ premier) donc $(n(k_2-k_1))_n$ parcoure tous les entiers modulo $p$ et $x=(x_1, \cdots, x_1)$, d'où finalement $\#O_x=1$
+Si $\varphi_x$ est injective alors $O_x=\img \varphi_x$ et $|O_x|=|\langle \sigma \rangle|=p$. Sinon, il existe $1\leq k_1 < k_2\leq p$ tel que $\sigma^{k_1}.x=\sigma^{k_2}.x$ donc $\sigma^{k_2-k_1}.x=x$. On a alors $\forall n\geq 0, \sigma^n.x=\sigma^{n+k_2-k_1}.x$ donc $\forall i\in\llbracket 1, p\rrbracket$, $x_i=x_{i+n(k_2-k_1)\pmod p}$ or $k_2-k_1$ engendre $(\mathbb Z_p, +)$ (car $p$ premier) donc $(n(k_2-k_1))_n$ parcourt tous les entiers modulo $p$ et $x=(x_1, \cdots, x_1)$, d'où finalement $\#O_x=1$
 
 Ainsi, les orbites sont de cardinal $p$ ou $1$. On note $O_{x_1}, \cdots, O_{x_r}$ les orbites de cardinal $p$ et $O_{x_1'}, \cdots, O_{x_s'}$ celles de cardinal $1$. On a \[
     \#E=rp+s=\#G^{p-1}\equiv 0\pmod p \implies r\equiv 0\pmod p
@@ -393,3 +393,142 @@ donc $p$ est un projecteur
 
 \subsection{Sous-groupes d'un groupe cyclique}
 
+On note $G=\langle a\rangle$ cyclique d'ordre $n$. On note $H$ un sous-groupe de $G$, et $r=\min\{p\in\mathbb N^\star, a^p\in H\}$. On a \begin{itemize}
+    \item $\langle a^r\rangle\subseteq H$
+    \item Soit $x=a^m\in H$. On écrit $m=rq+s$, $s\in\llbracket 0, r-1\rrbracket$ de sorte que $a^s\in H$ donc $s=0$ et donc $x\in \langle a^p\rangle=H$
+\end{itemize}
+
+Ainsi, $H$ est cyclique.
+
+\subsection{Générateurs d'un groupe cyclique}
+
+Avec les mêmes notations, on considère\index{indicatrice d'Euler} \[
+    \varphi: n\longmapsto \{k\in\llbracket 1, n\rrbracket, \quad k\land n=1\}.
+\]
+On appelle cette application l'indicatrice d'Euler.
+$g=a^p$ est un générateur de $G$ ssi $\ord(a^p)=n$ ssi $n=\frac{n}{p\land n}$ ssi $p\land n=1$. Il y a donc $\varphi(n)$ générateurs de $G$.
+
+Plus généralement, il y a $\varphi(d)$ éléments d'ordre $d$ (on peut le voir en appliquant ce raisonnement à un sous-groupe d'ordre $d\;|\; n$). On a ainsi \[
+    \sum_{d\;|\; n}\varphi(d)=n
+\]
+
+\subsection{Sous-groupes d'ordre $d$}
+
+On note $H$ un sous-groupe de cardinal $d$ de $G$ (donc $d$ divise $n$).
+\begin{itemize}
+    \item $H$ a $\varphi(d)$ générateurs (donc d'ordre $d$)
+    \item $G$ a $\varphi(d)$ éléments d'ordre $d$
+\end{itemize}
+donc $H$ contient tous les éléments d'ordre $d$, il est donc unique.
+
+\section{Le groupe \texorpdfstring{$\mathfrak S_n$}{symétrique d'ordre n}}
+
+Le $n$-ième groupe symétrique\index{groupe!symétrique} $(\mathfrak S_n, \circ)$ est un groupe d'ordre $n!$. On note $\tau_{i, j}$ la transposition de support $\{i, j\}$. Si $\sigma \in \mathfrak S_n$, alors $\sigma$ s'identifie au $n$-uplet \[
+    (\sigma(1), \cdots, \sigma(n))
+\]
+
+On note $c=(i_1\;\;i_2\;\;\cdots \;\;i_p)$ la permutation \[ 
+    c: n \in\llbracket 1, n\rrbracket \longmapsto \begin{cases}
+        i_{k+1}& \text{ si }n=i_k, k<p\\
+        i_1 &\text{ si }n=i_p\\
+        n & \text{sinon}
+    \end{cases}
+\] 
+On dira que $c$ est un cycle de support $\{i_1, \cdots, i_p\}$ et d'ordre\footnote{il s'agit bien de l'ordre au sens de $\ord_{\mathfrak S_n}(c)$} $p$ (on prend les $i_k$ deux à deux distincts)
+
+\subsection{Décomposition en cycles}
+
+On note $\sigma \in\mathfrak S_n$ et $O_1, \cdots O_p$ les orbites pour l'action de $\langle \sigma \rangle$ sur $\llbracket1, n\rrbracket$ (c'est à dire les classes d'équivalence pour $x\mathcal Ry\iff \exists k, y=\sigma^k(x)$)
+
+Les orbites s'écrivent $O_k=\{i_k, \sigma(i_k), \cdots, \sigma^{p_k}(i_k)\}$. On note $c_k=(i_k\;\;\sigma(i_k)\;\;\cdots\;\;\sigma^{p_k}(i_k))$ de sorte que \[
+    \sigma=c_1\circ \cdots \circ c_p
+\]
+On a alors \[
+    \sigma^k=\id \iff c_1^k=\cdots =c_p^k=\id \iff \ord(c_1)\lor \cdots \lor \ord(c_p)\;|\;k
+\]
+
+\subsection{Signature}
+
+Une inversion pour $\sigma \in \mathfrak S_n$ est un couple $(i, j)\in\llbracket 1, n\rrbracket^2$ tel que $i<j$ et $\sigma(j)<\sigma(i)$. On note $N_\sigma$ le nombre de ces inversions et \[
+    \varepsilon: \sigma\longmapsto (-1)^{N_\sigma}
+\]
+est appelée \textbf{signature}\index{signature (d'une permutation)} de $\sigma$
+
+\begin{prop}
+    \begin{enumerate}
+        \item \[
+                \forall \sigma\in\mathfrak S_n, \qquad \varepsilon(\sigma)=\prod_{i<j}\frac{\sigma(i)-\sigma(j)}{i-j}=\prod_{\{i, j\}\in \mathcal P_2(\llbracket 1, n\rrbracket)}\frac{\sigma(i)-\sigma(j)}{i-j}
+            \]
+        \item $\varepsilon:\mathfrak S_n\to \mathbb U_2$ est un morphisme
+        \item La signature d'une transposition vaut $-1$
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item La seconde égalité est claire. Puis, \[
+                \left| \prod_{i<j}\frac{\sigma(i)-\sigma(j)}{i-j} \right|=\frac{\prod_{i<j}|\sigma(i)-\sigma(j)|}{\prod_{i<j}|i-j|}=1
+            \]
+            et le signe est bon.
+        \item $\sigma, \sigma'\in\mathfrak S_n$. \[
+                \varepsilon(\sigma \circ \sigma')=\prod_{i<j}\frac{\sigma\circ \sigma'(i)-\sigma\circ \sigma'(j)}{\sigma'(i)-\sigma'(j)}\times \frac{\sigma'(i)-\sigma'(j)}{i-j}=\varepsilon(\sigma)\varepsilon(\sigma')
+            \]
+        \item On compte les inversions de $\tau_{1, 2}$ et $\sigma\circ \tau_{i, j}\circ \sigma^{-1}=\tau_{1, 2}$.
+    \end{enumerate}
+\end{proof}
+
+\subsection{Théorème de Cayley}
+
+On note $G=\{g_1, \cdots, g_n\}$ un groupe fini. On a \[
+    \varphi: G\to \mathfrak S(G), x\longmapsto (t\longmapsto xt)
+\]
+Cette application est injective car \[
+    \varphi(x)=\varphi(x')\implies \varphi(x)(e_G)=\varphi(x')(e_G)\implies x=x'
+\]
+C'est un morphisme car $\varphi(xx')(t)=xx't=x\varphi(x')(t)=\varphi(x)\circ \varphi(x')(t)$.
+Ainsi, $G$ est isomorphe à $\varphi(G)$ sous-groupe de $\mathfrak S(G)$ qui est isomorphme à $\mathfrak S_n$. Donc, $G$ est isomorphe à un sous-groupe de $\mathfrak S_n$.
+
+\section{Anneaux et corps}
+
+\begin{dfn}
+    \index{anneau} Un ensemble $A$ muni des lois $+$ et $\times$ est un anneau si \begin{itemize}
+        \item $(A, +)$ est un groupe abélien de neutre $0_A$
+        \item $(A^\star, \times)$ est un monoïde\footnote{mêmes hypothèses que la structure de groupe sans l'inversibilité} de neutre $1_A$
+        \item $\times$ est distributive par rapport à $+$
+    \end{itemize}
+\end{dfn}
+
+\begin{dfn}
+    Un anneau commutatif est intègre\index{anneau!intègre} si tous ses éléments sont réguliers pour $\times$
+\end{dfn}
+
+\begin{dfn}
+    $(A, +, \times)$ est un corps\index{corps} si $(A^\star, \times)$ est un groupe abélien.
+\end{dfn}
+
+\begin{rem}
+    Un anneau intègre fini est un corps, cat $\forall a\in A^\star, x\longmapsto ax$ est injective donc bijective donc tous les éléments sont inversibles.
+\end{rem}
+
+\subsection{Calcul dans un anneau}
+
+\begin{prop}
+    \Hyp $a, b\in A$ un anneau, $ab=ba$.
+    \Conc \[
+        (a+b)^n=\sum_{k=0}^n\binom nk a^kb^{n-k}
+    \]
+\end{prop}
+
+\begin{proof}
+    Vu en sup, facile mais long.\footnote{«Moralement, c'est vrai»}
+\end{proof}
+
+\begin{rem}
+    On prend la convention \[
+        \forall k\not\in\llbracket 0, n\rrbracket, \qquad \binom nk=0
+    \]
+\end{rem}
+
+La formule du binôme se généralise ainsi: pour $a_1, \cdots, a_p\in A$ qui commutent $2$ à $2$ et pour $n\in\mathbb N$, \[
+    (a_1+\cdots +a_p)^n=\sum_{a_1+\cdots +a_p=n}\binom{n}{n_1, \cdots, n_p}a_1^{n_1}\cdots a_p^{n_p}
+\]
