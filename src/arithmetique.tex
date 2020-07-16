@@ -1,0 +1,136 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Arithmétique} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\ifsolo \newpage \setcounter{page}{1} \fi
+\section{Arithmétique classique}
+
+\subsection{Rappels}
+
+On se place dans l'anneau $(\mathbb Z, +, \times)$, et on note $\mathbb P$ l'ensemble des nombres premiers.
+
+\begin{thm}[Division Euclidienne]
+    \index{division euclidienne} Pour $a, b\in\mathbb Z$, $b$ non nul, il existe des uniques entiers $q, r$ tels que \[
+        a=qb+r\qquad \qquad \text{ et } 0\leq r<|b|
+    \]
+\end{thm}
+
+\begin{rem}
+    L'existence d'un tel $r$ montre que $\mathbb Z$ est euclidien pour le stathme $|\cdot|$
+\end{rem}
+
+\begin{thm}[Théorème fondamental de l'arithmétique]
+    Tout entier relatif $n$ non nul s'écrit de manière\index{théorème fondamental de l'arithmétique} unique (à l'ordre près des facteurs et à une constante inversible près) comme produit de puissances de premiers: \[
+        \forall n\in\mathbb Z^\star, \exists! p_1, \cdots, p_r\in\mathbb P, \exists! \alpha_1, \cdots, \alpha_r\in\mathbb N^\star, \exists \epsilon\in\mathcal U_{\mathbb Z}=\{-1, 1\}, \qquad n=\epsilon p_1^{\alpha_1}\cdots p_r^{\alpha_r}
+    \]
+\end{thm}
+
+\begin{thmdef}[Bézout, PGCD]
+    Pour $a, b\in\mathbb Z$, il existe un unique entier positif $d$ tel que $a\mathbb Z+b\mathbb Z=d\mathbb Z$. On appelle cet entier le PGCD de $a$ et $b$, et on le note $d=a\land b=(a, b)=\mathrm{PGCD}(a, b)$. Si $d=a\land b$ alors il existe $u, v\in \mathbb Z$ tels que $au+bv=d$ (c'est la  propriété de Bézout)\index{Bézout (théorème de -- )}
+\end{thmdef}
+
+\begin{rem}
+    Cette définition du PGCD coïncide avec la définition usuelle.
+\end{rem}
+
+\begin{thmdef}[Identité de Bézout, Coprimalité]
+    Deux entiers $a$ et $b$ sont dits premiers entre eux si les ensembles de leurs diviseurs stricts sont disjoints. C'est équivalent à \[
+        \exists u, v\in\mathbb Z, \qquad au+bv=1
+    \]
+\end{thmdef}
+
+\begin{thm}[Lemme de Gauss]
+    \index{Gauss!lemme} Si $a, b, c\in \mathbb Z$ et $a\land c=1$ alors \[
+        a\;|\;bc\implies a\;|\; b
+    \]
+\end{thm}
+
+\subsection{Utilisation d'un Vandermonde}
+
+On note $a_1, \cdots, a_n\in\mathbb Z$. On veut montrer que \[
+    \prod_{1\leq i<j\leq n}(j-i)\;\Big|\; \prod_{1\leq i<j\leq n}(a_j-a_i)
+\]
+
+On introduit \[
+    \Delta(X_1, \cdots, X_n)= \begin{vmatrix}
+        \binom{X_1}0 & \cdots & \binom{X_1}{n-1} \\
+        \vdots & \ddots & \vdots \\
+        \binom{X_n}0 & \cdots & \binom{X_n}{n-1}
+    \end{vmatrix}\qquad \text{ avec }\binom Xk=\frac{X(X-1)\cdots (X-k+1)}{k!}
+\]
+On a \[
+    \binom X{n-1}=\frac{X^{n-1}}{(n-1)!}+\underbrace{c_{n-2}X^{n-2}+\cdots +c_0}_{\in \Vect \left( \binom X0, \cdots, \binom X{n-2} \right)}
+\]
+de sorte que dans le déterminant on peut remplacer la dernière colonne par \[
+    \begin{pmatrix}
+        \frac{X_1^{n-1}}{(n-1)!} \\
+        \vdots \\
+        \frac{X_n^{n-1}}{(n-1)!}
+    \end{pmatrix}
+\]
+et en itérant sur les colonnes de droite à gauche, \[
+    \Delta(X_1, \cdots, X_n)= \begin{vmatrix}
+        \;\;\;1\;\; & \dfrac{X_1}1 & \cdots & \dfrac{X_1^{n-1}}{(n-1)!} \\
+        \;\vdots & \ddots & \ddots & \vdots \\
+        \;\vdots & \ddots & \ddots & \vdots \\
+        \;\;\;1\;\; & \cdots & \cdots & \dfrac{X_n^{n-1}}{(n-1)!}
+    \end{vmatrix}
+\]
+et \[
+    \Delta(a_1, \cdots, a_n)=\frac1{1!2!\cdots (n-1)!}V(a_1, \cdots, a_n)=\frac1{\prod_{1\leq i<j\leq n}(j-i)}\prod_{1\leq i<j\leq n}(a_j-a_i)
+\]
+or $\Delta(a_1, \cdots, a_n)$ est bien un entier car les $\binom{a_i}k$ sont des entiers, ce qui conclut.
+
+\subsection{Méthode de la descente infinie}
+
+On note $p$ premier et pour $n\geq 3$, on considère l'équation $x^n+py^n=p^2z^n$.
+\begin{itemize}
+    \item $(0, 0, 0)$ est solution. On suppose qu'il y en a d'autres et on note $(x, y, z)\neq (0, 0, 0)$ une solution minimale pour $|x|+|y|+|z|$.
+    \item On a $p\;|\;p^2z^n-py^n=x^n$ donc $p$ divise $x$: on écrit $x=px'$. On a \[
+            p^{n-1}x'^n+y^n=pz^n
+        \]
+        donc $p$ divise $y$ qu'on écrit $y=py'$ et donc $p$ divise $z$ qui s'écrit $z=pz'$. On a ainsi trouvé une nouvelle solution $(x', y', z')$ strictement inférieure à la précédente, ce qui est absurde. Ainsi, la seule solution est la solution nulle.
+\end{itemize}
+
+\subsection{Formule de Legendre}
+
+\begin{dfn}
+    \index{valuation $p$-adique} Pour tout premier $p$, on définit la \textbf{valuation $\bm p$-adique} $v_p$ par : \[
+        v_p: n\in\mathbb Z^\star \longmapsto \max\{k\in\mathbb N, \quad p^k\;|\; n\}
+    \]
+\end{dfn}
+
+On va montrer la formule de Legendre\index{Legendre!formule}: \[
+    v_p(n!)=\sum_{i=1}^{+\infty}\floor{\frac n{p^i}}
+\]
+Pour cela, on remarque \[
+    v_p(n!)=\sum_{m=1}^nv_p(m)=\sum_{m=1}^n\sum_{k=1}^{v_p(m)}1=\sum_{k=1}^{+\infty}\sum_{\substack{k\leq v_p(m)\\ 1\leq m\leq n}}1=\sum_{k=1}^{+\infty}\sum_{d\leq m=p^ku\leq n}1=\sum_{k=1}^{+\infty}\floor{\frac n{p^k}}
+\]
+
+\begin{exo}[X]
+     Pour $m, n\in\mathbb N$, montrer \[
+        \frac{(2m)!(2n)!}{(m+n)!n!m!}\in\mathbb N
+     \]
+\end{exo}
+
+\subsection{Coefficients du binôme}
+
+\todo{Retrouver ça}
+
+\section{L'anneau $\mathbb Z_n$}
+
+Soit $A$ un anneau commutatif et $I$ un idéal de $A$. On définit la relation d'équivalence suivante: $x\mathcal Ry\iff x-y\in I$. On note $A/I$ l'ensemble des classes d'équivalences: c'est un anneau commutatif avec les lois $\bar{x+y}=\bar x+\bar y$ et $\bar{x\times y}=\bar x\times \bar y$.
+
+Pour $A=\mathbb Z$, $I=n\mathbb Z$, il y a $n$ classes d'équivalence dans $\mathbb Z_n\defeq\mathbb Z/n\mathbb Z$, ce sont les $\bar 0, \cdots , \bar{n-1}$.
+
+\section{$\mathbb Z_n^\star$}
