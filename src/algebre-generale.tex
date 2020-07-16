@@ -119,13 +119,13 @@ On va montrer que les sous-groupe de $\mathbb Z$ sont de la forme $d\mathbb Z$, 
 On va pour cela montrer la propriété plus générale suivante (hors-programme): si $A$ est un anneau euclidien, alors c'est un anneau principal.
 
 \begin{dfn}[Hors-Programme]
-    Un anneau $A$ commutatif est dit euclidien\index{anneau!euclidien} lorsqu'il existe une application $v:A^\star \to \mathbb N$ qui satisfait les propriétés suivantes:
+    Un anneau $A$ commutatif est dit euclidien\index{anneau!euclidien} lorsqu'il existe une application $v:A\setminus\{0\} \to \mathbb N$ qui satisfait les propriétés suivantes:
     \begin{enumerate}
         \item \[
-                \forall (a, b)\in A\times A^\star, \exists q, r\in A, \qquad a=qb+r\quad \text{ et } \quad r=0\text{ ou } v(r)<v(b)
+                \forall (a, b)\in A\times A\setminus\{0\}, \exists q, r\in A, \qquad a=qb+r\quad \text{ et } \quad r=0\text{ ou } v(r)<v(b)
             \]
         \item \[
-                \forall a, b\in A^\star, \qquad v(b)\leq v(ab)
+                \forall a, b\in A\setminus\{0\}, \qquad v(b)\leq v(ab)
             \]
     \end{enumerate}
     Une telle application sera appelée \textbf{stathme euclidien}\index{anneau!euclidien!stathme, préstathme} sur $A$. Une application qui ne satisfait que la première propriété sera appelée \textbf{préstathme euclidien} sur $A$.
@@ -493,7 +493,7 @@ Ainsi, $G$ est isomorphe à $\varphi(G)$ sous-groupe de $\mathfrak S(G)$ qui est
 \begin{dfn}
     \index{anneau} Un ensemble $A$ muni des lois $+$ et $\times$ est un anneau si \begin{itemize}
         \item $(A, +)$ est un groupe abélien de neutre $0_A$
-        \item $(A^\star, \times)$ est un monoïde\footnote{mêmes hypothèses que la structure de groupe sans l'inversibilité} de neutre $1_A$
+        \item $(A\setminus\{0\}, \times)$ est un monoïde\footnote{mêmes hypothèses que la structure de groupe sans l'inversibilité} de neutre $1_A$
         \item $\times$ est distributive par rapport à $+$
     \end{itemize}
 \end{dfn}
@@ -503,18 +503,18 @@ Ainsi, $G$ est isomorphe à $\varphi(G)$ sous-groupe de $\mathfrak S(G)$ qui est
 \end{dfn}
 
 \begin{dfn}
-    $(A, +, \times)$ est un corps\index{corps} si $(A^\star, \times)$ est un groupe abélien.
+    $(A, +, \times)$ est un corps\index{corps} si $(A\setminus\{0\}, \times)$ est un groupe abélien.
 \end{dfn}
 
 \begin{rem}
-    Un anneau intègre fini est un corps, cat $\forall a\in A^\star, x\longmapsto ax$ est injective donc bijective donc tous les éléments sont inversibles.
+    Un anneau intègre fini est un corps, car $\forall a\in A\setminus\{0\}, x\longmapsto ax$ est injective donc bijective donc tous les éléments sont inversibles.
 \end{rem}
 
 \subsection{Calcul dans un anneau}
 
-\begin{prop}
+\begin{prop}[Binôme de Newton]
     \Hyp $a, b\in A$ un anneau, $ab=ba$.
-    \Conc \[
+    \Conc \index{Newton!binôme}\[
         (a+b)^n=\sum_{k=0}^n\binom nk a^kb^{n-k}
     \]
 \end{prop}
@@ -532,3 +532,169 @@ Ainsi, $G$ est isomorphe à $\varphi(G)$ sous-groupe de $\mathfrak S(G)$ qui est
 La formule du binôme se généralise ainsi: pour $a_1, \cdots, a_p\in A$ qui commutent $2$ à $2$ et pour $n\in\mathbb N$, \[
     (a_1+\cdots +a_p)^n=\sum_{a_1+\cdots +a_p=n}\binom{n}{n_1, \cdots, n_p}a_1^{n_1}\cdots a_p^{n_p}
 \]
+avec \[
+    \binom{n}{n_1, \cdots, n_p}=\frac{n!}{n_1!\cdots n_p!}
+\]
+Pour le voir, on va développer $(a_1+\cdots +a_p)\times\cdots\times(a_1+\cdots +a_p)$. On obtient une somme de termes en $a_1^{n_1}\cdots a_p^{n_p}$ avec $n_1+\cdots +n_p=n$. \begin{itemize}
+    \item Il y a $\binom n{n_1}$ blocs pour $a_1$
+    \item Il y a $\binom{n-n_1}{n_2}$ pour $a_2$
+    \item $\cdots$
+    \item Il y a $\binom{n-n_1-\cdots -n_{p-1}}{n_p}$ blocs pour $a_p$
+\end{itemize}
+
+Donc les coefficients valent \[
+    \prod_{i=1}^p\binom{n-n_1-\cdots -n_{i-1}}{n_i}=\frac{n!}{n_1!\cdots n_p!}=\binom n{n_1,\cdots, n_p}
+\]
+
+\textbf{Techniques pour les sommes de coefficients binomiaux}
+\begin{itemize}
+    \item $(1+X)^p(1+X)^q=(1+X)^{p+q}$ donc \[
+    \binom{p+q}\ell=\sum_{i+j=\ell}\binom pi\binom qj
+\]
+En particulier, \[
+    \binom {2n}n=\sum_{i=0}^p\binom pi^2
+\]
+\item Si on note $S:x\longmapsto (1+x)^n$ \[
+        S'(x)=n(1+x)^{n-1}=\sum_{k=0}^n\binom nk kx^{k-1}
+    \]
+    donc \[
+        \sum_{k=0}^n\binom nkk=n2^{n-1}
+    \]
+\item \textbf{Sommes lacunaires}: On note $p\in\mathbb N^\star$ fixé, on va calculer \[
+        S_n=\sum_{pk\leq n}\binom n{pk}
+    \]
+    On note $\omega=\exp \left(  \frac{2i\pi}p\right)$ de sorte que \[
+        1+\omega^k+\cdots +\omega^{(p-1)k}= \begin{cases}
+            p&\text{ si } w^k=1 \text{ i.e. } p\;|\; k \\ 0 &\text{ sinon }
+        \end{cases}
+    \]
+    On pose $f(x)=(1+x)^n$ et \[
+        f(1)+f(\omega)+\cdots +f(\omega^{p-1})=\sum_{k=1}\binom nk(1+\cdots +\omega^{k(p-1)})=pS_n
+    \]
+    d'où \[
+        S_n=\frac1p \left( f(1)+\cdots +f(\omega^{p-1}) \right)
+    \]
+\end{itemize}
+
+\subsection{Élément nilpotent}
+
+\begin{dfn}
+    Un élément $a\in A$ ($A$ est un anneau) est \textbf{nilpotent}\index{nilpotence} si il existe un entier naturel $n$ tel que $a^n=0_A$. On appelle \textbf{indice de nilpotence}\index{nilpotence!indice de nilpotence} l'entier naturel minimal tel que $a^n=0_A$
+\end{dfn}
+
+Si $a, b$ sont nilpotents et commutent alors \[
+    (a+b)^{n+m}=\sum_{k=0}^{n+m}\binom{n+m}k a^kb^{n+m-k}=0_A
+\]
+avec $n$ et $m$ les indices de nilpotence respectifs de $a$ et $b$. Ainsi, $a+b$ est nilpotent. Si $A$ est un anneau commutatif alors l'ensemble $\mathcal N$ des éléments nilpotents est un idéal de $A$. Pour $a$ nilpotent, $a^n=0_A$ et \[
+    1=1-a^n=(1-a)(1+a+\cdots +a^{n-1})
+\]
+donc $a-1$ est inversible.
+
+\section{Constructeurs d'anneaux, sous-anneaux, sous-corps}
+
+Comme pour les groupes, si $A, A'$ sont des anneaux et $X$ un ensemble non vide, $A\times A'$ a une structure d'anneau et $\mathfrak F(X, A)$ aussi
+
+\begin{defprop}
+    \begin{enumerate}
+        \item On dira que $A'$ est un sous-anneau de $A$ si \begin{itemize}
+            \item $A'\subset A$
+            \item $1_A\in A$
+            \item $\forall x, y\in A', x-y\in A'$ et $xy\in A'$
+        \end{itemize}
+    \item On dira que $K'$ est un sous-corps de $K$ si \begin{itemize}
+        \item $K'\subset K$
+        \item $1_K\in K$
+        \item $\forall x, y\in K', x-y\in K'$ et si $y\neq 0$, $xy^{-1}\in K'$
+    \end{itemize}
+    \end{enumerate}
+\end{defprop}
+
+\begin{ex}~
+    \begin{itemize}
+        \item $\mathbb Z[\sqrt 2]$ est un sous-anneau de $\mathbb R$
+        \item $\mathbb Q[\sqrt 2]$ est un sous-corps de $\mathbb R$ qu'on note $\mathbb Q(\sqrt 2)$
+        \item $\mathbb Q[\omega]$ pour $\omega$ algébrique est un sous-corps de $\mathbb R$ (c'est un espace vectoriel de dimension finie et $\varphi: t\longmapsto tx$ est injective donc bijective car linéaire ce qui montre l'inversibilité)
+    \end{itemize}
+\end{ex}
+
+\begin{rem}
+    Si on fixe $n$ et on note \[
+        S_n=\left\{\sum_{i=1}^nx_i^2\;, \qquad x_1, \cdots, x_n\in K\right\}
+    \]
+    alors on peut montrer que $S_n$ est stable par $\times$ si $n=2^k$
+\end{rem}
+
+\section{Idéal d'un anneau}
+
+\begin{dfn}
+    Un idéal\index{idéal} à gauche (resp. à droite) $I\subset A$ d'un anneau $A$ est un sous-groupe de $(A, +)$ tel que \[
+        \forall a\in A, x\in I,\quad  ax\in I\quad \text{(resp. $xa\in I$)}
+    \]
+    Un idéal bilatère (ou simplement idéal) est un idéal à gauche et à droite.
+\end{dfn}
+
+
+\begin{rem}
+    Pour un anneau commutatif $A$ et $a\in A$, $I=aA$ est un idéal.
+\end{rem}
+
+L'ensemble des idéaux d'un anneau commutatif est stable par somme et par intersection. De plus, si $I$ et $J$ sont des idéaux, alors \[
+    IJ \defeq \left\{ \sum_{k\in K}i_kj_k, \quad K\subset \mathbb N \text{ fini }, i_k\in I, j_k\in J \right\}
+\]
+est aussi un idéal. Le radical $\sqrt I$ de $I$, définit par \[
+    \sqrt I \defeq \left\{ x\in A, \quad \exists n\in\mathbb N, x^n\in I \right\},
+\]
+est également un idéal (c'est un sous-groupe par binôme de Newton).
+
+\begin{dfn}[Hors-Programme]
+    Un anneau $A$ est principal si tous ses idéaux sont principaux\index{idéal!principal}, c'est à dire de la forme $I=aA$. Un anneau est noéthérien\index{anneau!noéthérien} si toute suite croissante d'idéaux est stationnaire
+\end{dfn}
+
+\begin{exo}
+    Décrire les idéaux de $\mathbb K^2$ pour un corps $K$
+\end{exo}
+
+\section{Groupe des inversibles d'un anneau}
+
+Pour un anneau $A$, on note $A^\star$ le groupe des inversibles\index{anneau!inversibles} de $A$.
+
+\begin{ex}
+    On note $A=\mathbb Z[\sqrt 2]$, on va décrire $\mathbb Z[\sqrt 2]^\star$.
+
+    On note $G=\mathbb Z[\sqrt 2]^\star$ de sorte que $G_+=G\cap \mathbb R_+^\star$ est un groupe pour $\times$. Le logarithme est un morphisme injectif donc $\ln(G_+)$ est un sous-groupe de $\mathbb R$, donc dense si et seulement si $a=\inf (\ln(G_+)\cap \mathbb R_+^\star)=0$.
+
+    On a $e^a=\inf(G_+\cap ]1; +\infty[)$ et \[
+        1\leq e^a< 1+\sqrt 2 \implies \exists p,q \in \mathbb Z, 1\leq e^a\leq \underbrace{p+q\sqrt 2}_{\in G_+}< 1+\sqrt 2
+    \]
+    Si $p>0, q<0$ alors $1\leq p+q\sqrt 2\leq p-q\sqrt 2<p^2-2q^2=1$ (la dernière égalité vient de l'inversibilité de $p+\sqrt2 q$, cf. remarque). C'est absurde. On arrive à la même conclusion si $p<0, q>0$. On a donc $e^a=1+\sqrt 2$ et $G=\langle 1+\sqrt 2 \rangle$
+\end{ex}
+
+\begin{rem}
+    Dans un anneau euclidien $A$ de stathme $v$, les éléments inversibles sont exactement les éléments qui minimisent le stathme. Si $u$ minimise le stathme, $1=qu+r$ avec $r=0$ ou $v(r)<v(u)$ donc $r=0$ et $1=qu$ donc $u$ inversible. Sinon, $v(u)>v(1)$ donc $v(u)\geq 2$ donc $\forall q, 2\leq v(uq)$ donc $u$ n'est pas inversible.
+
+    Par exemple, dans $\mathbb Z$ euclidien pour le stathme $|\,\cdot\,|$, les inversibles sont $-1$ et $1$. Dans $\mathbb Q[X]$ euclidien pour le stathme $\deg$, les inversibles sont tous les polynômes de degré $0$ (les polynômes constants).
+\end{rem}
+
+\section{Morphismes d'anneaux}
+
+\begin{dfn}
+    Pour $A, A'$ des anneaux, $\varphi:A\to A'$ est un morphisme\index{anneau!morphisme} d'anneau si \begin{itemize}
+        \item $f(1_A)=1_{A'}$
+        \item $\forall x, y\in A, f(x+y)=f(x)+f(y)$
+        \item $\forall x, y\in A, f(xy)=f(x)f(y)$
+    \end{itemize}
+\end{dfn}
+
+Comme dans les groupes ou les espaces vectoriels (dans les e.v. les applications linéaires jouent le rôle de morphismes), les morphismes d'anneaux préservent la structure (l'image et la préimage d'un anneau par un morphisme est un anneau).
+
+\section{Structure d'algèbre}
+
+\begin{dfn}
+    On note $(A, +, \times, \cdot)$ muni de deux lois internes $+$ et $\times$ et d'une loi externe $\cdot$ sur le corps $K$. On dira que $A$ est une $K$-algèbre\index{algèbre (structure d' -- )} si $(A, +,\times)$ est un anneau, $(A, +, \cdot)$ est un $K$-e.v, et \[
+        \forall \lambda\in K, \forall x, y\in A, \lambda\cdot (x\times y)=(\lambda\cdot x)\times y=x\times (\lambda\cdot y)
+    \]
+\end{dfn}
+
+\begin{rem}
+    Un corps $K$ est toujours une $K$-algèbre, la multiplication servant de loi interne et externe.
+\end{rem}
