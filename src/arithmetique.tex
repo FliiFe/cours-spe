@@ -229,7 +229,7 @@ On va d'abord montrer par récurrence \[
     \end{align*}
     Donc l'égalité est vraie pour tout entier naturel $n$.
 \end{itemize}
-Il est suffisant de trouver un élément de $(\mathbb Z/p^\alpha\mathbb Z)^\star$ d'ordre $\varphi(p^\alpha)=(p-1)p^{\alpha-1}$, et vu la stabilité des ordres par ppcm vue précédemment, il est suffisant de trouver un élément d'ordre $p-1$ et un élément d'ordre $p^{\alpha-1}$.
+Il est suffisant de trouver un élément de $(\mathbb Z/p^\alpha\mathbb Z)^\star$ d'ordre $\varphi(p^\alpha)=(p-1)p^{\alpha-1}$ (cette égalité s'obtient via la définition de l'indicatrice d'Euler), et vu la stabilité des ordres par ppcm vue précédemment, il est suffisant de trouver un élément d'ordre $p-1$ et un élément d'ordre $p^{\alpha-1}$.
 
 On va d'abord exhiber un élément d'ordre $p^{\alpha-1}$. On a 
 \[
@@ -269,3 +269,59 @@ et $p\mid g^{p-1}-1$ donc $\ord g=k(p-1)$ est $g^k$ et d'ordre $p-1$.
         admet une unique solution modulo $mn$
     \end{concenum}
 \end{thm}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item $a, b$ de représentants de $\bar x$ dans $\mathbb Z_{m, n}$. $a\equiv b\pmod mn\implies a\equiv b\pmod n$ donc $\bar a=\bar b$ dans $\mathbb Z_n$
+        \item C'est bien un morphisme, il est injectif car $\Ker\varphi=\{\bar 0\}$ donc c'est un isomorphisme car les ensembles d'antécédents et d'images sont équipotents finis.
+        \item C'est clair ($a\land n\neq 1\implies a\land mn\neq 1$ d'où on déduit l'injectivité).
+        \item C'est 2.
+    \end{enumerate}
+\end{proof}
+
+\begin{rem}
+    Le point 3. donne la multiplicativité de l'indicatrice d'euler: pour $m, n$ premiers entre eux, $\varphi(mn)=\varphi(m)\varphi(n)$
+\end{rem}
+
+\begin{rem}
+    On peut généraliser le résultat à $n_1, \cdots, n_r$ deux à deux premiers entre eux
+\end{rem}
+
+\begin{rem}
+    Si $un+vm=1$ alors $x=avm+bun$ est une solution
+\end{rem}
+
+\subsection{Puissances parfaites}
+
+On va montrer qu'il existe $n$ entiers consécutifs qui ne sont pas des puissances parfaites.
+
+On note $p_1, \cdots, p_n$ des premiers deux à deux distincts. Le système \[
+    \begin{cases}
+        x\equiv p_1-1\pmod {p_1^2}\\
+        \hspace{1cm}\vdots\\
+        x\equiv p_n-n\pmod{p_n^2}
+    \end{cases}
+\]
+possède une solution $x\in\mathbb N$ et $v_{p_i}(x+i)=1$ donc $x+i$ n'est pas une puissance parfaite (car $x+i\neq p_i$ quitte à translater $x$ de $p_1^2\cdots p_n^2$)
+
+\subsection{Points visibles}
+
+\begin{center}
+    \includegraphics{src/figures/arithmetique-points-visibles.pdf}
+\end{center}
+
+On considère l'ensemble des points (qu'on appelle \emph{points visibles}) de $\mathbb Z^2$ tels que pour un point $(x, y)$, l'ensemble $\{(1-t)(0, 0)+t(x, y), \quad t\in ]0, 1[\}$ ne contient pas de point de $\mathbb Z^2$. On veut montrer qu'il existe des rectangles pleins arbitrairement grands dans cet ensemble, c'est à dire que pour tout $n\in\mathbb N$, il existe $(a, b)$ tel que $\forall i, j\leq n, (a+i, a+j)$ est invisible.
+
+On vérifie facilement que cet ensemble est l'ensemble $\{(a, b)\in\mathbb Z^2, \quad a\land b=1\}$. On note $A$ une matrice $k\times k$ dont les coefficients sont des nombres premiers deux à deux distincts. On note $m_i$ le produit de la $i$-ième ligne, $M_i$ le produit de la $i$-ième colonne. Le théorème chinois donne l'existence de $a$, $b$ tels que \[
+    \begin{cases}
+        a\equiv -1\pmod {m_1} \\
+        \hspace{.4cm}\vdots \\
+        a\equiv -k\pmod{m_k}
+    \end{cases}
+    \qquad \begin{cases}
+        b\equiv -1\pmod {M_1}\\
+        \hspace{.4cm}\vdots \\
+        b\equiv -k\pmod{M_k}
+    \end{cases}
+\]
+de sorte que $(a+i)\land (b+j)$ est divisible par $m_i\land M_j\neq 1$.
