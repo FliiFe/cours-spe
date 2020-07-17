@@ -133,4 +133,139 @@ Soit $A$ un anneau commutatif et $I$ un idéal de $A$. On définit la relation d
 
 Pour $A=\mathbb Z$, $I=n\mathbb Z$, il y a $n$ classes d'équivalence dans $\mathbb Z_n\defeq\mathbb Z/n\mathbb Z$, ce sont les $\bar 0, \cdots , \bar{n-1}$.
 
-\section{$\mathbb Z_n^\star$}
+\section{Groupe $\mathbb Z_n^\star$ des inversibles de $\mathbb Z_n$}
+
+\begin{prop}
+    \begin{itemize}
+        \item La classe de $a\in\mathbb Z$ est inversible dans $\mathbb Z_n$ si et seulement si $a\land n=1$
+        \item $\#\mathbb Z_n^\star=\varphi(n)$
+        \item (Euler\index{Euler!théorème (arithmétique modulaire)}) Pour $\bar a$ inversible, $\bar a^{\varphi(n)}\equiv \bar 1\pmod n$
+    \end{itemize}
+\end{prop}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item $\bar a\in\mathbb Z_n^\star\iff \exists \bar u\in\mathbb Z_n, \bar a\times \bar u\equiv 1\pmod n\iff \exists u, v\in\mathbb Z, au=1+nv \iff a\land n=1$
+        \item C'est évident vu 1.
+        \item $\ord(\bar a)\;|\;\#\mathbb Z_n^\star=\varphi(n)$
+    \end{enumerate}
+\end{proof}
+
+\begin{cor}[Petit théorème de Fermat]
+    \index{Fermat!petit théorème} Pour tout $a\in\mathbb Z, \quad \bar a^p\equiv \bar a\pmod p$ pour $p$ premier
+\end{cor}
+
+\section{Caractérisations des corps}
+
+\begin{prop}
+    $\mathbb Z_n$ est un corps si et seulement si $n$ est premier
+\end{prop}
+
+\begin{proof}
+    $\varphi(n)=n-1\iff n\in \mathbb P$
+\end{proof}
+
+\subsection{Théorème de Wilson}
+
+\begin{res}[Théorème de Wilson]
+    $p\geq 3$ est premier si et seulement si $(p-1)!\equiv -1\pmod p$\index{Wilson (théorème de -- )}
+\end{res}
+
+\begin{proof}~
+    \begin{itemize}
+        \item $(\implies)$ Dans $\mathbb Z_p$, $x^2\equiv 1$ n'a que deux solutions: $1$ et $-1$ (car on est dans un corps donc un anneau intègre). Ce sont donc les deux seuls éléments qui sont leurs propres inverses, les autres sont couplés deux à deux dans l'écriture de $(p-1)!$. On a donc \[
+                (p-1)!\equiv 1\times (2\times \cdots \times (p-2))\times (p-1)\equiv 1\times (p-1)\equiv -1 \pmod p
+            \]
+        \item $(\impliedby)$ On note $n\geq 3$ non premier, il s'écrit donc $n=ab$ avec $a\land b=1$ et $a, b\geq 2$. Si $a\neq b$ alors $ab\;|\;(n-1)!$. Sinon, $n=a^2$ et $a\geq 2$ donc $a^2\;|\;(n-1)!$ car $a$ et $2a$ apparaissent dans l'écriture de la factorielle. Dans les deux cas, $(n-1)!\equiv 0\pmod n$
+    \end{itemize}
+\end{proof}
+
+\subsection{RSA}
+
+On va voir (rapidement) le principe du chiffrement RSA. On choisit $p, q$ des nombres premiers distincts, et on note $n=pq$. On note $a, b$ tels que $ab\equiv 1\pmod{\varphi(n)}$. Les nombres $n$ et $a$ sont publics, et $b$ (qu'on appelle clé privée) n'est connu que de Bob, qui veut recevoir un message chiffré d'alice
+
+Alice veut transmettre $x\in\mathbb Z_n^\star$. Elle calcule $x^n\equiv y\pmod n$, et $y$ est le message chiffré.
+
+Bob calcule $y^b\equiv x^{ab}\equiv x\times x^{\varphi(n)k}\equiv x\pmod n$
+
+\subsection{$\mathbb Z_{p^\alpha}^\star$ pour $p$ premier impair}
+
+\subsubsection{$\mathbb Z_p^\star$ est cyclique}
+
+On va d'abord montrer les résultats suivants, vrais dans tous les groupes abéliens finis: \begin{itemize}
+    \item L'ensemble des ordres est stable par ppcm
+    \item L'exposant d'un groupe est l'ordre d'un élément
+\end{itemize}
+On utilisera ensuite la structure de corps de $\mathbb Z/p\mathbb Z$ pour conclure.
+
+Soit $(G, \cdot)$ un groupe abélien fini. On va montrer que l'ensemble des ordres est stable par ppcm. Soient $a, b$ deux éléments d'ordres respectifs $m, n$. On cherche un élément d'ordre $m\lor n$. On note $d=m\land n$ de telle sorte que $m=dm'$, $n=dn'$ et $m\land n'=1$. De cette manière, on a $m\lor n=mn'$
+\[
+    \ord \left(a\right)=m\qquad \qquad \ord\left(b^d\right)=n'
+\]
+et donc $c=ab^d$ est un élément d'ordre $mn'=m\lor n$, ce qui conclut.
+
+On définit l'exposant\index{groupe!exposant} $\lambda$ du groupe $G$ comme l'ordre maximal des éléments de $G$. L'ensemble des ordres étant stable par ppcm, et le ppcm de tous les ordres majorant l'ensemble, le maximum des ordres $\lambda$ est le ppcm des ordres des éléments. Puis, la stabilité garantit qu'il existe un élément d'ordre $\lambda$.
+
+On va maintenant montrer que $\mathbb Z_p^\star$ est cyclique. $\mathbb Z_p$ est un corps (déjà vu). Ainsi, un polynôme de $\mathbb Z_p[X]$ admet au plus autant de racines que son degré. On pose $P=X^\lambda-1$. Ce polynôme admet au moins $p-1$ racines distinctes (les éléments non nuls du corps) par définition de $\lambda$. On a donc $\lambda\geq p-1$. Puis, $\lambda$ est un ordre donc divise $\#\mathbb Z_p^\star=p-1$ (Lagrange). Ainsi, $\lambda\mid p-1$ et $\lambda=p-1$.
+
+L'exposant du groupe vaut le cardinal du groupe, ce groupe est donc cyclique (un élément d'ordre $\lambda$ est automatiquement un générateur du groupe).
+
+\subsection{$\mathbb Z_{p^\alpha}^\star$ est cyclique}
+
+On va d'abord montrer par récurrence \[
+    \forall n\in\mathbb N, \quad (1+p)^{p^n}\equiv 1+p^{n+1}\pmod {p^{n+2}}.
+\]
+
+\begin{itemize}
+    \item Le cas $n=0$ est direct.
+    \item On suppose le résultat vrai au rang $n$: \[
+        (1+p)^{p^n}=1+p^{n+1}+p^{n+2}q.
+    \]
+    On a alors \begin{align*}
+        (1+p)^{p^{n+1}}&\equiv(1+p^{n+1}+p^{n+2}q)^p\\
+                       &\equiv 1+\sum_{k=1}^{p}\binom pk p^{(n+1)k}(1+pq)^k\\ 
+                       &\equiv 1 + p^{n+1}(1+pq)p \\
+                       &\equiv 1+p^{n+2}&\pmod{p^{n+3}}.
+    \end{align*}
+    Donc l'égalité est vraie pour tout entier naturel $n$.
+\end{itemize}
+Il est suffisant de trouver un élément de $(\mathbb Z/p^\alpha\mathbb Z)^\star$ d'ordre $\varphi(p^\alpha)=(p-1)p^{\alpha-1}$, et vu la stabilité des ordres par ppcm vue précédemment, il est suffisant de trouver un élément d'ordre $p-1$ et un élément d'ordre $p^{\alpha-1}$.
+
+On va d'abord exhiber un élément d'ordre $p^{\alpha-1}$. On a 
+\[
+(1+p)^{p^{\alpha-2}} 
+\equiv 1+p^{\alpha-1}\pmod {p^\alpha}    \]
+et \[
+    (1+p)^{p^{\alpha-1}}\equiv 1\pmod {p^\alpha}.
+\]
+Donc $\ord(1+p)\mid p^{\alpha-1}$ mais $\ord(1+p)\nmid p^{\alpha-2}$ donc $\ord(1+p)=p^{\alpha-1}$.
+
+Il reste à trouver un élément d'ordre $p-1$. On sait que $\mathbb F_p^\star$ est cyclique, on note $g$ un générateur. On a:
+\[
+    \forall k<p-1, \quad p\;\nmid\;g^k-1\quad \text{ie}\quad p^\alpha\;\nmid\; g^k-1
+\]
+et $p\mid g^{p-1}-1$ donc $\ord g=k(p-1)$ est $g^k$ et d'ordre $p-1$.
+
+\section{Théorème chinois}
+
+\begin{thm}
+    \Hyp $m, n\in\mathbb N^\star$, $m\land n=1$
+    \begin{concenum}
+    \item La classe de $\bar x\in\mathbb Z_{mn}$ dans $\mathbb Z_n$ ne dépend pas du choix de représentant dans $\mathbb Z_{mn}$
+    \item L'application \[
+            \begin{matrix}
+                \varphi: & \mathbb Z_{m, n} & \longrightarrow & \mathbb Z_n\times \mathbb Z_m \\
+                         & \bar x &\longmapsto & (\bar x, \bar x)
+            \end{matrix}
+        \]
+        est un isomorphisme d'anneaux
+    \item $\varphi$ est une bijection de $\mathbb Z_{m, n}^\star$ dans $\mathbb Z_n^\star \times \mathbb Z_m^\star$
+    \item Pour $a, b\in\mathbb Z$ fixés, le système \[
+            \begin{cases}
+                x=a\pmod n\\
+                x=b\pmod m
+            \end{cases}
+        \]
+        admet une unique solution modulo $mn$
+    \end{concenum}
+\end{thm}
