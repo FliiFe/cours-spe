@@ -325,3 +325,74 @@ On vérifie facilement que cet ensemble est l'ensemble $\{(a, b)\in\mathbb Z^2, 
     \end{cases}
 \]
 de sorte que $(a+i)\land (b+j)$ est divisible par $m_i\land M_j\neq 1$.
+
+\subsection{Les congruences de Lucas}
+
+On note $p\in\mathbb P$ et \[
+    n\defeq\sum_{k=0}^Na_kp^k\geq \sum_{k=0}^Nb_kp^k\defeq m
+\]
+On va montrer que \[
+    \binom nm\equiv \binom{a_0}{b_0}\cdots \binom{a_N}{b_N}\pmod p
+\]
+
+On a $(1+X)^p=1+X^p$ dans $\mathbb Z_p[X]$. Puis, \[
+    (1+X)^n=\prod_{i=0}^N((1+X)^p)^{a_i}=\prod_{i=0}^n\sum_{k=0}^{a_i}\binom{a_i}{k}X^{kp^i}
+\]
+et il suffit d'identifier le coefficient de $X^m$
+
+\section{Principe d'inclusion-exclusion}
+
+Pour $E$ fini, $A_1, \cdots, A_N\in\mathcal P(E)$, \[
+    \#A_1\cup\cdots \cup A_N=\sum_{i_1=1}^N\#A_{i_1}-\sum_{i_1<i_2}\#A_{i_1}\cap A_{i_2}+\cdots +(-1)^{N-1}\sum_{i_1<\cdots <i_N}\#A_1\cap \cdots \cap A_N
+\]
+
+Pour le voir, on remarque: \[
+    \sum_{x\in E}\mathbbm 1_{A}(x)=\#A \qquad\quad \mathbbm 1_{A\cap B}=\mathbbm 1_A \cdot \mathbbm 1_B \qquad \quad \mathbbm 1_{A^c}=1-\mathbbm 1_A
+\]
+et \[
+    (A_1\cup \cdots \cup A_N)^c=A_1^c\cap \cdots \cap A_N^c
+\]
+donc \[
+    \mathbbm1_{(A_1\cup \cdots \cup A_N)^c}=\prod_{i=1}^N(1-\mathbbm 1_{A_i^c})
+\]
+puis on développe le produit et on somme la fonction prise sur les éléments de $E$
+
+
+\begin{ex}[Application aux permutations sans points fixes]
+    On note $d_n$ le nombre de permutations de $\mathfrak S_n$ sans points fixes.
+
+    Il y a $\displaystyle \binom ni d_{n-i}$ permutations qui ont $i$ points fixes donc \[
+        n!=\sum_{i=0}^n\binom nid_{n-i}=\sum_{i=0}^n\binom nid_i.
+    \]
+    Matriciellement, \[
+        \begin{pmatrix}
+            n!\\[1em]
+            \vdots\\[1em]
+            \vdots\\[1em]
+            0!
+            \end{pmatrix}= \underbrace{\begin{pmatrix}
+        \displaystyle\binom nn & \cdots & \cdots & \displaystyle\binom n0 \\[1em]
+        0 & \displaystyle\binom{n-1}{n-1} & \ddots & \vdots \\[1em]
+        \vdots & \ddots & \ddots & \vdots \\[1em]
+        0 & \cdots & 0 & \displaystyle\binom 00
+    \end{pmatrix}}_{\defeq A_n\in \mathrm{GL}_n(\mathbb R)} \begin{pmatrix}
+        d_n\\[1em]
+        \vdots \\[1em]
+        d_1\\[1em]
+        d_0
+        \end{pmatrix}
+    \]
+    On a $A_n^\top=\mathcal {M}_{\text{base canonique}}(f)$ avec $f:P\in\mathbb R_n[X]\longmapsto P(X+1)$. Puis, $(A_n^\top)^{-1}=(A_n^{-1})^\top=\mathcal M(f^{-1})$ or $f^{-1}:P\longmapsto P(X-1)$ d'où \[
+        (A_n^{-1})^\top = \begin{pmatrix}
+            \displaystyle\binom nn & 0 & \cdots & 0 \\[1em]
+            \displaystyle -\binom n{n-1} & \ddots & \ddots & \vdots \\[1em]
+            \vdots &  & \ddots & 0 \\[1em]
+            (-1)^n\displaystyle\binom n0 & \;\;\;\cdots\;\;\; & \;\;\;\cdots\;\;\; & \displaystyle\binom 00
+        \end{pmatrix}
+    \]
+    d'où \[
+        d_n=\sum_{i=0}^n\binom n{n-i}(n-i)!(-1)^i=\sum_{i=0}^n\frac{(-1)^in!}{i!}\sim \frac{n!}e
+    \]
+\end{ex}
+
+\section{Principe des tiroirs}
