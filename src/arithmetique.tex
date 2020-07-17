@@ -396,3 +396,52 @@ puis on développe le produit et on somme la fonction prise sur les éléments d
 \end{ex}
 
 \section{Principe des tiroirs}
+
+\begin{prop}[Principe des tiroirs]
+    Si on place $n$ éléments dans $k$ tiroirs, alors l'un des tiroirs contient au moins $\ceil{\frac nk}$ éléments
+\end{prop}
+
+\begin{proof}
+    Par l'absurde.
+\end{proof}
+
+\subsection{Problème d'Erdős}
+
+On choisit $n+1$ éléments distincts de $\llbracket 1, 2n\rrbracket$. On va montrer que l'un divise un autre.
+
+Tous les entiers s'écrivent $2^n(2s+1)$, $2s+1\in\llbracket 1, n\rrbracket$. On en a choisit $n+1$ (parmi $n$ possibilités) donc deux entiers ont la même partie impaire ce qui conclut.
+
+\subsection{Existence d'univers parallèles (moyennant quelques hypothèses physiques)}
+
+On définit un volume de Hubble: une boule de $4\cdot 10^{26}$m de rayon qui contient $10^{115}$ cases contenant ou non un proton.
+
+L'univers est en expansion, donc la lumière se fait rare et il fait noir. Mais, il ne fait pas noir. Donc il y a des volumes de Hubble qui apparaissent.
+
+Il n'y a qu'un nombre fini de volumes de Hubble possibles, ainsi, il y a deux volumes de Hubble identiques dans l'univers.
+
+\subsection{Tiroirs de Dirichlet}
+
+On se donne $\alpha\in\mathbb R\setminus \mathbb Q$. On va montrer qu'il existe une infinité de $(h, k)$ tels que \[
+    k>0,\qquad \quad \left| \alpha-\frac hk \right|\leq \frac1{k^2}
+\]
+On note $\{p\alpha\}=p\alpha-\floor{p\alpha}$ la partie décimale de $p\alpha$ pour $p\in\llbracket 0, n\rrbracket$. Il y a $n+1$ valeurs possibles, donc il existe $k\in\llbracket 0, n-1\rrbracket$ tel que \[
+    \{p\alpha\}, \{q\alpha\}\in \left[ \frac kn;\frac {k+1}n \right[,\qquad \text{ et }\qquad p<q
+\]
+Puis, \[
+    |\{p\alpha\}-\{q\alpha\}|=|(q-p)\alpha-(\floor{q\alpha}-\floor{p\alpha})|<\frac1n
+\]
+donc \[
+    \Big|\alpha-\underbrace{\frac{\floor{q\alpha}-\floor{p\alpha}}{q-p}}_{=\frac hk\quad \text{convient}}\Big|<\frac1{n(q-p)}\leq \frac1{(q-p)^2}
+\]
+
+S'il y a un nombre fini de $(h, k)$ solutions alors l'un d'eux réalise le minimum ($>0$), donc il existe $n$ tel que \[
+    \frac1n<\Big|\alpha-\frac hk\Big|
+\]
+et vu ce qui précède il existe $p\neq q$ tel que \[
+    \left| \alpha-\frac{\floor{q\alpha}-\floor{p\alpha}}{q-p} \right|<\frac1{n|q-p|}\leq \left| \alpha-\frac hk \right|
+\]
+absurde
+
+\section{Dénombrement de partitions}
+
+Soient $n, p\in\mathbb N^\star$. On appelle partition de $n$ en $p$ parties un $p$-uplet $(x_1, \cdots, x_p)\in\llbracket 0, n\rrbracket ^p$ tel que $x_1+\cdots +x_p=n$
