@@ -445,3 +445,58 @@ absurde
 \section{Dénombrement de partitions}
 
 Soient $n, p\in\mathbb N^\star$. On appelle partition de $n$ en $p$ parties un $p$-uplet $(x_1, \cdots, x_p)\in\llbracket 0, n\rrbracket ^p$ tel que $x_1+\cdots +x_p=n$
+
+Pour compter les partitions de $n$ en $p$-uplets, on compte le nombre de manière de positionner $p-1$ signes $+$ parmi $n+p-1$ emplacements (le nombre d'emplacements entre le $i$-ième signe $+$ et le $i+1$-ième sera $x_{i+1}$). Le nombre de $p$-partitions de $n$ est donc \[
+    \binom{n+p-1}{p-1}
+\]
+
+Si on impose que les $x_i$ soient non nuls, alors il n'y a plus que $\displaystyle\binom{n-1}{p-1}$ possibilités.
+
+\section{Une congruence subtile}
+
+On se donne $a, b\in\mathbb N$, $a\geq b$. On va montrer que pour $p$ premier \[
+    \binom{pa}{pb}\equiv \binom ab\pmod {p^2}
+\]
+On considère l'ensemble $E$ des matrices de $\mathcal M_{a,p}(\mathbb Z_2)$ dont tous les coefficients sont nuls sauf $pb$ d'entre eux. On munit $E$ de la relation d'équivalence \[
+    A\mathcal RB\iff \exists c_1, \cdots, c_a \text{ permutations circulaires de }\llbracket 1, p\rrbracket, \quad (a_{i, c_i(j)})_{\substack{1\leq i\leq a\\ 1\leq j\leq p}}=A
+\]
+Par exemple, \[
+    \begin{pmatrix}
+        {\color{gray}0}&{\color{gray}0}&{\color{gray}0}\\1&{\color{gray}0}&{\color{gray}0}\\{\color{gray}0}&{\color{gray}0}&{\color{gray}0}\\1&{\color{gray}0}&1
+    \end{pmatrix}\mathcal R
+    \begin{pmatrix}
+        {\color{gray}0}&{\color{gray}0}&{\color{gray}0}\\1&{\color{gray}0}&{\color{gray}0}\\{\color{gray}0}&{\color{gray}0}&{\color{gray}0}\\{\color{gray}0}&1&1
+    \end{pmatrix}\mathcal R
+    \begin{pmatrix}
+        {\color{gray}0}&{\color{gray}0}&{\color{gray}0}\\{\color{gray}0}&1&{\color{gray}0}\\{\color{gray}0}&{\color{gray}0}&{\color{gray}0}\\1&1&{\color{gray}0}
+    \end{pmatrix}\mathcal R
+    \begin{pmatrix}
+        {\color{gray}0}&{\color{gray}0}&{\color{gray}0}\\{\color{gray}0}&1&{\color{gray}0}\\{\color{gray}0}&{\color{gray}0}&{\color{gray}0}\\{\color{gray}0}&1&1
+    \end{pmatrix}
+\]
+Les classes d'équivalences sont de cardinal $1$ si et seulement si les lignes ont chacune un seul des coefficients $1$ ou $0$ ($p$ est premier). Il y a $b$ parmi $a$ telles classes. Puis, si une ligne contient deux coefficients distincts alors il y a au moins une autre telle ligne (car on a choisi $pb$ coefficients $1$). Ainsi, si une classe d'équivalence n'est pas un singleton, son cardinal est divisible au moins par $p^2$. On a donc \[
+    \binom{pa}{pb}-\binom ab=\sum_{\#\bar x\geq 2}\#\bar x=p^2k
+\]
+d'où le résultat.
+
+\section{Méthodes combinatoires}
+
+On note $E$ un ensemble fini et $A_1, \cdots, A_k\in\mathcal P(E)$. On va compter les $k$-uplets d'ensembles qui vérifient certaines propriétés
+
+\subsection{Suite croissante pour l'inclusion}
+
+On va démonbrer le nombre de $A_1, \cdots, A_k$ tels que $A_1\subset A_2\subset \cdots\subset A_n$
+\[
+    \colorboxed{black}{\text{Poubelle}\defeq A_0} \qquad\qquad \colorboxed{black}{A_1}\quad\subset\quad \colorboxed{black}{A_2}\quad\subset\quad \cdots \quad\subset\quad \colorboxed{black}{A_k}
+\]
+On associe à chaque $x\in E$ le plus petit $i\in\llbracket 1, k\rrbracket$ tel que $x\in A_i$ ($0$ sinon), on note $f:C\to \mathfrak F(E, \llbracket 0, k\rrbracket)$ cette fonction, avec $C$ l'ensemble des $k$-uplets qui satisfont la condition.
+
+Cette fonction est clairement bijective donc $\#C=(k+1)^{\#E}$
+
+\subsection{Union disjointe}
+
+On veux dénombrer le nombre de $k$-uplets tels que $A_i\cap A_j=\emptyset$ pour $i\neq j$
+C'est le même principe: on note \[
+    f: (A_1, \cdots, A_k)\in C\longmapsto (x\longmapsto \text{ unique }i\text{ tel que }x\in A_i)
+\]
+avec $A_0$ l'ensemble des éléments qui n'apparaissent dans aucun des $A_i$. Cette application est aussi clairement bijective ce qui permet de conclure.
