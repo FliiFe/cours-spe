@@ -1,6 +1,6 @@
 .PHONY: clean all figures
 
-PDFS := target/cours.pdf target/calculdiff.pdf target/polynomes.pdf target/algebre-generale.pdf target/arithmetique.pdf
+PDFS := target/cours.pdf target/calculdiff.pdf target/polynomes.pdf target/algebre-generale.pdf target/arithmetique.pdf target/reduction.pdf
 figures := $(patsubst %.tex,%.pdf,$(wildcard src/figures/*.tex))
 
 all: $(PDFS)

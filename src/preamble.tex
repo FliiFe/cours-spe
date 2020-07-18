@@ -100,24 +100,31 @@
   \setfoot{\ifsolo\else\textbf{Chapitre \thechapter} : \textsc{\chaptertitle}\fi}{}{}
 }
 
-\DeclareMathOperator{\dom}{dom}
-\newcommand{\Vect}{\mathrm{Vect}}
-\newcommand{\Sp}{\mathrm{Sp}}
+\newcommand{\genmrm}[2][]{%
+    \ifstrequal{#1}{}{%
+        \expandafter\newcommand\csname#2\endcsname[1]{\mathrm{#2}\ifstrequal{##1}{(}{##1}{\;##1}}%%
+    }{%
+        \expandafter\newcommand\csname#1\endcsname[1]{\mathrm{#2}\ifstrequal{##1}{(}{##1}{\;##1}}%
+    }%
+}
+\genmrm{Ker}
+\genmrm{dom}
+\genmrm{Vect}
+\genmrm{Sp}
+\genmrm[img]{Im}
+\genmrm{id}
+\genmrm{rg}
+\genmrm{ord}
+\genmrm{Tr}
+\genmrm{Com}
+\genmrm{Hom}
+\genmrm{Aut}
 \newcommand{\diff}{\mathrm{d}}
 \newcommand{\nop}{\|\hspace{-1pt}|}
 \newcommand{\defeq}{\,\widehat=\,}
 \newcommand{\1}{\mathbbm{1}}
 \renewcommand{\mathring}[1]{\overset\circ{#1}}
 \renewcommand{\bar}[1]{\overline{#1}}
-\newcommand{\img}{\mathrm{Im}}
-\newcommand{\id}{\mathrm{id}}
-\newcommand{\rg}{\mathrm{rg}}
-\newcommand{\ord}{\mathrm{ord}}
-\newcommand{\Ker}{\mathrm{Ker}}
-\newcommand{\Tr} {\mathrm{Tr}}
-\newcommand{\Com}{\mathrm{Com}}
-\newcommand{\Hom}{\mathrm{Hom}}
-\newcommand{\Aut}{\mathrm{Aut}}
 \newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
 \newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
 

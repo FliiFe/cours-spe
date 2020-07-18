@@ -1,0 +1,195 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Réduction des endomorphismes} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\ifsolo \newpage \setcounter{page}{1} \fi
+
+Dans tout le chapitre, on note $\mathbb K$ un corps.
+
+\section{Rappels sur les polynômes}
+
+\begin{thm}
+    \Hyp $A, B\in \mathbb K[X]$, $B\neq 0$
+    \Conc Il existe un unique couple de polynômes $(Q, R)$ dans $\mathbb K[X]$ tels que \[
+        A=QB+R
+    \]
+    et $\deg R<\deg B$
+\end{thm}
+
+\begin{thmdef}
+    $a\in\mathbb K$ est une racine de $P$ ssi \[
+    P(a)=0\iff (X-a)\;|\;P
+\]
+et $a$ est racine de multiplicité $\alpha \geq 1$ ssi \[
+    \begin{cases}
+        P(a)=P'(a)=\cdots=P^{(\alpha - 1)}(a)=0 \\
+        P^{(\alpha)}(a)\neq 0
+    \end{cases}
+    \iff \begin{cases}
+        (X-a)^\alpha \; |\; P\\
+        (X-a)^{\alpha+1}\;\not|\;P
+    \end{cases}
+\]
+Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité $0$.
+\end{thmdef}
+
+\begin{thm}[Interpolation de Lagrange]
+    \index{Lagrange!interpolation} Pour $a_1, \cdots, a_n\in\mathbb R$ des abscisses distinctes et $b_1, \cdots, b_n\in\mathbb R$ des ordonnées distinctes, il existe un unique polynôme de degré au plus $n-1$ tel que \[
+        \forall i\in\llbracket 1, n\rrbracket, \qquad P(a_i)=b_i
+    \]
+\end{thm}
+\begin{proof}
+    \[
+        \varphi:P\in\mathbb K_{n-1}[X]\longmapsto (P(a_1), \cdots, P(a_n))\in\mathbb R^n
+    \]
+    est un isomorphisme.
+\end{proof}
+
+\section{Idéaux de {$\mathbb K[X]$} et arithmétique}
+
+\begin{thm}
+    $\mathbb K[X]$ est principal
+\end{thm}
+\begin{proof}
+    C'est un anneau euclidien donc principal (cf. chapitre \textbf{Algèbre générale})
+\end{proof}
+
+\begin{thmdef}
+    \begin{enumerate}
+        \item Il existe un unique polynôme unitaire $Q$ tel que $P\mathbb K[X]+Q\mathbb K[X]=Q\mathbb K[X]$. C'est le PGCD de $A$ et $B$. Deux polynômes sont premiers entre eux si leur PGCD vaut $1$.
+        \item Il existe un unique polynôme unitaire $Q$ tel que $P\mathbb K[X]\cap Q\mathbb K[X]=Q\mathbb K[X]$. C'est le PPCM de $A$ et $B$.
+        \item (Gauss) \index{Gauss!lemme (polynômial)} Si $A$ et $B$ sont premiers entre eux et $A\;|\;BC$ alors $A\;|\;C$
+        \item (Bézout) \index{Bézout (théorème de -- )} $A$ et $B$ sont premiers entre eux si et seulement si il existe $U, V$ tels que $AU+BV=1$.
+    \end{enumerate}
+\end{thmdef}
+
+\begin{ex}
+    $(X^n-1)\land (X^m-1)=X^{n\land m}-1$
+\end{ex}
+
+\section{Décomposition en facteurs irréductibles}
+
+\begin{dfn}
+    Un anneau $A$ est factoriel si \begin{enumerate}
+        \item Pour tout $a\in A$, il existe des éléments irréductibles $p_1, \cdots, p_n$ tels que $a=p_1\cdots p_n$
+        \item Cette décomposition est unique à l'ordre des facteurs près et à association près (deux éléments $a$ et $b$ sont associés si il existe un inversible $u$ tel que $a=ub$)
+    \end{enumerate}
+\end{dfn}
+
+\begin{thm}
+    $\mathbb K[X]$ est un anneau factoriel
+\end{thm}
+
+\begin{ex}
+    Dans $\mathbb C[X]$, \begin{itemize}
+        \item \[
+                X^n-1=\prod_{\omega\in\mathbb U_n}(X-\omega)
+            \]
+        \item \[
+                X^{2m}-1=(X+1)(X-1)\prod_{k=1}^{n-1} \left( X-\exp \left( \frac{ik\pi}n \right) \right) \left( X-\exp \left( -\frac{ik\pi}n \right) \right)
+            \]
+    \end{itemize}
+\end{ex}
+
+\begin{exo} Montrer que
+    \begin{itemize}
+        \item $P(\mathbb R)\subset \mathbb R_+ \iff \exists A, B\in\mathbb R[X], P=A^2+B^2$
+        \item $P(\mathbb R_+)\subset \mathbb R_+\iff \exists A, B\in\mathbb R[X], P=A^2+XB^2$
+    \end{itemize}
+\end{exo}
+
+\begin{proof}[Résolution]
+    Éléments de résolution pour le premier point: l'ensemble des $A^2+B^2$ est stable par produit, et en décomposant $P\geq 0$ en facteurs irréductibles, chacun des facteurs est somme de deux carrés.
+\end{proof}
+
+\begin{exo}
+    $P$ unitaire de degré $n$ dans $\mathbb R[X]$. Montrer \[
+        P\text{ scindé dans }\mathbb R[X] \iff \forall z\in\mathbb C, \quad |P(z)|\geq |\mathfrak{Im}(z)|^n
+    \]
+\end{exo}
+
+\begin{proof}~
+    \begin{itemize}
+        \item $(\impliedby)$ $P$ scindé dans $\mathbb C$ de racines $(a_i)$. $0=|P(a_i)|\geq |\mathfrak{Im}(z)|^n$ donc $a_i\in\mathbb R$
+        \item $(\implies)$ \[
+                \left| P(x+iy) \right|= \left| \prod_{j=1}^n(x-a_j+iy) \right|=\prod_{j=1}^n|x-a_j+iy|\geq \|\mathfrak{Im}(z)|^n
+            \]
+    \end{itemize}
+\end{proof}
+
+
+\section{Polynômes d'endomorphismes}
+
+\begin{defprop}
+    \Hyp On note $E$ un $\mathbb K$-e.v., $u\in\mathcal L(E)$ et \[
+        P=\sum_{k=0}^{+\infty}a_kX^k\in\mathbb K[X]
+    \]
+    \begin{concenum}
+    \item ~ \[
+            P(u)\defeq\sum_{k=0}^{+\infty} a_ku^k
+        \]
+    \item $\varphi: P\in\mathbb K[X]\longmapsto P(u)\in\mathcal L(E)$ est un morphisme d'algèbres.
+    \end{concenum}
+\end{defprop}
+
+\begin{proof}
+    On justifie $(PQ)(u)=P(u)\circ Q(u)$. On considère \[
+        \psi: (P, Q)\in\mathbb K[X]^2\longmapsto (PQ)(u)-P(u)\circ Q(u)\in\mathbb L(u)
+    \]
+    \begin{itemize}
+        \item $\psi$ est bilinéaire
+        \item À $Q$ fixé, $P\longmapsto \psi(P, Q)$ AL nulle ssi $\forall j\in\mathbb N, \psi(X^j, Q)=0$
+        \item Pour chaque $j$, $Q\longmapsto \psi(X^j, Q)$ nulle ssi $\forall k\in\mathbb N, \psi(X^j, X^k)=0$ qui est vrai.
+    \end{itemize}
+\end{proof}
+
+\begin{dfn}
+    Un polynôme $P$ est dit \textbf{polynôme annulateur\index{polynôme!annulateur}} de $u\in\mathcal L(E)$ si $P(u)$ est l'application nulle
+\end{dfn}
+
+\begin{ex}
+    $p$ est un projecteur si et seulement si $X^2-X$ est annulateur. $s$ est une symétrie si et seulement si $X^2-1$ est annulateur
+\end{ex}
+
+\begin{defprop}
+    L'ensemble des polynômes annulateurs d'un endomorphisme $u$ est un idéal. Il possède un unique générateur unitaire, qu'on appelle \textbf{polynôme minimal\index{polynôme!minimal}}, qu'on notera $\mu_u$ ou $\Pi_u$
+\end{defprop}
+
+\begin{proof}
+    $(\id, u, \cdots, u^{n^2})$ famille liée de $\mathcal L(E)$ donc l'idéal n'est pas trivial
+\end{proof}
+
+\begin{prop}
+    $\mathbb K[u]\defeq \{P(u), P\in\mathbb K[X]\}$ est une $\mathbb K$-algèbre de dimension $\deg \mu_u$ de base $(1, u, \cdots, u^{\deg \mu_u-1})$
+\end{prop}
+
+\begin{ex}
+    $P=X^2-3X+2$ polynôme minimal \[
+        A= \begin{pmatrix}
+            -2 & -6 \\ 2 & 5
+        \end{pmatrix}
+    \]
+    Puis $X^n=\mu_A\times Q+\alpha_n X+\beta_n$. En injectant $1$ et $2$ (les racines de $\mu_A$) on peut exprimer $\alpha_n$ et $\beta_n$ et $A^n=\alpha_nA+\beta_n$
+\end{ex}
+
+\section{Théorème de décomposition des noyaux}
+
+\begin{thm}
+    \Hyp $E$ un $\mathbb K$-e.v., $u\in\mathcal L(E)$
+    \begin{concenum}
+    \item Si $P, Q\in\mathbb K[X]$ sont premiers entre eux, alors $\Ker (PQ)(u)=\Ker P(u)\oplus \Ker Q(u)$. En particulier, si $PQ$ est annulateur alors $\Ker(PQ)(u)=E$
+    \item Si $P_1, \cdots, P_q\in\mathbb K[X]$ deux à deux premiers entre eux et si $P=P_1\cdots P_q$ alors \[
+            \Ker P(u)=\Ker P_1(u)\oplus\cdots\oplus \Ker P_q(u)
+        \]
+    \end{concenum}
+\end{thm}
