@@ -184,12 +184,186 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 
 \section{Théorème de décomposition des noyaux}
 
-\begin{thm}
+\begin{thm}[Décomposition des noyaux\index{décomposition des noyaux (théorème)}]
     \Hyp $E$ un $\mathbb K$-e.v., $u\in\mathcal L(E)$
     \begin{concenum}
     \item Si $P, Q\in\mathbb K[X]$ sont premiers entre eux, alors $\Ker (PQ)(u)=\Ker P(u)\oplus \Ker Q(u)$. En particulier, si $PQ$ est annulateur alors $\Ker(PQ)(u)=E$
     \item Si $P_1, \cdots, P_q\in\mathbb K[X]$ deux à deux premiers entre eux et si $P=P_1\cdots P_q$ alors \[
             \Ker P(u)=\Ker P_1(u)\oplus\cdots\oplus \Ker P_q(u)
         \]
+    \item Dans ce cas, si $Q_i=\frac P{P_i}$, \begin{enumerate}
+        \item Il existe $U_1, \cdots, U_q$ tels que $U_1Q_1+\cdots +U_qQ_q=1$
+        \item $(U_iQ_i)(u)$ est la projection sur $\Ker P_i(u)$ associée à la décomposition
+    \end{enumerate}
     \end{concenum}
 \end{thm}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item On écrit $UP+QV=1$ et si $x\in\Ker P(u)\cap \Ker Q(u)$ alors $(UP+QV)(u)(x)=0=\id(x)=x$ donc la somme est directe
+
+            Puis, la valeur de la somme est la bonne car $\Ker P(u),\Ker Q(u)\subseteq \Ker PQ(u)$ et pour $x\in \Ker PQ(u)$, $x=UP(u)(x)+VQ(u)(x)\in \Ker Q(u)+\Ker P(u)$
+        \item Par récurrence, c'est vrai
+        \item Les $Q_i$ sont premiers entre eux dans leur ensemble, donc Bézout donne (a). Puis, pour $x$ dans $\Ker P(u)$, \[
+                x= \underbrace{U_1Q_1(u)(x)}_{\in\Ker P_1(u)}+\cdots +\underbrace{U_qQ_q(u)(x)}_{\in\Ker P_q(u)}
+            \]
+            et la somme est directe ce qui conclut.
+    \end{enumerate}
+\end{proof}
+
+\begin{ex}
+    Si $u^3+u=0$, alors $E=\Ker u\oplus \Ker(u^2+\id)$ or $\Ker(u^2+\id)\subset \img u$ donc $E=\Ker u+\img u$
+\end{ex}
+
+\begin{ex}
+    $E$ de dimension finie, $u$ un endomorphisme de $E$ tel que $u\in\Vect(u^k, k\geq 2)$. Il y a donc un polynôme annulateur pour $u$. De même que précédemment, \[
+        E=\Ker u\oplus \img u
+    \]
+\end{ex}
+
+\begin{ex}
+    On note $E$ l'ensemble des suites $(u_n)$ telles que $\forall n\in\mathbb N, u_{n+3}=4u_{n+2}-5u_{n+1}+2u_n$. On note $T$ l'endomorphisme $(u_n)_n\longmapsto (u_{n+1})_n$ de sorte que \[
+        E=\Ker(T^3-4T^2+5T-2\id)=\Ker((T-\id)^2)\oplus \Ker(T-2\id)
+    \]
+    et $\Ker(T-2\id)=\{\lambda (2^n)_n, \lambda\in\mathbb R\}$, $\Ker(T-\id)=\{(\lambda)_n, \lambda\in\mathbb R\}$ puis \[
+        u\in \Ker((T-\id)^2)\iff T(u)-u\in\Ker(T-\id)\iff (u_{n+1}-u_n)_n=(\lambda)_n
+    \]
+    donc $\Ker((T-\id)^2)=\{(\nu+n\mu)_n, \nu, \mu\in\mathbb R\}$
+\end{ex}
+
+\section{Valeurs propres, vecteurs propres}
+
+\begin{dfn}
+    Pour $E$ un $\mathbb K$-e.v. et $u$ endomorphisme de $E$, \begin{enumerate}
+        \item On dira que $\lambda\in\mathbb K$ est \textbf{valeur propre\index{valeur propre}} de $u$ si $\Ker(u-\lambda\id)\neq \{0\}$
+        \item On dira que $x\in E$ est un \textbf{vecteur propre\index{vecteur propre}} associé à la valeur propre $\lambda$ si $x\in\Ker(u-\lambda\id)\setminus\{0\}$
+        \item L'ensemble des valeurs propres (appelé \textbf{spectre\index{spectre}}) est noté $\Sp_{\mathbb K}(u)$ ou simplement $\Sp(u)$.
+        \item L'ensemble des vecteurs propres pour la valeur propre $\lambda$ (on compte le vecteur nul pour garder la structure d'e.v.) est noté $E_\lambda=\Ker(u-\lambda \id)$ et s'appelle \textbf{sous-espace propre\index{sous-espace propre}} de $u$ pour $\lambda$.
+    \end{enumerate}
+\end{dfn}
+
+\subsection{Étude du spectre}
+
+\begin{prop}
+    \Hyp $u, v\in\mathcal L(E)$, $P\in\mathbb K[X]$ et $\lambda\in\mathbb K$
+    \begin{concenum}
+    \item Si $u$ et $v$ commutent, alors $\Ker u$ et $\img u$ sont stables par $v$. De même, $E_\lambda(u)$ est stable par $v$.
+    \item Si $x\in E_\lambda(u)$, $P(u)(x)=P(\lambda)x$
+    \item $P(\lambda)\in\Sp_{\mathbb K}(P(u))$ pour $\lambda\in \Sp_{\mathbb K}(u)$
+    \item Si $P$ est annulateur alors $\Sp_{\mathbb K}(u)\subseteq \mathcal Z_{\mathbb K}(P)$
+    \item $\Sp_{\mathbb K}(u)=\mathcal Z_{\mathbb K}(\mu_u)$
+    \end{concenum}
+\end{prop}
+
+\begin{proof}~ \begin{enumerate}
+    \item 2. 3. Ok
+    \setcounter{enumi}{3}
+    \item $P(u)(x)=P(\lambda)x$ pour $x$ vecteur propre $\implies P(\lambda) = 0$ pour $P$ annulateur
+    \item On a une inclusion par 4.
+
+        Si $\lambda$ racine de $\mu_u$ dans $\mathbb K$ alors \[ \lambda \not\in\Sp(u)\implies u-\lambda\id \in \mathrm{GL}(E)
+        \]
+        donc dans ce cas $\mu_u=(X-\lambda) Q$ et $Q(u)=0$ absurde par minimalité de $\mu_u$. Donc $\lambda\in\Sp(u)$
+\end{enumerate}
+\end{proof}
+
+\subsection{Polynôme caractéristique}
+
+\index{polynôme!caractéristique}
+
+\begin{thmdef}
+    \Hyp $u\in\mathcal L(E)$ avec $E$ un $\mathbb K$-e.v. de dimension $n$, muni d'une base $\mathcal B$. $\mathcal M_{\mathcal B}(u)\defeq A$
+    \begin{concenum}
+        \item Il y a équivalence entre \begin{enumerate}
+            \item $\lambda\in\Sp_{\mathbb K}(u)$
+            \item $\det(\lambda\id-u)=0$
+            \item $\det(\lambda I_n-A)=0$
+        \end{enumerate}
+        \item Le polynôme $\chi_A=\chi_u$ donné par $\det(X\id -u)=\det(X I_n-A)$ est appelé \textbf{polynôme caractéristique} de $A$ (ou de $u$)
+        \item $\chi_A$ est unitaire de degré $n$ et \[
+                \chi_A=X^n-\Tr (A) X^{n-1}+\cdots +(-1)^n\det A
+            \]
+        \item  $\Sp_{\mathbb K}(u)=\mathcal Z_{\mathbb K}(\chi_u)$
+    \end{concenum}
+\end{thmdef}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 2. Ok
+        \setcounter{enumi}{2}
+    \item Le polynôme est unitaire de degré $n$ car la seule permutation qui donne un coefficient de degré $n$ dans la formule du déterminant est l'identité, et ce coefficient vaut $1$. Toutes les autres permutations ne donnent que des coefficients de degré $<n-1$ donc le coefficient de $X^{n-1}$ ne peut venir que du développement du produit de la diagonale ($\sigma=\id$), dont le coefficient en $X^{n-1}$ vaut bien la trace. Pour le terme constant, on injecte $0$ et par définition on obtient $\det(-A)=(-1)^n\det A$
+    \item \[
+            \lambda\in\Sp(u)\iff \det(\lambda \id -u)=0\iff \lambda\in\mathcal Z_{\mathbb K}(\chi_u)
+        \]
+    \end{enumerate}
+\end{proof}
+
+\begin{ex}[Cas d'une matrice compagnon] On note \[
+    A= \begin{pmatrix}
+0 & 0 & \dots & 0 & -a_0 \\
+1 & 0 & \dots & 0 & -a_1 \\
+0 & 1 & \dots & 0 & -a_2 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \dots & 1 & -a_{p} \\
+\end{pmatrix}\in \mathcal M_{p+1}(\mathbb K)
+\]
+Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots +a_0$
+\end{ex}
+
+\section{Théorème de Cayley-Hamilton}
+
+\begin{thm}[Cayley-Hamilton\index{Cayley-Hamilton (théorème de -- )}]
+    \Hyp $E$ de dimension finie $n$ et $u\in\mathcal L(E)$
+    \Conc $\chi_u$ est annulateur de $u$.
+\end{thm}
+
+\begin{proof} (Hors-Programme)
+
+    On note $A$ canoniquement associée à $u$, et $B=XI_n-A$. On a \[
+        B\Com(B)^\top = \det(B)I_n=\chi_A(X)I_n
+    \]
+    $\Com(B)^\top$ a des coefficients dans $\mathbb K_{n-1}[X]$ donc il existe des matrices $B_0, \cdots, B_{n-1}$ telles que \[
+        \Com(B)^\top=X^{n-1}B_{n-1}+\cdots +B_0.
+    \]
+    Alors, \begin{align*}
+        B\Com(B)^\top&=(XI_n-A)(X^{n-1}B_{n-1}+\cdots +B_0)\\
+                     &=X^nB_{n-1}+X^{n-1}(B_{n-2}-AB_{n-1})+\cdots + X(B_0-AB_1)-AB_0\\
+                     &=\chi_A(X)I_n
+    \end{align*}
+    On identifie: \[
+        B_{n-1}=I_n\qquad \qquad \qquad \text{ et les autres }B_{i+1}-AB_i\text{ sont de la forme }\alpha_i I_n, \alpha_i\in\mathbb R
+    \]
+    Si on note $\chi_A=X^n+a_{n-1}X^{n-1}+\cdots +a_0$, on a \[
+        B_{n-2}-AB_{n-1}=a_{n-1}I_n\quad , \quad \cdots \quad,\quad B_0-AB_1=a_1 I_n\quad,\quad  -AB_0=a_0I_n
+    \]
+    En remplaçant dans $\chi_A(A)$ tous les termes s'annulent.
+\end{proof}
+
+\begin{csq*}~
+    \begin{itemize}
+        \item Pour $A$ dans $\mathcal M_n(\mathbb K)$, $\mu_A\;|\;\chi_A$ donc $\deg \mu_A\leq n$
+        \item Si \[
+                \chi_A=\prod_{i=1}^r(X-\lambda_i)^{\alpha_i}
+            \]
+            avec des $\lambda_i$ deux à deux distincts, alors \[
+                \mathcal M_n(\mathbb K)=\bigoplus_{i=1}^r\Ker\left((A-\lambda_iI_n)^{\alpha_i}\right)
+            \]
+        \item Si $A$ est nilpotente alors $A^n=0$ car $\deg \mu_A\leq n$
+    \end{itemize}
+\end{csq*}
+
+\begin{exo}
+    $A\in\mathcal M_n(\mathbb C)$ non inversible. Montrer qu'il existe $B\in\mathcal M_n(\mathbb C)$ non nulle telle que $\forall p\geq 1, (A+B)^p=A^p+B^p$
+\end{exo}
+
+\begin{proof}[Éléments de résolution]
+    $\mu_A=XP(X)$, $P(A)\neq 0$ par minimalité de $\mu_A$ et $P(A)$ convient.
+\end{proof}
+
+\begin{exo}
+    Montrer que $A^3+A^2+A+I_n=0\implies \Tr A\leq 0$
+\end{exo}
+\begin{proof}[Éléments de résolution]
+    $P(X)=(X+1)(X^2+1)$ est annulateur donc $\Sp_{\mathbb C}(A)\subseteq\{-1, i, -i\}$ et $\chi_A=(X+1)^{\alpha}(X+i)^{\beta}(X-i)^{\gamma}$ polynôme réel donc $\beta=\gamma$ et la trace est le coeff en $X^{n-1}$
+\end{proof}
+
