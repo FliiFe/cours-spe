@@ -10,6 +10,7 @@
 \usepackage{xcolor}
 \usepackage{mdframed}
 \usepackage{etoolbox}
+\usepackage{xparse}
 \usepackage{parskip}
 \usepackage{tikz,tkz-tab}
 \usepackage{pgfplots}
@@ -65,6 +66,7 @@
 \newthm{notation}{Notation}
 \newtheorem*{ex}{Exemple}
 \newtheorem{csq}{Conséquence}[subsection]
+\newtheorem*{csq*}{Conséquence}
 \renewcommand{\thecsq}{\arabic{csq}}
 
 \AtBeginEnvironment{thmdef}{\Needspace{5\baselineskip}}
@@ -100,11 +102,18 @@
   \setfoot{\ifsolo\else\textbf{Chapitre \thechapter} : \textsc{\chaptertitle}\fi}{}{}
 }
 
-\newcommand{\genmrm}[2][]{%
-    \ifstrequal{#1}{}{%
-        \expandafter\newcommand\csname#2\endcsname[1]{\mathrm{#2}\ifstrequal{##1}{(}{##1}{\;##1}}%%
-    }{%
-        \expandafter\newcommand\csname#1\endcsname[1]{\mathrm{#2}\ifstrequal{##1}{(}{##1}{\;##1}}%
+\newif\ifmrmspace
+\NewDocumentCommand\genmrm{O{#2}m}{
+    \expandafter\NewDocumentCommand\csname#1\endcsname{m}{%
+        \mrmspacetrue%
+        % don't put extra space if followed by ()_^
+        % to get Ker(u), Ker u, (u+id), Sp_K, ...
+        \ifstrequal{##1}{(}{\mrmspacefalse}{}%
+        \ifstrequal{##1}{)}{\mrmspacefalse}{}%
+        \ifstrequal{##1}{_}{\mrmspacefalse}{}%
+        \ifstrequal{##1}{^}{\mrmspacefalse}{}%
+        \mathrm{#2}%
+        \ifmrmspace\;\fi##1%
     }%
 }
 \genmrm{Ker}
@@ -119,14 +128,14 @@
 \genmrm{Com}
 \genmrm{Hom}
 \genmrm{Aut}
-\newcommand{\diff}{\mathrm{d}}
-\newcommand{\nop}{\|\hspace{-1pt}|}
-\newcommand{\defeq}{\,\widehat=\,}
-\newcommand{\1}{\mathbbm{1}}
-\renewcommand{\mathring}[1]{\overset\circ{#1}}
-\renewcommand{\bar}[1]{\overline{#1}}
-\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
-\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand\diff{\mathrm{d}}
+\newcommand\nop{\|\hspace{-1pt}|}
+\newcommand\defeq{\,\widehat=\,}
+\newcommand\1{\mathbbm{1}}
+\renewcommand\mathring[1]{\overset\circ{#1}}
+\renewcommand\bar[1]{\overline{#1}}
+\newcommand\floor[1]{\left\lfloor#1\right\rfloor}
+\newcommand\ceil[1]{\left\lceil#1\right\rceil}
 
 \makeatletter
 \newcommand*{\xnrightarrow}[2][]{%
