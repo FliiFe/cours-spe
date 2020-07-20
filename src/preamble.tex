@@ -39,7 +39,7 @@
 
 \newcommand{\newthm}[2]{
     \newenvironment{#1}[1][]
-    {\needspace{3cm}\par\noindent\normalfont\ifstrempty{##1}{\textbf{#2.}}{\textbf{#2} (##1).}\par\nopagebreak%
+    {\needspace{5cm}\par\noindent\normalfont\ifstrempty{##1}{\textbf{#2.}}{\textbf{#2} (##1).}\par\nopagebreak%
       \begin{mdframed}[
          linewidth=1pt,
          linecolor=black,
@@ -126,6 +126,7 @@
 \genmrm{ord}
 \genmrm{Tr}
 \genmrm{Com}
+\genmrm{diag}
 \genmrm{Hom}
 \genmrm{Aut}
 \newcommand\diff{\mathrm{d}}
@@ -134,6 +135,7 @@
 \newcommand\1{\mathbbm{1}}
 \renewcommand\mathring[1]{\overset\circ{#1}}
 \renewcommand\bar[1]{\overline{#1}}
+\renewcommand\leq\leqslant
 \newcommand\floor[1]{\left\lfloor#1\right\rfloor}
 \newcommand\ceil[1]{\left\lceil#1\right\rceil}
 

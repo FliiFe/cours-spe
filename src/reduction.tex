@@ -27,10 +27,10 @@ Dans tout le chapitre, on note $\mathbb K$ un corps.
 \end{thm}
 
 \begin{thmdef}
-    $a\in\mathbb K$ est une racine de $P$ ssi \[
+    $a\in\mathbb K$ est une racine de $P$ si et seulement si \[
     P(a)=0\iff (X-a)\;|\;P
 \]
-et $a$ est racine de multiplicité $\alpha \geq 1$ ssi \[
+et $a$ est racine de multiplicité $\alpha \geq 1$ si et seulement si \[
     \begin{cases}
         P(a)=P'(a)=\cdots=P^{(\alpha - 1)}(a)=0 \\
         P^{(\alpha)}(a)\neq 0
@@ -148,8 +148,8 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
     \]
     \begin{itemize}
         \item $\psi$ est bilinéaire
-        \item À $Q$ fixé, $P\longmapsto \psi(P, Q)$ AL nulle ssi $\forall j\in\mathbb N, \psi(X^j, Q)=0$
-        \item Pour chaque $j$, $Q\longmapsto \psi(X^j, Q)$ nulle ssi $\forall k\in\mathbb N, \psi(X^j, X^k)=0$ qui est vrai.
+        \item À $Q$ fixé, $P\longmapsto \psi(P, Q)$ AL nulle si et seulement si $\forall j\in\mathbb N, \psi(X^j, Q)=0$
+        \item Pour chaque $j$, $Q\longmapsto \psi(X^j, Q)$ nulle si et seulement si $\forall k\in\mathbb N, \psi(X^j, X^k)=0$ qui est vrai.
     \end{itemize}
 \end{proof}
 
@@ -310,7 +310,7 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots +a_0$
 \end{ex}
 
-\section{Théorème de Cayley-Hamilton}
+\subsection{Théorème de Cayley-Hamilton}
 
 \begin{thm}[Cayley-Hamilton\index{Cayley-Hamilton (théorème de -- )}]
     \Hyp $E$ de dimension finie $n$ et $u\in\mathcal L(E)$
@@ -367,3 +367,221 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
     $P(X)=(X+1)(X^2+1)$ est annulateur donc $\Sp_{\mathbb C}(A)\subseteq\{-1, i, -i\}$ et $\chi_A=(X+1)^{\alpha}(X+i)^{\beta}(X-i)^{\gamma}$ polynôme réel donc $\beta=\gamma$ et la trace est le coeff en $X^{n-1}$
 \end{proof}
 
+\begin{exo}
+    On note $A$ une matrice de $\mathcal M_n(\mathbb C)$. Montrer que si $P\in\mathbb C[X]$, alors $P(A)$ est inversible si et sulement si $P\land \chi_A=1$ si et seulement si $P\land \mu_A=1$
+\end{exo}
+
+\begin{proof}[Résolution]~
+    \begin{itemize}
+        \item Si $Q$ annulateur tel que $P\land Q=1$, il existe $\exists U, V, \quad UP+QV=1$ donc $U(A)P(A)=I_n$ et $P(A)$ inversible
+        \item Si $P(A)$ inversible alors on suppose $\Delta=P\land \chi_A$ non constant divisible par $X-\lambda$ et $P(X)=(X-\lambda)Q(X)$ donc \[
+                P(A)=\underbrace{(A-\lambda I_n)}_{\text{non-inversible car }\chi_A(\lambda)=0}Q(A)
+            \]
+            donc $P(A)$ n'est pas inversible, c'est absurde.
+    \end{itemize}
+\end{proof}
+
+\begin{exo}
+    $A\in\mathrm{GL}_5(\mathbb R), \Tr A=2, A^3+A^2-2A=0$. Trouver $\chi_A$
+\end{exo}
+
+\begin{proof}[Élément de résolution]
+    $A$ inversible donc $X^2+X-2$ annulateur. $\Sp(A)\subset \{1, -2\}$ donc \[\chi_A=(X-1)^\alpha(X+2)^\beta,\] $\alpha+\beta=5$, $\Tr A=\alpha-2\beta=2$ donc $\alpha=4, \beta=1$
+\end{proof}
+
+\begin{exo}
+    Pour $A, B\in\mathcal M_n(\mathcal R)$. Montrer que $\chi_{AB}=\chi_{BA}$
+\end{exo}
+
+\begin{proof}[Résolution (Première méthode)]
+    \[
+        \begin{pmatrix}
+            A & -XI_n \\ I_n & 0
+        \end{pmatrix} \begin{pmatrix}
+            B & -XI_n \\ I_n & -A
+        \end{pmatrix}= \begin{pmatrix}
+            AB-XI_n & 0 \\ B & -XI_n
+        \end{pmatrix}
+    \]
+    et \[
+        \begin{pmatrix}
+            B & -XI_n \\ I_n & -A
+        \end{pmatrix} \begin{pmatrix}
+            A & -XI_n \\ I_n & 0
+        \end{pmatrix} = \begin{pmatrix}
+            BA-XI_n & -XB \\ 0 & -XI_n
+        \end{pmatrix}
+    \]
+    donc $\chi_{AB}=\chi_{BA}$
+\end{proof}
+
+\begin{proof}[Résolution (Deuxième méthode)]
+    Si $A$ inversible, $AB=A(BA)A^{-1}$ donc $\chi_{AB}=\chi_{BA}$. Puis, dans le cas général on se place dans $\mathbb K(T)$ (le corps des fractions rationnelles sur $\mathbb K$) et $A-TI_n$ est inversible, d'où \[
+        \chi_{B(A-TI_n)}=\chi_{(A-TI_n)B}
+    \]
+    et on prend $T$=0.
+\end{proof}
+
+\section{Étude des sous-espaces propres}
+
+\begin{prop}
+    \Hyp $E$ un $\mathbb K$-e.v. et $u$ un endomorphisme de $E$. On note $\lambda_1, \cdots, \lambda_p$ des valeurs propres de $u$ deux à deux distinctes
+    \Conc Les sous-espaces propres $E_\lambda$ sont en somme directe
+\end{prop}
+
+\begin{proof}
+    C'est le théorème de décomposition des noyaux sur $P=(X-\lambda_1)\cdots (X-\lambda_p)$
+\end{proof}
+
+\begin{prop}
+    \Hyp $E$ un $\mathbb K$-e.v. et $F$ un s.e.v. de $E$ stable par un endomorphisme $u$ de $E$.
+    \Conc $\chi_{u_{|F}}$ divise $\chi_u$ et $\mu_{u_{|F}}$ divise $\mu_u$
+\end{prop}
+
+\begin{proof}
+    $\mu_u(u)=0$ donc $\mu_u(u)_{|F} =\mu_u(u_{|F})=0$ donc $\mu_{u_{|F}} \;|\;\mu_u$. On note $\mathcal F=(e_1, \cdots , e_p)$ une base de $F$ qu'on complète en base $\mathcal B$ de $E$. On note $A=\mathcal M_{\mathbb F}(u_{|F})$. On a \[
+        \mathcal M_{\mathcal B}(u)= \left( \begin{array}{c|c}
+                 A & * \\ 
+                \hline 0 & B
+        \end{array} \right)
+    \]
+    donc $\chi_{u}=\chi_A\chi_B$
+\end{proof}
+
+\begin{thmdef}
+    \Hyp $u$ endomorphisme en dimension finie
+    \begin{concenum}
+    \item Si $\lambda\in\Sp_{\mathbb K}(u)$ alors on appelle \textbf{multiplicité algébrique}\index{multiplicité algébrique} de $\lambda$ la multiplicité de $\lambda$ dans $\chi_u$, notée $m_\lambda(u)$
+    \item Si $\lambda\in\Sp_{\mathbb K}(u)$ alors $1\leq \dim E_{\lambda}(u)\leq m_\lambda(u)$
+    \end{concenum}
+\end{thmdef}
+
+\begin{proof}
+    \[x\in \Ker (u-\lambda\id)\implies  (u-\lambda\id)^r(x)=(u-\lambda\id)^{r-1}\circ (u-\lambda\id)(x)=0\implies x\in \Ker((u-\lambda\id)^r)\] puis théorème de décomposition des noyaux
+\end{proof}
+
+\section{Endomorphismes diagonalisables}
+
+\begin{defprop}
+    On note $E$ un $\mathbb K$-e.v., $u$ un endomorphisme de $E$. On dira qu'il est \textbf{diagonalisable}\index{diagonalisable (endomorphisme)} s'il satisfait l'une des propriétés équivalentes suivantes: \begin{enumerate}
+        \item Il existe une base de $E$ constituée de vecteurs propres pour $u$
+        \item Il existe une base de $E$ dans laquelle $u$ a une matrice diagonale
+        \item Il existe une base de $E$ dans laquelle la matrice de $u$ est semblable à une matrice diagonale
+    \end{enumerate}
+\end{defprop}
+
+\begin{thm}
+    \Hyp $E$ un $\mathbb K$-e.v. de dimension finie, $u$ un endomorphisme, $\lambda_1, \cdots, \lambda_p$ les valeurs propres distinctes de $u$
+    \Conc Il y a équivalence entre \begin{enumerate}[leftmargin=2cm,label=(\alph{enumi})]
+        \item $u$ est diagonalisable
+        \item $E_{\lambda_1}(u)\oplus \cdots \oplus E_{\lambda_p}(u)=E$
+        \item \[
+                \sum_{i=1}^p\dim E_{\lambda_i}(u)=\dim E
+            \]
+        \item $\chi_u$ est scindé sur $\mathbb K$ et $m_{\lambda}(u)=\dim E_{\lambda}(u)$ pour $\lambda\in\Sp_{\mathbb K}(u)$
+        \item $\mu_u$ scindé à racines simples dans $\mathbb K$
+        \item Il existe $P$ annulateur scindé à racines simples. Dans ce cas, \[
+                \mu_u=\prod_{\lambda\in\Sp_{\mathbb K}(u)}(X-\lambda)
+            \]
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}~
+    \begin{itemize}
+        \item $(a\implies b)$ Il existe une base de vecteurs propres, on les regroupe par valeurs propres et on a le résultat.
+        \item $(b\implies c)$ Clair
+        \item $(c\implies d)$ $\chi_u=(X-\lambda_1)^{\alpha_1}\cdots (X-\lambda_p)^{\alpha_p}P(X)$ et \[
+                \dim E=\sum_{i=1}^p\dim E_{\lambda_i}\leq \sum_{i=1}^pm_{\lambda_i}(u)\leq \dim E
+            \]
+            donc $P=1$ et \conc
+        \item $(d\implies e)$ On a $(d\implies b)$ puis $(b\implies a)$ donc dans $\mathcal B$ adaptée, \[
+                A\defeq\mathcal M_{\mathcal B}(u)= \begin{pmatrix}
+                    \lambda_1 I_{r_1} &  & (0) \\
+                     & \ddots & \\
+                    (0) & & \lambda_p I_{r_p}
+                \end{pmatrix}
+            \]
+            et \[ (A-\lambda_1 I_n)\cdots (A-\lambda_p I_n) =
+                \begin{pmatrix}
+                0 & & & (0) \\
+                  &*& & \\
+                  & &\ddots &\\
+                (0) & & & *
+            \end{pmatrix}
+                \begin{pmatrix}
+                * & & & (0) \\
+                  &0& & \\
+                  & &\ddots &\\
+                (0) & & & *
+            \end{pmatrix}\cdots
+            \begin{pmatrix}
+                * & & & (0) \\
+                  &\ddots& & \\
+                  & &* &\\
+                (0) & & & 0
+            \end{pmatrix}
+        \]
+        donc $(X-\lambda_1)\cdots (X-\lambda_p)$ annulateur scindé à racines simples
+    \item $(e\implies f)$ Clair
+    \item $(f\implies a)$ TDN sur $P$ puis on enlève les $E_{\lambda_i}(u)=\{0\}$ dans la décomposition
+    \end{itemize}
+\end{proof}
+
+\begin{exo}
+    On note \[
+        A= \begin{pmatrix}
+            -3 & 4 & 0 \\ 1 & 3 & 3 \\ 1 & -2 & 0
+        \end{pmatrix}
+    \]
+    Calculer $\chi_A$. $A$ est-elle diagonalisable ? Si oui, diagonaliser $A$.
+\end{exo}
+
+\begin{proof}[Résolution (partielle)]
+    $\chi_A(X)=(X+3)(X-1)(X-2)$ annulateur scindé à racines simples donc $A$ diagonalisable. Les trois vecteurs \[
+        \begin{pmatrix}
+            1\\1\\-1
+        \end{pmatrix}
+        \qquad \qquad
+        \begin{pmatrix}
+            4\\5\\-3
+        \end{pmatrix}
+        \qquad \qquad
+        \begin{pmatrix}
+            -3\\0\\1
+        \end{pmatrix}
+    \]
+    sont des vecteurs propres.
+\end{proof}
+
+\begin{exo}
+    $A\in\mathrm{GL}(\mathbb C)$. Montrer que $A^2$ est diagonalisable si et seulement si $A$ l'est.
+\end{exo}
+
+\begin{proof}[Éléments de résolution]
+    Le sens réciproque est immédiat, on ne montre que le sens direct. Si $A^2$ est diagonalisable de valeurs propres $\lambda_1, \cdots, \lambda_p$, on écrit $\delta_i^2=\lambda_i$ et $X^2-\delta_i^2=(X-\delta_i)(X+\delta_i)$ donc TDN et $\Ker(A^2-\lambda_i I_n)=\Ker(A-\delta_iI_n)\oplus\Ker(A+\delta_i I_n)$
+\end{proof}
+
+\begin{exo}
+    Donner une CNS de diagonalisabilité pour une matrice diagonale par blocs
+\end{exo}
+
+\begin{proof}[Réponse]
+    Une matrice $A=\diag(A_1, \cdots, A_p)$ est diagonalisable ssi les $A_i$ le sont.
+\end{proof}
+
+\section{Sous-espaces stables}
+
+\subsection{Restriction}
+
+\begin{prop}
+    \Hyp $u$ endomorphisme diagonalisable (dimension finie), $V$ s.e.v. stable par $u$.
+    \Conc $u_{|V}$ est diagonalisable et \[
+        V=\bigoplus_{\lambda\in\Sp_{\mathbb K}(u)}E_\lambda(u)\cap V
+    \]
+\end{prop}
+
+\begin{proof}
+    $\mu_u$ scindé annulateur à racines simples et $E_\lambda(u_{|V})=E_\lambda(u)\cap V$
+\end{proof}
+
+\subsection{Décomposition $D+N$ (HP)}
