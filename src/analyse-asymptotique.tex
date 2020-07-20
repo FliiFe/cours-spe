@@ -4,7 +4,7 @@
     \vspace{1cm}
 
     \begin{center}
-        \textbf{\LARGE Arithmétique} \\[1em]
+        \textbf{\LARGE Analyse Asymptotique} \\[1em]
     \end{center}
     \tableofcontents
 \else
@@ -13,4 +13,77 @@
 \thispagestyle{empty}
 
 \ifsolo \newpage \setcounter{page}{1} \fi
-\section{Développements limités}
+\section{Développements limités -- Rappels}
+
+Cette section ne contient que des rappels de sup.
+
+\begin{dfn}[Développement limité]\index{développement limité}
+    Un développement limité de $f:V\longrightarrow \mathbb R$ à l'ordre $n$ au voisinage $V$ de $a$ (qu'on abrègera $\mathrm{DL}_n(a)$ de $f$) est une écriture du type: \[
+        f(x)=\underbrace{a_0+a_1(x-a)+\cdots +a_n(x-a)^n}_{\text{partie polynômiale}}+o_a((x-a)^n)
+    \]
+\end{dfn}
+
+\begin{rem}
+    Lorsqu'un $\mathrm{DL}_n(a)$ existe, il y a unicité de la partie polynômiale.
+\end{rem}
+
+\begin{rem}
+    Les DL usuels sont à connaître.
+
+\begin{align*}
+    e^x &= 1 + x + \frac{x^2}{2} +\ldots+ \frac{x^n}{n!} &+ o_0(x^n) \\
+%              = \sum_{k=0}^n \frac{x^n}{n !} + x^{n+1}\varepsilon(x) \\
+    \sin x &= x - \frac{x^3}{3!}+\frac{x^5}{5!} +\ldots+(-1)^p\frac{x^{2p+1}}{(2p+1)!}
+           & +o_0(x^{2p+1} ) \\
+%              = \sum_{k=0}^p (-1)^p\frac{x^{2p+1}}{(2p+1)!} + x^{2p+2}\varepsilon(x) \\
+    \cos x &= 1 - \frac{x^2}{2!}+\frac{x^4}{4!} +\ldots+(-1)^p\frac{x^{2p}}{(2p)!}
+           & +o_0(x^{2p}) \\
+    \frac{1}{1-x} &= 1 + x + x^2 + + x^3 + \ldots + x^n
+        & + o_0(x^n) \\
+    \ln (1-x) &= -x - \frac{x^2}{2} - \frac{x^3}{3} - \frac{x^4}{4} - \ldots - \frac{x^n}{n}
+        & + o_0(x^n) \\
+    (1+x)^\alpha &= 1 + \alpha x + \alpha (\alpha-1) \frac{x^2}{2!} + \ldots \\ 
+        & \qquad\qquad +\alpha(\alpha-1)\ldots(\alpha-n+1)\frac{x^n}{n!}
+        & + o_0(x^n) \\
+\end{align*}
+Les règles de calcul sont aussi à connaître (vues en sup: composition, troncature, multiplication)
+\end{rem}
+
+\begin{dfn}[Voisinage\index{voisinage}]
+    Un voisinage de $a\in\mathbb R$ est un intervalle du type $]a-\varepsilon, a+\varepsilon[$. Si $V$ est un voisinage de $a$, on note $V\in\mathcal V(a)$.
+\end{dfn}
+
+Si $V\in\mathcal V(0)$ et si pour $x\in V\setminus\{0\}$, $f(x)=a_0+a_1x +a_px^p+o_p(x^p)$, $a_p\neq 0$ et $p\geq 2$ alors \begin{itemize}
+    \item $f$ est prolongeable en $0$ et $f(0)=a_0$
+    \item $f$ est dérivable en $0$ et $f'(0)=a_1$
+    \item $y=a_0+a_1x$ est l'équation cartésienne de la tangente au graphe de $f$ en $0$
+    \item $f(x)-a_0-a_1x$ a le même signe que $a_px^p$ au voisinage de $0$.
+\end{itemize}
+
+\begin{rem}
+    $f$ admet un $\mathrm{DL}_1(a)$ si et seulement si $f$ est dérivable en $a$. Ça n'est pas vrai pour les ordres supérieurs de dérivation.
+\end{rem}
+
+\begin{ex}
+    On pose \[
+        f: x\in]-\pi;\pi[\setminus\{0\} \longmapsto \frac 1x-\frac1{\sin x}
+    \]
+    et on a (en utilisant les DL usuels et les règles de calcul) \[
+        \forall x\in D_f,\quad f(x)=\frac1x-\frac1{x-\frac{x^3}3+o_0(x^3)}=\frac1x \left( 1- \left( 1+\frac {x^2}6+o_0(x^2) \right)\right)=-\frac16x+o_0(x)
+    \]
+    donc $f$ est prolongeable en $0$ avec $f(0)=0$, $f'(0)=-\frac 16$.
+
+    La fonction $f$ est $\mathcal C^1$ sur son domaine de définition, l'est-elle en $0$ ? On a \[
+        \forall x\in D_f, \qquad f'(x)=-\frac1{x^2}+\frac{\cos x}{\sin^2x}=\frac1{x^2} \left( -1+\frac{1-\frac{x^2}2+o_0(x^2)}{(1-\frac{x^2}6+o_0(x^2))^2} \right)=-\frac16+o_0(1)\xrightarrow[x\to 0]{}-\frac16
+    \]
+    donc $f$ est $\mathcal C^1$ en $0$
+\end{ex}
+
+\section{Taylor-Young}
+
+\begin{thm}[Taylor-Young\index{Taylor-Young (théorème de -- )}]
+    \Hyp $f\in\mathcal C^n(V\in\mathcal V(0), \mathbb R)$
+    \Conc \[
+            \forall x\in V, \qquad f(x)=\sum_{k=0}^n\frac{f^{(k)}(0)}{k!}x^k+o_0(x^n)
+    \]
+\end{thm}
