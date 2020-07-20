@@ -585,3 +585,333 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
 \end{proof}
 
 \subsection{Décomposition $D+N$ (HP)}
+
+\begin{res}
+    Soit $u$ un endomorphisme en dimension finie $n$ dont le polynôme caractéristique est scindé, $A$ sa matrice dans une base $\mathcal B$. Il existe une matrice diagonalisable $D$ et une matrice nilpotente $N$ qui commutent et telles que $A=D+N$. Cette écriture est unique.
+\end{res}
+
+\begin{proof}
+    On suppose $\chi_A=(X-\lambda_1)^{\alpha_1}\cdots (X-\lambda_r)^{\alpha_r}$ avec les $\lambda_i$ deux à deux distincts et les $\alpha_i\geq 1$.
+
+    Le théorème de décomposition des noyaux donne \[
+        \mathcal M_{n, 1}(\mathbb K)=\underbrace{\Ker(A-\lambda_1I_n)^{\alpha_1}}_{\defeq \Gamma_1(A)}\oplus\cdots \oplus \Gamma_r(A).
+    \]
+
+    $A$ et $(A-\lambda I_n)^{\alpha_i}$ commutent donc $\Gamma_i(A)$ est stable par $A$ et \[
+        (A-\lambda_i I_n)^{\alpha_i}_{|\Gamma_i(A)}=0=(A_{|\Gamma_i(A)}-\lambda_i I_{n|\Gamma_i(A)})^{\alpha_i}
+    \]
+    d'où \[
+        A_{|\Gamma_i(A)}=\underbrace{\lambda_i I_{n|\Gamma_i(A)}}_{D_i \text{ diagonalisable}}+ \underbrace{\left(A_{|\Gamma_i(A)}-\lambda_i I_{n|\Gamma_i(A)}  \right)}_{N_i\text{ nilpotente }}
+    \]
+    et $D_iN_i=N_iD_i$
+
+    Dans une base $\mathcal F$ adaptée à la décomposition, on a \[
+        \mathcal M_{\mathcal F}(A)= \begin{pmatrix}
+            D_1+N_1 & & (0)\\
+                    &\ddots &\\
+            (0)&&D_r+N_r
+        \end{pmatrix}
+    \]
+    et $\chi_A=\chi_{D_1+N_1}\times \cdots \times \chi_{D_r+N_r}=(X-\lambda_1)^{r_1}\cdots (X-\lambda_r)^{r_r}$ avec $r_i=\dim\Gamma_i(R)$. On en déduit $\dim\Gamma_i(A)=\alpha_i$ et on conclut sur l'existence avec \[
+        D= \begin{pmatrix}
+            D_1 & & \\
+                &\ddots &\\
+                &&D_r
+        \end{pmatrix}
+        \qquad \qquad N= \begin{pmatrix}
+            N_1&&\\
+               &\ddots&\\
+               &&N_r
+        \end{pmatrix}
+        \qquad \qquad DN=ND
+    \]
+
+    Par ailleurs, si on note $\pi_i$ le projecteur sur $\Gamma_i(A)$ associé à la décomposition, $\pi_i$ est un polynôme en $A$ (d'après le théorème de décomposition des noyaux) donc $D=\sum \lambda_i\pi_i$ aussi et $N=A-D$ aussi.
+
+    On suppose que $D'$ et $N'$ conviennent aussi. Dans ce cas, $D-D'=N-N'$. $N$ et $N'$ commutent car $N$ est un polynôme en $A$ et $N'$ commute avec $A$ donc $N-N'$ est nilpotente. $D-D'$ est diagonalisable nilpotente donc nulle ce qui conclut sur l'unicité.
+\end{proof}
+
+\subsection{Diagonalisation simultanée}
+
+On va montrer que si $(f_i)_{i\in I}$ est une famille d'endomorphismes diagonalisables qui commutent alors on peut les diagonaliser dans une base commune.
+
+On procède par récurrence sur $n=\dim E$.
+\begin{itemize}
+    \item $n=1$ c'est trivial
+    \item $n\geq 1$, on suppose que c'est vrai au rang $n$ et on prend $E$ tel que $\dim E=n+1$ \begin{itemize}
+        \item \emph{Premier cas.} Tous les $f_i$ sont des homothéties. Il n'y a rien à faire.
+        \item \emph{Second cas.} L'endomorphisme $f_{i_0}$ n'est pas une homothétie. \[
+                E=\bigoplus_{\lambda\in\Sp_{\mathbb K}(f_{i_0})} \underbrace{E_\lambda(f_{i_0})}_{\dim \leq n}.
+            \]
+            Les $E_\lambda(f_{i_0})$ sont stables par tous les $f_i$ et les $f_{i|E_\lambda(f_{i_0})}$ sont diagonalisables donc il existe une base $\mathcal B_\lambda$ de $E_\lambda(f_{i_0})$ qui les diagonalise (par \hyp). Il suffit de concaténer les $\mathcal B_\lambda$ pour conclure.
+    \end{itemize}
+\end{itemize}
+
+\section{Utilisation des polynômes d'interpolation}
+
+On note $A\in\mathcal M_n(\mathbb K)$, $\Sp_{\mathbb K}(A)=\{\lambda_1, \cdots, \lambda_r\}$, $A$ diagonalisable. \begin{itemize}
+    \item $\mathcal M_{n, 1}(\mathbb K)=E_{\lambda_1}(A)\oplus\cdots \oplus E_{\lambda_r}(A)$
+    \item On note \[
+            \Delta_i=\prod_{j\neq i}\frac{X-\lambda_j}{\lambda_i-\lambda_j}
+        \]
+    \item $\Delta_1+\cdots +\Delta_r(X)-1$ est de degré $\leq r-1$ et s'annule en $\lambda_1, \cdots, \lambda_r$ donc c'est le polynôme nul et $\sum \Delta_i=1$
+    \item On a $\mu_A=(X-\lambda_1)\cdots (X-\lambda_r)$ donc $(X-\lambda_i)\Delta_i$ est divisible par $\mu_A$ de sorte que $\forall X, \quad \Delta_i(A)X\in E_{\lambda_1}(A)$
+
+        Puis, $\forall X, \Delta_1(A)X+\cdots \Delta_r(A)=X$ donc $\Delta_i(A)$ est le projecteur sur $E_{\lambda_i}(A)$ associé à la décomposition.
+
+        De plus, en appliquant $A$, \[
+            \lambda_1\Delta_1(A)X+\cdots + \lambda_r\Delta_r(A)=AX
+        \]
+        qui est vrai pour tout $X$ donc \[
+            A=\lambda_1\Delta_1(A)+\cdots +\lambda_r\Delta_r(A)
+        \]
+
+        Pour $i\neq j$, $\Delta_i(A)\Delta_j(A)=0$ (le polynôme est divisible par $\mu_A$) donc par récurrence (presque) immédiate, \[
+            \forall k\geq 0, \qquad A^k=\lambda_1^k\Delta_1(A)+\cdots +\lambda_r^k\Delta_r(A)
+        \]
+\end{itemize}
+
+\begin{ex}
+    On note \[
+        A= \begin{pmatrix}
+            3 & -3 & 2 \\
+            -1 & 5 & -2 \\
+            -1 & 3 & 0
+        \end{pmatrix}
+    \]
+    et $\chi_A=(X-4)(X-2)^2$ diagonalisable car $\mu_A=(X-4)(X-2)$ est annulateur scindé à racines simples
+
+    Les projecteurs spectraux sont $\Delta_4=\frac{X-2}{4-2}$, $\Delta_2=\frac{X-4}{2-4}$, donc \[
+        \forall n\geq 0, A^n=4^n\Delta_4(A)+2^n\Delta_2(A)
+    \]
+\end{ex}
+
+\section{Trigonalisation}
+
+\begin{thmdef}
+    \Hyp $u$ endomorphisme en dimension finie $n$
+    \begin{concenum}
+    \item On dit que $u$ est trigonalisable\index{trigonalisable (endomorphisme)} s'il existe une base $\mathcal B$ de $E$ telle que $\mathcal M_{\mathcal B}(u)$ est triangulaire
+    \item Il y a équivalence entre \begin{enumerate}
+        \item $u$ est trigonalisable
+        \item $\chi_u$ est scindé sur $\mathbb K$
+    \end{enumerate}
+    En particulier, Si $\mathbb K=\mathbb C$, tous les endomorphismes sont trigonalisables
+    \end{concenum}
+\end{thmdef}
+
+\begin{proof}
+    $(a\implies b)$ Si $\mathcal M_{\mathcal B}(u)=(a_{i, j})$ alors $\chi_u=\displaystyle\prod_{i=1}^n(X-a_{i,i})$ scindé sur $\mathbb K$.
+
+    $(b\implies a)$ Par récurrence sur $n$: \begin{itemize}
+        \item $n=1$ clair
+        \item $n\geq 1$, on suppose la propriété vraie au rang $n$ et on note $E$ tel que $\dim E=n+1$, $u\in\mathcal L(E)$ et $\chi_u$ scindé. On note $e_1$ un vecteur propre associé à la valeur propre $\lambda\in\Sp(u)$, et on complète $(e_1)$ en une base $\mathcal B$ de $E$. \[
+                \mathcal M_{\mathcal B}(u)= \left( \begin{array}{c|ccc}
+                     \lambda & & * & \\
+                    \hline 0 &&&\\
+                    \vdots &&A&\\
+                    0&&&
+                \end{array}\right)
+            \]
+            et on applique HR sur $A$.
+    \end{itemize}
+\end{proof}
+
+\begin{rem}
+    Si $A\in\mathcal M_n(\mathbb C)$ alors il existe $P\in\mathrm{GL}_n(\mathbb C)$ telle que \[
+        PAP^{-1}= \begin{pmatrix}
+            d_1 & & *\\
+                &\ddots &\\
+            (0)&&d_n
+        \end{pmatrix}.
+    \]
+    \begin{itemize}
+        \item $\chi_A=(X-d_1)\cdots (X-d_n)$ donc $\Sp_{\mathbb C}(A)=\{d_1, \cdots, d_n\}$
+        \item On note $\Sp_{\mathbb C}(A)^{\text{comp}}$ le multi-ensemble des valeurs-propres (c'est-à-dire l'ensemble des valeurs propres répétées avec leur multiplicité). On a \[
+                \Tr(A)=\sum_{\lambda\in\Sp_{\mathbb C}(A)^{\text{comp}}}\lambda\qquad \qquad \quad \Tr(A^k)=\sum_{\lambda\in\Sp_{\mathbb C}(A)^{\text{comp}}}\lambda^k
+            \]
+            et \[
+                \det A=\prod_{\lambda\in\Sp_{\mathbb C}(A)^{\text{comp}}}\lambda
+            \]
+    \end{itemize}
+\end{rem}
+
+\subsection{Trigonalisation simultanée}
+
+On note $(A_i)_i$ des matrices trigonalisables qui commutent deux à deux. Il existe $P\in\mathrm{GL}_n(\mathbb K)$ telle que pour tout $i$, $PA_iP^{-1}$ est triangulaire supérieure.
+
+La démonstration est identique à celle de la diagonalisation simultanée.
+
+\subsection{Trigonalisation effective}
+
+On note \[
+    A= \begin{pmatrix}
+        0 & 1 & 0 & 2 \\ 
+        -3 & 0 & 4 & 0\\
+        0 & 1 & 0 & 3\\
+        -1 & 0 & 1 & 0
+    \end{pmatrix}
+\]
+On a \[
+    \chi_A= \begin{vmatrix}
+        X & -1 & 0 & -2 \\ 
+        3 & X & -4 & 0\\
+        0 & -1 & X & -3\\
+        1 & 0 & -1 & X
+    \end{vmatrix}= X^4-2X^2+1=(X+1)^2(X-1)^2
+\]
+La matrice est diagonalisable ssi $\mu_A=(X+1)(X-1)$ ce qui est faux. Le TDN donne \[
+    \mathbb R^4=\Ker(A-I_4)^2\oplus \Ker(A+I_4)^2
+\]
+et \[
+    (A-I_4)^2= 
+    \begin{pmatrix}-4&-2&6&-4\\6&2&-8&6\\-6&-2&8&-6\\2&0&-2&2\end{pmatrix}
+\]
+d'où \begin{align*}
+    \begin{pmatrix}
+        x\\y\\z\\t
+    \end{pmatrix} \in \Vect(A-I_4)^2 &\iff \begin{cases}
+        4x+2y-6z+4t=0 \\
+        6x+2y-8z+6t=0 \\
+        6x+2y-8z+6t=0 \\
+        2x\phantom{+2y\;\,}-2z+2t=0
+    \end{cases} \\
+    &\iff \begin{cases}
+        y=z \\
+        x=z-t
+    \end{cases}\\
+    & \iff
+    \begin{pmatrix}
+        x\\y\\z\\t
+    \end{pmatrix}\in\Vect \left( \begin{pmatrix}
+        1\\1\\1\\0
+        \end{pmatrix}, \underbrace{\begin{pmatrix}
+        -1\\0\\0\\1
+    \end{pmatrix}}_{\not\in\Ker(A-I_4)} \right)
+\end{align*}
+
+On note \[
+    (e_1, e_2)\defeq \left(  (A-I_4)\begin{pmatrix}
+        -1\\0\\0\\1
+    \end{pmatrix}, \begin{pmatrix}
+        1\\1\\1\\0
+        \end{pmatrix}\right)
+\]
+de sorte que $e_1, e_2\in\Ker(A-I_4)^2$, $(A-I_4)e_1=0$ donc $Ae_1=e_1$ et $Ae_2=e_1+e_2$ donc $(e_1, e_2)$ base de $\Ker(A-I_4)^2$
+et \[
+    \mathcal M_{(e_1, e_2)}(A_{|\Ker(A-I_4)^2})= \begin{pmatrix}
+        1&1\\0&1
+    \end{pmatrix}
+\]
+et on fait pareil sur l'autre noyau.
+
+\subsection{Endomorphisme nilpotent}
+
+\begin{defprop}
+    \Hyp $E$ un $\mathbb K$-e.v. de dimension $n$
+    \begin{concenum}
+    \item On dira que $f$ est nilpotent\index{nilpotence!endomorphisme} s'il existe un $p\geq 1$ tel que $f^p=0$.
+    \item Il y a équivalence entre \begin{enumerate}
+        \item $f$ nilpotent
+        \item $\chi_f=X^n$
+        \item $f$ trigonalisable de spectre $\{0\}$
+    \end{enumerate}
+    Dans ce cas, l'indice de nilpotence\index{nilpotence!indice de nilpotence} est le degré de $\mu_f$
+    \end{concenum}
+\end{defprop}
+
+\begin{proof}~
+    \begin{itemize}
+        \item $(b\implies a)$ Cayley-Hamilton
+        \item $(a\implies c)$ $X^p$ scindé annulateur, $\Sp(f)\subset \{0\}$ et $E_0(f)=\Ker f\neq \{0\}$
+        \item $(c\implies b)$ Ok
+    \end{itemize}
+\end{proof}
+
+\begin{rem}
+    Si $f\in\mathcal L(E)$ et si $P$ est annulateur scindé sur $\mathbb K$ alors $\mu_f$ est scindé et $\mathcal Z_{\mathbb K}(\mu_f)=\Sp_{\mathbb K}(f)=\mathcal Z_{\mathbb K}(\chi_f)$
+
+    Donc, $\chi_f=(X-\lambda_1)^{\alpha_1}\cdots (X-\lambda_p)^{\alpha_p}Q$ avec $Q$ premier avec $\mu_f$. Si $Q$ non constant alors $Q(f)$ inversible.
+
+    Si $Q$ a des racines dans $\widehat{\mathbb K}$, $Q(X)=(X-\lambda)\tilde Q(X)$ dans $\widehat {\mathbb K}[X]$ et $f-\lambda\id_E$ non inversible donc $\det Q(f)=\det (f-\lambda\id_E)\det\tilde Q(f)=0$ absurde donc $Q=1$
+\end{rem}
+
+\subsection{Caractérisation des matrices nilpotentes}
+
+\begin{exo}
+    Montrer que $A\in\mathcal M_n(\mathbb C)$ est nilpotente ssi $\Tr A=\Tr A^2=\cdots =\Tr A^n=0$
+\end{exo}
+
+\begin{proof}[Résolution]~
+    \begin{itemize}
+        \item $(\implies)$ Facile
+        \item $(\impliedby)$ On note $\lambda_1, \cdots, \lambda_p$ les valeurs propres distinctes non nulles de $A$, et on suppose qu'il y en a. Il existe des $n_1, \cdots, n_p\geq 1$ tels que \[
+                \begin{cases}
+                    n_1\lambda_1+\cdots+n_p\lambda_p=\Tr A=0\\
+                    n_1\lambda_1^2+\cdots+n_p\lambda_p^2=\Tr A^2=0\\
+                    \hspace{1.5cm}\vdots
+                \end{cases}
+            \]
+            or \[
+                \begin{pmatrix}
+                    \lambda_1 & \cdots & \lambda_p \\
+                    \vdots & \vdots & \vdots \\
+                    \lambda_1^p & \cdots & \lambda_p^p
+                \end{pmatrix}
+            \]
+            est inversible (Vandermonde non nul) donc $(n_1, \cdots, n_p)^\top=(0, \cdots, 0)^\top$ absurde, donc il n'y a pas de valeur propre non nulle, d'où \conc.
+    \end{itemize}
+\end{proof}
+
+\section{Autour du crochet de Lie}
+
+\begin{dfn}[Hors-Programme]
+    On appelle \textbf{crochet de Lie\index{crochet de Lie}} la loi de composition interne \[
+        [\cdot, \cdot]: (u, v)\longmapsto u\circ v-v\circ u
+    \]
+    ou matriciellement \[
+        [\cdot, \cdot]: (A, B)\longmapsto AB-BA
+    \]
+\end{dfn}
+
+\subsection{Nilpotence de {$\varphi: B\longmapsto [A,B]$} pour $A$ nilpotente}
+
+On note $A\in\mathcal M_n(\mathbb K)$ nilpotente, $\varphi:B\longmapsto [A, B]$. On introduit $T_G:B\longmapsto AB$ et $T_D:B\longmapsto BA$. Ces deux endomorphismes commutent et $\varphi=T_G-T_D$. Les deux endomorphismes sont nilpotents (car $A$ nilpotente) donc $\varphi$ aussi
+
+\subsection{Diagonalisabilité de {$\varphi: B\longmapsto [A, B]$} pour $A$ diagonale ou diagonalisable}
+
+\begin{itemize}
+    \item Si $A=\diag (\lambda_1, \cdots, \lambda_n)$ alors $\varphi(E_{i, j})=(\lambda_i-\lambda_j)E_{i,j}$ donc $\varphi$ diagonalisable (on a trouvé une base de vecteurs propres)
+    \item Si $A$ diagonalisable, on écrit $D=P^{-1}AP$ (notations évidentes) et \[
+            \varphi(B)=AB-BA\implies P^{-1}APP^{-1}BP-P^{-1}BPP^{-1}AP=P^{-1}\varphi(B)P=[P^{-1}AP, P^{-1}BP]
+        \]
+        On note $\psi:B\longmapsto PBP^{-1}$ et $\psi^{-1}\circ \varphi\circ \psi=B\longmapsto [D, B]$ diagonalisable.
+\end{itemize}
+
+\section{Commutant d'un endomorphisme diagonalisable}
+
+\begin{dfn}[Hors-Programme]
+    On appelle \textbf{commutant}\index{commutant} d'un endomorphisme $u$ l'ensemble des endomorphismes qui commutent avec $u$
+\end{dfn}
+
+On note $u\in\mathcal L(E)$, $E$ un $\mathbb K$-e.v. de dimension $n$. On suppose $u$ diagonalisable. On note \[
+    C(u)=\{v\in\mathcal L(E), \quad u\circ v=v\circ u\}
+\]
+le commutant de $u$.
+
+\begin{itemize}
+    \item Si $\lambda_1, \cdots, \lambda_p$ sont les valeurs propres deux à deux distinctes de $u$ alors \[
+            E=E_{\lambda_1}(u)\oplus \cdots \oplus E_{\lambda_p}(u)
+        \]
+    \item Si $v\in C(u)$ alors chaque s.e.p. est stable par $v$. On note \[
+            \begin{matrix}
+                \psi: & C(u) & \longrightarrow & \mathcal L(E_{\lambda_1}(u))\times \cdots \times \mathcal L(E_{\lambda_p}(u))\\
+                      &v &\longmapsto & \left( v_{|E_{\lambda_1}(u)}, \cdots, v_{|E_{\lambda_p}(u)} \right)
+            \end{matrix}
+        \]
+    \item $\psi$ est une application linéaire injective
+    \item Soit $(v_1, \cdots, v_p)\in \mathcal L(E_{\lambda_1}(u))\times \cdots \times \mathcal L(E_{\lambda_p}(u))$. Il y a un antécédent correspondant, donc $\psi$ est un isomorphisme et \[
+            \dim C(u)=\sum_{i=1}^p\dim(E_{\lambda_i}(u))^2
+        \]
+\end{itemize}
+\endchapter

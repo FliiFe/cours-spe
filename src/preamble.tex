@@ -39,7 +39,7 @@
 
 \newcommand{\newthm}[2]{
     \newenvironment{#1}[1][]
-    {\needspace{5cm}\par\noindent\normalfont\ifstrempty{##1}{\textbf{#2.}}{\textbf{#2} (##1).}\par\nopagebreak%
+    {\needspace{5\baselineskip}\par\noindent\normalfont\ifstrempty{##1}{\textbf{#2.}}{\textbf{#2} (##1).}\par\nopagebreak%
       \begin{mdframed}[
          linewidth=1pt,
          linecolor=black,
@@ -136,6 +136,7 @@
 \renewcommand\mathring[1]{\overset\circ{#1}}
 \renewcommand\bar[1]{\overline{#1}}
 \renewcommand\leq\leqslant
+\renewcommand\geq\geqslant
 \newcommand\floor[1]{\left\lfloor#1\right\rfloor}
 \newcommand\ceil[1]{\left\lceil#1\right\rceil}
 
@@ -198,7 +199,11 @@
 \tocloftpagestyle{empty}
 \pagestyle{main}
 
-\pgfplotsset{compat=1.16,
-  colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
+\pgfplotsset{compat=1.16}
+
+\NewDocumentCommand\endchapter{}{%
+\vfill
+\[\star \qquad \quad \star \qquad \quad \star \qquad \quad \star\]
+\[\star \qquad \quad \star \qquad \quad \star \qquad \quad \star \qquad \quad \star\]
+\vfill
 }
-\pgfkeys{/pgf/plot/gnuplot call={cd build && gnuplot}}
