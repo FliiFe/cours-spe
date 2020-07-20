@@ -102,3 +102,12 @@ jobs:
         asset_path: ./target/reduction.pdf
         asset_name: reduction.pdf
         asset_content_type: application/pdf
+    - name: Release analyse asymptotique
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/analyse-asymptotique.pdf
+        asset_name: analyse-asymptotique.pdf
+        asset_content_type: application/pdf

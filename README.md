@@ -7,7 +7,7 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 
 ## Chapitres tapés
 
-- [ ] Analyse asymptotique
+- [x] Analyse asymptotique (partiellement)
 - [ ] Suites et séries numériques
 - [ ] Familles sommables
 - [ ] Intégration sur un intervalle quelconque
