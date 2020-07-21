@@ -87,3 +87,55 @@ Si $V\in\mathcal V(0)$ et si pour $x\in V\setminus\{0\}$, $f(x)=a_0+a_1x +a_px^p
             \forall x\in V, \qquad f(x)=\sum_{k=0}^n\frac{f^{(k)}(0)}{k!}x^k+o_0(x^n)
     \]
 \end{thm}
+
+\begin{rem}
+    On n'a en fait besoin que de $f\in\mathcal C^{n-1}(V, \mathbb R)$ et $f^{(n-1)}$ dérivable en $0$
+\end{rem}
+
+\begin{rem}
+    On ne peut en général pas dériver termes à termes. Si $f$ est $\mathcal C^n$, on peut dériver termes à termes pour obtenir le $\mathrm{DL}_{n-1}(0)$ de $f'$.
+\end{rem}
+
+\begin{ex}[$a$]
+    Pour obtenir un $\mathrm{DL}_3(1)$ de $\arctan$, on note $f=\arctan$ et \[
+        f(1)=\frac\pi4\qquad f'(1)=\frac12\qquad f''(1)=-\frac12\qquad f^{(3)}(1)=\frac1{2}
+    \]
+    donc \[
+        \forall x\in \left]-\frac\pi2;\frac\pi2  \right[, \qquad f(x)=\frac\pi4+\frac{x-1}2-\frac{(x-1)^2}4+\frac{(x-1)^3}{12}+o_1((x-1)^3)
+    \]
+\end{ex}
+
+\begin{ex}[$b$]
+    On note $f\in\mathcal C^{\infty}([-1; 1], \mathbb R)$ telle que $\forall n\in\mathbb N^\star$, \begin{align*}
+        f \left( \frac1n \right) &= \frac{\sqrt n}{\sqrt{n+1}+\sqrt n}\\
+                                 &= \frac1{1+\sqrt{1+\frac1n}}\\
+                                 &= \frac{\sqrt{1+\frac1n}-1}{\frac 1n}\\
+                                 &= n \left( \sum_{k=1}^{2020}\binom {1/2}{k}\frac1{n^k}+o_{+\infty}(\frac{1}{n^{2020}}) \right) \\
+                                 &= \sum_{k=0}^{2019}\frac{f^{(k)}(0)}{k!}\frac1{n^k}+o_{+\infty}(\frac1{n^{2019}})
+    \end{align*}
+    Puis $n\to +\infty$ donne \[
+        \binom{1/2}1=f(0)
+    \]
+    et $nf(1/n)$ avec $n\to+\infty$ donne \[
+        \binom{1/2}2=\frac{f'(0)}{1!}
+    \]
+    et en itérant on obtient \[
+        \binom{1/2}{2020}=\frac{f^{(2019)}(0)}{2019!}
+    \]
+\end{ex}
+
+\section{Utilisation standard des développements limités}
+
+\subsection{Calcul de limite}
+
+On va calculer \[
+    \lim_{x\to 0^+}\frac{x^{\sh x}-(\sh x)^x}{(\sin x)^x-x^{\sin x}}
+\]
+Et on a \[
+    \sh x=x+\frac{x^3}6+o_0(x^3)\qquad\qquad \sin x=x-\frac{x^3}6+o_0(x^3)
+\]
+donc, après calculs, \[
+    \frac{x^{\sh x}-(\sh x)^x}{(\sin x)^x-x^{\sin x}} = \frac{\frac{x^3}6\ln x+o_0(x^3\ln x)-\frac{x^3}6+o_0(x^3)}{\frac{-x^3}6+o_0(x^3)+\frac{x^3}6\ln x+o_0(x^3\ln x)}\underset{0+}\sim -1
+\]
+
+
