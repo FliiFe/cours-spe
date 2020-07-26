@@ -42,7 +42,7 @@ Cette section ne contient que des rappels de sup.
         & + o_0(x^n) \\
     \ln (1-x) &= -x - \frac{x^2}{2} - \frac{x^3}{3} - \frac{x^4}{4} - \ldots - \frac{x^n}{n}
         & + o_0(x^n) \\
-    (1+x)^\alpha &= 1 + \alpha x + \alpha (\alpha-1) \frac{x^2}{2!} + \ldots \\ 
+    (1+x)^\alpha &= 1 + \alpha x + \alpha (\alpha-1) \frac{x^2}{2!} + \ldots \\
         & \qquad\qquad +\alpha(\alpha-1)\ldots(\alpha-n+1)\frac{x^n}{n!}
         & + o_0(x^n) \\
 \end{align*}
@@ -138,4 +138,280 @@ donc, après calculs, \[
     \frac{x^{\sh x}-(\sh x)^x}{(\sin x)^x-x^{\sin x}} = \frac{\frac{x^3}6\ln x+o_0(x^3\ln x)-\frac{x^3}6+o_0(x^3)}{\frac{-x^3}6+o_0(x^3)+\frac{x^3}6\ln x+o_0(x^3\ln x)}\underset{0+}\sim -1
 \]
 
+\subsection{Développement limité d'une réciproque}
 
+\begin{exo}
+    Soit $x\in\mathbb R$. Montrer $\exists!\psi(x)\defeq y\in\mathbb R, e^{x+y}+y=1$. Montrer que $\psi$ admet un $\mathrm{DL}_2(0)$ que l'on donnera
+\end{exo}
+
+\begin{proof}[Résolution (Idée 1)]
+    On étudie $y\longmapsto e^{x+y}+y-1$ à $x$ fixé. Problème: comment trouver un $\mathrm{DL}_2$ en $x$ ?
+\end{proof}
+
+\begin{proof}[Résolution (Idée 2)]
+    «On perturbe le problème.» \[
+        e^{x+y}+y=1\iff e^{x+y}+x+y=1+x \iff \varphi(x+y)=1+x
+    \]
+    avec $\varphi: t\longmapsto e^t+t\in\mathcal C^{\infty}(\mathbb R, \mathbb R)$ strictement croissante de dérivée jamais nulle. C'est donc une bijection de $\mathbb R$ dans $\mathbb R$ de bijection réciproque dérivable: \[
+        \varphi^{-1'}=\frac1{\varphi'\circ \varphi^{-1}}\in\mathcal C^1
+    \]
+    donc $\varphi^{-1}\in\mathcal C^2$ (en fait $\mathcal C^{\infty}$) donc $\varphi^{-1}$ admet un $\mathrm{DL}_2(a)$ en $a\in\mathbb R$.
+
+    On a $\psi(x)=-x+\varphi^{-1}(1+x)$ donc $\psi$ a un $\mathrm{DL}_2(0)$. Donc on écrit \[
+        \psi(x)=a_0+a_1x+a_2x^2+o_0(x^2)
+    \]
+    et \[\psi(\varphi(x)-1)=-\varphi(x)+1+x=-x-\frac{x^2}2+o_0(x^2)=\psi \left(2x+\frac{x^2}2+o_0(x^2)\right)\]
+    donc \[
+        -x+\frac{x^2}2+o_0(x^2)=a_0+2a_1x+\left(\frac{a_1}2+4a_2\right)x^2+o_0(x^2)
+    \]
+    et on identifie les coefficients
+\end{proof}
+
+\section{Utilisation non standard des développements limités}
+
+\subsection{Calul de primitive}
+
+On veut calculer une primitive de \[
+    F:x\longmapsto \frac1{x^{2019}(1+x^2)}.
+\]
+On a \[
+    F(x)=\sum_{k=0}^{1010}(-1)^kx^{2k-2019}+o_0(x)
+\]
+donc \[
+    F(x)-\sum_{k=0}^{1009}(-1)^kx^{2k-2019}=o_0(1)
+\]
+est une fraction rationnelle sans partie polaire en $0$, donc \[
+    \sum_{k=0}^{1009}(-1)^kx^{2k-2019}
+\]
+est la partie polaire de $F$ en $0$ et \[
+    F(x)=\sum_{k=0}^{1009}(-1)^kx^{2k-2019}+\frac{\alpha x+\beta}{1+x^2}
+\]
+et en injectant $i$, $\alpha i+\beta=i$ d'où $\alpha=1, \beta=0$. Puis on peut intégrer termes à termes
+
+\subsection{Développement limité d'un terme général}
+
+On note $f$ une fonction $\mathcal C^2$ sur un voisinage $V$ de $0$ telle que $f(0)=0$. On définit pour $n$ suffisament grand, \[
+    u_n=\sum_{k=1}^nf\left(\frac{k}{n^2}\right)
+\]
+On va faire l'étude de $u_n$. \[
+    \forall k\in\llbracket 1, n\rrbracket, \quad f \left( \frac{k}{n^2} \right)=\frac{f'(0)k}{n^2}+\frac{f''(0)}{2}\cdot \frac {k^2}{n^4}+\frac {k^2}{n^4}\cdot \varepsilon \left( \frac{k}{n^2} \right), \qquad \qquad \varepsilon (x)\xrightarrow[x\to0]{}0
+\]
+donc \[
+    u_n=\frac{f'(0)}{n^2}\sum_{k=1}^nk+\underbrace{\frac{f''(0)}{2n^4}\sum_{k=1}^nk^2}_{\longrightarrow 0}+\underbrace{\frac1{n^4}\sum_{k=1}^nk^2\varepsilon \left( \frac k{n^2} \right)}_{\longrightarrow 0\text{ car }\varepsilon\text{ bornée }}\xrightarrow[n\to+\infty]{}\frac{f'(0)}2
+\]
+
+\subsection{Polynôme sous contrainte}
+
+\begin{exo}
+Trouver un polynôme $P_n$ tel que $P_n^2(x)=1+x+o_0(x^n)$. En déduire une racine carrée de \[
+    A= \begin{pmatrix}
+        4&1\\-9&-2
+    \end{pmatrix}
+\]
+\end{exo}
+\begin{proof}
+    \[
+        P_n=\sum_{k=1}^n\binom{1/2}{k}x^k
+    \]
+    convient et \[
+        A=I_n+ \underbrace{\begin{pmatrix}
+            3&1\\-9&-3
+    \end{pmatrix}}_{\defeq N},\qquad \qquad N^2=0
+    \]
+    donc $P_1^2(N)=I_n+N+\frac{N^2}4=I_n+N=A$ donc $P_1(N)$ convient.
+\end{proof}
+
+\subsection{Formule combinatoire}
+
+On va montrer que si $0\leq m\leq n$ alors \[
+    \sum_{k=0}^n(-1)^{n-k}\binom nkk^m=\delta_{n,m}n!
+\]
+On écrit \[
+    (e^x-1)^n=\sum_{k=0}^n\binom nk (-1)^{n-k}e^{kx}=(x+o(x))^n=x^n+o_0(x^n)
+\]
+et pour $m<n$, on identifie le coefficient de $x^m$ (il est nul). Sinon, $n=m$ et le résultat est le bon.
+
+\section{Majorer, minorer, encadrer}
+
+\subsection{Rappels}
+
+\[
+    |x|\leq a\iff -a\leq x\leq a
+\]
+
+\[
+    \begin{cases}
+        x\leq x'\\ y\leq y'
+    \end{cases}
+    \implies \begin{cases}
+        x+y\leq x'+y'
+    \end{cases}
+\]
+\[
+    \begin{cases}
+        0\leq x\leq x'\\ 0\leq y\leq y'
+    \end{cases}
+    \implies xy\leq x'y'
+\]
+\[
+    ||x|-|y||\leq |x+y|\leq |x|+|y|
+\]
+
+\subsection{Sommation terme à terme}
+
+Si $a_1\leq b_1, \cdots, a_n\leq b_n$ alors \[
+    a_1+\cdots +a_n\leq b_1+\cdots b_n
+\]
+avec égalité ssi $a_1=b_1,\cdots a_n=b_n$. Le résultat se généralise identiquement aux séries convergentes.
+
+\begin{ex}
+    pour $n\geq 3$, \[
+        \frac1{n^3}\leq \frac1{n(n-1)(n-2)}=\frac1{2n}-\frac1{n-1}+\frac1{2(n-2)}
+    \]
+    et en sommant, \[
+        \zeta(3)=\sum_{k=1}^{+\infty}\frac1{k^3}< \frac{11}8
+    \]
+\end{ex}
+
+\subsection{Inégalité de Cauchy-Schwartz}
+
+\index{Cauchy-Schwartz (inégalité de -- )}
+
+On va montrer l'inégalité de Cauchy-Schwartz de deux manières différentes
+
+
+\textbf{Identité de Lagrange.} On note $a_1, \cdots, a_n, b_1, \cdots, b_n\in\mathbb R$. \begin{align*}
+        \left( \sum_{i=1}^na_i^2 \right) \cdot \left( \sum_{i=1}^n b_i^2 \right)- \left( \sum_{i=1}^na_ib_i \right)^2 &= \sum_{i=1}^n\sum_{j=1}^n \underbrace{a_i^2b_j^2-a_ib_ia_jb_j}_{=0\text{ si }i=j} \\
+                                                                                                                      &= \sum_{i<j}(a_i^2b_j^2+a_j^2b_i^2)-2a_ib_ia_jb_j \\ 
+                                                                                                                      &= \sum_{i<j}(a_ib_j-a_jb_i)^2\geq 0
+    \end{align*}
+
+\textbf{Utilisation de l'homogénéité.} On suppose les $b_i$ non tous nuls. On pose \[
+    f:(a, b)\longrightarrow \left( \sum_{i=1}^na_i^2 \right) \cdot \left( \sum_{i=1}^n b_i^2 \right)- \left( \sum_{i=1}^na_ib_i \right)^2
+\]
+On a, pour $\lambda, \mu\geq 0$, $f(\lambda a, \mu b)=\lambda^2\mu^2f(a, b)$ de même signe que $f(a, b)$. Il existe $\lambda, \mu\geq 0$ tels que \[
+    \sum_{i=1}^n \lambda^2a_i^2=\sum_{j=1}^nb_j^2\mu^2=1
+\]
+de sorte qu'on peut supposer sans perte de généralité \[
+    \sum_{i=1}^na_i^2=\sum_{j=1}^n b_j=1
+\]
+Puis $|a_ib_i|\leq \frac{a_i^2+b_i^2}2$ donc \[
+    \sum_{i=1}^n|a_ib_i|\leq \frac{1+1}2=1
+\]
+d'où \conc
+
+\subsection{Inégalités fonctionnelles}
+
+Montrer que si $0<p<1$ et $\theta\in \left[ 0; \frac\pi2 \right]$ alors \[
+    \cos^p\theta\leq \cos(p\theta)
+\]
+On pose \[
+    f_p:\theta\in \left[ 0;\frac\pi2 \right]\longmapsto -\cos^p\theta+\cos(p\theta)
+\]
+de sorte que \[
+    f_p'(\theta)=-p\sin(p\theta)+p\sin\theta\cos^{p-1}\theta
+\]
+or $\sin(p\theta)\leq \sin\theta\leq \sin\theta\cos^{p-1}\theta$ donc $f_p'(\theta)\geq 0$ et $f_p$ croissante, ce qui conclut puisque $f_p(0)=0$
+
+\subsection{Inégalité de réordonnement}
+
+On note \[
+    \begin{cases}
+        a_1\leq \cdots \leq a_n\\ b_1\leq \cdots \leq b_n
+    \end{cases}
+\]
+et $\sigma\in\mathfrak S_n$. Puis, on définit \[
+    S_\sigma\defeq\sum_{i=1}^na_ib_{\sigma(i)}.
+\]
+$S_\sigma$ est maximal pour $\sigma=\id$, et minimal pour $\sigma=(n\;\;n-1\;\;\cdots \;\; 1)$. On suppose que $\sigma$ maximise $S_\sigma$. On note $\sigma'=(1\;\;\sigma(1))\circ \sigma$ donc \[ S_{\sigma'}-S_\sigma=a_1b_1+a_{\sigma^{-1}(1)}b_{\sigma(1)}-a_1b_{\sigma(1)}-a_{\sigma^{-1}(1)}b_1 =(a_1-a_{\sigma^{-1}(1)})(b_1-b_{\sigma(1)})\geq 0\]
+donc on peut supposer $\sigma(1)=1$. En itérant, $\sigma=\id$ est maximisante. On procède de la même manière pour la permutation minimisante.
+
+\begin{ex}[Application 1]
+    On note $f:\mathbb N^\star\to\mathbb N^\star$ bijective. On cherche la nature de $\sum\dfrac1{nf(n)}$.
+    On note $a_1<\cdots <a_n$ les éléments $f(1), \cdots, f(n)$ ordonnés. Alors \[
+        \sum_{k=1}^n\frac1{kf(k)}\leq \frac1{na_n}+\cdots \frac1{a_1}\leq \frac1{n^2}+\cdots +\frac1{1^2}\leq\zeta(2)
+    \]
+    donc la série converge.
+\end{ex}
+
+\begin{ex}[Inégalité AM-GM]
+    On note $x_1, \cdots, x_n\geq 0$, et on note \[
+        f(x_1, \cdots, x_n)=\frac1n\sum x_i-\sqrt[n]{\prod x_i}
+    \]
+    de sorte que $f(\lambda x_1, \cdots, \lambda x_n)=\lambda f(x_1, \cdots, x_n)$ pour $\lambda\geq 0$ donc on peut supposer $\prod x_i=1$. En notant \[
+        a_k=\prod_{i=1}^kx_i\qquad\qquad\qquad b_i=\frac1{a_i}
+    \]
+    on a \[
+        n=a_1b_1+\cdots a_nb_n\leq \underbrace{a_1b_n}_{x_1}+\underbrace{a_2b_1}_{x_2}+\cdots + a_nb_{n-1}=x_1+\cdots+x_n
+    \]
+    ce qui conclut.
+\end{ex}
+
+\subsection{Échelles de références}
+
+\begin{dfn}[Rappels]
+    Si $f$ et $g$ sont définies sur un voisinage de $a\in\bar{\mathbb R}$ alors \[
+        f(x)=o_a(g(x))\iff \exists V'\subset V, V'\in\mathcal V(a), \exists \varepsilon:V'\to\mathbb R, \forall x\in V', f(x)=\varepsilon(x)g(x)\text{ et }\varepsilon(x)\xrightarrow[x\to a]{}0
+    \]
+    \[
+        f(x)=O_a(g(x))\iff \exists M>0, \exists V'\subset V, V\in\mathcal V(a), \forall x\in V', |f(x)|\leq M|g(x)|
+    \]
+    \[
+        f(x)\underset a\sim g(x)\iff f(x)=g(x)+o_a(g(x))
+    \]
+\end{dfn}
+
+\begin{ex}
+    \[ x^\alpha|\ln x|^\beta=o_0(x^{\alpha'}|\ln x|^{\beta'})\iff \alpha>\alpha'\quad \text{ ou }\quad \alpha=\alpha'\text{ et }\beta<\beta'\]
+    \[x^\alpha (\ln x)^\beta=o_{+\infty}(x^{\alpha'}(\ln x)^{\beta'})\iff \alpha<\alpha'\quad\text{ ou }\quad \alpha=\alpha'\text{ et }\beta<\beta'\underset{\text{def}}\iff (\alpha, \beta)\prec (\alpha', \beta')\]
+\end{ex}
+
+\begin{csq}
+    $(x\in\mathbb R_+^\star\longmapsto x^\alpha |\ln x|^\beta)_{\alpha,\beta}$ est une famille libre (pour une famille finie, on ordonne \\$(\alpha_1, \beta_1)\prec~\cdots~\prec~(\alpha_n,\beta_n)$ et on prend la limite en $+\infty$)
+\end{csq}
+
+\section{Suites numériques}
+
+\subsection{Caractérisation de la borne supérieure}
+
+\begin{thm}
+    \Hyp $\emptyset\neq A\subset\mathbb R$, $M\in\mathbb R$.
+    \Conc Il y a équivalence entre \begin{enumerate}[label=(\alph{enumi}),left=1.2cm]
+        \item $M=\sup A$
+        \item $M$ majore $A$ et $\exists a=(a_n)_n\in A^{\mathbb N}, \quad a_n \longrightarrow M$
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+    ~ \begin{enumerate}
+        \item $(a\implies b)$ $M$ majore $A$ par définition et pour tout $n$, il existe $a_n\in A$ tel que \[
+                M-\frac1n<a_n
+            \]
+            donc $a_n\longrightarrow M$
+        \item $(b\implies a)$ Supposons qu'il existe un majorant $M'<M$ de $A$. Alors toute suite convergente de $A$ a une limite $\ell\leq M'<M$ donc $a_n\longrightarrow M\implies M\leq M'$ absurde. Donc $M$ est le plus petit majorant.
+    \end{enumerate}
+\end{proof}
+
+\subsection{Limite supérieure et inférieure}
+
+On se donne $u$ une suite réelle bornée. On pose pour $n\in\mathbb N$, \[
+    u_n^+=\sup\{u_k, \quad k\geq n\}\qquad \qquad u_n^-=\inf \{u_k,\quad k\geq n\}
+\]
+de sorte que $u_0^-\leq u_n^-\leq u_n\leq u_n^+\leq u_0^+$ et les deux suites $u^+, u^-$ étant monotones bornées, elles sont convergentes.
+
+\begin{dfn}
+    Pour une suite réelle $u$, on appelle limite supérieure et limite inférieure les quantités \[
+        \limsup_{n\to+\infty}u_n\defeq\lim_{n\to+\infty}u_n^+\qquad\qquad\qquad\qquad \liminf_{n\to+\infty}u_n\defeq\lim_{n\to+\infty}u_n^-
+    \]
+\end{dfn}
+
+On va construire une extractice $\varphi$ de la manière suivante: \begin{itemize}
+    \item $\varphi(0)=0$. On a $u_1^+-1<u_1+$ donc $\exists k_1\geq 1, u_1^+-1<u_{k_2}\leq u_1^+$
+    \item $\varphi(1)=k_1$. On a $u_2^+-\frac12<u_2+$ donc $\exists k_2\geq k_1, u_2^+-\frac12<u_{k_2}\leq u_2^+$
+    \item $\cdots$
+\end{itemize}
+On construit ainsi une sous-suite convergente (qui converge vers $\limsup u$).
+
+\begin{rem}
+    On a montré le théorème de Bolzano-Weierstrass\index{Bolzano-Weierstrass (théorème de -- )}
+\end{rem}
