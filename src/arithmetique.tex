@@ -125,7 +125,23 @@ Pour cela, on remarque \[
 
 \subsection{Coefficients du binôme}
 
-\todo{Retrouver ça}
+On note $p$ un premier et $q$ un entier naturel non divisible par $p$. On va calculer \[
+    v_p \left( \binom{p^kq}{p^k} \right)
+\]
+pour $k\in\mathbb N$. On a \[
+    \binom{p^kq}{p^k}=\frac{(p^kq)!}{p^k!(p^k(q-1))!}=\frac{p^kq(p^kq-1)\cdots (p^k(q-1)+1)}{p^k!}.
+\]
+\begin{itemize}
+    \item \[
+            \forall i\in\llbracket 0, p^k-1\rrbracket, \quad v_p(p^k-i)=v_p(i)(1-\delta_{i,0})+k\delta_{i,0}
+        \]
+    \item \[
+            v_p(p^kq(p^kq-1)\cdots (p^k(q-1)+1))=k+\sum_{k=1}^{p^k-1}v_p(i)=v_p(p^k!)
+        \]
+\end{itemize}
+Donc, \[
+    v_p \left( \binom{p^kq}{p^k} \right)=v_p(p^kq(p^kq-1)\cdots (p^k(q-1)+1))-v_p(p^k!)=0
+\]
 
 \section{L'anneau $\mathbb Z_n$}
 
