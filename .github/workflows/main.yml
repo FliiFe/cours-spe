@@ -111,3 +111,12 @@ jobs:
         asset_path: ./target/analyse-asymptotique.pdf
         asset_name: analyse-asymptotique.pdf
         asset_content_type: application/pdf
+    - name: Release intégration
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/integration.pdf
+        asset_name: integration.pdf
+        asset_content_type: application/pdf

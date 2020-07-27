@@ -1,0 +1,34 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Intégration sur un intervalle quelconque} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\ifsolo \newpage \setcounter{page}{1} \fi
+
+\section{Rappels}
+
+L'opération d'intégration sur $\mathcal C^0_{PM}([a, b], \mathbb R)$ est linéaire positive croissante. On a \[
+    \left| \int_a^bf \right|\leq \int_a^b|f|\leq (b-a)\sup_{[a,b]} |f|
+\]
+et similairement \[
+    \left| \int_a^bfg \right|\leq \sup_{[a,b]}|f|\int_a^b|g|
+\]
+Si $f$ est continue alors \[
+    \left| \int_a^bf \right|=\int_a^b|f|\iff f\text{ de signe constant }
+\]
+et si $g$ est continue positive, \[
+    \inf_{[a,b]}f\int_a^bg\leq \int_a^bfg\leq \sup_{[a,b]}f\int_a^bg
+\]
+et si $g$ n'est pas identiquement nulle, \[
+    \int_a^bg>0\implies \dfrac{\int_a^bfg}{\int_a^bg}\in[\inf f,\sup f]=f([a,b])\implies \exists c, \quad \int_a^bfg=f(c)\int_a^bg.
+\]
+Le résultat reste vrai si $g$ est identiquement nulle. Si $f$ est continue positive sur $[a, b]$ et $\int_a^bf=0$ alors $f=0$.
