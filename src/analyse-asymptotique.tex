@@ -415,3 +415,149 @@ On construit ainsi une sous-suite convergente (qui converge vers $\limsup u$).
 \begin{rem}
     On a montré le théorème de Bolzano-Weierstrass\index{Bolzano-Weierstrass (théorème de -- )}
 \end{rem}
+
+\needspace{5cm}
+\subsection{Suites sous-additives}
+
+\begin{res}[Lemme de Fekete, Lemme sous-additif\index{Fekete (lemme de -- )}\index{lemme sous-additif}]
+    On dit que $(u_n)_n$ est sous-additive si \[
+        \forall n, m\in\mathbb N^\star, u_{n+m}\leq u_n+u_m
+    \]
+    Dans ce cas, \[
+        \frac{u_n}n\xrightarrow[n\to+\infty]{}\inf\left\{\frac{u_k}k, \quad k\geq 1\right\}\defeq\ell
+    \]
+\end{res}
+
+\begin{proof}
+    On suppose $\ell\in\mathbb R$ (le cas $\ell=-\infty$ se traite similairement).
+
+    On note $\varepsilon>0$. Il existe $k_0\in\mathbb N^\star$ tel que \[
+        \ell\leq \frac{u_{k_0}}{k_0}\leq \ell+\varepsilon'\defeq\ell+\frac\varepsilon2
+    \]
+    Pour $n\in\mathbb N$$\star$, on écrit $n=pk_0+r$ la division euclidienne de $n$ par $k_0$. Alors, \[
+        u_n\leq pu_{k_0}+u_r\implies \frac{u_n}n\leq \frac{u_{k_0}}{k_0}+\frac{u_{r_0}}n\leq \ell+\varepsilon'+\frac{u_{r_0}}n\xrightarrow[n\to+\infty]{}\ell+\varepsilon'
+    \]
+    donc à partir d'un certain rang, \[
+        \ell\leq \frac{u_n}n\leq \ell+2\varepsilon'=\ell+\varepsilon
+    \]
+    de sorte que \[
+        \frac{u_n}n\xrightarrow[n\to+\infty]{}\ell
+    \]
+\end{proof}
+
+\begin{ex}[Application aux chemins auto-évitants]
+    On munit $\mathbb Z^2$ de l'ensemble d'arêtes \[\{\{(a, b), (a+\epsilon, b+(1-\epsilon))\}, \quad \epsilon\in\{0,1\}, a,b\in\mathbb Z \}\] de sorte à obtenir un graphe sommet-transitif\footnote{chaque sommet joue le même rôle: entre chaque sommets, il existe un automorphisme de graphe qui envoie l'un sur l'autre} qui correspond au réseau «classique» $\mathbb Z^2$. On note ce graphe $G$, et la transitivité permet d'en choisir arbitrairement un sommet $O$ qui sera l'origine des chemins. Un chemin auto-évitant sur $G$ de taille $n$ est un chemin sur $G$ (suite de sommets adjacents qui commence par l'origine $O$) de longueur $n$ qui ne passe pas deux fois par le même sommet. On note $c_n$ le nombre de chemins auto-évitants de longueur $n$.
+
+    On a clairement $c_{n+m}\leq c_nc_m$ (car un chemin de longueur $n+m$ est la juxtaposition d'un chemin de longueur $n$ et un autre de longueur $m$), de sorte que $(\ln c_n)_n$ est sous-additive positive. On a donc \[
+        \frac1n\ln c_n\xrightarrow[n\to+\infty]{}\ell=\ln\mu
+    \]
+    donc \[
+        c_n^{1/n}\xrightarrow[n\to+\infty]{}\mu
+    \]
+    Cette limite $\mu$ est appelée \emph{constante de connectivité\index{constante de connectivité}} de $G$. Le raisonnement que l'on vient de mener montre que tout graphe sommet-transitif admet une constante de connectivité.
+\end{ex}
+
+\begin{ex}[Application aux quasi-morphismes de $\mathbb Z$]
+    On dit que \[
+        f:\mathbb Z\longrightarrow\mathbb R
+    \]
+    est un quasi-morphisme s'il existe $C>0$ tel que \[
+        \forall m,n\in\mathbb Z, \quad |f(n+m)-f(n)-f(m)|\leq C
+    \]
+    On va montrer par récurrence $|f(n_1+\cdots +n_p)-f(n_1)-\cdots -f(n_p)\leq pC$
+    \begin{itemize}
+        \item Pour $p=1$, c'est vrai.
+        \item On suppose que c'est vrai pour $p$. \begin{align*}
+                |f(n_1+\cdots +n_{p+1})&-f(n_1)-\cdots f(n_{p+1})|\\ &\leq |f(n_1+\cdots+n_{p})-f(n_1)-\cdots-f(n_p)|\\&\phantom{\leq }+|f(n_1+\cdots+n_{p+1})-f(n_1+\cdots +n_p)-f(n_{p+1})|\\&\leq (p+1)C
+            \end{align*}
+    \end{itemize}
+    On a alors \[
+        |f(pn)-pf(n)|\leq pC\qquad \qquad |f(pn)-nf(p)|\leq nC
+    \]
+    donc \[
+        \left| \frac{f(pn)}{pn}-\frac{f(n)}n \right|\leq \frac Cn\qquad \qquad \left| \frac{f(pn)}{pn}-\frac{f(p)}p \right|\leq \frac Cp
+    \]
+    donc \[
+        \left| \frac{f(n)}n-\frac{f(p)}p \right|\leq \frac Cn+\frac Cp
+    \]
+    On note \[
+        u_n=\frac{f(2^n)}{2^n}
+    \]
+    de sorte que $|u_{n+1}-u_n|$ est le terme général d'une série convergente, donc $(u_n)$ converge vers un réel $\ell$. Puis \[
+        \Big| \frac{f(n)}n-\underbrace{u_n}_{\longrightarrow \ell} \Big|\leq \frac Cn+\frac C{2^n}\xrightarrow[n\to+\infty]{}0
+    \]
+    donc \[
+        \frac {f(n)}n\xrightarrow[n\to+\infty]{}\ell
+    \]
+\end{ex}
+
+\begin{exo}[Application aux quasi-morphismes réels]
+    Soit $f:\mathbb R\longrightarrow \mathbb R$ un quasi-morphisme. \begin{enumerate}
+        \item Montrer qu'il existe un morphisme $\varphi$ tel que $\forall x\in\mathbb R, |f(x)-\varphi(x)|\leq C$
+        \item Montrer que si $f$ est continue, $\varphi$ est linéaire.
+    \end{enumerate}
+\end{exo}
+
+\section{Parties entières}
+
+\begin{dfn}
+    Soit $x\in\mathbb R$. On appelle \textbf{partie entière\index{partie entière}} de $x$ l'unique entier $p$ tel que \[
+        p\leq x<p+1
+    \]
+    On la note $E(x)$ ou $\floor x$
+\end{dfn}
+
+\begin{csq}
+    \[
+        \left| x-\frac{\floor {10^px}}{10^p} \right|\leq \frac1{10^p}\xrightarrow[p\to+\infty]{}0
+    \]
+    donc $\mathbb Q$ dense dans $\mathbb R$
+\end{csq}
+
+\begin{ex}[Approximation d'un irrationnel]
+    On note $\alpha\in\mathbb R_+\setminus\mathbb Q$, et $ \left( \dfrac{p_n}{q_n} \right)_n$ une suite de rationnels qui converge vers $\alpha$. Que dire de $(p_n)_n$ et $ (q_n)_n$ ?
+
+    Pour $N\in\mathbb N^\star$, on note $I_N=\{k\alpha, k\in\llbracket1 ,N\rrbracket\}$. On note $d$ un entier naturel qui minimise la distance à $I_N$. Cette distance (notée $d(I_n, \mathbb Z)$) est $>0$ car $I_N$ ne contient que des irrationnels. À partir d'un certain rang, \[
+        \left| \alpha-\frac{p_n}{q_n} \right|<\frac{d(I_N, \mathbb Z)}N \iff |q_n\alpha-p_n|<\frac{d(I_n, \mathbb Z)}N q_n
+    \]
+    Donc $q_n\not\in\llbracket1,N\rrbracket$ donc $q_n>N$ d'où \[
+        q_n\xrightarrow{}+\infty
+    \]
+    et \[
+        p_n\underset{+\infty}\sim\alpha q_n\xrightarrow{}+\infty
+    \]
+\end{ex}
+
+\section{Suites récurrentes doubles et déterminant tridiagonal}
+
+On note \[
+    \Delta_n= \begin{vmatrix}
+        a   & c      &        & (0) \\
+        b   & \ddots & \ddots & \\
+            & \ddots & \ddots & c\\
+        (0) &        & b      & a
+    \end{vmatrix}
+\]
+Après calculs, pour $n\geq3$, \[
+    \Delta_n=a\Delta_{n-1}-bc\Delta_{n-2}.
+\]
+
+\begin{ex}
+    Si $a=b=-c=1$, alors $\Delta_n=Ar_+^n+Br_-^n$ avec $r_+, r_-$ solutions de $r^2=r+1$ et \[
+        A=\frac{ \begin{vmatrix}
+                1 & 1 \\ 1 & r_-
+        \end{vmatrix} }{r_--r_+} \qquad \qquad \qquad B=\frac{ \begin{vmatrix}
+                1 & 1 \\ r_+ & 1
+        \end{vmatrix} }{r_--r_+}.
+    \]
+\end{ex}
+
+\begin{exo}
+    Montrer que si $a=2\cos\theta$ et $b=c=1$ alors pour $\theta\not\in\pi\mathbb Z$, \[
+        \Delta_n=\frac{\sin((n+1)\theta)}{\sin\theta}.
+    \]
+\end{exo}
+
+\section{Développements asymptotiques -- Équivalents}
+
+\subsection{Développement asymptotique d'une suite implicite}
