@@ -561,3 +561,91 @@ Après calculs, pour $n\geq3$, \[
 \section{Développements asymptotiques -- Équivalents}
 
 \subsection{Développement asymptotique d'une suite implicite}
+
+\begin{exo}
+    Montrer qu'il existe un unique $u_n\in[0, 1]$ tel que $u_n^5+nu_n-1=0$. En donner un DA à deux termes.
+\end{exo}
+
+\begin{proof}[Résolution.]
+    L'existence et l'unicité sont faciles. On a \[
+        u_n=\frac1n-\frac{u_n^5}n\xrightarrow[n\to+\infty]{}0
+    \]
+    puis \[
+        \frac{u_n^5}n=o \left( \frac1n \right)\implies u_n\underset{+\infty}\sim\frac1n
+    \]
+    donc \[
+        u_n=\frac1n-\frac{ \left( \frac1n+o\left(\frac1n\right) \right)^5 }n=\frac1n-\frac1{n^6}+o \left( \frac1{n^6} \right)
+    \]
+\end{proof}
+
+\subsection{Développement asymptotique d'une fonction implicite}
+
+\begin{exo}
+    Montrer que pour $x\in\mathbb R$, il existe un unique $y>0$ tel que $\dfrac y{\ln y}=x$. On le note $\psi(x)$. Donne un DA en $+\infty$ de $\psi$
+\end{exo}
+
+\begin{proof}[Résolution]
+    L'unicité et l'existence sont faciles. On a \[
+        \psi(x)=x\ln \psi(x) \geq x \implies \psi(x)\xrightarrow[x\to+\infty]{}+\infty
+    \]
+    et \[
+        \ln\psi(x)=\ln x+\ln(\ln \psi(x))=\ln x+o_{+\infty}(\ln \psi(x))\sim \ln x
+    \]
+    donc \[
+        x\ln \psi(x)=\psi(x)\sim x\ln x
+    \]
+    puis \[
+        \psi(x)=x\ln\psi(x)=x\ln(x\ln x\cdot(1+o(1)))=x\ln x+x\ln(\ln x)+x\ln(1+o(1))
+    \]
+\end{proof}
+
+\begin{rem}
+    Si on note $\pi$ la fonction qui compte les nombres premiers: $\pi:n\longmapsto \#\mathbb P\cap\llbracket1,n\rrbracket$, alors on admet (difficile) le théorème des nombres premiers: \[
+        \pi(n)\underset{+\infty}\sim \frac n{\ln n}
+    \]
+    d'où \[
+    p_n=n\ln(p_n)(1+o(1))\implies \ln p_n=\ln n+\ln p_n+\ln(1+o(1))\] donc \[ \ln p_n\sim \ln n \implies p_n\sim n\ln p_n\sim n\ln n
+    \]
+\end{rem}
+
+\section{Cesàro-Stolz}
+
+\begin{thm}[Cesàro-Stolz\index{Cesàro-Stolz (théorème de -- )}]
+    \Hyp $(a_n)$ une suite réelle, $(b_n)$ suite réelle strictement croissante strictement positive qui tend vers $+\infty$. On suppose \[
+        \frac{a_{n+1}-a_n}{b_{n+1}-b_n}\xrightarrow[n\to+\infty]{}\ell\in\bar{\mathbb R}
+    \]
+    \Conc \[
+        \frac{a_n}{b_n}\xrightarrow[n\to+\infty]{}\ell
+    \]
+\end{thm}
+
+\begin{proof}
+    On va montrer le cas $\ell\in\mathbb R$. Soit $\varepsilon>0$. À partir d'un certain rang $N$, \[
+        \left(\ell-\frac\varepsilon2\right)(b_n-b_{n-1})\leq a_n-a_{n-1}\leq \left( \ell+\frac\varepsilon2 \right)(b_n-b_{n-1}).
+    \]
+    On somme: \[
+        \left( \ell-\frac\varepsilon2 \right)(b_n-b_{N-1})\leq a_n-a_{N-1}\leq \left( \ell+\frac\varepsilon2 \right)(b_n-b_{N-1})
+    \]
+    d'où \[
+        \underbrace{\frac{a_{N-1}}{b_n}}_{\to \; 0}+ \left( \ell-\frac\varepsilon2 \right)\underbrace{\frac{b_n-b_{N-1}}{b_n}}_{\to\;1}\leq \frac{a_n}{b_n}\leq \left( \ell+\frac\varepsilon2 \right)\underbrace{\frac{b_n-b_{N-1}}{b_n}}_{\to\;1}+\underbrace{\frac{a_{N-1}}{b_n}}_{\to\;0}
+    \]
+    et en passant à la limite, \[
+        \frac{a_n}{b_n}\xrightarrow[n\to+\infty]{}\ell
+    \]
+\end{proof}
+
+\begin{rem}
+    Le cas particulier \[
+        u_n=\sum_{k=1}^nx_k
+    \]
+    et $b_n=1$ donne le théorème de Cesàro\index{Cesàro (théorème de -- )}.
+\end{rem}
+
+\begin{rem}[Lemme de l'escalier]
+    \index{lemme de l'escalier}
+    Avec $b_n=n$, on trouve \[
+        a_{n+1}-a_n\longrightarrow \ell\in\mathbb R^\star\implies a_n\underset{+\infty}\sim n\ell
+    \]
+\end{rem}
+
+\endchapter
