@@ -16,7 +16,7 @@
 
 \section{Rappels}
 
-L'opération d'intégration sur $\mathcal C^0_{PM}([a, b], \mathbb R)$ est linéaire positive croissante. On a \[
+L'opération d'intégration sur $\CPM([a, b], \mathbb R)$ est linéaire positive croissante. On a \[
     \left| \int_a^bf \right|\leq \int_a^b|f|\leq (b-a)\sup_{[a,b]} |f|
 \]
 et similairement \[
@@ -32,3 +32,165 @@ et si $g$ n'est pas identiquement nulle, \[
     \int_a^bg>0\implies \dfrac{\int_a^bfg}{\int_a^bg}\in[\inf f,\sup f]=f([a,b])\implies \exists c, \quad \int_a^bfg=f(c)\int_a^bg.
 \]
 Le résultat reste vrai si $g$ est identiquement nulle. Si $f$ est continue positive sur $[a, b]$ et $\int_a^bf=0$ alors $f=0$.
+Si $f$ et $g$ sont de classe $\mathcal C^1$ alors \[
+    \int_a^bfg'=[fg]_a^b-\int_a^bf'g
+\]
+et si $\varphi:[\alpha,\beta]\to[a,b]$ est $\mathcal C^1$, $f$ continue sur $\varphi([\alpha,\beta])$ alors \[
+    \int_{\varphi(\alpha)}^{\varphi(\beta)}f(u)\diff u=\int_\alpha^\beta f(\varphi(t))\varphi'(t)\diff t
+\]
+Si $f$ est continue par morceaux sur $[a, b]$ alors \[
+    \frac1{b-a}\sum_{k=0}^{n-1}f \left( a+k\frac{b-a}n \right)\xrightarrow[n\to+\infty]{}\int_a^bf
+\]
+
+\begin{thm}[Taylor avec reste intégral\index{Taylor!formule avec reste intégral}]
+    \Hyp $f$ de classe $\mathcal C^n$ sur $[a, b]$
+    \Conc \[
+        f(b)=\sum_{k=0}^n\frac{f^{(k)}(a)}{k!}(b-a)^k+\int_a^b\frac{(b-t)^n}{n!}f^{(n+1)}(t)\diff t
+    \]
+\end{thm}
+
+\begin{proof}
+    Vu en sup.
+\end{proof}
+
+\begin{rem}
+    On peut échanger $a$ et $b$ dans la formule.
+\end{rem}
+
+\begin{ex}[Irrationnalité de $\cos 1$]
+    Supposons $\cos 1=\frac pq\in\mathbb Q$ de sorte que \[
+        \cos 1=\sum_{k=0}^q\frac{\cos^{(k)}(0)}{k!}+\int_0^1\frac{(1-t)^q}{q!}\cos^{(q+1)}(t)\diff t\implies0\leq \underbrace{q! \left| \cos 1-\sum_{k=0}^q\frac{\cos^{(k)}(0)}{k!} \right|}_{\in\mathbb N}= \left| \int_0^1(1-t)^q\cos^{(q+1)}(t)\diff t \right|<1
+    \]
+    donc \[
+        \cos 1=\sum_{k=0}^q\frac{\cos^{(k)}(0)}{k!}
+    \]
+    d'où \[
+        \int_a^b\underbrace{(1-t)^q\cos^{(q+1)}(t)}_{\mathcal C^0\text{ de signe constant }}\diff t=0\implies (1-t)^q\cos^{(q+1)}(t)\equiv 0
+    \]
+    ce qui est aburde.
+\end{ex}
+
+\section{Intégrales de Wallis}
+
+On appelle intégrales de Wallis les intégrales \[
+    W_n\defeq\int_0^{\frac\pi2}\cos^n\underset{\;u=\frac\pi2-t\;}=\int_0^{\frac\pi2}\sin^n
+\]
+On a \[
+    W_0=\frac\pi2\qquad \qquad \qquad W_1=[\sin t]_0^{\frac\pi2}=1
+\]
+Pour $n\geq 2$, \[
+    W_n=\int_0^{\frac\pi2}\cos \cdot \cos^{n-1}=[\sin\cos^{n-1}]_0^{\frac\pi2}+\int_0^{\frac\pi2}\underbrace{\sin^2}_{1-\cos^2}\cdot~(n-1)\cos^{n-2}=(n-1)W_{n-2}-(n-1)W_n
+\]
+donc \[
+W_n=\frac{n-1}nW_{n-2}
+\]
+de sorte que \[
+    W_{2p}=\frac{(2p)!}{2^{2p}(p!)^2}\frac\pi2\qquad\qquad\qquad W_{2p+1}=\frac{2^{2p}p!^2}{(2p+1)!}.
+\]
+Pour $t\in [0, \frac\pi2]$, on a $\cos^{n+1}t\leq \cos^nt$ donc $W_{n+1}\leq W_n$. Puis \[
+    W_{n+2}=\frac{n+1}{n+1}W_n\leq W_{n+1}\leq W_n \implies \frac{W_{n+1}}{W_n}\xrightarrow[n\to+\infty]{}W_{n+1}\sim W_n.
+\]
+La suite $((n+1)W_nW_{n+1})_n$ est constante égale à $W_0W_1=W_0$ donc \[
+    \frac\pi2(n+1)W_{n+1}W_n\sim nW_n^2\implies W_n\sim\sqrt{\frac{\pi}{2n}}
+\]
+or \[
+    W_{2p}\sim\frac{C\sqrt{2p}(2p)^{2p}e^{-2p}}{2^{2p}C^2(\sqrt pp^pe^{-p})^2}\frac\pi2\sim \frac{\sqrt2}{C\sqrt p}\sqrt{\frac\pi2}\underset{\text{ aussi }}\sim\sqrt{\frac{\pi}{4p}}
+\]
+donc \[
+    C=\sqrt {2\pi}
+\]
+
+\section{Fonctions continues par morceaux}
+
+\begin{dfn}[Rappel]\index{continuité par morceaux}
+    $f:[a, b]\longrightarrow\mathbb R$ (ou $\mathbb C$) est dite continue par morceaux s'il existe une subdivision finie $\sigma=(a_1, \cdots, a_n)$ ($a_1=a$, $a_n=b$) de $[a, b]$ telle que $f$ est continue sur $]a_n, a_{n+1}[$, et admet une limite à droite et à gauche (ou d'un seul côté aux bords de l'intervalle) en chacun des points de la subdivision.
+
+    L'ensemble de ces fonction est noté $\CPM([a, b], \mathbb R)$
+\end{dfn}
+
+\begin{dfn}
+    Si $I$ est un intervalle non trivial de $\mathbb R$, on dira que $f$ est continue par morceaux sur $I$ si $f$ est continue par morceaux sur tous segments inclus dans $I$.
+\end{dfn}
+
+\begin{ex}
+    La partie entière est $\CPM$ sur $\mathbb R$. L'application \[
+        x\longmapsto \floor{\frac1x}
+    \]
+    est $\CPM$ sur $]0, 1]$
+\end{ex}
+
+\begin{prop}
+    \Hyp $I$ est un intervalle réel non trivial, $f,g\in \CPM(I, \mathbb R)$
+    \begin{concenum}
+    \item Pour tout $\lambda\in\mathbb R$ (ou $\mathbb C$), $\lambda f+g\in\CPM(I, \mathbb R)$
+    \item $fg$ est $\CPM$
+    \item $|f|$ est $\CPM$. En particulier, $\max (f,g)$ et $\min (f,g)$ aussi
+    \end{concenum}
+\end{prop}
+
+\begin{proof}
+    On se ramène à un segment de $I$ et c'est vu en sup. \[
+        \max(f,g)=\frac{f+g+|f-g|}2
+    \]
+\end{proof}
+
+\begin{thm}[Rappel]
+    \Hyp $f$ continue sur $[a,b]$
+   \begin{concenum}
+   \item  On note $E(I, \mathbb R)$ l'ensemble des fonctions en escaliers de $I$ dans $\mathbb R$. \[
+           \forall \varepsilon>0, \exists \varphi\in E([a, b], \mathbb R), \quad \sup_{[a, b]}|f-\varphi|\leq \varepsilon
+       \]
+   \item \[
+        \exists (\varphi_n)_n\in E([a,b]\in\mathbb R)^{\mathbb R}, \forall n\in\mathbb N^\star, \quad \sup_{[a,b]}|f-\varphi_n|\leq\frac1n
+       \]
+   \end{concenum}
+\end{thm}
+
+\begin{proof}[Idée de la preuve]
+    $f$ est uniformément continue (Heine) donc avec une subdivision régulière assez petite on a bien l'approximation.
+\end{proof}
+
+\section{Intégration sur un intervalle quelconque}
+
+On note $I$ un intervalle non trivial de $\mathbb R$ et $f\in\CPM(I, \mathbb R)$.
+
+\begin{dfn}
+    \begin{enumerate}
+        \item Si $I=[a, b[$ avec $b\in\mathbb R\cup \{+\infty\}$, alors \[
+                \int_If=\int_a^bf\defeq\lim_{x\to b}\int_a^xf
+            \]
+            lorsque cette limite existe (on dira alors que l'intégrale est convergente).
+        \item Si $I=]a, b[$ alors de même, lorsque la limite existe on définit \[
+                \int_If=\int_a^bf\defeq \lim_{x\to a}\lim_{y\to b}\int_x^yf
+            \]
+            On peut inverser les deux limites car pour $c\in I$, \[
+                \int_x^yf=\int_x^cf+\int_c^yf
+            \]
+    \end{enumerate}
+\end{dfn}
+
+\begin{ex}
+    L'application $t\longmapsto e^{-t}$ est $\CPM$ sur $\mathbb R_+$ et \[
+        \int_0^x e^{-t}\diff t=1-e^x\xrightarrow[x\to+\infty]{}1\implies \int_0^{+\infty}e^{-t}\diff t=1
+    \]
+\end{ex}
+
+\subsection{Lien avec les primitives}
+
+Si $f$ est continue sur $[a, b[$ et $F$ est une primitive de $f$, alors pour $x\in[a, b[$, \[
+    \int_a^xf=F(x)-F(a)
+\]
+donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
+
+\begin{ex}
+    \[
+        \int_0^1\frac{\diff t}{t^\alpha}\text{ CV }\iff t\longmapsto \begin{cases}
+            \dfrac{t^{-\alpha+1}}{1-\alpha} &\text{ si }\alpha\neq 1\\\ln|t|&\text{ sinon }
+        \end{cases}
+        \qquad \text{ a une limite finie en $0^+$ }
+        \iff \alpha<1
+    \]
+    \[
+        \int_1^{+\infty}\frac{\diff t}{t^\alpha}\text{ CV }\iff \alpha>1
+    \]
+\end{ex}

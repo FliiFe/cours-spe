@@ -10,7 +10,7 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 - [x] Analyse asymptotique
 - [ ] Suites et séries numériques
 - [ ] Familles sommables
-- [x] Intégration sur un intervalle quelconque
+- [x] Intégration sur un intervalle quelconque (partiellement)
 - [ ] Suites et séries de fonctions
 - [x] Algèbre générale
 - [x] Arithmétique
