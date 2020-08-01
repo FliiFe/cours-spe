@@ -166,6 +166,10 @@ On note $I$ un intervalle non trivial de $\mathbb R$ et $f\in\CPM(I, \mathbb R)$
             On peut inverser les deux limites car pour $c\in I$, \[
                 \int_x^yf=\int_x^cf+\int_c^yf
             \]
+        \item Lorsque \[
+                \int_I|f|
+            \]
+            converge, on dit que $f$ est intégrable sur $I$.
     \end{enumerate}
 \end{dfn}
 
@@ -194,3 +198,85 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
         \int_1^{+\infty}\frac{\diff t}{t^\alpha}\text{ CV }\iff \alpha>1
     \]
 \end{ex}
+
+\section{Propriétés algébriques}
+
+\begin{prop}
+    \Hyp $f,g\in\CPM(I, \mathbb C)$ telles que $\displaystyle \int_If$ et $\displaystyle \int_Ig$ convergent
+    \begin{concenum}
+    \item \[
+            \forall \lambda\in\mathbb C, \quad \int_I(\lambda f+g)\text{ CV  et }\int_I(\lambda f+g)=\lambda\int_If+\int_Ig
+        \]
+    \item Si $f\geq 0$ alors \[
+            \int_If\geq 0
+        \]
+        et si $f\leq g$ alors \[
+            \int_If\leq \int_Ig
+        \]
+    \item Si $f$ est intégrable sur $I$ alors \[
+            \left| \int_If \right|\leq \int_I|f|
+        \]
+    \end{concenum}
+\end{prop}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item 2. On l'écrit sur un segment dans $I$ puis on passe à la limite
+        \setcounter{enumi}{2}
+        \item Dans le cas réel, \[
+                \pm\int_If\leq \int_I|f|.
+            \]
+            Si $f$ est à valeurs complexes, le cas $\displaystyle\int_If=0$ est immédiat et sinon il existe $\theta\in\mathbb R$ tel que \[
+                e^{-i\theta}\int_If>0
+            \]
+            et \[
+                \left| \int_I f \right|=e^{-i\theta}\int_If=\int_Ie^{-i\theta}f=\Re \left( \int_Ie^{-i\theta} \right)=\int_I\Re(e^{-i\theta}f)\leq \int_I|e^{-i\theta}f|=\int_I|f|
+            \]
+    \end{enumerate}
+\end{proof}
+
+\needspace{5cm}
+\begin{prop}
+    \Hyp $f\in\CPM(I, \mathcal C), c\in I$ et $\displaystyle\int_If$ convergente
+    \begin{concenum}
+        \item Les intégrales \[
+                \int_{I\cap [c, +\infty[}f\qquad \qquad \text{ et }\qquad \qquad \int_{I\cap ]-\infty, c]}f
+            \]
+            sont convergentes
+        \item On a l'égalité \[
+                \int_If=\int_{I\cap [c, +\infty[}f+\int_{I\cap ]-\infty, c]}f
+            \]
+    \end{concenum}
+\end{prop}
+
+\begin{proof}
+    Si $I=[a, b[$, alors $I\cap [c, +\infty[=[c, b[$ et \[
+        \int_a^xf-\int_a^cf=\int_c^xf\implies \int_c^bf\qquad \text{ CV }
+    \]
+    On fait pareil pour les autres configurations.
+\end{proof}
+
+\begin{rem}
+    Si $f\in \mathcal C^0([a, b[, \mathbb C)$ et \[
+        \varphi: x\in [a, b[\longmapsto \int_x^cf
+    \]
+    alors pour $c\in [a, b[$, \[
+        \varphi(x)=\int_x^cf+\int_c^bf
+    \]
+    donc $\varphi$ dérivable et \[
+        \varphi'(x)=-f(x)
+    \]
+\end{rem}
+
+\section{Utilisation de la positivité}
+
+\begin{prop}
+    \Hyp $f\in\CPM(I, \mathbb R), f\geq 0$ sur $I$
+    \begin{concenum}
+    \item $f$ est intégrable sur $I$ si et seulement s'il existe $M\geq 0$ tel que \[
+            \forall x, y\in I, \qquad x\leq y\implies \int_x^yf\leq M
+        \]
+    \item Si $0\leq f\leq g$ et $g$ intégrable sur $I$ alors $g$ est aussi intégrable
+    \item Si $I=[a, b[$, $f=O_b(g)$ et $g$ intégrable au voisinage de $b$ alors $f$ est aussi intégrable au voisinage de $f$.
+    \end{concenum}
+\end{prop}
