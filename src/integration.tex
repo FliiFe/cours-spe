@@ -276,7 +276,43 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
     \item $f$ est intégrable sur $I$ si et seulement s'il existe $M\geq 0$ tel que \[
             \forall x, y\in I, \qquad x\leq y\implies \int_x^yf\leq M
         \]
-    \item Si $0\leq f\leq g$ et $g$ intégrable sur $I$ alors $g$ est aussi intégrable
-    \item Si $I=[a, b[$, $f=O_b(g)$ et $g$ intégrable au voisinage de $b$ alors $f$ est aussi intégrable au voisinage de $f$.
+        soit encore, de manière équivalente, \[
+            \forall J\subset I, J\text{ segment},\qquad  \int_Jf\leq M
+        \]
+        Et dans ce cas \[
+            \int_If=\sup \left\{ \int_Jf,\quad J\subset I, J\text{ segment } \right\}
+        \]
+    \item Si $0\leq f\leq g$ et $g$ intégrable sur $I$ alors $f$ est aussi intégrable
+    \item Si $I=[a, b[$, $f=O_b(g)$ et $g$ intégrable au voisinage de $b$ alors $f$ est intégrable sur $I$.
     \end{concenum}
 \end{prop}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item $(\implies)$ Pour $I=[a, b[$ et $a\leq x\leq y<b$, \[
+                \int_x^yf\leq \int_x^yf+\int_a^xf=\int_a^yf\xrightarrow[y\to b]{}\int_a^bf\defeq M.
+            \]
+            $(\impliedby)$ \[
+                \int_a^yf\leq M\implies \lim_{y\to b}\int_a^yf=\int_If\quad \text{ existe (fonction croissante majorée) }
+            \]
+            donc $f$ est intégrable sur $I$. On a clairement \[
+                \sup \underbrace{\left\{ \int_If,\quad J\subset I, J\text{ segment } \right\}}_{\defeq \mathcal E}\leq \int_If
+            \]
+            puis \[
+                \int_a^{b-\frac1n}f\xrightarrow[n\to+\infty]{}\int_If
+            \]
+            donc \[
+                \sup \mathcal E=\int_If
+            \]
+        \item Pour tout $J$ segment de $I$, \[
+                \int_Jf\leq \int_Jg\leq \int_I g
+            \]
+            donc en passant à la borne supérieure on optient l'intégrabilité.
+        \item Il existe $C>0$ et $c\in I$ tels que \[
+                \forall x\in [c, b[, \qquad 0\leq f(x)\leq C\underbrace{|g(x)|}_{\text{intégrable}}
+            \]
+            donc $f$ est intégrable sur $[c, b[$ et $\CPM$ sur $[a, c]$ donc intégrable sur $I$.
+    \end{enumerate}
+\end{proof}
+
+
