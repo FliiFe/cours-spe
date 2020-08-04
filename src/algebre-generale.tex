@@ -275,16 +275,16 @@ définit une relation d'équivalence sur $G$, les classes d'équivalence forment
     G=\bigsqcup_{i=1}^p a_iH \implies |G|=p|H|
 \]
 
-\subsection{\texorpdfstring{$|G|=|\Ker f|\cdot |\img f|$}{\#G=\#Ker f × \#Im f}}
+\subsection{\texorpdfstring{$|G|=|\Ker f|\cdot |\Img f|$}{\#G=\#Ker f × \#Im f}}
 
-On note $G$ un groupe fini et $f:G\to G'$ un morphisme. On note $\img f=\{y_1, \cdots, y_p\}$ de sorte que \[
+On note $G$ un groupe fini et $f:G\to G'$ un morphisme. On note $\Img f=\{y_1, \cdots, y_p\}$ de sorte que \[
     G=\bigsqcup_{i=1}^p f^{-1}(\{y_i\}) \implies |G|=\sum_{i=1}^p \left| f^{-1}(\{y_i\}) \right|
 \]
-On se donne $y\in \img f$ fixé et $x\in f^{-1}(\{y\})$. On pose \[
+On se donne $y\in \Img f$ fixé et $x\in f^{-1}(\{y\})$. On pose \[
     \varphi: t\in \Ker f\longmapsto xt\in f^{-1}(\{y\}).
 \]
 Cette application est injective et si $u\in f^{-1}(\{y\})$ alors $u=\varphi(x^{-1}u)$ donc elle est aussi surjective. Elle est donc bijective, d'où \[
-    |f^{-1}(\{y\})|=|\Ker f|\quad \implies \quad |G|=|\Ker f|\cdot |\img f|
+    |f^{-1}(\{y\})|=|\Ker f|\quad \implies \quad |G|=|\Ker f|\cdot |\Img f|
 \]
 
 \subsection{Ordre d'un élément}
@@ -354,7 +354,7 @@ Cet ensemble est stable par permutation circulaire (car $x_1\cdots x_p=e_G \impl
 Pour $x\in E$, on note $O_x=\{C.x, C\in\langle \sigma\rangle\}$ l'orbite de $x$. La relation $x\mathcal Ry\iff y\in O_x$ est une relation d'équivalence sur $E$ de sorte que les $O_x$ forment une partition de $E$. On note \[
     \varphi_x:c\in \langle \sigma \rangle \longmapsto c.x\in O_x.
 \]
-Si $\varphi_x$ est injective alors $O_x=\img \varphi_x$ et $|O_x|=|\langle \sigma \rangle|=p$. Sinon, il existe $1\leq k_1 < k_2\leq p$ tel que $\sigma^{k_1}.x=\sigma^{k_2}.x$ donc $\sigma^{k_2-k_1}.x=x$. On a alors $\forall n\geq 0, \sigma^n.x=\sigma^{n+k_2-k_1}.x$ donc $\forall i\in\llbracket 1, p\rrbracket$, $x_i=x_{i+n(k_2-k_1)\pmod p}$ or $k_2-k_1$ engendre $(\mathbb Z_p, +)$ (car $p$ premier) donc $(n(k_2-k_1))_n$ parcourt tous les entiers modulo $p$ et $x=(x_1, \cdots, x_1)$, d'où finalement $\#O_x=1$
+Si $\varphi_x$ est injective alors $O_x=\Img \varphi_x$ et $|O_x|=|\langle \sigma \rangle|=p$. Sinon, il existe $1\leq k_1 < k_2\leq p$ tel que $\sigma^{k_1}.x=\sigma^{k_2}.x$ donc $\sigma^{k_2-k_1}.x=x$. On a alors $\forall n\geq 0, \sigma^n.x=\sigma^{n+k_2-k_1}.x$ donc $\forall i\in\llbracket 1, p\rrbracket$, $x_i=x_{i+n(k_2-k_1)\pmod p}$ or $k_2-k_1$ engendre $(\mathbb Z_p, +)$ (car $p$ premier) donc $(n(k_2-k_1))_n$ parcourt tous les entiers modulo $p$ et $x=(x_1, \cdots, x_1)$, d'où finalement $\#O_x=1$
 
 Ainsi, les orbites sont de cardinal $p$ ou $1$. On note $O_{x_1}, \cdots, O_{x_r}$ les orbites de cardinal $p$ et $O_{x_1'}, \cdots, O_{x_s'}$ celles de cardinal $1$. On a \[
     \#E=rp+s=\#G^{p-1}\equiv 0\pmod p \implies r\equiv 0\pmod p

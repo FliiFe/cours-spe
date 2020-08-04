@@ -315,4 +315,44 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
     \end{enumerate}
 \end{proof}
 
+\begin{rem}
+    Dans le cas général, si $f=u+iv$ intégrable avec $u,v$ des fonctions à valeurs réelles alors $u$ et $v$ sont intégrables car \[
+        |u|\leq |\Re (f)|\leq |f|\qquad\text{et}\qquad |v|\leq |\Im(f)|\leq |f|
+    \]
+\end{rem}
 
+\begin{exo}
+    Donner la nature de \[
+        \int_0^{+\infty}\frac{\sin t}{1+t^2}\diff t
+    \]
+\end{exo}
+
+\begin{proof}[Résolution]
+    L'application \[
+            f:t\in\mathbb R_+\longmapsto \frac{\sin t}{1+t^2}
+    \]
+    est continue et \[
+        \forall t\geq 1, \qquad |f(t)|\leq \frac1{t^2}\text{ intégrable en $+\infty$ }
+    \]
+    donc $f$ est intégrable sur $[1, +\infty[$ et $f$ est continue par morceaux sur $[0, 1]$ donc l'intégrale est absolument convergente donc convergente.
+\end{proof}
+
+\begin{exo}
+    Donner la nature de \[
+        \int_0^{+\infty}\frac{\sin t}{t\sqrt t}\diff t
+    \]
+\end{exo}
+
+\begin{proof}[Résolution]~
+    \begin{itemize}
+        \item $\displaystyle \left| \frac{\sin t}{t\sqrt t} \right|=O_0 \left( \frac1{\sqrt t} \right)$ intégrable en $0$
+        \item $\displaystyle \left| \frac{\sin t}{t\sqrt t} \right|=O_{+\infty} \left( \frac1{t\sqrt t} \right)$ intégrable en $+\infty$
+    \end{itemize}
+    donc l'intégrale est absolument convergente.
+\end{proof}
+
+\begin{exo}
+    Donner la nature de \[
+        \int_0^{+\infty}\frac{1+\cos t}{1+t^2}\diff t
+    \]
+\end{exo}
