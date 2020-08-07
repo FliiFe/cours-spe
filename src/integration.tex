@@ -169,7 +169,7 @@ On note $I$ un intervalle non trivial de $\mathbb R$ et $f\in\CPM(I, \mathbb R)$
         \item Lorsque \[
                 \int_I|f|
             \]
-            converge, on dit que $f$ est intégrable sur $I$.
+            converge, on dit que $f$ est intégrable sur $I$. Si $f$ n'est pas intégrable, on dira que $\displaystyle\int_If$ est semi-convergente si elle converge.
     \end{enumerate}
 \end{dfn}
 
@@ -323,6 +323,35 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 
 \begin{exo}
     Donner la nature de \[
+        \int_0^{+\infty}\frac{1+\cos t}{1+t^2}\diff t
+    \]
+\end{exo}
+
+\begin{proof}[Résolution] L'application est continue sur l'intervalle d'intégration et intégrable en $+\infty$ en tant que $O(\frac1{t^2})$, donc l'intervalle converge absolument.
+\end{proof}
+
+\begin{exo}
+    Donner la nature de \[
+        \int_0^1\frac{\diff t}{\sin\sqrt t}
+    \]
+\end{exo}
+
+\section{Absolue convergence et semi-convergence}
+
+\begin{prop}
+    \Hyp $f\in\CPM(I, \mathbb C)$
+    \Conc Si $\displaystyle\int_If$ est absolument convergente (ou $f$ est intégrable sur $I$), alors $\displaystyle\int_If$ converge
+\end{prop}
+
+\begin{proof}
+    Si $f$ est réelle, on a $f=f^+-f^-$ avec $f^+=\max(f,0)$ et $f^-=\max(-f,0)$, de sorte qu'il suffit d'avoir la convergence de $\displaystyle\int_If^\pm$, qui est donnée par \[
+        0\leq f^\pm\leq |f|
+    \]
+    Si $f$ est à valeurs complexes, on écrit $f=u^+-u^-+i(v^+-v^-)$ et on fait pareil.
+\end{proof}
+
+\begin{exo}
+    Donner la nature de \[
         \int_0^{+\infty}\frac{\sin t}{1+t^2}\diff t
     \]
 \end{exo}
@@ -353,6 +382,28 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 
 \begin{exo}
     Donner la nature de \[
-        \int_0^{+\infty}\frac{1+\cos t}{1+t^2}\diff t
+        \int_0^{+\infty}\frac{\sin t}t\diff t
     \]
 \end{exo}
+
+\begin{proof}[Résolution]~
+    \todo{ça}
+\end{proof}
+
+
+\section{Intégration des relations de comparaison}
+
+\begin{thm}
+    \Hyp $f,g\in \CPM([a, b[, \mathbb R_{\bm+})$ des fonctions positives, $g$ intégrable sur $[a, b[$
+    \begin{concenum}
+    \item Si $f=O_b(g)$ alors \[
+            \int_x^bf=O_b \left( \int_x^bg \right)
+        \]
+    \item Si $f=o_b(g)$ alors \[
+            \int_x^bf=o_b \left( \int_x^bg \right)
+        \]
+    \item Si $f\underset b\sim(g)$ alors \[
+            \int_x^bf\underset b\sim \int_x^bg
+        \]
+    \end{concenum}
+\end{thm}
