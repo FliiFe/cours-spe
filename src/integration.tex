@@ -387,12 +387,28 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 \end{exo}
 
 \begin{proof}[Résolution]~
-    \todo{ça}
+    L'application \[
+        \varphi:t\longmapsto \frac{\sin t}t
+    \]
+    est continue (avec un prolongement en $0$) sur $\mathbb R_+$ et \[
+        \int_1^x\varphi= \left[ -\frac{\cos t}t \right]_1^x+\int_1^x\frac{\cos t}{t^2}\diff t\xrightarrow[x\to+\infty]{}\cos (1)+\int_1^{+\infty}\frac{\cos t}{t^2}\diff t
+    \]
+    et cette dernière intégrale converge absolument. L'intégrale \[
+        \int_0^{+\infty}\varphi
+    \] est donc convergente.
+    On va montrer qu'elle n'est pas absolument convergente. On a \[
+        \forall t\geq 0, \qquad |\varphi(t)|= \frac{|\sin t|}t\geq \frac{\sin^2t}{t}=\frac{1-\cos(2t)}{2t}
+    \]
+    donc \[
+        \int_1^x|\varphi|\geq \int_1^x\frac{\diff t}{2t}-\underbrace{\int_1^x\frac{\cos(2t)}{2t}\diff t}_{\text{limite finite}}\xrightarrow[x\to+\infty]{}+\infty
+    \]
+    donc l'intégrale est semi-convergente.
 \end{proof}
 
 
 \section{Intégration des relations de comparaison}
 
+\needspace{3cm}
 \begin{thm}
     \Hyp $f,g\in \CPM([a, b[, \mathbb R_{\bm+})$ des fonctions positives, $g$ intégrable sur $[a, b[$
     \begin{concenum}
@@ -407,3 +423,17 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
         \]
     \end{concenum}
 \end{thm}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Il existe $M>0$ et un $c\in[a, b[$ tel que \[
+                \forall t\in [c, b[,\qquad  f(t)\leq Mg(t)\implies \forall x\in[c, b[, \qquad\int_x^bf\leq M\int_x^bg
+            \]
+        \item Soit $\epsilon>0$. Il existe $c\in [a, b[$ tel que sur $[c, b[$, $f\leq \epsilon g$ donc \[
+                \forall x\in [c, b[, \qquad \int_x^bf\leq \epsilon\int_x^bg
+            \]
+        \item $f\underser b\sim g\iff f-g=o_b(g)$ donc \[
+                \int_x^b(f-g)=O_b \left( \int_x^b|f-g| \right)=O_b \left( o_b \left( \int_x^bg \right) \right)=o_b \left( \int_x^b g \right)\implies \int_x^bf\sim\int_x^bg
+            \]
+    \end{enumerate}
+\end{proof}
