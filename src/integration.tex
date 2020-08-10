@@ -437,3 +437,90 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
             \]
     \end{enumerate}
 \end{proof}
+
+\begin{rem}
+    Si $f$ est de signe quelconque, alors \[
+        f=O_b(g)\iff |f|=O_b(g) \implies \int_x^bf=O_b \left(\int_x^b|f|\right)=O_b \left( \int_x^bg \right)
+    \]
+    donc le signe de $f$ n'est pas important.
+\end{rem}
+
+\needspace{10cm}
+\begin{thm}
+    \Hyp $f, g\in\CPM([a, b[, \mathbb R)$ positives
+    \begin{concenum}
+    \item Si $f$ est non intégrable et $f=O_b(g)$ alors $g$ n'est pas intégrable et \[
+            \int_a^xf=O_b \left( \int_a^xg \right)
+        \]
+    \item Si $f$ est non intégrable et $f=o_b(g)$ alors $g$ n'est pas intégrable et \[
+            \int_a^xf=o_b \left( \int_a^xg \right)
+        \]
+    \item Si $f$ est non intégrable et $f\underset b\sim g$ alors $g$ n'est pas intégrable et \[
+            \int_a^xf\underset b\sim \int_a^xg
+        \]
+    \end{concenum}
+\end{thm}
+
+\begin{proof}
+    Dans les trois cas il existe $C>0$ et $c\in [a, b[$ tels que \[
+        \forall x\in [c, b[, \qquad 0\leq f(x)\leq C g(x)
+    \]
+    donc \[
+        \forall x\geq c, \qquad \int_a^xf=\underbrace{\int_a^xf+\int_c^xf}_{\xrightarrow[x\to b]{}+\infty}\leq C\int_c^xg+\int_a^cf
+    \]
+    donc \[
+        \int_c^xg\xrightarrow[x\to b]{}+\infty
+    \]
+    et $g$ n'est pas intégrable.
+
+    On montre le point 2. (les points 1. et 3. se traitant similairement). Soit $\epsilon>0$. Il existe $c\in [a, b[$ tel que \[
+        \forall x\in [c, b[, \qquad 0\leq f(x)\leq \epsilon'g(x)\defeq \frac\epsilon2g(x) \implies \int_c^xf\leq \epsilon'\int_c^xg\implies \int_a^xf\leq \epsilon'\underbrace{\int_a^xg}_{\xrightarrow[x\to b]{}+\infty}+\int_a^cf-\epsilon'\int_a^cg
+    \]
+    donc pour $x$ assez grand, \[
+        0\leq \frac{\displaystyle\int_a^xf}{\displaystyle\int_a^x}\leq \epsilon'+\frac{\displaystyle\int_a^cf-\epsilon'\int_a^cg}{\displaystyle\int_a^xg}\underset{x \text{assez grand}}\leq 2\epsilon'=\epsilon
+    \]
+    d'où \conc
+\end{proof}
+
+\begin{ex}
+    On veut déterminer un équivalent de $\displaystyle\int_x^{+\infty}e^{-t^2}\diff t$. On écrit \[
+        \int_x^{+\infty}e^{-t^2}\diff t=\int_x^{+\infty}\frac1{2t}(2te^{-t^2})\diff t\underset{\text{\;IPP\;}}=\frac{e^{-x^2}}{2x}-\int_x^{+\infty}\frac{e^{-t^2}}{2t^2}\diff t
+    \]
+    de sorte que \[
+        \int_x^{+\infty}e^{-t^2}\diff t+\int_x^{+\infty}\frac{e^{-t^2}}{2t^2}\diff t=\frac{e^{-x^2}}{2x}
+    \]
+    or \[
+        \frac{e^{-t^2}}{2t^2}=o_{+\infty}(e^{-t^2}) \implies \int_x^{+\infty} \frac{e^{-t^2}}{2t^2}\diff t=o_{+\infty} \left( \int_x^{+\infty} e^{-t^2}\diff t \right)
+    \]
+    donc \[
+        \int_x^{+\infty}e^{-t^2}\diff t\underset{+\infty}\sim\frac{e^{-x^2}}{2x}
+    \]
+\end{ex}
+
+\section{Propriétés héritées}
+
+\begin{prop}
+    \begin{enumerate}
+        \item Si $f\in\mathcal C^0(I, \mathbb R_+)$ et $\int_If=0$ alors $f\equiv 0$ sur $I$.
+        \item Soit $f\in\mathcal C^0(]a, b[, \mathbb C)$ et $\varphi$ de classe $\mathcal C^1$ bijective croissante de $]\alpha, \beta[$ dans $]a, b[$. \begin{enumerate}
+            \item $\int_a^bf$ et $\int_\alpha^\beta f\circ \varphi\times \varphi'$ ont même nature (CV, ACV, DV)
+            \item En cas de convergence, ces intégrales sont égales
+        \end{enumerate}
+    \item Soit $f, g$ de classe $\mathcal C^1$ sur $]a, b[$ à valeurs complexes. On a \[
+            \int_a^bf'g=[fg]_a^b-\int_a^bfg'
+        \]
+        à condition que deux des trois termes convergent.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Pour $J$ segment de $I$, c'est vrai. On passe à la limite.
+        \item Sur les semgents c'est vrai, on passe à la limite.
+        \item Si deux des trois termes convergent, le troisième aussi
+    \end{enumerate}
+\end{proof}
+
+\section{Méthodes pour établir l'intégrabilité}
+
+\subsection{Intégrabilité de $x\longmapsto x^a(1-\exp(-1/\sqrt x))$ sur $\mathbb R_+$}
