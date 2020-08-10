@@ -524,3 +524,27 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 \section{Méthodes pour établir l'intégrabilité}
 
 \subsection{Intégrabilité de $x\longmapsto x^a(1-\exp(-1/\sqrt x))$ sur $\mathbb R_+$}
+
+On cherche la nature de \[
+    \int_0^{+\infty} x^a(1-e^{-\frac1{\sqrt x}})\diff x
+\]
+La fonction \[
+    f:x\longmapsto x^a(1-e^{-\frac1{\sqrt x}})
+\]
+est continue sur $\mathbb R_+^\star$ et \[
+    f(x)\underset{0+}\sim x^a=\frac1{x^{-a}}
+\]
+donc $f$ est intégrable en $0$ ssi $a>-1$. Puis, \[
+    f(x)\underset{+\infty}\sim\frac{x^a}{\sqrt x}
+\]
+donc $f$ est intégrable en $+\infty$ ssi $a<-\frac12$.
+
+L'intégrale est donc absolument convergente ($\iff$ convergente vu la positivité) ssi $-1<a<-\frac12$
+
+\subsection{Intégrales de Bertrand}
+
+\index{Bertrand (intégrales de -- )}
+
+On cherche la nature de \[
+    \int_0^{\frac1e}\frac1{x^\alpha|\ln x|^\beta}\diff x
+\]
