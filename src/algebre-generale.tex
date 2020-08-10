@@ -73,7 +73,7 @@ Si $G$ est de cardinal fini, alors on note $|G|$ ou $\#G$ son cardinal.
 Ainsi $H\subseteq G$ est un sous-groupe de $G$ si et seulement si $H\neq \emptyset$ et $HH^{-1}\subseteq H$
 
 \begin{exo}
-    Soient $H, K$ des sous-groupes de $G$. Montret que $HK$ est un sous groupe si et seulement si $HK=KH$.
+    Soient $H, K$ des sous-groupes de $G$. Montrer que $HK$ est un sous groupe si et seulement si $HK=KH$.
 \end{exo}
 
 \begin{proof}[Résolution]
@@ -158,7 +158,7 @@ L'anneau $\mathbb Z$ est euclidien (la valeur absolue est un stathme euclidien s
 
 On va maintenant montrer qu'un sous groupe $H$ non trivial de $\mathbb R$ est soit dense dans $\mathbb R$ soit de la forme $a\mathbb Z$. On note $\ell=\inf H\cap \mathbb R_+^\star$. Il y a deux cas: \begin{itemize}
     \item $\ell>0$. Si $l\not\in H$ alors il existe $a\in\mathbb R_+^\star$ tel que $a\in ]\ell, 2\ell[$ et $a\in H$, il existe $b\in H$ tel que $b\in ]\ell, a[$ donc $a-b\in H\cap \mathbb R_+^\star$ ce qui est absurde car $a-b>\ell$ par définition de $\ell$. Donc $\ell \in H$ et $\ell \mathbb Z\subset H$. Pour l'autre inclusion, fait comme pour $\mathbb Z$: on écrit $x=\lfloor x/\ell \rfloor \ell + r$ et $r=0$.
-    \item $\ell=0$. Soient $0<x<y$. Il existe $\alpha\in\mathbb H\cap \mathbb R_+^\star$ tel que $0<\alpha<y-x$ et \[
+    \item $\ell=0$. Soient $0<x<y$. Il existe $\alpha\in H\cap \mathbb R_+^\star$ tel que $0<\alpha<y-x$ et \[
             x<\underbrace{\floor{\frac x\alpha}+\alpha}_{\in H}<x+y-x=y
         \]
         donc $H$ est dense dans $\mathbb R$ (les autres configurations de $x$ et $y$ se traitent similairement)
