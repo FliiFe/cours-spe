@@ -548,3 +548,24 @@ L'intégrale est donc absolument convergente ($\iff$ convergente vu la positivit
 On cherche la nature de \[
     \int_0^{\frac1e}\frac1{x^\alpha|\ln x|^\beta}\diff x
 \]
+On note \[
+    f:t\longmapsto \frac1{x^\alpha|\ln x|^\beta}\in\mathcal C^0(]0, \frac1e], \mathbb R)
+\]
+\begin{itemize}
+    \item Si $\alpha<0$ alors on peut prolonger par continuité en $0$, la fonction est intégrable
+    \item Si $0\leq \alpha<1$ alors \[
+            \frac{t^{\frac{1+\alpha}2}}{t^\alpha|\ln t|^\beta}=\frac{t^{\frac{t-\alpha}2}}{|\ln t|^\beta}\xrightarrow[t\to 0^+]{}0\implies f(t)=o_{0^+} \left( \frac1{t^{\frac{1+\alpha}2}} \right)
+        \]
+        et $\frac{1+\alpha}2<1$ donc $f$ est intégrable.
+    \item Si $\alpha \geq 1$ alors \[
+            \int_x^{\frac1e}f=\int_{-\ln x}^{-\ln\frac1e}\frac{-e^{-u}}{(e^{-u})^\alpha u^\beta}\diff t=\int_{-\ln \frac1e}^{-\ln x}\frac{e^{(\alpha-1)u}}{u^\beta}\diff t
+        \]
+        Si $\alpha>1$ alors $\dfrac{e^{(\alpha-1)u}}{u^\beta}\xrightarrow[u\to+\infty]{}+\infty$ donc on n'a pas l'intégrabilité
+        Si $\alpha=1$ alors on a l'intégrabilité ssi $\beta >1$.
+\end{itemize}
+
+\begin{exo}
+    Montrer que \[
+        \int_e^{+\infty}\frac{\diff t}{t^\alpha|\ln t|^\beta}\quad \text{CV}\iff (\alpha>1)\text{ ou }(\alpha=1\text{ et }\beta>1)
+    \]
+\end{exo}
