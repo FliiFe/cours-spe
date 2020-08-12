@@ -662,9 +662,62 @@ donc $(J_n)$ est contante égale à $J_0=\frac\pi2$ d'où \[
         \item \[
                 \mathcal L^2(I, \mathbb C)\defeq \left\{f\in\CPM(I, \mathbb C), \qquad \int_I|f|^2\text{ CV }\right\}
             \]
-        \item Si $f, g\in\mathcal L^2(I, \mathbb C)$ alors $fg\in\mathcal L^1(I, \mathbb C)$ et \[
+            On dit que les fonctions de cet ensemble sont de carré intégrable.
+        \item (Inégalité de Cauchy-Schwarz\index{Cauchy-Schwarz (inégalité de -- )})Si $f, g\in\mathcal L^2(I, \mathbb C)$ alors $fg\in\mathcal L^1(I, \mathbb C)$ et \[
                 \left| \int_Ifg \right|\leq \sqrt{ \left( \int_I|f|^2 \right)  \left( \int_I|g|^2 \right)} \tag{$\star$}
             \]
         \item On a égalité dans $(\star)$ si et seulement si $f$ et $g$ sont proportionnelles
     \end{enumerate}
 \end{thmdef}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item  \[
+                |fg|\leq \frac{|f|^2}2+\frac{|g|^2}2
+            \]
+        \item C'est vrai sur un segment, on passe à la borne supérieure: \[
+                \int_I|fg|\leq \left( \int_I|f|^2 \right)^{\frac12} \left( \int_I|g|^2 \right)^{\frac12}
+            \]
+            et \[
+                \left| \int_Ifg \right|\leq \int_I|fg|
+            \]
+        \item (autre preuve) Si $f$ et $g$ sont de carré intégrable, alors \begin{itemize}
+            \item Premier cas: \[
+                    \int_I|g|^2=0\implies g\equiv 0\implies g=0\times f
+                \]
+                et il y a égalité.
+            \item Second cas: \[
+                    \int_I|g|^2\neq 0.
+                \]
+                On pose alors \[
+                    P(x)=\int_I(f+xg)^2=\int_If^2+2x\int_Ifg+x^2\int_Ig^2
+                \]
+                et on a égalité si et seulement si \[ \Delta=0\iff \exists \lambda\in\mathbb R, \quad P(x)=0\iff \lambda g=-f\]
+        \end{itemize}
+    \end{enumerate}
+\end{proof}
+
+\begin{thm}
+    \begin{enumerate}
+        \item $\mathcal L^2$ et $\mathcal L^2_c$ sont des sev de $\CPM$
+        \item Si $f, g$ sont de carré intégrable alors \[
+                \left( \int_I|f+g|^2 \right)^{\frac12}\leq \left( \int_I|f|^2 \right)^{\frac12}+ \left( \int_I|g|^2 \right)^{\frac12}
+            \]
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item $|\lambda f+g|^2=|\lambda|^2|f|+\lambda f\bar g+\bar \lambda\bar fg+|g|^2$ intégrable
+        \item \begin{align*}
+                \left( \int_I|f+g|^2 \right)^{\frac12}\leq &\left( \int_I|f|^2 \right)^{\frac12}+ \left( \int_I|g|^2 \right)^{\frac12} \\&\iff \int_I|f+g|^2\leq \int_I|f|^2+2 \left( \left( \int_I|f|^2 \right) \left( \int_I|g|^2 \right) \right)^{\frac12}+\int_I|g|^2\\ &\iff \int_If\bar g+\bar fg\leq 2\left( \left( \int_I|f|^2 \right) \left( \int_I|g|^2 \right) \right)^{\frac12}
+        \end{align*}
+        qui est vrai par Cauchy-Schwarz vu précédemment
+    \end{enumerate}
+\end{proof}
+
+\begin{rem}
+    Sur $\mathcal L^2_c(I, \mathbb R)$, cette inégalité est l'inégalité triangulaire pour la norme canoniquement associée au produit scalaire \[
+        (f | g)=\int_Ifg
+    \]
+\end{rem}
