@@ -569,3 +569,102 @@ On note \[
         \int_e^{+\infty}\frac{\diff t}{t^\alpha|\ln t|^\beta}\quad \text{CV}\iff (\alpha>1)\text{ ou }(\alpha=1\text{ et }\beta>1)
     \]
 \end{exo}
+
+\subsection{Nature d'une intégrale}
+
+On va déterminer la nature de \[
+    \int_0^1\frac{1-\cos t}{t^\alpha\sqrt{\sin t}}\diff t
+\]
+
+L'intégrande est continue sur $]0, 1]$ et en $0$, \[
+    \frac{1-\cos t}{t^\alpha\sqrt{\sin t}}\underset 0\sim\frac{t^2}{t^{\alpha-\frac12}}
+\]
+donc l'intégrale converge ssi $\alpha<\dfrac 52$
+
+\subsection{Calcul de $\int_0^{+\infty}\frac{\sin t}t\diff t$}
+
+\begin{res}[Lemme de Riemann-Lebesgue]
+    \index{Riemann-Lebesgue (lemme de --)}
+    Si $f\in\mathcal C^0([a, b]\in\mathbb C)$ alors \[
+        \int_a^bf(t)e^{int}\diff t\xrightarrow[n\to+\infty]{}0
+    \]
+\end{res}
+
+\begin{proof}
+    Le cas où $f$ est $\mathcal C^1$ est plus facile à montrer: \[
+        \int_a^bf(t)e^{int}\diff t\underset{\text{ IPP }}=\underbrace{\frac{f(b)e^{inb}-f(a)e^{ina}}{in}}_{\xrightarrow[n\to+\infty]{}0}- \underbrace{\frac1{in}\int_a^bf'(t)e^{int}\diff t}_{\xrightarrow[n\to+\infty]{}0}
+    \]
+    Dans le cas où $f$ n'est que continue, on note \[
+        E = \left\{ f\in \CPM([a, b], \mathbb C), \qquad \int_a^bf(t)e^{int}\diff t\xrightarrow[n\to+\infty]{}0 \right\}
+    \]
+    $E$ est un sev de $\CPM([a, b], \mathbb C)$ et toutes les fonctions de type $\1_{[\alpha, \beta]}$ sont dans $E$ donc toutes les fonctions en escalier aussi.
+
+    Pour $f$ continue et $\epsilon>0$, on approche $f$ à $\epsilon'$ près par $\varphi$ fonction en escalier de sorte que \[
+        \int_a^bf(t)e^{int}\diff t=\underbrace{\int_a^b(f-\varphi)(t)e^{int}\diff t}_{|\;|\leq (b-a)\epsilon'}+\underbrace{\int_a^b\varphi(t)e^{int}\diff t}_{\xrightarrow[n\to+\infty]{}0}
+    \]
+    donc APCR $N$, \[
+        \forall n\geq N, \qquad \left|\int_a^bf(t)e^{int}\right|\leq (b-a)\epsilon'+\epsilon'=\epsilon
+    \]
+    donc $f\in E$
+\end{proof}
+
+On note \[
+    f:t\longmapsto \frac1{\sin t}-\frac1t
+\]
+Cette fonction est prolongeable en $0$ en une fonction $\mathcal C^1$ qu'on note toujours $f$. Puis on définit \[
+    I_n=\int_0^{(n+1)\frac\pi2}\frac{\sin t}t\diff t\qquad \qquad J_n=\int_0^{\frac\pi2}\frac{\sin((2n+1)t)}{\sin t}\diff t
+\]
+On a \[
+    I_n=\int_0^{\frac\pi2}\frac{\sin((2n+1)t)}{t}\diff t
+\]
+donc \[
+    J_n-I_n=\int_0^{\frac\pi2}f(t)\sin((2n+1)t)\diff t\xrightarrow[n\to+\infty]{\text{Riemann-Lebesgue}}0
+\]
+Puis \[
+    J_{n+1}-J_n=\int_0^{\frac\pi2}\frac{\sin((2n+3)t)-\sin((2n+1)t)}{\sin t}\diff t=\int_0^{\frac\pi2}\frac{2\cos((2n+2)t)\sin t}{\sin t}\diff t=0
+\]
+donc $(J_n)$ est contante égale à $J_0=\frac\pi2$ d'où \[
+    I_n\xrightarrow[n\to+\infty]{}\frac\pi2
+\]
+
+\section{Espaces de fonctions intégrables}
+
+\subsection{$\mathcal L^1(I, \mathbb C)$}
+
+\begin{dfn}
+    On note $\mathcal L^1(I, \mathbb C)$ l'ensemble des fonctions ($\CPM\!$) intégrables sur $I$ à valeurs dans $\mathbb C$, et \[\mathcal L^1_c(I, \mathbb C)=\mathcal L^1(I, \mathbb C)\cap \mathcal C^0(I, \mathbb C)\]
+\end{dfn}
+
+\begin{prop}
+    \Hyp Soit $I$ un intervalle non trivial
+    \begin{concenum}
+    \item
+        Si $f, g\in\mathcal L^1(I, \mathbb C)$, alors $f+g\in\mathcal L^1(I, \mathcal C)$ et \[
+            \int_I|f+g|\leq \int_I|f|+\int_I|g|
+        \]
+    \item $\mathcal L^1(I, \mathbb C)$ et $\mathcal L^1_c(I, \mathbb C)$ sont des sev de $\CPM(I, \mathbb C)$
+    \end{concenum}
+\end{prop}
+\begin{proof}
+    Facile
+\end{proof}
+
+\begin{rem}
+    Pour $f, g\in\mathcal L^1(I, \mathbb C)$, \[
+        \int_I||f|-|g||\leq \int_I|f-g|
+    \]
+\end{rem}
+
+\subsection{$\mathcal L^2(I, \mathbb C)$}
+
+\begin{thmdef}
+    \begin{enumerate}
+        \item \[
+                \mathcal L^2(I, \mathbb C)\defeq \left\{f\in\CPM(I, \mathbb C), \qquad \int_I|f|^2\text{ CV }\right\}
+            \]
+        \item Si $f, g\in\mathcal L^2(I, \mathbb C)$ alors $fg\in\mathcal L^1(I, \mathbb C)$ et \[
+                \left| \int_Ifg \right|\leq \sqrt{ \left( \int_I|f|^2 \right)  \left( \int_I|g|^2 \right)} \tag{$\star$}
+            \]
+        \item On a égalité dans $(\star)$ si et seulement si $f$ et $g$ sont proportionnelles
+    \end{enumerate}
+\end{thmdef}
