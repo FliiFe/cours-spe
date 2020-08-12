@@ -721,3 +721,67 @@ donc $(J_n)$ est contante égale à $J_0=\frac\pi2$ d'où \[
         (f | g)=\int_Ifg
     \]
 \end{rem}
+
+\begin{rem}
+    En général, il n'y a pas de relation d'inclusion entre $\mathcal L^1$ et $\mathcal L^2$. Par exemple, l'application $x\longmapsto \frac1{\sqrt x}$ est intégrable sur $]0, 1]$ mais n'est pas de carré intégrable sur cet intervalle. L'application $x\longmapsto\frac1x$ est de carré intégrable sur $]1; +\infty[$ mais elle n'est pas intégrable sur cet intervalle.
+
+    Dans le cas d'un intervalle borné, si $f$ est de carré intégrable alors comme $\1_I$ aussi, $f\1_I$ est intégrable et vaut $f$. Il y a donc une inclusion dans ce cas.
+\end{rem}
+
+\begin{exo}
+    Soir $f\in\mathcal C^2(\mathbb R_+, \mathbb R)$ telle que $f,f''\in\mathcal L^2_c(\mathbb R_+, \mathbb R)$. Montrer que $f'\in\mathcal L^2_c(\mathbb R_+, \mathbb R)$ et \[
+        \int_0^{+\infty}f'^2\leq \int_0^{+\infty}f^2+\int_0^{+\infty}f''^2
+    \]
+\end{exo}
+
+\begin{proof}[Résolution] On raisonne par l'absurde et on suppose que $f'^2$ n'est pas intégrable, c'est-à-dire \[
+    \int_0^xf'^2\xrightarrow[x\to+\infty]{}+\infty
+\]
+On a \[
+    \int_0^xff''=[ff']_0^x-\int_0^xf'^2=f(x)f'(x)-f(0)f'(0)-\int_0^xf'^2
+\]
+Or $ff''$ est intégrable donc, la limite étant finie des deux côtés, $f(x)f'(x)\xrightarrow[x\to+\infty]{}+\infty$ de sorte que \[
+    \int_0^xff'=\frac12f^2(x)-\frac12f^2(0) \implies f^2(x)\xrightarrow[x\to+\infty]{}+\infty
+\]
+ce qui est absurde. Ainsi, $f'^2$ est intégrable.
+
+Ensuite, \[
+    (f+f'+f'')^2-((f+f')^2)'=f^2+f''^2-f'2
+\]
+puis \[
+    \int_0^x(f+f'+f'')^2-((f+f')^2)'=\underbrace{\int_0^x(f+f'+f'')^2}_{\geq 0}-\underbrace{(f+f')^2(x)}_{\xrightarrow[x\to+\infty]{}0?}+\underbrace{(f+f')^2(0)}_{\geq 0}
+\]
+Il ne reste plus qu'à vérifier $(f+f')^2(x)\xrightarrow[x\to+\infty]{}0$. Pour le voir: \[
+    f^2(x)=f^2(0)+2\int_0^xff'\xrightarrow[x\to+\infty]{ff'\in\mathcal L^1}\ell\in\mathbb R\underset{f^2\in\mathcal L^1}\implies f^2(x)\xrightarrow[x\to+\infty]{}0
+\]
+et de même pour $f'^2(x)$
+\end{proof}
+
+\begin{exo}[$\star$) (Cas particulier de Landau-Kolmogorov\index{Landau-Kolmogorov (inégalité de -- )}]
+    Montrer que dans ce cas, \[
+        \int_0^{+\infty}f'^2\leq 2\sqrt{\int_0^{+\infty}f^2\times \int_0^{+\infty}f''^2}
+    \]
+    Indication: remplacer $f(x)$ par $f(\lambda x)$ et choisir $\lambda$
+\end{exo}
+
+\section{Calcul d'intégrales\footnote{«Les intégrales qui font le plaisir des taupins»}}
+
+\subsection{Calcul de $I=\int_0^{\frac\pi2}\ln\circ \sin$}
+
+\begin{itemize}
+    \item $t\longmapsto \ln(\sin t)$ est continue sur $]0, \frac\pi2]$
+    \item $\ln(\sin t)=\ln t+\ln(1+o_0(t))$ intégrable
+\end{itemize}
+donc $I$ est ACV donc CV. De même, $\displaystyle\int_0^{\frac\pi2}\ln(\cos t)\diff t$ est absolument convergente. Le changement de variable $u=\frac\pi2-t$ dans $I$ donne $I=J$ puis \[
+    I+J=\int_0^{\frac\pi2}\ln(\sin\times \cos)=\int_0^{\frac\pi2}\ln\frac12\diff t+\int_0^{\frac\pi2}\ln(\sin(2t))\diff t=\int_0^{\frac\pi2}\ln\frac12\diff t+\frac12\underbrace{\int_0^\pi\ln(\sin u)\diff u}_{=2I}
+\]
+donc $2I-I=-\frac\pi2\ln2$
+
+\subsection{Calcul par compensation}
+
+On se donne $f\in\mathcal C(\mathbb R_+, \mathbb R)$, $0<a<b$ et $f(x)\xrightarrow[x\to+\infty]{}\ell\in\mathbb R$
+
+On va justifier que \[
+    \int_0^{+\infty}\frac{f(ax)-f(bx)}x\diff x
+\]
+converge et calculer sa valeur.
