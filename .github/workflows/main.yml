@@ -120,3 +120,12 @@ jobs:
         asset_path: ./target/integration.pdf
         asset_name: integration.pdf
         asset_content_type: application/pdf
+    - name: Release suites-series
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/suites-series.pdf
+        asset_name: suites-series.pdf
+        asset_content_type: application/pdf

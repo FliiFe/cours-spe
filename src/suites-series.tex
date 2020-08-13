@@ -1,0 +1,238 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Suites et séries numériques} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\ifsolo \newpage \setcounter{page}{1} \fi
+
+\section{Rappels sur les séries numériques}
+
+\begin{dfn}
+    Soit $u\in\mathbb R^{\mathbb N}$. On appelle \textbf{série de terme général} \index{série numérique}$u_n$ la suite $(S_n(u))_n$ définie par \[
+        S_n(u)\defeq \sum_{k=1}^nu_k
+    \]
+    On dira que cette série converge si $(S_n(u))$ converge, et on écrira \[
+        \lim_{n\to+\infty}S_n(u)=\sum_{k=1}^{+\infty}u_k
+    \]
+    Dans ce cas, on pose \[
+        R_n(u)\defeq\sum_{k=1}^{+\infty}u_k-S_n(u)
+    \]
+    qu'on appelle reste d'ordre $n$ de la série. La série de terme général $u_k$ sera notée $\sum u_k$
+\end{dfn}
+
+
+\begin{rem}
+    Le terme général d'une séries convergente tend vers $0$. Si $u_n\longrightarrow \ell\in\bar{ \mathbb R}\setminus\{0\}$ alors la série diverge grossièrement. Si $\sum u_n$ converge alors $R_n(u)\longrightarrow0$ et on peut noter \[
+        R_n(u)=\sum_{k=n+1}^{+\infty}u_k
+    \]
+\end{rem}
+
+\begin{rem}
+    On peut remplacer $\mathbb R$ par $\mathbb C$ ou n'importe quel espace vectoriel normé (traité dans un chapitre ultérieur)
+\end{rem}
+
+\begin{ex}
+    Si $u_n=a^n$ pour un complexe $a$, alors \[
+        S_n(u)= \begin{cases}
+            n+1 &\text{ si }a=1\\[1em]
+            \dfrac{1-a^{n+1}}{1-a}&\text{ sinon}
+        \end{cases}
+    \]
+    d'où \[
+        \sum u_n\text{ CV }\iff |a|<1
+    \]
+    et \[
+        \sum_{k=0}^{+\infty}u_k=\frac1{1-a}
+    \]
+\end{ex}
+
+\begin{ex}
+    On a \[
+        \ln \left( 1+\frac2{n(n+3)} \right)=\ln(n+1)+\ln(n+2)-\ln(n)-\ln(n+3)
+    \]
+    donc \[
+        \sum_{k=1}^n\ln \left( 1+\frac2{k(k+3)} \right) =\ln3+\ln \left( \frac{n+1}{n+3} \right)\xrightarrow[n\to+\infty]{}\ln 3
+    \]
+\end{ex}
+
+\needspace{5cm}
+\section{Opérations}
+
+\begin{prop}
+    \Hyp $\sum u_n, \sum v_n$ deux séries numériques, $\lambda\in\mathbb C$
+    \begin{concenum}
+    \item $\lambda\sum u_n+\sum v_n=\sum(\lambda u_n+v_n)$
+    \item Si les séries convergent, alors $\sum(\lambda u_n+v_n)$ converge (+ égalité des limites)
+    \end{concenum}
+\end{prop}
+
+\begin{rem}
+    On en déduit
+    \begin{center}
+    \begin{tabular}{ccccc}
+        CV & + & CV & = & CV\\
+        DV & + & CV & = & DV\\
+        DV & + & DV & = & ?
+    \end{tabular}
+    \end{center}
+\end{rem}
+
+\begin{prop}
+    \Hyp $u\in\mathbb C^{\mathbb N}$
+    \Conc \[
+        (u_n)\text{ CV }\iff \sum (u_{n+1}-u_n)\text{ CV }
+    \]
+\end{prop}
+
+\begin{ex}[Séries de Riemann\index{série de Riemann}]
+    On veut étudier $\sum\frac1{n^\alpha}$.
+    \begin{itemize}
+        \item Si $\alpha\leq0$ alors la série diverge grossièrement
+        \item Si $\alpha> 0$ alors \[
+                \frac1{(n+1)^\alpha}-\frac1{n^\alpha}=\frac1{n^\alpha} \left( -\frac\alpha n+O \left( \frac1n \right) \right)\sim -\frac\alpha{n^\alpha}
+            \]
+            or $(\frac1{n^{\alpha}})_n$ converge vers $0$ donc $\sum \frac1{(n+1)^\alpha}-\frac1{n^\alpha}$ aussi et donc, par équivalence\footnote{c'est une propriété qui sera vue dans la prochaine partie}, $\sum\frac1{n^{\alpha+1}}$ aussi.
+
+        \item Pour $\alpha<0$, on trouve alors que $\sum\frac1{n^{\alpha+1}}$ diverge
+    \end{itemize}
+    Il ne reste que le cas $\alpha=1$ à traiter: la série diverge. On a donc \[
+    \sum\frac1{n^\alpha}\text{ CV }\iff \alpha>1
+\]
+\end{ex}
+
+On va maintenant s'intéresser à la série harmonique\index{série harmonique} \[
+    H_n=\sum_{k=1}^n\frac1k.
+\]
+On a \[
+    \ln(n+1)-\ln (n)\sim \frac1n \implies \sum\frac1k \text{ DV }
+\]
+et par équivalence des sommes partielles\footnote{vu plus tard} (ou bien par comparaison série-intégrale), \[
+    H_n\sim\ln(n).
+\]
+On note $u_n=H_n-\ln n$. On a \[
+    u_{n+1}-u_n=\frac1{n+1}-\ln \left( 1+\frac1n \right)=\frac1n\times \frac1{1+\frac1n}-\frac1n-\frac1{2n^2}+o \left( \frac1{n^2} \right)=-\frac2{n^2}+o \left( \frac1{n^2} \right)
+\]
+donc $\sum u_{n+1}-u_n$ converge donc $(u_n)$ converge vers un réel $\gamma$. On note \[
+    v_n=H_n-\ln n-\gamma
+\]
+et \[
+    v_{n+1}-v_n=-\frac1{2n^2}+o \left( \frac1{n^2} \right)
+\]
+donc $(v_n)$ converge. Par équivalence des restes (série CV), \[
+    \sum_{k=n}^{+\infty}v_{k+1}-v_k\sim\sum_{k=n} -\frac12 \left( \frac1n-\frac1{n+1} \right)
+\]
+d'où $v_n\sim \frac1{2n}$.
+On pose \[
+    \omega_n=H_n-\ln n-\gamma-\frac1{2n}
+\]
+Après calculs (vérifiez-le), \[
+    \omega_{n+1}-\omega_n=\frac1{6n^3}+o \left( \frac1{n^3} \right)\sim\frac1{6n^3}\sim\frac1{12}\cdot \left( \frac 1{n^2}-\frac1{(n+1)^2} \right)
+\]
+d'où $\omega_n\sim\frac1{12n^2}$
+
+\textbf{Bilan.} (Question X) \[
+    H_n=\ln n+\gamma+\frac1{2n}-\frac1{12n^2}+o \left( \frac1{n^2} \right)
+\]
+
+\begin{exo}[Mines-Ponts]
+    On note \[
+        k_n=\min\{k\in\mathbb N, \quad H_k>n\}
+    \]
+    Calculer \[
+        \lim_{n\to+\infty}\frac{k_{n+1}}{k_n}
+    \]
+\end{exo}
+
+\section{Séries à termes positifs}
+
+\begin{prop}
+    \Hyp $u$ est une suite positive
+    \Conc $\sum u_n$ converge si et seulement si $(S_n(u))$ est majorée
+\end{prop}
+
+\begin{proof}
+    \Hyp $u, v$ des suites positives
+    \begin{concenum}
+    \item Si $u_n\leq v_n$ à partir d'un certain rang et si $\sum v_n$ converge alors $\sum u_n$ aussi
+    \item Si $u_n=O(v_n)$ et $\sum v_n$ converge alors $\sum u_n$ aussi
+    \item Si $u_n\sim v_n$ alors $\sum u_n$ et $\sum v_n$ ont la même nature
+    \end{concenum}
+\end{proof}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Si $u_n\leq v_n$ à partir du rang $N$, \[
+                S_n(u)\leq \sum_{k=0}^Nu_k+\sum_{k=N+1}^{+\infty}v_k
+            \]
+            donc $(S_n(u))$ croissante est majorée donc converge.
+        \item Idem à constante multiplicative près
+        \item $u_n\sim v_n$ donne $u_n=O(v_n)$ et $v_n=O(u_n)$ et on applique $2$.
+    \end{enumerate}
+\end{proof}
+
+\begin{exo}
+    On note $(a_n)_{n\geq 1}$ une suite positive telle que $\sum a_n$ converge. Donner la nature de \[
+        \sum a_n\sin(a_n), \qquad \sum\frac{a_n}{1+a_n^2}, \qquad \sum\frac{\sqrt{a_n}}{n}
+    \]
+\end{exo}
+
+\begin{proof}[Résolution]
+    À partir d'un certain rang, $0\leq a_n\sin(a_n)\leq a_n$ puis \[
+        \frac{a_n}{1+a_n^2}\sim a_n
+    \]
+    et enfin (AM-GM) \[
+        0\leq \frac{\sqrt{a_n}}n\leq\frac12 \left( a_n+\frac1{n^2} \right)
+    \]
+    donc les trois séries convergent.
+\end{proof}
+
+\begin{exo}[X]
+    Soit $x$ une suite positive. Montrer que si $\sum x_n$ converge, alors \[
+        \sum x_n^{\frac n{n+1}}
+    \]
+    aussi
+\end{exo}
+
+\begin{proof}[Résolution]~
+    Idée: On fait un découpage. On pose \[
+        I=\{n\in\mathbb N, \quad x_n\geq 0 \text{ et }x_n^{-\frac1{n+1}}>2\}
+    \]
+    Si $n\in I$ alors \[
+        \frac12>x_n^{\frac1{n+1}}\iff \frac1{2^{n+1}}>x_n\implies \frac1{2^n}>y_n
+    \]
+    Sinon, \[
+        x_n=0\implies y_n=0\leq 2x_n
+    \]
+    et \[
+        x_n^{-\frac1{n+1}}\leq 2\implies y_n\leq 2x_n
+    \]
+    donc dans tous les cas, \[
+        0\leq y_n\leq \frac1{2^n}+2x_n
+    \]
+\end{proof}
+
+\section{Absolue convergence, semi-convergence}
+
+\begin{dfn}
+    Soit $a$ une suite réelle. \begin{enumerate}
+        \item On dira que $\sum a_n$ est absolument convergnete\index{absolue convergence} si $\sum |a_n|$ converge
+        \item On dira que $\sum a_n$ est \index{semi-convergence}semi convergente si elle est convergente mais pas absolument convergente
+    \end{enumerate}
+\end{dfn}
+
+\begin{thm}
+    L'absolue convergence entraîne la convergence
+\end{thm}
+
+\begin{proof}
+    On écrit $a_n=a_n^+-a_n^-$ avec $a_n^+=\max(a_n, 0)$ et $a_n^-=\max(-a_n, 0)$ de sorte que $|a_n|=a_n^++a_n^-$
+\end{proof}

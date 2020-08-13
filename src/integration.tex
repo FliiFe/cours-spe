@@ -169,7 +169,7 @@ On note $I$ un intervalle non trivial de $\mathbb R$ et $f\in\CPM(I, \mathbb R)$
         \item Lorsque \[
                 \int_I|f|
             \]
-            converge, on dit que $f$ est intégrable sur $I$. Si $f$ n'est pas intégrable, on dira que $\displaystyle\int_If$ est semi-convergente si elle converge.
+            converge, on dit que $f$ est intégrable sur $I$. Si $f$ n'est pas intégrable, on dira que $\displaystyle\int_If$ est semi-convergente\index{semi-convergence} si elle converge.
     \end{enumerate}
 \end{dfn}
 
@@ -340,7 +340,7 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 
 \begin{prop}
     \Hyp $f\in\CPM(I, \mathbb C)$
-    \Conc Si $\displaystyle\int_If$ est absolument convergente (ou $f$ est intégrable sur $I$), alors $\displaystyle\int_If$ converge
+    \Conc Si $\displaystyle\int_If$ est absolument convergente\index{absolue convergence} (ou $f$ est intégrable sur $I$), alors $\displaystyle\int_If$ converge
 \end{prop}
 
 \begin{proof}
@@ -817,7 +817,7 @@ donc \[
     \sum_{k=1}^nf(k)\leq \int_0^nf\qquad \text{ et }\qquad \sum_{k=0}^nf(k)\geq \int_0^{n+1}f
 \]
 Si $\sum f(k)$ est convergente alors \[
-    \int_0^nf\leq \sum_{k=0}^{+\infty}
+    \int_0^nf\leq \sum_{k=0}^{+\infty}f(k)
 \]
 pour $n\geq 1$ donc $(\int_0^nf)$ est croissante majorée convergente vers un réel $\ell$ et \[
     \int_0^{\floor x}f\leq \int_0^xf\leq \int_0^{\floor x+1}f \implies \int_0^xf\xrightarrow[x\to+\infty]{}\ell
