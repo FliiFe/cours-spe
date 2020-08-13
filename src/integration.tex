@@ -532,7 +532,7 @@ La fonction \[
     f:x\longmapsto x^a(1-e^{-\frac1{\sqrt x}})
 \]
 est continue sur $\mathbb R_+^\star$ et \[
-    f(x)\underset{0+}\sim x^a=\frac1{x^{-a}}
+    f(x)\underset{0^+}\sim x^a=\frac1{x^{-a}}
 \]
 donc $f$ est intégrable en $0$ ssi $a>-1$. Puis, \[
     f(x)\underset{+\infty}\sim\frac{x^a}{\sqrt x}
@@ -785,3 +785,157 @@ On va justifier que \[
     \int_0^{+\infty}\frac{f(ax)-f(bx)}x\diff x
 \]
 converge et calculer sa valeur.
+
+On a \begin{align*}
+    \forall 0<\epsilon<R,\qquad \int_\epsilon^R\frac{f(ax)-f(bx)}x\diff x&=\int_\epsilon^R\frac{f(ax)}x\diff x-\int_\epsilon^R\frac{f(bx)}x\diff x\\
+                                                                         &=\int_{a\epsilon}^{aR}\frac{f(u)}u\diff u-\int_{b\epsilon}^{bR}\frac{f(u)}u\diff u \\
+                                                                         &= \int_{a\epsilon}^{b\epsilon}\frac{f(u)}u\diff u-\int_{aR}^{bR}\frac{f(u)}u\diff u
+\end{align*}
+Or \[
+    \left| \int_{a\epsilon}^{b\epsilon}\frac{f(u)}u\diff u-f(0)\ln\left(\frac ba\right) \right|= \left| \int_{a\epsilon}^{b\epsilon}\frac{f(u)-f(0)}u\diff u \right|\leq \sup_{[a\epsilon, b\epsilon]}|f-f(0)|\cdot \ln\left(\frac ba\right)\xrightarrow[\epsilon\to0^+]{}0
+\]
+De même, \[
+    \left| \int_{aR}^{bR}\frac{f(u)}u\diff u -\ell\ln \left( \frac ba \right)\right|\leq \sup_{[aR, bR]}|f-\ell|\ln \left( \frac ba \right)\xrightarrow[R\to+\infty]{}0
+\]
+donc \[
+    \int_0^{+\infty}\frac{f(ax)-f(bx)}x\diff x=(f(0)-\ell)\ln \left( \frac ba \right)
+\]
+\begin{ex}
+    \[
+        \int_0^{+\infty}\frac{\arctan x-\arctan(2x)}x\diff x=-\frac\pi2\ln2
+    \]
+\end{ex}
+
+\section{Méthodes asymptotiques}
+
+\subsection{Comparaison séries-intégrales\texorpdfstring{\footnote{Épisode 2}}{}}
+
+Soit $f$ continue sur $\mathbb R_+$, positive décroissante. Dans ce cas, \[
+    \forall k\in\mathbb N, \qquad f(k+1)\leq \int_k^{k+1}f\leq f(k)
+\]
+donc \[
+    \sum_{k=1}^nf(k)\leq \int_0^nf\qquad \text{ et }\qquad \sum_{k=0}^nf(k)\geq \int_0^{n+1}f
+\]
+Si $\sum f(k)$ est convergente alors \[
+    \int_0^nf\leq \sum_{k=0}^{+\infty}
+\]
+pour $n\geq 1$ donc $(\int_0^nf)$ est croissante majorée convergente vers un réel $\ell$ et \[
+    \int_0^{\floor x}f\leq \int_0^xf\leq \int_0^{\floor x+1}f \implies \int_0^xf\xrightarrow[x\to+\infty]{}\ell
+\]
+et $f$ est intégrable.
+
+Réciproquement si $f$ est intégrable sur $\mathbb R_+$ alors \[
+    \sum_{k=1}^nf(k)\leq \int_0^nf\leq \int_0^{+\infty}f\implies \sum f(k)\text{ CV }
+\]
+Puis si $f$ n'est pas intégrable en $+\infty$, on va calculer un équivalent des sommes partielles de $\sum f(k)$. On a \[
+    \int_0^nf\xrightarrow[n\to+\infty]{}+\infty\implies \sum f(k)\text{ DV }
+\]
+et \[
+    \int_1^{n+1}f\leq \sum_{k=1}^nf(k)\leq \int_0^n
+\]
+donc si $\displaystyle \int_0^nf\sim\int_0^{n+1}f$, alors pour un $a$ fixé, \[
+    \sum_{k=1}^nf(k)\sim\int_0^nf\sim \int_a^nf
+\]
+or $0\leq f\leq f(0)$ donc \[
+    \int_0^{n+1}f=\int_0^nf+\int_n^{n+1}f\sim\int_0^nf
+\]
+On en déduit ainsi la proposition suivante:
+
+\begin{prop}
+    \Hyp $f\in \CPM(\mathbb R_+, \mathbb R)$ décroissante et positive sur un voisinage de $+\infty$
+    \begin{concenum}
+    \item $\sum f(k)$ et $\int_0^{+\infty} f$ ont la même nature
+    \item Si $f$ n'est pas intégrable en $+\infty$ alors \[
+            \sum_{k=0}^nf(k)\sim\int_a^nf
+        \]
+        pour $a$ fixé assez grand
+    \end{concenum}
+\end{prop}
+
+\subsection{Sommes de Riemann généralisées}
+
+On note $f$ continue par morceaux décroissante intégrable sur $\mathbb R_+$ (donc $\geq 0$) et \[
+    S(h)=h\sum_{k=1}^{+\infty}f(kh), \qquad h>0
+\]
+On va montrer que \[
+    S(h)\xrightarrow[h\to0^+]{} \int_0^{+\infty} f
+\]
+
+\begin{rem}
+    On ne sait pas encore que $S(h)$ a un sens
+\end{rem}
+
+On a \[
+    (0\leq) \qquad hf((k+1)h)\leq \int_{kh}^{(k+1)h}f\leq hf(kh)
+\]
+or l'intégrale est le terme général d'une série convergente donc $hf(kh)$ aussi et $S(h)$ est bien défini, puis \[
+    S(h)-hf(0)\leq \int_0^{+\infty}f\leq S(h)
+\]
+ce qui conclut avec $h\to0^+$
+
+\begin{ex}
+    \[
+        x\sum_{k=0}^{+\infty}e^{-k^2x^2}\xrightarrow[x\to 0^+]{}\int_0^{+\infty}e^{-t^2}\diff t
+    \]
+\end{ex}
+
+\subsection{Méthode du trapèze}
+
+\begin{rem}
+    L'aire du trapèze \hspace{1em}\begin{tikzpicture}[baseline=1.5ex]
+        \draw (0, 0) -- (0.5, 0) -- (0.5, 1) -- (0, 0.5) -- (0, 0);
+        \node at (0.25, -0.25) {$\ell$};
+        \node at (0.75, 0.5) {$H$};
+        \node at (-0.25, 0.25) {$h$};
+    \end{tikzpicture}\hspace{1em} vaut $\dfrac{h+H}2\ell$. Pour le voir, \begin{tikzpicture}[baseline=1ex]
+        \draw (0, 0) -- (0, 0.5) -- (1.5, 0.5) -- (1.5, 0) -- (0, 0);
+        \draw (1, 0) -- (0.5, 0.5);
+        \node at (0.45, -0.25) {$H$};
+        \node at (1.25, -0.25) {$h$};
+        \node at (0.25, 0.75) {$h$};
+        \node at (1, 0.75) {$H$};
+        \node at (-0.25, 0.25) {$\ell$};
+    \end{tikzpicture}
+\end{rem}
+
+On se donne $f\in\mathcal C^2([a, b], \mathbb R)$
+\begin{center}
+    \includegraphics{src/figures/integration-trapezes.pdf}
+\end{center}
+On note
+    \[
+        a_k=a+k\frac{b-a}n
+    \]
+et on va montrer que \[
+    S_n(f)=\sum_{k=0}^{n-1}\frac{f(a_k)+f(a_{k+1})}2\times \frac{b-a}n
+\]
+approche l'intégrale et on va majorer l'erreur commise. Pour ça, on note \[
+    g_k(x)=f(a_k)\frac{x-a_{k+1}}{a_k-a_{k+1}}+f(a_{k+1})\frac{x-a_k}{a_{k+1}-a_k}
+\]
+de sorte que \[
+    \int_a^bf-S_n(f)=\sum_{k=0}^{n-1}\int_{a_k}^{a_{k+1}}f-g_k
+\]
+donc \[
+    \left| \int_a^bf-S_n(f) \right|\leq \sum_{k=0}^{n-1}\int_{a_k}^{a_{k+1}}|f-g_k|.
+\]
+Pour $x\in]a_k, a_{k+1}[$, on note $\lambda\in\mathbb R$ tel que \[
+    f(x)=g_k(x)+\frac\lambda2(x-a_k)(x-a_{k+1}).
+\]
+La fonction \[
+    h:t\in[a_k, a_{k+1}]\longmapsto f(t)-g_k(t)-\frac\lambda2(t-a_k)(t-a_{k+1})
+\]
+s'annule en trois points donc en appliquant Rolle deux fois, il existe $\gamma$ tel que \[
+    h''(\gamma)=0\implies \lambda=f''(\gamma)
+\]
+Par suite, \[
+    |f(x)-g_k(x)|\leq \frac12\sup_{[a_k, a_{k+1}]}|f''|\cdot |(x-a_k)(x-a_{k+1})|
+\]
+d'où on tire \[
+    \left| \int_a^bf-S_n(f) \right|\leq \frac12\|f''\|_{\infty}\sum_{k=0}^{n-1}\int_{a_k}{a_{k+1}}(a_k-t)(t-a_{k+1})\diff t=\|f''\|_{\infty}\frac{(b-a)^3}{12n^2}
+\]
+
+\begin{rem}
+    La majoration est un $O \left( \frac1{n^2} \right)$, ce qui est meilleur que la méthode des rectangles.
+\end{rem}
+
+\endchapter
