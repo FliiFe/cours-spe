@@ -236,3 +236,49 @@ d'où $\omega_n\sim\frac1{12n^2}$
 \begin{proof}
     On écrit $a_n=a_n^+-a_n^-$ avec $a_n^+=\max(a_n, 0)$ et $a_n^-=\max(-a_n, 0)$ de sorte que $|a_n|=a_n^++a_n^-$
 \end{proof}
+
+\begin{rem}
+    \begin{center}
+    \begin{tabular}{ccccc}
+        ACV & + & ACV & = & ACV\\
+        ACV & + & SCV & = & SCV\\
+        SCV & + & SCV & = & ?
+    \end{tabular}
+    \end{center}
+\end{rem}
+
+\section{Comparaison logarithmique}
+
+\begin{prop}
+    \Hyp $u, v$ deux suites strictement positives telles que APCR $N$ \[
+    \frac{u_{n+1}}{u_n}\leq \frac{v_{n+1}}{v_n}
+    \]
+    \Conc $u_n=O(v_n)$
+\end{prop}
+
+\begin{proof}
+    \[
+        \forall n>N, \prod_{k=N}^{n-1}\frac{u_{k+1}}{u_k}=\frac{u_n}{u_N}\leq \frac{v_n}{v_N}\implies u_n\leq v_n\frac{u_N}{v_N}=O(v_n)
+    \]
+\end{proof}
+
+\begin{thm}[Critère de D'Alembert\index{D'Alembert (critère de -- )}]
+    \Hyp $a$ une suite positive telle que \[
+        \frac{a_{n+1}}{a_n}\xrightarrow[n\to+\infty]{}\ell\in\bar{\mathbb R}
+    \]
+    \begin{concenum}
+    \item Si $0\leq \ell <1$ alors $\sum a_n$ converge
+    \item Si $\ell>1$ alors $\sum a_n$ diverge
+    \end{concenum}
+\end{thm}
+
+\begin{proof}~
+    \begin{itemize}
+        \item $\exists \epsilon>0, \quad 0<\ell'=\ell+\epsilon<1$ et on applique la proposition précédente à $u=a$, $v=(\ell'^n)_n$.
+        \item $\exists \epsilon > 0, \quad 1<\ell'=\ell-\epsilon$ et on fait pareil.
+    \end{itemize}
+\end{proof}
+
+\begin{rem}
+    Il faut faire attention à avoir $(a_n)$ jamais nulle à partir d'un certain rang. Le critère est intéressant lorsque $\frac{a_{n+1}}{a_n}$ a une expression simple.
+\end{rem}
