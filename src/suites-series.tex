@@ -262,7 +262,7 @@ d'où $\omega_n\sim\frac1{12n^2}$
     \]
 \end{proof}
 
-\begin{thm}[Critère de D'Alembert\index{D'Alembert (critère de -- )}]
+\begin{thm}[Règle de D'Alembert\index{D'Alembert (règle de -- )}]
     \Hyp $a$ une suite positive telle que \[
         \frac{a_{n+1}}{a_n}\xrightarrow[n\to+\infty]{}\ell\in\bar{\mathbb R}
     \]
@@ -282,3 +282,102 @@ d'où $\omega_n\sim\frac1{12n^2}$
 \begin{rem}
     Il faut faire attention à avoir $(a_n)$ jamais nulle à partir d'un certain rang. Le critère est intéressant lorsque $\frac{a_{n+1}}{a_n}$ a une expression simple.
 \end{rem}
+
+\begin{exo}
+    Donner la nature de $\sum\frac{n^n}{n!^\alpha}$ en fonction de $\alpha$
+\end{exo}
+
+\begin{proof}[Résolution]
+    On a \[
+        \frac{a_{n+1}}{a_n}=\frac{(n+1)^{n+1}}{n^n}\times \frac1{(n+1)^\alpha}=\frac{ \left( 1+\frac1n \right)^n }{(n+1)^{\alpha-1}}\xrightarrow[n\to+\infty]{} \begin{cases}
+            0&\text{ si }\alpha>1 \\ e &\text{ si }\alpha=1\\ +\infty& \text{ si }\alpha<1
+        \end{cases}
+    \]
+    et on conclut avec la règle de d'Alembert
+\end{proof}
+
+\begin{exo}
+    On note $a$ une suite réelle telle que \[
+        |a_n|^{\frac1n}\xrightarrow[n\to+\infty]{}\ell\in\mathbb R\cup\{+\infty\}
+    \]
+    Donner la nature de $\sum |a_n|$ en fonction de $\ell$
+\end{exo}
+
+\begin{proof}[Résolution]
+    Si $\ell>1$ alors $\exists \epsilon>0, 1<\ell'=\ell-\epsilon\leq |a_n|^{\frac1n}$ donc $\ell'^n\leq |a_n|$ et la série diverge.
+
+    Si $\ell<1$ alors par un raisonnement similaire, la série converge.
+
+    Si $\ell=1$ alors on ne peut pas conclure en général: \[
+        \left| \frac1{n^2} \right|^{\frac1n}\xrightarrow[n\to+\infty]{}1\qquad\text{ et }\qquad \sum\frac1{n^2}\text{ CV }
+    \]
+    \[
+        \left| \left( 1+\frac1n\right)^n \right|^{\frac1n}\xrightarrow[n\to+\infty]{}1\qquad \text{ et }\qquad \sum \left( 1+\frac1n \right)^{n}\text{ DV grossièrement }
+    \]
+\end{proof}
+
+\section{Sommation des relations de comparaion}
+
+\begin{thm}
+    \Hyp $u, v$ sont des suites réelles positives et $\sum v_n$ converge.
+    \begin{concenum}
+    \item Si $u_n=O(v_n)$ alors $\sum u_n$ converge et \[
+            R_n(u)=O(R_n(v))
+        \]
+    \item Si $u_n=o(v_n)$ alors $\sum u_n$ converge et \[
+            R_n(u)=o(R_n(v))
+        \]
+    \item Si $u_n\sim v_n$ alors $\sum u_n$ converge et \[
+            R_n(u)\sim R_n(v)
+        \]
+    \end{concenum}
+\end{thm}
+
+\begin{proof}
+    La convergence est déjà vue, on ne montre que les relations de comparaison
+
+    \begin{enumerate}
+        \item Il existe un rang $N$ et une constante $C>0$ tels que $\forall n\geq N, u_n\leq Cv_n$. On a alors \[
+    \forall m\geq n\geq N, \qquad \sum_{k=n}^Nu_k\leq C\sum_{k=n}^mv_k
+            \]
+            puis $m\to+\infty$ donnc $R_n(u)\leq CR_n(v)$ ie \conc
+        \item Soit $\epsilon>0$. Il existe un rang $N$ après lequel $u_n\leq \epsilon v_n$. Par le même raisonnement, $R_n(u)\leq \epsilon R_n(v)$ après $N$ donc \conc
+        \item $|u_n-v_n|=o(v_n)$ donc \[
+                |R_n(u)-R_n(v)|=|R_n(u-v)|\leq R_n(|u-v|)=o(R_n(v))
+            \]
+    \end{enumerate}
+\end{proof}
+
+\begin{thm}
+    \Hyp $u, v$ suites réelles positives et $\sum u_n$ diverge.
+    \item Si $u_n=O(v_n)$ alors $\sum v_n$ diverge et \[
+            S_n(u)=O(S_n(v))
+        \]
+    \item Si $u_n=o(v_n)$ alors $\sum v_n$ diverge et \[
+            S_n(u)=o(S_n(v))
+        \]
+    \item Si $u_n\sim v_n$ alors $\sum v_n$ diverge et \[
+            S_n(u)\sim S_n(v)
+        \]
+\end{thm}
+
+\begin{proof}
+    La divergence est déjà vue, on ne montre que le reste.
+    \begin{enumerate}
+        \item Il existe $C>0$, et un rang $N$ à partir duquel $u_n\leq Cv_n$. \[
+                \forall n\geq N, \quad \underbrace{S_n(u)}_{\longrightarrow+\infty}=\sum_{k=0}^{N-1}u_k+\sum_{k=N}^nu_k\leq \sum_{k=0}^{N-1}+C\underbrace{\sum_{k=0}^nv_k}_{S_n(v)\longrightarrow+\infty}-C\sum_{k=0}^{N-1}v_k
+            \]
+            donc à partir d'un certain rang, \[
+                \frac{S_n(u)}{S_n(v)}\leq C+\frac{\sum_{k=0}^{N-1}u_k-C\sum_{k=0}^{N-1}v_k}{S_n(v)}\xrightarrow[n\to+\infty]{}C
+            \]
+            d'où \conc
+        \item Idem
+        \item $S_n(|u-v|)=o(S_n(v))$ (attention aux hypothèses, si $\sum |u-v|$ converge ok sinon on applique 2.)
+    \end{enumerate}
+\end{proof}
+
+\begin{ex}
+    On va montrer \[
+        \sum_{k=1}^n\frac{\ln(k+1)}{k^2}\sim\frac{\ln n}n
+    \]
+\end{ex}
