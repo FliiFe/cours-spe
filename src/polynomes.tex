@@ -642,11 +642,16 @@ On appelle résultant de $P$ et $Q$ le déterminant de cette matrice. Ainsi, \[
 On note $P(X)=a_nX^n+\cdots + a_0\in\mathbb Z[X]$ de degré $n\geq 1$. On appelle contenu de $P$ le nombre \[
     a_n\land\cdots\land a_0
 \]
+
+\begin{dfn}
+    $P\in\mathbb Z[X]$ est dit primitif\index{polynôme!primitif} si $C(P)=1$
+\end{dfn}
+
 On va montrer que si $P, Q\in\mathbb Z[X]$ non constants alors \[
     C(PQ)=C(P)C(Q)
 \]
 
-On commence par supposer que $C(P)=C(Q)=1$ et on suppose par l'absurde $C(PQ)\neq 1$. On note $p$ premier diviseur de $C(PQ)$. On note $i_0$ (resp $j_0$) le plus petit indice tel que $p$ ne divise pas $a_{i_0}$ (resp. $b_0$). \[
+On commence par supposer que $P$ et $Q$ sont primitifs et on suppose par l'absurde $C(PQ)\neq 1$. On note $p$ premier diviseur de $C(PQ)$. On note $i_0$ (resp $j_0$) le plus petit indice tel que $p$ ne divise pas $a_{i_0}$ (resp. $b_0$). \[
     P(X)=a_nX^n+\cdots +a_{i_0}X^{i_0}+\underbrace{\cdots}_{\text{divisible par } p} \]\[
     Q(X)=b_nX^n+\cdots +b_{j_0}X^{j_0}+\underbrace{\cdots}_{\text{divisible par } p}
 \]
@@ -660,13 +665,13 @@ Dans le cas général, \[
 \]
 
 \begin{res}
-    $P\in\mathbb Z[X]$ est irréductible dans $\mathbb Z[X]$ si et seulement s'il l'est dans $\mathbb Q[X]$
+    $P\in\mathbb Z[X]$ primitif est irréductible dans $\mathbb Z[X]$ si et seulement s'il l'est dans $\mathbb Q[X]$
 \end{res}
 \begin{proof}
-Si le polynôme est irréductible dans $\mathbb Q[X]$ alors il l'est dans $\mathbb Z[X]$. On suppose $P$ irréductible dans $\mathbb Z[X]$ et $P=AB$ dans $\mathbb Q[X]$. Il existe $p, q$ minimaux positifs tels que $pqP=pAqB$, $pA$ et $pQ$ dans $\mathbb Z[X]$ et \[
-    1=C(pqP)=pqC(P) \implies pq=1 \implies p=q=1
+Si le polynôme est irréductible dans $\mathbb Q[X]$ alors il l'est dans $\mathbb Z[X]$. On suppose $P$ irréductible dans $\mathbb Z[X]$ et $P=AB$ dans $\mathbb Q[X]$. Il existe $p, q$ minimaux positifs tels que $pqP=pAqB$, $pA$ et $qB$ dans $\mathbb Z[X]$ et \[
+    C(pqP)=pqC(P)=pq=C(pA)C(qB) \implies P=\frac{pA}{C(pA)}\times \frac{qB}{C(qB)}
 \]
-absurde.
+absurde (les deux facteurs sont dans $\mathbb Z[X]$).
 \end{proof}
 
 \subsection{Critère d'Eisenstein}
