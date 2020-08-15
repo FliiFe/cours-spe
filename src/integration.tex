@@ -71,6 +71,7 @@ Si $f$ est continue par morceaux sur $[a, b]$ alors \[
 \end{ex}
 
 \section{Intégrales de Wallis}
+\label{sec:wallis}
 
 On appelle intégrales de Wallis les intégrales \[
     W_n\defeq\int_0^{\frac\pi2}\cos^n\underset{\;u=\frac\pi2-t\;}=\int_0^{\frac\pi2}\sin^n
@@ -831,7 +832,7 @@ Puis si $f$ n'est pas intégrable en $+\infty$, on va calculer un équivalent de
     \int_0^nf\xrightarrow[n\to+\infty]{}+\infty\implies \sum f(k)\text{ DV }
 \]
 et \[
-    \int_1^{n+1}f\leq \sum_{k=1}^nf(k)\leq \int_0^n
+    \int_1^{n+1}f\leq \sum_{k=1}^nf(k)\leq \int_0^nf
 \]
 donc si $\displaystyle \int_0^nf\sim\int_0^{n+1}f$, alors pour un $a$ fixé, \[
     \sum_{k=1}^nf(k)\sim\int_0^nf\sim \int_a^nf

@@ -379,7 +379,7 @@ Ainsi, $a_0, \cdots, a_n\in\mathbb Z$ et la réciproque est évidente. On a ains
 \end{rem}
 
 \begin{exo}[ENS]
-    On note $P\in\mathbb R[X]$ un polynôme de degré $n$ tel que $P(0), P(1), P(4), \cdots, P(n^2)\in\mathbb Z$. Montrer que $\forall a\in\mathbb Z, P(a^2)\subset \mathbb Z$.
+    On note $P\in\mathbb R[X]$ un polynôme de degré $n$ tel que $P(0), P(1), P(4), \cdots, P(n^2)\in\mathbb Z$. Montrer que $\forall a\in\mathbb Z, P(a^2)\in \mathbb Z$.
 \end{exo}
 
 \begin{proof}[Résolution]
@@ -412,7 +412,7 @@ Ainsi, $a_0, \cdots, a_n\in\mathbb Z$ et la réciproque est évidente. On a ains
     Résolution pour $P(\mathbb Q)=\mathbb Q$. Déjà $P\in\mathbb Q[X]$ (par la $2$-ième variante), donc il existe $d$ entier positif minimal tel que $Q=dP\in\mathbb Z[X]$. On se donne $v$ premier avec les coefs $a_i$ de $Q$ et $d$ et $v$ nombre premier. Il existe $\frac ab$ tel que $P(\frac ab)=\frac1v$ donc \[
         v(a_na^n+\cdots +a_0b^n)=db^n \implies v\;|\; b^n\implies v\;|\; b
     \]
-    et si $n\geq 1$ alors $v^2\;|\;db^n$ et donc $v|a_na^n+\cdots$ donc $v\;|\;a$ absurde. Par suite, $n=1$, et la réciproque est évidente.
+    et si $n\geq 2$ alors $v^2\;|\;db^n$ et donc $v|a_na^n+\cdots$ donc $v\;|\;a$ absurde. Par suite, $n=1$, et la réciproque est évidente.
 \end{proof}
 
 \subsection{Polynômes positifs}
@@ -424,7 +424,7 @@ On pose \[
 et on note $\mathcal S$ l'ensemble des polynômes qui conviennent. On a clairement $\mathcal E\subset \mathcal S$, puis $\mathcal E$ est stable par produit car \[
     (A^2+XB^2)(A_1^2+XB_1^2)=(AA_1+XBB_1)^2+X(BA_1+AB_1)^2
 \]
-Soit $P\in\mathbb S$. Dans la décomposition de $P$ en irréductibles de $\mathbb R[X]$, si on note $\alpha_1, \cdots, \alpha_p$ les puissances des facteurs de degré $1$, on a $(X-a_i)$ change de signe si $\alpha_i$ impair et dans ce cas $a_i<0$ et $X-a_i=\sqrt{-a_i}^2+X1^2\in\mathcal E$. Les autres termes sont dans $\mathcal E$ et donc $\mathcal S=\mathcal E$.
+Soit $P\in\mathcal S$. Dans la décomposition de $P$ en irréductibles de $\mathbb R[X]$, si on note $\alpha_1, \cdots, \alpha_p$ les puissances des facteurs de degré $1$, on a $(X-a_i)$ change de signe si $\alpha_i$ impair et dans ce cas $a_i<0$ et $X-a_i=\sqrt{-a_i}^2+X1^2\in\mathcal E$. Les autres termes sont dans $\mathcal E$ et donc $\mathcal S=\mathcal E$.
 
 \section{Localisation des racines}
 

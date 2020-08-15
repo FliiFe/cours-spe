@@ -64,7 +64,6 @@
     \]
 \end{ex}
 
-\needspace{5cm}
 \section{Opérations}
 
 \begin{prop}
@@ -378,6 +377,146 @@ d'où $\omega_n\sim\frac1{12n^2}$
 
 \begin{ex}
     On va montrer \[
-        \sum_{k=1}^n\frac{\ln(k+1)}{k^2}\sim\frac{\ln n}n
+        \sum_{k=n}^{+\infty}\frac{\ln(k+1)}{k^2}\sim\frac{\ln n}n
     \]
 \end{ex}
+
+\begin{proof}
+    La série converge puisque $\frac{\ln n}{n^2}=o \left( \frac1{n^{3/2}} \right)$. Puis,
+    on a \[
+        \frac{\ln(n+1)}{n+1}-\frac{\ln n}n=\frac{\ln \left( \frac{n+1}n \right)}{n+1}+\frac{\ln n}{n+1}-\frac{\ln n}n=\ln n \left( \frac1{n+1}-\frac1n \right)+\ln \left( 1+\frac1n \right)\frac1{n+1}\sim -\frac{\ln n}{n^2}.
+    \]
+    d'où la conclusion.
+\end{proof}
+
+\begin{exo}
+    Donner un développement asymptotique de \[
+        R_n=\sum_{k=n}^{+\infty}\frac1{k^2}
+    \]
+\end{exo}
+
+\begin{proof}[Résolution]
+    \[
+        \frac1{n^2}\sim\frac1n-\frac1{n+1}
+    \]
+    donc \[
+        R_n\sim \frac1n
+    \]
+    puis \[
+        R_n-\frac1n=\sum_{k=n}^{+\infty} \left( \frac1{k^2}-\frac1k+\frac1{k+1} \right)=\sum_{k=n}^{+\infty}\frac1{k^2(k+1)}
+    \]
+    or \[
+        \frac1{n^3}\sim \frac1{2n^2}-\frac1{2(n+1)^2}
+    \]
+    donc \[
+        R_n=\frac1n+\frac1{2n^2}+o \left( \frac1{n^2} \right)
+    \]
+\end{proof}
+
+\begin{ex}[Équivalent de Stirling\index{Stirling (formule de -- )}]
+    On va trouver un équivalent de $u_n=n!$. On a \[
+        \ln(u_n)=\sum_{k=1}^n\ln k
+    \]
+    or \[
+        (k+1)\ln(k+1)-k\ln k\sim \ln k
+    \]
+    qui est le terme général positif d'une série divergente donc \[
+        \ln (u_n)\sim\sum_{k=1}^n((k+1)\ln(k+1)-k\ln k)\sim n\ln n.
+    \]
+    On note $v_n=\ln u_n-n\ln n$ puis \[
+        v_{n+1}-v_n=\ln(n+1)-(n+1)\ln(n+1)+n\ln n=-n\ln \left( 1+\frac1n \right)\sim -1
+    \]
+    qui est le terme général négatif (mais de signe constant) d'une série divergente donc \[
+        v_n\sim -n
+    \]
+    On note $w_n=v_n+n$ et \[
+        w_{n+1}-w_n=-n \left( 1+\frac1n \right)+1=-n \left( \frac1n-\frac1{2n^2}+o \left( \frac1{n^2} \right) \right)+1=\frac1{2n}+o \left( \frac1n \right)\sim\frac1{2n}\sim \frac12 (\ln(n+1)-\ln n)
+    \]
+    donc \[
+        w_n\sim \frac{\ln n}2
+    \]
+    On pose $y_n=w_n-\frac12\ln n$ et \[
+        y_{n+1}-y_n=-n\ln \left( 1+\frac1n \right)+1-\frac12\ln \left( 1+\frac1n \right)\sim\frac1{6n^2}
+    \]
+    qui est le terme général d'une séries ACV donc $y_n$ converge vers un réel $\ell$.
+    On a donc \[
+        \ln(u_n)=n\ln n-n+\frac12\ln n+\ell+o(1)
+    \]
+    donc \[
+        u_n\sim e^\ell\sqrt n\; n^ne^{-n}
+    \]
+    Dans le chapitre d'intégration \ifsolo\else(\textbf{\nameref{sec:wallis}} p.\pageref{sec:wallis})\fi{} on montrera $e^\ell=\sqrt{2\pi}$
+\end{ex}
+
+\begin{ex}[Raabe-Duhamel\index{Raabe-Duhamel (règle de -- )}]
+    On note $u$ une suite réelle jamais nulle à partir d'un certain rang telle que \[
+        \frac{u_{n+1}}{u_n}=1-\frac\lambda n+o \left( \frac1n \right), \qquad \lambda>0
+    \]
+    On va chercher la nature de $\sum u_n$ en fonction de $\lambda$
+
+    On a \[
+        \frac{u_{n+1}}{u_n}\sim 1
+    \]
+    donc $u_n$ est de signe constant à partir d'un certain rang, on suppose spdg que c'est positif. \[
+        \ln u_{n+1}-\ln u_n\sim-\frac\lambda n
+    \]
+    qui est le terme général d'une série divergente (signe constant) donc \[
+        \ln u_n\sim -\lambda H_n\sim -\lambda\ln n
+    \]
+    d'où $\ln u_n=-\lambda \ln n + o(\ln n)$ donc $u_n=n^{-\lambda+o(1)}=\dfrac1{n^{\lambda+o(1)}}$.
+
+    Si $\lambda>1$ alors $\sum u_n$ converge, si $\lambda <1$ alors $\sum u_n$ diverge et si $\lambda=1$ on ne peut pas conclure (e.g. $u_n=1/n$ et $u_n=1/(n\ln^2n)$).
+\end{ex}
+
+\begin{rem}
+    Si $\ell\neq 0$, $u_n\sim \ell$ (tg série DV) donc $\sum_{k=1}^nu_k\sim n\ell$ d'où le théorème de Cesàro. Si $\ell=0$ alors $u_n=o(1)$ et $\sum_{k=1}^nu_k=o(1)$ et on retrouve aussi Cesàro.
+
+    Plus généralement, si \[
+        \frac{a_{n+1}-a_n}{b_{n+1}-b_n}\longrightarrow\ell\neq 0
+    \]
+    avec $b_n$ croissante qui tend vers $+\infty$, alors \[
+        a_{n+1}-a_n\sim \ell (b_{n+1}-b_n)
+    \]
+    qui est le terme général d'une série divergente donc \[
+        \sum_{k=1}^{n-1}a_{n+1}-a_n=a_n-a_1\sim \ell (b_n-b_1) \implies a_n\sim \ell b_n\implies \frac{a_n}{b_n}\longrightarrow \ell
+    \]
+    d'où le théorème de Cesàro-Stolz (dans le cas $\ell\in\mathbb R^\star$)
+\end{rem}
+
+\section{Comparaison série-intégrale\texorpdfstring{\footnote{Épisode 1}}{}}
+
+On note $f$ décroissante continue positive au voisinage de $+\infty$ (pour simplifier on prend $\mathbb R_+$ comme voisinage). On a \[
+    f(k+1)\leq \int_k^{k+1}f\leq f(k)
+\]
+
+\begin{ex}
+    On trouve de cette manière \[
+        H_n\sim\ln n\qquad \text{ et }\qquad H_{2n}-H_n\sim \ln 2.
+    \]
+\end{ex}
+
+\begin{thm}
+    \Hyp $f$ est continue décroissante positive sur $\mathbb R_+$, $u_n=\displaystyle\int_{n-1}^n f-f(n)$
+    \Conc $\sum u_n$ converge et $u_n\geq 0$
+\end{thm}
+
+\begin{proof}
+    $u_n\leq f(n-1)-f(n)$ tg série CV car $f$ converge en $+\infty$
+\end{proof}
+
+\begin{exo}
+    On note $u$ une suite positive, $S_n=\sum_{k=0}^nu_k$ et quand c'est possible, $R_n=\sum_{k=n}^{+\infty}u_k$
+    \begin{enumerate}
+        \item Montrer que si $\sum u_n$ diverge alors $\sum \frac{u_n}{S_n^\alpha}$ converge ssi $\alpha>1$
+        \item Montrer que si $\sum u_n$ converge alors $\sum \frac{u_n}{R_n^\alpha}$ converge ssi $\alpha<1$
+    \end{enumerate}
+\end{exo}
+
+\begin{proof}[Résolution]~
+    \begin{enumerate}
+        \item On a $S_n\longrightarrow+\infty$, $(S_n)$ croissante. On suppose $\alpha>1$. \[
+                \frac{u_n}{S_n^\alpha}=\frac{S_n-S_{n-1}}{S_n^\alpha}\leq \int_{S_{n-1}}^{S_n}\frac{\diff t}{t^\alpha}\implies \sum_{k=1}^n\frac{u_k}{S_k^\alpha}\leq \frac1{\alpha-1} \left( \frac1{S_0^{\alpha-1}}-\frac1{S_n^{\alpha-1}} \right)\leq \frac1{\alpha-1}S_0^{\1-\alpha} \text{ donc CV }
+            \]
+        \item 
+    \end{enumerate}
+\end{proof}
