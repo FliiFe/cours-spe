@@ -40,7 +40,7 @@
 
 \newcommand{\newthm}[2]{
     \newenvironment{#1}[1][]
-    {\needspace{5\baselineskip}\par\noindent\normalfont\ifstrempty{##1}{\textbf{#2.}}{\textbf{#2} (##1).}\par\nopagebreak%
+    {\par\begin{minipage}{\textwidth}\noindent\normalfont\ifstrempty{##1}{\textbf{#2.}}{\textbf{#2} (##1).}\par\nopagebreak%
       \begin{mdframed}[
          linewidth=1pt,
          linecolor=black,
@@ -49,7 +49,7 @@
          innerleftmargin=1em,
          skipabove=.5\baselineskip
        ]}
-      {\end{mdframed}}
+   {\end{mdframed}\end{minipage}}
 }
 
 
