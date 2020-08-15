@@ -512,11 +512,72 @@ On note $f$ décroissante continue positive au voisinage de $+\infty$ (pour simp
     \end{enumerate}
 \end{exo}
 
-\begin{proof}[Résolution]~
+\begin{proof}[Résolution (uniquement 1.)]~
     \begin{enumerate}
         \item On a $S_n\longrightarrow+\infty$, $(S_n)$ croissante. On suppose $\alpha>1$. \[
                 \frac{u_n}{S_n^\alpha}=\frac{S_n-S_{n-1}}{S_n^\alpha}\leq \int_{S_{n-1}}^{S_n}\frac{\diff t}{t^\alpha}\implies \sum_{k=1}^n\frac{u_k}{S_k^\alpha}\leq \frac1{\alpha-1} \left( \frac1{S_0^{\alpha-1}}-\frac1{S_n^{\alpha-1}} \right)\leq \frac1{\alpha-1}S_0^{\1-\alpha} \text{ donc CV }
             \]
-        \item 
+            Si $\alpha\geq 0$ alors APCR, $\frac{u_n}{S_n^\alpha}\geq u_n$ donc la série diverge.
+
+            Si $\alpha=1$, on a \[
+                \sum_{k=n}^p\frac{u_k}{S_k}\geq \frac1{S_p}\sum_{k=n}^pu_k=\frac{S_p-S_{n-1}}{S_p}\geq 1-\frac{S_{n-1}}{S_p}
+            \]
+            Si $\sum\frac{u_k}{S_k}$ converge alors $p\longrightarrow+\infty$ donne $\sum_{k=n}^{+\infty}\frac{u_k}{S_k}\geq 1$ absurde, donc la série diverge.
+            Pour $\alpha\in ]0, 1]$, \[
+                \frac{u_k}{S_k^\alpha}\underset{\text{APCR}}\geq \frac{u_k}{S_k}
+            \]
+            donc la série diverge.
     \end{enumerate}
 \end{proof}
+
+\section{Théorème des séries alternées}
+
+\begin{thm}
+    \Hyp $a$ une suite décroissante positive qui tend vers $0$.
+    \begin{concenum}
+    \item $\sum a_n(-1)^n$ converge
+    \item \[
+            \sum_{k=n+1}^{+\infty}(-1)^ka_k
+        \]
+        a le même signe que $(-1)^{n+1}a_{n+1}$ (le premier terme de la somme)
+    \item \[
+            \left|  \sum_{k=n+1}^{+\infty}(-1)^ka_k \right|\leq a_{n+1}
+    \]
+    \end{concenum}
+\end{thm}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Les suites $S_{2n}$ et $S_{2n+1}$ sont adjacentes donc convergentes de limite $\ell$.
+        \item Vu le calcul fait en 1., \[
+                \sum_{k=2p}^{+\infty}(-1)^ka_k=\ell-S_{2p-1}\geq 0
+            \]
+            du même signe que son premier terme. C'est la même chose pour les restes d'indices impair.
+        \item \[ 0\leq \ell-S_{2p-1}\leq S_{2p}-S_{2p-1}\implies 0\leq \sum_{k=2n}(-1)^ka_k\leq a_{2n}\]
+            et on fait dans l'autre sens pour les impairs.
+    \end{enumerate}
+\end{proof}
+
+\section{Transformation d'Abel}
+
+On part de deux suites $(a_n)$ et $(b_n)$ et d'une somme $\displaystyle\sum_{k=0}^na_kb_k$. On pose \[
+    S_n=\sum_{k=0}^na_k
+\]
+On a $a_n=S_n-S_{n-1}$ pour $n\geq 0$ avec $S_{-1}=0$. Alors, \[
+    \sum_{k=0}^na_kb_k=\sum_{k=0}^n(S_n-S_{n-1})b_k=\sum_{k=0}S_k(b_k-b_{k+1})+S_n b_n
+\]
+
+\begin{ex}
+    On suppose $|S_n|$ majorée par $M$ et $(b_n)$ décroissante de limite nulle. \[
+        b_nS_n\longrightarrow0
+    \]
+    et \[
+        |S_k(b_k-b_{k+1})|\leq M(b_k-b_{k+1})
+    \]
+    donc \[
+        \sum S_k(b_k-b_{k+1})\text{ ACV }
+    \]
+    donc $\sum a_kb_k$ converge.
+\end{ex}
+
+
