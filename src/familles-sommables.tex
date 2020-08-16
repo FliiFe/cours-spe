@@ -193,9 +193,77 @@ Pour un ensemble dénombrable $I$, on note $\mathcal P_f(I)$ l'ensemble des part
 \begin{proof}~
     \begin{enumerate}
         \item Définition
-        \item $0\leq \alpha_k^\pm\leq |\alpha_k|\leq |a_k|$
+        \item $0\leq \alpha_k^\pm\leq |\alpha_k|\leq |a_k|$ pour la sommabilité
+        \item L'inégalité triangulaire donne la sommabilité. La linéarité est admise car la démo est lourde.
     \end{enumerate}
 \end{proof}
+
+\begin{thm}[Sommation par paquets\index{sommation par paquets}]
+    \Hyp $I$ dénombrable, $(I_n)_{n\in\mathbb N}$ une partition de $I$, $(a_i)_{i\in I}\in \mathbb C^I$
+    \Conc Il y a équivalence entre \begin{enumerate}[left=1.1cm,label=\alph{enumi}.]
+        \item la famille $(a_i)_i$ est sommable
+        \item Pour tout $n\in\mathbb N$, $(a_i)_{i\in I_n}$ est sommable et \[
+                \sum_{i\in I_n}a_i
+            \]
+            est le terme général d'une série absolument convergente. Dans ce cas, \[
+                \sum_{i\in I}a_i=\sum_{n\in\mathbb N}\sum_{i\in I_n}a_i
+            \]
+    \end{enumerate}
+\end{thm}
+
+\begin{proof} La démonstration n'est pas au programme. On la fait dans le cas $(a_i)_i$ réelle positive.
+
+    \begin{itemize}
+        \item $(b\implies a)$ On prend $J$ une partie finie de $I$, \[
+                I=\bigcup_{n\in\mathbb N}I_n
+            \]
+            donc il existe $n_0$ tel que \[
+                J\subset \bigcup_{n\leq n_0}I_n
+            \]
+            On a \[
+                0\leq \sum_{j\in J}a_j\leq \sum_{k=0}^{n_0}\sum{k\in I_n}a_k\leq \sum_{n\in\mathbb N}\sum_{k\in I_n}a_k
+            \]
+            donc $(a_i)_i$ sommable.
+        \item $(a\implies b)$ Pour tout $J$ fini inclus dans $I_n$, $J\subset I$ donc \[
+                0\leq \sum_{j\in J}a_j\leq \sum_{j\in I}a_j
+            \]
+            donc $(a_i)_{i\in I_n}$ est sommable.
+            Soit $n_0\in\mathbb N$ et $J_0, \cdots, J_{n_0}$ finis tels que $J_k\subset I_k$.
+            $J=J_0\cup \cdots \cup J_{n_0}$ est fini et \[
+                \sum_{j\in J}a_j=\sum_{i\in J_0}a_i+\cdots +\sum_{i\in J_{n_0}}a_i\leq \sum_{j\in I}a_j
+            \]
+            On a alors \[
+                \sum_{j\in J_0}a_j\leq \sum_{i\in I}a_i-\sum_{j\in J_1}a_j-\cdots -\sum_{j\in J_{n_0}}a_j
+            \]
+            et le membre de droite est indépendant de $J_0$. On passe à la borne supérieure par rapport à $J_0$: \[
+                \sum_{i\in I_0}a_i=\sup_{\substack{J_0\subset I_0\\J_0\text{ fini}}}\sum_{j\in J_0}a_j\leq \sum_{i\in I}a_i-\sum_{j\in J_1}a_j-\cdots -\sum_{j\in J_{n_0}}a_j
+            \]
+            puis on recommence pour $J_1, \cdots, J_{n_0}$. On obtient ainsi \[
+                \sum_{i\in I_0}a_i+\cdots +\sum_{i\in I_{n_0}}a_i\leq \sum_{j\in I}a_j.
+            \]
+            Les sommes partielles sont croissantes et majorées donc \[
+                \sum \left( \sum_{k\in I_n}a_k \right)
+            \]
+            est absolument convergente (convergente + termes positifs). Puis, $n_0\to+\infty$ donne \[
+                \sum_{n=0}^{+\infty}\sum_{k\in I_n}a_k\leq \sum_{i\in I}a_i
+            \]
+            Enfin, \[
+                \sum_{j\in J}a_j\leq \sum_{k=0}^{n_0}\sum_{j\in I_k}a_j\leq \sum_{k=0}^{+\infty}\sum_{j\in I_k}a_j
+            \]
+            puis on passe au sup pour $J$ et on trouve la conclusion.
+    \end{itemize}
+    Pour $(a_i)$ complexe, on utilise la linéarité.
+\end{proof}
+
+\begin{cor}[Fubini discret\index{Fubini (théorème discret de -- )}]
+    \Hyp $(a_{n, m})_{(n, m)\in\mathbb N^2}\in\mathbb C^{\mathbb N^2}$
+    \Conc Il y a équivalence entre: \begin{enumerate}[left=1.2cm,label=\alph{enumi}.]
+        \item $(a_{n,m})_{(n,m)\in\mathbb N^2}$ est sommable
+        \item $\forall n\in\mathbb N, (a_{n, m})_{m\in\mathbb N}$ est sommable et $\sum_{m\in\mathbb N}|a_{n,m}|$ est le terme général d'une série convergente. Dans ce cas, \[
+                \sum_{(n, m)\in\mathbb N^2}a_{n, m}=\sum_{n\in\mathbb N}\sum_{m\in\mathbb N}a_{n,m}=\sum_{m\in\mathbb N}\sum_{n\in\mathbb N}a_{n, m}
+            \]
+    \end{enumerate}
+\end{cor}
 
 \section{Produits infinis}
 
