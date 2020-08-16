@@ -1,6 +1,6 @@
 .PHONY: clean all figures
 
-PDFS := target/cours.pdf target/calculdiff.pdf target/polynomes.pdf target/algebre-generale.pdf target/arithmetique.pdf target/reduction.pdf target/analyse-asymptotique.pdf target/integration.pdf target/suites-series.pdf
+PDFS := target/cours.pdf target/calculdiff.pdf target/polynomes.pdf target/algebre-generale.pdf target/arithmetique.pdf target/reduction.pdf target/analyse-asymptotique.pdf target/integration.pdf target/suites-series.pdf target/familles-sommables.pdf
 figures := $(patsubst %.tex,%.pdf,$(wildcard src/figures/*.tex))
 
 all: $(PDFS)
@@ -9,7 +9,6 @@ src/figures/%.pdf: src/figures/%.tex
 	cd src/figures/ && latexmk -pdf $(<F) && latexmk -c $(<F)
 
 target/cours.pdf: cours.tex src/*.tex $(figures)
-	@echo Dependencies $^
 	latexmk -pdf $<
 	cp build/$(@F) $@
 

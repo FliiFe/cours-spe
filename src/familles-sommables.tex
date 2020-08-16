@@ -1,0 +1,60 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Familles sommables} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\ifsolo \newpage \setcounter{page}{1} \fi
+
+\section{Dénombrabilité}
+
+
+\section{Produits infinis}
+
+Soit $(a_n)$ une suite numérique\index{produit infini} et \[
+    p_n=\prod_{k=0}^n(1+a_k)
+\]
+On dira que le produit $\prod(1+a_k)$ converge si et seulement si $p_n$ a une limite réelle \textbf{non nulle}
+
+\begin{res}
+    Si $\sum a_k$ est absolument convergente et $(a_n)$ ne vaut jamais $-1$, alors $\prod(1+a_k)$ converge
+\end{res}
+
+\begin{proof}
+    On le montre dans le cas réel. On a $a_n\longrightarrow 0$ donc à partir d'un certain rang $n_0$, $(1+a_n)$ est strictement positive. Pour $N>n_0$, \[
+        p_n=\underbrace{\prod_{k=0}^{n_0}(1+a_k)}_{\text{fixe } \neq 0}\times \prod_{k=n+1}^{N}\underbrace{(1+a_k)}_{>0}
+    \]
+    Or pour $k\geq n_0$, $|\ln(1+a_k)|\sim |a_k|$ donc $\sum \ln(1+a_k)$ ACV et sa somme vaut $\ell\in\mathbb R$. On a alors \[
+        p_n=e^{\ln p_n}\xrightarrow[n\to+\infty]{}e^\ell \prod_{k=0}^{n_0}(1+a_k) \neq 0
+    \]
+\end{proof}
+
+\begin{rem}
+    Le resultat est vrai avec une suite complexe.
+\end{rem}
+
+\begin{ex}
+    On note $f:\mathbb N^\star\longrightarrow \mathbb R_+$ complètement multiplicative\footnote{$\forall x,y, f(xy)=f(x)f(y)$} (le résultat que l'on va montrer est toujours vrai pour $f$ multiplicative\footnote{$\forall x,y, x\land y=1\implies f(xy)=f(x)f(y)$})
+
+    On suppose que $\sum f(n)$ est absolument convergente. On va montrer que \[
+        \prod_{p\text{ premier }} \frac1{1-f(p)}=\sum_{n=1}^{+\infty}f(n)
+    \]
+    On note $(p_i)_i$ la suite croissante des nombres premiers. Si il existe un premier $p$ tel que $f(p)=1$ alors $f(p^n)=1$ et $f(n)\xnrightarrow{}0$ ce qui est absurde, donc pour tout $p$ premier, $f(p)\neq 1$.
+    On a alors $\sum f(p_i)$ ACV donc et $f(p_i)\neq 1$ donc $\prod (1-f(p_i))$ converge donc $\prod \frac1{1-f(p_i)}$ aussi. Puis, \[
+        P_N=\prod_{i=1}^N\frac1{1-f(p_i)}=\prod_{i=1}^N \sum_{k=0}^{+\infty}f(p_i)^k\underset{\Pi\text{ de Cauchy}}=\sum_{k_1, \cdots, k_N}f(p_1^{k_1}\cdots p_N^{k_N})
+    \]
+    d'où \[
+        \sum_{n=0}^{M_N}f(n)\leq P_N\leq\sum_{n=0}^{+\infty}f(n)
+    \]
+    avec $M_N=\max \{k, \quad \llbracket 1, k\rrbracket\text{ se décompose avec } p_1, \cdots p_N\}$. Puis, $N\to+\infty$ donne le résultat.
+\end{ex}
+
+\endchapter

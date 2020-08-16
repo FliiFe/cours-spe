@@ -580,4 +580,127 @@ On a $a_n=S_n-S_{n-1}$ pour $n\geq 0$ avec $S_{-1}=0$. Alors, \[
     donc $\sum a_kb_k$ converge.
 \end{ex}
 
+\begin{ex}
+    $\sum\frac{\sin n}n$ converge car $S_n(\sin n)$ est bornée (on peut faire le calcul) et $\frac1n$ est décroissante de limite nulle.
+\end{ex}
 
+\begin{ex}
+    On va chercher la nature de $\sum \frac{\sin \sqrt n}n$. On note $S_n$ les sommes partielles de sorte que \[
+        \forall n\geq 1, \qquad \sin \sqrt n=S_{n}-S_{n-1}
+    \]
+    et \[
+        \sum_{k=1}^n\frac{\sin \sqrt n}{n}=\sum_{k=1}^n\frac{S_k-S_{k-1}}k=\sum_{k=1}^{n-1}S_k \left( \frac1k-\frac1{k+1} \right)+\frac{S_n}n.
+    \]
+    Pour $x\in [k, k+1]$, il existe $c_x\in[k, k+1]$ tel que \[
+        \sin\sqrt x-\sin \sqrt k=(x-k)\frac{\cos \sqrt {c_x}}{2\sqrt {c_x}}
+    \]
+    donc \[
+        |\sin \sqrt x-\sin \sqrt k|\leq \frac1{2\sqrt k}
+    \]
+    et \[
+        \left| \sin k-\int_k^{k+1}\sin\sqrt t\;\diff t \right|\leq \int_k^{k+1}|sin\sqrt k-\sin \sqrt t|\diff t\leq \frac1{2\sqrt k}
+    \]
+    donc \[
+        \left| \sum_{k=1}^n\left(\sin \sqrt k-\int_k^{k+1}\sin\sqrt t\;\diff t\right) \right|= \left| S_n-\int_1^{n+1}\sin\sqrt t\;\diff t \right| \leq \sum_{k=1}^n\frac1{2\sqrt k}
+    \]
+    or \[
+        \int_1^{n+1}\sin\sqrt t\;\diff t=\int_1^{\sqrt{n+1}}2u\sin u\diff u=2[-u\cos u+\sin u]_1^{\sqrt{n+1}}=O(\sqrt n).
+    \]
+    Puis, \[
+        \frac1{2\sqrt k}\sim\sqrt {k+1}-\sqrt k \implies \sum_{k=1}^n\frac1{2\sqrt k}\sim \sqrt n
+    \]
+    On a donc \[
+        |S_n|- \left| \int_1^{n+1}\sin\sqrt t\;\diff t \right|\leq \sum_{k=1}^n\frac1{2\sqrt k}=O(\sqrt n)\implies S_n=O(\sqrt n)
+    \]
+    donc \[
+        S_k \left( \frac1k-\frac1{k+1} \right)=O\left(\frac1{n^{3/2}}\right)
+    \]
+    et la série converge.
+\end{ex}
+
+\section{Utilisation des paquets}
+
+\begin{rem}
+    Si $\sum a_n$ converge alors pour toute suite d'entiers $(u_n)$ telle que $u_n\geq n$, on a \[
+        \sum_{k=n}^{u_n}a_k=S_{u_n}(a)-S_{n-1}(a)\xrightarrow[n\to+\infty]{}0
+    \]
+    En particulier,  si \[
+        \sum_{k=n}^{u_n}a_k\xnrightarrow[n\to+\infty]{}0
+    \]
+    alors la série diverge.
+\end{rem}
+
+\begin{ex}[Série harmonique]
+    \[
+        \sum_{k=n}^{2n}\frac1k\geq \frac{n+1}{2n+1}\xrightarrow[n\to+\infty]{}\frac12\neq 0
+    \]
+    donc la série harmonique diverge.
+\end{ex}
+
+\begin{ex}[Oscillations lentes]
+    On va déterminer la nature de \[
+        \sum\frac{\cos (\ln n)}n
+    \]
+    Pour $N\geq 1$, \[
+        \sum_{-\frac\pi3+2N\pi\leq \ln n\leq \frac\pi3+2N\pi}\frac{\cos(\ln n)}n \geq \frac12\sum_{e^{-\frac\pi3}e^{2N\pi}\leq n\leq e^{\frac\pi3}e^{2N\pi}}\frac1n\geq \frac12\frac{\floor{e^{\frac\pi3}e^{2N\pi}}-\floor{e^{-\frac\pi3}e^{2N\pi}}}{e^{\frac\pi3}e^{2N\pi}}\xrightarrow[n\to+\infty]{}\frac12(1-e^{-\frac{2\pi}3})\neq 0
+    \]
+    donc la série diverge.
+\end{ex}
+
+\begin{ex}[Série lacunaire]
+    On note \[
+        u_n=\begin{cases}\frac1{n^\alpha}&\text{ si $n$ n'a pas de $9$ dans son écriture décimale }\\ 0 & \text{ sinon }\end{cases}
+    \]
+    Les sommes partielles sont croissantes donc la série $\sum u_n$ converge si et seulement si $(S_n)$ a une suite extraite convergente.
+    On va considérer des paquets du type \[
+        \sum_{k=10^n}^{10^{n+1}-1}u_k\leq \frac1{10^{n\alpha}}\times \underbrace{8\times 9^n}_{\text{nb d'entiers sans }9}
+    \]
+    On a ainsi \[
+        \underbrace{\left( \frac9{10^\alpha} \right)^n}_{\text{tg série CV} \iff \frac9{10^\alpha}<1}\frac8{10^\alpha}\leq \sum_{k=10^n}^{10^{n+1}-1}u_k=S_{10^{n+1}-1}-S_{10^n-1}\leq \left( \frac9{10^\alpha} \right)^n\cdot 8
+    \]
+    donc $(S_{10^n-1})_n$ converge ssi $\displaystyle \alpha>\frac{\ln 9}{\ln 10}$
+\end{ex}
+
+\section{Développement décimal illimité}
+
+Pour $x\in\mathbb R$, on pose $a_0=\floor x$ et \[
+    a_n=\floor{10^nx}-10\floor{10^{n-1}x}\in\llbracket 0,9\rrbracket
+\]
+Par récurrence, on montre \[
+    \frac{\floor{10^nx}}{10^n}=\sum_{k=0}^n\frac{a_k}{10^k}=\bar{a_0,a_1\cdots a_n}
+\]
+Puis, $\sum \frac{a_k}{10^k}$ converge et sa somme vaut $x$.
+
+\begin{rem}
+    La suite $(a_n)$ n'est pas stationnaire égale à $9$.
+\end{rem}
+
+\begin{proof}
+    On suppose que la suite est stationnaire égale à $9$: $a_{N-1}\neq 9$ et $(a_n)_{n\geq N}$ constante égale à $9$. Dans ce cas, \[
+        x=\sum_{k=0}^N\frac{a_k}{10^k}+\underbrace{\sum_{k=N}^{+\infty}\frac9{10^k}}_{=\frac1{10^{N-1}}}
+    \]
+    et c'est absurde en calculant explicitement $a_{N-1}$
+\end{proof}
+
+On dit que le développement obtenu est le \textbf{développement décimal propre} de $x$ \index{développement décimal propre}
+
+\begin{prop}
+    $x$ est rationnel si et seulement si son développement propre est ultimement périodique (périodique à partir d'un certain rang)
+\end{prop}
+
+\begin{proof}
+    On supose $(a_k)$ $T$-périodique à partir du rang $N$. On a \[
+        x=\underbrace{\sum_{k=0}^{N-1}\frac{a_k}{10^k}}_{\in\mathbb Q}+\underbrace{\sum_{k=0}^{+\infty}\frac1{10^{kT}}}_{=\frac1{1-\frac1{10^T}}\in\mathbb Q} \underbrace{\left(  \frac{a_N}{10^N}+\cdots +\frac{a_{N+T-1}}{10^{N+T-1}}\right)}_{\in \mathbb Q}\in\mathbb Q
+    \]
+    On suppose $x=\frac pq\in\mathbb Q$. Il y a un nombre fini de restes modulo $p$ donc il existe $n<m$ tels que $10^np\equiv 10^mp\pmod q$.
+
+On a $10^np=q_nq+r_n$ avec $q_n\in\mathbb N$, donc $10^nx=q_n+\frac{r_n}q$. On a alors, pour $n, i\in\mathbb N^\star$, \begin{align*}
+                a_{n+i} &= E(10^{n+i}x)-10E(10^{n+i-1}x) \\
+                        &= E\left(10^i \left( q_n+\frac{r_n}q \right)\right)-10E \left( 10^{i-1} \left(  q_n+\frac{r_n}q \right) \right) \\
+                        &= E \left( 10^i\frac {r_n}q \right)+10^iq_n-10E \left( 10^{i-1}\frac {r_n}q \right) -10^iq_n \\
+                        &= E \left( 10^i\frac {r_n}q \right) - 10E \left( 10^{i-1}\frac {r_n}q \right)
+            \end{align*}
+         On pose $T=m-n$. On a, pour tout $i\geq 1$, $a_{n+i+T}=a_{m+i}=a_{n+i}$. Donc $(a_k)_k$ est périodique à partir du rang $n$.
+\end{proof}
+
+\endchapter

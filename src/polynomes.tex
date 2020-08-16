@@ -559,8 +559,11 @@ On se donne $P_1, \cdots, P_n$ deux à deux premiers entre eux et $R_1, \cdots, 
 \end{proof}
 
 \subsection{Théorèmes de Mason, Snyder, et Fermat}
-\begin{lmm}[Snyder]
-    \index{Snyder (théorème de -- )}
+On va montrer le théorème de Mason (ou Mason-Stothers) avec une démonstration de
+Snyder\footnote{\url{https://doi.org/10.1007/s000170050074}}
+
+\begin{lmm}
+    % \index{Snyder (théorème de -- )}
     Si $P\in\mathbb C[X]$ non nul, alors \[
         \deg P=\deg \left(P\land P'\right)+n_0(P)
     \]
@@ -576,12 +579,12 @@ On se donne $P_1, \cdots, P_n$ deux à deux premiers entre eux et $R_1, \cdots, 
     \]
 \end{proof}
 
-\begin{lmm}[Mason]
+\begin{thm}[Mason]
     \index{Mason (théorème de -- )}
     Si $A, B, C$ sont des polynômes complexes deux à deux premiers entre eux avec $A+B=C$ et $(A', B', C')\neq (0, 0, 0)$, alors \[
         \deg C\leq n_0(ABC)-1
     \]
-\end{lmm}
+\end{thm}
 
 \begin{proof}
 Comme $A=C-B$ et $B=C-A$ les rôles de $A, B, C$ sont symétriques. On peut supposer $A$ non constant. On a alors \[
