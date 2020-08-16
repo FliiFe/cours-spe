@@ -16,6 +16,186 @@
 
 \section{Dénombrabilité}
 
+\begin{dfn}
+    Un ensemble est dénombrable si et seulement si il est en bijection avec $\mathbb N$
+\end{dfn}
+
+\begin{ex}
+    $\mathbb N, 2\mathbb N, \mathbb N^\star, \mathbb Z$
+\end{ex}
+
+\begin{prop}
+    \begin{enumerate}
+        \item Toute partie infinie de $\mathbb N$ est dénombrable
+        \item Toute partie de $\mathbb N$ est finie ou dénombrable
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+    Soit $A$ une partie de $\mathbb N$ infinie. On note $\varphi(0)=\min A$ et \[
+        \varphi(n)=\min (A\setminus \llbracket 0, \varphi(n-1)\rrbracket)
+    \]
+    de sorte que $\varphi$ est croissante donc injective, et surjective car si $a\in A$ n'a pas d'antécédent, $I=\{k, \quad a<\varphi(k)\}$ est non vide et a un minimum $p$, et $\varphi(0)<a$ donc $p\geq 1$ d'où $\varphi(p-1)< a<\varphi(p)$ absurde.
+\end{proof}
+
+\begin{prop}
+    \begin{enumerate}
+        \item Si $f:A\to B$ est injective et $B$ dénombrable alors $A$ est fini ou dénombrable
+        \item Si $f:A\to B$ est surjective et $A$ dénombrable alors $B$ est fini ou dénombrable.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item $B$ est en bijection avec $\mathbb N$ donc on peut supposer $B=\mathbb N$. Si $A$ est fini alors ok, sinon $f(A)$ est une partie infinie de $\mathbb N$ en bijection avec $A$.
+        \item On note $\psi(b)$ un élément de $f^{-1}(\{b\})$. $f\circ \psi=\id_B$ injective donc $\psi$ est injective et on utilise 1.
+    \end{enumerate}
+\end{proof}
+
+\begin{prop}
+    \begin{enumerate}
+        \item Si $I$ est non-vide, fini ou dénombrable, et $(A_i)_{i\in I}$ est une famille d'ensembles finis ou dénombrables, alors \[
+                \bigcup_{i\in I}A_i
+            \]
+            est fini ou dénombrable
+        \item $E_1,\cdots, E_n$ des ensembles finis ou dénombrables, non vides. $E_1\times \cdots \times E_n$ est fini ou dénombrable et $E_1\times \cdots \times E_n$ est dénombrable si et seulement si au moins l'un des $E_i$ est dénombrable.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item On note $\varphi:\mathbb N\to I$ surjective et pour chaque $i$ on note $f_i:\mathbb N\to A_i$ bijective de sorte que \[
+        \psi: (p, q)\in\mathbb N^2\longmapsto f_{\varphi(q)}(p)\in\bigcup_{i\in I}A_i
+            \]
+            est surjective, et $\mathbb N^2$ est dénombrable.
+        \item Chaque $E_i$ est en bijection avec une partie de $\mathbb N$, on peut supposer $E_i\subseteq \mathbb N$. On note $p_1, \cdots, p_n$ des premiers disjoints. \[
+                f: E_1\times \cdots \times E_n\longrightarrow \mathbb N, \quad (a_1, \cdots, a_n)\longmapsto p_1^{a_1}\cdots p_n^{a_n}
+            \]
+            est injective et $\mathbb N$ dénombrable. Si tous les $E_i$ sont finis alors le produit est fini et si l'un est infini alors le produit est infini.
+    \end{enumerate}
+\end{proof}
+
+\section{Exemples d'ensembles classiques}
+
+\begin{ex}
+    $\mathbb Q$ est dénombrable car $\mathbb Z\times \mathbb N^\star$ est dénombrable et $(p, q)\in\mathbb Z\times \mathbb N^\star\longmapsto \frac pq$ est surjective
+\end{ex}
+
+\begin{ex}
+    L'ensemble des nombres algébriques est dénombrable: \[
+        \mathcal A=\bigcup_{n\in\mathbb N^\star}\bigcup_{P\in\mathbb Z_n[X]}\mathcal Z_{\mathbb C}(P)
+    \]
+\end{ex}
+
+\begin{ex}[Diagonale de Cantor]
+    $\mathbb R$ \index{Cantor!argument diagonal}n'est pas dénombrable. Si $\mathbb R$ est dénombrable alors $[0, 1[$ est dénombrable, et on note $(r_n)_{n\in\mathbb N}$ une énumération des éléments de $[0, 1[$. On construit le réel $x\in [0, 1[$ de la manière suivante: si la $n$-ième décimale de $r_n$ vaut $1$ alors la $n$-ième décimale de $x$ vaut $0$, sinon elle vaut $1$. Le réel ainsi construit ne peut pas être un $r_n$ car sa $n$-ième décimale est différente de celle de $r_n$. On a donc trouvé un réel qui n'est pas dans l'énumération, c'est absurde.
+\end{ex}
+
+\section{Discontinuités d'une fonction monotone}
+
+On note $f:[a, b]\in\mathbb R$ croissante. On va montrer que l'ensemble des points de discontinuité de $f$ est fini ou dénombrable.
+
+On note pour $x\in ]a, b[$, \[
+    \delta(x)=\lim_{\substack{t\to x\\t>x}}f(t)-\lim_{\substack{t\to x\\t<x}}f(t)
+\]
+
+\begin{itemize}
+    \item $f$ est croissante donc $\delta$ est positive et $f$ est continue en $a$ ssi $\delta(a)=0$.
+    \item Pour tout $n\in\mathbb N^\star$, on note \[
+            I_n= \left\{ x\in ]a, b[, \qquad \delta(x)\geq \frac{f(b)-f(a)+1}n \right\}
+        \]
+    \item Si $I_n$ est de cardinal $\geq n+1$ alors on peut trouver $x_1< \cdots< x_{n+1}$ dans $I_n$, et on se donne $a<t_1<x_1<\cdots <x_{n+1}<t_{n+2}<b$ pour avoir \[
+            f(b)-f(a)=\underbrace{f(b)-f(t_{n+2})}_{\geq 0}+\underbrace{f(t_{n+2})-f(b_{n+1})}_{\geq \delta(x_{n+1})} +\cdots +\underbrace{f(t_2)-f(t_1)}_{\geq \delta(x_1)}+\underbrace{f(t_1)-f(b)}_{\geq 0}
+        \]
+        donc \[
+            f(b)-f(a)\geq \delta(x_{n+1})+\cdots +\delta(x_1)\geq n\frac{f(b)-f(a)+1}n
+        \]
+        absurde donc $I_n$ est fini. $x\in ]a, b[$ est un point de discontinuité si et seulement si $\delta(x)>0$ ssi $\exists n\in\mathbb N, x\in I_n$ ssi \[
+            x\in \bigcup_{n\in\mathbb N^\star}I_n
+        \]
+\end{itemize}
+
+\section{Familles sommables de réels positifs}
+
+Pour un ensemble dénombrable $I$, on note $\mathcal P_f(I)$ l'ensemble des parties finies de $I$
+
+\begin{dfn}
+    Soit $(a_i)_{i\in I}\in (\mathbb R_+)^I$. On dira que la famille $(a_i)_{i\in I}$ est \index{famille sommable}\textbf{sommable} si \[
+        \left\{ \sum_{j\in J}a_j, \quad J\in\mathcal P_f(I) \right\}
+    \]
+    est majoré. On note alors \[
+        \sum_{i\in I}a_i=\sup\left\{ \sum_{j\in J}a_j, \quad J\in\mathcal P_f(I) \right\}
+    \]
+    Si la famille n'est pas sommable on peut parfois écrire \[
+        \sum_{i\in I}a_i=+\infty
+    \]
+\end{dfn}
+
+\begin{prop}
+    \Hyp $(a_i)_{i\in I}$ famille dénombrable de réels positive et $S\in \mathbb R$
+    \Conc $(a_i)_{i\in I}$ est sommable et $S=\sum_{i\in I}a_i$ si et seulement si les deux conditions suivantes sont réunies: \begin{itemize}[left=2cm]
+        \item $\forall J\in\mathcal P_f(I), \quad \displaystyle \sum_{j\in J}a_j\leq S$
+        \item $\displaystyle \forall \epsilon>0, \exists J\in\mathcal P_f(J), \quad S-\epsilon\leq \sum_{j\in J}a_j$
+    \end{itemize}
+\end{prop}
+
+\begin{proof}
+    C'est une caractérisation de la borne supérieure.
+\end{proof}
+
+\begin{rem}
+    Dans le cas $I=\mathbb N$ et $(a_i)_{i\in\mathbb N}$ positive, la sommabilité équivaut à la convergence de $\sum a_i$. Si la famille est sommable, $(S_n)$ est croissante majorée donc la série converge, et si la série converge, alors les sommes sur un segment sont majorées par la somme de la série.
+\end{rem}
+
+\begin{prop}
+    \Hyp $(a_i)_{i\in I}$, $(b_i)_{i\in I}$ des familles de réels positifs
+    \begin{concenum}
+    \item Si $0\leq a_i\leq b_i$ pour tout $i\in I$ et $(b_i)_i$ est sommable, alors $(a_i)_i$ est sommable et \[
+            \sum_{i\in I}a_i\leq \sum_{i\in I}b_i
+        \]
+    \item Pour $\lambda\in\mathbb R_+$, si $(a_i)_i$ et $(b_i)_i$ sont sommables, $(\lambda a_i+b_i)_i$ aussi et \[
+            \lambda\sum_{i\in I}a_i+\sum_{i\in I}b_i=\sum_{i\in I}(\lambda a_i+b_i)
+        \]
+    \end{concenum}
+\end{prop}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Ok
+        \item Pour tout $J\in \mathcal P_f(I)$, \[
+                \sum_{j\in J}(\lambda a_j+b_j)=\lambda\sum_{j\in J}a_j+\sum_{j\in J}b_j\leq \lambda \sum_{i\in I}a_i+\sum_{i\in I}b_i\defeq M
+            \]
+            Soit $\epsilon>0$. Il existe $J_1, J_2\in\mathcal P_f(I)$ tels que \[
+                \sum_{j\in I}a_j-\epsilon'\leq \sum_{j\in J_1}a_j\qquad \text{ et }\qquad \sum_{j\in I}b_j-\epsilon'\leq \sum_{j\in J_2}b_j
+            \]
+            donc pour $J=J_1\cup J_2$, \[
+                M-\lambda\epsilon'-\epsilon'=M-\epsilon\leq \sum_{j\in J}(\lambda a_j+b_j)
+            \]
+            donc \conc
+    \end{enumerate}
+\end{proof}
+
+\section{Familles sommables de complexes}
+
+\begin{defprop}
+    \Hyp $(a_k)_{k\in I}$ une famille dénombrable de complexes, $\alpha_k=\Re(a_k)$ et $\beta_k=\Im(a_k)$
+    \begin{concenum}
+    \item $(a_k)_{k\in I}$ est sommable\index{famille sommable} ssi $(|a_k|)_{k\in I}$ est sommable.
+    \item Dans ce cas, $(\alpha_k^+)$, $(\alpha_k^-)$, $(\beta_k^+)$ et $(\beta_k^-)$ sont sommables\footnote{$u_n^+=\max(u_n, 0), \quad u_n^-=\max(-u_n, 0)$ pour écrire $u_n=u_n^+-u_n^-$} et on pose \[
+            \sum_{i\in I}a_i\defeq\sum_{i\in I}\alpha_i^+-\sum_{i\in I}\alpha_i^-+i\sum_{i\in I}\beta_i^+-i\sum_{i\in I}\beta_i^-
+        \]
+    \item Si $(a_i)_i$ et $(b_i)_i$ sont sommables et $\lambda\in\mathbb C$ alors $(\lambda a_i+b_i)_{i\in I}$ est sommable et \[
+            \lambda\sum_{i\in I}a_i+\sum_{i\in I}b_i=\sum_{i\in I}(\lambda a_i+b_i)
+        \]
+    \end{concenum}
+\end{defprop}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Définition
+        \item $0\leq \alpha_k^\pm\leq |\alpha_k|\leq |a_k|$
+    \end{enumerate}
+\end{proof}
 
 \section{Produits infinis}
 
@@ -56,5 +236,9 @@ On dira que le produit $\prod(1+a_k)$ converge si et seulement si $p_n$ a une li
     \]
     avec $M_N=\max \{k, \quad \llbracket 1, k\rrbracket\text{ se décompose avec } p_1, \cdots p_N\}$. Puis, $N\to+\infty$ donne le résultat.
 \end{ex}
+
+Avec $s>1$ et $f:n\longmapsto \frac1{n^s}$, on trouve l'identité d'Euler\index{Euler!identité}: \[
+    \prod_{p\in\mathbb P}\frac1{1-\frac1{p^s}}=\zeta(s)
+\]
 
 \endchapter
