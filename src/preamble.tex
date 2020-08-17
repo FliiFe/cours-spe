@@ -1,5 +1,6 @@
 \usepackage[french]{babel}
 \usepackage[a4paper, margin=2cm]{geometry}
+\usepackage[hidelinks]{hyperref}
 \usepackage{amsmath}
 \usepackage{bbm}
 \usepackage{bm}
@@ -19,17 +20,16 @@
 \ifsolo
 \else
 \usepackage{lastpage}
-\usepackage[french]{minitoc}
+\usepackage[nohints,french]{minitoc}
 \fi
 \usepackage{tocloft}
 % \usepackage{lmodern}
 \usepackage{enumitem}
 \usepackage{needspace}
-\usepackage{imakeidx}
+\usepackage[noautomatic]{imakeidx}
 \usepackage[normalem]{ulem}
-\usepackage[hidelinks]{hyperref}
 
-\makeindex[intoc,columns=2,options={-s indexstyle.ist -o build/\jobname.ind}]
+\makeindex[intoc,columns=2]%,options={-s indexstyle.ist -o build/\jobname.ind}]
 \makeatletter
 \def\@idxitem{\par\hangindent 0pt}
 \makeatother
