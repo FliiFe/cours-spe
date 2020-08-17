@@ -1,4 +1,4 @@
-.PHONY: clean all figures help main
+.PHONY: clean all figures help main newchapter
 
 BLACK        := $(shell tput -Txterm setaf 0)
 RED          := $(shell tput -Txterm setaf 1)
@@ -25,7 +25,7 @@ help: ## Print available targets
 	@echo "  | make $(MAIN_TARGET)    ${YELLOW}# Same as: make main ${RESET}"
 	@echo ""
 	@echo "$(YELLOW)List of PHONY targets:$(RESET)"
-	@grep -E '^[a-zA-Z_0-9%-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  ${GREEN}${BOLD}%-10s${RESET} %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_0-9%-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  ${GREEN}${BOLD}%-12s${RESET} %s\n", $$1, $$2}'
 	@echo "$(YELLOW)Main target:$(RESET)"
 	@echo " " $(MAIN_TARGET)
 	@echo "$(YELLOW)List of figures:$(RESET)"
@@ -38,6 +38,25 @@ help: ## Print available targets
 			echo " " $$f; \
 		fi; \
 	done
+
+newchapter: ## Make a new chapter
+	@echo -ne "${GREEN}Chapter filename (no extension):${RESET} "; \
+	read fn; \
+	echo -ne "${GREEN}Chapter name:${RESET} "; \
+	read cn; \
+	if [[ "$$fn" =~ ^[a-zA-Z0-9-]+$$ ]]; then \
+		if ! [[ -z "$$cn" ]]; then \
+			cat .latex_templates/chapter-base.tex | sed s/FN/$$fn/g >$$fn.tex; \
+			cat .latex_templates/chapter-src.tex | sed "s/CN/$$cn/g" >src/$$fn.tex; \
+			echo \\input{src/$$fn.tex} >> src/chapterlist.tex; \
+		else \
+			echo "Chapter name empty"; \
+			exit 1; \
+		fi \
+	else \
+		echo "Filename does not match ^[a-zA-Z0-9-]+$$"; \
+		exit 1; \
+	fi;
 
 main: $(MAIN_TARGET) ## Build the main target
 
