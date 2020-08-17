@@ -265,6 +265,106 @@ Pour un ensemble dénombrable $I$, on note $\mathcal P_f(I)$ l'ensemble des part
     \end{enumerate}
 \end{cor}
 
+\begin{ex}
+    \[
+        \sum_{n\geq 2}(\zeta(n)-1)
+    \]
+    On a $\zeta(n)-1=\sum_{k\geq 2}\frac1{k^n}$. La famille $\displaystyle \left( \frac1{k^n} \right)_{n, k\geq 2}$ est-elle sommable ?
+
+    Pour $k\geq 2$, $\left(\frac1{k^n}\right)_{n\geq 2}$ est sommable (géométrique) et \[
+        \sum_{n\geq 2}\frac1{k^n}=\frac1{k^2}\frac1{1-\frac1k}=\frac1{k(k+1)}
+    \] est le terme général d'une série convergente, donc la famille est sommable et \[
+    \sum_{m\geq 2}\sum_{n\geq 2}\frac1{k^n}=\sum_{k\geq 2}\frac1{k-1}-\frac1k=1=\sum_{n\geq 2}\sum_{k\geq 2}\frac1{k^n}=\sum_{n\geq 2}(\zeta(n)-1)
+\]
+donc \[
+    \sum_{n\geq 2}(\zeta(n)-1)=1
+\]
+\end{ex}
+
+\begin{rem}
+    Une suite réelle est sommable si et seulement si elle est le terme général d'une série absolument convergente. Dans ce cas, \[
+        \sum_{n\in\mathbb N}a_n=\sum_{n=0}^{+\infty}a_n
+    \]
+\end{rem}
+
+\begin{prop}[Convergence cumulative]
+    \Hyp $(a_n)_{n\in\mathbb N}$ est une suite complexe
+    \Conc Il y a équivalence entre \begin{enumerate}[left=1.2cm,label=\alph{enumi}.]
+        \item $(a_n)$ est sommable
+        \item $\sum a_n$ est absolument convergente
+        \item $\forall \sigma\in\mathfrak S(\mathbb N), (a_{\sigma(n)})$ est sommable
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}~
+    \begin{itemize}
+        \item $(a\iff b)$ OK
+        \item $(b\implies c)$ Soit $\sigma\in\mathfrak S(\mathbb N)$ et $J$ fini. \[
+                \sum_{k\in J}|a_{\sigma(k)}|=\sum{k\in\sigma(J)}|a_k|\leq \sum_{k\in\mathbb N}|a_k|
+            \]
+        \item $(c\implies a)$ $\sigma=\id$
+    \end{itemize}
+\end{proof}
+
+\begin{thm}[Produit de Cauchy]
+    \Hyp $(a_p)_{p\in\mathbb N}$, $(b_q)_{q\in\mathbb N}$ des familles complexes sommables et \[
+        c_n=\sum_{p+q=n}a_pb_q=\sum_{k=0}^na_kb_{n-k}=\sum_{k=0}^na_{n-k}b_k
+    \]
+    \begin{concenum}
+    \item $(c_n)_{n\in\mathbb N}$ est sommable
+    \item \[
+            \sum_{n=0}^{+\infty}c_n= \left( \sum_{p=0}^{+\infty} a_p \right)\cdot \left( \sum_{q=0}^{+\infty}b_q \right)
+        \]
+    \end{concenum}
+\end{thm}
+
+\begin{proof}
+    On note \[
+        I_n=\{(p, q)\in\mathbb N^2, \quad p+q=n\}
+    \]
+    de sorte que $(I_n)$ est une partition de $\mathbb N^2$. On note \[
+        J_n=\{n\}\times \mathbb N
+    \]
+    de sorte que $(J_n)$ est aussi une partition de $\mathbb N^2$. La famille $(a_nb_q)_{q\in\mathbb N}$ est sommable et \[
+        \sum_{q\in\mathbb N}|a_nb_q|=|a_n|\underbrace{\sum_{q\in\mathbb N}|b_q|}_{\text{fixé}}
+    \]
+    est le terme général d'une série convergente ($(a_n)$ sommable).
+    On a donc $(a_pb_q)_{(p, q)\in\mathbb N^2}$ sommable et on somme par paquets sur les $I_n$:\[
+        \sum_{(p, q)\in\mathbb N^2}a_pb_q=\sum_{n=0}^{+\infty}\sum_{(p, q)\in\mathbb N^2}a_pb_q=\sum_{n\in\mathbb N}c_n
+    \]
+\end{proof}
+
+\section{Exemples}
+
+\subsection{Théorème de réarrangement de Steinitz}
+
+\index{Steinitz (théorème de réarrangement de -- )}
+
+On note $(a_n)_n$ une suite réelle telle que $\sum a_n$ est semi-convergente. On va montrer que pour tout $\ell\in\bar{\mathbb R}$, il existe $\sigma\in\mathfrak S(\mathbb N)$ tel que \[
+    \sum_{n=0}^{+\infty}a_{\sigma(n)}=\ell
+\]
+On note $a_n=a_n^+-a_n^-$ donc $\sum a_n^+$ et $\sum a_n^-$ divergent car $\sum a_n$ semi-convergente. On fixe $\alpha\in\mathbb R$, \[I^+=\{n\in\mathbb N, a_n\geq 0\}\qquad I^-=\{n\in\mathbb N, a_n<0\}\]
+On note $(i_n)_n$ (resp. $(j_n)_n$) la suite croissante de tous les éléments de $I^+$ (resp. $I^-$).
+On note $k_1$ le plus petit indice $k\geq 0$ tel que \[
+    -\alpha+a_{i_1}+\cdots +a_{i_{k_1}}>0
+\]
+et $\rho_1$ le plus petit indice tel que \[
+    -\alpha+a_{i_1}+\cdots +a_{i_{k_1}}+a_{j_1}+\cdots +a_{j_{\rho_1}}<0
+\]
+On itère le processus pour construire $\sigma=(i_1, \cdots, i_{k_1}, j_1, \cdots j_{\rho_1}, i_{k_1+1}, \cdots, i_{k_2}, \cdots)\in\mathfrak S(n)$ (c'est bijectif car $I^+\sqcup I^-=\mathbb N$).
+
+Puis, \[
+    \left| -\alpha+\sum_{k=0}^na_{\sigma(k)} \right|\leq |a_{p_n}|+|a_{q_n}|\xrightarrow[n\to+\infty]{}0
+\]
+avec $p_n$ le plus grand entier tel que $\rho_{p_n}\leq \sigma(n)$ et $q_n$ le plus petit entier tel que $\sigma(n)\leq \rho_{q_n}$
+Pour $\ell=\pm\infty$ c'est le même principe.
+
+\subsection{Inégalité de Carleman}
+
+\index{Carleman (inégalité de -- )}
+
+On suppose que $\sum a_n$
+
 \section{Produits infinis}
 
 Soit $(a_n)$ une suite numérique\index{produit infini} et \[
