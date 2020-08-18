@@ -18,6 +18,7 @@ jobs:
         pre_compile: make all
         extra_system_packages: make
         root_file: cours.tex
+        latexmk_use_xelatex: true
     - name: Upload result
       uses: actions/upload-artifact@v2-preview
       with:
