@@ -365,7 +365,62 @@ Pour $\ell=\pm\infty$ c'est le même principe.
 
 \index{Carleman (inégalité de -- )}
 
-On suppose que $\sum a_n$
+On suppose que $\sum a_n$ converge pour $(a_n)$ positive. On va montrer que \[
+    \sum_{k=1}^{+\infty}(a_1\cdots a_k)^{\frac1k}\leq e\sum_{k=1}^{+\infty a_n}
+\]
+On note $(c_n)_n$ une quite à préciser. \[
+    (a_1\cdots a_n)^{\frac1n}=(c_1a_1\cdots c_na_n)^{\frac1n}\cdot (c_1\cdots c_n)^{-\frac1n}
+\]
+On va prendre $c_k=\dfrac{(k+1)^k}{k^{k-1}}$ de sorte que $(c_1\cdots c_n)^{\frac1n}=n+1$. On a alors \begin{align*}
+    (a_1\cdots a_n)^{\frac 1n}&\leq \frac1{n(n+1)}\sum_{k=1}^nc_ka_k \tag{AM-GM}\\
+                              &\leq \frac e{n(n+1)}\sum_{k=1}^nka_k=\sum_{k=1}^n\frac{eka_k}{n(n+1)}
+\end{align*}
+car $c_k=k \left( 1+\frac1k \right)^k\leq ek $. On pose \[
+    u_{k, n}\defeq \begin{cases}
+        \dfrac{eka_k}{n(n+1)}&\text{ si }k\leq n\\[1em] 0 & \text{ sinon }
+    \end{cases}
+\]
+Pour $k\in\mathbb N^\star,$ \[
+    \sum_{n=1}^{+\infty}u_{k, n}=\sum_{n=k}^{+\infty}\frac{eka_k}{n(n+1)}=eka_k\sum_{n=k}^{+\infty} \left( \frac1k-\frac1{k+1} \right)=ea_k
+\]
+qui est le tg d'une série convergente, donc $(u_{k, n})_{k, n}$ est sommable, puis (Fubini) \[
+    \sum (a_1\cdots a_n)^{\frac1n} \text{ CV }
+\]
+et \[
+    \sum_{n=1}^{+\infty}(a_1\cdots a_n)^{\frac1n}\leq \sum_{k=1}^{+\infty}\sum_{n=1}^{+\infty}u_{k,n}=e\sum_{k=1}^{+\infty}a_k
+\]
+
+\begin{rem}
+    La constante $e$ est optimale.
+\end{rem}
+
+Pour le voir, on pose \[
+    a_k= \begin{cases}
+        \frac1k&\text{ si }k\leq n\\ 0&\text{ sinon }
+    \end{cases}
+\]
+et $c$ une autre constante qui convient. \[
+    \sum_{k=1}^n(a_1\cdots a_k)^{\frac 1k}=\sum_{k=1}^n \left( \frac1{k!} \right)^{\frac1k}\leq c\sum_{k=1}^n\frac1k
+\]
+et \[
+    \left( \frac1{k!} \right)^{\frac1k}=\exp \left( -\frac1k\sum_{i=1}^k\ln i \right)
+\]
+avec \[
+    \ln i\sim i\ln i-(i-1)\ln (i-1) \implies \sum_{i=1}^k\ln i\sim k\ln k
+\]
+Puis on pose $\displaystyle u_k=\sum_{i=1}^k\ln i-k\ln k$ de sorte que \[
+    u_{k+1}-u_k=\ln(k+1)-(k+1)\ln(k+1)+k\ln k\sim -1
+\]
+C'est le terme général d'une série divergente (signe constant APCR) donc $u_k\sim -k$ et \[
+    -\frac1k\sum_{i=1}^k\ln i=-\ln k+1+o(1)
+\]
+donc \[
+    \left( \frac1{k!} \right)^{\frac1k}\sim \frac ek.
+\]
+C'est le terme général d'une série divergente donc \[
+    \sum_{k=1}^n a_k\sim e\sum_{k=1}^n\frac1k\sim e\ln n
+\]
+donc $e\leq C$
 
 \section{Produits infinis}
 
