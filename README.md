@@ -11,7 +11,7 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 - [x] Suites et séries numériques
 - [x] Familles sommables
 - [x] Intégration sur un intervalle quelconque
-- [ ] Suites et séries de fonctions
+- [x] Suites et séries de fonctions (partiellement)
 - [x] Algèbre générale
 - [x] Arithmétique
 - [x] Réduction des endomorphismes

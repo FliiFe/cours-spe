@@ -139,3 +139,12 @@ jobs:
         asset_path: ./target/familles-sommables.pdf
         asset_name: familles-sommables.pdf
         asset_content_type: application/pdf
+    - name: Release series-fonctions
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/series-fonctions.pdf
+        asset_name: series-fonctions.pdf
+        asset_content_type: application/pdf
