@@ -11,7 +11,7 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 - [x] Suites et séries numériques
 - [x] Familles sommables
 - [x] Intégration sur un intervalle quelconque
-- [x] Suites et séries de fonctions (partiellement)
+- [ ] Suites et séries de fonctions
 - [x] Algèbre générale
 - [x] Arithmétique
 - [x] Réduction des endomorphismes
@@ -19,7 +19,7 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 - [ ] Espaces vectoriels normés
 - [ ] Limite - Continuité - Fonctions vectorielles
 - [ ] Compacité - Connexité
-- [ ] Séries entières
+- [x] Séries entières (partiellement)
 - [ ] Variables aléatoires discrètes
 - [ ] Espérance - Variance
 - [ ] Les intégrales à paramètres

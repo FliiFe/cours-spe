@@ -1,0 +1,52 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Séries entières} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Séries entières}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Définitions}
+
+\begin{dfn}
+    Soit $(a_n)_n$ une suite complexe. La série de fonctions de terme général $(a_nz^n)_n$ est appelée série entière\index{série entière} et se note $\sum a_nz^n$. Lorsqu'elle converge, on note sa somme \[
+        \sum_{n=0}^{+\infty}a_nz^n
+    \]
+\end{dfn}
+
+\begin{ex}
+    Le domaine de convergence de $\sum z^n$ est $\mathcal D_0(0, 1)$.
+
+    Le somaine de convergence $\mathcal D$ de $\sum \frac{z^n}n$ vérifie $\mathcal D_o(0, 1)\subsetneq\mathcal D\subsetneq \mathcal D_f(0, 1)$
+\end{ex}
+
+\section{Rayon de convergence}
+\begin{thmdef}
+    \Hyp $(a_n)_{n\in\mathbb N}\in\mathbb C^{\mathbb N}$
+    \begin{concenum}
+    \item Les cinq nombres suivants sont égaux {\begin{align*}
+                R_1 &= \sup\{|z|, \quad z\in\mathbb C, (a_nz^n)_n\text{ bornée }\} \\
+                R_2 &= \sup\{|z|, \quad z\in\mathbb C, a_nz^n\longrightarrow 0\}\\
+                R_3 &= \sup\{|z|, \quad z\in\mathbb C, \sum a_nz^n\text{ converge }\} \\
+                R_4 &= \sup\{|z|, \quad z\in\mathbb C, \sum a_nz^n\text{ converge absolument }\} \\
+                R_5 &= \inf\{|z|, \quad z\in\mathbb C, (a_nz^n)_n\text{ non bornée}\}
+    \end{align*}
+avec la convention $\inf\emptyset=+\infty$.}
+    On appelle ce nomber \emph{rayon de convergence\index{rayon de convergence}} de $\sum a_nz^n$ et on le note $R(a_nz^n)$
+\item Si $\sum a_nz^n$ admet pour rayon de convergence $R$, alors le domaine de convergence est tel que \[
+        \mathcal D_0(0, R)\subseteq \mathcal D\subseteq \mathcal D_f(0, R)
+    \]
+    \end{concenum}
+\end{thmdef}
+
+\begin{proof}
+    
+\end{proof}

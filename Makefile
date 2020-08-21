@@ -69,13 +69,14 @@ changemainfilename: ## Change the main document's base name
 		mv $(MAIN_FN).tex $$nfn.tex; \
 		sed -i "s/^MAIN_FN.*:=.*\$$/MAIN_FN := $$nfn/" Makefile
 
-all: $(PDFS) ## Build everything
+all: $(PDFS) $(MAIN_TARGET) ## Build everything
 
 src/figures/%.pdf: src/figures/%.tex
-	@echo "$(GREEN)Compiling $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
+	@echo "$(GREEN)Compiling figure $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
 	cd src/figures/ && $(LATEXMK) $(<F) && latexmk -silent -c $(<F)
 
 $(MAIN_TARGET): $(MAIN_FN).tex src/*.tex $(FIGURES)
+	@echo "$(GREEN)Compiling main document $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
 	$(LATEXMK) $<
 	cp build/$(@F) $@
 
