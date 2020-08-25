@@ -403,15 +403,15 @@ Ainsi, $a_0, \cdots, a_n\in\mathbb Z$ et la réciproque est évidente. On a ains
 
 \begin{exo}
     Variantes \begin{itemize}
-        \item $P(\mathbb C)\subset R$. Solution: Formule de Gregory, interpolation de Lagrange, polynôme conjugué, ...
-        \item $P(\mathbb Q)\subset \mathbb Q$. Solution: Formule de Gregory
+        \item $P(\mathbb C)\subset \mathbb R$. Solution: Formule de Gregory, interpolation de Lagrange, polynôme conjugué, ...
+        \item $P(\mathbb Q)\subset \mathbb Q$. Solution: Formule de Gregory, interpolation de lagrange.
         \item $P(\mathbb Q)\subset \mathbb R\setminus \mathbb Q$ et $P(\mathbb R\setminus \mathbb Q)\subset \mathbb Q$
         \item $P(\mathbb Q)=\mathbb Q$
     \end{itemize}
 \end{exo}
 
 \begin{proof}[Résolution]
-    Résolution pour $P(\mathbb Q)=\mathbb Q$. Déjà $P\in\mathbb Q[X]$ (par la $2$-ième variante), donc il existe $d$ entier positif minimal tel que $Q=dP\in\mathbb Z[X]$. On se donne $v$ premier avec les coefs $a_i$ de $Q$ et $d$ et $v$ nombre premier. Il existe $\frac ab$ tel que $P(\frac ab)=\frac1v$ donc \[
+    Résolution pour $P(\mathbb Q)=\mathbb Q$. Déjà $P\in\mathbb Q[X]$ (par la $2$-ième variante), donc il existe $d$ entier positif minimal tel que $Q=dP\in\mathbb Z[X]$. On se donne $v$ premier avec les coefs $a_i$ de $P$ et $d$ et $v$ nombre premier. Il existe $\frac ab$, $a\land b=1$, tel que $P(\frac ab)=\frac dv$ donc \[
         v(a_na^n+\cdots +a_0b^n)=db^n \implies v\;|\; b^n\implies v\;|\; b
     \]
     et si $n\geq 2$ alors $v^2\;|\;db^n$ et donc $v|a_na^n+\cdots$ donc $v\;|\;a$ absurde. Par suite, $n=1$, et la réciproque est évidente.
