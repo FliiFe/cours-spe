@@ -48,5 +48,79 @@ avec la convention $\inf\emptyset=+\infty$.}
 \end{thmdef}
 
 \begin{proof}
-    
+    \begin{enumerate}
+        \item $R_1\geq R_2\geq R_3\geq R_4$. Par l'absurde, on suppose $R_4<R_5$. Alors, on prend $z\in\mathbb C$ tel que $R_5>|z|>R_4$. $(a_nz^n)_n$ est bornée donc si on note $z'$ tel que $|z|>|z'|>R_4$, alors \[
+                a_nz'^n=\underbrace{a_nz^n}_{\text{borné}} \underbrace{\left( \frac{z'}{z}  \right)^n}_{|\;|<1} \text{ tg série ACV absurde car }|z'|>R_4
+            \]
+            Donc $R_4\geq R_5$. Par l'absurde, $R_1>R_5$. On se donne $z\in\mathbb C$ tel que $R_1>|z|>R_5$ et il existe $z', z''\in\mathbb C$ tel que $R_1\geq |z''|>|z|>|z'|\geq R_5$, $(a_nz'^n)$ non bornée et $(a_nz''^n)$ bornée. \[
+                \underbrace{a_nz'^n}_{\lnot \text{ borné}}=a_nz''^n \left( \frac{z'}{z''} \right)^n\xrightarrow{}_{n\to+\infty}0
+            \]
+            absurde donc $R_1=R_2=R_3=R_4=R_5$.
+        \item Immédiat vu $1$.
+    \end{enumerate}
+\end{proof}
+% 
+\begin{rem}[Lemme d'Abel]
+    Si $a\in\mathbb C^{\mathbb N}$ et $z_0\in\mathbb C^\star$. Si la suite $(a_nz_0^n)$ est bornée alors $\forall z\in\mathcal D_o(0, |z_0|), \sum a_nz^n$ ACV
+\end{rem}
+
+\section{Opération algébrique sur les séries entières}
+
+\begin{prop}
+    \Hyp $\sum a_nz^n$ de rayon $R_a$ et $\sum b_nz^n$ de rayon $R_b$
+    \begin{concenum}
+    \item Pour $\lambda\in\mathbb C^\star$, $R(\sum \lambda a_nz^n)=R_a$
+    \item Pour $\lambda\in\mathbb C^\star$, $R(\sum(\lambda a_n+b_n)z^n)\geq \min(R_a, R_b)$ et si $R_a\neq R_b$, il y a égalité.
+    \item Le produit de Cauchy des séries $\sum a_nz^n$ et $\sum b_nz^n$ est la série $\sum c_nz^n$ avec \[
+            c_n=\sum_{p+q=n}a_pb_q
+        \]
+        et $R(\sum c_nz^n)\geq \min(R_a, R_b)$.
+    \end{concenum}
+\end{prop}
+
+\begin{proof}
+    \begin{enumerate}
+        \item "Trivial"
+        \item $\geq 0$ OK et $R_a\neq R_b\implies =$ OK
+        \item Si $|z|<\min(R_a, R_b)$ alors $\sum a_nz^n, \sum b_nz^n$ ACV donc produit de Cauchy ie \conc
+    \end{enumerate}
+\end{proof}
+
+\section{Régularité des séries entières}
+
+\begin{prop}
+    \Hyp $\sum a_nz^n$ de RCV $R>0$ (ou $+\infty$)
+    \begin{concenum}
+    \item $\forall a\in ]0, R[, \quad \sum a_nz^n$ CVN sur $\mathcal D_f(0, a)$.
+    \item $z\in\mathcal D_o(0, R)\longmapsto\displaystyle \sum_{k=0}^{+\infty}a_nz^n$ est continue
+    \end{concenum}
+\end{prop}
+
+\begin{proof}
+    $a\in]0, R[$. \[
+        \sum_{z\in\mathcal D_f(0, a)}|a_nz^n|=|a_na^n|\text{ tg série CV car } a<R \text{ donc il y a CVN sur }\mathcal D_f(0, a)
+    \]
+    d'où la continuité sur tous les $\mathcal D_f(0, a)$ donc sur $\mathcal D_o(0, a)$.
+\end{proof}
+
+\begin{thm}
+    \Hyp $f(z)=\sum_{n\geq 0}a_nz^n$ série entière de rayon $R>0$
+    \begin{concenum}
+    \item On appelle série dérivée la série $\sum_{n\geq 1}na_nz^{n-1}$
+        \begin{enumerate}
+            \item Cette série a le même rayon de convergence que $f$
+            \item $f$ est dérivable sur $]-R, R[$ et $\forall t\in ]-R, R[,$ \[
+                    f'(t)=\sum_{n\geq 1}a_nnt^{n-1}
+                \]
+        \end{enumerate}
+        \item La série $\sum_{n\geq 0}\frac{a_n}{n+1}z^{n+1}$ a même rayon de convergence que $f$ et pour $t\in ]-R, R[$, \[
+            \sum_{n\geq 0}\frac{a_n}{n+1}z^{n+1}=\int_0^tf(u)\diff u
+            \]
+    \end{concenum}
+\end{thm}
+
+\begin{proof}
+    \begin{enumerate}
+        \item $|na_nz^{n-1}|=|a_na^n|\times \left| (\frac za)^{n-1} \right|\xrightarrow{}0$ si $|z|<R$.
+    \end{enumerate}
 \end{proof}
