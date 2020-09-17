@@ -471,7 +471,7 @@ d'où $\omega_n\sim\frac1{12n^2}$
 \end{ex}
 
 \begin{rem}
-    Si $\ell\neq 0$, $u_n\sim \ell$ (tg série DV) donc $\sum_{k=1}^nu_k\sim n\ell$ d'où le théorème de Cesàro. Si $\ell=0$ alors $u_n=o(1)$ et $\sum_{k=1}^nu_k=o(1)$ et on retrouve aussi Cesàro.
+    Si $\ell\neq 0$, $u_n\sim \ell$ (tg série DV) donc $\sum_{k=1}^nu_k\sim n\ell$ d'où le théorème de Cesàro. Si $\ell=0$ alors $u_n=o(1)$ et $\sum_{k=1}^nu_k=o(n)$ et on retrouve aussi Cesàro.
 
     Plus généralement, si \[
         \frac{a_{n+1}-a_n}{b_{n+1}-b_n}\longrightarrow\ell\neq 0
@@ -566,7 +566,7 @@ On part de deux suites $(a_n)$ et $(b_n)$ et d'une somme $\displaystyle\sum_{k=0
     S_n=\sum_{k=0}^na_k
 \]
 On a $a_n=S_n-S_{n-1}$ pour $n\geq 0$ avec $S_{-1}=0$. Alors, \[
-    \sum_{k=0}^na_kb_k=\sum_{k=0}^n(S_n-S_{n-1})b_k=\sum_{k=0}S_k(b_k-b_{k+1})+S_n b_n
+    \sum_{k=0}^na_kb_k=\sum_{k=0}^n(S_n-S_{n-1})b_k=\sum_{k=0}^{n-1}S_k(b_k-b_{k+1})+S_n b_n
 \]
 
 \begin{ex}

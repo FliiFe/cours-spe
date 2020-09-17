@@ -262,7 +262,7 @@ et pour $m<n$, on identifie le coefficient de $x^m$ (il est nul). Sinon, $n=m$ e
 \subsection{Sommation terme à terme}
 
 Si $a_1\leq b_1, \cdots, a_n\leq b_n$ alors \[
-    a_1+\cdots +a_n\leq b_1+\cdots b_n
+    a_1+\cdots +a_n\leq b_1+\cdots+ b_n
 \]
 avec égalité ssi $a_1=b_1,\cdots a_n=b_n$. Le résultat se généralise identiquement aux séries convergentes.
 
@@ -295,7 +295,7 @@ On a, pour $\lambda, \mu\geq 0$, $f(\lambda a, \mu b)=\lambda^2\mu^2f(a, b)$ de 
     \sum_{i=1}^n \lambda^2a_i^2=\sum_{j=1}^nb_j^2\mu^2=1
 \]
 de sorte qu'on peut supposer sans perte de généralité \[
-    \sum_{i=1}^na_i^2=\sum_{j=1}^n b_j=1
+    \sum_{i=1}^na_i^2=\sum_{j=1}^n b_j^2=1
 \]
 Puis $|a_ib_i|\leq \frac{a_i^2+b_i^2}2$ donc \[
     \sum_{i=1}^n|a_ib_i|\leq \frac{1+1}2=1
@@ -408,8 +408,8 @@ de sorte que $u_0^-\leq u_n^-\leq u_n\leq u_n^+\leq u_0^+$ et les deux suites $u
 \end{dfn}
 
 On va construire une extractice $\varphi$ de la manière suivante: \begin{itemize}
-    \item $\varphi(0)=0$. On a $u_1^+-1<u_1+$ donc $\exists k_1\geq 1, u_1^+-1<u_{k_2}\leq u_1^+$
-    \item $\varphi(1)=k_1$. On a $u_2^+-\frac12<u_2+$ donc $\exists k_2\geq k_1, u_2^+-\frac12<u_{k_2}\leq u_2^+$
+    \item $\varphi(0)=0$. On a $u_1^+-1<u_1^+$ donc $\exists k_1\geq 1, u_1^+-1<u_{k_1}\leq u_1^+$
+    \item $\varphi(1)=k_1$. On a $u_2^+-\frac12<u_2^+$ donc $\exists k_2\geq k_1, u_2^+-\frac12<u_{k_2}\leq u_2^+$
     \item $\cdots$
 \end{itemize}
 On construit ainsi une sous-suite convergente (qui converge vers $\limsup u$).

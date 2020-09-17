@@ -274,7 +274,7 @@ Pour un ensemble dénombrable $I$, on note $\mathcal P_f(I)$ l'ensemble des part
     On a $\zeta(n)-1=\sum_{k\geq 2}\frac1{k^n}$. La famille $\displaystyle \left( \frac1{k^n} \right)_{n, k\geq 2}$ est-elle sommable ?
 
     Pour $k\geq 2$, $\left(\frac1{k^n}\right)_{n\geq 2}$ est sommable (géométrique) et \[
-        \sum_{n\geq 2}\frac1{k^n}=\frac1{k^2}\frac1{1-\frac1k}=\frac1{k(k+1)}
+        \sum_{n\geq 2}\frac1{k^n}=\frac1{k^2}\frac1{1-\frac1k}=\frac1{k(k-1)}
     \] est le terme général d'une série convergente, donc la famille est sommable et \[
     \sum_{m\geq 2}\sum_{n\geq 2}\frac1{k^n}=\sum_{k\geq 2}\frac1{k-1}-\frac1k=1=\sum_{n\geq 2}\sum_{k\geq 2}\frac1{k^n}=\sum_{n\geq 2}(\zeta(n)-1)
 \]
@@ -302,7 +302,7 @@ donc \[
     \begin{itemize}
         \item $(a\iff b)$ OK
         \item $(b\implies c)$ Soit $\sigma\in\mathfrak S(\mathbb N)$ et $J$ fini. \[
-                \sum_{k\in J}|a_{\sigma(k)}|=\sum{k\in\sigma(J)}|a_k|\leq \sum_{k\in\mathbb N}|a_k|
+                \sum_{k\in J}|a_{\sigma(k)}|=\sum_{k\in\sigma(J)}|a_k|\leq \sum_{k\in\mathbb N}|a_k|
             \]
         \item $(c\implies a)$ $\sigma=\id$
     \end{itemize}
@@ -332,9 +332,15 @@ donc \[
     \]
     est le terme général d'une série convergente ($(a_n)$ sommable).
     On a donc $(a_pb_q)_{(p, q)\in\mathbb N^2}$ sommable et on somme par paquets sur les $I_n$:\[
-        \sum_{(p, q)\in\mathbb N^2}a_pb_q=\sum_{n=0}^{+\infty}\sum_{(p, q)\in\mathbb N^2}a_pb_q=\sum_{n\in\mathbb N}c_n
+        \sum_{(p, q)\in\mathbb N^2}a_pb_q=\sum_{n=0}^{+\infty}\sum_{p+q=n}a_pb_q=\sum_{n\in\mathbb N}c_n
     \]
 \end{proof}
+
+\begin{rem}
+    On peut généraliser avec \[
+        \sum_{i_1, \cdots, i_r}a_{1,i_1}\cdots a_{r,i_r}=\sum_{n=0}^{+\infty}\sum_{i_1+\cdots+i_r=n}a_{1,i_1}\cdots a_{r, i_r}
+    \]
+\end{rem}
 
 \section{Exemples}
 
@@ -366,9 +372,9 @@ Pour $\ell=\pm\infty$ c'est le même principe.
 \index{Carleman (inégalité de -- )}
 
 On suppose que $\sum a_n$ converge pour $(a_n)$ positive. On va montrer que \[
-    \sum_{k=1}^{+\infty}(a_1\cdots a_k)^{\frac1k}\leq e\sum_{k=1}^{+\infty a_n}
+    \sum_{k=1}^{+\infty}(a_1\cdots a_k)^{\frac1k}\leq e\sum_{k=1}^{+\infty}a_n
 \]
-On note $(c_n)_n$ une quite à préciser. \[
+On note $(c_n)_n$ une suite à préciser. \[
     (a_1\cdots a_n)^{\frac1n}=(c_1a_1\cdots c_na_n)^{\frac1n}\cdot (c_1\cdots c_n)^{-\frac1n}
 \]
 On va prendre $c_k=\dfrac{(k+1)^k}{k^{k-1}}$ de sorte que $(c_1\cdots c_n)^{\frac1n}=n+1$. On a alors \begin{align*}
@@ -418,7 +424,7 @@ donc \[
     \left( \frac1{k!} \right)^{\frac1k}\sim \frac ek.
 \]
 C'est le terme général d'une série divergente donc \[
-    \sum_{k=1}^n a_k\sim e\sum_{k=1}^n\frac1k\sim e\ln n
+    \sum_{k=1}^n (a_1\cdots a_k)^{\frac1k}\sim e\sum_{k=1}^n\frac1k\sim e\ln n
 \]
 donc $e\leq C$
 
