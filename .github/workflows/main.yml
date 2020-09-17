@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Compilation
-      uses: xu-cheng/latex-action@2.2.0
+      uses: xu-cheng/latex-action@master
       with:
         pre_compile: make all
         extra_system_packages: make
