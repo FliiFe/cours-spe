@@ -5,153 +5,153 @@ on:
     pull_request:
       branches: [ master ]
 
-      jobs:
-        build:
-          runs-on: ubuntu-latest
+jobs:
+build:
+  runs-on: ubuntu-latest
 
-          steps:
-            - uses: actions/checkout@v2
-            - name: Compilation
-              uses: xu-cheng/texlive-action/full@master
-              with:
-                run: |
-                  apk add make
-                  make all
-            - name: Upload result
-              uses: actions/upload-artifact@v2-preview
-              with:
-                name: cours.zip
-                path: ./target/*.pdf
-            - name: Get current time
-              uses: srfrnk/current-time@master
-              id: current-time
-              with:
-                format: YYYY-MM-DD-HH-mm-ss
-            - name: Get current time
-              uses: srfrnk/current-time@master
-              id: current-date
-              with:
-                format: YYYY-MM-DD
-            - name: Create release tag
-              uses: anothrNick/github-tag-action@1.17.2
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                CUSTOM_TAG: ${{ steps.current-time.outputs.formattedTime }}
-            - name: Create Release
-              id: create_release
-              uses: actions/create-release@latest
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  tag_name: ${{ steps.current-time.outputs.formattedTime }}
-                  release_name: Version du ${{ steps.current-date.outputs.formattedTime }}
-                  draft: false
-                  prerelease: false
-            - name: Release polynomes
-              uses: actions/upload-release-asset@v1
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./target/polynomes.pdf
-                  asset_name: polynomes.pdf
-                  asset_content_type: application/pdf
-            - name: Release calculdiff
-              uses: actions/upload-release-asset@v1
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./target/calculdiff.pdf
-                  asset_name: calculdiff.pdf
-                  asset_content_type: application/pdf
-            - name: Release cours
-              uses: actions/upload-release-asset@v1
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./target/cours.pdf
-                  asset_name: cours-complet.pdf
-                  asset_content_type: application/pdf
-            - name: Release algebre
-              uses: actions/upload-release-asset@v1
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./target/algebre-generale.pdf
-                  asset_name: algebre-generale.pdf
-                  asset_content_type: application/pdf
-            - name: Release arithmétique
-              uses: actions/upload-release-asset@v1
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./target/arithmetique.pdf
-                  asset_name: arithmetique.pdf
-                  asset_content_type: application/pdf
-            - name: Release reduction
-              uses: actions/upload-release-asset@v1
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./target/reduction.pdf
-                  asset_name: reduction.pdf
-                  asset_content_type: application/pdf
-            - name: Release analyse asymptotique
-              uses: actions/upload-release-asset@v1
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./target/analyse-asymptotique.pdf
-                  asset_name: analyse-asymptotique.pdf
-                  asset_content_type: application/pdf
-            - name: Release intégration
-              uses: actions/upload-release-asset@v1
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./target/integration.pdf
-                  asset_name: integration.pdf
-                  asset_content_type: application/pdf
-            - name: Release suites-series
-              uses: actions/upload-release-asset@v1
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./target/suites-series.pdf
-                  asset_name: suites-series.pdf
-                  asset_content_type: application/pdf
-            - name: Release familles-sommables
-              uses: actions/upload-release-asset@v1
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./target/familles-sommables.pdf
-                  asset_name: familles-sommables.pdf
-                  asset_content_type: application/pdf
-            - name: Release series-fonctions
-              uses: actions/upload-release-asset@v1
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./target/series-fonctions.pdf
-                  asset_name: series-fonctions.pdf
-                  asset_content_type: application/pdf
-            - name: Release series-entieres
-              uses: actions/upload-release-asset@v1
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./target/series-entieres.pdf
-                  asset_name: series-entieres.pdf
-                  asset_content_type: application/pdf
+  steps:
+    - uses: actions/checkout@v2
+    - name: Compilation
+      uses: xu-cheng/texlive-action/full@master
+      with:
+        run: |
+          apk add make
+          make all
+    - name: Upload result
+      uses: actions/upload-artifact@v2-preview
+      with:
+        name: cours.zip
+        path: ./target/*.pdf
+    - name: Get current time
+      uses: srfrnk/current-time@master
+      id: current-time
+      with:
+        format: YYYY-MM-DD-HH-mm-ss
+    - name: Get current time
+      uses: srfrnk/current-time@master
+      id: current-date
+      with:
+        format: YYYY-MM-DD
+    - name: Create release tag
+      uses: anothrNick/github-tag-action@1.17.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        CUSTOM_TAG: ${{ steps.current-time.outputs.formattedTime }}
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.current-time.outputs.formattedTime }}
+          release_name: Version du ${{ steps.current-date.outputs.formattedTime }}
+          draft: false
+          prerelease: false
+    - name: Release polynomes
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/polynomes.pdf
+          asset_name: polynomes.pdf
+          asset_content_type: application/pdf
+    - name: Release calculdiff
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/calculdiff.pdf
+          asset_name: calculdiff.pdf
+          asset_content_type: application/pdf
+    - name: Release cours
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/cours.pdf
+          asset_name: cours-complet.pdf
+          asset_content_type: application/pdf
+    - name: Release algebre
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/algebre-generale.pdf
+          asset_name: algebre-generale.pdf
+          asset_content_type: application/pdf
+    - name: Release arithmétique
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/arithmetique.pdf
+          asset_name: arithmetique.pdf
+          asset_content_type: application/pdf
+    - name: Release reduction
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/reduction.pdf
+          asset_name: reduction.pdf
+          asset_content_type: application/pdf
+    - name: Release analyse asymptotique
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/analyse-asymptotique.pdf
+          asset_name: analyse-asymptotique.pdf
+          asset_content_type: application/pdf
+    - name: Release intégration
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/integration.pdf
+          asset_name: integration.pdf
+          asset_content_type: application/pdf
+    - name: Release suites-series
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/suites-series.pdf
+          asset_name: suites-series.pdf
+          asset_content_type: application/pdf
+    - name: Release familles-sommables
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/familles-sommables.pdf
+          asset_name: familles-sommables.pdf
+          asset_content_type: application/pdf
+    - name: Release series-fonctions
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/series-fonctions.pdf
+          asset_name: series-fonctions.pdf
+          asset_content_type: application/pdf
+    - name: Release series-entieres
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/series-entieres.pdf
+          asset_name: series-entieres.pdf
+          asset_content_type: application/pdf
