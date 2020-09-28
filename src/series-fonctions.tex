@@ -13,3 +13,46 @@
     \minitoc
 \fi
 \thispagestyle{empty}
+
+Dans tout le chapitre, $I$ est un intervalle non trivial, $A$ est une partie non vide de $\mathbb R$ et $K=\mathbb R$ ou $\mathbb C$. Plus tard, on pourra remplacer $A$ par une partie d'un e.v.n (de dimension finie généralement) et $K$ un e.v.n.
+
+\section{Différents types de convergence}
+
+\begin{dfn}
+    On note $(f_n)_n$ une suite de fonctions de $I$ dans $K$. \begin{enumerate}
+        \item On dit que $(f_n)_n$ \emph{converge simplement}\index{convergence simple} (CVS) s'il existe $f:I\to K$ telle que $\forall x\in I, f_n(x)\xrightarrow[n\to+\infty]{} f(x)$
+        \item On dit que $(f_n)_n$ \emph{converge uniformément}\index{convergence uniforme} (CVU) s'il existe $f:I\to K$ telle que \begin{itemize}
+            \item $(f_n-g)$ est bornée à partir d'un certain rang
+            \item $\sup_I|f_n-g|\xrightarrow[n\to+\infty]{}0$
+        \end{itemize}
+    \item On dit que $(f_n)$ converge uniformément sur tout segment (CVUTS) si pour tout segment $J\subset I$, on a $f_n\xrightarrow[J]{\mathrm{CVU}}f$
+    \end{enumerate}
+    Dans chacun des cas, on peut remplacer $I$ par $A$.
+\end{dfn}
+
+\begin{rem}
+    \begin{itemize}
+        \item CVU $\implies$ CVUTS $\implies$ CVS
+        \item CVS $\centernot\implies$ CVUTS $\centernot \implies$ CVU
+    \end{itemize}
+\end{rem}
+
+\begin{rem}
+    La limite uniforme d'une suite uniformément convergente est identique à la limite simple de cette suite. En particulier, on a unicité de la limite pour les trois convergences.
+\end{rem}
+
+\section{Opérations simples sur les convergences}
+
+\begin{prop}
+    \Hyp $(u_n)_n,(v_n)_n$ sont des suites de fonctions de $I$ dans $K$, $u,v:I\to K$, $\lambda\in K$.
+    \Conc Si $u_n\xrightarrow{}u$, $v_n\xrightarrow v$ avec de la convergence simple (resp. CVUTS, CVU) alors \[
+        (\lambda u_n+v_n)\xrightarrow{}\lambda u+v
+    \]
+    avec la convergence simple (resp. CVUTS, CVU).
+\end{prop}
+
+\begin{proof}
+    Évident.
+\end{proof}
+
+
