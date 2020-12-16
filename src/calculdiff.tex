@@ -62,7 +62,7 @@ $E$ est un $\mathbb R$-e.v de dimension $n$ (donc isomorphe à $\mathbb R^n$), $
         Dans ce cas $\varphi$ est unique et se note $\diff f_a$
     \item Si $f$ est différentiable en $a$ alors $f$ est continue en $a$
     \item Si $f$ est différentiable en $a$ alors $f$ a une dérivée en $a$ selon tout $v$ et \[
-            D_vf(a)=df_a(v)
+            D_vf(a)=\diff f_a(v)
         \]
     \end{concenum}
 \end{defprop}
@@ -82,7 +82,7 @@ $E$ est un $\mathbb R$-e.v de dimension $n$ (donc isomorphe à $\mathbb R^n$), $
 
 \begin{thmdef}
     ~ \begin{enumerate}
-        \item Soit $f\in\mathcal L(E, F)$ et $a\in E$. La fonction $f$ est différentiable en $a$ et $df_a=f$.
+        \item Soit $f\in\mathcal L(E, F)$ et $a\in E$. La fonction $f$ est différentiable en $a$ et $\diff f_a=f$.
         \item Si $\mathcal B=(e_1, \cdots, e_n)$ est une base de $E$ et si $\pi_i$ est l'application $i$-ième coordonnée alors $\forall a\in E, \diff \pi_i=\pi_i$ se dépend pas de $a$. On note cette application $\diff x_i$.
         \item Si $\mathcal B$ est une base de $E$ et $f$ est différentiable en $a$ alors \[
                 \diff f_a=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)\diff x_i
@@ -95,7 +95,7 @@ $E$ est un $\mathbb R$-e.v de dimension $n$ (donc isomorphe à $\mathbb R^n$), $
         \item $f(a+h)=f(a)+f(h)$
         \item Ok
         \item $h=h_1e_1+\cdots +h_ne_n$, \[
-                \diff f_a(h)=h_1\diff f_a(e_1)+\cdots +h_n\diff f_a(e_n)=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)\diff x_i
+                \diff f_a(h)=h_1\diff f_a(e_1)+\cdots +h_n\diff f_a(e_n)=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)\diff x_i(h)
             \]
     \end{enumerate}
 \end{proof}
