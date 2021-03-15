@@ -83,7 +83,7 @@ $E$ est un $\mathbb R$-e.v de dimension $n$ (donc isomorphe à $\mathbb R^n$), $
 \begin{thmdef}
     ~ \begin{enumerate}
         \item Soit $f\in\mathcal L(E, F)$ et $a\in E$. La fonction $f$ est différentiable en $a$ et $\diff f_a=f$.
-        \item Si $\mathcal B=(e_1, \cdots, e_n)$ est une base de $E$ et si $\pi_i$ est l'application $i$-ième coordonnée alors $\forall a\in E, \diff \pi_i=\pi_i$ se dépend pas de $a$. On note cette application $\diff x_i$.
+        \item Si $\mathcal B=(e_1, \cdots, e_n)$ est une base de $E$ et si $\pi_i$ est l'application $i$-ième coordonnée alors $\forall a\in E, \diff \pi_i=\pi_i$ ne dépend pas de $a$. On note cette application $\diff x_i$.
         \item Si $\mathcal B$ est une base de $E$ et $f$ est différentiable en $a$ alors \[
                 \diff f_a=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)\diff x_i
             \]
@@ -295,7 +295,7 @@ et \[
             + & \underbrace{h_n \frac{\partial f}{\partial x_n} (a_1, \cdots, a_{n-1}, c_{n,h})}_{\longrightarrow h_n \frac{\partial f}{\partial x_n}(a) \text{ donc } =h_n \frac{\partial f}{\partial x_n}(a)+o(1) } \\
             =\phantom + & \underbrace{h_1 \frac{\partial f}{\partial x_1}(a)+\cdots + h_n \frac{\partial f}{\partial x_n} (a) }_{\text{AL}}  + \underbrace{h_1o(1)+\cdots h_no(1)}_{o(h)}
         \end{align*}
-        donc $f$ est différentiable sur $\Omega$. Si $F\neq R$ on raisonne coordonnée par coordonnée.
+        donc $f$ est différentiable sur $\Omega$. Si $F\neq \mathbb R$ on raisonne coordonnée par coordonnée.
 \end{enumerate}
 \end{proof}
 
@@ -458,8 +458,14 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
 
 \begin{proof}~
     \begin{enumerate}
-        \item Trivial
-        \item C'est une application du théorème de représentation de Riesz\index{Riesz (théorème de représentation de -- )}
+        \item C'est dans la définition.
+        \item C'est une application du théorème de représentation de Riesz\index{Riesz (théorème de représentation de -- )}. On note \[
+                \varphi:x\in E\longmapsto(y\in E\longmapsto (x|y))
+            \]
+            De sorte que \[
+                \varphi(a)=\varphi(b)\iff \forall y\in E,\;(a-b|y)=0\iff a-b\in E^\perp=\{0\}\iff a=b
+            \]
+            donc $\varphi$ est linéaire injective en dimension finie, et $\dim E^\star=\dim E$ donc cette application est bijective: $w=\varphi^{-1}(\diff f_a)$ convient.
         \item \[
                 \diff f_a(x)=\sum_{i=1}^n\partial_if(a)\underbrace{\diff x_i(x)}_{(e_i|x)}
             \]
@@ -548,7 +554,7 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
 \end{center}
 
 \begin{rem}
-    C'est une généralisation possible du théorème de Rolle\index{Rolle!généralisation}. Plus généralement, si $K$ est un compact d'intérieur non vide de $\mathbb R^n$ tel que $f:\mathbb R^n\to\mathbb R$ différentiable est constante sur $\partial K=K\setminus \mathring K$, alors il existe $x\in\mathring K$ tel que $\diff f_x=0$
+    C'est une généralisation possible du théorème de Rolle\index{Rolle!généralisation}. Plus généralement, si $K$ est un compact d'intérieur non vide de $\mathbb R^n$ tel que $f:\mathbb R^n\to\mathbb R$ différentiable est constante sur $\partial K=\bar K\setminus \mathring K$, alors il existe $x\in\mathring K$ tel que $\diff f_x=0$
 \end{rem}
 
 \section{Application à la géométrie}
