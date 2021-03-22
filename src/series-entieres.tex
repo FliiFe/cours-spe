@@ -106,7 +106,7 @@ avec la convention $\inf\emptyset=+\infty$.}
 \begin{thm}
     \Hyp $f(z)=\sum_{n\geq 0}a_nz^n$ série entière de rayon $R>0$
     \begin{concenum}
-    \item On appelle série dérivée la série $\sum_{n\geq 1}na_nz^{n-1}$
+    \item On appelle série dérivée\index{série dérivée} la série $\sum_{n\geq 1}na_nz^{n-1}$
         \begin{enumerate}
             \item Cette série a le même rayon de convergence que $f$
             \item $f$ est dérivable sur $]-R, R[$ et $\forall t\in ]-R, R[,$ \[
@@ -121,6 +121,107 @@ avec la convention $\inf\emptyset=+\infty$.}
 
 \begin{proof}
     \begin{enumerate}
-        \item $|na_nz^{n-1}|=|a_na^n|\times \left| (\frac za)^{n-1} \right|\xrightarrow{}0$ si $|z|<R$.
+        \item $|na_nz^{n-1}|=|a_na^n|\times \left| (\frac za)^{n-1} \right|\times \frac na\xrightarrow{}0$ si $|z|<a<R$. Puis, $(a_nz^n)$ non bornée entraîne $(na_nz^{n-1})$ non bornée. On a donc $R(\sum na_nz^{n-1})=R$.
+
+            On vérifie les hypothèses du théorème de dérivation terme à terme: \begin{itemize}
+                \item $\forall n\in\mathbb N, \quad t\in]-R,R[\longmapsto a_nt^n$ est $\mathcal C^1$
+                \item $\sum a_nt^n$ converge simplement sur $]-R, R[$
+                \item $\sum(a_nz^n)'=\sum na_nz^{n-1}$ converge normalement donc univormément sur tout segment de $]-R, R[$.
+            \end{itemize}
+            Ainsi, le théorème donne bien \conc
+        \item Il y a égalité des rayons de convergence (vu 1) et pour tout $t\in ]-R,R[$, la série $\sum a_nz^n$ converge normalement donc uniformément sur $[0,t]$, donc le théorème d'intégration terme à terme donne \[
+                \int_0^tf(u)\diff u=\sum a_n\int_0^t u^n\diff u=\sum \frac{a_n}{n+1}t^{n+1}
+            \]
     \end{enumerate}
 \end{proof}
+
+\begin{ex}
+    On note $f(t)=-\ln(1-t)$ de sorte que \[
+        \forall t\in ]-1, 1[, \qquad f(t)=\sum_{n\geq 0}\frac{t^{n+1}}{n+1}.
+    \]
+    Alors, \[
+        f(-t)=\sum_{n\geq 0}(-1)^{n+1}\frac{t^{n+1}}{n+1}
+    \]
+    et (théorème des séries alternées\index{séries alternées (théorème des --), TSA}) \[
+        \forall t\in[0, 1[, \forall n\in\mathbb N, \qquad \left|f(-t)-\sum_{k=0}^n(-1)^{k+1}\frac{t^{k+1}}{k+1}\right|\leq \frac1{n+2}\xrightarrow[n\to+\infty]{}0
+    \]
+    donc le reste CVU vers $0$, puis le théorème de la double limite donne \[
+        f(-t)\xrightarrow[\substack{t\to1\\t<1}]{}\sum_{n\geq 0}\frac{(-1)^{n+1}}{n+1}=-\ln2
+    \]
+\end{ex}
+
+\begin{rem}
+    Pour $f:\mathbb C\longrightarrow \mathbb C$, on peut définir la dérivabilité au sens complexe par \[
+        f \text{ dérivable en } a\iff \lim_{\substack{h\to0\\h\neq 0}}\frac{f(a+h)-f(a)}h\text{ existe }
+    \]
+    On note $f(z)=\sum a_nz^n$ une série entière de rayon de convergence $R>0$ et $a\in\mathcal D_o(0, R)$. On va montrer que $f$ est dérivable au sens complexe en $a$ et que \[
+        f'(a)=\sum_{n\geq 0}na_na^{n-1}
+    \]
+    Pour $h\neq 0$ assez petit en module: 
+    \begin{align*}
+        \frac{f(a+h)-f(a)}h&=\sum_{n\geq 0}a_n\frac{(a+h)^n-a^n}h\\&=\sum_{n\geq 0}a_n\underbrace{\left(\binom n1a^{n-1}+\binom n2a^{n-2}h+\cdots+h^{n-1}\right)}_{\displaystyle\xrightarrow[\substack{h\to0\\h\neq 0}]{}na^{n-1}}
+    \end{align*}
+    Puis si on pose $\varphi:t\longmapsto (a+th)^n$, on a (Taylor-Lagrange) \[
+        |\varphi(1)-\varphi(0)-\varphi'(0)|\leq \frac1{2!}\sup_{[0,1]}|\varphi''|\leq \frac{n(n-1)}2|h|^2(|a|+|h|)^{n-2}
+    \]
+    donc si $b$ est tel que $|a|<b<R$, il existe un voisinage $V$ de $0$ tel que $\forall h\in V, |a|+|h|<|b|$ et dans ce cas
+    \begin{align*}
+        \left|  \frac{f(a+h)-f(a)}h-\sum_{n\geq 0}na_na^{n-1}\right|&\leq \left| \sum_{n\geq 0}a_n \left( \frac{(a+h)^n-a^n}h-na^{n-1} \right) \right| \\
+                                                                    &\leq \sum_{n\geq 0}|a_n|\frac{n(n-1)}2|h|(|a|+|h|)^{n-2}\\
+                                                                    &\leq |h|\underbrace{\sum_{n\geq 0}|a_n|\frac{n(n-1)}2b^{n-2}}_{\text{CV car $b<R$, série dérivée 2\textsuperscript{nde}}}\xrightarrow[\substack{h\to0\\h\neq 0}]{}0
+    \end{align*}
+\end{rem}
+
+\begin{ex}
+    Calcul de $I=\displaystyle\int_0^1\ln(1-x)\ln x\diff x$. \begin{itemize}
+        \item $x\longmapsto \ln(1-x)\ln x$ est intégrable car continue par prolongement
+        \item $\forall x\in ]0,1[$, $\ln(1-x)=-\sum_{n\geq 0}\frac{x^{n+1}}{n+1}$ donc \[
+                I=-\int_0^1\sum_{n\geq 0}\frac{x^{n+1}}{n+1}\ln x\diff x
+            \]
+        \item $\sum \frac{x^{n+1}}{n+1}\ln x$ converge simplement sur $]0,1[$
+        \item Les $x\longmapsto \frac{x^{n+1}}{n+1}\ln x$ sont continues intégrables sur $]0, 1[$ et \[
+                \int_0^1 \left| \frac{x^{n+1}}{n+1}\ln x \right|\diff x=-\int_0^1\frac{x^{n+1}}{n+1}\ln x\diff x=\frac1{(n+2)^2(n+1)}\quad \text{tg série CV}
+            \]
+    \end{itemize}
+    Donc le théorème d'interversion série-intégrale (version convergence dominée) donne \[
+        I=\sum_{n\geq 0}\int_0^1\frac{-x^{n+1}}{n+1}\ln x\diff x=\sum_{n\geq 0}\frac{1}{(n+2)^2(n+1)}
+    \]
+    et \[
+        \frac1{X(X+1)^2}=\frac{-1}{(X+1)^2}+\frac{-1}{X+1}+\frac1X
+    \]
+    d'où finalement $I=2-\dfrac{\pi^2}6$
+\end{ex}
+
+\begin{thm}
+    \Hyp $f(z)=\sum_{n\geq 0}a_nz^n$ avec le RCV $R>0$
+    \begin{concenum}
+    \item $f\in\mathcal C^\infty(]-R, R[, \mathbb C)$ et \[\forall n\in\mathbb N, \quad \frac{f^{(n)}(0)}{n!}=a_n\]
+    \item \[
+            \forall t\in ]-R, R[, \qquad f(t)=\sum_{n\geq 0}\frac{f^{(n)}(0)}{n!}t^n
+        \]
+    \item Si $\sum a_nz^n=\sum b_nz^n$ au voisinage de $0$ alors $\forall n, a_n=b_n$
+    \end{concenum}
+\end{thm}
+
+\begin{proof}
+    Facile.
+\end{proof}
+
+\begin{rem}
+    On peut faire des DSE ailleurs qu'en $0$. Soit $f(z)=\sum_{n\geq 0}a_nz^n$ DSE avec un rayon de convergence non nul, et $a\in\mathcal D_o(0, R)$. On va montrer que pour $z\in\mathcal D_o(a, R-|a|)$, \[
+        f(z)=\sum_{n\geq 0}\frac{f^{(n)}(a)}{n!}(z-a)^n
+    \]
+    On a: \[
+        \forall z\in\mathcal D_o(0, R), \qquad f(z)=\sum_{n\geq 0}a_nz^n
+    \]
+    donc \[\forall k\geq 0, \qquad f^{(k)}(a)=\sum_{n\geq k}a_n\frac{n!}{(n+k)!}a^{n-k}.\]
+    On va montrer que la famille \[
+        \left( a_n\frac{n!}{(n+k)!}a^{n-k}\frac{(z-a)^k}{k!} \right)_{n\geq k\geq 0}
+    \]
+    est sommable. Pour $n\in\mathbb N$, \[
+        \sum_{k=0}^n \left| a_n\frac{n!}{(n+k)!}a^{n-k}\frac{(z-a)^k}{k!} \right|=|a_n|(|a|+|z-a|)^n
+    \]
+    et si $z\in\mathcal D_o(a, R-|a|)$, on a $|a|+|z-a|<R$ donc c'est le terme général d'une série convergente. Le théorème de Fubini\index{Fubini (théorème de --)} donne alors \[
+        \sum_{n\geq 0}\sum_{k=0}^na_n\frac{n!}{(n+k)!}a^{n-k}\frac{(z-a)^k}{k!}=\sum_{n\geq 0}a_nz^n=f(z)=\sum_{k\geq 0}\sum_{n\geq k}a_n\frac{n!}{(n+k)!}a^{n-k}\frac{(z-a)^k}{k!}=\sum_{k\geq 0}\frac{f^{(k)}(a)}{k!}(z-a)^k
+    \]
+\end{rem}
