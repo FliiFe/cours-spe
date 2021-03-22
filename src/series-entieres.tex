@@ -225,3 +225,87 @@ avec la convention $\inf\emptyset=+\infty$.}
         \sum_{n\geq 0}\sum_{k=0}^na_n\frac{n!}{(n+k)!}a^{n-k}\frac{(z-a)^k}{k!}=\sum_{n\geq 0}a_nz^n=f(z)=\sum_{k\geq 0}\sum_{n\geq k}a_n\frac{n!}{(n+k)!}a^{n-k}\frac{(z-a)^k}{k!}=\sum_{k\geq 0}\frac{f^{(k)}(a)}{k!}(z-a)^k
     \]
 \end{rem}
+
+\section{DSE usuels}
+
+\begin{rem}
+    On note $f\in\mathcal C^\infty(]-R, R[, \mathbb C)$. Pour $n\in\mathbb N$ et $x\in ]-R, R[$, \[
+        f(x)=\sum_{k=0}^n\frac{f^{(k)}(0)}{k!}x^k+\underbrace{\int_0^x\frac{(x-t)^n}{n!}f^{(n+1)}(t)\diff t}_{\defeq R_n(x)}
+    \]
+    Si $R_n(x)\xrightarrow[n\to+\infty]{\text{CVS}}0$ sur $]-R, R[$ alors la série \[
+        \sum \frac{f^{(k)}(0)}{k!}x^k
+    \]
+    converge et on a \[
+        f(x)=\sum_{n\geq 0} \frac{f^{(k)}(0)}{k!}x^k
+    \]
+    On en déduit que si $|z|<R$, \[
+        \frac{f^{(k)}(0)}{k!}z^k\xrightarrow{k\to+\infty}0
+    \]
+    et \[
+        \sum_{k\geq 0}\frac{f^{(k)}(0)}{k!}z^k
+    \]
+    a un rayon de convergence $\geq R$. La fonction $f$ se prolonge alors naturellement sur $\mathcal D_o(0, R)$ avec son DSE.
+\end{rem}
+
+\begin{ex}
+    Pour la fonction $\exp$ sur $\mathbb R$, \[
+        \left| R_n(x) \right|\leq \frac{|x|^{n+1}}{(n+1)!}\max(1, e^x)\xrightarrow[n\to+\infty]{}0
+    \]
+    donc la fonction $\exp$ est DSE sur $\mathbb R$ et admet un prolongement $\mathcal C^\infty$ sur $\mathbb C$ donné par ce DSE.
+\end{ex}
+
+\begin{thm}
+    \begin{center}
+        \begin{tabular}{ccc}
+            \hline \hline Expression & Terme général du DSE & Rayon de Convergence \\
+            \hline
+            \rule{0pt}{2em} $\exp(x)$ & $\displaystyle \frac{x^k}{k!}$ & $+\infty$ \\
+            \rule{0pt}{2em} $\ch(x)$ & $\displaystyle \frac{x^{2k}}{(2k)!}$ & $+\infty$ \\
+            \rule{0pt}{2em} $\sh(x)$ & $\displaystyle \frac{x^{2k+1}}{(2k+1)!}$ & $+\infty$ \\
+            \rule{0pt}{2em} $\sin(x)$ & $\displaystyle \frac{(-1)x^{2k+1}}{(2k+1)!}$ & $+\infty$ \\
+            \rule{0pt}{2em} $\cos(x)$ & $\displaystyle \frac{(-1)^kx^{2k}}{(2k)!}$ & $+\infty$ \\
+            \rule{0pt}{2em} $\dfrac1{1-x}$ & $x^k$ & $1$ \\
+            \rule{0pt}{2em} $\ln(1-x)$ & $\dfrac{x^k}k$ & $1$ \\
+            \rule{0pt}{2em} $(1+x)^\alpha$ & $\displaystyle \binom \alpha kx^k$ & $1$ si $\alpha\not\in\mathbb N$, $+\infty$ sinon \\[1em]
+            \hline
+        \end{tabular}
+    \end{center}
+\end{thm}
+
+\begin{proof}
+    On ne fait la preuve que pour le dernier cas. On pose \[
+        f:x\longmapsto(1+x)^\alpha
+    \]
+    et \[
+        g:x\longmapsto \sum_{k\geq 0}\binom \alpha kx^k.
+    \] La fonction $f$ vérifie $f^{(k)}(0)=\alpha(\alpha-1)\cdots (\alpha-k+1)$, et la règle de D'Alembert \index{D'Alembert (règle de -- )} montre que dans le cas $\alpha \not \in \mathbb N$, $R(g)=1$. On a $g(0)=1$ et \[
+    g'(x)=\sum_{k\geq 1}k\binom \alpha kx^{k-1}=\alpha\sum_{k\geq 1}\binom {\alpha-1}{k-1}x^{k-1}
+\]
+donc \[
+    (1+x)g'(x)=\alpha \left( \sum_{k\geq 1} \left( \binom {\alpha-1}k+\binom{\alpha-1}{k-1} \right)x^k+1 \right)=\alpha g(x)
+\]
+C'est un problème de Cauchy dont $f$ et $g$ sont solutions, donc $f=g$.
+\end{proof}
+
+\begin{ex}
+    $f=\arctan$. \begin{itemize}
+        \item $f'(x)=\dfrac1{1+x^2}$ sur $\mathbb R$
+        \item Sur $]-1, 1[$, \[
+                \frac1{1+x^2}=\sum_{k\geq 0}(-1)^kx^{2k}
+            \]
+    \end{itemize}
+    Donc, \[
+        f(x)=\arctan x=\sum_{k\geq 0}\frac{(-1)^kx^{2k+1}}{2k+1}
+    \]
+\end{ex}
+
+\begin{ex}
+    $f:x\longmapsto \sqrt{1+x}$. On a (RCV $1$) \[
+        \sqrt{1+x}=\sum_{k\geq 0}\binom {\frac12}kx^k
+    \]
+    et après calculs, on a l'expression suivante du binôme généralisé: \[
+        \binom{\frac12}k=\frac{(-1)^{k-1}}{2^{2k-1}}\cdot \frac1{2k-1}\cdot \binom{2k-1}k
+    \]
+\end{ex}
+
+% \section{Utilisation d'une primitive}
