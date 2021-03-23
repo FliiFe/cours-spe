@@ -71,7 +71,7 @@ avec la convention $\inf\emptyset=+\infty$.}
     \begin{concenum}
     \item Pour $\lambda\in\mathbb C^\star$, $R(\sum \lambda a_nz^n)=R_a$
     \item Pour $\lambda\in\mathbb C^\star$, $R(\sum(\lambda a_n+b_n)z^n)\geq \min(R_a, R_b)$ et si $R_a\neq R_b$, il y a égalité.
-    \item Le produit de Cauchy des séries $\sum a_nz^n$ et $\sum b_nz^n$ est la série $\sum c_nz^n$ avec \[
+    \item Le produit de Cauchy\index{Cauchy!produit} des séries $\sum a_nz^n$ et $\sum b_nz^n$ est la série $\sum c_nz^n$ avec \[
             c_n=\sum_{p+q=n}a_pb_q
         \]
         et $R(\sum c_nz^n)\geq \min(R_a, R_b)$.
@@ -308,4 +308,171 @@ C'est un problème de Cauchy dont $f$ et $g$ sont solutions, donc $f=g$.
     \]
 \end{ex}
 
-% \section{Utilisation d'une primitive}
+\section{Méthodes pour obtenir un DSE}
+\subsection{Utilisation d'une équation différentielle}
+
+\todo{Récupérer cette partie}
+\subsection{Utilisation d'une primitive}
+On se donne $a\in\mathbb R$ et on pose \[
+    \forall x\in ]-1, 1[, \qquad S(x)=\sum_{k\geq 1}\frac{\sin(ka)}kx^k
+\]
+On peut observer que $S(x)=\Im(H(x))$ où \[
+    H(x)=\sum_{k\geq 1}(e^{ix})^k\frac{x^k}k.
+\]
+$H$ est dérivable sur $]-1, 1[$ et \[
+    H'(x)=\sum_{k\geq 1}(e^{ix})^kx^{k-1}=\frac{e^{ia}}{1-e^{ia}x}
+\]
+d'où \[
+    \Im(H'(x))=\frac{x\sin a\cos a+\sin a-x\sin a\cos a}{1+x^2-2x\cos a}=\frac{\sin a}{(x-\cos a)^2+\sin^2a}
+\]
+Il y a deux cas: \begin{itemize}
+    \item $a\in\pi\mathbb Z$. Dans ce cas, $S\equiv 0$.
+    \item $\sin a\neq 0$ et une primitive de $\Im(H'(x))$ est \[
+            \arctan \left( \frac{x-\cos a}{\sin a} \right)
+        \]
+        et $S(0)=0$ permet d'avoir \[
+            S(x)=\arctan \left( \frac{x-\cos a}{\sin a} \right)+\arctan \left( \tan \left( \frac\pi2-a \right) \right)
+        \]
+\end{itemize}
+
+\begin{exo}
+    Application à \[
+        S(x)=\sum_{k\geq 1}\frac{\cos (ka)}kx^k
+    \]
+\end{exo}
+
+\section{Utilisation des DSE}
+
+\subsection{Pour la régularité}
+
+On pose \[
+    f:t\longmapsto \begin{cases}
+        \ch(\sqrt t) &\text{ si }t\geq 0 \\
+        \cos(\sqrt{-t}) &\text{ sinon }
+    \end{cases}
+\]
+On veut savoir si $f$ est $\mathcal C^\infty$. On a \[
+    \forall x\in\mathbb R, \qquad f(t)=\sum_{k\geq 0}\frac{t^k}{(2k)!}
+\]
+donc $f$ est DSE sur $\mathbb R$ et donc bien $\mathcal C^\infty$
+
+\subsection{Utilisation combinatoire}
+
+On note $a_n$ le nombre d'involutions de $\mathfrak S_n$. On convient que $a_0=0$. On va montrer que $a_{n+1}=a_n+na_{n-1}$, puis on va calculer \[
+    \sum_{n\geq 0}\frac{a_n}{n!}x^n
+\]
+et montrer \[
+    \frac{a_n}{n!}\xrightarrow[n\to+\infty]{}0
+\]
+
+Soit $\sigma\in\mathfrak S_{n+1}$ une involution. Il y a deux cas: \begin{itemize}
+    \item $\sigma(n+1)=n+1$, on a $a_n$ choix possibles
+    \item $\sigma(n+1)\neq n+1$. On a $n$ choix pour $\sigma(n+1)$ et $\sigma_{|\llbracket 1, n\rrbracket \setminus\{\sigma(n+1)\}}$ est une involution, donc on a au total $na_{n-1}$ choix.
+\end{itemize}
+
+On sait que $\frac{a_n}{n!}$ donc la série a un RCV $\geq 1$. On note \[
+    f:x\in ]-1, 1[\;\longmapsto \sum_{n\geq 0}\frac{a_n}{n!}x^n
+\]
+On a alors \[
+    f'(x)=\sum_{n\geq 1}\frac{na_n}{n!}x^{n-1}=\sum_{n\geq 0}\frac{a_{n+1}}{n!}x^n=1+x+(1+x)f(x)
+\]
+Puis $f'(0)=0$ donc $f$ est solution d'un problème de Cauchy. Par unicité: \[
+    f(x)=e^xe^{\frac {x^2}2}-1
+\]
+et cette fonction est DSE avec un RCV infini, et la convergence en $1$ conclut.
+
+\section{Étude au bord}
+
+\subsection{Continuité radiale}
+
+On note $f(z)=\sum_{n\geq 1}a_nz^n$ de rayon de convergence $R>0$. On suppose qu'il existe $z_0$ tel que \[
+    \sum_{n\geq 0}a_nz_0^n
+\]
+converge et $|z_0|=R$. On va montrer que \[
+    \lim_{\substack{t\to1\\t<1}}f(tz_0)=f(z_0).
+\]
+On note \[
+    R_q\defeq \sum_{k=q+1}^{+\infty}a_kz_0^k\xrightarrow[q\to+\infty]{}0.
+\]
+On a \begin{align*}
+    \sum_{k=n}^ma_kt^kz_0^k&=\sum_{k=n}^mt^k(R_{k-1}-R_k)\\&=R_{n-1}t^n+R_n(t^{n+1}-t^n)+\cdots +R_{m-1}(t^m-t^{m-1})+R_mt^m
+\end{align*}
+Soit $\epsilon>0$. Alors, $\exists N\in\mathbb N, \forall n\geq N, \quad |R_n|\leq \epsilon'=\frac\epsilon5$.
+Pour $m>n\geq N+1$ et $t\in[0, 1]$, \[
+    \left| \sum_{k=n}^ma_kt^kz_0^k \right|\leq 2\epsilon' + \epsilon'(t^n-t^{n+1}+\cdots t^{m-1}-t^m)\leq 3\epsilon'
+\]
+On fait $m\longrightarrow +\infty$ de sorte que \[
+    f(tz_0)-f(z_0)=\sum_{k=0}^{n-1}(a_kt^kz_0^k-a_kz_0^k)+\sum_{k=n}^{+\infty}(a_nt^kz_0^k-a_kt_0^k)
+\]
+et avec $n=N$, \[
+    \left| f(tz_0)-f(z_0) \right|\leq \underbrace{\left| \sum_{k=0}^{N-1}(a_kt^kz_0^k-a_kz_0^k) \right|}_{\displaystyle \xrightarrow[t\to 1]{}0}+4\epsilon'
+\]
+Donc il existe $\delta>0$ tel que $\forall t\in ]1-\delta, 1[$, $|f(tz_0)-f(z_0)|\leq 5\epsilon'=\epsilon$ ce qui conclut.
+
+\subsection{Formule utile}
+
+On note \[
+    f:t\longmapsto \sum_{n\geq 0}a_nt^n
+\]
+avec un RCV $R\geq 1$.
+
+Pour $|t|<1$, si on note $S_n=a_0+\cdots +a_n$, on a \[
+    \frac{f(t)}{1-t}=\sum_{n\geq 0}S_nt^n\qquad \qquad \text{(Produit de Cauchy)}
+\]
+
+Si $f(1)$ converge, alors en notant $R_n=\sum_{k\geq n+1}a_k$, \[
+    (t-1)\sum_{n\geq 0}R_nt^n=-R_0+\sum_{n\geq 1}(R_{n-1}-R_n)t^n=-R_0+f(t)-a_0=f(t)-f(1)
+\]
+donc pour $t\neq 1$, \[
+    \frac{f(t)-f(1)}{t-1}=\sum_{n\geq 0}R_nt^n
+\]
+
+\begin{ex}
+    \[
+        \sum_{n\geq 1}\frac{t^n}n=-\ln(1-t)\implies \sum_{k\geq 1}H_kt^k=\frac{-\ln(1-t)}{1-t}
+    \]
+\end{ex}
+
+\begin{ex}
+    On note \[
+        f:t\longmapsto \sum_{n\geq 2}\frac{(-1)^n}{\ln n}t^n
+    \]
+    avec le rayon de convergence $1$ (facile). Cette fonction est continue en $1$ (on peut le voir avec le TSA uniforme ou la continuité radiale). On va vérifier qu'elle est dérivable en $1$. On a \[
+        \frac{f(t)-f(1)}{t-1}=\sum_{n\geq 0}R_nt^n\qquad \qquad \text{où}\quad R_n\defeq\sum_{k=n+1}^{+\infty}\frac{(-1)^k}{\ln k}
+    \]
+    Le TSA donne la convergence de $\sum R_n$, de sorte que la continuité radiale donne l'existence de la limite du taux d'accroissement en $1^-$, ce qui conclut.
+\end{ex}
+
+\subsection{Recherche d'équivalents}
+
+\subsubsection{Limite en un point non-convergent du bord}
+
+On se donne $f(t)=\sum_{n\geq 0}a_nt^n$ avec $a_n\geq 0$ et le RCV $1$, et on suppose que $\sum a_n$ diverge. On va montrer que \[
+    f(t)\xrightarrow[t\to1^-]{}+\infty
+\]
+Soit $A>0$. Il existe un rang $N$ tel que \[
+    \sum_{k=0}^Na_k>A+1.
+\]
+Puis, pour $t\in [0, 1[$, \[
+    f(t)\geq \sum_{k=0}^Na_kt^k\xrightarrow[t\to1^-]{}\sum_{k=0}^Na_k
+\]
+donc il existe $\delta>0$ tel que $\forall t\in ]1-\delta, 1[$, \[
+    f(t)\geq \sum_{k=0}^Nt^k\geq A
+\]
+donc \conc.
+
+\subsubsection{Sommation de relation de comparaison pour les séries entières}
+
+On se donne $f(t)=\sum_{n\geq 0}a_nt^n$ et $g(t)=\sum_{n\geq 0}b_nt^n$ de rayons de convergence $1$ et de termes généraux positifs et équivalents ($a_n,b_n\geq 0$ et $a_n\sim b_n$). On suppose aue $\sum b_n$ diverge, et on va montrer que \[
+    f(t)\underset{1^-}\sim g(t)
+\]
+Déjà, $g(t)\xrightarrow[t\to1^-]{}+\infty$ (vu \emph i). Puis, pour $\epsilon>0$, il existe $N\in\mathbb N$ tel que pour $n\geq N$, \[
+    (1-\epsilon')b_n\leq a_n\leq (1+\epsilon')b_n \implies (1-\epsilon')\sum_{n\geq N}b_nt^n\leq \sum_{n\geq N}a_nt^n\leq(1+\epsilon')\sum_{n\geq N}b_nt^n
+\]
+D'où \[
+    (1-\epsilon')g(t)-(1-\epsilon')\sum_{k=0}^{N-1}b_kt^k\leq f(t)-\sum_{k=0}^{N-1}a_kt^k\leq (1+\epsilon')g(t)-(1+\epsilon')\sum_{k=0}^{N-1}b_kt^k
+\]
+En divisant par $g(t)$ et pour un $\delta>0$, $1-\delta<t<1$, \[
+    1-2\epsilon'\leq \frac fg(t)\leq 1+2\epsilon'
+\]
+d'où \conc.
