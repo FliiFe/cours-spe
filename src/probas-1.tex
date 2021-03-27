@@ -1,0 +1,105 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Variables aléatoires discrètes} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Variables aléatoires discrètes}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Tribu}
+\subsection{Définition}
+
+Dans tout le chapitre, $\Omega$ désigne un ensemble non vide.
+
+\begin{dfn}
+    Un ensemble $\mathcal A$ de parties de $\Omega$ est une \textbf{tribu}\index{tribu} si \begin{itemize}
+        \item $ \mathcal A$ est stable par passage au complémentaire
+        \item $\emptyset \in \mathcal A$
+        \item $ \mathcal A$ est stable par union dénombrable
+    \end{itemize}
+    On dit alors que $(\Omega, \mathcal A)$ est un \textbf{espace probabilisable}\index{espace probabilisable}  et les éléments de $\mathcal A$ sont appelés  \textbf{événements} \index{événement}
+\end{dfn}
+
+
+\subsection{Propriétés ensemblistes}
+
+\begin{prop}
+    Soit $(\Omega, \mathcal A)$ un espace probabilisable. Si $(A_n)\in \mathcal A^{\mathbb N}$ alors \[
+        \bigcap_{n\in\mathbb N}A_n \in \mathcal A
+    \]
+\end{prop}
+
+\begin{proof}
+    C'est une union dénombrable de complémentaires
+\end{proof}
+
+\begin{notation}[HP]
+    \[
+        \underline{\lim}A_n=\bigcup_{n\in\mathbb N} \left( \bigcap_{m\geq n} A_m \right) \qquad \qquad \overline{\lim} A_n=\bigcap_{n\in\mathbb N} \left( \bigcup_{m\geq n}A_m \right) 
+    \]
+\end{notation}
+
+\subsection{Opérations sur les tribus}
+
+Soit $(\mathcal A_i)_{i\in I}$ une famille de tribus. L'ensemble \[
+    \bigcap_{i\in I}\mathcal A_i
+\]
+est une tribu (facile).
+
+\begin{rem}
+    On définit ainsi la notion de tribu engendrée: la tribu engendrée par $\mathcal E\subset \mathcal P(\Omega)$ est l'intersection de toutes les tribus contenant $\mathcal E$.
+\end{rem}
+
+\begin{dfn}
+    Soit $(\Omega, \mathcal A)$ un espace probabilisable. \begin{itemize}
+        \item $A,B\in \mathcal A$ sont \textbf{incompatible} si $A \cap B=\emptyset$
+        \item Pour $A\in \mathcal A$, on appelle  \textbf{événement contraire} l'événement $A^c$
+        \item On dit que $(A_i)_{i\in I} \in  \mathcal A^I$ est un \textbf{système complet d'événements}\index{système complet d'événements, SCE} si et seulement si $(A_i)_{i\in I}$ partitionne $\Omega$.
+    \end{itemize}
+\end{dfn}
+
+\section{Espace probabilisé}
+
+\begin{dfn}
+    Soit $(\Omega, \mathcal A)$ un espace probabilisable. On appelle \textbf{probabilité}\index{probabilité} sur $(\Omega, \mathcal A)$ une application $\mathbb P:\mathcal A \to  [0, 1]$ telle que \begin{itemize}
+        \item $\mathbb P(\Omega)=1$
+        \item $\mathbb P$ est $\sigma$-additive, c'est-à-dire que pour toute suite $(A_i)$ d'événements deux à deux incompatibles, \[
+                \mathbb P \left( \bigcup_{n\in\mathbb N}A_n \right) =\sum_{n\geq 0}\mathbb P(A_n)
+        \]
+    \end{itemize}
+    Si $\mathbb P$ convient, on dira que $(\Omega, \mathcal A, \mathbb P)$ est un \textbf{espace probabilisé}\index{espace probabilisé}.
+\end{dfn}
+
+\begin{rem}
+    \begin{itemize}
+        \item La suite constante égale à $\emptyset$ donne $\mathbb P(\emptyset)=0$.
+        \item Si $A$ et $B$ sont incompatibles, alors $\mathbb P(A\cup B)=\mathbb P(A)+\mathbb P(B)$ 
+        \item $\mathbb P(A^c)=\mathbb P(A\cup A^c)-\mathbb P(A)=1-\mathbb P(A)$
+        \item $A\subset B \implies P(B)=P(A)+P(B\setminus A)\geq P(A)$
+    \end{itemize}
+\end{rem}
+
+\begin{exo}[Inégalité d'Edith Kosmanek]
+    Soit $(\Omega, \mathcal A, \mathbb P)$ un espace probabilisé, $A, B$ des événements. Montrer que \[
+        |\mathbb P(A\cap B)-\mathbb P(A)\mathbb P(B)|\leq \frac{1}{4}
+    \]
+\end{exo}
+
+\begin{proof}[Résolution]
+    $(A\cap B, A\cap B^c, A^c\cap B, A^c\cap B^c)$ est un SCE et un peu de calcul donne \[
+        \mathbb P(A\cap B)-\mathbb P(A)\mathbb P(B)=\mathbb P(A\cap B)\mathbb P(A^c\cap B^c)-\mathbb P(A^c\cap B)\mathbb P(A\cap B^c)
+    \]
+    Puis si $a,b\geq 0$ sont tels que $a+b\leq 1$, on a $ab=\sqrt{ab}^2\leq \left( \frac{a+b}{2} \right) ^2\leq \frac{1}{4}$ donc les deux produits sont $\leq 14$, ce qui conclut.
+\end{proof}
+
+\begin{exo}
+    $(\Omega, \mathcal A, \mathbb P)$ probabilisé, $A, B \in \mathcal A$. Montrer que $|\mathbb P(A)-\mathbb P(B)| \leq \mathbb P(A\Delta B)$
+\end{exo}
