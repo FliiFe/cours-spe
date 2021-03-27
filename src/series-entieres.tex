@@ -463,7 +463,7 @@ donc \conc.
 
 \subsubsection{Sommation de relation de comparaison pour les séries entières}
 
-On se donne $f(t)=\sum_{n\geq 0}a_nt^n$ et $g(t)=\sum_{n\geq 0}b_nt^n$ de rayons de convergence $1$ et de termes généraux positifs et équivalents ($a_n,b_n\geq 0$ et $a_n\sim b_n$). On suppose aue $\sum b_n$ diverge, et on va montrer que \[
+On se donne $f(t)=\sum_{n\geq 0}a_nt^n$ et $g(t)=\sum_{n\geq 0}b_nt^n$ de rayons de convergence $1$ et de termes généraux positifs et équivalents ($a_n,b_n\geq 0$ et $a_n\sim b_n$). On suppose que $\sum b_n$ diverge, et on va montrer que \[
     f(t)\underset{1^-}\sim g(t)
 \]
 Déjà, $g(t)\xrightarrow[t\to1^-]{}+\infty$ (vu \emph i). Puis, pour $\epsilon>0$, il existe $N\in\mathbb N$ tel que pour $n\geq N$, \[
@@ -476,3 +476,68 @@ En divisant par $g(t)$ et pour un $\delta>0$, $1-\delta<t<1$, \[
     1-2\epsilon'\leq \frac fg(t)\leq 1+2\epsilon'
 \]
 d'où \conc.
+
+\begin{exo}
+    Même exercice mais avec un rayon de convergence infini et l'équivalent en $+\infty$. En déduire un équivalent en $+\infty$ de \[
+        \sum_{n=1}^{+\infty} \left( 1+ \frac{1}{n} \right)^{n^2}\frac{x^n}{n!}
+    \]
+\end{exo}
+
+\section{Résultats théoriques sur les DSE}
+
+\subsection{La formule de Cauchy}
+
+\index{Cauchy!formule (DSE)}Soit $f$ DSE avec $R(f)=R>0$. On va montrer que pour $z \in \mathcal{D}_o(0, R)$ et pour $r$ tel que $|z|<r<R$, \[
+    f(z)=\frac{1}{2\pi}\int_{0}^{2\pi} \frac{f(re^{it})re^{it}}{re^{it}-z}\diff t
+\]
+On écrit \[
+    f(z)=\sum_{n=0}^{+\infty} a_n z^n
+\]
+donc\[
+    \forall t\in [0, 2\pi],  \qquad \frac{f(re^{it})re^{it}}{re^{it}-z}=\frac{f(re^{it})}{1- \left( \frac{z}{re^{it}} \right) } = f(re^{it}) \sum_{n=0}^{+\infty} \left( \frac{z}{re^{it}} \right)^k=\sum_{n,m\geq 0} \frac{a_nr^nz^m}{r^m}e^{i(n-m)t}
+\]
+où la dernière somme est celle d'une famille sommable. Donc la convergence normale sur $\mathcal{D}_f(0,r)$ donne \[
+    \int_{0}^{2\pi} \frac{f(re^{it})re^{it}}{re^{it}-z}\diff t= \sum_{n,m\geq 0}a_nr^{n-m}z^m \int_{0}^{2\pi} e^{i(n-m)t}\diff t=\sum_{n\geq 0}2\pi a_nz^n=2\pi f(z)
+\]
+
+\begin{rem}
+    Pour $0<r<R$, \[
+        \int_{0}^{2\pi } f(re^{it})e^{-i nt}\diff t = \int_{0}^{2\pi } \left( \sum_{k=0}^{+\infty} a_kr^ke^{ikt} \right) e^{-int}\diff t=a_nr^{n}2\pi 
+    \]
+    donc \[
+        a_n=\frac{1}{2\pi r^n}\int_{0}^{2\pi } f(re^{it})e^{-int}\diff t 
+    \]
+\end{rem}
+
+\subsection{Théorème de Liouville}
+
+\index{Liouville (théorème de -- )}On suppose $f$ DSE avec un rayon de convergence infini, $f$ bornée. On a \[
+    \forall r>0, \forall n\in\mathbb N, \qquad a_n=\frac{1}{2\pi r^n}\int_{0}^{2\pi }f(re^{it}) e^{-int}\diff t
+\]
+Pour $n\geq 1$, \[
+    |a_n|\leq \frac{1}{2\pi r^n}\int_{0}^{2\pi } \underbrace{|f(re^{it})e^{-int}}_{\leq \sup_{\mathbb C}|f|}\diff t\leq \frac{2\pi \sup_{\mathbb C}|f|}{2\pi r^n} \xrightarrow[r\to+\infty]{}0
+\]
+On a donc $f=a_0$ constante.
+
+
+\subsection{Principe des zéros isolés}
+
+On note $R$ le rayon de convergence de $f$ DSE en $0$, et on suppose $R>0$. \[
+    \forall z \in \mathcal{D}_o(0,R),\qquad f(z)=\sum_{k=0}^{+\infty} \frac{f^{(k)}(0)}{k!}z^k
+\]
+Si $f(0)=0$ et $f\not\equiv 0$ alors on note $p=\min \{k\in\mathbb N, f^{(k)}(0)\neq 0\}$. Pour $z$ non nul au voisinage de $0$, \[
+    f(z)=z^p \left( \frac{f^{(p)}(0)}{p!}+ z \frac{f^{(p+1)}(0)}{(p+1)!}+\cdots \right) \neq 0
+\]
+Donc $0$ est un zéro isolé. On va montrer que s'il existe une suite $(z_n)$ de racines deux à deux distinctes de $f$ qui converge vers $a\in\mathcal D_o(0,R)$, alors $f$ est nulle.
+
+Par continuité, $a$ est une racine de $f$. Cette racine n'est pas isolée donc $f$ est nulle sur un voisinage de $a$ (par le raisonnement qui précède).
+
+On note \[
+    \mathcal E=\{z\in \mathcal  D_o(0,R), \quad f\equiv 0\text{ au voisinage de }z\}
+\]
+
+Si $z_0\in \mathcal E$, alors on note $r_0>0$ le rayon d'un disque ouvert tel que $f(\mathcal D_o(z_0,r_0))=\{0\}$. Pour tout $z\in \mathcal D_o(z_0, r_0)$, il existe $r_z>0$ tel que $\mathcal D_o(z,r_z)\subset \mathcal D_o(z_0,r_0)$ et $f$ s'annule sur ce disque, donc $\mathcal D_o(z_0, r_0)\subset \mathcal E$. Ainsi, $\mathcal E$ est un ouvert.
+
+Si $(x_n)\in \mathcal E^{\mathbb N}$ converge vers $a\in \mathcal D_o(0, R)$, alors $a$ n'est pas isolée, $f$ s'annule sur un voisinage de $a$ (déjà vu) donc $a\in \mathcal E$. L'ensemble $\mathcal E$ est donc un fermé relatif du disque ouvert de convergence.
+
+C'est un ouvert fermé relatif, donc $\mathcal E=\mathcal D_o(0, R)$ et $f$ est nulle.

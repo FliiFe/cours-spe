@@ -19,7 +19,7 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 - [ ] Espaces vectoriels normés
 - [ ] Limite - Continuité - Fonctions vectorielles
 - [ ] Compacité - Connexité
-- [x] Séries entières (partiellement)
+- [x] Séries entières
 - [ ] Variables aléatoires discrètes
 - [ ] Espérance - Variance
 - [ ] Les intégrales à paramètres
@@ -27,4 +27,4 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 - [ ] Espaces préhilbertiens réels
 - [ ] Fonctions de plusieurs variables
 - [x] Calcul différentiel
-- [x] Complément sur les polynomes
+- [x] Complément sur les polynômes
