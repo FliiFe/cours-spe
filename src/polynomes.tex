@@ -25,10 +25,10 @@ Tous les théorèmes ou propositions présents dans ce chapitre sont soit déjà
 \ifsolo \newpage \setcounter{page}{1} \fi
 \section{Rappels}
 
-$\mathbb K$ désigne un corps (donc commutatif). Un polynôme de $\mathbb K[X]$ s'écrit $P$ ou $P(X)$, l'évaluation en $a\in\mathbb K$ de $P$ se note $P(a)$. L'application \[
-    P\in\mathbb K[X] \longmapsto (a\longmapsto P(a)\in\mathbb K)
+$\K$ désigne un corps (donc commutatif). Un polynôme de $\K[X]$ s'écrit $P$ ou $P(X)$, l'évaluation en $a\in\K$ de $P$ se note $P(a)$. L'application \[
+    P\in\K[X] \longmapsto (a\longmapsto P(a)\in\K)
 \]
-est un morphisme d'algèbres qui est injectif si $\mathbb K$ est infini. Pour $P\in\mathbb K[X]\setminus \{0\}$, $a\in\mathbb K$ est une racine de $P$ ssi \[
+est un morphisme d'algèbres qui est injectif si $\K$ est infini. Pour $P\in\K[X]\setminus \{0\}$, $a\in\K$ est une racine de $P$ ssi \[
     P(a)=0\iff (X-a)\;|\;P
 \]
 et $a$ est racine de multiplicité $\alpha \geq 1$ ssi \[
@@ -46,24 +46,24 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \begin{notation} ~
     \begin{itemize}
         \item
-            On note $Z_\mathbb K(P)$ l'ensemble des racines de $P$ dans $\mathbb K$
+            On note $Z_\K(P)$ l'ensemble des racines de $P$ dans $\K$
         \item On note $\mathrm{mult}(P, a)$ la multiplicité de la racine $a$ dans $P$
     \end{itemize}
 \end{notation}
 
 \begin{thm}
-    Soit $P\in \mathbb K[X]\setminus \{0\}$. Le polynôme $P$ a au plus $\deg P$ racines dans $\mathbb K$.
+    Soit $P\in \K[X]\setminus \{0\}$. Le polynôme $P$ a au plus $\deg P$ racines dans $\K$.
     En particulier, le polynôme nul est le seul polynôme qui a une infinité de racines.
 \end{thm}
 
 \begin{thm}
-    Soit $P\in\mathbb K[X]$.
+    Soit $P\in\K[X]$.
     \begin{enumerate}
         \item \[
                 P(X)=\sum_{k=0}^{+\infty} \frac{P^{(k)}(0)}{k!}X^k
             \]
         \item \[
-                \forall a\in\mathbb K, \quad P(X)=\sum_{k=0}^{+\infty}\frac{P^{(k)}(a)}{k!}(X-a)^k
+                \forall a\in\K, \quad P(X)=\sum_{k=0}^{+\infty}\frac{P^{(k)}(a)}{k!}(X-a)^k
             \]
     \end{enumerate}
 \end{thm}
@@ -87,10 +87,10 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \subsection{Rappels}
 
 \begin{thm}
-    Soit $P\in\mathbb K[X]$, $a_1, \cdots, a_p$ deux à deux distincts et $n_1, \cdots, n_p\in\mathbb N^\star$. Si $a_1, \cdots, a_p$ sont des racines de multiplicités $n_1, \cdots, n_p$ de $P$, alors \[
+    Soit $P\in\K[X]$, $a_1, \cdots, a_p$ deux à deux distincts et $n_1, \cdots, n_p\in\N^\star$. Si $a_1, \cdots, a_p$ sont des racines de multiplicités $n_1, \cdots, n_p$ de $P$, alors \[
         (X-a)^{n_1}\cdots (X-a_p)^{n_p}\;|\;P
     \]
-    En particulier, si $\deg P=\sum_i n_i$ alors il existe $\lambda\in\mathbb K^\star$ tel que \[
+    En particulier, si $\deg P=\sum_i n_i$ alors il existe $\lambda\in\K^\star$ tel que \[
         P(X)=\lambda(X-a_1)^{n_1}\cdots (X-a_p)^{n_p}
     \]
 \end{thm}
@@ -98,20 +98,20 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \subsection{Théorème de d'Alembert-Gauss}
 
 \begin{thm}[D'Alembert-Gauss] \index{D'Alembert-Gauss (théorème de -- )}
-    Tout polynôme non constant de $\mathbb C[X]$ admet au moins une racine
+    Tout polynôme non constant de $\C[X]$ admet au moins une racine
 \end{thm}
 
 \begin{proof}[Preuve de Gauss]
     \begin{itemize}
-        \item $P\in \mathbb C[X]$ non constant a même racine que $\frac1{\deg P}P$ donc on suppose $P$ unitaire.
+        \item $P\in \C[X]$ non constant a même racine que $\frac1{\deg P}P$ donc on suppose $P$ unitaire.
         \item Si $P(X)=a_0+\cdots+ a_{n-1}X^{n-1}+X^n$, et $M=\max |a_i|$, alors pour $|z|\geq M+2$, \begin{align*}
                 |P(z)|&\geq |z|^n-M\frac{|z|^n-1}{|z|-1}=\frac{|z|^{n+1}-|z|^n-M|z|^n+M}{|z|-1}\\
                       &\geq \frac{|z|^n}{|z|-1} \left( |z|-1-M \right)\geq |z|^n\left(1-\frac M{M+1}\right)\geq \frac{(M+2)^n}{M+1}>M
             \end{align*}
         \item \begin{align*}
-                \inf_{\mathbb C}|P|&=\min\left(\underbrace{\inf_{|z|>M+2}|P(z)|}_{>M}, \underbrace{\inf_{|z|\leq M+2}|P(z)|}_{\leq |P(0)|\leq M}\right) \\&=\inf _{|z|\leq M+2}|P(z)|
+                \inf_{\C}|P|&=\min\left(\underbrace{\inf_{|z|>M+2}|P(z)|}_{>M}, \underbrace{\inf_{|z|\leq M+2}|P(z)|}_{\leq |P(0)|\leq M}\right) \\&=\inf _{|z|\leq M+2}|P(z)|
             \end{align*}
-            Par compacité il existe $z_0\in\mathcal B_f(0, M+2)$ tel que $\inf_{\mathbb C}|P|=|P(z_0)|$.
+            Par compacité il existe $z_0\in\mathcal B_f(0, M+2)$ tel que $\inf_{\C}|P|=|P(z_0)|$.
         \item Si $P(z_0)\neq 0$ alors il existe $k\geq 1$ tel que \begin{align*}
                 P(z_0+h)&=P(z_0)+\frac{P^{(k)}(z_0)}{k!}h^k+o(h^k), \quad P(z_0)\neq 0 \\
                         &=P(z_0)\left(1+h^k\frac{P^{(k)}(z_0)}{P(z_0)k!}+o(h^k) \right)
@@ -131,7 +131,7 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \subsection{Contraintes sur les zéros}
 
 \begin{exo}
-    Si $Z_{\mathbb C}(P)=Z_{\mathbb C}(Q)$ et $Z_{\mathbb C}(P+1)=Z_{\mathbb C}(Q+1)$ pour $P,Q$ non constants de $\mathbb C[X]$, alors $P=Q$
+    Si $Z_{\C}(P)=Z_{\C}(Q)$ et $Z_{\C}(P+1)=Z_{\C}(Q+1)$ pour $P,Q$ non constants de $\C[X]$, alors $P=Q$
 \end{exo}
 
 On suppose par l'absurde que $P\neq Q$ et par exemple $n=\deg P\geq \deg Q=m$. On note $u_1, \cdots, u_r$ les racines de $P$ (et donc de $Q$), $v_1, \cdots, v_s$ les racines de $P+1$ (donc de $Q+1$). Les $u_i$ et les $v_j$ sont tous distincts, donc \[
@@ -145,7 +145,7 @@ Or $r+s\leq n$ absurde et donc $P = Q$
 \subsection{Coefficients unitaires}
 
 \begin{exo}
-    Déterminer les $P\in\mathbb R[X]$ non constants avec les coefficients $\pm1$ et dont toutes les racines sont réelles.
+    Déterminer les $P\in\R[X]$ non constants avec les coefficients $\pm1$ et dont toutes les racines sont réelles.
 \end{exo}
 
 \begin{proof}[Résolution]
@@ -180,7 +180,7 @@ Or $r+s\leq n$ absurde et donc $P = Q$
 \subsection{Équation fonctionnelle}
 
 \begin{exo}
-    Déterminer les polynômes $P\in\mathbb C[X]$ tels que $P(X)P(X+2)+P(X^2)=0$
+    Déterminer les polynômes $P\in\C[X]$ tels que $P(X)P(X+2)+P(X^2)=0$
 \end{exo}
 
 \begin{proof}[Résolution] $-1$ et $0$ sont les deux polynômes constants solutions.
@@ -196,7 +196,7 @@ Or $r+s\leq n$ absurde et donc $P = Q$
 \end{proof}
 
 \begin{exo}
-    Trouver les polynômes $P\in\mathbb R[X]$ tels que \[
+    Trouver les polynômes $P\in\R[X]$ tels que \[
         (X+1)P(X-1)-(X-1)P(X)
     \]
     est un polynôme constant
@@ -212,7 +212,7 @@ Or $r+s\leq n$ absurde et donc $P = Q$
             donc \[
                 X(X-1)(X+1)(A(X-1)-A(X))=0 \implies A(X)=A(X-1)
             \]
-            et donc $A$ est un polynôme constant. Donc $P$ est de la forme $P(X)=aX(X+1)+\mu, \quad a, \mu\in\mathbb R$
+            et donc $A$ est un polynôme constant. Donc $P$ est de la forme $P(X)=aX(X+1)+\mu, \quad a, \mu\in\R$
     \end{itemize}
 \end{proof}
 
@@ -222,10 +222,10 @@ Or $r+s\leq n$ absurde et donc $P = Q$
 
 \index{Viète!relations}
 
-Pour $x_1, \cdots, x_n\in\mathbb C$ on note: \[
+Pour $x_1, \cdots, x_n\in\C$ on note: \[
     \sigma_i(x_1, \cdots, x_n)=\sum_{\substack{I\subset \llbracket 1, n\rrbracket\\|I|=i}}\prod_{l\in I}x_l
 \]
-Soit $P(X)=a_nX^n+\cdots+a_0$ un polynôme de degré $n$ et $x_1, \cdots, x_n$ ses racines dans $\mathbb C$. \begin{itemize}
+Soit $P(X)=a_nX^n+\cdots+a_0$ un polynôme de degré $n$ et $x_1, \cdots, x_n$ ses racines dans $\C$. \begin{itemize}
     \item \begin{align*}
             P(X)=a_n(X-x_1)\cdots (X-x_n)=a_n(X^n-\sigma_1 X^{n-1}+ \sigma_2 X^{n-2}+\cdots (-1)^n\sigma_nX^{n-n})
         \end{align*}
@@ -242,7 +242,7 @@ et \[
 
 \subsection{Somme de Newton}
 
-On note $P(X)=a_nX^n+\cdots+a_0$ un polynôme de $\mathbb C[X]$, $x_1, \cdots, x_n$ ses racines. On note $S_k=x_1^k+\cdots + x_n^k$ appelée $k-$ième somme de Newton \index{Newton!sommes}.
+On note $P(X)=a_nX^n+\cdots+a_0$ un polynôme de $\C[X]$, $x_1, \cdots, x_n$ ses racines. On note $S_k=x_1^k+\cdots + x_n^k$ appelée $k-$ième somme de Newton \index{Newton!sommes}.
 
 Pour $k\geq n$, \begin{align*}
     a_nS_k+a_{n-1}S_{k-1}+\cdots + a_0S_{k-n}&=a_nx_1^k+\cdots +a_0x_1^{k-n}+\cdots +a_nx_n^k+\cdots +a_0x_n^{k-n} \\ &=x_1^{k-n}P(x_1)+\cdots + x_n^{k-n}P(x_n)=0
@@ -275,27 +275,27 @@ Il est possible de calculer $S_1, \cdots, S_{n-1}$ par des formules de récurren
         \end{align*}
 \end{itemize}
 
-\section{Polynômes scindés sur $\mathbb R$}
+\section{Polynômes scindés sur $\R$}
 
 \subsection{Une CNS}
 
 \begin{exo}
-    Montrer que $P\in\mathbb R[X]$ de degré $n$ est scindé sur $\mathbb R$ ssi \[
-        \forall z\in\mathbb C, \quad |P(z)|\geq |\dom(P)|\times |\Im(z)|^n
+    Montrer que $P\in\R[X]$ de degré $n$ est scindé sur $\R$ ssi \[
+        \forall z\in\C, \quad |P(z)|\geq |\dom(P)|\times |\Im(z)|^n
     \]
 \end{exo}
 
 \begin{proof}[Résolution]
     \emph{($\Longrightarrow$)} clair, les racines complexes de $P$ ont une partie imaginaire nulle.
 
-     \emph{($\implies$)} On écrit $P(X)=\dom(P)(X-a_1)\cdots (X-a_n), \quad a_i\in\mathbb R$. En injectant $z=a+ib$, \[
+     \emph{($\implies$)} On écrit $P(X)=\dom(P)(X-a_1)\cdots (X-a_n), \quad a_i\in\R$. En injectant $z=a+ib$, \[
         |P(z)|=|\dom P|\times |a-a_1+ib| \cdots |a-a_n+ib|\geq |\dom P| |b|^n
     \]
 \end{proof}
 
 \subsection{Opérations stabilisant $\mathcal S$}
 
-On note $\mathcal S$ l'ensemble des polynômes scindés de $\mathbb R[X]$. On note \[
+On note $\mathcal S$ l'ensemble des polynômes scindés de $\R[X]$. On note \[
     P(X)=\lambda (X-a_i)^{\alpha_1}\cdots (X-a_p)^{\alpha_p}, \quad a_1<\cdots <a_p
 \]
 et on a les propriétés de stabilité suivantes.
@@ -306,7 +306,7 @@ et on a les propriétés de stabilité suivantes.
 
 \vspace{.2cm}
 
- Pour $a\in\mathbb R$ fixé, on note $g(x)=e^{ax}P(x)$, $g'(x)=(P'(x)+aP(x))e^{ax}$. $P'+aP$ s'annule en $a_i$ avec multiplicité $\geq \alpha_i-1$. Rolle donne que $g'$ s'annule au moins une fois sur $]a_i, a_{i+1}[$ donc $P'+aP$ aussi. Ce polynôme a $n-1$ racines réelles et est de degré $n$, donc par division la dernière racine est réelle. Donc $P'+aP\in\mathcal S$
+ Pour $a\in\R$ fixé, on note $g(x)=e^{ax}P(x)$, $g'(x)=(P'(x)+aP(x))e^{ax}$. $P'+aP$ s'annule en $a_i$ avec multiplicité $\geq \alpha_i-1$. Rolle donne que $g'$ s'annule au moins une fois sur $]a_i, a_{i+1}[$ donc $P'+aP$ aussi. Ce polynôme a $n-1$ racines réelles et est de degré $n$, donc par division la dernière racine est réelle. Donc $P'+aP\in\mathcal S$
 
 \vspace{.2cm}
 
@@ -325,7 +325,7 @@ et pour $P\in\mathcal S$, $Q(D)(P)\in\mathcal S$.
 \subsection{Faisceau de polynômes à racines entrelacées (ENS)}
 
 \begin{exo}
-    On note $P, Q\in\mathbb R[X]$ deux polynômes scindés à racines simples distinctes tels qu'entre deux racines de l'un, il y en aie au moins une de l'autre. Montrer que $\lambda P+\mu Q$ est scindé sur $\mathbb R$
+    On note $P, Q\in\R[X]$ deux polynômes scindés à racines simples distinctes tels qu'entre deux racines de l'un, il y en aie au moins une de l'autre. Montrer que $\lambda P+\mu Q$ est scindé sur $\R$
 \end{exo}
 
 \begin{proof}[Résolution]
@@ -334,10 +334,10 @@ et pour $P\in\mathcal S$, $Q(D)(P)\in\mathcal S$.
     \]
     Il y a lors deux cas: $Q$ possède une racine $y_n>x_n$, ou $Q$ a $n-1$ racines réelles. On se place dans le premier cas (l'autre se traite similairement).
 
-    Comme $\lambda, \mu\in\mathbb R$ sont quelconques, on peut supposer $P$ et $Q$ unitaires donc \[
+    Comme $\lambda, \mu\in\R$ sont quelconques, on peut supposer $P$ et $Q$ unitaires donc \[
         P(X)=(X-x_1)\cdots (X-x_n) \qquad Q(X)=(X-y_1)\cdots (X-y_n)
     \]
-    Pour $\lambda, \mu\neq 0$, les racines réelles de $\lambda P+\mu Q$ sont différentes des $x_i, y_i$, donc sont les mêmes que celles de $\frac{\lambda P+\mu Q}{PQ}$ sur $\mathbb R\setminus \{x_i, y_i\}$. \[
+    Pour $\lambda, \mu\neq 0$, les racines réelles de $\lambda P+\mu Q$ sont différentes des $x_i, y_i$, donc sont les mêmes que celles de $\frac{\lambda P+\mu Q}{PQ}$ sur $\R\setminus \{x_i, y_i\}$. \[
         \varphi(x)=\frac{\lambda P(x)+\mu Q(x)}{P(x)Q(x)}=\frac\lambda{Q(x)}+\frac\mu{P(x)}
     \]
     Si $\lambda, \mu>0$, alors $\varphi$ s'annule $n$ fois car il y a changement de signe entre $]x_i, y_i[$ (les polynômes sont unitaires donc on connaît exactement les signes de $P$ et $Q$). Si $\lambda>0>\mu$, on trouve $n-1$ racines réelles de la même manière, et par division la dernière est aussi réelle. Les autres cas se traitent de la même manière.
@@ -347,15 +347,15 @@ et pour $P\in\mathcal S$, $Q(D)(P)\in\mathcal S$.
 
 \subsection{Polynôme à valeurs entières}
 
-On va caractériser les polynômes de $\mathbb C[X]$ tels que $P(\mathbb Z)\subset \mathbb Z$
+On va caractériser les polynômes de $\C[X]$ tels que $P(\Z)\subset \Z$
 
 On définit \[
     \binom X0=1\qquad \text{ et }\qquad \forall n\geq 1,\quad \binom Xn=\frac1{n!}X(X-1)\cdots(X-n+1)
 \]
 
 \begin{lmm}
-    Pour tout $n\in\mathbb N$ et pour tout $x\in\mathbb Z$, \[
-        \binom xn\in\mathbb Z
+    Pour tout $n\in\N$ et pour tout $x\in\Z$, \[
+        \binom xn\in\Z
     \]
 \end{lmm}
 
@@ -364,17 +364,17 @@ On définit \[
 \end{proof}
 
  On introduit \[
-    \Delta : P\in\mathbb K[X]\longmapsto P(X+1)-P(X)
+    \Delta : P\in\K[X]\longmapsto P(X+1)-P(X)
 \]
 Pour $n\geq 1$, \[
     \Delta\binom Xn=\binom X{n-1}\qquad\text{ et }\qquad \Delta\binom X0=0
 \]
-et $\displaystyle \left(\binom Xn\right)_{n\geq 0}$ est une base de $\mathbb C[X]$ (degré échelonné). On suppose que $P\in\mathbb C[X]$ vérifie $P(\mathbb Z)\subset \mathbb Z$. On note $a_0, \cdots, a_n$ les coefficients de la décomposition de $P$ dans cette base. Alors \[
-    P(0)=a_0\in\mathbb Z, \quad a_1=\Delta P(0)\in\mathbb Z, \cdots, \quad a_n=\Delta^nP(0)\in\mathbb Z
+et $\displaystyle \left(\binom Xn\right)_{n\geq 0}$ est une base de $\C[X]$ (degré échelonné). On suppose que $P\in\C[X]$ vérifie $P(\Z)\subset \Z$. On note $a_0, \cdots, a_n$ les coefficients de la décomposition de $P$ dans cette base. Alors \[
+    P(0)=a_0\in\Z, \quad a_1=\Delta P(0)\in\Z, \cdots, \quad a_n=\Delta^nP(0)\in\Z
 \]
 
-Ainsi, $a_0, \cdots, a_n\in\mathbb Z$ et la réciproque est évidente. On a ainsi établi \[
-    P(\mathbb Z)\subset \mathbb Z\iff \exists n\in\mathbb N, \exists, a_0, \cdots, a_n\in\mathbb Z, P(X)=\sum_{k=0}^na_k\binom Xk
+Ainsi, $a_0, \cdots, a_n\in\Z$ et la réciproque est évidente. On a ainsi établi \[
+    P(\Z)\subset \Z\iff \exists n\in\N, \exists, a_0, \cdots, a_n\in\Z, P(X)=\sum_{k=0}^na_k\binom Xk
 \]
 
 \begin{rem}
@@ -384,17 +384,17 @@ Ainsi, $a_0, \cdots, a_n\in\mathbb Z$ et la réciproque est évidente. On a ains
 \end{rem}
 
 \begin{exo}[ENS]
-    On note $P\in\mathbb R[X]$ un polynôme de degré $n$ tel que $P(0), P(1), P(4), \cdots, P(n^2)\in\mathbb Z$. Montrer que $\forall a\in\mathbb Z, P(a^2)\in \mathbb Z$.
+    On note $P\in\R[X]$ un polynôme de degré $n$ tel que $P(0), P(1), P(4), \cdots, P(n^2)\in\Z$. Montrer que $\forall a\in\Z, P(a^2)\in \Z$.
 \end{exo}
 
 \begin{proof}[Résolution]
-    $Q(X)=P((X-n)^2)$ de degré $2n$ envoie $2n+1$ valeurs de $\mathbb Z$ dans $\mathbb Z$ donc a des coefficients entiers dans la base explicitée précédemment donc est à valeurs dans $\mathbb Z$ ce qui conclut.
+    $Q(X)=P((X-n)^2)$ de degré $2n$ envoie $2n+1$ valeurs de $\Z$ dans $\Z$ donc a des coefficients entiers dans la base explicitée précédemment donc est à valeurs dans $\Z$ ce qui conclut.
 \end{proof}
 
 \subsection{Polynôme stabilisant le cercle unité}
 
 \begin{exo}
-    Déterminer les polynômes $P\in\mathbb C[X]$ tels que $\mathbb U$ est stable par $P$.
+    Déterminer les polynômes $P\in\C[X]$ tels que $\mathbb U$ est stable par $P$.
 \end{exo}
 
 \begin{proof}[Résolution]
@@ -406,15 +406,15 @@ Ainsi, $a_0, \cdots, a_n\in\mathbb Z$ et la réciproque est évidente. On a ains
 
 \begin{exo}
     Variantes \begin{itemize}
-        \item $P(\mathbb C)\subset \mathbb R$. Solution: Formule de Gregory, interpolation de Lagrange, polynôme conjugué, ...
-        \item $P(\mathbb Q)\subset \mathbb Q$. Solution: Formule de Gregory, interpolation de lagrange.
-        \item $P(\mathbb Q)\subset \mathbb R\setminus \mathbb Q$ et $P(\mathbb R\setminus \mathbb Q)\subset \mathbb Q$
-        \item $P(\mathbb Q)=\mathbb Q$
+        \item $P(\C)\subset \R$. Solution: Formule de Gregory, interpolation de Lagrange, polynôme conjugué, ...
+        \item $P(\Q)\subset \Q$. Solution: Formule de Gregory, interpolation de lagrange.
+        \item $P(\Q)\subset \R\setminus \Q$ et $P(\R\setminus \Q)\subset \Q$
+        \item $P(\Q)=\Q$
     \end{itemize}
 \end{exo}
 
 \begin{proof}[Résolution]
-    Résolution pour $P(\mathbb Q)=\mathbb Q$. Déjà $P\in\mathbb Q[X]$ (par la $2$-ième variante), donc il existe $d$ entier positif minimal tel que $Q=dP\in\mathbb Z[X]$. On se donne $v$ premier avec les coefs $a_i$ de $P$ et $d$ et $v$ nombre premier. Il existe $\frac ab$, $a\land b=1$, tel que $P(\frac ab)=\frac dv$ donc \[
+    Résolution pour $P(\Q)=\Q$. Déjà $P\in\Q[X]$ (par la $2$-ième variante), donc il existe $d$ entier positif minimal tel que $Q=dP\in\Z[X]$. On se donne $v$ premier avec les coefs $a_i$ de $P$ et $d$ et $v$ nombre premier. Il existe $\frac ab$, $a\land b=1$, tel que $P(\frac ab)=\frac dv$ donc \[
         v(a_na^n+\cdots +a_0b^n)=db^n \implies v\;|\; b^n\implies v\;|\; b
     \]
     et si $n\geq 2$ alors $v^2\;|\;db^n$ et donc $v|a_na^n+\cdots$ donc $v\;|\;a$ absurde. Par suite, $n=1$, et la réciproque est évidente.
@@ -422,14 +422,14 @@ Ainsi, $a_0, \cdots, a_n\in\mathbb Z$ et la réciproque est évidente. On a ains
 
 \subsection{Polynômes positifs}
 
-On va caractériser les polynômes tq $P(\mathbb R_+)\subset \mathbb R_+$.
+On va caractériser les polynômes tq $P(\R_+)\subset \R_+$.
 On pose \[
-    \mathcal E=\{P\in\mathbb R[X] \;/\; \exists A, B\in\mathbb R[X], P=A^2+XB^2\}
+    \mathcal E=\{P\in\R[X] \;/\; \exists A, B\in\R[X], P=A^2+XB^2\}
 \]
 et on note $\mathcal S$ l'ensemble des polynômes qui conviennent. On a clairement $\mathcal E\subset \mathcal S$, puis $\mathcal E$ est stable par produit car \[
     (A^2+XB^2)(A_1^2+XB_1^2)=(AA_1+XBB_1)^2+X(BA_1+AB_1)^2
 \]
-Soit $P\in\mathcal S$. Dans la décomposition de $P$ en irréductibles de $\mathbb R[X]$, si on note $\alpha_1, \cdots, \alpha_p$ les puissances des facteurs de degré $1$, on a $(X-a_i)$ change de signe si $\alpha_i$ impair et dans ce cas $a_i<0$ et $X-a_i=\sqrt{-a_i}^2+X1^2\in\mathcal E$. Les autres termes sont dans $\mathcal E$ et donc $\mathcal S=\mathcal E$.
+Soit $P\in\mathcal S$. Dans la décomposition de $P$ en irréductibles de $\R[X]$, si on note $\alpha_1, \cdots, \alpha_p$ les puissances des facteurs de degré $1$, on a $(X-a_i)$ change de signe si $\alpha_i$ impair et dans ce cas $a_i<0$ et $X-a_i=\sqrt{-a_i}^2+X1^2\in\mathcal E$. Les autres termes sont dans $\mathcal E$ et donc $\mathcal S=\mathcal E$.
 
 \section{Localisation des racines}
 
@@ -437,7 +437,7 @@ Soit $P\in\mathcal S$. Dans la décomposition de $P$ en irréductibles de $\math
 
 \index{Gauss-Lucas (théorème de -- )}
 
-On note $P\in\mathbb C[X]$ avec $n=\deg P\geq 2$. On va montrer que si $z_1, \cdots, z_n$ sont les racines de $P$ (répétées avec multiplicités) alors les racines de $P'$ sont dans l'enveloppe convexe de $z_1, \cdots, z_n$. On a:
+On note $P\in\C[X]$ avec $n=\deg P\geq 2$. On va montrer que si $z_1, \cdots, z_n$ sont les racines de $P$ (répétées avec multiplicités) alors les racines de $P'$ sont dans l'enveloppe convexe de $z_1, \cdots, z_n$. On a:
 \[
     \frac{P'}P(z)=\frac{\alpha_1}{z-z_1}+\cdots +\frac{\alpha_p}{z-z_p}
 \]
@@ -450,7 +450,7 @@ Donc $z$ est bien un barycentre de $z_1, \cdots, z_n$.
 
 \index{Cauchy!borne}
 
-On note $P(z)=z^n+a_{n-1}z^{n-1}+\cdots+a_0\in\mathbb C[X]$ et on pose $M=\max_{i\leq n-1}\limits |a_i|$. On note $z\in\mathbb C$ tel que $|z|>M+1$. Par l'absurde si $P(z)=0$ alors \begin{align*}
+On note $P(z)=z^n+a_{n-1}z^{n-1}+\cdots+a_0\in\C[X]$ et on pose $M=\max_{i\leq n-1}\limits |a_i|$. On note $z\in\C$ tel que $|z|>M+1$. Par l'absurde si $P(z)=0$ alors \begin{align*}
     |z^n|=|a_{n-1}z^{n-1}+\cdots +a_0|\leq M\frac{|z|^n-1}{|z|-1} &\implies |z|^{n+1}-|z|^n\leq M|z|^n-M \\ &\implies |z| |z|^n\leq (M+1)|z|^n \\ &\implies |z|\leq M+1\quad\text{ absurde }
 \end{align*}
 Bilan les racines de $P$ sont dans le disque $D(0, M+1)$
@@ -459,7 +459,7 @@ Bilan les racines de $P$ sont dans le disque $D(0, M+1)$
 
 \begin{res}[Cauchy]
     \index{Cauchy!localisation de racines}
-    Si $P(x)=x^n-b_{n-1}x^{n-1}-\cdots -b_0$ est un polynôme tel que les $b_i$ sont positifs non tous nuls alors $P$ a une seule racine $a$ dans $\mathbb R_+^\star$, $a$ est racine simple et $\mathbb Z_{\mathbb C}(P)\subset \mathcal B_f(0, a)$.
+    Si $P(x)=x^n-b_{n-1}x^{n-1}-\cdots -b_0$ est un polynôme tel que les $b_i$ sont positifs non tous nuls alors $P$ a une seule racine $a$ dans $\R_+^\star$, $a$ est racine simple et $\Z_{\C}(P)\subset \mathcal B_f(0, a)$.
 \end{res}
 
 \begin{proof}
@@ -474,7 +474,7 @@ Bilan les racines de $P$ sont dans le disque $D(0, M+1)$
     Donc $f$ a une unique racine $a>0$, puis \[
         f'(a)=-n\frac{b_0}{x^{n+1}}-\cdots-\frac{b_{n-1}}{x^2}<0 \implies P'(a)\neq 0
     \]
-    donc $a$ est racine simple de $P$. Si $z_0$ est une racine de $P$ dans $\mathbb C$ alors $P(z_0)=0$ donc \[
+    donc $a$ est racine simple de $P$. Si $z_0$ est une racine de $P$ dans $\C$ alors $P(z_0)=0$ donc \[
         |z_0^n|=|b_{n-1}z_0^{n-1}\cdots b_0|\leq b_{n-1}|z_0^n|+b_0
     \]
     donc $P(|z_0|)\leq 0$ et $f(|z_0|)\geq 0$ donc $|z_0|\leq a$
@@ -498,10 +498,10 @@ Bilan les racines de $P$ sont dans le disque $D(0, M+1)$
 
 \index{Gershgorin (disques -- )}
 
-On se donne $A\in\mathcal M_n(\mathbb C)$ et $\lambda\neq a_{1, 1}, \cdots, a_{n, n}$. On note $D=\mathrm{diag} (a_{1, 1}, \cdots, a_{n, n})$ et $E=A-D$. Si $\lambda$ est valeur propre, alors \[
+On se donne $A\in\mathcal M_n(\C)$ et $\lambda\neq a_{1, 1}, \cdots, a_{n, n}$. On note $D=\mathrm{diag} (a_{1, 1}, \cdots, a_{n, n})$ et $E=A-D$. Si $\lambda$ est valeur propre, alors \[
     A_\lambda=\underbrace{A-\lambda I_n}_{\text{non inversible}}=\underbrace{D-\lambda I_n}_{\text{inversible}}+E
 \]
-Puis $\exists X\in\mathcal M_{n, 1}(\mathbb C), X\neq 0 / A_\lambda X=0$ donc \begin{align*}
+Puis $\exists X\in\mathcal M_{n, 1}(\C), X\neq 0 / A_\lambda X=0$ donc \begin{align*}
     (D-\lambda I_n)X+EX=0&\iff X=-(D-\lambda I_n)^{-1}EX \\&\iff \forall i\in\llbracket 1, n\rrbracket, \quad x_i=-\frac1{a_{i, i}-\lambda}\sum_{k\neq i}a_{i, k}x_k
 \end{align*}
 On considère un indice $i$ tel que $|x_i|$ est maximal et donc \[
@@ -512,7 +512,7 @@ et donc \[
 \]
 
 On a donc \[
-    \mathrm{Sp}_{\mathbb C}(A)\subset \bigcup_{i=1}^n \underbrace{\mathcal D(a_{i, i}, R_i)}_{\text{disques de Gershgorin}}
+    \mathrm{Sp}_{\C}(A)\subset \bigcup_{i=1}^n \underbrace{\mathcal D(a_{i, i}, R_i)}_{\text{disques de Gershgorin}}
 \]
 
 \section{Arithmétique des polynômes}
@@ -551,14 +551,14 @@ On a donc \[
 \index{chinois (théorème)}
 
 \begin{exo}
-On se donne $P_1, \cdots, P_n$ deux à deux premiers entre eux et $R_1, \cdots, R_n\in\mathbb C[X]$. Montrer qu'il existe $Q_1, \cdots, Q_n$ tels que \[
+On se donne $P_1, \cdots, P_n$ deux à deux premiers entre eux et $R_1, \cdots, R_n\in\C[X]$. Montrer qu'il existe $Q_1, \cdots, Q_n$ tels que \[
     P_1Q_1+R_1=\cdots=P_nQ_n+R_n
 \]
 \end{exo}
 
 \begin{proof}[Résolution]
     C'est une application directe du théorème chinois (dans un anneau principal): si $d_i=\deg P_i-1$ et $N=-1+\sum d_i$, alors \[
-        \varphi: P\in \mathbb C_N[X]\longmapsto (P\mod P_1, \cdots, P\mod P_n)\in\mathbb C_{d_1}[X]\times \cdots \times \mathbb C_{d_n}[X]
+        \varphi: P\in \C_N[X]\longmapsto (P\mod P_1, \cdots, P\mod P_n)\in\C_{d_1}[X]\times \cdots \times \C_{d_n}[X]
     \]
     est un isomorphisme d'algèbres.
 \end{proof}
@@ -569,10 +569,10 @@ Snyder\footnote{\url{https://doi.org/10.1007/s000170050074}}
 
 \begin{lmm}
     % \index{Snyder (théorème de -- )}
-    Si $P\in\mathbb C[X]$ non nul, alors \[
+    Si $P\in\C[X]$ non nul, alors \[
         \deg P=\deg \left(P\land P'\right)+n_0(P)
     \]
-    où $n_0(P)=\#Z_{\mathbb C}(P)$.
+    où $n_0(P)=\#Z_{\C}(P)$.
 \end{lmm}
 
 \begin{proof}
@@ -611,7 +611,7 @@ et par le résultat précédent \[
 
 \begin{thm}[Fermat]
     \index{Fermat!grand théorème (version polynômiale)}
-    Si $A, B, C\in\mathbb C[X]$ non constants, $A$ et $B$ premiers entre eux et $A^n+B^n=C^n$ alors $n\leq 2$
+    Si $A, B, C\in\C[X]$ non constants, $A$ et $B$ premiers entre eux et $A^n+B^n=C^n$ alors $n\leq 2$
 \end{thm}
 
 \begin{proof}
@@ -627,7 +627,7 @@ On note $p=\max (\deg A, \deg B, \deg C)$ et \[
 On note $P=a_pX^p+\cdots + a_0$, $Q=b_qX^q+\cdots + b_0$ de degrés respectifs $p, q$.
 
 On considère l'application linéaire \[
-    \varphi: (U, V)\in\mathbb K_{q-1}[X]\times \mathbb K_{p-1}[X]\longmapsto UP+VQ
+    \varphi: (U, V)\in\K_{q-1}[X]\times \K_{p-1}[X]\longmapsto UP+VQ
 \]
 Si $P\land Q=1$, alors pour $U, V\in\mathrm{Ker}\varphi$, on a $Q\;|\;U$ et $P\;|\;V$ donc $U=V=0$ en comparant les degrés. Sinon, si $P\land Q=\Delta$ non constant, alors $\varphi(Q/\Delta, -P/\Delta)=0$. Ainsi, $\varphi$ est un isomorphisme si et seulement si $P\land Q=1$
 
@@ -647,15 +647,15 @@ On appelle résultant de $P$ et $Q$ le déterminant de cette matrice. Ainsi, \[
 
 \index{Gauss!contenu}
 
-On note $P(X)=a_nX^n+\cdots + a_0\in\mathbb Z[X]$ de degré $n\geq 1$. On appelle contenu de $P$ le nombre \[
+On note $P(X)=a_nX^n+\cdots + a_0\in\Z[X]$ de degré $n\geq 1$. On appelle contenu de $P$ le nombre \[
     a_n\land\cdots\land a_0
 \]
 
 \begin{dfn}
-    $P\in\mathbb Z[X]$ est dit primitif\index{polynôme!primitif} si $C(P)=1$
+    $P\in\Z[X]$ est dit primitif\index{polynôme!primitif} si $C(P)=1$
 \end{dfn}
 
-On va montrer que si $P, Q\in\mathbb Z[X]$ non constants alors \[
+On va montrer que si $P, Q\in\Z[X]$ non constants alors \[
     C(PQ)=C(P)C(Q)
 \]
 
@@ -673,13 +673,13 @@ Dans le cas général, \[
 \]
 
 \begin{res}
-    $P\in\mathbb Z[X]$ primitif est irréductible dans $\mathbb Z[X]$ si et seulement s'il l'est dans $\mathbb Q[X]$
+    $P\in\Z[X]$ primitif est irréductible dans $\Z[X]$ si et seulement s'il l'est dans $\Q[X]$
 \end{res}
 \begin{proof}
-Si le polynôme est irréductible dans $\mathbb Q[X]$ alors il l'est dans $\mathbb Z[X]$. On suppose $P$ irréductible dans $\mathbb Z[X]$ et $P=AB$ dans $\mathbb Q[X]$. Il existe $p, q$ minimaux positifs tels que $pqP=pAqB$, $pA$ et $qB$ dans $\mathbb Z[X]$ et \[
+Si le polynôme est irréductible dans $\Q[X]$ alors il l'est dans $\Z[X]$. On suppose $P$ irréductible dans $\Z[X]$ et $P=AB$ dans $\Q[X]$. Il existe $p, q$ minimaux positifs tels que $pqP=pAqB$, $pA$ et $qB$ dans $\Z[X]$ et \[
     C(pqP)=pqC(P)=pq=C(pA)C(qB) \implies P=\frac{pA}{C(pA)}\times \frac{qB}{C(qB)}
 \]
-absurde (les deux facteurs sont dans $\mathbb Z[X]$).
+absurde (les deux facteurs sont dans $\Z[X]$).
 \end{proof}
 
 \subsection{Critère d'Eisenstein}
@@ -687,15 +687,15 @@ absurde (les deux facteurs sont dans $\mathbb Z[X]$).
 \index{Eisenstein (critère de -- )}
 
 \begin{res}[Critère d'Eisenstein]
-On note $P=p_nX^n+\cdots + p_0\in\mathbb Z[X]$ non constant de degré $n$. Si $p$ est premier tel que \[
+On note $P=p_nX^n+\cdots + p_0\in\Z[X]$ non constant de degré $n$. Si $p$ est premier tel que \[
     \begin{cases}
     p\;|\;p_0,\cdots, p_{n-1}\\ p\;\not|\;p_n\\p^2\;\not|\;p_0
     \end{cases}
 \]
-alors $P$ est irréductible dans $\mathbb Q[X]$
+alors $P$ est irréductible dans $\Q[X]$
 \end{res}
 \begin{proof}
-On suppose par l'absurde que $P$ n'est pas irréductible dans $\mathbb Q[X]$ donc dans $\mathbb Z[X]$. On écrit alors $P=AB$ avec $A$ et $B$ non constants à coefficients entiers. On a \[
+On suppose par l'absurde que $P$ n'est pas irréductible dans $\Q[X]$ donc dans $\Z[X]$. On écrit alors $P=AB$ avec $A$ et $B$ non constants à coefficients entiers. On a \[
     p\;|\;p_0=a_0b_0
 \]
 donc par exemple $p$ divise $a_0$ mais pas $b_0$ (il ne peut pas diviser les deux par hypothèse). Si $p$ divise tous les $a_i$, alors $p\;|\;\dom A\times \dom B=p_n$ absurde. On note alors $i_0$ le plus petit $i$ tel que $p\;\not |\;a_i$. $B$ est non constant donc $i_0<n$. \[
@@ -721,28 +721,28 @@ Pour tout $n\geq 1$, le polynôme \[
 est irréductible. En effet, c'est équivalent à vérifier que \[
     n!S_n(X)=X^n+nX^{n-1}+\cdots+n!
 \]
-est irréductible dans $\mathbb Z[X]$.
+est irréductible dans $\Z[X]$.
 
 Si $n=2m$, alors il existe $p$ premier tel que $m<p<2m$ donc $p<n<2p$ et on conclut avec Einsentein. Sinon, si $n=2m+1$ alors il existe $p$ premier tel que $m<p<2m$ et $p<2m<n$ et $2m\leq 2p-1$ donc $n\leq 2p-1<2p$ et on conclut de même.
 \end{csq}
 
-\subsection{{$\mathbb Z[X]$} vs {$\mathbb Z_p[X]$}}
+\subsection{{$\Z[X]$} vs {$\Z_p[X]$}}
 
-On va montrer que $X^4+1$ est irréductible dans $\mathbb Z[X]$ et n'est jamais irréductible dans $\mathbb Z_p[X]$. Dans $\mathbb C[X]$, \[
+On va montrer que $X^4+1$ est irréductible dans $\Z[X]$ et n'est jamais irréductible dans $\Z_p[X]$. Dans $\C[X]$, \[
     X^4+1=\left(X-e^{i\frac\pi4}\right)\left(X-ie^{i\frac\pi4}\right)\left(X+e^{i\frac\pi4}\right)\left(X+ie^{i\frac\pi4}\right)
 \]
-Aucun des facteurs ni des produits n'est dans $\mathbb Q[X]$ donc $X^4+1$ est irréductible dans $\mathbb Q[X]$ donc dans $\mathbb Z[X]$.
+Aucun des facteurs ni des produits n'est dans $\Q[X]$ donc $X^4+1$ est irréductible dans $\Q[X]$ donc dans $\Z[X]$.
 
 Pour $p=2$, $(X^4+1)=(X+1)^4$ n'est pas irréductible. On suppose donc $p$ premier impair et on observe que \begin{align*}
     X^4+1&=(X^2)^2-(-1)\\&=(X^2+1)^2-2X^2\\&=(X^2-1)^2-(-2X^2)
 \end{align*}
-Il est donc suffisant que $-1, 2$ ou $-2$ soit un carré de $\mathbb Z_p$. Si $-1$ et $2$ ne sont pas des carrés, alors $-2$ est un carré. En effet, si on note $\mathcal C^\star$ l'ensemble des carrés non nuls, alors \[
-    \varphi: x\in\mathbb Z_p^\star \longmapsto x^2\in\mathcal C^\star
+Il est donc suffisant que $-1, 2$ ou $-2$ soit un carré de $\Z_p$. Si $-1$ et $2$ ne sont pas des carrés, alors $-2$ est un carré. En effet, si on note $\mathcal C^\star$ l'ensemble des carrés non nuls, alors \[
+    \varphi: x\in\Z_p^\star \longmapsto x^2\in\mathcal C^\star
 \]
 est un morphisme surjectif de noyeau $\ker \varphi=\{\pm1\}$ donc $\#\mathcal C^\star=\frac{p-1}2$. \[
     X^{\frac{p-1}2}-1
 \]
-a au plus $\frac{p-1}2$ racines ($\mathbb Z_p$ est un corps) et s'annule sur $\mathcal C^\star$ donc $\mathcal C^\star$ est exactement l'ensemble des racines de ce polynôme (le petit théorème de fermat donne $x^{p-1}=1$ pour tout $x$ non nul). Si $-1$ et $2$ ne sont pas carrés, alors \[
+a au plus $\frac{p-1}2$ racines ($\Z_p$ est un corps) et s'annule sur $\mathcal C^\star$ donc $\mathcal C^\star$ est exactement l'ensemble des racines de ce polynôme (le petit théorème de fermat donne $x^{p-1}=1$ pour tout $x$ non nul). Si $-1$ et $2$ ne sont pas carrés, alors \[
     (-2)^{\frac{p-1}2}=(-1)^{\frac{p-1}2}\times (2)^{\frac{p-1}2}=-1\times -1=1
 \]
 donc $-2$ carré.
@@ -762,7 +762,7 @@ Soit $n\geq 1$. \begin{itemize}
 \end{dfn}
 
 \begin{prop}
-Pour tout $n\in\mathbb N^\star$, \[
+Pour tout $n\in\N^\star$, \[
     X^n-1=\prod_{d\;|\;n}\mu_d(X)
 \]
 \end{prop}
@@ -793,9 +793,9 @@ On raisonne par récurrence sur $n$ pour le caractère entier, le reste est imm�
     \item $n=1$ immédiat
     \item On se donne $n\geq 1$ et on suppose la propriété vraie jusqu'au rang $n$. Si $n+1$ est premier, la conclusion est immédiate. Sinon, \[
         X^{n+1}-1=\prod_{d\;|\;n+1}\mu_d(X)=\mu_{n+1}(X)\times
-        \underbrace{\prod_{\substack{d\;|\;n+1\\ d\neq n+1}}\mu_d(X)}_{\in\mathbb Z[X], \text{ unitaire }}
+        \underbrace{\prod_{\substack{d\;|\;n+1\\ d\neq n+1}}\mu_d(X)}_{\in\Z[X], \text{ unitaire }}
     \]
-    Donc $\mu_{n+1}$ est le quotient dans la division euclidienne de $X^{n+1}-1$ par un polynôme \textbf{unitaire} de $\mathbb Z[X]$, d'où la conclusion.
+    Donc $\mu_{n+1}$ est le quotient dans la division euclidienne de $X^{n+1}-1$ par un polynôme \textbf{unitaire} de $\Z[X]$, d'où la conclusion.
 \end{itemize}
 \end{proof}
 
@@ -840,7 +840,7 @@ car \[
 \end{proof}
 
 \begin{rem}
-Cela donne une autre preuve de $\mu_n(X)\in\mathbb Z[X]$
+Cela donne une autre preuve de $\mu_n(X)\in\Z[X]$
 \end{rem}
 
 \subsection{Suites arithmétiques}
@@ -852,13 +852,13 @@ On a dans ce cas \[
     p\;|\;\mu_m(a)\;|\;a^m-1 \text{ premier avec }a \implies p\;\not|\;a
 \]
 
-Si $d=\ord a$ alors $d\;|\; m$ donc $X^d-1|X^m-1$. Par l'absurde, si $d\neq n$ alors $X^d-1\land \mu_m=1$ (aucune racine commune dans $\mathbb C$) donc (Gauss) $(X^d-1)\times \mu_m(X)|X^m-1$. On en déduit ($d$ est l'ordre de $a$) \[
+Si $d=\ord a$ alors $d\;|\; m$ donc $X^d-1|X^m-1$. Par l'absurde, si $d\neq n$ alors $X^d-1\land \mu_m=1$ (aucune racine commune dans $\C$) donc (Gauss) $(X^d-1)\times \mu_m(X)|X^m-1$. On en déduit ($d$ est l'ordre de $a$) \[
     (a^d-1)\mu_m(a)\;|\;a^m-1 \implies a^m-1=0\pmod {p^2}
 \]
 et comme $a+p$ vérifie les mêmes hypothèses ($a+p\equiv a\pmod p$ donc $\mu_m(a+p)=0\pmod {p}$ et l'ordre est le même donc $\neq m$), on a $(a+p)^m-1= 0\pmod {p^2}$, d'où \[
     p^2\;|\; (a+p)^m-a^m=p\left(a^{m-1}+\underbrace{\cdots}_{\text{multiple de }p}\right) \implies p\;|\; a
 \]
-c'est absurde, donc $\ord a = m$. Puis $m=\ord a\;|\;p-1$ donc $p$ est un terme de la suite $(1+km)_{k\in\mathbb N}$. Si cette suite n'a qu'un nombre fini de nombres premiers $p_1, \cdots, p_s$ alors pour $k$ assez grand, $\mu_m(kp_1\cdots p_s)>2$. On a aussi $\mu_m(0)=\pm 1$ (entier de module $1$) donc si $p$ est un premier qui divise $\mu_m(kp_1\cdots p_s)$ et $p$ est parmi les $p_i$ alors $p\;|\; \mu_m(0)$ absurde, donc $p$ n'est pas parmi les $p_i$ et la suite a une infinité de termes premiers.
+c'est absurde, donc $\ord a = m$. Puis $m=\ord a\;|\;p-1$ donc $p$ est un terme de la suite $(1+km)_{k\in\N}$. Si cette suite n'a qu'un nombre fini de nombres premiers $p_1, \cdots, p_s$ alors pour $k$ assez grand, $\mu_m(kp_1\cdots p_s)>2$. On a aussi $\mu_m(0)=\pm 1$ (entier de module $1$) donc si $p$ est un premier qui divise $\mu_m(kp_1\cdots p_s)$ et $p$ est parmi les $p_i$ alors $p\;|\; \mu_m(0)$ absurde, donc $p$ n'est pas parmi les $p_i$ et la suite a une infinité de termes premiers.
 
 \subsection{Irréductibilité}
 
@@ -866,9 +866,9 @@ c'est absurde, donc $\ord a = m$. Puis $m=\ord a\;|\;p-1$ donc $p$ est un terme 
 
 Nous allons montrer que les polynômes cyclotomiques sont irréductibles par un argument de Landau.
 
-On note $\alpha$ une racine primirive $n$-ième de l'unité et $P$ son polynôme minimal. La suite $(P(\alpha^k))_{k\in\mathbb N}$ est $n$-périodique à valeurs dasn $\mathbb Z[\alpha]$ et chacun des termes s'écrit  de manière unique $Q_k(\alpha)$ pour un polynôme $Q_k$ de degré $<\deg P$.
+On note $\alpha$ une racine primirive $n$-ième de l'unité et $P$ son polynôme minimal. La suite $(P(\alpha^k))_{k\in\N}$ est $n$-périodique à valeurs dasn $\Z[\alpha]$ et chacun des termes s'écrit  de manière unique $Q_k(\alpha)$ pour un polynôme $Q_k$ de degré $<\deg P$.
 
-On note $A$ le plus grand coefficient de tous les $Q_k$ en valeurs absolues. Dans $\mathbb Z_p[X]$, $P(X^p)=P(X)^p$ (Frobenius) donc il existe $U\in\mathbb Z[X]$ tel que \[
+On note $A$ le plus grand coefficient de tous les $Q_k$ en valeurs absolues. Dans $\Z_p[X]$, $P(X^p)=P(X)^p$ (Frobenius) donc il existe $U\in\Z[X]$ tel que \[
     P(X^p)=P(X)^p+pU(X)
 \]
 Pour $p>A$, \[
@@ -889,16 +889,16 @@ Ainsi les $(\alpha^{m})$ avec $m\land n=1$ sont racines de $P$ donc $\mu_n(X) \;
 \section{Nombres algébriques}
 \index{nombres algébriques}
 
-Si $K\subset L$ sont deux corps alors on dit que $a\in L$ est algébrique sur $K$ s'il existe $P\in\mathbb K[X]$ non nul tel que $P(a)=0$.
+Si $K\subset L$ sont deux corps alors on dit que $a\in L$ est algébrique sur $K$ s'il existe $P\in\K[X]$ non nul tel que $P(a)=0$.
 
-Dans $\mathbb C$, on appelle nombre algébrique les nombres algébriques sur $\mathbb Q$ et on note $A$ l'ensemble de ces nombres.
+Dans $\C$, on appelle nombre algébrique les nombres algébriques sur $\Q$ et on note $A$ l'ensemble de ces nombres.
 
 \begin{rem}
 Si $a$ est algébrique sur un corps $K$ alors \[
-    I_a=\{P\in\mathbb K[X]\;/\; P(a)=0\}
+    I_a=\{P\in\K[X]\;/\; P(a)=0\}
 \]
 est un idéal non réduit à $\{0\}$ de $K[X]$ euclidien donc principal, donc il existe un unique polynôme unitaire $\mu_a(X)$ tel que $I_a=\mu_a K[X]$, que l'on appelle polynôme minimal de $a$. Dans ce cas \[
-    \Vect_Kr((a^k)_{k\in\mathbb N})=\Vect_K(1, a, \cdots, a^{\deg \mu_a-1})=\{P(a), P\in K[X]\}
+    \Vect_Kr((a^k)_{k\in\N})=\Vect_K(1, a, \cdots, a^{\deg \mu_a-1})=\{P(a), P\in K[X]\}
 \]
 \end{rem}
 
@@ -911,16 +911,16 @@ $A$ est un corps
 
 \begin{proof}
 \begin{itemize}
-    \item $A\subset \mathbb C$
+    \item $A\subset \C$
     \item $1\in A$ en tant que racine de $X-1$
-    \item Soient $x, y\in A$, $p=\deg \mu_x, q=\deg \mu_y$. Pour tout $n\in\mathbb N$, \[
+    \item Soient $x, y\in A$, $p=\deg \mu_x, q=\deg \mu_y$. Pour tout $n\in\N$, \[
         \begin{cases}
-            x^n\in\Vect_{\mathbb Q}(1, x, \cdots, x^{p-1}) \\ y^n\in\Vect_{\mathbb Q}(1, y, \cdots, y^{q-1})
-        \end{cases}\quad\text{ donc }\quad  x^ny^n, (x+y)^n\in\Vect_{\mathbb Q}(x^iy^j, i<q, j<q)
+            x^n\in\Vect_{\Q}(1, x, \cdots, x^{p-1}) \\ y^n\in\Vect_{\Q}(1, y, \cdots, y^{q-1})
+        \end{cases}\quad\text{ donc }\quad  x^ny^n, (x+y)^n\in\Vect_{\Q}(x^iy^j, i<q, j<q)
     \]
 
     Les familles $((x-y)^n)_n$ et $((xy)^n)_n$ sont liées donc $x-y, xy\in A$.
-    \item Si $x\in A$ non nul et si on note $E=\Vect_{\mathbb Q}(1, x, \cdots, x^{p-1})$ alors \[
+    \item Si $x\in A$ non nul et si on note $E=\Vect_{\Q}(1, x, \cdots, x^{p-1})$ alors \[
         \varphi: z\in E\longmapsto xz\in E
     \]
     est un endomorphisme injectif en dimension finie donc c'est un isomorphisme et $\varphi^{-1}(1)$ donne $x^{-1}\in E\subset A$
@@ -953,16 +953,16 @@ Si $K\subset L$ alors $L$ est un $K$-ev et si $L$ est de dimension finie sur $K$
     \item Soit $K\subset L\subset N$ trois corps. Si $\dim_L N, \dim_K L<+\infty$ alors $\dim_K N<+\infty$ et \[
         [N:K]=[N:L]\times [L:K]
     \]
-    \item Si $a\in\mathbb C$ est algébrique et si $b\in K$ est algébrique sur $\mathbb Q[a]$ alors $b$ est algébrique sur $\mathbb Q$.
+    \item Si $a\in\C$ est algébrique et si $b\in K$ est algébrique sur $\Q[a]$ alors $b$ est algébrique sur $\Q$.
 \end{enumerate}
 \end{prop}
 
 \begin{proof} ~
 \begin{enumerate}
-    \item $(n_1, \cdots, n_p)$ base de $N$ sur $L$, $(\ell_1, \cdots, \ell_q)$ base de $L$ sur $K$. Si $n\in\mathbb N$ alors il existe $\lambda_1, \cdots, \lambda_p\in L$ tel que $n=\lambda_1n_1+\cdots+\lambda_p n_p$ et chaque $\lambda_i\in\Vect_{\mathbb Q}(\ell_1, \cdots, \ell_p)$ donc $n\in\Vect_{\mathbb Q}(\ell_in_j)$ (famille génératrice finie) donc \[
+    \item $(n_1, \cdots, n_p)$ base de $N$ sur $L$, $(\ell_1, \cdots, \ell_q)$ base de $L$ sur $K$. Si $n\in\N$ alors il existe $\lambda_1, \cdots, \lambda_p\in L$ tel que $n=\lambda_1n_1+\cdots+\lambda_p n_p$ et chaque $\lambda_i\in\Vect_{\Q}(\ell_1, \cdots, \ell_p)$ donc $n\in\Vect_{\Q}(\ell_in_j)$ (famille génératrice finie) donc \[
         [N:K]<+\infty
     \]
-    Vérifions que $(\ell_in_j)_{\substack{1\leq i\leq q\\ 1\leq j\leq p}}$ est libre sur $\mathbb Q$. \[
+    Vérifions que $(\ell_in_j)_{\substack{1\leq i\leq q\\ 1\leq j\leq p}}$ est libre sur $\Q$. \[
         \sum_{i, j}\lambda_{i, j}\ell_in_j=0\implies \sum_{j=1}^pn_j\sum_{i=1}^q\lambda_{i, j}\ell_i=0 \implies \forall j\in\llbracket 1, p\rrbracket \sum_{i=1}^q\lambda_{i, j}\ell_i=0\implies \forall i, j, \lambda_{i, j}=0
     \]
     \item C'est une conséquence directe de $1.$
@@ -970,21 +970,21 @@ Si $K\subset L$ alors $L$ est un $K$-ev et si $L$ est de dimension finie sur $K$
 \end{proof}
 
 \begin{rem}
-Si $b$ est racine d'une équation polynômiale à coefficients dans $\mathbb Q[a]$, il l'est aussi d'une équation polynômiale à coefficients dans $\mathbb Q$.
+Si $b$ est racine d'une équation polynômiale à coefficients dans $\Q[a]$, il l'est aussi d'une équation polynômiale à coefficients dans $\Q$.
 \end{rem}
 
 \section{Polynômes orthogonaux}
 \index{polynômes orthogonaux}
 
-On note $p: I\longrightarrow \mathbb R_+^\star$ continue telle que pour tout entier naturel $k$, $t\longmapsto t^kp(t)$ est intégrable sur $I$. Dans ce cas, \[
+On note $p: I\longrightarrow \R_+^\star$ continue telle que pour tout entier naturel $k$, $t\longmapsto t^kp(t)$ est intégrable sur $I$. Dans ce cas, \[
     (P|Q)=\int_Ip(t)P(t)Q(t)\;\mathrm dt
 \]
-est bien définit et est un produit scalaire sur $\mathbb R[X]$
+est bien définit et est un produit scalaire sur $\R[X]$
 
 \begin{prop}
 Il existe une unique famille $(P_k)_k$ de polynômes unitaires tels que
 \begin{itemize}
-    \item $\forall k\in\mathbb N, \quad \deg P_k=k$
+    \item $\forall k\in\N, \quad \deg P_k=k$
     \item les $P_k$ sont deux à deux orthogonaux
 \end{itemize}
 \end{prop}
@@ -1011,8 +1011,8 @@ avec \[
 \]
 \end{prop}
 
-\begin{proof} On note $E_i=\mathbb R_i[X]$.
-Pour $Q\in\Vect(P_0, \cdots, P_{n-2})=\mathbb R_{n-2}[X]$, $(XP_n|Q)=(P_n|XQ)=0$ car $XQ\in\mathbb R_{n-1}[X]$. On a alors \[
+\begin{proof} On note $E_i=\R_i[X]$.
+Pour $Q\in\Vect(P_0, \cdots, P_{n-2})=\R_{n-2}[X]$, $(XP_n|Q)=(P_n|XQ)=0$ car $XQ\in\R_{n-1}[X]$. On a alors \[
     P_n(X)-XP_{n-1}(X)\in E_{n-3}^\bot
 \]
 or $\deg (P_n-XP_{n-1})\leq n-1$ (simplification du coef dominant) donc \[
@@ -1057,7 +1057,7 @@ donc comme $w_0>0$, on en déduit que pour tout $x, n$, $w_n(x)>0$. Notons $\alp
 
 \subsection{Rappels}
 
-On considère $x_1, \cdots, x_n\in\mathbb K$ deux à deux distincts, et on note \[
+On considère $x_1, \cdots, x_n\in\K$ deux à deux distincts, et on note \[
     \Delta_i(X)=\prod_{j\neq i}\frac{X-x_j}{x_i-x_j}
 \]
 de telle manière que \[
@@ -1065,7 +1065,7 @@ de telle manière que \[
 \]
 
 \begin{thm}
-    On considère $x_1, \cdots, x_n, y_1, \cdots, y_n\in\mathbb K$, les $x_i$ deux à deux distincts. Dans ce cas, il existe un unique polynôme $P\in\mathbb K_{n-1}[X]$ tel que \[\forall i\in\llbracket 1, n\rrbracket, \quad P(x_i)=y_i\]
+    On considère $x_1, \cdots, x_n, y_1, \cdots, y_n\in\K$, les $x_i$ deux à deux distincts. Dans ce cas, il existe un unique polynôme $P\in\K_{n-1}[X]$ tel que \[\forall i\in\llbracket 1, n\rrbracket, \quad P(x_i)=y_i\]
     De plus, \[
         P(X)=\sum_{i=1}^ny_i\Delta_i(X)
     \]
@@ -1092,8 +1092,8 @@ donc \[
 
 \subsection{Formules d'ordre supérieur}
 
-On se donne $n_1, \cdots, n_r\in\mathbb N^\star$, $x_1, \cdots, x_r\in\mathbb K$ deux à deux distincts et $n=n_1+\cdots+n_r$. \[
-    \varphi: P\in\mathbb K_{n-1}[X]\longmapsto(P(x_1), \cdots, P^{(n_1-1)}(x_1), \cdot, P(x_r), \cdots, P^{(n_r-1)})\in\mathbb K^n
+On se donne $n_1, \cdots, n_r\in\N^\star$, $x_1, \cdots, x_r\in\K$ deux à deux distincts et $n=n_1+\cdots+n_r$. \[
+    \varphi: P\in\K_{n-1}[X]\longmapsto(P(x_1), \cdots, P^{(n_1-1)}(x_1), \cdot, P(x_r), \cdots, P^{(n_r-1)})\in\K^n
 \]
 est une application linéaire injective, il y a égalité des dimensions donc c'est un isomorphisme et on en déduit que pour $(y_{i, k})_{i\leq r, j\leq n_i}$ donné, il existe un unique polynôme de degré au plus $n-1$ tel que \[
     \forall i, k, P^{(k)}(x_i)=y_{i, k}
@@ -1101,7 +1101,7 @@ est une application linéaire injective, il y a égalité des dimensions donc c'
 
 \subsection{Analyse de l'erreur}
 
-On se donne $f\in\mathbb C^n([a, b], \mathbb R) ,x_1, \cdots, x_n\in [a, b]$ deux à deux distincts. \[
+On se donne $f\in\C^n([a, b], \R) ,x_1, \cdots, x_n\in [a, b]$ deux à deux distincts. \[
     P(x)=\sum_{i=1}^nf (x_i)\Delta_i(x)
 \]
 l'interpolation de Lagrange de $f$. On veut estimer $f(x)-P(x)$. On note $x\in [a, b]\setminus\{x_1, \cdots, x_r\}$ et on note \[
@@ -1136,7 +1136,7 @@ est petit. On peut donc s'intéresser aux choix des $x_i$ minimisant $\|\omega\|
 
 \begin{thm}[Weierstrass]
     \index{Weierstrass (théorème de -- )}
-    Si $f$ est continue de $[a, b]$ dans $\mathbb C$ alors il existe une suite $(P_n)$ de fonctions polynômiales telle que \[
+    Si $f$ est continue de $[a, b]$ dans $\C$ alors il existe une suite $(P_n)$ de fonctions polynômiales telle que \[
         P_n\xrightarrow[{[a, b]}]{CVU} f
     \]
 \end{thm}
@@ -1154,7 +1154,7 @@ Le résultat est faux sur un intervalle autre qu'un segment.
 \index{Bernstein!inégalité}
 
 \begin{lmm}
-Si $z_1, \cdots, z_n$ sont les racines du polynôme $z^n+1$ et $P$ polynôme réel de degré $n$, alors pour tout $t\in\mathbb C$, \[
+Si $z_1, \cdots, z_n$ sont les racines du polynôme $z^n+1$ et $P$ polynôme réel de degré $n$, alors pour tout $t\in\C$, \[
     tP'(t)=\frac n2P(t)+\frac 1n\sum_{k=1}^nP(-z_k)\frac{2z_k}{(z_k-1)^2}
 \]
 \end{lmm}
@@ -1181,7 +1181,7 @@ ce qui termine la preuve de la formule.
 \end{proof}
 
 \begin{res}
-On note pour $P\in\mathbb R[X]$, $\|P\|=\sup_{|z|=1}\limits|P(z)|$. Si $P$ est de degré $n$ alors \[
+On note pour $P\in\R[X]$, $\|P\|=\sup_{|z|=1}\limits|P(z)|$. Si $P$ est de degré $n$ alors \[
     \|P'\|\leq n\|P\|
 \]
 \end{res}
@@ -1254,7 +1254,7 @@ $U\cap O_0$ est un ouvert non vide donc il existe $x_0\in U\cap O_0$ et $2a_0>0$
 
 \item $\cdots$
 \end{itemize}
-On construit ainsi deux suites $(x_n)_n\in E^{\mathbb N}$, $(r_n)\in\mathbb {R_+^\star}^{\mathbb N}$ telles que \[
+On construit ainsi deux suites $(x_n)_n\in E^{\N}$, $(r_n)\in\mathbb {R_+^\star}^{\N}$ telles que \[
     \begin{cases}
         \mathcal B_f(x_n, r_n)\subset \mathcal B_f(x_{n-1}, r_{n-1})\subset \cdots \subset \mathcal B_f(x_0, r_0) \\
         \mathcal B_f(x_n, r_n)\subset O_n, \quad r_n\leq \dfrac 1n
@@ -1266,23 +1266,23 @@ Pour $m>n$, $x_m\in\mathcal B_f(x_m, r_m)\subset\mathcal B_f(x_n, r_n)$ donc \[
 donc $(x_n)$ de Cauchy donc convergente vers $x$.
 
 Pour $m$ fixé, APCR $x_n\in\mathcal B_f(x_m, r_m)$ fermé donc $x\in\mathcal B_f(x_m, r_m)\subset O_m$ donc $x\in O_m$ pour tout $m$. Ainsi, \[
-    x\in\bigcap_{n\in\mathbb N}O_n
+    x\in\bigcap_{n\in\N}O_n
 \]
 et $x\in\mathcal B_f(x_0, r_0)\subset U$ donc $x\in U$ et donc \[
-    U\cap\left(\bigcap_{n\in\mathbb N}O_n\right)
+    U\cap\left(\bigcap_{n\in\N}O_n\right)
 \]
 pour tout ouvert $U$.
 
 \begin{cor}
 Si $(F_n)_n$ est une suite de fermés d'intérieurs vides alors \[
-    \bigcup_{n\in\mathbb N}F_n
+    \bigcup_{n\in\N}F_n
 \] est d'intérieur vide.
 \end{cor}
 \end{proof}
 
-\subsection{Incomplétude de {$\mathbb R[X]$}}
+\subsection{Incomplétude de {$\R[X]$}}
 
-On supose qu'il existe une norme $\|\cdot \|$ telle que $(\mathbb R[X], \|\cdot \|)$ est complet (i.e. toutes les suites de Cauchy convergent)
+On supose qu'il existe une norme $\|\cdot \|$ telle que $(\R[X], \|\cdot \|)$ est complet (i.e. toutes les suites de Cauchy convergent)
 
 \begin{itemize}
     \item $E_n=\Vect(1, \cdots, X^n)$ est un fermé (s.e.v. de dimension finie)
@@ -1293,12 +1293,12 @@ On supose qu'il existe une norme $\|\cdot \|$ telle que $(\mathbb R[X], \|\cdot 
     \]
     donc $\mathcal B_o(P, \varepsilon)\not\subset E_n$ et $E_n$ d'intérieur vide.
     \item Par le théorème de Baire, \[
-        \underbrace{\bigcap_{n\in\mathbb N} E_n}_{\text{intérieur vide}}=\underbrace{\mathbb R[X]}_{\text{intérieur non vide}}
+        \underbrace{\bigcap_{n\in\N} E_n}_{\text{intérieur vide}}=\underbrace{\R[X]}_{\text{intérieur non vide}}
     \]
     absurde.
 \end{itemize}
 
-Il n'existe donc aucune norme pour laquelle $\mathbb R[X]$ est complet.
+Il n'existe donc aucune norme pour laquelle $\R[X]$ est complet.
 
-En particulier, $(X_k)_k$ est une base qu'on peut orthonormaliser par le procédé de Gram-Schmidt en une base $(P_k)_k$ qui est totale, sans que $\mathbb R[X]$ soit complet.
+En particulier, $(X_k)_k$ est une base qu'on peut orthonormaliser par le procédé de Gram-Schmidt en une base $(P_k)_k$ qui est totale, sans que $\R[X]$ soit complet.
 \endchapter

@@ -20,7 +20,7 @@
 Cette section ne contient que des rappels de sup.
 
 \begin{dfn}[Développement limité]\index{développement limité}
-    Un développement limité de $f:V\longrightarrow \mathbb R$ à l'ordre $n$ au voisinage $V$ de $a$ (qu'on abrègera $\mathrm{DL}_n(a)$ de $f$) est une écriture du type: \[
+    Un développement limité de $f:V\longrightarrow \R$ à l'ordre $n$ au voisinage $V$ de $a$ (qu'on abrègera $\mathrm{DL}_n(a)$ de $f$) est une écriture du type: \[
         f(x)=\underbrace{a_0+a_1(x-a)+\cdots +a_n(x-a)^n}_{\text{partie polynômiale}}+o_a((x-a)^n)
     \]
 \end{dfn}
@@ -52,7 +52,7 @@ Les règles de calcul sont aussi à connaître (vues en sup: composition, tronca
 \end{rem}
 
 \begin{dfn}[Voisinage\index{voisinage}]
-    Un voisinage de $a\in\mathbb R$ est un intervalle du type $]a-\varepsilon, a+\varepsilon[$. Si $V$ est un voisinage de $a$, on note $V\in\mathcal V(a)$.
+    Un voisinage de $a\in\R$ est un intervalle du type $]a-\varepsilon, a+\varepsilon[$. Si $V$ est un voisinage de $a$, on note $V\in\mathcal V(a)$.
 \end{dfn}
 
 Si $V\in\mathcal V(0)$ et si pour $x\in V\setminus\{0\}$, $f(x)=a_0+a_1x +a_px^p+o_p(x^p)$, $a_p\neq 0$ et $p\geq 2$ alors \begin{itemize}
@@ -84,14 +84,14 @@ Si $V\in\mathcal V(0)$ et si pour $x\in V\setminus\{0\}$, $f(x)=a_0+a_1x +a_px^p
 \section{Taylor-Young}
 
 \begin{thm}[Taylor-Young\index{Taylor-Young (théorème de -- )}]
-    \Hyp $f\in\mathcal C^n(V\in\mathcal V(0), \mathbb R)$
+    \Hyp $f\in\mathcal C^n(V\in\mathcal V(0), \R)$
     \Conc \[
             \forall x\in V, \qquad f(x)=\sum_{k=0}^n\frac{f^{(k)}(0)}{k!}x^k+o_0(x^n)
     \]
 \end{thm}
 
 \begin{rem}
-    On n'a en fait besoin que de $f\in\mathcal C^{n-1}(V, \mathbb R)$ et $f^{(n-1)}$ dérivable en $0$
+    On n'a en fait besoin que de $f\in\mathcal C^{n-1}(V, \R)$ et $f^{(n-1)}$ dérivable en $0$
 \end{rem}
 
 \begin{rem}
@@ -108,7 +108,7 @@ Si $V\in\mathcal V(0)$ et si pour $x\in V\setminus\{0\}$, $f(x)=a_0+a_1x +a_px^p
 \end{ex}
 
 \begin{ex}[$b$]
-    On note $f\in\mathcal C^{\infty}([-1; 1], \mathbb R)$ telle que $\forall n\in\mathbb N^\star$, \begin{align*}
+    On note $f\in\mathcal C^{\infty}([-1; 1], \R)$ telle que $\forall n\in\N^\star$, \begin{align*}
         f \left( \frac1n \right) &= \frac{\sqrt n}{\sqrt{n+1}+\sqrt n}\\
                                  &= \frac1{1+\sqrt{1+\frac1n}}\\
                                  &= \frac{\sqrt{1+\frac1n}-1}{\frac 1n}\\
@@ -143,7 +143,7 @@ donc, après calculs, \[
 \subsection{Développement limité d'une réciproque}
 
 \begin{exo}
-    Soit $x\in\mathbb R$. Montrer $\exists!\psi(x)\defeq y\in\mathbb R, e^{x+y}+y=1$. Montrer que $\psi$ admet un $\mathrm{DL}_2(0)$ que l'on donnera
+    Soit $x\in\R$. Montrer $\exists!\psi(x)\defeq y\in\R, e^{x+y}+y=1$. Montrer que $\psi$ admet un $\mathrm{DL}_2(0)$ que l'on donnera
 \end{exo}
 
 \begin{proof}[Résolution (Idée 1)]
@@ -154,10 +154,10 @@ donc, après calculs, \[
     «On perturbe le problème.» \[
         e^{x+y}+y=1\iff e^{x+y}+x+y=1+x \iff \varphi(x+y)=1+x
     \]
-    avec $\varphi: t\longmapsto e^t+t\in\mathcal C^{\infty}(\mathbb R, \mathbb R)$ strictement croissante de dérivée jamais nulle. C'est donc une bijection de $\mathbb R$ dans $\mathbb R$ de bijection réciproque dérivable: \[
+    avec $\varphi: t\longmapsto e^t+t\in\mathcal C^{\infty}(\R, \R)$ strictement croissante de dérivée jamais nulle. C'est donc une bijection de $\R$ dans $\R$ de bijection réciproque dérivable: \[
         \varphi^{-1'}=\frac1{\varphi'\circ \varphi^{-1}}\in\mathcal C^1
     \]
-    donc $\varphi^{-1}\in\mathcal C^2$ (en fait $\mathcal C^{\infty}$) donc $\varphi^{-1}$ admet un $\mathrm{DL}_2(a)$ en $a\in\mathbb R$.
+    donc $\varphi^{-1}\in\mathcal C^2$ (en fait $\mathcal C^{\infty}$) donc $\varphi^{-1}$ admet un $\mathrm{DL}_2(a)$ en $a\in\R$.
 
     On a $\psi(x)=-x+\varphi^{-1}(1+x)$ donc $\psi$ a un $\mathrm{DL}_2(0)$. Donc on écrit \[
         \psi(x)=a_0+a_1x+a_2x^2+o_0(x^2)
@@ -282,7 +282,7 @@ avec égalité ssi $a_1=b_1,\cdots a_n=b_n$. Le résultat se généralise identi
 On va montrer l'inégalité de Cauchy-Schwarz de deux manières différentes
 
 
-\textbf{Identité de Lagrange.} On note $a_1, \cdots, a_n, b_1, \cdots, b_n\in\mathbb R$. \begin{align*}
+\textbf{Identité de Lagrange.} On note $a_1, \cdots, a_n, b_1, \cdots, b_n\in\R$. \begin{align*}
         \left( \sum_{i=1}^na_i^2 \right) \cdot \left( \sum_{i=1}^n b_i^2 \right)- \left( \sum_{i=1}^na_ib_i \right)^2 &= \sum_{i=1}^n\sum_{j=1}^n \underbrace{a_i^2b_j^2-a_ib_ia_jb_j}_{=0\text{ si }i=j} \\
                                                                                                                       &= \sum_{i<j}(a_i^2b_j^2+a_j^2b_i^2)-2a_ib_ia_jb_j \\ 
                                                                                                                       &= \sum_{i<j}(a_ib_j-a_jb_i)^2\geq 0
@@ -329,7 +329,7 @@ $S_\sigma$ est maximal pour $\sigma=\id$, et minimal pour $\sigma=(n\;\;n-1\;\;\
 donc on peut supposer $\sigma(1)=1$. En itérant, $\sigma=\id$ est maximisante. On procède de la même manière pour la permutation minimisante.
 
 \begin{ex}[Application 1]
-    On note $f:\mathbb N^\star\to\mathbb N^\star$ bijective. On cherche la nature de $\sum\dfrac1{nf(n)}$.
+    On note $f:\N^\star\to\N^\star$ bijective. On cherche la nature de $\sum\dfrac1{nf(n)}$.
     On note $a_1<\cdots <a_n$ les éléments $f(1), \cdots, f(n)$ ordonnés. Alors \[
         \sum_{k=1}^n\frac1{kf(k)}\leq \frac1{na_n}+\cdots \frac1{a_1}\leq \frac1{n^2}+\cdots +\frac1{1^2}\leq\zeta(2)
     \]
@@ -352,8 +352,8 @@ donc on peut supposer $\sigma(1)=1$. En itérant, $\sigma=\id$ est maximisante. 
 \subsection{Échelles de références}
 
 \begin{dfn}[Rappels]
-    Si $f$ et $g$ sont définies sur un voisinage de $a\in\bar{\mathbb R}$ alors \[
-        f(x)=o_a(g(x))\iff \exists V'\subset V, V'\in\mathcal V(a), \exists \varepsilon:V'\to\mathbb R, \forall x\in V', f(x)=\varepsilon(x)g(x)\text{ et }\varepsilon(x)\xrightarrow[x\to a]{}0
+    Si $f$ et $g$ sont définies sur un voisinage de $a\in\bar{\R}$ alors \[
+        f(x)=o_a(g(x))\iff \exists V'\subset V, V'\in\mathcal V(a), \exists \varepsilon:V'\to\R, \forall x\in V', f(x)=\varepsilon(x)g(x)\text{ et }\varepsilon(x)\xrightarrow[x\to a]{}0
     \]
     \[
         f(x)=O_a(g(x))\iff \exists M>0, \exists V'\subset V, V\in\mathcal V(a), \forall x\in V', |f(x)|\leq M|g(x)|
@@ -369,7 +369,7 @@ donc on peut supposer $\sigma(1)=1$. En itérant, $\sigma=\id$ est maximisante. 
 \end{ex}
 
 \begin{csq}
-    $(x\in\mathbb R_+^\star\longmapsto x^\alpha |\ln x|^\beta)_{\alpha,\beta}$ est une famille libre (pour une famille finie, on ordonne \\$(\alpha_1, \beta_1)\prec~\cdots~\prec~(\alpha_n,\beta_n)$ et on prend la limite en $+\infty$)
+    $(x\in\R_+^\star\longmapsto x^\alpha |\ln x|^\beta)_{\alpha,\beta}$ est une famille libre (pour une famille finie, on ordonne \\$(\alpha_1, \beta_1)\prec~\cdots~\prec~(\alpha_n,\beta_n)$ et on prend la limite en $+\infty$)
 \end{csq}
 
 \section{Suites numériques}
@@ -377,10 +377,10 @@ donc on peut supposer $\sigma(1)=1$. En itérant, $\sigma=\id$ est maximisante. 
 \subsection{Caractérisation de la borne supérieure}
 
 \begin{thm}
-    \Hyp $\emptyset\neq A\subset\mathbb R$, $M\in\mathbb R$.
+    \Hyp $\emptyset\neq A\subset\R$, $M\in\R$.
     \Conc Il y a équivalence entre \begin{enumerate}[label=(\alph{enumi}),left=1.2cm]
         \item $M=\sup A$
-        \item $M$ majore $A$ et $\exists a=(a_n)_n\in A^{\mathbb N}, \quad a_n \longrightarrow M$
+        \item $M$ majore $A$ et $\exists a=(a_n)_n\in A^{\N}, \quad a_n \longrightarrow M$
     \end{enumerate}
 \end{thm}
 
@@ -396,7 +396,7 @@ donc on peut supposer $\sigma(1)=1$. En itérant, $\sigma=\id$ est maximisante. 
 
 \subsection{Limite supérieure et inférieure}
 
-On se donne $u$ une suite réelle bornée. On pose pour $n\in\mathbb N$, \[
+On se donne $u$ une suite réelle bornée. On pose pour $n\in\N$, \[
     u_n^+=\sup\{u_k, \quad k\geq n\}\qquad \qquad u_n^-=\inf \{u_k,\quad k\geq n\}
 \]
 de sorte que $u_0^-\leq u_n^-\leq u_n\leq u_n^+\leq u_0^+$ et les deux suites $u^+, u^-$ étant monotones bornées, elles sont convergentes.
@@ -423,7 +423,7 @@ On construit ainsi une sous-suite convergente (qui converge vers $\limsup u$).
 
 \begin{res}[Lemme de Fekete, Lemme sous-additif\index{Fekete (lemme de -- )}\index{lemme sous-additif}]
     On dit que $(u_n)_n$ est sous-additive si \[
-        \forall n, m\in\mathbb N^\star, u_{n+m}\leq u_n+u_m
+        \forall n, m\in\N^\star, u_{n+m}\leq u_n+u_m
     \]
     Dans ce cas, \[
         \frac{u_n}n\xrightarrow[n\to+\infty]{}\inf\left\{\frac{u_k}k, \quad k\geq 1\right\}\defeq\ell
@@ -431,12 +431,12 @@ On construit ainsi une sous-suite convergente (qui converge vers $\limsup u$).
 \end{res}
 
 \begin{proof}
-    On suppose $\ell\in\mathbb R$ (le cas $\ell=-\infty$ se traite similairement).
+    On suppose $\ell\in\R$ (le cas $\ell=-\infty$ se traite similairement).
 
-    On note $\varepsilon>0$. Il existe $k_0\in\mathbb N^\star$ tel que \[
+    On note $\varepsilon>0$. Il existe $k_0\in\N^\star$ tel que \[
         \ell\leq \frac{u_{k_0}}{k_0}\leq \ell+\varepsilon'\defeq\ell+\frac\varepsilon2
     \]
-    Pour $n\in\mathbb N$$\star$, on écrit $n=pk_0+r$ la division euclidienne de $n$ par $k_0$. Alors, \[
+    Pour $n\in\N$$\star$, on écrit $n=pk_0+r$ la division euclidienne de $n$ par $k_0$. Alors, \[
         u_n\leq pu_{k_0}+u_r\implies \frac{u_n}n\leq \frac{u_{k_0}}{k_0}+\frac{u_{r_0}}n\leq \ell+\varepsilon'+\frac{u_{r_0}}n\xrightarrow[n\to+\infty]{}\ell+\varepsilon'
     \]
     donc à partir d'un certain rang, \[
@@ -448,7 +448,7 @@ On construit ainsi une sous-suite convergente (qui converge vers $\limsup u$).
 \end{proof}
 
 \begin{ex}[Application aux chemins auto-évitants]
-    On munit $\mathbb Z^2$ de l'ensemble d'arêtes \[\{\{(a, b), (a+\epsilon, b+(1-\epsilon))\}, \quad \epsilon\in\{0,1\}, a,b\in\mathbb Z \}\] de sorte à obtenir un graphe sommet-transitif\footnote{chaque sommet joue le même rôle: entre chaque sommets, il existe un automorphisme de graphe qui envoie l'un sur l'autre} qui correspond au réseau «classique» $\mathbb Z^2$. On note ce graphe $G$, et la transitivité permet d'en choisir arbitrairement un sommet $O$ qui sera l'origine des chemins. Un chemin auto-évitant sur $G$ de taille $n$ est un chemin sur $G$ (suite de sommets adjacents qui commence par l'origine $O$) de longueur $n$ qui ne passe pas deux fois par le même sommet. On note $c_n$ le nombre de chemins auto-évitants de longueur $n$.
+    On munit $\Z^2$ de l'ensemble d'arêtes \[\{\{(a, b), (a+\epsilon, b+(1-\epsilon))\}, \quad \epsilon\in\{0,1\}, a,b\in\Z \}\] de sorte à obtenir un graphe sommet-transitif\footnote{chaque sommet joue le même rôle: entre chaque sommets, il existe un automorphisme de graphe qui envoie l'un sur l'autre} qui correspond au réseau «classique» $\Z^2$. On note ce graphe $G$, et la transitivité permet d'en choisir arbitrairement un sommet $O$ qui sera l'origine des chemins. Un chemin auto-évitant sur $G$ de taille $n$ est un chemin sur $G$ (suite de sommets adjacents qui commence par l'origine $O$) de longueur $n$ qui ne passe pas deux fois par le même sommet. On note $c_n$ le nombre de chemins auto-évitants de longueur $n$.
 
     On a clairement $c_{n+m}\leq c_nc_m$ (car un chemin de longueur $n+m$ est la juxtaposition d'un chemin de longueur $n$ et un autre de longueur $m$), de sorte que $(\ln c_n)_n$ est sous-additive positive. On a donc \[
         \frac1n\ln c_n\xrightarrow[n\to+\infty]{}\ell=\ln\mu
@@ -459,12 +459,12 @@ On construit ainsi une sous-suite convergente (qui converge vers $\limsup u$).
     Cette limite $\mu$ est appelée \emph{constante de connectivité\index{constante de connectivité}} de $G$. Le raisonnement que l'on vient de mener montre que tout graphe sommet-transitif admet une constante de connectivité.
 \end{ex}
 
-\begin{ex}[Application aux quasi-morphismes de $\mathbb Z$]
+\begin{ex}[Application aux quasi-morphismes de $\Z$]
     On dit que \[
-        f:\mathbb Z\longrightarrow\mathbb R
+        f:\Z\longrightarrow\R
     \]
     est un quasi-morphisme s'il existe $C>0$ tel que \[
-        \forall m,n\in\mathbb Z, \quad |f(n+m)-f(n)-f(m)|\leq C
+        \forall m,n\in\Z, \quad |f(n+m)-f(n)-f(m)|\leq C
     \]
     On va montrer par récurrence $|f(n_1+\cdots +n_p)-f(n_1)-\cdots -f(n_p)\leq pC$
     \begin{itemize}
@@ -494,8 +494,8 @@ On construit ainsi une sous-suite convergente (qui converge vers $\limsup u$).
 \end{ex}
 
 \begin{exo}[Application aux quasi-morphismes réels]
-    Soit $f:\mathbb R\longrightarrow \mathbb R$ un quasi-morphisme. \begin{enumerate}
-        \item Montrer qu'il existe un morphisme $\varphi$ tel que $\forall x\in\mathbb R, |f(x)-\varphi(x)|\leq C$
+    Soit $f:\R\longrightarrow \R$ un quasi-morphisme. \begin{enumerate}
+        \item Montrer qu'il existe un morphisme $\varphi$ tel que $\forall x\in\R, |f(x)-\varphi(x)|\leq C$
         \item Montrer que si $f$ est continue, $\varphi$ est linéaire.
     \end{enumerate}
 \end{exo}
@@ -503,7 +503,7 @@ On construit ainsi une sous-suite convergente (qui converge vers $\limsup u$).
 \section{Parties entières}
 
 \begin{dfn}
-    Soit $x\in\mathbb R$. On appelle \textbf{partie entière\index{partie entière}} de $x$ l'unique entier $p$ tel que \[
+    Soit $x\in\R$. On appelle \textbf{partie entière\index{partie entière}} de $x$ l'unique entier $p$ tel que \[
         p\leq x<p+1
     \]
     On la note $E(x)$ ou $\floor x$
@@ -513,14 +513,14 @@ On construit ainsi une sous-suite convergente (qui converge vers $\limsup u$).
     \[
         \left| x-\frac{\floor {10^px}}{10^p} \right|\leq \frac1{10^p}\xrightarrow[p\to+\infty]{}0
     \]
-    donc $\mathbb Q$ dense dans $\mathbb R$
+    donc $\Q$ dense dans $\R$
 \end{csq}
 
 \begin{ex}[Approximation d'un irrationnel]
-    On note $\alpha\in\mathbb R_+\setminus\mathbb Q$, et $ \left( \dfrac{p_n}{q_n} \right)_n$ une suite de rationnels qui converge vers $\alpha$. Que dire de $(p_n)_n$ et $ (q_n)_n$ ?
+    On note $\alpha\in\R_+\setminus\Q$, et $ \left( \dfrac{p_n}{q_n} \right)_n$ une suite de rationnels qui converge vers $\alpha$. Que dire de $(p_n)_n$ et $ (q_n)_n$ ?
 
-    Pour $N\in\mathbb N^\star$, on note $I_N=\{k\alpha, k\in\llbracket1 ,N\rrbracket\}$. On note $d$ un entier naturel qui minimise la distance à $I_N$. Cette distance (notée $d(I_n, \mathbb Z)$) est $>0$ car $I_N$ ne contient que des irrationnels. À partir d'un certain rang, \[
-        \left| \alpha-\frac{p_n}{q_n} \right|<\frac{d(I_N, \mathbb Z)}N \iff |q_n\alpha-p_n|<\frac{d(I_n, \mathbb Z)}N q_n
+    Pour $N\in\N^\star$, on note $I_N=\{k\alpha, k\in\llbracket1 ,N\rrbracket\}$. On note $d$ un entier naturel qui minimise la distance à $I_N$. Cette distance (notée $d(I_n, \Z)$) est $>0$ car $I_N$ ne contient que des irrationnels. À partir d'un certain rang, \[
+        \left| \alpha-\frac{p_n}{q_n} \right|<\frac{d(I_N, \Z)}N \iff |q_n\alpha-p_n|<\frac{d(I_n, \Z)}N q_n
     \]
     Donc $q_n\not\in\llbracket1,N\rrbracket$ donc $q_n>N$ d'où \[
         q_n\xrightarrow{}+\infty
@@ -555,7 +555,7 @@ Après calculs, pour $n\geq3$, \[
 \end{ex}
 
 \begin{exo}
-    Montrer que si $a=2\cos\theta$ et $b=c=1$ alors pour $\theta\not\in\pi\mathbb Z$, \[
+    Montrer que si $a=2\cos\theta$ et $b=c=1$ alors pour $\theta\not\in\pi\Z$, \[
         \Delta_n=\frac{\sin((n+1)\theta)}{\sin\theta}.
     \]
 \end{exo}
@@ -583,7 +583,7 @@ Après calculs, pour $n\geq3$, \[
 \subsection{Développement asymptotique d'une fonction implicite}
 
 \begin{exo}
-    Montrer que pour $x\in\mathbb R$, il existe un unique $y>0$ tel que $\dfrac y{\ln y}=x$. On le note $\psi(x)$. Donne un DA en $+\infty$ de $\psi$
+    Montrer que pour $x\in\R$, il existe un unique $y>0$ tel que $\dfrac y{\ln y}=x$. On le note $\psi(x)$. Donne un DA en $+\infty$ de $\psi$
 \end{exo}
 
 \begin{proof}[Résolution]
@@ -614,7 +614,7 @@ Après calculs, pour $n\geq3$, \[
 
 \begin{thm}[Cesàro-Stolz\index{Cesàro-Stolz (théorème de -- )}]
     \Hyp $(a_n)$ une suite réelle, $(b_n)$ suite réelle strictement croissante strictement positive qui tend vers $+\infty$. On suppose \[
-        \frac{a_{n+1}-a_n}{b_{n+1}-b_n}\xrightarrow[n\to+\infty]{}\ell\in\bar{\mathbb R}
+        \frac{a_{n+1}-a_n}{b_{n+1}-b_n}\xrightarrow[n\to+\infty]{}\ell\in\bar{\R}
     \]
     \Conc \[
         \frac{a_n}{b_n}\xrightarrow[n\to+\infty]{}\ell
@@ -622,7 +622,7 @@ Après calculs, pour $n\geq3$, \[
 \end{thm}
 
 \begin{proof}
-    On va montrer le cas $\ell\in\mathbb R$. Soit $\varepsilon>0$. À partir d'un certain rang $N$, \[
+    On va montrer le cas $\ell\in\R$. Soit $\varepsilon>0$. À partir d'un certain rang $N$, \[
         \left(\ell-\frac\varepsilon2\right)(b_n-b_{n-1})\leq a_n-a_{n-1}\leq \left( \ell+\frac\varepsilon2 \right)(b_n-b_{n-1}).
     \]
     On somme: \[
@@ -646,7 +646,7 @@ Après calculs, pour $n\geq3$, \[
 \begin{rem}[Lemme de l'escalier]
     \index{lemme de l'escalier}
     Avec $b_n=n$, on trouve \[
-        a_{n+1}-a_n\longrightarrow \ell\in\mathbb R^\star\implies a_n\underset{+\infty}\sim n\ell
+        a_{n+1}-a_n\longrightarrow \ell\in\R^\star\implies a_n\underset{+\infty}\sim n\ell
     \]
 \end{rem}
 

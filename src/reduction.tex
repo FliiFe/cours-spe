@@ -16,20 +16,20 @@
 
 \ifsolo \newpage \setcounter{page}{1} \fi
 
-Dans tout le chapitre, on note $\mathbb K$ un corps.
+Dans tout le chapitre, on note $\K$ un corps.
 
 \section{Rappels sur les polynômes}
 
 \begin{thm}
-    \Hyp $A, B\in \mathbb K[X]$, $B\neq 0$
-    \Conc Il existe un unique couple de polynômes $(Q, R)$ dans $\mathbb K[X]$ tels que \[
+    \Hyp $A, B\in \K[X]$, $B\neq 0$
+    \Conc Il existe un unique couple de polynômes $(Q, R)$ dans $\K[X]$ tels que \[
         A=QB+R
     \]
     et $\deg R<\deg B$
 \end{thm}
 
 \begin{thmdef}
-    $a\in\mathbb K$ est une racine de $P$ si et seulement si \[
+    $a\in\K$ est une racine de $P$ si et seulement si \[
     P(a)=0\iff (X-a)\;|\;P
 \]
 et $a$ est racine de multiplicité $\alpha \geq 1$ si et seulement si \[
@@ -46,21 +46,21 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \end{thmdef}
 
 \begin{thm}[Interpolation de Lagrange]
-    \index{Lagrange!interpolation} Pour $a_1, \cdots, a_n\in\mathbb R$ des abscisses distinctes et $b_1, \cdots, b_n\in\mathbb R$ des ordonnées distinctes, il existe un unique polynôme de degré au plus $n-1$ tel que \[
+    \index{Lagrange!interpolation} Pour $a_1, \cdots, a_n\in\R$ des abscisses distinctes et $b_1, \cdots, b_n\in\R$ des ordonnées distinctes, il existe un unique polynôme de degré au plus $n-1$ tel que \[
         \forall i\in\llbracket 1, n\rrbracket, \qquad P(a_i)=b_i
     \]
 \end{thm}
 \begin{proof}
     \[
-        \varphi:P\in\mathbb K_{n-1}[X]\longmapsto (P(a_1), \cdots, P(a_n))\in\mathbb R^n
+        \varphi:P\in\K_{n-1}[X]\longmapsto (P(a_1), \cdots, P(a_n))\in\R^n
     \]
     est un isomorphisme.
 \end{proof}
 
-\section{Idéaux de {$\mathbb K[X]$} et arithmétique}
+\section{Idéaux de {$\K[X]$} et arithmétique}
 
 \begin{thm}
-    $\mathbb K[X]$ est principal
+    $\K[X]$ est principal
 \end{thm}
 \begin{proof}
     C'est un anneau euclidien donc principal (cf. chapitre \textbf{Algèbre générale})
@@ -68,8 +68,8 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 
 \begin{thmdef}
     \begin{enumerate}
-        \item Il existe un unique polynôme unitaire $Q$ tel que $P\mathbb K[X]+Q\mathbb K[X]=Q\mathbb K[X]$. C'est le PGCD de $A$ et $B$. Deux polynômes sont premiers entre eux si leur PGCD vaut $1$.
-        \item Il existe un unique polynôme unitaire $Q$ tel que $P\mathbb K[X]\cap Q\mathbb K[X]=Q\mathbb K[X]$. C'est le PPCM de $A$ et $B$.
+        \item Il existe un unique polynôme unitaire $Q$ tel que $P\K[X]+Q\K[X]=Q\K[X]$. C'est le PGCD de $A$ et $B$. Deux polynômes sont premiers entre eux si leur PGCD vaut $1$.
+        \item Il existe un unique polynôme unitaire $Q$ tel que $P\K[X]\cap Q\K[X]=Q\K[X]$. C'est le PPCM de $A$ et $B$.
         \item (Gauss) \index{Gauss!lemme (polynômial)} Si $A$ et $B$ sont premiers entre eux et $A\;|\;BC$ alors $A\;|\;C$
         \item (Bézout) \index{Bézout (théorème de -- )} $A$ et $B$ sont premiers entre eux si et seulement si il existe $U, V$ tels que $AU+BV=1$.
     \end{enumerate}
@@ -89,11 +89,11 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \end{dfn}
 
 \begin{thm}
-    $\mathbb K[X]$ est un anneau factoriel
+    $\K[X]$ est un anneau factoriel
 \end{thm}
 
 \begin{ex}
-    Dans $\mathbb C[X]$, \begin{itemize}
+    Dans $\C[X]$, \begin{itemize}
         \item \[
                 X^n-1=\prod_{\omega\in\mathbb U_n}(X-\omega)
             \]
@@ -105,8 +105,8 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 
 \begin{exo} Montrer que
     \begin{itemize}
-        \item $P(\mathbb R)\subset \mathbb R_+ \iff \exists A, B\in\mathbb R[X], P=A^2+B^2$
-        \item $P(\mathbb R_+)\subset \mathbb R_+\iff \exists A, B\in\mathbb R[X], P=A^2+XB^2$
+        \item $P(\R)\subset \R_+ \iff \exists A, B\in\R[X], P=A^2+B^2$
+        \item $P(\R_+)\subset \R_+\iff \exists A, B\in\R[X], P=A^2+XB^2$
     \end{itemize}
 \end{exo}
 
@@ -115,14 +115,14 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \end{proof}
 
 \begin{exo}
-    $P$ unitaire de degré $n$ dans $\mathbb R[X]$. Montrer \[
-        P\text{ scindé dans }\mathbb R[X] \iff \forall z\in\mathbb C, \quad |P(z)|\geq |\mathfrak{Im}(z)|^n
+    $P$ unitaire de degré $n$ dans $\R[X]$. Montrer \[
+        P\text{ scindé dans }\R[X] \iff \forall z\in\C, \quad |P(z)|\geq |\mathfrak{Im}(z)|^n
     \]
 \end{exo}
 
 \begin{proof}~
     \begin{itemize}
-        \item $(\impliedby)$ $P$ scindé dans $\mathbb C$ de racines $(a_i)$. $0=|P(a_i)|\geq |\mathfrak{Im}(z)|^n$ donc $a_i\in\mathbb R$
+        \item $(\impliedby)$ $P$ scindé dans $\C$ de racines $(a_i)$. $0=|P(a_i)|\geq |\mathfrak{Im}(z)|^n$ donc $a_i\in\R$
         \item $(\implies)$ \[
                 \left| P(x+iy) \right|= \left| \prod_{j=1}^n(x-a_j+iy) \right|=\prod_{j=1}^n|x-a_j+iy|\geq \|\mathfrak{Im}(z)|^n
             \]
@@ -133,25 +133,25 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \section{Polynômes d'endomorphismes}
 
 \begin{defprop}
-    \Hyp On note $E$ un $\mathbb K$-e.v., $u\in\mathcal L(E)$ et \[
-        P=\sum_{k=0}^{+\infty}a_kX^k\in\mathbb K[X]
+    \Hyp On note $E$ un $\K$-e.v., $u\in\mathcal L(E)$ et \[
+        P=\sum_{k=0}^{+\infty}a_kX^k\in\K[X]
     \]
     \begin{concenum}
     \item ~ \[
             P(u)\defeq\sum_{k=0}^{+\infty} a_ku^k
         \]
-    \item $\varphi: P\in\mathbb K[X]\longmapsto P(u)\in\mathcal L(E)$ est un morphisme d'algèbres.
+    \item $\varphi: P\in\K[X]\longmapsto P(u)\in\mathcal L(E)$ est un morphisme d'algèbres.
     \end{concenum}
 \end{defprop}
 
 \begin{proof}
     On justifie $(PQ)(u)=P(u)\circ Q(u)$. On considère \[
-        \psi: (P, Q)\in\mathbb K[X]^2\longmapsto (PQ)(u)-P(u)\circ Q(u)\in\mathbb L(u)
+        \psi: (P, Q)\in\K[X]^2\longmapsto (PQ)(u)-P(u)\circ Q(u)\in\mathcal L(u)
     \]
     \begin{itemize}
         \item $\psi$ est bilinéaire
-        \item À $Q$ fixé, $P\longmapsto \psi(P, Q)$ AL nulle si et seulement si $\forall j\in\mathbb N, \psi(X^j, Q)=0$
-        \item Pour chaque $j$, $Q\longmapsto \psi(X^j, Q)$ nulle si et seulement si $\forall k\in\mathbb N, \psi(X^j, X^k)=0$ qui est vrai.
+        \item À $Q$ fixé, $P\longmapsto \psi(P, Q)$ AL nulle si et seulement si $\forall j\in\N, \psi(X^j, Q)=0$
+        \item Pour chaque $j$, $Q\longmapsto \psi(X^j, Q)$ nulle si et seulement si $\forall k\in\N, \psi(X^j, X^k)=0$ qui est vrai.
     \end{itemize}
 \end{proof}
 
@@ -172,7 +172,7 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \end{proof}
 
 \begin{prop}
-    $\mathbb K[u]\defeq \{P(u), P\in\mathbb K[X]\}$ est une $\mathbb K$-algèbre de dimension $\deg \mu_u$ de base $(1, u, \cdots, u^{\deg \mu_u-1})$
+    $\K[u]\defeq \{P(u), P\in\K[X]\}$ est une $\K$-algèbre de dimension $\deg \mu_u$ de base $(1, u, \cdots, u^{\deg \mu_u-1})$
 \end{prop}
 
 \begin{ex}
@@ -187,10 +187,10 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \section{Théorème de décomposition des noyaux}
 
 \begin{thm}[Décomposition des noyaux\index{décomposition des noyaux (théorème)}]
-    \Hyp $E$ un $\mathbb K$-e.v., $u\in\mathcal L(E)$
+    \Hyp $E$ un $\K$-e.v., $u\in\mathcal L(E)$
     \begin{concenum}
-    \item Si $P, Q\in\mathbb K[X]$ sont premiers entre eux, alors $\Ker (PQ)(u)=\Ker P(u)\oplus \Ker Q(u)$. En particulier, si $PQ$ est annulateur alors $\Ker(PQ)(u)=E$
-    \item Si $P_1, \cdots, P_q\in\mathbb K[X]$ deux à deux premiers entre eux et si $P=P_1\cdots P_q$ alors \[
+    \item Si $P, Q\in\K[X]$ sont premiers entre eux, alors $\Ker (PQ)(u)=\Ker P(u)\oplus \Ker Q(u)$. En particulier, si $PQ$ est annulateur alors $\Ker(PQ)(u)=E$
+    \item Si $P_1, \cdots, P_q\in\K[X]$ deux à deux premiers entre eux et si $P=P_1\cdots P_q$ alors \[
             \Ker P(u)=\Ker P_1(u)\oplus\cdots\oplus \Ker P_q(u)
         \]
     \item Dans ce cas, si $Q_i=\frac P{P_i}$, \begin{enumerate}
@@ -224,22 +224,22 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \end{ex}
 
 \begin{ex}
-    On note $E$ l'ensemble des suites $(u_n)$ telles que $\forall n\in\mathbb N, u_{n+3}=4u_{n+2}-5u_{n+1}+2u_n$. On note $T$ l'endomorphisme $(u_n)_n\longmapsto (u_{n+1})_n$ de sorte que \[
+    On note $E$ l'ensemble des suites $(u_n)$ telles que $\forall n\in\N, u_{n+3}=4u_{n+2}-5u_{n+1}+2u_n$. On note $T$ l'endomorphisme $(u_n)_n\longmapsto (u_{n+1})_n$ de sorte que \[
         E=\Ker(T^3-4T^2+5T-2\id)=\Ker((T-\id)^2)\oplus \Ker(T-2\id)
     \]
-    et $\Ker(T-2\id)=\{\lambda (2^n)_n, \lambda\in\mathbb R\}$, $\Ker(T-\id)=\{(\lambda)_n, \lambda\in\mathbb R\}$ puis \[
+    et $\Ker(T-2\id)=\{\lambda (2^n)_n, \lambda\in\R\}$, $\Ker(T-\id)=\{(\lambda)_n, \lambda\in\R\}$ puis \[
         u\in \Ker((T-\id)^2)\iff T(u)-u\in\Ker(T-\id)\iff (u_{n+1}-u_n)_n=(\lambda)_n
     \]
-    donc $\Ker((T-\id)^2)=\{(\nu+n\mu)_n, \nu, \mu\in\mathbb R\}$
+    donc $\Ker((T-\id)^2)=\{(\nu+n\mu)_n, \nu, \mu\in\R\}$
 \end{ex}
 
 \section{Valeurs propres, vecteurs propres}
 
 \begin{dfn}
-    Pour $E$ un $\mathbb K$-e.v. et $u$ endomorphisme de $E$, \begin{enumerate}
-        \item On dira que $\lambda\in\mathbb K$ est \textbf{valeur propre\index{valeur propre}} de $u$ si $\Ker(u-\lambda\id)\neq \{0\}$
+    Pour $E$ un $\K$-e.v. et $u$ endomorphisme de $E$, \begin{enumerate}
+        \item On dira que $\lambda\in\K$ est \textbf{valeur propre\index{valeur propre}} de $u$ si $\Ker(u-\lambda\id)\neq \{0\}$
         \item On dira que $x\in E$ est un \textbf{vecteur propre\index{vecteur propre}} associé à la valeur propre $\lambda$ si $x\in\Ker(u-\lambda\id)\setminus\{0\}$
-        \item L'ensemble des valeurs propres (appelé \textbf{spectre\index{spectre}}) est noté $\Sp_{\mathbb K}(u)$ ou simplement $\Sp(u)$.
+        \item L'ensemble des valeurs propres (appelé \textbf{spectre\index{spectre}}) est noté $\Sp_{\K}(u)$ ou simplement $\Sp(u)$.
         \item L'ensemble des vecteurs propres pour la valeur propre $\lambda$ (on compte le vecteur nul pour garder la structure d'e.v.) est noté $E_\lambda=\Ker(u-\lambda \id)$ et s'appelle \textbf{sous-espace propre\index{sous-espace propre}} de $u$ pour $\lambda$.
     \end{enumerate}
 \end{dfn}
@@ -247,13 +247,13 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \subsection{Étude du spectre}
 
 \begin{prop}
-    \Hyp $u, v\in\mathcal L(E)$, $P\in\mathbb K[X]$ et $\lambda\in\mathbb K$
+    \Hyp $u, v\in\mathcal L(E)$, $P\in\K[X]$ et $\lambda\in\K$
     \begin{concenum}
     \item Si $u$ et $v$ commutent, alors $\Ker u$ et $\Img u$ sont stables par $v$. De même, $E_\lambda(u)$ est stable par $v$.
     \item Si $x\in E_\lambda(u)$, $P(u)(x)=P(\lambda)x$
-    \item $P(\lambda)\in\Sp_{\mathbb K}(P(u))$ pour $\lambda\in \Sp_{\mathbb K}(u)$
-    \item Si $P$ est annulateur alors $\Sp_{\mathbb K}(u)\subseteq \mathcal Z_{\mathbb K}(P)$
-    \item $\Sp_{\mathbb K}(u)=\mathcal Z_{\mathbb K}(\mu_u)$
+    \item $P(\lambda)\in\Sp_{\K}(P(u))$ pour $\lambda\in \Sp_{\K}(u)$
+    \item Si $P$ est annulateur alors $\Sp_{\K}(u)\subseteq \mathcal Z_{\K}(P)$
+    \item $\Sp_{\K}(u)=\mathcal Z_{\K}(\mu_u)$
     \end{concenum}
 \end{prop}
 
@@ -263,7 +263,7 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
     \item $P(u)(x)=P(\lambda)x$ pour $x$ vecteur propre $\implies P(\lambda) = 0$ pour $P$ annulateur
     \item On a une inclusion par 4.
 
-        Si $\lambda$ racine de $\mu_u$ dans $\mathbb K$ alors \[ \lambda \not\in\Sp(u)\implies u-\lambda\id \in \mathrm{GL}(E)
+        Si $\lambda$ racine de $\mu_u$ dans $\K$ alors \[ \lambda \not\in\Sp(u)\implies u-\lambda\id \in \mathrm{GL}(E)
         \]
         donc dans ce cas $\mu_u=(X-\lambda) Q$ et $Q(u)=0$ absurde par minimalité de $\mu_u$. Donc $\lambda\in\Sp(u)$
 \end{enumerate}
@@ -274,10 +274,10 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 \index{polynôme!caractéristique}
 
 \begin{thmdef}
-    \Hyp $u\in\mathcal L(E)$ avec $E$ un $\mathbb K$-e.v. de dimension $n$, muni d'une base $\mathcal B$. $\mathcal M_{\mathcal B}(u)\defeq A$
+    \Hyp $u\in\mathcal L(E)$ avec $E$ un $\K$-e.v. de dimension $n$, muni d'une base $\mathcal B$. $\mathcal M_{\mathcal B}(u)\defeq A$
     \begin{concenum}
         \item Il y a équivalence entre \begin{enumerate}
-            \item $\lambda\in\Sp_{\mathbb K}(u)$
+            \item $\lambda\in\Sp_{\K}(u)$
             \item $\det(\lambda\id-u)=0$
             \item $\det(\lambda I_n-A)=0$
         \end{enumerate}
@@ -285,7 +285,7 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
         \item $\chi_A$ est unitaire de degré $n$ et \[
                 \chi_A=X^n-\Tr (A) X^{n-1}+\cdots +(-1)^n\det A
             \]
-        \item  $\Sp_{\mathbb K}(u)=\mathcal Z_{\mathbb K}(\chi_u)$
+        \item  $\Sp_{\K}(u)=\mathcal Z_{\K}(\chi_u)$
     \end{concenum}
 \end{thmdef}
 
@@ -295,7 +295,7 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
         \setcounter{enumi}{2}
     \item Le polynôme est unitaire de degré $n$ car la seule permutation qui donne un coefficient de degré $n$ dans la formule du déterminant est l'identité, et ce coefficient vaut $1$. Toutes les autres permutations ne donnent que des coefficients de degré $<n-1$ donc le coefficient de $X^{n-1}$ ne peut venir que du développement du produit de la diagonale ($\sigma=\id$), dont le coefficient en $X^{n-1}$ vaut bien la trace. Pour le terme constant, on injecte $0$ et par définition on obtient $\det(-A)=(-1)^n\det A$
     \item \[
-            \lambda\in\Sp(u)\iff \det(\lambda \id -u)=0\iff \lambda\in\mathcal Z_{\mathbb K}(\chi_u)
+            \lambda\in\Sp(u)\iff \det(\lambda \id -u)=0\iff \lambda\in\mathcal Z_{\K}(\chi_u)
         \]
     \end{enumerate}
 \end{proof}
@@ -307,7 +307,7 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
 0 & 1 & \dots & 0 & -a_2 \\
 \vdots & \vdots & \ddots & \vdots & \vdots \\
 0 & 0 & \dots & 1 & -a_{p} \\
-\end{pmatrix}\in \mathcal M_{p+1}(\mathbb K)
+\end{pmatrix}\in \mathcal M_{p+1}(\K)
 \]
 Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots +a_0$
 \end{ex}
@@ -324,7 +324,7 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
     On note $A$ canoniquement associée à $u$, et $B=XI_n-A$. On a \[
         B\Com(B)^\top = \det(B)I_n=\chi_A(X)I_n
     \]
-    $\Com(B)^\top$ a des coefficients dans $\mathbb K_{n-1}[X]$ donc il existe des matrices $B_0, \cdots, B_{n-1}$ telles que \[
+    $\Com(B)^\top$ a des coefficients dans $\K_{n-1}[X]$ donc il existe des matrices $B_0, \cdots, B_{n-1}$ telles que \[
         \Com(B)^\top=X^{n-1}B_{n-1}+\cdots +B_0.
     \]
     Alors, \begin{align*}
@@ -333,7 +333,7 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
                      &=\chi_A(X)I_n
     \end{align*}
     On identifie: \[
-        B_{n-1}=I_n\qquad \qquad \qquad \text{ et les autres }B_{i+1}-AB_i\text{ sont de la forme }\alpha_i I_n, \alpha_i\in\mathbb R
+        B_{n-1}=I_n\qquad \qquad \qquad \text{ et les autres }B_{i+1}-AB_i\text{ sont de la forme }\alpha_i I_n, \alpha_i\in\R
     \]
     Si on note $\chi_A=X^n+a_{n-1}X^{n-1}+\cdots +a_0$, on a \[
         B_{n-2}-AB_{n-1}=a_{n-1}I_n\quad , \quad \cdots \quad,\quad B_0-AB_1=a_1 I_n\quad,\quad  -AB_0=a_0I_n
@@ -343,19 +343,19 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
 
 \begin{csq*}~
     \begin{itemize}
-        \item Pour $A$ dans $\mathcal M_n(\mathbb K)$, $\mu_A\;|\;\chi_A$ donc $\deg \mu_A\leq n$
+        \item Pour $A$ dans $\mathcal M_n(\K)$, $\mu_A\;|\;\chi_A$ donc $\deg \mu_A\leq n$
         \item Si \[
                 \chi_A=\prod_{i=1}^r(X-\lambda_i)^{\alpha_i}
             \]
             avec des $\lambda_i$ deux à deux distincts, alors \[
-                \mathcal M_n(\mathbb K)=\bigoplus_{i=1}^r\Ker\left((A-\lambda_iI_n)^{\alpha_i}\right)
+                \mathcal M_n(\K)=\bigoplus_{i=1}^r\Ker\left((A-\lambda_iI_n)^{\alpha_i}\right)
             \]
         \item Si $A$ est nilpotente alors $A^n=0$ car $\deg \mu_A\leq n$
     \end{itemize}
 \end{csq*}
 
 \begin{exo}
-    $A\in\mathcal M_n(\mathbb C)$ non inversible. Montrer qu'il existe $B\in\mathcal M_n(\mathbb C)$ non nulle telle que $\forall p\geq 1, (A+B)^p=A^p+B^p$
+    $A\in\mathcal M_n(\C)$ non inversible. Montrer qu'il existe $B\in\mathcal M_n(\C)$ non nulle telle que $\forall p\geq 1, (A+B)^p=A^p+B^p$
 \end{exo}
 
 \begin{proof}[Éléments de résolution]
@@ -366,11 +366,11 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
     Montrer que $A^3+A^2+A+I_n=0\implies \Tr A\leq 0$
 \end{exo}
 \begin{proof}[Éléments de résolution]
-    $P(X)=(X+1)(X^2+1)$ est annulateur donc $\Sp_{\mathbb C}(A)\subseteq\{-1, i, -i\}$ et $\chi_A=(X+1)^{\alpha}(X+i)^{\beta}(X-i)^{\gamma}$ polynôme réel donc $\beta=\gamma$ et la trace est le coeff en $X^{n-1}$
+    $P(X)=(X+1)(X^2+1)$ est annulateur donc $\Sp_{\C}(A)\subseteq\{-1, i, -i\}$ et $\chi_A=(X+1)^{\alpha}(X+i)^{\beta}(X-i)^{\gamma}$ polynôme réel donc $\beta=\gamma$ et la trace est le coeff en $X^{n-1}$
 \end{proof}
 
 \begin{exo}
-    On note $A$ une matrice de $\mathcal M_n(\mathbb C)$. Montrer que si $P\in\mathbb C[X]$, alors $P(A)$ est inversible si et sulement si $P\land \chi_A=1$ si et seulement si $P\land \mu_A=1$
+    On note $A$ une matrice de $\mathcal M_n(\C)$. Montrer que si $P\in\C[X]$, alors $P(A)$ est inversible si et sulement si $P\land \chi_A=1$ si et seulement si $P\land \mu_A=1$
 \end{exo}
 
 \begin{proof}[Résolution]~
@@ -384,7 +384,7 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
 \end{proof}
 
 \begin{exo}
-    $A\in\mathrm{GL}_5(\mathbb R), \Tr A=2, A^3+A^2-2A=0$. Trouver $\chi_A$
+    $A\in\mathrm{GL}_5(\R), \Tr A=2, A^3+A^2-2A=0$. Trouver $\chi_A$
 \end{exo}
 
 \begin{proof}[Élément de résolution]
@@ -418,7 +418,7 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
 \end{proof}
 
 \begin{proof}[Résolution (Deuxième méthode)]
-    Si $A$ inversible, $AB=A(BA)A^{-1}$ donc $\chi_{AB}=\chi_{BA}$. Puis, dans le cas général on se place dans $\mathbb K(T)$ (le corps des fractions rationnelles sur $\mathbb K$) et $A-TI_n$ est inversible, d'où \[
+    Si $A$ inversible, $AB=A(BA)A^{-1}$ donc $\chi_{AB}=\chi_{BA}$. Puis, dans le cas général on se place dans $\K(T)$ (le corps des fractions rationnelles sur $\K$) et $A-TI_n$ est inversible, d'où \[
         \chi_{B(A-TI_n)}=\chi_{(A-TI_n)B}
     \]
     et on prend $T$=0.
@@ -427,7 +427,7 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
 \section{Étude des sous-espaces propres}
 
 \begin{prop}
-    \Hyp $E$ un $\mathbb K$-e.v. et $u$ un endomorphisme de $E$. On note $\lambda_1, \cdots, \lambda_p$ des valeurs propres de $u$ deux à deux distinctes
+    \Hyp $E$ un $\K$-e.v. et $u$ un endomorphisme de $E$. On note $\lambda_1, \cdots, \lambda_p$ des valeurs propres de $u$ deux à deux distinctes
     \Conc Les sous-espaces propres $E_\lambda$ sont en somme directe
 \end{prop}
 
@@ -436,7 +436,7 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
 \end{proof}
 
 \begin{prop}
-    \Hyp $E$ un $\mathbb K$-e.v. et $F$ un s.e.v. de $E$ stable par un endomorphisme $u$ de $E$.
+    \Hyp $E$ un $\K$-e.v. et $F$ un s.e.v. de $E$ stable par un endomorphisme $u$ de $E$.
     \Conc $\chi_{u_{|F}}$ divise $\chi_u$ et $\mu_{u_{|F}}$ divise $\mu_u$
 \end{prop}
 
@@ -453,8 +453,8 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
 \begin{thmdef}
     \Hyp $u$ endomorphisme en dimension finie
     \begin{concenum}
-    \item Si $\lambda\in\Sp_{\mathbb K}(u)$ alors on appelle \textbf{multiplicité algébrique}\index{multiplicité algébrique} de $\lambda$ la multiplicité de $\lambda$ dans $\chi_u$, notée $m_\lambda(u)$
-    \item Si $\lambda\in\Sp_{\mathbb K}(u)$ alors $1\leq \dim E_{\lambda}(u)\leq m_\lambda(u)$
+    \item Si $\lambda\in\Sp_{\K}(u)$ alors on appelle \textbf{multiplicité algébrique}\index{multiplicité algébrique} de $\lambda$ la multiplicité de $\lambda$ dans $\chi_u$, notée $m_\lambda(u)$
+    \item Si $\lambda\in\Sp_{\K}(u)$ alors $1\leq \dim E_{\lambda}(u)\leq m_\lambda(u)$
     \end{concenum}
 \end{thmdef}
 
@@ -465,7 +465,7 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
 \section{Endomorphismes diagonalisables}
 
 \begin{defprop}
-    On note $E$ un $\mathbb K$-e.v., $u$ un endomorphisme de $E$. On dira qu'il est \textbf{diagonalisable}\index{diagonalisable (endomorphisme)} s'il satisfait l'une des propriétés équivalentes suivantes: \begin{enumerate}
+    On note $E$ un $\K$-e.v., $u$ un endomorphisme de $E$. On dira qu'il est \textbf{diagonalisable}\index{diagonalisable (endomorphisme)} s'il satisfait l'une des propriétés équivalentes suivantes: \begin{enumerate}
         \item Il existe une base de $E$ constituée de vecteurs propres pour $u$
         \item Il existe une base de $E$ dans laquelle $u$ a une matrice diagonale
         \item Il existe une base de $E$ dans laquelle la matrice de $u$ est semblable à une matrice diagonale
@@ -473,17 +473,17 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
 \end{defprop}
 
 \begin{thm}
-    \Hyp $E$ un $\mathbb K$-e.v. de dimension finie, $u$ un endomorphisme, $\lambda_1, \cdots, \lambda_p$ les valeurs propres distinctes de $u$
+    \Hyp $E$ un $\K$-e.v. de dimension finie, $u$ un endomorphisme, $\lambda_1, \cdots, \lambda_p$ les valeurs propres distinctes de $u$
     \Conc Il y a équivalence entre \begin{enumerate}[leftmargin=2cm,label=(\alph{enumi})]
         \item $u$ est diagonalisable
         \item $E_{\lambda_1}(u)\oplus \cdots \oplus E_{\lambda_p}(u)=E$
         \item \[
                 \sum_{i=1}^p\dim E_{\lambda_i}(u)=\dim E
             \]
-        \item $\chi_u$ est scindé sur $\mathbb K$ et $m_{\lambda}(u)=\dim E_{\lambda}(u)$ pour $\lambda\in\Sp_{\mathbb K}(u)$
-        \item $\mu_u$ scindé à racines simples dans $\mathbb K$
+        \item $\chi_u$ est scindé sur $\K$ et $m_{\lambda}(u)=\dim E_{\lambda}(u)$ pour $\lambda\in\Sp_{\K}(u)$
+        \item $\mu_u$ scindé à racines simples dans $\K$
         \item Il existe $P$ annulateur scindé à racines simples. Dans ce cas, \[
-                \mu_u=\prod_{\lambda\in\Sp_{\mathbb K}(u)}(X-\lambda)
+                \mu_u=\prod_{\lambda\in\Sp_{\K}(u)}(X-\lambda)
             \]
     \end{enumerate}
 \end{thm}
@@ -556,7 +556,7 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
 \end{proof}
 
 \begin{exo}
-    $A\in\mathrm{GL}(\mathbb C)$. Montrer que $A^2$ est diagonalisable si et seulement si $A$ l'est.
+    $A\in\mathrm{GL}(\C)$. Montrer que $A^2$ est diagonalisable si et seulement si $A$ l'est.
 \end{exo}
 
 \begin{proof}[Éléments de résolution]
@@ -578,7 +578,7 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
 \begin{prop}
     \Hyp $u$ endomorphisme diagonalisable (dimension finie), $V$ s.e.v. stable par $u$.
     \Conc $u_{|V}$ est diagonalisable et \[
-        V=\bigoplus_{\lambda\in\Sp_{\mathbb K}(u)}E_\lambda(u)\cap V
+        V=\bigoplus_{\lambda\in\Sp_{\K}(u)}E_\lambda(u)\cap V
     \]
 \end{prop}
 
@@ -598,7 +598,7 @@ Le calcul de $\det(XI_n-A)$ donne $\chi_A=X^{p+1}+P(X)$ avec $P(X)=a_pX^p+\cdots
     On suppose $\chi_A=(X-\lambda_1)^{\alpha_1}\cdots (X-\lambda_r)^{\alpha_r}$ avec les $\lambda_i$ deux à deux distincts et les $\alpha_i\geq 1$.
 
     Le théorème de décomposition des noyaux donne \[
-        \mathcal M_{n, 1}(\mathbb K)=\underbrace{\Ker(A-\lambda_1I_n)^{\alpha_1}}_{\defeq \Gamma_1(A)}\oplus\cdots \oplus \Gamma_r(A).
+        \mathcal M_{n, 1}(\K)=\underbrace{\Ker(A-\lambda_1I_n)^{\alpha_1}}_{\defeq \Gamma_1(A)}\oplus\cdots \oplus \Gamma_r(A).
     \]
 
     $A$ et $(A-\lambda I_n)^{\alpha_i}$ commutent donc $\Gamma_i(A)$ est stable par $A$ et \[
@@ -645,7 +645,7 @@ On procède par récurrence sur $n=\dim E$.
     \item $n\geq 1$, on suppose que c'est vrai au rang $n$ et on prend $E$ tel que $\dim E=n+1$ \begin{itemize}
         \item \emph{Premier cas.} Tous les $f_i$ sont des homothéties. Il n'y a rien à faire.
         \item \emph{Second cas.} L'endomorphisme $f_{i_0}$ n'est pas une homothétie. \[
-                E=\bigoplus_{\lambda\in\Sp_{\mathbb K}(f_{i_0})} \underbrace{E_\lambda(f_{i_0})}_{\dim \leq n}.
+                E=\bigoplus_{\lambda\in\Sp_{\K}(f_{i_0})} \underbrace{E_\lambda(f_{i_0})}_{\dim \leq n}.
             \]
             Les $E_\lambda(f_{i_0})$ sont stables par tous les $f_i$ et les $f_{i|E_\lambda(f_{i_0})}$ sont diagonalisables donc il existe une base $\mathcal B_\lambda$ de $E_\lambda(f_{i_0})$ qui les diagonalise (par \hyp). Il suffit de concaténer les $\mathcal B_\lambda$ pour conclure.
     \end{itemize}
@@ -653,8 +653,8 @@ On procède par récurrence sur $n=\dim E$.
 
 \section{Utilisation des polynômes d'interpolation}
 
-On note $A\in\mathcal M_n(\mathbb K)$, $\Sp_{\mathbb K}(A)=\{\lambda_1, \cdots, \lambda_r\}$, $A$ diagonalisable. \begin{itemize}
-    \item $\mathcal M_{n, 1}(\mathbb K)=E_{\lambda_1}(A)\oplus\cdots \oplus E_{\lambda_r}(A)$
+On note $A\in\mathcal M_n(\K)$, $\Sp_{\K}(A)=\{\lambda_1, \cdots, \lambda_r\}$, $A$ diagonalisable. \begin{itemize}
+    \item $\mathcal M_{n, 1}(\K)=E_{\lambda_1}(A)\oplus\cdots \oplus E_{\lambda_r}(A)$
     \item On note \[
             \Delta_i=\prod_{j\neq i}\frac{X-\lambda_j}{\lambda_i-\lambda_j}
         \]
@@ -698,14 +698,14 @@ On note $A\in\mathcal M_n(\mathbb K)$, $\Sp_{\mathbb K}(A)=\{\lambda_1, \cdots, 
     \item On dit que $u$ est trigonalisable\index{trigonalisable (endomorphisme)} s'il existe une base $\mathcal B$ de $E$ telle que $\mathcal M_{\mathcal B}(u)$ est triangulaire
     \item Il y a équivalence entre \begin{enumerate}
         \item $u$ est trigonalisable
-        \item $\chi_u$ est scindé sur $\mathbb K$
+        \item $\chi_u$ est scindé sur $\K$
     \end{enumerate}
-    En particulier, Si $\mathbb K=\mathbb C$, tous les endomorphismes sont trigonalisables
+    En particulier, Si $\K=\C$, tous les endomorphismes sont trigonalisables
     \end{concenum}
 \end{thmdef}
 
 \begin{proof}
-    $(a\implies b)$ Si $\mathcal M_{\mathcal B}(u)=(a_{i, j})$ alors $\chi_u=\displaystyle\prod_{i=1}^n(X-a_{i,i})$ scindé sur $\mathbb K$.
+    $(a\implies b)$ Si $\mathcal M_{\mathcal B}(u)=(a_{i, j})$ alors $\chi_u=\displaystyle\prod_{i=1}^n(X-a_{i,i})$ scindé sur $\K$.
 
     $(b\implies a)$ Par récurrence sur $n$: \begin{itemize}
         \item $n=1$ clair
@@ -722,7 +722,7 @@ On note $A\in\mathcal M_n(\mathbb K)$, $\Sp_{\mathbb K}(A)=\{\lambda_1, \cdots, 
 \end{proof}
 
 \begin{rem}
-    Si $A\in\mathcal M_n(\mathbb C)$ alors il existe $P\in\mathrm{GL}_n(\mathbb C)$ telle que \[
+    Si $A\in\mathcal M_n(\C)$ alors il existe $P\in\mathrm{GL}_n(\C)$ telle que \[
         PAP^{-1}= \begin{pmatrix}
             d_1 & & *\\
                 &\ddots &\\
@@ -730,19 +730,19 @@ On note $A\in\mathcal M_n(\mathbb K)$, $\Sp_{\mathbb K}(A)=\{\lambda_1, \cdots, 
         \end{pmatrix}.
     \]
     \begin{itemize}
-        \item $\chi_A=(X-d_1)\cdots (X-d_n)$ donc $\Sp_{\mathbb C}(A)=\{d_1, \cdots, d_n\}$
-        \item On note $\Sp_{\mathbb C}(A)^{\text{comp}}$ le multi-ensemble des valeurs-propres (c'est-à-dire l'ensemble des valeurs propres répétées avec leur multiplicité). On a \[
-                \Tr(A)=\sum_{\lambda\in\Sp_{\mathbb C}(A)^{\text{comp}}}\lambda\qquad \qquad \quad \Tr(A^k)=\sum_{\lambda\in\Sp_{\mathbb C}(A)^{\text{comp}}}\lambda^k
+        \item $\chi_A=(X-d_1)\cdots (X-d_n)$ donc $\Sp_{\C}(A)=\{d_1, \cdots, d_n\}$
+        \item On note $\Sp_{\C}(A)^{\text{comp}}$ le multi-ensemble des valeurs-propres (c'est-à-dire l'ensemble des valeurs propres répétées avec leur multiplicité). On a \[
+                \Tr(A)=\sum_{\lambda\in\Sp_{\C}(A)^{\text{comp}}}\lambda\qquad \qquad \quad \Tr(A^k)=\sum_{\lambda\in\Sp_{\C}(A)^{\text{comp}}}\lambda^k
             \]
             et \[
-                \det A=\prod_{\lambda\in\Sp_{\mathbb C}(A)^{\text{comp}}}\lambda
+                \det A=\prod_{\lambda\in\Sp_{\C}(A)^{\text{comp}}}\lambda
             \]
     \end{itemize}
 \end{rem}
 
 \subsection{Trigonalisation simultanée}
 
-On note $(A_i)_i$ des matrices trigonalisables qui commutent deux à deux. Il existe $P\in\mathrm{GL}_n(\mathbb K)$ telle que pour tout $i$, $PA_iP^{-1}$ est triangulaire supérieure.
+On note $(A_i)_i$ des matrices trigonalisables qui commutent deux à deux. Il existe $P\in\mathrm{GL}_n(\K)$ telle que pour tout $i$, $PA_iP^{-1}$ est triangulaire supérieure.
 
 La démonstration est identique à celle de la diagonalisation simultanée.
 
@@ -765,7 +765,7 @@ On a \[
     \end{vmatrix}= X^4-2X^2+1=(X+1)^2(X-1)^2
 \]
 La matrice est diagonalisable ssi $\mu_A=(X+1)(X-1)$ ce qui est faux. Le TDN donne \[
-    \mathbb R^4=\Ker(A-I_4)^2\oplus \Ker(A+I_4)^2
+    \R^4=\Ker(A-I_4)^2\oplus \Ker(A+I_4)^2
 \]
 et \[
     (A-I_4)^2= 
@@ -812,7 +812,7 @@ et on fait pareil sur l'autre noyau.
 \subsection{Endomorphisme nilpotent}
 
 \begin{defprop}
-    \Hyp $E$ un $\mathbb K$-e.v. de dimension $n$
+    \Hyp $E$ un $\K$-e.v. de dimension $n$
     \begin{concenum}
     \item On dira que $f$ est nilpotent\index{nilpotence!endomorphisme} s'il existe un $p\geq 1$ tel que $f^p=0$.
     \item Il y a équivalence entre \begin{enumerate}
@@ -833,17 +833,17 @@ et on fait pareil sur l'autre noyau.
 \end{proof}
 
 \begin{rem}
-    Si $f\in\mathcal L(E)$ et si $P$ est annulateur scindé sur $\mathbb K$ alors $\mu_f$ est scindé et $\mathcal Z_{\mathbb K}(\mu_f)=\Sp_{\mathbb K}(f)=\mathcal Z_{\mathbb K}(\chi_f)$
+    Si $f\in\mathcal L(E)$ et si $P$ est annulateur scindé sur $\K$ alors $\mu_f$ est scindé et $\mathcal Z_{\K}(\mu_f)=\Sp_{\K}(f)=\mathcal Z_{\K}(\chi_f)$
 
     Donc, $\chi_f=(X-\lambda_1)^{\alpha_1}\cdots (X-\lambda_p)^{\alpha_p}Q$ avec $Q$ premier avec $\mu_f$. Si $Q$ non constant alors $Q(f)$ inversible.
 
-    Si $Q$ a des racines dans $\widehat{\mathbb K}$, $Q(X)=(X-\lambda)\tilde Q(X)$ dans $\widehat {\mathbb K}[X]$ et $f-\lambda\id_E$ non inversible donc $\det Q(f)=\det (f-\lambda\id_E)\det\tilde Q(f)=0$ absurde donc $Q=1$
+    Si $Q$ a des racines dans $\widehat{\K}$, $Q(X)=(X-\lambda)\tilde Q(X)$ dans $\widehat {\K}[X]$ et $f-\lambda\id_E$ non inversible donc $\det Q(f)=\det (f-\lambda\id_E)\det\tilde Q(f)=0$ absurde donc $Q=1$
 \end{rem}
 
 \subsection{Caractérisation des matrices nilpotentes}
 
 \begin{exo}
-    Montrer que $A\in\mathcal M_n(\mathbb C)$ est nilpotente ssi $\Tr A=\Tr A^2=\cdots =\Tr A^n=0$
+    Montrer que $A\in\mathcal M_n(\C)$ est nilpotente ssi $\Tr A=\Tr A^2=\cdots =\Tr A^n=0$
 \end{exo}
 
 \begin{proof}[Résolution]~
@@ -880,7 +880,7 @@ et on fait pareil sur l'autre noyau.
 
 \subsection{Nilpotence de {$\varphi: B\longmapsto [A,B]$} pour $A$ nilpotente}
 
-On note $A\in\mathcal M_n(\mathbb K)$ nilpotente, $\varphi:B\longmapsto [A, B]$. On introduit $T_G:B\longmapsto AB$ et $T_D:B\longmapsto BA$. Ces deux endomorphismes commutent et $\varphi=T_G-T_D$. Les deux endomorphismes sont nilpotents (car $A$ nilpotente) donc $\varphi$ aussi
+On note $A\in\mathcal M_n(\K)$ nilpotente, $\varphi:B\longmapsto [A, B]$. On introduit $T_G:B\longmapsto AB$ et $T_D:B\longmapsto BA$. Ces deux endomorphismes commutent et $\varphi=T_G-T_D$. Les deux endomorphismes sont nilpotents (car $A$ nilpotente) donc $\varphi$ aussi
 
 \subsection{Diagonalisabilité de {$\varphi: B\longmapsto [A, B]$} pour $A$ diagonale ou diagonalisable}
 
@@ -898,7 +898,7 @@ On note $A\in\mathcal M_n(\mathbb K)$ nilpotente, $\varphi:B\longmapsto [A, B]$.
     On appelle \textbf{commutant}\index{commutant} d'un endomorphisme $u$ l'ensemble des endomorphismes qui commutent avec $u$
 \end{dfn}
 
-On note $u\in\mathcal L(E)$, $E$ un $\mathbb K$-e.v. de dimension $n$. On suppose $u$ diagonalisable. On note \[
+On note $u\in\mathcal L(E)$, $E$ un $\K$-e.v. de dimension $n$. On suppose $u$ diagonalisable. On note \[
     C(u)=\{v\in\mathcal L(E), \quad u\circ v=v\circ u\}
 \]
 le commutant de $u$.

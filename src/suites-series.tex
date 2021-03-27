@@ -19,7 +19,7 @@
 \section{Rappels sur les séries numériques}
 
 \begin{dfn}
-    Soit $u\in\mathbb R^{\mathbb N}$. On appelle \textbf{série de terme général} \index{série numérique}$u_n$ la suite $(S_n(u))_n$ définie par \[
+    Soit $u\in\R^{\N}$. On appelle \textbf{série de terme général} \index{série numérique}$u_n$ la suite $(S_n(u))_n$ définie par \[
         S_n(u)\defeq \sum_{k=1}^nu_k
     \]
     On dira que cette série converge si $(S_n(u))$ converge, et on écrira \[
@@ -33,13 +33,13 @@
 
 
 \begin{rem}
-    Le terme général d'une séries convergente tend vers $0$. Si $u_n\longrightarrow \ell\in\bar{ \mathbb R}\setminus\{0\}$ alors la série diverge grossièrement. Si $\sum u_n$ converge alors $R_n(u)\longrightarrow0$ et on peut noter \[
+    Le terme général d'une séries convergente tend vers $0$. Si $u_n\longrightarrow \ell\in\bar{ \R}\setminus\{0\}$ alors la série diverge grossièrement. Si $\sum u_n$ converge alors $R_n(u)\longrightarrow0$ et on peut noter \[
         R_n(u)=\sum_{k=n+1}^{+\infty}u_k
     \]
 \end{rem}
 
 \begin{rem}
-    On peut remplacer $\mathbb R$ par $\mathbb C$ ou n'importe quel espace vectoriel normé (traité dans un chapitre ultérieur)
+    On peut remplacer $\R$ par $\C$ ou n'importe quel espace vectoriel normé (traité dans un chapitre ultérieur)
 \end{rem}
 
 \begin{ex}
@@ -69,7 +69,7 @@
 \section{Opérations}
 
 \begin{prop}
-    \Hyp $\sum u_n, \sum v_n$ deux séries numériques, $\lambda\in\mathbb C$
+    \Hyp $\sum u_n, \sum v_n$ deux séries numériques, $\lambda\in\C$
     \begin{concenum}
     \item $\lambda\sum u_n+\sum v_n=\sum(\lambda u_n+v_n)$
     \item Si les séries convergent, alors $\sum(\lambda u_n+v_n)$ converge (+ égalité des limites)
@@ -88,7 +88,7 @@
 \end{rem}
 
 \begin{prop}
-    \Hyp $u\in\mathbb C^{\mathbb N}$
+    \Hyp $u\in\C^{\N}$
     \Conc \[
         (u_n)\text{ CV }\iff \sum (u_{n+1}-u_n)\text{ CV }
     \]
@@ -146,7 +146,7 @@ d'où $\omega_n\sim\frac1{12n^2}$
 
 \begin{exo}[Mines-Ponts]
     On note \[
-        k_n=\min\{k\in\mathbb N, \quad H_k>n\}
+        k_n=\min\{k\in\N, \quad H_k>n\}
     \]
     Calculer \[
         \lim_{n\to+\infty}\frac{k_{n+1}}{k_n}
@@ -205,7 +205,7 @@ d'où $\omega_n\sim\frac1{12n^2}$
 
 \begin{proof}[Résolution]~
     Idée: On fait un découpage. On pose \[
-        I=\{n\in\mathbb N, \quad x_n\geq 0 \text{ et }x_n^{-\frac1{n+1}}>2\}
+        I=\{n\in\N, \quad x_n\geq 0 \text{ et }x_n^{-\frac1{n+1}}>2\}
     \]
     Si $n\in I$ alors \[
         \frac12>x_n^{\frac1{n+1}}\iff \frac1{2^{n+1}}>x_n\implies \frac1{2^n}>y_n
@@ -265,7 +265,7 @@ d'où $\omega_n\sim\frac1{12n^2}$
 
 \begin{thm}[Règle de D'Alembert\index{D'Alembert (règle de -- )}]
     \Hyp $a$ une suite positive telle que \[
-        \frac{a_{n+1}}{a_n}\xrightarrow[n\to+\infty]{}\ell\in\bar{\mathbb R}
+        \frac{a_{n+1}}{a_n}\xrightarrow[n\to+\infty]{}\ell\in\bar{\R}
     \]
     \begin{concenum}
     \item Si $0\leq \ell <1$ alors $\sum a_n$ converge
@@ -299,7 +299,7 @@ d'où $\omega_n\sim\frac1{12n^2}$
 
 \begin{exo}
     On note $a$ une suite réelle telle que \[
-        |a_n|^{\frac1n}\xrightarrow[n\to+\infty]{}\ell\in\mathbb R\cup\{+\infty\}
+        |a_n|^{\frac1n}\xrightarrow[n\to+\infty]{}\ell\in\R\cup\{+\infty\}
     \]
     Donner la nature de $\sum |a_n|$ en fonction de $\ell$
 \end{exo}
@@ -482,12 +482,12 @@ d'où $\omega_n\sim\frac1{12n^2}$
     qui est le terme général d'une série divergente donc \[
         \sum_{k=1}^{n-1}a_{n+1}-a_n=a_n-a_1\sim \ell (b_n-b_1) \implies a_n\sim \ell b_n\implies \frac{a_n}{b_n}\longrightarrow \ell
     \]
-    d'où le théorème de Cesàro-Stolz (dans le cas $\ell\in\mathbb R^\star$)
+    d'où le théorème de Cesàro-Stolz (dans le cas $\ell\in\R^\star$)
 \end{rem}
 
 \section{Comparaison série-intégrale\texorpdfstring{\footnote{Épisode 1}}{}}
 
-On note $f$ décroissante continue positive au voisinage de $+\infty$ (pour simplifier on prend $\mathbb R_+$ comme voisinage). On a \[
+On note $f$ décroissante continue positive au voisinage de $+\infty$ (pour simplifier on prend $\R_+$ comme voisinage). On a \[
     f(k+1)\leq \int_k^{k+1}f\leq f(k)
 \]
 
@@ -498,7 +498,7 @@ On note $f$ décroissante continue positive au voisinage de $+\infty$ (pour simp
 \end{ex}
 
 \begin{thm}
-    \Hyp $f$ est continue décroissante positive sur $\mathbb R_+$, $u_n=\displaystyle\int_{n-1}^n f-f(n)$
+    \Hyp $f$ est continue décroissante positive sur $\R_+$, $u_n=\displaystyle\int_{n-1}^n f-f(n)$
     \Conc $\sum u_n$ converge et $u_n\geq 0$
 \end{thm}
 
@@ -665,7 +665,7 @@ On a $a_n=S_n-S_{n-1}$ pour $n\geq 0$ avec $S_{-1}=0$. Alors, \[
 
 \section{Développement décimal illimité}
 
-Pour $x\in\mathbb R$, on pose $a_0=\floor x$ et \[
+Pour $x\in\R$, on pose $a_0=\floor x$ et \[
     a_n=\floor{10^nx}-10\floor{10^{n-1}x}\in\llbracket 0,9\rrbracket
 \]
 Par récurrence, on montre \[
@@ -692,11 +692,11 @@ On dit que le développement obtenu est le \textbf{développement décimal propr
 
 \begin{proof}
     On supose $(a_k)$ $T$-périodique à partir du rang $N$. On a \[
-        x=\underbrace{\sum_{k=0}^{N-1}\frac{a_k}{10^k}}_{\in\mathbb Q}+\underbrace{\sum_{k=0}^{+\infty}\frac1{10^{kT}}}_{=\frac1{1-\frac1{10^T}}\in\mathbb Q} \underbrace{\left(  \frac{a_N}{10^N}+\cdots +\frac{a_{N+T-1}}{10^{N+T-1}}\right)}_{\in \mathbb Q}\in\mathbb Q
+        x=\underbrace{\sum_{k=0}^{N-1}\frac{a_k}{10^k}}_{\in\Q}+\underbrace{\sum_{k=0}^{+\infty}\frac1{10^{kT}}}_{=\frac1{1-\frac1{10^T}}\in\Q} \underbrace{\left(  \frac{a_N}{10^N}+\cdots +\frac{a_{N+T-1}}{10^{N+T-1}}\right)}_{\in \Q}\in\Q
     \]
-    On suppose $x=\frac pq\in\mathbb Q$. Il y a un nombre fini de restes modulo $p$ donc il existe $n<m$ tels que $10^np\equiv 10^mp\pmod q$.
+    On suppose $x=\frac pq\in\Q$. Il y a un nombre fini de restes modulo $p$ donc il existe $n<m$ tels que $10^np\equiv 10^mp\pmod q$.
 
-On a $10^np=q_nq+r_n$ avec $q_n\in\mathbb N$, donc $10^nx=q_n+\frac{r_n}q$. On a alors, pour $n, i\in\mathbb N^\star$, \begin{align*}
+On a $10^np=q_nq+r_n$ avec $q_n\in\N$, donc $10^nx=q_n+\frac{r_n}q$. On a alors, pour $n, i\in\N^\star$, \begin{align*}
                 a_{n+i} &= E(10^{n+i}x)-10E(10^{n+i-1}x) \\
                         &= E\left(10^i \left( q_n+\frac{r_n}q \right)\right)-10E \left( 10^{i-1} \left(  q_n+\frac{r_n}q \right) \right) \\
                         &= E \left( 10^i\frac {r_n}q \right)+10^iq_n-10E \left( 10^{i-1}\frac {r_n}q \right) -10^iq_n \\

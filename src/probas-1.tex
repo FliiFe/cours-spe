@@ -32,8 +32,8 @@ Dans tout le chapitre, $\Omega$ désigne un ensemble non vide.
 \subsection{Propriétés ensemblistes}
 
 \begin{prop}
-    Soit $(\Omega, \mathcal A)$ un espace probabilisable. Si $(A_n)\in \mathcal A^{\mathbb N}$ alors \[
-        \bigcap_{n\in\mathbb N}A_n \in \mathcal A
+    Soit $(\Omega, \mathcal A)$ un espace probabilisable. Si $(A_n)\in \mathcal A^{\N}$ alors \[
+        \bigcap_{n\in\N}A_n \in \mathcal A
     \]
 \end{prop}
 
@@ -43,7 +43,7 @@ Dans tout le chapitre, $\Omega$ désigne un ensemble non vide.
 
 \begin{notation}[HP]
     \[
-        \underline{\lim}A_n=\bigcup_{n\in\mathbb N} \left( \bigcap_{m\geq n} A_m \right) \qquad \qquad \overline{\lim} A_n=\bigcap_{n\in\mathbb N} \left( \bigcup_{m\geq n}A_m \right) 
+        \underline{\lim}A_n=\bigcup_{n\in\N} \left( \bigcap_{m\geq n} A_m \right) \qquad \qquad \overline{\lim} A_n=\bigcap_{n\in\N} \left( \bigcup_{m\geq n}A_m \right) 
     \]
 \end{notation}
 
@@ -69,37 +69,37 @@ est une tribu (facile).
 \section{Espace probabilisé}
 
 \begin{dfn}
-    Soit $(\Omega, \mathcal A)$ un espace probabilisable. On appelle \textbf{probabilité}\index{probabilité} sur $(\Omega, \mathcal A)$ une application $\mathbb P:\mathcal A \to  [0, 1]$ telle que \begin{itemize}
-        \item $\mathbb P(\Omega)=1$
-        \item $\mathbb P$ est $\sigma$-additive, c'est-à-dire que pour toute suite $(A_i)$ d'événements deux à deux incompatibles, \[
-                \mathbb P \left( \bigcup_{n\in\mathbb N}A_n \right) =\sum_{n\geq 0}\mathbb P(A_n)
+    Soit $(\Omega, \mathcal A)$ un espace probabilisable. On appelle \textbf{probabilité}\index{probabilité} sur $(\Omega, \mathcal A)$ une application $\P:\mathcal A \to  [0, 1]$ telle que \begin{itemize}
+        \item $\P(\Omega)=1$
+        \item $\P$ est $\sigma$-additive, c'est-à-dire que pour toute suite $(A_i)$ d'événements deux à deux incompatibles, \[
+                \P \left( \bigcup_{n\in\N}A_n \right) =\sum_{n\geq 0}\P(A_n)
         \]
     \end{itemize}
-    Si $\mathbb P$ convient, on dira que $(\Omega, \mathcal A, \mathbb P)$ est un \textbf{espace probabilisé}\index{espace probabilisé}.
+    Si $\P$ convient, on dira que $(\Omega, \mathcal A, \P)$ est un \textbf{espace probabilisé}\index{espace probabilisé}.
 \end{dfn}
 
 \begin{rem}
     \begin{itemize}
-        \item La suite constante égale à $\emptyset$ donne $\mathbb P(\emptyset)=0$.
-        \item Si $A$ et $B$ sont incompatibles, alors $\mathbb P(A\cup B)=\mathbb P(A)+\mathbb P(B)$ 
-        \item $\mathbb P(A^c)=\mathbb P(A\cup A^c)-\mathbb P(A)=1-\mathbb P(A)$
+        \item La suite constante égale à $\emptyset$ donne $\P(\emptyset)=0$.
+        \item Si $A$ et $B$ sont incompatibles, alors $\P(A\cup B)=\P(A)+\P(B)$ 
+        \item $\P(A^c)=\P(A\cup A^c)-\P(A)=1-\P(A)$
         \item $A\subset B \implies P(B)=P(A)+P(B\setminus A)\geq P(A)$
     \end{itemize}
 \end{rem}
 
 \begin{exo}[Inégalité d'Edith Kosmanek]
-    Soit $(\Omega, \mathcal A, \mathbb P)$ un espace probabilisé, $A, B$ des événements. Montrer que \[
-        |\mathbb P(A\cap B)-\mathbb P(A)\mathbb P(B)|\leq \frac{1}{4}
+    Soit $(\Omega, \mathcal A, \P)$ un espace probabilisé, $A, B$ des événements. Montrer que \[
+        |\P(A\cap B)-\P(A)\P(B)|\leq \frac{1}{4}
     \]
 \end{exo}
 
 \begin{proof}[Résolution]
     $(A\cap B, A\cap B^c, A^c\cap B, A^c\cap B^c)$ est un SCE et un peu de calcul donne \[
-        \mathbb P(A\cap B)-\mathbb P(A)\mathbb P(B)=\mathbb P(A\cap B)\mathbb P(A^c\cap B^c)-\mathbb P(A^c\cap B)\mathbb P(A\cap B^c)
+        \P(A\cap B)-\P(A)\P(B)=\P(A\cap B)\P(A^c\cap B^c)-\P(A^c\cap B)\P(A\cap B^c)
     \]
     Puis si $a,b\geq 0$ sont tels que $a+b\leq 1$, on a $ab=\sqrt{ab}^2\leq \left( \frac{a+b}{2} \right) ^2\leq \frac{1}{4}$ donc les deux produits sont $\leq 14$, ce qui conclut.
 \end{proof}
 
 \begin{exo}
-    $(\Omega, \mathcal A, \mathbb P)$ probabilisé, $A, B \in \mathcal A$. Montrer que $|\mathbb P(A)-\mathbb P(B)| \leq \mathbb P(A\Delta B)$
+    $(\Omega, \mathcal A, \P)$ probabilisé, $A, B \in \mathcal A$. Montrer que $|\P(A)-\P(B)| \leq \P(A\Delta B)$
 \end{exo}

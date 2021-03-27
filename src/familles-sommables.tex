@@ -19,22 +19,22 @@
 \section{Dénombrabilité}
 
 \begin{dfn}
-    Un ensemble est dénombrable si et seulement si il est en bijection avec $\mathbb N$
+    Un ensemble est dénombrable si et seulement si il est en bijection avec $\N$
 \end{dfn}
 
 \begin{ex}
-    $\mathbb N, 2\mathbb N, \mathbb N^\star, \mathbb Z$
+    $\N, 2\N, \N^\star, \Z$
 \end{ex}
 
 \begin{prop}
     \begin{enumerate}
-        \item Toute partie infinie de $\mathbb N$ est dénombrable
-        \item Toute partie de $\mathbb N$ est finie ou dénombrable
+        \item Toute partie infinie de $\N$ est dénombrable
+        \item Toute partie de $\N$ est finie ou dénombrable
     \end{enumerate}
 \end{prop}
 
 \begin{proof}
-    Soit $A$ une partie de $\mathbb N$ infinie. On note $\varphi(0)=\min A$ et \[
+    Soit $A$ une partie de $\N$ infinie. On note $\varphi(0)=\min A$ et \[
         \varphi(n)=\min (A\setminus \llbracket 0, \varphi(n-1)\rrbracket)
     \]
     de sorte que $\varphi$ est croissante donc injective, et surjective car si $a\in A$ n'a pas d'antécédent, $I=\{k, \quad a<\varphi(k)\}$ est non vide et a un minimum $p$, et $\varphi(0)<a$ donc $p\geq 1$ d'où $\varphi(p-1)< a<\varphi(p)$ absurde.
@@ -49,7 +49,7 @@
 
 \begin{proof}~
     \begin{enumerate}
-        \item $B$ est en bijection avec $\mathbb N$ donc on peut supposer $B=\mathbb N$. Si $A$ est fini alors ok, sinon $f(A)$ est une partie infinie de $\mathbb N$ en bijection avec $A$.
+        \item $B$ est en bijection avec $\N$ donc on peut supposer $B=\N$. Si $A$ est fini alors ok, sinon $f(A)$ est une partie infinie de $\N$ en bijection avec $A$.
         \item On note $\psi(b)$ un élément de $f^{-1}(\{b\})$. $f\circ \psi=\id_B$ injective donc $\psi$ est injective et on utilise 1.
     \end{enumerate}
 \end{proof}
@@ -66,36 +66,36 @@
 
 \begin{proof}~
     \begin{enumerate}
-        \item On note $\varphi:\mathbb N\to I$ surjective et pour chaque $i$ on note $f_i:\mathbb N\to A_i$ bijective de sorte que \[
-        \psi: (p, q)\in\mathbb N^2\longmapsto f_{\varphi(q)}(p)\in\bigcup_{i\in I}A_i
+        \item On note $\varphi:\N\to I$ surjective et pour chaque $i$ on note $f_i:\N\to A_i$ bijective de sorte que \[
+        \psi: (p, q)\in\N^2\longmapsto f_{\varphi(q)}(p)\in\bigcup_{i\in I}A_i
             \]
-            est surjective, et $\mathbb N^2$ est dénombrable.
-        \item Chaque $E_i$ est en bijection avec une partie de $\mathbb N$, on peut supposer $E_i\subseteq \mathbb N$. On note $p_1, \cdots, p_n$ des premiers disjoints. \[
-                f: E_1\times \cdots \times E_n\longrightarrow \mathbb N, \quad (a_1, \cdots, a_n)\longmapsto p_1^{a_1}\cdots p_n^{a_n}
+            est surjective, et $\N^2$ est dénombrable.
+        \item Chaque $E_i$ est en bijection avec une partie de $\N$, on peut supposer $E_i\subseteq \N$. On note $p_1, \cdots, p_n$ des premiers disjoints. \[
+                f: E_1\times \cdots \times E_n\longrightarrow \N, \quad (a_1, \cdots, a_n)\longmapsto p_1^{a_1}\cdots p_n^{a_n}
             \]
-            est injective et $\mathbb N$ dénombrable. Si tous les $E_i$ sont finis alors le produit est fini et si l'un est infini alors le produit est infini.
+            est injective et $\N$ dénombrable. Si tous les $E_i$ sont finis alors le produit est fini et si l'un est infini alors le produit est infini.
     \end{enumerate}
 \end{proof}
 
 \section{Exemples d'ensembles classiques}
 
 \begin{ex}
-    $\mathbb Q$ est dénombrable car $\mathbb Z\times \mathbb N^\star$ est dénombrable et $(p, q)\in\mathbb Z\times \mathbb N^\star\longmapsto \frac pq$ est surjective
+    $\Q$ est dénombrable car $\Z\times \N^\star$ est dénombrable et $(p, q)\in\Z\times \N^\star\longmapsto \frac pq$ est surjective
 \end{ex}
 
 \begin{ex}
     L'ensemble des nombres algébriques est dénombrable: \[
-        \mathcal A=\bigcup_{n\in\mathbb N^\star}\bigcup_{P\in\mathbb Z_n[X]}\mathcal Z_{\mathbb C}(P)
+        \mathcal A=\bigcup_{n\in\N^\star}\bigcup_{P\in\Z_n[X]}\mathcal Z_{\C}(P)
     \]
 \end{ex}
 
 \begin{ex}[Diagonale de Cantor]
-    $\mathbb R$ \index{Cantor!argument diagonal}n'est pas dénombrable. Si $\mathbb R$ est dénombrable alors $[0, 1[$ est dénombrable, et on note $(r_n)_{n\in\mathbb N}$ une énumération des éléments de $[0, 1[$. On construit le réel $x\in [0, 1[$ de la manière suivante: si la $n$-ième décimale de $r_n$ vaut $1$ alors la $n$-ième décimale de $x$ vaut $0$, sinon elle vaut $1$. Le réel ainsi construit ne peut pas être un $r_n$ car sa $n$-ième décimale est différente de celle de $r_n$. On a donc trouvé un réel qui n'est pas dans l'énumération, c'est absurde.
+    $\R$ \index{Cantor!argument diagonal}n'est pas dénombrable. Si $\R$ est dénombrable alors $[0, 1[$ est dénombrable, et on note $(r_n)_{n\in\N}$ une énumération des éléments de $[0, 1[$. On construit le réel $x\in [0, 1[$ de la manière suivante: si la $n$-ième décimale de $r_n$ vaut $1$ alors la $n$-ième décimale de $x$ vaut $0$, sinon elle vaut $1$. Le réel ainsi construit ne peut pas être un $r_n$ car sa $n$-ième décimale est différente de celle de $r_n$. On a donc trouvé un réel qui n'est pas dans l'énumération, c'est absurde.
 \end{ex}
 
 \section{Discontinuités d'une fonction monotone}
 
-On note $f:[a, b]\in\mathbb R$ croissante. On va montrer que l'ensemble des points de discontinuité de $f$ est fini ou dénombrable.
+On note $f:[a, b]\in\R$ croissante. On va montrer que l'ensemble des points de discontinuité de $f$ est fini ou dénombrable.
 
 On note pour $x\in ]a, b[$, \[
     \delta(x)=\lim_{\substack{t\to x\\t>x}}f(t)-\lim_{\substack{t\to x\\t<x}}f(t)
@@ -103,7 +103,7 @@ On note pour $x\in ]a, b[$, \[
 
 \begin{itemize}
     \item $f$ est croissante donc $\delta$ est positive et $f$ est continue en $a$ ssi $\delta(a)=0$.
-    \item Pour tout $n\in\mathbb N^\star$, on note \[
+    \item Pour tout $n\in\N^\star$, on note \[
             I_n= \left\{ x\in ]a, b[, \qquad \delta(x)\geq \frac{f(b)-f(a)+1}n \right\}
         \]
     \item Si $I_n$ est de cardinal $\geq n+1$ alors on peut trouver $x_1< \cdots< x_{n+1}$ dans $I_n$, et on se donne $a<t_1<x_1<\cdots <x_{n+1}<t_{n+2}<b$ pour avoir \[
@@ -112,8 +112,8 @@ On note pour $x\in ]a, b[$, \[
         donc \[
             f(b)-f(a)\geq \delta(x_{n+1})+\cdots +\delta(x_1)\geq n\frac{f(b)-f(a)+1}n
         \]
-        absurde donc $I_n$ est fini. $x\in ]a, b[$ est un point de discontinuité si et seulement si $\delta(x)>0$ ssi $\exists n\in\mathbb N, x\in I_n$ ssi \[
-            x\in \bigcup_{n\in\mathbb N^\star}I_n
+        absurde donc $I_n$ est fini. $x\in ]a, b[$ est un point de discontinuité si et seulement si $\delta(x)>0$ ssi $\exists n\in\N, x\in I_n$ ssi \[
+            x\in \bigcup_{n\in\N^\star}I_n
         \]
 \end{itemize}
 
@@ -122,7 +122,7 @@ On note pour $x\in ]a, b[$, \[
 Pour un ensemble dénombrable $I$, on note $\mathcal P_f(I)$ l'ensemble des parties finies de $I$
 
 \begin{dfn}
-    Soit $(a_i)_{i\in I}\in (\mathbb R_+)^I$. On dira que la famille $(a_i)_{i\in I}$ est \index{famille sommable}\textbf{sommable} si \[
+    Soit $(a_i)_{i\in I}\in (\R_+)^I$. On dira que la famille $(a_i)_{i\in I}$ est \index{famille sommable}\textbf{sommable} si \[
         \left\{ \sum_{j\in J}a_j, \quad J\in\mathcal P_f(I) \right\}
     \]
     est majoré. On note alors \[
@@ -134,7 +134,7 @@ Pour un ensemble dénombrable $I$, on note $\mathcal P_f(I)$ l'ensemble des part
 \end{dfn}
 
 \begin{prop}
-    \Hyp $(a_i)_{i\in I}$ famille dénombrable de réels positive et $S\in \mathbb R$
+    \Hyp $(a_i)_{i\in I}$ famille dénombrable de réels positive et $S\in \R$
     \Conc $(a_i)_{i\in I}$ est sommable et $S=\sum_{i\in I}a_i$ si et seulement si les deux conditions suivantes sont réunies: \begin{itemize}[left=2cm]
         \item $\forall J\in\mathcal P_f(I), \quad \displaystyle \sum_{j\in J}a_j\leq S$
         \item $\displaystyle \forall \epsilon>0, \exists J\in\mathcal P_f(J), \quad S-\epsilon\leq \sum_{j\in J}a_j$
@@ -146,7 +146,7 @@ Pour un ensemble dénombrable $I$, on note $\mathcal P_f(I)$ l'ensemble des part
 \end{proof}
 
 \begin{rem}
-    Dans le cas $I=\mathbb N$ et $(a_i)_{i\in\mathbb N}$ positive, la sommabilité équivaut à la convergence de $\sum a_i$. Si la famille est sommable, $(S_n)$ est croissante majorée donc la série converge, et si la série converge, alors les sommes sur un segment sont majorées par la somme de la série.
+    Dans le cas $I=\N$ et $(a_i)_{i\in\N}$ positive, la sommabilité équivaut à la convergence de $\sum a_i$. Si la famille est sommable, $(S_n)$ est croissante majorée donc la série converge, et si la série converge, alors les sommes sur un segment sont majorées par la somme de la série.
 \end{rem}
 
 \begin{prop}
@@ -155,7 +155,7 @@ Pour un ensemble dénombrable $I$, on note $\mathcal P_f(I)$ l'ensemble des part
     \item Si $0\leq a_i\leq b_i$ pour tout $i\in I$ et $(b_i)_i$ est sommable, alors $(a_i)_i$ est sommable et \[
             \sum_{i\in I}a_i\leq \sum_{i\in I}b_i
         \]
-    \item Pour $\lambda\in\mathbb R_+$, si $(a_i)_i$ et $(b_i)_i$ sont sommables, $(\lambda a_i+b_i)_i$ aussi et \[
+    \item Pour $\lambda\in\R_+$, si $(a_i)_i$ et $(b_i)_i$ sont sommables, $(\lambda a_i+b_i)_i$ aussi et \[
             \lambda\sum_{i\in I}a_i+\sum_{i\in I}b_i=\sum_{i\in I}(\lambda a_i+b_i)
         \]
     \end{concenum}
@@ -186,7 +186,7 @@ Pour un ensemble dénombrable $I$, on note $\mathcal P_f(I)$ l'ensemble des part
     \item Dans ce cas, $(\alpha_k^+)$, $(\alpha_k^-)$, $(\beta_k^+)$ et $(\beta_k^-)$ sont sommables\footnote{$u_n^+=\max(u_n, 0), \quad u_n^-=\max(-u_n, 0)$ pour écrire $u_n=u_n^+-u_n^-$} et on pose \[
             \sum_{i\in I}a_i\defeq\sum_{i\in I}\alpha_i^+-\sum_{i\in I}\alpha_i^-+i\sum_{i\in I}\beta_i^+-i\sum_{i\in I}\beta_i^-
         \]
-    \item Si $(a_i)_i$ et $(b_i)_i$ sont sommables et $\lambda\in\mathbb C$ alors $(\lambda a_i+b_i)_{i\in I}$ est sommable et \[
+    \item Si $(a_i)_i$ et $(b_i)_i$ sont sommables et $\lambda\in\C$ alors $(\lambda a_i+b_i)_{i\in I}$ est sommable et \[
             \lambda\sum_{i\in I}a_i+\sum_{i\in I}b_i=\sum_{i\in I}(\lambda a_i+b_i)
         \]
     \end{concenum}
@@ -201,14 +201,14 @@ Pour un ensemble dénombrable $I$, on note $\mathcal P_f(I)$ l'ensemble des part
 \end{proof}
 
 \begin{thm}[Sommation par paquets\index{sommation par paquets}]
-    \Hyp $I$ dénombrable, $(I_n)_{n\in\mathbb N}$ une partition de $I$, $(a_i)_{i\in I}\in \mathbb C^I$
+    \Hyp $I$ dénombrable, $(I_n)_{n\in\N}$ une partition de $I$, $(a_i)_{i\in I}\in \C^I$
     \Conc Il y a équivalence entre \begin{enumerate}[left=1.1cm,label=\alph{enumi}.]
         \item la famille $(a_i)_i$ est sommable
-        \item Pour tout $n\in\mathbb N$, $(a_i)_{i\in I_n}$ est sommable et \[
+        \item Pour tout $n\in\N$, $(a_i)_{i\in I_n}$ est sommable et \[
                 \sum_{i\in I_n}a_i
             \]
             est le terme général d'une série absolument convergente. Dans ce cas, \[
-                \sum_{i\in I}a_i=\sum_{n\in\mathbb N}\sum_{i\in I_n}a_i
+                \sum_{i\in I}a_i=\sum_{n\in\N}\sum_{i\in I_n}a_i
             \]
     \end{enumerate}
 \end{thm}
@@ -217,20 +217,20 @@ Pour un ensemble dénombrable $I$, on note $\mathcal P_f(I)$ l'ensemble des part
 
     \begin{itemize}
         \item $(b\implies a)$ On prend $J$ une partie finie de $I$, \[
-                I=\bigcup_{n\in\mathbb N}I_n
+                I=\bigcup_{n\in\N}I_n
             \]
             donc il existe $n_0$ tel que \[
                 J\subset \bigcup_{n\leq n_0}I_n
             \]
             On a \[
-                0\leq \sum_{j\in J}a_j\leq \sum_{k=0}^{n_0}\sum{k\in I_n}a_k\leq \sum_{n\in\mathbb N}\sum_{k\in I_n}a_k
+                0\leq \sum_{j\in J}a_j\leq \sum_{k=0}^{n_0}\sum{k\in I_n}a_k\leq \sum_{n\in\N}\sum_{k\in I_n}a_k
             \]
             donc $(a_i)_i$ sommable.
         \item $(a\implies b)$ Pour tout $J$ fini inclus dans $I_n$, $J\subset I$ donc \[
                 0\leq \sum_{j\in J}a_j\leq \sum_{j\in I}a_j
             \]
             donc $(a_i)_{i\in I_n}$ est sommable.
-            Soit $n_0\in\mathbb N$ et $J_0, \cdots, J_{n_0}$ finis tels que $J_k\subset I_k$.
+            Soit $n_0\in\N$ et $J_0, \cdots, J_{n_0}$ finis tels que $J_k\subset I_k$.
             $J=J_0\cup \cdots \cup J_{n_0}$ est fini et \[
                 \sum_{j\in J}a_j=\sum_{i\in J_0}a_i+\cdots +\sum_{i\in J_{n_0}}a_i\leq \sum_{j\in I}a_j
             \]
@@ -258,11 +258,11 @@ Pour un ensemble dénombrable $I$, on note $\mathcal P_f(I)$ l'ensemble des part
 \end{proof}
 
 \begin{cor}[Fubini discret\index{Fubini (théorème discret de -- )}]
-    \Hyp $(a_{n, m})_{(n, m)\in\mathbb N^2}\in\mathbb C^{\mathbb N^2}$
+    \Hyp $(a_{n, m})_{(n, m)\in\N^2}\in\C^{\N^2}$
     \Conc Il y a équivalence entre: \begin{enumerate}[left=1.2cm,label=\alph{enumi}.]
-        \item $(a_{n,m})_{(n,m)\in\mathbb N^2}$ est sommable
-        \item $\forall n\in\mathbb N, (a_{n, m})_{m\in\mathbb N}$ est sommable et $\sum_{m\in\mathbb N}|a_{n,m}|$ est le terme général d'une série convergente. Dans ce cas, \[
-                \sum_{(n, m)\in\mathbb N^2}a_{n, m}=\sum_{n\in\mathbb N}\sum_{m\in\mathbb N}a_{n,m}=\sum_{m\in\mathbb N}\sum_{n\in\mathbb N}a_{n, m}
+        \item $(a_{n,m})_{(n,m)\in\N^2}$ est sommable
+        \item $\forall n\in\N, (a_{n, m})_{m\in\N}$ est sommable et $\sum_{m\in\N}|a_{n,m}|$ est le terme général d'une série convergente. Dans ce cas, \[
+                \sum_{(n, m)\in\N^2}a_{n, m}=\sum_{n\in\N}\sum_{m\in\N}a_{n,m}=\sum_{m\in\N}\sum_{n\in\N}a_{n, m}
             \]
     \end{enumerate}
 \end{cor}
@@ -285,35 +285,35 @@ donc \[
 
 \begin{rem}
     Une suite réelle est sommable si et seulement si elle est le terme général d'une série absolument convergente. Dans ce cas, \[
-        \sum_{n\in\mathbb N}a_n=\sum_{n=0}^{+\infty}a_n
+        \sum_{n\in\N}a_n=\sum_{n=0}^{+\infty}a_n
     \]
 \end{rem}
 
 \begin{prop}[Convergence cumulative]
-    \Hyp $(a_n)_{n\in\mathbb N}$ est une suite complexe
+    \Hyp $(a_n)_{n\in\N}$ est une suite complexe
     \Conc Il y a équivalence entre \begin{enumerate}[left=1.2cm,label=\alph{enumi}.]
         \item $(a_n)$ est sommable
         \item $\sum a_n$ est absolument convergente
-        \item $\forall \sigma\in\mathfrak S(\mathbb N), (a_{\sigma(n)})$ est sommable
+        \item $\forall \sigma\in\mathfrak S(\N), (a_{\sigma(n)})$ est sommable
     \end{enumerate}
 \end{prop}
 
 \begin{proof}~
     \begin{itemize}
         \item $(a\iff b)$ OK
-        \item $(b\implies c)$ Soit $\sigma\in\mathfrak S(\mathbb N)$ et $J$ fini. \[
-                \sum_{k\in J}|a_{\sigma(k)}|=\sum_{k\in\sigma(J)}|a_k|\leq \sum_{k\in\mathbb N}|a_k|
+        \item $(b\implies c)$ Soit $\sigma\in\mathfrak S(\N)$ et $J$ fini. \[
+                \sum_{k\in J}|a_{\sigma(k)}|=\sum_{k\in\sigma(J)}|a_k|\leq \sum_{k\in\N}|a_k|
             \]
         \item $(c\implies a)$ $\sigma=\id$
     \end{itemize}
 \end{proof}
 
 \begin{thm}[Produit de Cauchy]
-    \Hyp $(a_p)_{p\in\mathbb N}$, $(b_q)_{q\in\mathbb N}$ des familles complexes sommables et \[
+    \Hyp $(a_p)_{p\in\N}$, $(b_q)_{q\in\N}$ des familles complexes sommables et \[
         c_n=\sum_{p+q=n}a_pb_q=\sum_{k=0}^na_kb_{n-k}=\sum_{k=0}^na_{n-k}b_k
     \]
     \begin{concenum}
-    \item $(c_n)_{n\in\mathbb N}$ est sommable
+    \item $(c_n)_{n\in\N}$ est sommable
     \item \[
             \sum_{n=0}^{+\infty}c_n= \left( \sum_{p=0}^{+\infty} a_p \right)\cdot \left( \sum_{q=0}^{+\infty}b_q \right)
         \]
@@ -322,17 +322,17 @@ donc \[
 
 \begin{proof}
     On note \[
-        I_n=\{(p, q)\in\mathbb N^2, \quad p+q=n\}
+        I_n=\{(p, q)\in\N^2, \quad p+q=n\}
     \]
-    de sorte que $(I_n)$ est une partition de $\mathbb N^2$. On note \[
-        J_n=\{n\}\times \mathbb N
+    de sorte que $(I_n)$ est une partition de $\N^2$. On note \[
+        J_n=\{n\}\times \N
     \]
-    de sorte que $(J_n)$ est aussi une partition de $\mathbb N^2$. La famille $(a_nb_q)_{q\in\mathbb N}$ est sommable et \[
-        \sum_{q\in\mathbb N}|a_nb_q|=|a_n|\underbrace{\sum_{q\in\mathbb N}|b_q|}_{\text{fixé}}
+    de sorte que $(J_n)$ est aussi une partition de $\N^2$. La famille $(a_nb_q)_{q\in\N}$ est sommable et \[
+        \sum_{q\in\N}|a_nb_q|=|a_n|\underbrace{\sum_{q\in\N}|b_q|}_{\text{fixé}}
     \]
     est le terme général d'une série convergente ($(a_n)$ sommable).
-    On a donc $(a_pb_q)_{(p, q)\in\mathbb N^2}$ sommable et on somme par paquets sur les $I_n$:\[
-        \sum_{(p, q)\in\mathbb N^2}a_pb_q=\sum_{n=0}^{+\infty}\sum_{p+q=n}a_pb_q=\sum_{n\in\mathbb N}c_n
+    On a donc $(a_pb_q)_{(p, q)\in\N^2}$ sommable et on somme par paquets sur les $I_n$:\[
+        \sum_{(p, q)\in\N^2}a_pb_q=\sum_{n=0}^{+\infty}\sum_{p+q=n}a_pb_q=\sum_{n\in\N}c_n
     \]
 \end{proof}
 
@@ -348,10 +348,10 @@ donc \[
 
 \index{Steinitz (théorème de réarrangement de -- )}
 
-On note $(a_n)_n$ une suite réelle telle que $\sum a_n$ est semi-convergente. On va montrer que pour tout $\ell\in\bar{\mathbb R}$, il existe $\sigma\in\mathfrak S(\mathbb N)$ tel que \[
+On note $(a_n)_n$ une suite réelle telle que $\sum a_n$ est semi-convergente. On va montrer que pour tout $\ell\in\bar{\R}$, il existe $\sigma\in\mathfrak S(\N)$ tel que \[
     \sum_{n=0}^{+\infty}a_{\sigma(n)}=\ell
 \]
-On note $a_n=a_n^+-a_n^-$ donc $\sum a_n^+$ et $\sum a_n^-$ divergent car $\sum a_n$ semi-convergente. On fixe $\alpha\in\mathbb R$, \[I^+=\{n\in\mathbb N, a_n\geq 0\}\qquad I^-=\{n\in\mathbb N, a_n<0\}\]
+On note $a_n=a_n^+-a_n^-$ donc $\sum a_n^+$ et $\sum a_n^-$ divergent car $\sum a_n$ semi-convergente. On fixe $\alpha\in\R$, \[I^+=\{n\in\N, a_n\geq 0\}\qquad I^-=\{n\in\N, a_n<0\}\]
 On note $(i_n)_n$ (resp. $(j_n)_n$) la suite croissante de tous les éléments de $I^+$ (resp. $I^-$).
 On note $k_1$ le plus petit indice $k\geq 0$ tel que \[
     -\alpha+a_{i_1}+\cdots +a_{i_{k_1}}>0
@@ -359,7 +359,7 @@ On note $k_1$ le plus petit indice $k\geq 0$ tel que \[
 et $\rho_1$ le plus petit indice tel que \[
     -\alpha+a_{i_1}+\cdots +a_{i_{k_1}}+a_{j_1}+\cdots +a_{j_{\rho_1}}<0
 \]
-On itère le processus pour construire $\sigma=(i_1, \cdots, i_{k_1}, j_1, \cdots j_{\rho_1}, i_{k_1+1}, \cdots, i_{k_2}, \cdots)\in\mathfrak S(n)$ (c'est bijectif car $I^+\sqcup I^-=\mathbb N$).
+On itère le processus pour construire $\sigma=(i_1, \cdots, i_{k_1}, j_1, \cdots j_{\rho_1}, i_{k_1+1}, \cdots, i_{k_2}, \cdots)\in\mathfrak S(n)$ (c'est bijectif car $I^+\sqcup I^-=\N$).
 
 Puis, \[
     \left| -\alpha+\sum_{k=0}^na_{\sigma(k)} \right|\leq |a_{p_n}|+|a_{q_n}|\xrightarrow[n\to+\infty]{}0
@@ -386,7 +386,7 @@ car $c_k=k \left( 1+\frac1k \right)^k\leq ek $. On pose \[
         \dfrac{eka_k}{n(n+1)}&\text{ si }k\leq n\\[1em] 0 & \text{ sinon }
     \end{cases}
 \]
-Pour $k\in\mathbb N^\star,$ \[
+Pour $k\in\N^\star,$ \[
     \sum_{n=1}^{+\infty}u_{k, n}=\sum_{n=k}^{+\infty}\frac{eka_k}{n(n+1)}=eka_k\sum_{n=k}^{+\infty} \left( \frac1k-\frac1{k+1} \right)=ea_k
 \]
 qui est le tg d'une série convergente, donc $(u_{k, n})_{k, n}$ est sommable, puis (Fubini) \[
@@ -443,7 +443,7 @@ On dira que le produit $\prod(1+a_k)$ converge si et seulement si $p_n$ a une li
     On le montre dans le cas réel. On a $a_n\longrightarrow 0$ donc à partir d'un certain rang $n_0$, $(1+a_n)$ est strictement positive. Pour $N>n_0$, \[
         p_n=\underbrace{\prod_{k=0}^{n_0}(1+a_k)}_{\text{fixe } \neq 0}\times \prod_{k=n+1}^{N}\underbrace{(1+a_k)}_{>0}
     \]
-    Or pour $k\geq n_0$, $|\ln(1+a_k)|\sim |a_k|$ donc $\sum \ln(1+a_k)$ ACV et sa somme vaut $\ell\in\mathbb R$. On a alors \[
+    Or pour $k\geq n_0$, $|\ln(1+a_k)|\sim |a_k|$ donc $\sum \ln(1+a_k)$ ACV et sa somme vaut $\ell\in\R$. On a alors \[
         p_n=e^{\ln p_n}\xrightarrow[n\to+\infty]{}e^\ell \prod_{k=0}^{n_0}(1+a_k) \neq 0
     \]
 \end{proof}
@@ -453,7 +453,7 @@ On dira que le produit $\prod(1+a_k)$ converge si et seulement si $p_n$ a une li
 \end{rem}
 
 \begin{ex}
-    On note $f:\mathbb N^\star\longrightarrow \mathbb R_+$ complètement multiplicative\footnote{$\forall x,y, f(xy)=f(x)f(y)$} (le résultat que l'on va montrer est toujours vrai pour $f$ multiplicative\footnote{$\forall x,y, x\land y=1\implies f(xy)=f(x)f(y)$})
+    On note $f:\N^\star\longrightarrow \R_+$ complètement multiplicative\footnote{$\forall x,y, f(xy)=f(x)f(y)$} (le résultat que l'on va montrer est toujours vrai pour $f$ multiplicative\footnote{$\forall x,y, x\land y=1\implies f(xy)=f(x)f(y)$})
 
     On suppose que $\sum f(n)$ est absolument convergente. On va montrer que \[
         \prod_{p\text{ premier }} \frac1{1-f(p)}=\sum_{n=1}^{+\infty}f(n)

@@ -30,14 +30,14 @@
 
 \section{Rayon de convergence}
 \begin{thmdef}
-    \Hyp $(a_n)_{n\in\mathbb N}\in\mathbb C^{\mathbb N}$
+    \Hyp $(a_n)_{n\in\N}\in\C^{\N}$
     \begin{concenum}
     \item Les cinq nombres suivants sont égaux {\begin{align*}
-                R_1 &= \sup\{|z|, \quad z\in\mathbb C, (a_nz^n)_n\text{ bornée }\} \\
-                R_2 &= \sup\{|z|, \quad z\in\mathbb C, a_nz^n\longrightarrow 0\}\\
-                R_3 &= \sup\{|z|, \quad z\in\mathbb C, \sum a_nz^n\text{ converge }\} \\
-                R_4 &= \sup\{|z|, \quad z\in\mathbb C, \sum a_nz^n\text{ converge absolument }\} \\
-                R_5 &= \inf\{|z|, \quad z\in\mathbb C, (a_nz^n)_n\text{ non bornée}\}
+                R_1 &= \sup\{|z|, \quad z\in\C, (a_nz^n)_n\text{ bornée }\} \\
+                R_2 &= \sup\{|z|, \quad z\in\C, a_nz^n\longrightarrow 0\}\\
+                R_3 &= \sup\{|z|, \quad z\in\C, \sum a_nz^n\text{ converge }\} \\
+                R_4 &= \sup\{|z|, \quad z\in\C, \sum a_nz^n\text{ converge absolument }\} \\
+                R_5 &= \inf\{|z|, \quad z\in\C, (a_nz^n)_n\text{ non bornée}\}
     \end{align*}
 avec la convention $\inf\emptyset=+\infty$.}
     On appelle ce nomber \emph{rayon de convergence\index{rayon de convergence}} de $\sum a_nz^n$ et on le note $R(a_nz^n)$
@@ -49,10 +49,10 @@ avec la convention $\inf\emptyset=+\infty$.}
 
 \begin{proof}
     \begin{enumerate}
-        \item $R_1\geq R_2\geq R_3\geq R_4$. Par l'absurde, on suppose $R_4<R_5$. Alors, on prend $z\in\mathbb C$ tel que $R_5>|z|>R_4$. $(a_nz^n)_n$ est bornée donc si on note $z'$ tel que $|z|>|z'|>R_4$, alors \[
+        \item $R_1\geq R_2\geq R_3\geq R_4$. Par l'absurde, on suppose $R_4<R_5$. Alors, on prend $z\in\C$ tel que $R_5>|z|>R_4$. $(a_nz^n)_n$ est bornée donc si on note $z'$ tel que $|z|>|z'|>R_4$, alors \[
                 a_nz'^n=\underbrace{a_nz^n}_{\text{borné}} \underbrace{\left( \frac{z'}{z}  \right)^n}_{|\;|<1} \text{ tg série ACV absurde car }|z'|>R_4
             \]
-            Donc $R_4\geq R_5$. Par l'absurde, $R_1>R_5$. On se donne $z\in\mathbb C$ tel que $R_1>|z|>R_5$ et il existe $z', z''\in\mathbb C$ tel que $R_1\geq |z''|>|z|>|z'|\geq R_5$, $(a_nz'^n)$ non bornée et $(a_nz''^n)$ bornée. \[
+            Donc $R_4\geq R_5$. Par l'absurde, $R_1>R_5$. On se donne $z\in\C$ tel que $R_1>|z|>R_5$ et il existe $z', z''\in\C$ tel que $R_1\geq |z''|>|z|>|z'|\geq R_5$, $(a_nz'^n)$ non bornée et $(a_nz''^n)$ bornée. \[
                 \underbrace{a_nz'^n}_{\lnot \text{ borné}}=a_nz''^n \left( \frac{z'}{z''} \right)^n\xrightarrow{}_{n\to+\infty}0
             \]
             absurde donc $R_1=R_2=R_3=R_4=R_5$.
@@ -61,7 +61,7 @@ avec la convention $\inf\emptyset=+\infty$.}
 \end{proof}
 % 
 \begin{rem}[Lemme d'Abel]
-    Si $a\in\mathbb C^{\mathbb N}$ et $z_0\in\mathbb C^\star$. Si la suite $(a_nz_0^n)$ est bornée alors $\forall z\in\mathcal D_o(0, |z_0|), \sum a_nz^n$ ACV
+    Si $a\in\C^{\N}$ et $z_0\in\C^\star$. Si la suite $(a_nz_0^n)$ est bornée alors $\forall z\in\mathcal D_o(0, |z_0|), \sum a_nz^n$ ACV
 \end{rem}
 
 \section{Opération algébrique sur les séries entières}
@@ -69,8 +69,8 @@ avec la convention $\inf\emptyset=+\infty$.}
 \begin{prop}
     \Hyp $\sum a_nz^n$ de rayon $R_a$ et $\sum b_nz^n$ de rayon $R_b$
     \begin{concenum}
-    \item Pour $\lambda\in\mathbb C^\star$, $R(\sum \lambda a_nz^n)=R_a$
-    \item Pour $\lambda\in\mathbb C^\star$, $R(\sum(\lambda a_n+b_n)z^n)\geq \min(R_a, R_b)$ et si $R_a\neq R_b$, il y a égalité.
+    \item Pour $\lambda\in\C^\star$, $R(\sum \lambda a_nz^n)=R_a$
+    \item Pour $\lambda\in\C^\star$, $R(\sum(\lambda a_n+b_n)z^n)\geq \min(R_a, R_b)$ et si $R_a\neq R_b$, il y a égalité.
     \item Le produit de Cauchy\index{Cauchy!produit} des séries $\sum a_nz^n$ et $\sum b_nz^n$ est la série $\sum c_nz^n$ avec \[
             c_n=\sum_{p+q=n}a_pb_q
         \]
@@ -124,7 +124,7 @@ avec la convention $\inf\emptyset=+\infty$.}
         \item $|na_nz^{n-1}|=|a_na^n|\times \left| (\frac za)^{n-1} \right|\times \frac na\xrightarrow{}0$ si $|z|<a<R$. Puis, $(a_nz^n)$ non bornée entraîne $(na_nz^{n-1})$ non bornée. On a donc $R(\sum na_nz^{n-1})=R$.
 
             On vérifie les hypothèses du théorème de dérivation terme à terme: \begin{itemize}
-                \item $\forall n\in\mathbb N, \quad t\in]-R,R[\longmapsto a_nt^n$ est $\mathcal C^1$
+                \item $\forall n\in\N, \quad t\in]-R,R[\longmapsto a_nt^n$ est $\mathcal C^1$
                 \item $\sum a_nt^n$ converge simplement sur $]-R, R[$
                 \item $\sum(a_nz^n)'=\sum na_nz^{n-1}$ converge normalement donc univormément sur tout segment de $]-R, R[$.
             \end{itemize}
@@ -143,7 +143,7 @@ avec la convention $\inf\emptyset=+\infty$.}
         f(-t)=\sum_{n\geq 0}(-1)^{n+1}\frac{t^{n+1}}{n+1}
     \]
     et (théorème des séries alternées\index{séries alternées (théorème des --), TSA}) \[
-        \forall t\in[0, 1[, \forall n\in\mathbb N, \qquad \left|f(-t)-\sum_{k=0}^n(-1)^{k+1}\frac{t^{k+1}}{k+1}\right|\leq \frac1{n+2}\xrightarrow[n\to+\infty]{}0
+        \forall t\in[0, 1[, \forall n\in\N, \qquad \left|f(-t)-\sum_{k=0}^n(-1)^{k+1}\frac{t^{k+1}}{k+1}\right|\leq \frac1{n+2}\xrightarrow[n\to+\infty]{}0
     \]
     donc le reste CVU vers $0$, puis le théorème de la double limite donne \[
         f(-t)\xrightarrow[\substack{t\to1\\t<1}]{}\sum_{n\geq 0}\frac{(-1)^{n+1}}{n+1}=-\ln2
@@ -151,7 +151,7 @@ avec la convention $\inf\emptyset=+\infty$.}
 \end{ex}
 
 \begin{rem}
-    Pour $f:\mathbb C\longrightarrow \mathbb C$, on peut définir la dérivabilité au sens complexe par \[
+    Pour $f:\C\longrightarrow \C$, on peut définir la dérivabilité au sens complexe par \[
         f \text{ dérivable en } a\iff \lim_{\substack{h\to0\\h\neq 0}}\frac{f(a+h)-f(a)}h\text{ existe }
     \]
     On note $f(z)=\sum a_nz^n$ une série entière de rayon de convergence $R>0$ et $a\in\mathcal D_o(0, R)$. On va montrer que $f$ est dérivable au sens complexe en $a$ et que \[
@@ -195,7 +195,7 @@ avec la convention $\inf\emptyset=+\infty$.}
 \begin{thm}
     \Hyp $f(z)=\sum_{n\geq 0}a_nz^n$ avec le RCV $R>0$
     \begin{concenum}
-    \item $f\in\mathcal C^\infty(]-R, R[, \mathbb C)$ et \[\forall n\in\mathbb N, \quad \frac{f^{(n)}(0)}{n!}=a_n\]
+    \item $f\in\mathcal C^\infty(]-R, R[, \C)$ et \[\forall n\in\N, \quad \frac{f^{(n)}(0)}{n!}=a_n\]
     \item \[
             \forall t\in ]-R, R[, \qquad f(t)=\sum_{n\geq 0}\frac{f^{(n)}(0)}{n!}t^n
         \]
@@ -218,7 +218,7 @@ avec la convention $\inf\emptyset=+\infty$.}
     On va montrer que la famille \[
         \left( a_n\frac{n!}{(n+k)!}a^{n-k}\frac{(z-a)^k}{k!} \right)_{n\geq k\geq 0}
     \]
-    est sommable. Pour $n\in\mathbb N$, \[
+    est sommable. Pour $n\in\N$, \[
         \sum_{k=0}^n \left| a_n\frac{n!}{(n+k)!}a^{n-k}\frac{(z-a)^k}{k!} \right|=|a_n|(|a|+|z-a|)^n
     \]
     et si $z\in\mathcal D_o(a, R-|a|)$, on a $|a|+|z-a|<R$ donc c'est le terme général d'une série convergente. Le théorème de Fubini\index{Fubini (théorème discret de -- )} donne alors \[
@@ -229,7 +229,7 @@ avec la convention $\inf\emptyset=+\infty$.}
 \section{DSE usuels}
 
 \begin{rem}
-    On note $f\in\mathcal C^\infty(]-R, R[, \mathbb C)$. Pour $n\in\mathbb N$ et $x\in ]-R, R[$, \[
+    On note $f\in\mathcal C^\infty(]-R, R[, \C)$. Pour $n\in\N$ et $x\in ]-R, R[$, \[
         f(x)=\sum_{k=0}^n\frac{f^{(k)}(0)}{k!}x^k+\underbrace{\int_0^x\frac{(x-t)^n}{n!}f^{(n+1)}(t)\diff t}_{\defeq R_n(x)}
     \]
     Si $R_n(x)\xrightarrow[n\to+\infty]{\text{CVS}}0$ sur $]-R, R[$ alors la série \[
@@ -248,10 +248,10 @@ avec la convention $\inf\emptyset=+\infty$.}
 \end{rem}
 
 \begin{ex}
-    Pour la fonction $\exp$ sur $\mathbb R$, \[
+    Pour la fonction $\exp$ sur $\R$, \[
         \left| R_n(x) \right|\leq \frac{|x|^{n+1}}{(n+1)!}\max(1, e^x)\xrightarrow[n\to+\infty]{}0
     \]
-    donc la fonction $\exp$ est DSE sur $\mathbb R$ et admet un prolongement $\mathcal C^\infty$ sur $\mathbb C$ donné par ce DSE.
+    donc la fonction $\exp$ est DSE sur $\R$ et admet un prolongement $\mathcal C^\infty$ sur $\C$ donné par ce DSE.
 \end{ex}
 
 \begin{thm}
@@ -266,7 +266,7 @@ avec la convention $\inf\emptyset=+\infty$.}
             \rule{0pt}{2em} $\cos(x)$ & $\displaystyle \frac{(-1)^kx^{2k}}{(2k)!}$ & $+\infty$ \\
             \rule{0pt}{2em} $\dfrac1{1-x}$ & $x^k$ & $1$ \\
             \rule{0pt}{2em} $\ln(1-x)$ & $\dfrac{x^k}k$ & $1$ \\
-            \rule{0pt}{2em} $(1+x)^\alpha$ & $\displaystyle \binom \alpha kx^k$ & $1$ si $\alpha\not\in\mathbb N$, $+\infty$ sinon \\[1em]
+            \rule{0pt}{2em} $(1+x)^\alpha$ & $\displaystyle \binom \alpha kx^k$ & $1$ si $\alpha\not\in\N$, $+\infty$ sinon \\[1em]
             \hline
         \end{tabular}
     \end{center}
@@ -278,7 +278,7 @@ avec la convention $\inf\emptyset=+\infty$.}
     \]
     et \[
         g:x\longmapsto \sum_{k\geq 0}\binom \alpha kx^k.
-    \] La fonction $f$ vérifie $f^{(k)}(0)=\alpha(\alpha-1)\cdots (\alpha-k+1)$, et la règle de D'Alembert \index{D'Alembert (règle de -- )} montre que dans le cas $\alpha \not \in \mathbb N$, $R(g)=1$. On a $g(0)=1$ et \[
+    \] La fonction $f$ vérifie $f^{(k)}(0)=\alpha(\alpha-1)\cdots (\alpha-k+1)$, et la règle de D'Alembert \index{D'Alembert (règle de -- )} montre que dans le cas $\alpha \not \in \N$, $R(g)=1$. On a $g(0)=1$ et \[
     g'(x)=\sum_{k\geq 1}k\binom \alpha kx^{k-1}=\alpha\sum_{k\geq 1}\binom {\alpha-1}{k-1}x^{k-1}
 \]
 donc \[
@@ -289,7 +289,7 @@ C'est un problème de Cauchy dont $f$ et $g$ sont solutions, donc $f=g$.
 
 \begin{ex}
     $f=\arctan$. \begin{itemize}
-        \item $f'(x)=\dfrac1{1+x^2}$ sur $\mathbb R$
+        \item $f'(x)=\dfrac1{1+x^2}$ sur $\R$
         \item Sur $]-1, 1[$, \[
                 \frac1{1+x^2}=\sum_{k\geq 0}(-1)^kx^{2k}
             \]
@@ -313,7 +313,7 @@ C'est un problème de Cauchy dont $f$ et $g$ sont solutions, donc $f=g$.
 
 \todo{Récupérer cette partie}
 \subsection{Utilisation d'une primitive}
-On se donne $a\in\mathbb R$ et on pose \[
+On se donne $a\in\R$ et on pose \[
     \forall x\in ]-1, 1[, \qquad S(x)=\sum_{k\geq 1}\frac{\sin(ka)}kx^k
 \]
 On peut observer que $S(x)=\Im(H(x))$ où \[
@@ -326,7 +326,7 @@ d'où \[
     \Im(H'(x))=\frac{x\sin a\cos a+\sin a-x\sin a\cos a}{1+x^2-2x\cos a}=\frac{\sin a}{(x-\cos a)^2+\sin^2a}
 \]
 Il y a deux cas: \begin{itemize}
-    \item $a\in\pi\mathbb Z$. Dans ce cas, $S\equiv 0$.
+    \item $a\in\pi\Z$. Dans ce cas, $S\equiv 0$.
     \item $\sin a\neq 0$ et une primitive de $\Im(H'(x))$ est \[
             \arctan \left( \frac{x-\cos a}{\sin a} \right)
         \]
@@ -352,9 +352,9 @@ On pose \[
     \end{cases}
 \]
 On veut savoir si $f$ est $\mathcal C^\infty$. On a \[
-    \forall x\in\mathbb R, \qquad f(t)=\sum_{k\geq 0}\frac{t^k}{(2k)!}
+    \forall x\in\R, \qquad f(t)=\sum_{k\geq 0}\frac{t^k}{(2k)!}
 \]
-donc $f$ est DSE sur $\mathbb R$ et donc bien $\mathcal C^\infty$
+donc $f$ est DSE sur $\R$ et donc bien $\mathcal C^\infty$
 
 \subsection{Utilisation combinatoire}
 
@@ -397,7 +397,7 @@ On note \[
 On a \begin{align*}
     \sum_{k=n}^ma_kt^kz_0^k&=\sum_{k=n}^mt^k(R_{k-1}-R_k)\\&=R_{n-1}t^n+R_n(t^{n+1}-t^n)+\cdots +R_{m-1}(t^m-t^{m-1})+R_mt^m
 \end{align*}
-Soit $\epsilon>0$. Alors, $\exists N\in\mathbb N, \forall n\geq N, \quad |R_n|\leq \epsilon'=\frac\epsilon5$.
+Soit $\epsilon>0$. Alors, $\exists N\in\N, \forall n\geq N, \quad |R_n|\leq \epsilon'=\frac\epsilon5$.
 Pour $m>n\geq N+1$ et $t\in[0, 1]$, \[
     \left| \sum_{k=n}^ma_kt^kz_0^k \right|\leq 2\epsilon' + \epsilon'(t^n-t^{n+1}+\cdots t^{m-1}-t^m)\leq 3\epsilon'
 \]
@@ -466,7 +466,7 @@ donc \conc.
 On se donne $f(t)=\sum_{n\geq 0}a_nt^n$ et $g(t)=\sum_{n\geq 0}b_nt^n$ de rayons de convergence $1$ et de termes généraux positifs et équivalents ($a_n,b_n\geq 0$ et $a_n\sim b_n$). On suppose que $\sum b_n$ diverge, et on va montrer que \[
     f(t)\underset{1^-}\sim g(t)
 \]
-Déjà, $g(t)\xrightarrow[t\to1^-]{}+\infty$ (vu \emph i). Puis, pour $\epsilon>0$, il existe $N\in\mathbb N$ tel que pour $n\geq N$, \[
+Déjà, $g(t)\xrightarrow[t\to1^-]{}+\infty$ (vu \emph i). Puis, pour $\epsilon>0$, il existe $N\in\N$ tel que pour $n\geq N$, \[
     (1-\epsilon')b_n\leq a_n\leq (1+\epsilon')b_n \implies (1-\epsilon')\sum_{n\geq N}b_nt^n\leq \sum_{n\geq N}a_nt^n\leq(1+\epsilon')\sum_{n\geq N}b_nt^n
 \]
 D'où \[
@@ -512,10 +512,10 @@ où la dernière somme est celle d'une famille sommable. Donc la convergence nor
 \subsection{Théorème de Liouville}
 
 \index{Liouville (théorème de -- )}On suppose $f$ DSE avec un rayon de convergence infini, $f$ bornée. On a \[
-    \forall r>0, \forall n\in\mathbb N, \qquad a_n=\frac{1}{2\pi r^n}\int_{0}^{2\pi }f(re^{it}) e^{-int}\diff t
+    \forall r>0, \forall n\in\N, \qquad a_n=\frac{1}{2\pi r^n}\int_{0}^{2\pi }f(re^{it}) e^{-int}\diff t
 \]
 Pour $n\geq 1$, \[
-    |a_n|\leq \frac{1}{2\pi r^n}\int_{0}^{2\pi } \underbrace{|f(re^{it})e^{-int}}_{\leq \sup_{\mathbb C}|f|}\diff t\leq \frac{2\pi \sup_{\mathbb C}|f|}{2\pi r^n} \xrightarrow[r\to+\infty]{}0
+    |a_n|\leq \frac{1}{2\pi r^n}\int_{0}^{2\pi } \underbrace{|f(re^{it})e^{-int}}_{\leq \sup_{\C}|f|}\diff t\leq \frac{2\pi \sup_{\C}|f|}{2\pi r^n} \xrightarrow[r\to+\infty]{}0
 \]
 On a donc $f=a_0$ constante.
 
@@ -525,7 +525,7 @@ On a donc $f=a_0$ constante.
 On note $R$ le rayon de convergence de $f$ DSE en $0$, et on suppose $R>0$. \[
     \forall z \in \mathcal{D}_o(0,R),\qquad f(z)=\sum_{k=0}^{+\infty} \frac{f^{(k)}(0)}{k!}z^k
 \]
-Si $f(0)=0$ et $f\not\equiv 0$ alors on note $p=\min \{k\in\mathbb N, f^{(k)}(0)\neq 0\}$. Pour $z$ non nul au voisinage de $0$, \[
+Si $f(0)=0$ et $f\not\equiv 0$ alors on note $p=\min \{k\in\N, f^{(k)}(0)\neq 0\}$. Pour $z$ non nul au voisinage de $0$, \[
     f(z)=z^p \left( \frac{f^{(p)}(0)}{p!}+ z \frac{f^{(p+1)}(0)}{(p+1)!}+\cdots \right) \neq 0
 \]
 Donc $0$ est un zéro isolé. On va montrer que s'il existe une suite $(z_n)$ de racines deux à deux distinctes de $f$ qui converge vers $a\in\mathcal D_o(0,R)$, alors $f$ est nulle.
@@ -538,7 +538,7 @@ On note \[
 
 Si $z_0\in \mathcal E$, alors on note $r_0>0$ le rayon d'un disque ouvert tel que $f(\mathcal D_o(z_0,r_0))=\{0\}$. Pour tout $z\in \mathcal D_o(z_0, r_0)$, il existe $r_z>0$ tel que $\mathcal D_o(z,r_z)\subset \mathcal D_o(z_0,r_0)$ et $f$ s'annule sur ce disque, donc $\mathcal D_o(z_0, r_0)\subset \mathcal E$. Ainsi, $\mathcal E$ est un ouvert.
 
-Si $(x_n)\in \mathcal E^{\mathbb N}$ converge vers $a\in \mathcal D_o(0, R)$, alors $a$ n'est pas isolée, $f$ s'annule sur un voisinage de $a$ (déjà vu) donc $a\in \mathcal E$. L'ensemble $\mathcal E$ est donc un fermé relatif du disque ouvert de convergence.
+Si $(x_n)\in \mathcal E^{\N}$ converge vers $a\in \mathcal D_o(0, R)$, alors $a$ n'est pas isolée, $f$ s'annule sur un voisinage de $a$ (déjà vu) donc $a\in \mathcal E$. L'ensemble $\mathcal E$ est donc un fermé relatif du disque ouvert de convergence.
 
 C'est un ouvert fermé relatif, donc $\mathcal E=\mathcal D_o(0, R)$ et $f$ est nulle.
 

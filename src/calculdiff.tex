@@ -17,7 +17,7 @@
 \ifsolo \newpage \setcounter{page}{1} \fi
 \section{Notions, Définitions}
 
-$E$ est un $\mathbb R$-e.v de dimension $n$ (donc isomorphe à $\mathbb R^n$), $F$ un sev de $E$ et $\Omega$ un ouvert de $E$.
+$E$ est un $\R$-e.v de dimension $n$ (donc isomorphe à $\R^n$), $F$ un sev de $E$ et $\Omega$ un ouvert de $E$.
 
 \begin{rem}
     Pour $a\in\Omega, v\in E, \exists \epsilon>0, \forall t\in ]-\epsilon, \epsilon[, a+tv\in\Omega$ (par définition d'un ouvert)
@@ -101,7 +101,7 @@ $E$ est un $\mathbb R$-e.v de dimension $n$ (donc isomorphe à $\mathbb R^n$), $
 \end{proof}
 
 \begin{rem}
-    Pour une fonction $f:\mathbb R\longrightarrow F$, $f'(a)=\diff f_a(1)$
+    Pour une fonction $f:\R\longrightarrow F$, $f'(a)=\diff f_a(1)$
 \end{rem}
 
 \section{Calculs de différentielles}
@@ -124,7 +124,7 @@ donc \[
 existe mais $f$ est non différentiable car non $\mathcal C^0$
 
 \begin{ex} Calcul de la différentielle de
-    {$f:A\in\mathcal M_n(\mathbb R)\longmapsto A^2$}
+    {$f:A\in\mathcal M_n(\R)\longmapsto A^2$}
 \end{ex}
 
 \[
@@ -135,10 +135,10 @@ et pour une norme sous-multiplicative, $\|H^2\|\leq \|H\|^2=o_0(H)$ donc \[
 \]
 
 \begin{ex} Calcul de la différentielle de
-    {$f:M\in GL_n(\mathbb R)\longmapsto M^{-1}$}
+    {$f:M\in GL_n(\R)\longmapsto M^{-1}$}
 \end{ex}
 
-On fixe $M\in GL_n(\mathbb R)$. Alors $\exists \epsilon >0 / \mathcal B_o(M, \epsilon)\subset GL_n(\mathbb R)$. Pour $H$ dans $\mathcal B_o(0, \epsilon)$, \[
+On fixe $M\in GL_n(\R)$. Alors $\exists \epsilon >0 / \mathcal B_o(M, \epsilon)\subset GL_n(\R)$. Pour $H$ dans $\mathcal B_o(0, \epsilon)$, \[
     M+H\in\mathcal B_o(M, \epsilon)
 \]
 et \[
@@ -149,14 +149,14 @@ et \[
 \end{align*}
 
 \begin{exo} Calcul de la différentielle de
-    {$f:A\in\mathcal M_n(\mathbb R)\longmapsto A^\intercal A$}
+    {$f:A\in\mathcal M_n(\R)\longmapsto A^\intercal A$}
 \end{exo}
 
 \needspace{5\baselineskip}
 \subsection{Interprétation matricielle}
 
 \begin{thmdef}
-    On note $f:\Omega\to \mathbb R^m$, $\Omega\subset \mathbb R^n$, on écrit $f=(f_1, \cdots, f_m)$. On suppose que $f$ est différentiable en $a\in\Omega$ et on note $\mathcal C_n$ (resp. $\mathcal C_m$) la base canonique de $\mathbb R^n$ (resp. $\mathbb R^m$). Alors: \begin{enumerate}
+    On note $f:\Omega\to \R^m$, $\Omega\subset \R^n$, on écrit $f=(f_1, \cdots, f_m)$. On suppose que $f$ est différentiable en $a\in\Omega$ et on note $\mathcal C_n$ (resp. $\mathcal C_m$) la base canonique de $\R^n$ (resp. $\R^m$). Alors: \begin{enumerate}
         \item On appelle matrice jacobienne\index{jacobienne (matrice -- )} de $f$ en $a$ la matrice \[
                 J_f(a)=\left(\frac{\partial f_i}{\partial x_j}(a)\right)_{\substack{1\leq i\leq n\\ 1\leq j\leq n}}
             \]
@@ -179,7 +179,7 @@ et \[
 \section{Opérations sur les différentielles}
 
 \begin{prop}
-    Si $f,g:\omega\subset E\to F$ sont différentiables en $a$, alors pour $\lambda\in\mathbb R$, $\lambda f+g$ est différentiable en $a$ et $\diff (\lambda f+g)_a=\lambda df_a+\diff g_a$ \index{différentielle!opérations}
+    Si $f,g:\omega\subset E\to F$ sont différentiables en $a$, alors pour $\lambda\in\R$, $\lambda f+g$ est différentiable en $a$ et $\diff (\lambda f+g)_a=\lambda df_a+\diff g_a$ \index{différentielle!opérations}
 \end{prop}
 
 \begin{prop}
@@ -231,7 +231,7 @@ et \[
 \end{proof}
 
 \begin{rem}
-    $E=\mathbb R^n$, $F=\mathbb R^m$, $G=\mathbb R^p$, $f=(f_1, \cdots, f_m):E\to F$, $g=(g_1, \cdots, g_p):F\to G$, $\mathcal C_k$ base canonique de $\mathbb R^k$.
+    $E=\R^n$, $F=\R^m$, $G=\R^p$, $f=(f_1, \cdots, f_m):E\to F$, $g=(g_1, \cdots, g_p):F\to G$, $\mathcal C_k$ base canonique de $\R^k$.
 
     Si $x \underset{\mathcal C_n}\longleftrightarrow X$ alors $\diff f_a(x)\underset{\mathcal C_m}\longleftrightarrow J_f(a)X$ et $\diff (g\circ f)_a(x)\underset{\mathcal C_p}\longleftrightarrow J_{g\circ f}(a)X\underset{\mathcal C_p}\longleftrightarrow J_g(f(a))J_f(a)X$. C'est vrai pour tout $X$ donc \[
         \underbrace{J_{g\circ f}(a)}_{\in\mathcal M_{p,n}} = \underbrace{J_g(f(a))}_{\in\mathcal M_{p,m}}\underbrace{J_f(a)}_{\in \mathcal M_{m,n}}
@@ -242,13 +242,13 @@ et \[
         \iff & \colorboxed{red}{\partial_j (g_i\circ f)(a)=\sum_{k=1}^m\partial_kg_i(f(a))\partial_jf_k(a)} \quad \text{ \emph{(règle de la chaîne)} }
     \end{align*}
 
-    En particulier, si $p = n = 1$, $\varphi:t\in \mathbb R\to g(f_1(t), \cdots, f_m(t))$ alors \[
+    En particulier, si $p = n = 1$, $\varphi:t\in \R\to g(f_1(t), \cdots, f_m(t))$ alors \[
         (g\circ f)'(a)=\sum_{k=1}^m \frac{\partial g}{\partial y_k}(f(a))f'_k(a)
     \]
 \end{rem}
 
 \begin{rem}
-    Si $f:\Omega\subset E\to \mathbb R$ est différentiable en $a$ et $f(a)\neq 0$ alors $\frac 1f$ est différentiable en $a$ car $x\longmapsto \frac 1x$ est différentiable en $f(a)$
+    Si $f:\Omega\subset E\to \R$ est différentiable en $a$ et $f(a)\neq 0$ alors $\frac 1f$ est différentiable en $a$ car $x\longmapsto \frac 1x$ est différentiable en $f(a)$
 \end{rem}
 
 \begin{rem}
@@ -280,7 +280,7 @@ et \[
         \]
         est continue par rapport à $a$ par hypothèse.
 
-        $(b) \implies (a)$: Il suffit de montrer que $f$ est différentiable sur $\Omega$. On commence par le cas $F=\mathbb R$. \begin{align*}
+        $(b) \implies (a)$: Il suffit de montrer que $f$ est différentiable sur $\Omega$. On commence par le cas $F=\R$. \begin{align*}
             f(a+h)-f(a) = \phantom{+} & f(a_1+h_1, \cdots, a_n+h_n)-f(a_1, a_2+h_2, \cdots, a_n+h_n) \\
             + & f(a_1, a_2+h_2, \cdots, a_n+h_n)-f(a_1, \cdots, a_i, a_{i+1}+h_{i+1}, \cdots, a_n+h_n) \\
             + & f(a_1, \cdots, a_i, a_{i+1}+h_{i+1}, \cdots, a_n+h_n) + \cdots \\
@@ -295,13 +295,13 @@ et \[
             + & \underbrace{h_n \frac{\partial f}{\partial x_n} (a_1, \cdots, a_{n-1}, c_{n,h})}_{\longrightarrow h_n \frac{\partial f}{\partial x_n}(a) \text{ donc } =h_n \frac{\partial f}{\partial x_n}(a)+o(1) } \\
             =\phantom + & \underbrace{h_1 \frac{\partial f}{\partial x_1}(a)+\cdots + h_n \frac{\partial f}{\partial x_n} (a) }_{\text{AL}}  + \underbrace{h_1o(1)+\cdots h_no(1)}_{o(h)}
         \end{align*}
-        donc $f$ est différentiable sur $\Omega$. Si $F\neq \mathbb R$ on raisonne coordonnée par coordonnée.
+        donc $f$ est différentiable sur $\Omega$. Si $F\neq \R$ on raisonne coordonnée par coordonnée.
 \end{enumerate}
 \end{proof}
 
 \begin{prop} ~
     \begin{enumerate}
-        \item $\mathcal C^1(\Omega, F)$ est un $\mathbb R$-e.v.
+        \item $\mathcal C^1(\Omega, F)$ est un $\R$-e.v.
         \item Si $\mathcal C$ base de $F$ est $f:\Omega\longrightarrow F$ donnée par $f=(f_1, \cdots, f_n)$ (dans $\mathcal C$) alors il y a équivalence entre \begin{enumerate}
             \item $f$ est $\mathcal C^1$
             \item Les $f_i$ sont toutes $\mathcal C^1$
@@ -315,7 +315,7 @@ et \[
 \end{proof}
 
 \begin{thm}
-    \Hyp $f:\Omega\subset E\longrightarrow \mathbb R$, $a,b\in\Omega$ tels que $[a, b]\subset \Omega$
+    \Hyp $f:\Omega\subset E\longrightarrow \R$, $a,b\in\Omega$ tels que $[a, b]\subset \Omega$
     \begin{concenum}
     \item \[ f(b)-f(a)=\int_0^1\mathrm df_{(1-t)a+tb}(b-a)\diff t\]
     \item Si $\nop \diff f_x\nop\leq M$ pour $x\in[a, b]$ alors $|f(b)-f(a)|\leq M\|b-a\|$
@@ -344,7 +344,7 @@ et \[
 D'abord, \[
     f(x, y)=\frac{x^2+y^2-|x^2-y^2|}2
 \]
-donc $f$ est $\mathcal C^0$. On note $\Delta$ le fermé $\{(x, y)\in\mathbb R^2, x^2=y^2\}$, $\mathbb R^2\setminus \Delta$ est ouvert et $f\in \mathcal C^1(\mathbb R^2\setminus \Delta, \mathbb R)$ comme composée de fonctions $\mathcal C^1$.
+donc $f$ est $\mathcal C^0$. On note $\Delta$ le fermé $\{(x, y)\in\R^2, x^2=y^2\}$, $\R^2\setminus \Delta$ est ouvert et $f\in \mathcal C^1(\R^2\setminus \Delta, \R)$ comme composée de fonctions $\mathcal C^1$.
 
 Il reste à savoir si $f$ est différentiable sur $\Delta$ et si éventuellement la différentielle est continue.
 
@@ -360,7 +360,7 @@ Donc $f$ n'a pas de dérivée partielle par rapport à $x$ en $(x, x)$ pour $x\i
 
 En $(0, 0)$, $f$ est différentiable car $0\leq f(x, y)\leq x^2+y^2=o(\|(x, y)\|_2)$ donc $f(x, y)=f(0, 0)+0+o((x, y))$ et $\diff f_{(0, 0)}=0$
 
-Ainsi $(x, y)\longmapsto \diff f_{(x, y)}$ est définie sur $\mathbb R^2\setminus \Delta^\star$. Elle est continue sur $\mathbb R^2\setminus \Delta$, puis on va montrer qu'elle est continue en $(0, 0)$. On note $(x_0, y_0)\in\mathbb R^2\setminus \Delta$ tels que $x_0^2>y_0^2$ donc au voisinage de $(x_0, y_0)$, $f(x, y)=y^2$ et $\diff f_{(x_0, y_0)}=2y_0\diff y$ puis sinon $\diff f_{(x_0, y_0)}=2x_0\diff x$. Dans tous les cas, $\diff f_{(x, y)}\xrightarrow[(x, y)\to 0]{}0=\diff f_{(0, 0)}$ donc la différentielle est continue sur son domaine de définition.
+Ainsi $(x, y)\longmapsto \diff f_{(x, y)}$ est définie sur $\R^2\setminus \Delta^\star$. Elle est continue sur $\R^2\setminus \Delta$, puis on va montrer qu'elle est continue en $(0, 0)$. On note $(x_0, y_0)\in\R^2\setminus \Delta$ tels que $x_0^2>y_0^2$ donc au voisinage de $(x_0, y_0)$, $f(x, y)=y^2$ et $\diff f_{(x_0, y_0)}=2y_0\diff y$ puis sinon $\diff f_{(x_0, y_0)}=2x_0\diff x$. Dans tous les cas, $\diff f_{(x, y)}\xrightarrow[(x, y)\to 0]{}0=\diff f_{(0, 0)}$ donc la différentielle est continue sur son domaine de définition.
 
 \subsection{Domaine de continuité}
 
@@ -375,7 +375,7 @@ On pose \[
     \includegraphics{src/figures/calculdiff-regularite-fonction-continue.pdf}
 \end{center}
 
-$f$ est clairement continue sur $\mathbb R^2\setminus\{(0, 0)\}$ puis $x^2y^2\leq (x^2+y^2)^2$ donc $0\leq f(x)\leq x^2+y^2=o((x, y))$ donc $f$ continue en $0$
+$f$ est clairement continue sur $\R^2\setminus\{(0, 0)\}$ puis $x^2y^2\leq (x^2+y^2)^2$ donc $0\leq f(x)\leq x^2+y^2=o((x, y))$ donc $f$ continue en $0$
 
 \subsection{Une fonction différentiable non \texorpdfstring{$\mathcal C^1$}{C1}}
 
@@ -390,7 +390,7 @@ On pose \[
     \includegraphics{src/figures/calculdiff-regularite-diff-non-c1.pdf}
 \end{center}
 
-La fonction est clairement $\mathcal C^1$ sur $\mathbb R^2\setminus\{0\}$ puis $f(x, y)=o_0((x, y))$ donc $\diff f_0=0$ et $f$ est différentiable. Il reste à voir si la différentielle est continue en $(0, 0)$.
+La fonction est clairement $\mathcal C^1$ sur $\R^2\setminus\{0\}$ puis $f(x, y)=o_0((x, y))$ donc $\diff f_0=0$ et $f$ est différentiable. Il reste à voir si la différentielle est continue en $(0, 0)$.
 
 Puis, \[
     \frac{\partial f}{\partial x} (x, y)= \begin{cases}
@@ -404,7 +404,7 @@ donc $f$ n'est pas $\mathcal C^1$
 
 \subsection{Expression intégrale}
 
-On considère $g:\mathbb R^2\to \mathbb R$ de classe $\mathcal C^1$ et \[
+On considère $g:\R^2\to \R$ de classe $\mathcal C^1$ et \[
     F:x\longmapsto \int_0^xg(x, t)\diff t
 \]
 
@@ -440,10 +440,10 @@ On se place dans $E$ et on note $\Omega$ un ouvert connexe par arcs de $E$, et $
 
 \section{Extrema -- Gradient}
 
-Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
+Dans cette partie, $f:\Omega\to\R$. On suppose $(E, (\;|\;))$ euclidien.
 
 \begin{thmdef}
-    \Hyp $f:\Omega\to\mathbb R$ différentiable en $a\in\Omega$
+    \Hyp $f:\Omega\to\R$ différentiable en $a\in\Omega$
     \begin{concenum}
     \item $\diff f_a$ est une forme linéaire
     \item Il existe un unique $w\in E$ tel que \[
@@ -477,7 +477,7 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
 \end{rem}
 
 \begin{rem}[Égalité des accroissements finis\index{accroissements finis!égalité}]
-    On note $f:\Omega\to E$ différentiable, et $[a, b]\subset \Omega$. On note \[ g:t\in[0, 1]\longmapsto f((1-t)a+tb)\in\mathbb R \]
+    On note $f:\Omega\to E$ différentiable, et $[a, b]\subset \Omega$. On note \[ g:t\in[0, 1]\longmapsto f((1-t)a+tb)\in\R \]
     \begin{itemize}
         \item $g$ est continue sur $[0, 1]$, dérivable sur $]0, 1[$ (car dérivable sur $[0, 1]$)
         \item On applique l'égalité des accroissements finis à $g$: \[
@@ -491,7 +491,7 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
 \end{rem}
 
 \begin{thmdef}
-    \Hyp $f:\Omega\subset E\to \mathbb R, a\in \Omega$, $f$ différentiable en $a$.
+    \Hyp $f:\Omega\subset E\to \R, a\in \Omega$, $f$ différentiable en $a$.
     \begin{concenum}
     \item On dira que $f$ a un point critique\index{point critique} en $a$ si $\diff f_a=0$ (i.e. si $\nabla f(a)=0$ avec un produit scalaire)
     \item Si $a$ est un extremum local de $f$ alors $a$ est un point critique de $f$.
@@ -536,7 +536,7 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
 \end{ex}
 
 \begin{exo}
-    On note $S=\{x\in\mathbb R^n, \quad \|x\|=1\}$ la sphère unité. On suppose $f:\mathbb R^n\to \mathbb R$ différentiable sur son domaine de définition et constante sur $S$. Montrer qu'il existe $x_0\in\mathbb R^n$ tel que \[
+    On note $S=\{x\in\R^n, \quad \|x\|=1\}$ la sphère unité. On suppose $f:\R^n\to \R$ différentiable sur son domaine de définition et constante sur $S$. Montrer qu'il existe $x_0\in\R^n$ tel que \[
         \|x\|<1 \qquad\text{ et }\qquad \diff f_{x_0}=0
     \]
 \end{exo}
@@ -554,7 +554,7 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
 \end{center}
 
 \begin{rem}
-    C'est une généralisation possible du théorème de Rolle\index{Rolle!généralisation}. Plus généralement, si $K$ est un compact d'intérieur non vide de $\mathbb R^n$ tel que $f:\mathbb R^n\to\mathbb R$ différentiable est constante sur $\partial K=\bar K\setminus \mathring K$, alors il existe $x\in\mathring K$ tel que $\diff f_x=0$
+    C'est une généralisation possible du théorème de Rolle\index{Rolle!généralisation}. Plus généralement, si $K$ est un compact d'intérieur non vide de $\R^n$ tel que $f:\R^n\to\R$ différentiable est constante sur $\partial K=\bar K\setminus \mathring K$, alors il existe $x\in\mathring K$ tel que $\diff f_x=0$
 \end{rem}
 
 \section{Application à la géométrie}
@@ -580,7 +580,7 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
             \includegraphics{src/figures/calculdiff-espace-tangent-cercle.pdf}
         \end{center}
 
-    \item $E=\mathbb R^3$, $f:\mathbb R^2\to \mathbb R$ différentiable, $X=\{(x, y, f(x, y)), \quad x,y\in\mathbb R\}$. Le vecteur $(\alpha, \beta, \lambda)$ est tangent à $X$ en $(x_0, y_0, f(x_0, y_0))$ si et seulement si \[
+    \item $E=\R^3$, $f:\R^2\to \R$ différentiable, $X=\{(x, y, f(x, y)), \quad x,y\in\R\}$. Le vecteur $(\alpha, \beta, \lambda)$ est tangent à $X$ en $(x_0, y_0, f(x_0, y_0))$ si et seulement si \[
             \lambda= \frac{\partial f}{\partial x} (x_0, y_0)\alpha + \frac{\partial f}{\partial y}(x_0, y_0)\beta \tag{$\star$}
         \]
         En effet, si $(\alpha, \beta, \nu)$ tangent alors on note $\gamma$ l'arc associé et $z(t)-f(x(t), y(t))=0$ donc en dérivant \[
@@ -591,30 +591,30 @@ Dans cette partie, $f:\Omega\to\mathbb R$. On suppose $(E, (\;|\;))$ euclidien.
         \]
         convient.
 
-    \item \emph{Cas des lignes de niveau}. On note $f:\Omega\to \mathbb R$, $X_a=f^{-1}(a)$. On suppose $X_a$ non-vide et $\gamma:~]-\varepsilon, \varepsilon[ \to X_a$ dérivable avec $\gamma(0)=t_0$, $\gamma'(0)=v$. En dérivant la relation $f\circ gamma=a$ on a \[\forall x\in ]-\varepsilon; \varepsilon[, \quad \diff f_{\gamma(x)}\circ \gamma'(x)=0\]
+    \item \emph{Cas des lignes de niveau}. On note $f:\Omega\to \R$, $X_a=f^{-1}(a)$. On suppose $X_a$ non-vide et $\gamma:~]-\varepsilon, \varepsilon[ \to X_a$ dérivable avec $\gamma(0)=t_0$, $\gamma'(0)=v$. En dérivant la relation $f\circ gamma=a$ on a \[\forall x\in ]-\varepsilon; \varepsilon[, \quad \diff f_{\gamma(x)}\circ \gamma'(x)=0\]
         donc pour $x=0$, $\diff f_{t_0}(v)=0=(\nabla f(t_0)\;|\;v)$
     \end{enumerate}
 \end{ex}
 
 \section{Calcul de vecteurs tangents}
 
-\subsection{Vecteurs tangents à $O_n(\mathbb R)$ en $I_n$}
+\subsection{Vecteurs tangents à $O_n(\R)$ en $I_n$}
 
-On veut déterminer les vecteurs tangents à $X=O_n(\mathbb R)$ en $I_n$. On se donne \[
-    \gamma: ]-\varepsilon; \varepsilon[ \longrightarrow O_n(\mathbb R)
+On veut déterminer les vecteurs tangents à $X=O_n(\R)$ en $I_n$. On se donne \[
+    \gamma: ]-\varepsilon; \varepsilon[ \longrightarrow O_n(\R)
 \]
 dérivable telle que $\gamma (0)=I_n$. \begin{itemize}
-    \item $\forall x\in ]-\varepsilon; \varepsilon[, \qquad \gamma(t)\in O_n(\mathbb R)$, i.e. $\gamma(t)^{\top}\gamma(t)=I_n$. En dérivant: \[
-            \gamma'(t)^\top\gamma(t)+\gamma(t)^\top\gamma'(t)=0\implies \gamma'(0)^\top+\gamma(0)=0 \implies \gamma'(0)\in \mathcal{AS}_n(\mathbb R)
+    \item $\forall x\in ]-\varepsilon; \varepsilon[, \qquad \gamma(t)\in O_n(\R)$, i.e. $\gamma(t)^{\top}\gamma(t)=I_n$. En dérivant: \[
+            \gamma'(t)^\top\gamma(t)+\gamma(t)^\top\gamma'(t)=0\implies \gamma'(0)^\top+\gamma(0)=0 \implies \gamma'(0)\in \mathcal{AS}_n(\R)
         \]
-    \item On note $A\in\mathcal M_n(\mathbb R)$ antisymétrique et $\gamma:t\in ~]-1, 1[~\longmapsto e^{tA}$ de sorte que $\gamma(t)\in O_n(\mathbb R)$ (facile à vérifier en écrivant l'exponentielle comme somme d'une série), $\gamma(0)=I_n$ et $\gamma'(0)=A$ donc $A$ est tangent à $X$ en $I_n$.
+    \item On note $A\in\mathcal M_n(\R)$ antisymétrique et $\gamma:t\in ~]-1, 1[~\longmapsto e^{tA}$ de sorte que $\gamma(t)\in O_n(\R)$ (facile à vérifier en écrivant l'exponentielle comme somme d'une série), $\gamma(0)=I_n$ et $\gamma'(0)=A$ donc $A$ est tangent à $X$ en $I_n$.
 \end{itemize}
 
-\subsection{Vecteurs tangents à $\mathrm{GL}_n(\mathbb R)$ en $I_n$}
+\subsection{Vecteurs tangents à $\mathrm{GL}_n(\R)$ en $I_n$}
 
-$\mathrm{GL}_n(\mathbb R)$ est un ouvert donc tous les vecteurs sont tangents à $I_n$.
+$\mathrm{GL}_n(\R)$ est un ouvert donc tous les vecteurs sont tangents à $I_n$.
 
-\subsection{Vecteurs tangents à $\mathrm{SL}_n(\mathbb R)$ en $I_n$}
+\subsection{Vecteurs tangents à $\mathrm{SL}_n(\R)$ en $I_n$}
 
 On note $\gamma$ un chemin qui satisfait les bonnes hypothèses, $\gamma(0)=I_n$, $\det \circ \gamma =1$ donc \[
     \diff (\det)_{\gamma(t)}\circ \gamma'(t)=\Tr(\Com(\gamma(t))^\top \gamma'(t))=0 \implies \Tr(\gamma'(0))=0
@@ -651,11 +651,11 @@ convient.
     \begin{concenum}
     \item On note $V_a(X)$ l'ensemble des vecteurs tangents à $X$ en $a$.
     \item L'espace tangent\index{espace tangent} à $X$ en $a$ est $T_a(X)=a+V_a(X)$
-    \item Si $f:\Omega \subset E\to \mathbb R$ et si $a\in \Omega$ n'est pas un point critique alors $X=f^{-1}(\{f(a)\})$ vérifie \begin{enumerate}
+    \item Si $f:\Omega \subset E\to \R$ et si $a\in \Omega$ n'est pas un point critique alors $X=f^{-1}(\{f(a)\})$ vérifie \begin{enumerate}
         \item $V_a(X)=\nabla f(a)^\perp$
         \item $T_a(X)=a+\nabla f(a)^\perp$
     \end{enumerate}
-    En particulier, si $E=\mathbb R^3$ et $X=f^{-1}(\{\lambda\})$ et $a=(x_0, y_0, z_0)\in X$ point non critique de $f$ alors $T_a(X)$ est donné par l'équation cartésienne \[
+    En particulier, si $E=\R^3$ et $X=f^{-1}(\{\lambda\})$ et $a=(x_0, y_0, z_0)\in X$ point non critique de $f$ alors $T_a(X)$ est donné par l'équation cartésienne \[
         \frac{\partial f}{\partial x} (a)(x-x_0)+ \frac{\partial f}{\partial y} (a)(y-y_0)+ \frac{\partial f}{\partial z} (a)(z-z_0)=0
     \]
     \end{concenum}
@@ -697,7 +697,7 @@ convient.
 
 \subsection{Identité d'Euler}
 
-On note $f:\mathbb R^n\setminus \{0\}\to \mathbb R$ différentiable. On dira que $f$ est $\alpha$-homogène si \[\forall x, t\in\mathbb R^n\times \mathbb R, \quad x\neq 0 \implies f(tx)=t^\alpha f(x)\]
+On note $f:\R^n\setminus \{0\}\to \R$ différentiable. On dira que $f$ est $\alpha$-homogène si \[\forall x, t\in\R^n\times \R, \quad x\neq 0 \implies f(tx)=t^\alpha f(x)\]
 
 On va montrer que $f$ est $\alpha$-homogène si et seulement si \[
     \sum_{i=1}^nx_i\partial_if(x)=\alpha f(x)
@@ -714,10 +714,10 @@ On va montrer que $f$ est $\alpha$-homogène si et seulement si \[
 
 \subsection{Calcul du laplacien en coordonnées polaires}
 
-On note $f:\mathbb R^2\to \mathbb R $ de classe $\mathcal C^2$, et \[
+On note $f:\R^2\to \R $ de classe $\mathcal C^2$, et \[
     \begin{matrix}
-        f^\star :&\mathbb R_+\times [0, 2\pi]&\longrightarrow & \mathbb R \\
-                 &\phantom{\mathbb R_+\times \;\;}(\rho, \theta) &\longmapsto &f(\rho\cos\theta, \rho\sin\theta)
+        f^\star :&\R_+\times [0, 2\pi]&\longrightarrow & \R \\
+                 &\phantom{\R_+\times \;\;}(\rho, \theta) &\longmapsto &f(\rho\cos\theta, \rho\sin\theta)
     \end{matrix}
 \]
 
@@ -753,7 +753,7 @@ d'où \[
 \]
 
 \begin{exo}
-    Déterminer les $g\in\mathcal C^2(\mathbb R_+^\star, \mathbb R)$ tel que $f:(x_1, \cdots, x_n)\in\mathbb R^n\setminus \{0\}\longmapsto g(x_1^2+ \cdots+ x_n^2)$ est harmonique ($\Delta f=0$)
+    Déterminer les $g\in\mathcal C^2(\R_+^\star, \R)$ tel que $f:(x_1, \cdots, x_n)\in\R^n\setminus \{0\}\longmapsto g(x_1^2+ \cdots+ x_n^2)$ est harmonique ($\Delta f=0$)
 \end{exo}
 
 \begin{proof}[Résolution]
@@ -764,7 +764,7 @@ d'où \[
         \frac{\partial ^2 f}{\partial x_i^2}(x)=g''(x_1^2+\cdots+x_n^2)4x_i^2+2g'(x_1^2+\cdots +x_n^2) 
     \]
     donc \[
-        \Delta f=0\iff \forall x\in\mathbb R^n\setminus \{0\}, \quad \sum_{i=1}^ng''(\|x\|^2)4x_i^2+2g'(\|x\|^2)=0 \iff 4\|x\|^2g''(\|x\|^2)+2g'(\|x\|^2)n=0
+        \Delta f=0\iff \forall x\in\R^n\setminus \{0\}, \quad \sum_{i=1}^ng''(\|x\|^2)4x_i^2+2g'(\|x\|^2)=0 \iff 4\|x\|^2g''(\|x\|^2)+2g'(\|x\|^2)n=0
     \]
     donc \[
         \Delta f=0\iff \forall r>0, \quad 4rg''(r)+2ng'(r)=0\iff \cdots \iff \exists A, B, \quad g:r\longmapsto B+\frac{A}{r^{n/2-1}}
@@ -807,11 +807,11 @@ de sorte que $\bar Y=\bar X\Gamma$. On connait $X$ et $Y$, on veut approcher $\G
 
 \section{Exemple d'équation aux dérivées partielles}
 
-On va déterminer les solution $f\in\mathcal C^1(\mathbb R_+^\star\times \mathbb R, \mathbb R)$ tels que \[
+On va déterminer les solution $f\in\mathcal C^1(\R_+^\star\times \R, \R)$ tels que \[
     x \frac{\partial f}{\partial y} (x, y)-y \frac{\partial f}{\partial x} (x, y)=k f(x, y)
 \]
 
-Pour $r\in\mathbb R^\star$, $\theta\in\left]-\frac\pi2,\frac\pi2\right[$, $f^\star(r, \theta)=f(r\cos\theta,r\sin\theta)$. Donc: \[
+Pour $r\in\R^\star$, $\theta\in\left]-\frac\pi2,\frac\pi2\right[$, $f^\star(r, \theta)=f(r\cos\theta,r\sin\theta)$. Donc: \[
     \frac{\partial f^\star}{\partial \theta} (r, \theta)=-r\sin\theta \left(\frac{\partial f}{\partial x}\right)^\star (r, \theta)+r\cos \theta \left(\frac{\partial f}{\partial y}\right)^\star (r,\theta)=kf^\star(r,\theta)
 \]
 
@@ -823,7 +823,7 @@ donc les solutions sont de la forme $f(x, y)=a \!\!\,\left( \sqrt{x^2+y^2} \righ
 \section{Méthodes de gradient}
 
 
-On note $J:\mathbb R^n\to \mathbb R$ minorée $\mathcal C^1$ et on suppose qu'elle atteint sa borne inférieure en un point $x^\star$.
+On note $J:\R^n\to \R$ minorée $\mathcal C^1$ et on suppose qu'elle atteint sa borne inférieure en un point $x^\star$.
 
 \textbf{Idée:} On va construire une suite $(x_n)$ telle que $J(x_n)\to J(x^\star)$. On a \[
     J(x_n+tv)=J(x_n)+t(\nabla J(x_n)\;|\; v)+o_0(tv)
@@ -834,9 +834,9 @@ et on va prendre $v=-\nabla J(x_n)$ de sorte que $x_{n+1}=x_n-t_n\nabla J(x_n)$,
 
 \index{gradient!méthode de gradient conjugué}
 
-On note $A\in S_p^{++}(\mathbb R)$, $b\in\mathbb R^p$ et \[
+On note $A\in S_p^{++}(\R)$, $b\in\R^p$ et \[
     \begin{matrix}
-        J: & \mathbb R^p & \longrightarrow & \mathbb R \\
+        J: & \R^p & \longrightarrow & \R \\
            & x & \longmapsto & \dfrac12(Ax\;|\;x)-(b\;|\;x)
     \end{matrix}
 \]
@@ -879,13 +879,13 @@ Si $(x_n)$ ne prend pas la valeur $x^\star$ alors $(J(x_n))$ est décroissante m
 \subsection{Méthode de gradient à pas optimal}
 \index{gradient!méthode de gradient à pas optimal}
 
-Soit $f:\mathbb R^n\to \mathbb R$ de classe $\mathcal C^1$ telle que \[
-    \exists \alpha > 0, \forall u, v\in\mathbb R^n, (\nabla f(u)-\nabla f(v)\;|\; u-v)\geq \alpha\|u-v\|^2
+Soit $f:\R^n\to \R$ de classe $\mathcal C^1$ telle que \[
+    \exists \alpha > 0, \forall u, v\in\R^n, (\nabla f(u)-\nabla f(v)\;|\; u-v)\geq \alpha\|u-v\|^2
 \]
 
 \begin{enumerate}
     \item On va établir que \[
-            \forall u, v\in\mathbb R^n, f(u)\geq f(v)+(\nabla f(u)\;|\;v-u)+\frac\alpha2\|v-u\|^2
+            \forall u, v\in\R^n, f(u)\geq f(v)+(\nabla f(u)\;|\;v-u)+\frac\alpha2\|v-u\|^2
         \]
         et en déduire que $f$ a un minimum global.
 
@@ -906,7 +906,7 @@ Soit $f:\mathbb R^n\to \mathbb R$ de classe $\mathcal C^1$ telle que \[
         \]
     \item On souhaite approcher $x^\star$.
         \begin{enumerate}
-            \item Soit $u\in\mathbb R^n\setminus\{x^\star\}$. On va montrer que $\varphi_u:t\longmapsto f(y+t\nabla f(u))$ admet un minimum global.
+            \item Soit $u\in\R^n\setminus\{x^\star\}$. On va montrer que $\varphi_u:t\longmapsto f(y+t\nabla f(u))$ admet un minimum global.
 
                 On a \[
                     \varphi_u'(t)=\diff f_{u+t\nabla f(u)}(\nabla f(u))=(\nabla f(u+t\nabla f(u))\;|\;\nabla f(u))
@@ -918,10 +918,10 @@ Soit $f:\mathbb R^n\to \mathbb R$ de classe $\mathcal C^1$ telle que \[
                 donc $\phi_u'$ est croissante et $\varphi_u$ est convexe. Puis, \begin{align*}
                     \varphi_u'(t)-\varphi_u'(s)\geq \alpha(t-s)\|\nabla f(u)\|^2 &\xrightarrow[t\to+\infty]{} +\infty \\ &\xrightarrow[s\to-\infty]{}+\infty
                 \end{align*}
-                donc $\phi_u'$ est croissante surjective dans $\mathbb R$ d'où l'unicité et l'existence du minimum de $\varphi_u$.
+                donc $\phi_u'$ est croissante surjective dans $\R$ d'où l'unicité et l'existence du minimum de $\varphi_u$.
             \item On considère le schéma numérique suivant: \[
                     \begin{cases}
-                        u_0\in\mathbb R^n\\
+                        u_0\in\R^n\\
                         u_{p+1}=u_p &\text{ si }u_p=x^\star \text{ (on suppose que cela n'arrive pas) }\\
                         u_{p+1}=u_p+t_p\nabla f(u_p) &\text{ sinon }
                     \end{cases}

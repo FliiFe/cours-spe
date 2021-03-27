@@ -18,7 +18,7 @@
 
 \section{Rappels}
 
-L'opération d'intégration sur $\CPM([a, b], \mathbb R)$ est linéaire positive croissante. On a \[
+L'opération d'intégration sur $\CPM([a, b], \R)$ est linéaire positive croissante. On a \[
     \left| \int_a^bf \right|\leq \int_a^b|f|\leq (b-a)\sup_{[a,b]} |f|
 \]
 et similairement \[
@@ -60,8 +60,8 @@ Si $f$ est continue par morceaux sur $[a, b]$ alors \[
 \end{rem}
 
 \begin{ex}[Irrationnalité de $\cos 1$]
-    Supposons $\cos 1=\frac pq\in\mathbb Q$ de sorte que \[
-        \cos 1=\sum_{k=0}^q\frac{\cos^{(k)}(0)}{k!}+\int_0^1\frac{(1-t)^q}{q!}\cos^{(q+1)}(t)\diff t\implies0\leq \underbrace{q! \left| \cos 1-\sum_{k=0}^q\frac{\cos^{(k)}(0)}{k!} \right|}_{\in\mathbb N}= \left| \int_0^1(1-t)^q\cos^{(q+1)}(t)\diff t \right|<1
+    Supposons $\cos 1=\frac pq\in\Q$ de sorte que \[
+        \cos 1=\sum_{k=0}^q\frac{\cos^{(k)}(0)}{k!}+\int_0^1\frac{(1-t)^q}{q!}\cos^{(q+1)}(t)\diff t\implies0\leq \underbrace{q! \left| \cos 1-\sum_{k=0}^q\frac{\cos^{(k)}(0)}{k!} \right|}_{\in\N}= \left| \int_0^1(1-t)^q\cos^{(q+1)}(t)\diff t \right|<1
     \]
     donc \[
         \cos 1=\sum_{k=0}^q\frac{\cos^{(k)}(0)}{k!}
@@ -106,26 +106,26 @@ donc \[
 \section{Fonctions continues par morceaux}
 
 \begin{dfn}[Rappel]\index{continuité par morceaux}
-    $f:[a, b]\longrightarrow\mathbb R$ (ou $\mathbb C$) est dite continue par morceaux s'il existe une subdivision finie $\sigma=(a_1, \cdots, a_n)$ ($a_1=a$, $a_n=b$) de $[a, b]$ telle que $f$ est continue sur $]a_n, a_{n+1}[$, et admet une limite à droite et à gauche (ou d'un seul côté aux bords de l'intervalle) en chacun des points de la subdivision.
+    $f:[a, b]\longrightarrow\R$ (ou $\C$) est dite continue par morceaux s'il existe une subdivision finie $\sigma=(a_1, \cdots, a_n)$ ($a_1=a$, $a_n=b$) de $[a, b]$ telle que $f$ est continue sur $]a_n, a_{n+1}[$, et admet une limite à droite et à gauche (ou d'un seul côté aux bords de l'intervalle) en chacun des points de la subdivision.
 
-    L'ensemble de ces fonction est noté $\CPM([a, b], \mathbb R)$
+    L'ensemble de ces fonction est noté $\CPM([a, b], \R)$
 \end{dfn}
 
 \begin{dfn}
-    Si $I$ est un intervalle non trivial de $\mathbb R$, on dira que $f$ est continue par morceaux sur $I$ si $f$ est continue par morceaux sur tous segments inclus dans $I$.
+    Si $I$ est un intervalle non trivial de $\R$, on dira que $f$ est continue par morceaux sur $I$ si $f$ est continue par morceaux sur tous segments inclus dans $I$.
 \end{dfn}
 
 \begin{ex}
-    La partie entière est $\CPM$ sur $\mathbb R$. L'application \[
+    La partie entière est $\CPM$ sur $\R$. L'application \[
         x\longmapsto \floor{\frac1x}
     \]
     est $\CPM$ sur $]0, 1]$
 \end{ex}
 
 \begin{prop}
-    \Hyp $I$ est un intervalle réel non trivial, $f,g\in \CPM(I, \mathbb R)$
+    \Hyp $I$ est un intervalle réel non trivial, $f,g\in \CPM(I, \R)$
     \begin{concenum}
-    \item Pour tout $\lambda\in\mathbb R$ (ou $\mathbb C$), $\lambda f+g\in\CPM(I, \mathbb R)$
+    \item Pour tout $\lambda\in\R$ (ou $\C$), $\lambda f+g\in\CPM(I, \R)$
     \item $fg$ est $\CPM$
     \item $|f|$ est $\CPM$. En particulier, $\max (f,g)$ et $\min (f,g)$ aussi
     \end{concenum}
@@ -140,11 +140,11 @@ donc \[
 \begin{thm}[Rappel]
     \Hyp $f$ continue sur $[a,b]$
    \begin{concenum}
-   \item  On note $E(I, \mathbb R)$ l'ensemble des fonctions en escaliers de $I$ dans $\mathbb R$. \[
-           \forall \varepsilon>0, \exists \varphi\in E([a, b], \mathbb R), \quad \sup_{[a, b]}|f-\varphi|\leq \varepsilon
+   \item  On note $E(I, \R)$ l'ensemble des fonctions en escaliers de $I$ dans $\R$. \[
+           \forall \varepsilon>0, \exists \varphi\in E([a, b], \R), \quad \sup_{[a, b]}|f-\varphi|\leq \varepsilon
        \]
    \item \[
-        \exists (\varphi_n)_n\in E([a,b]\in\mathbb R)^{\mathbb R}, \forall n\in\mathbb N^\star, \quad \sup_{[a,b]}|f-\varphi_n|\leq\frac1n
+        \exists (\varphi_n)_n\in E([a,b]\in\R)^{\R}, \forall n\in\N^\star, \quad \sup_{[a,b]}|f-\varphi_n|\leq\frac1n
        \]
    \end{concenum}
 \end{thm}
@@ -155,11 +155,11 @@ donc \[
 
 \section{Intégration sur un intervalle quelconque}
 
-On note $I$ un intervalle non trivial de $\mathbb R$ et $f\in\CPM(I, \mathbb R)$.
+On note $I$ un intervalle non trivial de $\R$ et $f\in\CPM(I, \R)$.
 
 \begin{dfn}
     \begin{enumerate}
-        \item Si $I=[a, b[$ avec $b\in\mathbb R\cup \{+\infty\}$, alors \[
+        \item Si $I=[a, b[$ avec $b\in\R\cup \{+\infty\}$, alors \[
                 \int_If=\int_a^bf\defeq\lim_{x\to b}\int_a^xf
             \]
             lorsque cette limite existe (on dira alors que l'intégrale est convergente).
@@ -177,7 +177,7 @@ On note $I$ un intervalle non trivial de $\mathbb R$ et $f\in\CPM(I, \mathbb R)$
 \end{dfn}
 
 \begin{ex}
-    L'application $t\longmapsto e^{-t}$ est $\CPM$ sur $\mathbb R_+$ et \[
+    L'application $t\longmapsto e^{-t}$ est $\CPM$ sur $\R_+$ et \[
         \int_0^x e^{-t}\diff t=1-e^x\xrightarrow[x\to+\infty]{}1\implies \int_0^{+\infty}e^{-t}\diff t=1
     \]
 \end{ex}
@@ -205,10 +205,10 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 \section{Propriétés algébriques}
 
 \begin{prop}
-    \Hyp $f,g\in\CPM(I, \mathbb C)$ telles que $\displaystyle \int_If$ et $\displaystyle \int_Ig$ convergent
+    \Hyp $f,g\in\CPM(I, \C)$ telles que $\displaystyle \int_If$ et $\displaystyle \int_Ig$ convergent
     \begin{concenum}
     \item \[
-            \forall \lambda\in\mathbb C, \quad \int_I(\lambda f+g)\text{ CV  et }\int_I(\lambda f+g)=\lambda\int_If+\int_Ig
+            \forall \lambda\in\C, \quad \int_I(\lambda f+g)\text{ CV  et }\int_I(\lambda f+g)=\lambda\int_If+\int_Ig
         \]
     \item Si $f\geq 0$ alors \[
             \int_If\geq 0
@@ -229,7 +229,7 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
         \item Dans le cas réel, \[
                 \pm\int_If\leq \int_I|f|.
             \]
-            Si $f$ est à valeurs complexes, le cas $\displaystyle\int_If=0$ est immédiat et sinon il existe $\theta\in\mathbb R$ tel que \[
+            Si $f$ est à valeurs complexes, le cas $\displaystyle\int_If=0$ est immédiat et sinon il existe $\theta\in\R$ tel que \[
                 e^{-i\theta}\int_If>0
             \]
             et \[
@@ -260,7 +260,7 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 \end{proof}
 
 \begin{rem}
-    Si $f\in \mathcal C^0([a, b[, \mathbb C)$ et \[
+    Si $f\in \mathcal C^0([a, b[, \C)$ et \[
         \varphi: x\in [a, b[\longmapsto \int_x^cf
     \]
     alors pour $c\in [a, b[$, \[
@@ -274,7 +274,7 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 \section{Utilisation de la positivité}
 
 \begin{prop}
-    \Hyp $f\in\CPM(I, \mathbb R), f\geq 0$ sur $I$
+    \Hyp $f\in\CPM(I, \R), f\geq 0$ sur $I$
     \begin{concenum}
     \item $f$ est intégrable sur $I$ si et seulement s'il existe $M\geq 0$ tel que \[
             \forall x, y\in I, \qquad x\leq y\implies \int_x^yf\leq M
@@ -342,7 +342,7 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 \section{Absolue convergence et semi-convergence}
 
 \begin{prop}
-    \Hyp $f\in\CPM(I, \mathbb C)$
+    \Hyp $f\in\CPM(I, \C)$
     \Conc Si $\displaystyle\int_If$ est absolument convergente\index{absolue convergence} (ou $f$ est intégrable sur $I$), alors $\displaystyle\int_If$ converge
 \end{prop}
 
@@ -361,7 +361,7 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 
 \begin{proof}[Résolution]
     L'application \[
-            f:t\in\mathbb R_+\longmapsto \frac{\sin t}{1+t^2}
+            f:t\in\R_+\longmapsto \frac{\sin t}{1+t^2}
     \]
     est continue et \[
         \forall t\geq 1, \qquad |f(t)|\leq \frac1{t^2}\text{ intégrable en $+\infty$ }
@@ -393,7 +393,7 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
     L'application \[
         \varphi:t\longmapsto \frac{\sin t}t
     \]
-    est continue (avec un prolongement en $0$) sur $\mathbb R_+$ et \[
+    est continue (avec un prolongement en $0$) sur $\R_+$ et \[
         \int_1^x\varphi= \left[ -\frac{\cos t}t \right]_1^x+\int_1^x\frac{\cos t}{t^2}\diff t\xrightarrow[x\to+\infty]{}\cos (1)+\int_1^{+\infty}\frac{\cos t}{t^2}\diff t
     \]
     et cette dernière intégrale converge absolument. L'intégrale \[
@@ -413,7 +413,7 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 
 \needspace{3cm}
 \begin{thm}
-    \Hyp $f,g\in \CPM([a, b[, \mathbb R_{\bm+})$ des fonctions positives, $g$ intégrable sur $[a, b[$
+    \Hyp $f,g\in \CPM([a, b[, \R_{\bm+})$ des fonctions positives, $g$ intégrable sur $[a, b[$
     \begin{concenum}
     \item Si $f=O_b(g)$ alors \[
             \int_x^bf=O_b \left( \int_x^bg \right)
@@ -450,7 +450,7 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 
 \needspace{10cm}
 \begin{thm}
-    \Hyp $f, g\in\CPM([a, b[, \mathbb R)$ positives
+    \Hyp $f, g\in\CPM([a, b[, \R)$ positives
     \begin{concenum}
     \item Si $f$ est non intégrable et $f=O_b(g)$ alors $g$ n'est pas intégrable et \[
             \int_a^xf=O_b \left( \int_a^xg \right)
@@ -504,8 +504,8 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 
 \begin{prop}
     \begin{enumerate}
-        \item Si $f\in\mathcal C^0(I, \mathbb R_+)$ et $\int_If=0$ alors $f\equiv 0$ sur $I$.
-        \item Soit $f\in\mathcal C^0(]a, b[, \mathbb C)$ et $\varphi$ de classe $\mathcal C^1$ bijective croissante de $]\alpha, \beta[$ dans $]a, b[$. \begin{enumerate}
+        \item Si $f\in\mathcal C^0(I, \R_+)$ et $\int_If=0$ alors $f\equiv 0$ sur $I$.
+        \item Soit $f\in\mathcal C^0(]a, b[, \C)$ et $\varphi$ de classe $\mathcal C^1$ bijective croissante de $]\alpha, \beta[$ dans $]a, b[$. \begin{enumerate}
             \item $\int_a^bf$ et $\int_\alpha^\beta f\circ \varphi\times \varphi'$ ont même nature (CV, ACV, DV)
             \item En cas de convergence, ces intégrales sont égales
         \end{enumerate}
@@ -526,7 +526,7 @@ donc $\int_a^b f$ CV $\iff F$ a une limite finie en $b$.
 
 \section{Méthodes pour établir l'intégrabilité}
 
-\subsection{Intégrabilité de $x\longmapsto x^a(1-\exp(-1/\sqrt x))$ sur $\mathbb R_+$}
+\subsection{Intégrabilité de $x\longmapsto x^a(1-\exp(-1/\sqrt x))$ sur $\R_+$}
 
 On cherche la nature de \[
     \int_0^{+\infty} x^a(1-e^{-\frac1{\sqrt x}})\diff x
@@ -534,7 +534,7 @@ On cherche la nature de \[
 La fonction \[
     f:x\longmapsto x^a(1-e^{-\frac1{\sqrt x}})
 \]
-est continue sur $\mathbb R_+^\star$ et \[
+est continue sur $\R_+^\star$ et \[
     f(x)\underset{0^+}\sim x^a=\frac1{x^{-a}}
 \]
 donc $f$ est intégrable en $0$ ssi $a>-1$. Puis, \[
@@ -552,7 +552,7 @@ On cherche la nature de \[
     \int_0^{\frac1e}\frac1{x^\alpha|\ln x|^\beta}\diff x
 \]
 On note \[
-    f:t\longmapsto \frac1{x^\alpha|\ln x|^\beta}\in\mathcal C^0(]0, \frac1e], \mathbb R)
+    f:t\longmapsto \frac1{x^\alpha|\ln x|^\beta}\in\mathcal C^0(]0, \frac1e], \R)
 \]
 \begin{itemize}
     \item Si $\alpha<0$ alors on peut prolonger par continuité en $0$, la fonction est intégrable
@@ -588,7 +588,7 @@ donc l'intégrale converge ssi $\alpha<\dfrac 52$
 
 \begin{res}[Lemme de Riemann-Lebesgue]
     \index{Riemann-Lebesgue (lemme de --)}
-    Si $f\in\mathcal C^0([a, b]\in\mathbb C)$ alors \[
+    Si $f\in\mathcal C^0([a, b]\in\C)$ alors \[
         \int_a^bf(t)e^{int}\diff t\xrightarrow[n\to+\infty]{}0
     \]
 \end{res}
@@ -598,9 +598,9 @@ donc l'intégrale converge ssi $\alpha<\dfrac 52$
         \int_a^bf(t)e^{int}\diff t\underset{\text{ IPP }}=\underbrace{\frac{f(b)e^{inb}-f(a)e^{ina}}{in}}_{\xrightarrow[n\to+\infty]{}0}- \underbrace{\frac1{in}\int_a^bf'(t)e^{int}\diff t}_{\xrightarrow[n\to+\infty]{}0}
     \]
     Dans le cas où $f$ n'est que continue, on note \[
-        E = \left\{ f\in \CPM([a, b], \mathbb C), \qquad \int_a^bf(t)e^{int}\diff t\xrightarrow[n\to+\infty]{}0 \right\}
+        E = \left\{ f\in \CPM([a, b], \C), \qquad \int_a^bf(t)e^{int}\diff t\xrightarrow[n\to+\infty]{}0 \right\}
     \]
-    $E$ est un sev de $\CPM([a, b], \mathbb C)$ et toutes les fonctions de type $\1_{[\alpha, \beta]}$ sont dans $E$ donc toutes les fonctions en escalier aussi.
+    $E$ est un sev de $\CPM([a, b], \C)$ et toutes les fonctions de type $\1_{[\alpha, \beta]}$ sont dans $E$ donc toutes les fonctions en escalier aussi.
 
     Pour $f$ continue et $\epsilon>0$, on approche $f$ à $\epsilon'$ près par $\varphi$ fonction en escalier de sorte que \[
         \int_a^bf(t)e^{int}\diff t=\underbrace{\int_a^b(f-\varphi)(t)e^{int}\diff t}_{|\;|\leq (b-a)\epsilon'}+\underbrace{\int_a^b\varphi(t)e^{int}\diff t}_{\xrightarrow[n\to+\infty]{}0}
@@ -632,20 +632,20 @@ donc $(J_n)$ est contante égale à $J_0=\frac\pi2$ d'où \[
 
 \section{Espaces de fonctions intégrables}
 
-\subsection{$\mathcal L^1(I, \mathbb C)$}
+\subsection{$\mathcal L^1(I, \C)$}
 
 \begin{dfn}
-    On note $\mathcal L^1(I, \mathbb C)$ l'ensemble des fonctions ($\CPM\!$) intégrables sur $I$ à valeurs dans $\mathbb C$, et \[\mathcal L^1_c(I, \mathbb C)=\mathcal L^1(I, \mathbb C)\cap \mathcal C^0(I, \mathbb C)\]
+    On note $\mathcal L^1(I, \C)$ l'ensemble des fonctions ($\CPM\!$) intégrables sur $I$ à valeurs dans $\C$, et \[\mathcal L^1_c(I, \C)=\mathcal L^1(I, \C)\cap \mathcal C^0(I, \C)\]
 \end{dfn}
 
 \begin{prop}
     \Hyp Soit $I$ un intervalle non trivial
     \begin{concenum}
     \item
-        Si $f, g\in\mathcal L^1(I, \mathbb C)$, alors $f+g\in\mathcal L^1(I, \mathcal C)$ et \[
+        Si $f, g\in\mathcal L^1(I, \C)$, alors $f+g\in\mathcal L^1(I, \mathcal C)$ et \[
             \int_I|f+g|\leq \int_I|f|+\int_I|g|
         \]
-    \item $\mathcal L^1(I, \mathbb C)$ et $\mathcal L^1_c(I, \mathbb C)$ sont des sev de $\CPM(I, \mathbb C)$
+    \item $\mathcal L^1(I, \C)$ et $\mathcal L^1_c(I, \C)$ sont des sev de $\CPM(I, \C)$
     \end{concenum}
 \end{prop}
 \begin{proof}
@@ -653,20 +653,20 @@ donc $(J_n)$ est contante égale à $J_0=\frac\pi2$ d'où \[
 \end{proof}
 
 \begin{rem}
-    Pour $f, g\in\mathcal L^1(I, \mathbb C)$, \[
+    Pour $f, g\in\mathcal L^1(I, \C)$, \[
         \int_I||f|-|g||\leq \int_I|f-g|
     \]
 \end{rem}
 
-\subsection{$\mathcal L^2(I, \mathbb C)$}
+\subsection{$\mathcal L^2(I, \C)$}
 
 \begin{thmdef}
     \begin{enumerate}
         \item \[
-                \mathcal L^2(I, \mathbb C)\defeq \left\{f\in\CPM(I, \mathbb C), \qquad \int_I|f|^2\text{ CV }\right\}
+                \mathcal L^2(I, \C)\defeq \left\{f\in\CPM(I, \C), \qquad \int_I|f|^2\text{ CV }\right\}
             \]
             On dit que les fonctions de cet ensemble sont de carré intégrable.
-        \item (Inégalité de Cauchy-Schwarz\index{Cauchy-Schwarz (inégalité de -- )})Si $f, g\in\mathcal L^2(I, \mathbb C)$ alors $fg\in\mathcal L^1(I, \mathbb C)$ et \[
+        \item (Inégalité de Cauchy-Schwarz\index{Cauchy-Schwarz (inégalité de -- )})Si $f, g\in\mathcal L^2(I, \C)$ alors $fg\in\mathcal L^1(I, \C)$ et \[
                 \left| \int_Ifg \right|\leq \sqrt{ \left( \int_I|f|^2 \right)  \left( \int_I|g|^2 \right)} \tag{$\star$}
             \]
         \item On a égalité dans $(\star)$ si et seulement si $f$ et $g$ sont proportionnelles
@@ -695,7 +695,7 @@ donc $(J_n)$ est contante égale à $J_0=\frac\pi2$ d'où \[
                 On pose alors \[
                     P(x)=\int_I(f+xg)^2=\int_If^2+2x\int_Ifg+x^2\int_Ig^2
                 \]
-                et on a égalité si et seulement si \[ \Delta=0\iff \exists \lambda\in\mathbb R, \quad P(x)=0\iff \lambda g=-f\]
+                et on a égalité si et seulement si \[ \Delta=0\iff \exists \lambda\in\R, \quad P(x)=0\iff \lambda g=-f\]
         \end{itemize}
     \end{enumerate}
 \end{proof}
@@ -720,7 +720,7 @@ donc $(J_n)$ est contante égale à $J_0=\frac\pi2$ d'où \[
 \end{proof}
 
 \begin{rem}
-    Sur $\mathcal L^2_c(I, \mathbb R)$, cette inégalité est l'inégalité triangulaire pour la norme canoniquement associée au produit scalaire \[
+    Sur $\mathcal L^2_c(I, \R)$, cette inégalité est l'inégalité triangulaire pour la norme canoniquement associée au produit scalaire \[
         (f | g)=\int_Ifg
     \]
 \end{rem}
@@ -732,7 +732,7 @@ donc $(J_n)$ est contante égale à $J_0=\frac\pi2$ d'où \[
 \end{rem}
 
 \begin{exo}
-    Soir $f\in\mathcal C^2(\mathbb R_+, \mathbb R)$ telle que $f,f''\in\mathcal L^2_c(\mathbb R_+, \mathbb R)$. Montrer que $f'\in\mathcal L^2_c(\mathbb R_+, \mathbb R)$ et \[
+    Soir $f\in\mathcal C^2(\R_+, \R)$ telle que $f,f''\in\mathcal L^2_c(\R_+, \R)$. Montrer que $f'\in\mathcal L^2_c(\R_+, \R)$ et \[
         \int_0^{+\infty}f'^2\leq \int_0^{+\infty}f^2+\int_0^{+\infty}f''^2
     \]
 \end{exo}
@@ -755,7 +755,7 @@ puis \[
     \int_0^x(f+f'+f'')^2-((f+f')^2)'=\underbrace{\int_0^x(f+f'+f'')^2}_{\geq 0}-\underbrace{(f+f')^2(x)}_{\xrightarrow[x\to+\infty]{}0?}+\underbrace{(f+f')^2(0)}_{\geq 0}
 \]
 Il ne reste plus qu'à vérifier $(f+f')^2(x)\xrightarrow[x\to+\infty]{}0$. Pour le voir: \[
-    f^2(x)=f^2(0)+2\int_0^xff'\xrightarrow[x\to+\infty]{ff'\in\mathcal L^1}\ell\in\mathbb R\underset{f^2\in\mathcal L^1}\implies f^2(x)\xrightarrow[x\to+\infty]{}0
+    f^2(x)=f^2(0)+2\int_0^xff'\xrightarrow[x\to+\infty]{ff'\in\mathcal L^1}\ell\in\R\underset{f^2\in\mathcal L^1}\implies f^2(x)\xrightarrow[x\to+\infty]{}0
 \]
 et de même pour $f'^2(x)$
 \end{proof}
@@ -782,7 +782,7 @@ donc $2I-I=-\frac\pi2\ln2$
 
 \subsection{Calcul par compensation}
 
-On se donne $f\in\mathcal C(\mathbb R_+, \mathbb R)$, $0<a<b$ et $f(x)\xrightarrow[x\to+\infty]{}\ell\in\mathbb R$
+On se donne $f\in\mathcal C(\R_+, \R)$, $0<a<b$ et $f(x)\xrightarrow[x\to+\infty]{}\ell\in\R$
 
 On va justifier que \[
     \int_0^{+\infty}\frac{f(ax)-f(bx)}x\diff x
@@ -813,8 +813,8 @@ donc \[
 
 \subsection{Comparaison séries-intégrales\texorpdfstring{\footnote{Épisode 2}}{}}
 
-Soit $f$ continue sur $\mathbb R_+$, positive décroissante. Dans ce cas, \[
-    \forall k\in\mathbb N, \qquad f(k+1)\leq \int_k^{k+1}f\leq f(k)
+Soit $f$ continue sur $\R_+$, positive décroissante. Dans ce cas, \[
+    \forall k\in\N, \qquad f(k+1)\leq \int_k^{k+1}f\leq f(k)
 \]
 donc \[
     \sum_{k=1}^nf(k)\leq \int_0^nf\qquad \text{ et }\qquad \sum_{k=0}^nf(k)\geq \int_0^{n+1}f
@@ -827,7 +827,7 @@ pour $n\geq 1$ donc $(\int_0^nf)$ est croissante majorée convergente vers un r�
 \]
 et $f$ est intégrable.
 
-Réciproquement si $f$ est intégrable sur $\mathbb R_+$ alors \[
+Réciproquement si $f$ est intégrable sur $\R_+$ alors \[
     \sum_{k=1}^nf(k)\leq \int_0^nf\leq \int_0^{+\infty}f\implies \sum f(k)\text{ CV }
 \]
 Puis si $f$ n'est pas intégrable en $+\infty$, on va calculer un équivalent des sommes partielles de $\sum f(k)$. On a \[
@@ -845,7 +845,7 @@ or $0\leq f\leq f(0)$ donc \[
 On en déduit ainsi la proposition suivante:
 
 \begin{prop}
-    \Hyp $f\in \CPM(\mathbb R_+, \mathbb R)$ décroissante et positive sur un voisinage de $+\infty$
+    \Hyp $f\in \CPM(\R_+, \R)$ décroissante et positive sur un voisinage de $+\infty$
     \begin{concenum}
     \item $\sum f(k)$ et $\int_0^{+\infty} f$ ont la même nature
     \item Si $f$ n'est pas intégrable en $+\infty$ alors \[
@@ -857,7 +857,7 @@ On en déduit ainsi la proposition suivante:
 
 \subsection{Sommes de Riemann généralisées}
 
-On note $f$ continue par morceaux décroissante intégrable sur $\mathbb R_+$ (donc $\geq 0$) et \[
+On note $f$ continue par morceaux décroissante intégrable sur $\R_+$ (donc $\geq 0$) et \[
     S(h)=h\sum_{k=1}^{+\infty}f(kh), \qquad h>0
 \]
 On va montrer que \[
@@ -901,7 +901,7 @@ ce qui conclut avec $h\to0^+$
     \end{tikzpicture}
 \end{rem}
 
-On se donne $f\in\mathcal C^2([a, b], \mathbb R)$
+On se donne $f\in\mathcal C^2([a, b], \R)$
 \begin{center}
     \includegraphics{src/figures/integration-trapezes.pdf}
 \end{center}
@@ -921,7 +921,7 @@ de sorte que \[
 donc \[
     \left| \int_a^bf-S_n(f) \right|\leq \sum_{k=0}^{n-1}\int_{a_k}^{a_{k+1}}|f-g_k|.
 \]
-Pour $x\in]a_k, a_{k+1}[$, on note $\lambda\in\mathbb R$ tel que \[
+Pour $x\in]a_k, a_{k+1}[$, on note $\lambda\in\R$ tel que \[
     f(x)=g_k(x)+\frac\lambda2(x-a_k)(x-a_{k+1}).
 \]
 La fonction \[
