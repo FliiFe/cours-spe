@@ -15,7 +15,10 @@ RESET        := $(shell tput -Txterm sgr0)
 
 PDFS := $(addprefix target/,$(patsubst %.tex,%.pdf,$(wildcard *.tex)))
 FIGURES := $(patsubst %.tex,%.pdf,$(wildcard src/figures/*.tex))
-LATEXMK := latexmk -pdfxe -silent # -use-make
+ifndef VERBOSE
+SILENT := -silent
+endif
+LATEXMK := latexmk -pdfxe $(SILENT) # -use-make
 MAIN_TARGET := target/$(MAIN_FN).pdf
 
 help: ## Print available targets

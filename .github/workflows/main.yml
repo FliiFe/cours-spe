@@ -16,7 +16,7 @@ jobs:
       with:
         run: |
           apk add make
-          make all
+          env VERBOSE=y make all
     # - name: Compilation
     #   uses: xu-cheng/latex-action@master
     #   with:
