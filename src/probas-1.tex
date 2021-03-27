@@ -25,7 +25,7 @@ Dans tout le chapitre, $\Omega$ désigne un ensemble non vide.
         \item $\emptyset \in \mathcal A$
         \item $ \mathcal A$ est stable par union dénombrable
     \end{itemize}
-    On dit alors que $(\Omega, \mathcal A)$ est un \textbf{espace probabilisable}\index{espace probabilisable}  et les éléments de $\mathcal A$ sont appelés  \textbf{événements} \index{événement}
+    On dit alors que $(\Omega, \mathcal A)$ est un \textbf{espace probabilisable}\index{espace probabilisable}  et les éléments de $\mathcal A$ sont appelés  \textbf{événements} \index{evenement@événement}
 \end{dfn}
 
 
@@ -87,7 +87,7 @@ est une tribu (facile).
     \end{itemize}
 \end{rem}
 
-\begin{exo}[Inégalité d'Edith Kosmanek]
+\begin{exo}[Inégalité d'Edith Kosmanek\index{Kosmanek (inégalité de -- )}]
     Soit $(\Omega, \mathcal A, \P)$ un espace probabilisé, $A, B$ des événements. Montrer que \[
         |\P(A\cap B)-\P(A)\P(B)|\leq \frac{1}{4}
     \]
@@ -97,9 +97,107 @@ est une tribu (facile).
     $(A\cap B, A\cap B^c, A^c\cap B, A^c\cap B^c)$ est un SCE et un peu de calcul donne \[
         \P(A\cap B)-\P(A)\P(B)=\P(A\cap B)\P(A^c\cap B^c)-\P(A^c\cap B)\P(A\cap B^c)
     \]
-    Puis si $a,b\geq 0$ sont tels que $a+b\leq 1$, on a $ab=\sqrt{ab}^2\leq \left( \frac{a+b}{2} \right) ^2\leq \frac{1}{4}$ donc les deux produits sont $\leq 14$, ce qui conclut.
+    Puis si $a,b\geq 0$ sont tels que $a+b\leq 1$, on a $ab=\sqrt{ab}^2\leq \left( \frac{a+b}{2} \right) ^2\leq \frac{1}{4}$ donc les deux produits sont $\leq \frac{1}{4}$, ce qui conclut.
 \end{proof}
 
 \begin{exo}
     $(\Omega, \mathcal A, \P)$ probabilisé, $A, B \in \mathcal A$. Montrer que $|\P(A)-\P(B)| \leq \P(A\Delta B)$
 \end{exo}
+
+\section{Propriétés élémentaires des probabilités}
+
+\begin{thm}[Continuité croissante\index{Continuité croissante (probabilités)}]
+    \Hyp $(\Omega, \mathcal A, \P)$ probabilisé, $(A_n)_{n\in \N}$ suite croissante d'événements
+    \Conc \[
+        \P\left(\bigcup_{n\in \N}A_n \right)=\lim_{n \to \infty} \P(A_n).
+    \]
+\end{thm}
+
+\begin{proof} Par $\sigma$-additivité, en posant $A_{-1}=\emptyset$, on a
+    \[
+        \P\left( \bigcup_{n\in N} A_n \right) =\sum_{n\geq 0}\P(A_n\setminus A_{n-1})= \lim_{n \to \infty} \sum_{k=0}^{n} \underbrace{\P(A_k\setminus A_{k-1})}_{=\P(A_k)-\P(A_{k-1})}=\lim_{n \to \infty} \P(A_n).
+    \]
+\end{proof}
+
+\begin{thm}[Continuité décroissante]
+    \Hyp $(\Omega, \mathcal A, \P)$ probabilisé, $(A_n)_{n\in \N}$ suite décroissante d'événements
+    \Conc \[
+        \P\left(\bigcap_{n\in \N}A_n \right)=\lim_{n \to \infty} \P(A_n).
+    \]
+\end{thm}
+
+\begin{proof}
+    C'est la continuité croissante en passant au complémentaire.
+\end{proof}
+
+\begin{thm}[Sous-additivité]
+    \Hyp $(\Omega, \mathcal A, \P)$ espace probabilisé, $(A_n)$ suite d'événements
+    \Conc Avec la convention qu'une somme de série divergente à terme général positif vaut $+\infty$, \[
+        \P\left( \bigcup_{n \in  \N}A_n  \right) \leq \sum_{n=0}^{+\infty} \P(A_n).
+    \] 
+\end{thm}
+
+\begin{proof}
+    On note \[
+    X_n=\bigcup_{k\in \N}A_k 
+    \] 
+    de sorte que $(X_n)$ est une suite croissante d'événements. Pour deux événements $A\subset B$, on a \[
+        \P(A\cup B)=\P(A\cup(B\setminus A))=\P(A)+\P(B\setminus A)\leq \P(A)+\P(B)
+    \] 
+    et en itérant, on trouve \[
+        \forall n \in  \N, \qquad \P(X_n)\leq \sum_{k=0}^{n} \P(A_i)
+    \] 
+    donc \[
+        \lim_{n \to \infty} \P(X_n) = \P\left( \bigcup_{n\in \N} A_n \right) \leq \sum_{n=0}^{+\infty} \P(A_n)
+    \] 
+\end{proof}
+
+\begin{rem}
+    Un événement $A\in \mathcal A$ est dit \textbf{négligeable} si $\P(A)=0$. Si $(A_n)$ est une suite d'événements négligeables, alors \[
+        \P(\bigcup_{n\in \N}A_n )\leq \sum_{n=0}^{+\infty} \P(A_n)=0
+    \] 
+\end{rem}
+
+\subsection{Formule de Poincaré}
+
+Soit $(\Omega, \mathcal A, \P)$ un espace probabilisé, $A_1, \cdots, A_n \in  \mathcal A$. On va montrer que \[
+    \P(A_1\cup \cdots \cup A_n)=\sum_{1\leq i_1\leq n}P(A_{i_1})-\sum_{1\leq i_1<i_2\leq n}P(A_{i_1}\cap A_{i_2}) +\cdots +(-1)^{n-1}\sum_{1\leq i_1<\cdots <i_n\leq n}P(A_{i_1}\cap \cdots \cap A_{i_n})
+\] 
+On remarque pour cela \[
+    \1_{(A_1\cup \cdots \cup A_n)^c}=1-\1_{A_1\cup \cdots \cup A_n}=\1_{A_1^c\cap \cdots \cap A_n^c}=\1_{A_1^c}\times \cdots \times \1_{A_n^c}=(1-\1_{A_1})\times \cdots \times (1-\1_{A_n})
+\]
+donc en développant, \[
+    \1_{(A_1\cup \cdots \cup A_n)^c} = 1-\sum_{i=1}^n\1_{A_i}-\sum_{i_1<i_2}\1_{A_{i_1}\cap A_{i_2}}+\cdots +(-1)^{n-1}\sum_{i_1<\cdots <i_n}\1_{A_{i_1}\cap\cdots\cap A_{i_n}}
+\]
+Or (on le verra), $\E(\1_A)=\P(A)$ et $\E$ est linéaire, ce qui conclut.
+
+\begin{ex}
+    On place $r$ boules dans $n$ cases. Calculer la probabilité qu'aucune case ne soit vide. On note $A_i$ l'événement "La case n°$i$ est vide" et $B=A_1^c\cap \cdots \cap A_n^c$. On cherche $\P(B)$. On a \[
+        \forall k \in  \llbracket 1, n\rrbracket, \qquad \P(A_{i_1}\cap \cdots \cap A_{i_k})= \left( 1-\frac{k}{n} \right) ^r.
+    \] 
+    Puis, \begin{align*}
+        \P(B^c)=1-\P(B)&=\sum_{1\leq i_1\leq n} \left( 1-\frac{1}{n} \right) ^r-\sum_{i_1<i_2} \left( 1-\frac{2}{n} \right) ^r+\cdots +(-1)^{n-1} \sum_{i_1<\cdots <i_n} \left( 1-\frac{n}{n} \right) ^r\\
+                       &=\sum_{k=0}^n(-1)^k\binom nk \left( 1-\frac{k}{n} \right) ^r
+    \end{align*}
+\end{ex}
+
+\section{Probabilité conditionnelle}
+
+\begin{dfn}
+    Soit $(\Omega, \mathcal A, \P)$ un espace probabilisé et $B\in \mathcal A$ tel que $\P(B)>0$. On appelle probabilité de $A \in \mathcal A$ sachant $B$ le nombre  \[
+        \P_B(A)=\P(A|B)\defeq \frac{\P(A\cap B)}{P(B)}
+    \] 
+\end{dfn}
+
+\begin{prop}
+    \Hyp $(\Omega, \mathcal A, \P)$ un espace probabilisé, $A_1, \cdots , A_n \in  \mathcal A$ tels que $\P(A_1 \cap \cdots \cap A_n)>0$
+    \Conc \[
+        \P(A_1\cap \cdots \cap A_n)=\P(A_1)\P(A_2|A_1)\P(A_3|A_1\cap A_2)\cdots \P(A_n|A_1\cap\cdots\cap A_{n-1})
+    \] 
+\end{prop}
+
+\begin{proof}
+    La seule difficulté est de montrer que les probabilités utilisées existent. C'est le cas car \[
+        \forall i\leq n, \qquad 0<\P(A_1\cap\cdots\cap A_n)\leq \P(A_1\cap \cdots \cap A_i)
+    \] 
+\end{proof}
