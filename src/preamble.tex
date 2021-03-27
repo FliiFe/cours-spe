@@ -133,7 +133,7 @@
 \genmrm{sh}
 \genmrm{ch}
 \genmrm{Aut}
-\NewDocumentCommand\CPM{O{0}}{\mathcal{C}^{0}_{{P\!M}}}
+\NewDocumentCommand\CPM{O{0}}{\mathcal{C}^{#1}_{{P\!M}}}
 \newcommand\diff{\mathrm{d}}
 \newcommand\nop{\|\hspace{-1pt}|}
 \newcommand\defeq{\;\underset{\text{def}}=\;}
@@ -147,14 +147,14 @@
 \renewcommand\geq\geqslant
 \newcommand\floor[1]{\left\lfloor#1\right\rfloor}
 \newcommand\ceil[1]{\left\lceil#1\right\rceil}
-\renewcommand{\P}{\mathbb P}
-\newcommand{\R}{\mathbb R}
-\newcommand{\N}{\mathbb N}
-\newcommand{\Z}{\mathbb Z}
-\newcommand{\Q}{\mathbb Q}
-\renewcommand{\C}{\mathbb C}
-\newcommand{\E}{\mathbb E}
-\newcommand{\K}{\mathbb K}
+\DeclareDocumentCommand\P{}{\mathbb P}
+\DeclareDocumentCommand\R{}{\mathbb R}
+\DeclareDocumentCommand\N{}{\mathbb N}
+\DeclareDocumentCommand\Z{}{\mathbb Z}
+\DeclareDocumentCommand\Q{}{\mathbb Q}
+\DeclareDocumentCommand\C{}{\mathbb C}
+\DeclareDocumentCommand\E{}{\mathbb E}
+\DeclareDocumentCommand\K{}{\mathbb K}
 
 \makeatletter
 \newcommand*{\xnrightarrow}[2][]{%
