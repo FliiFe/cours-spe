@@ -5,7 +5,9 @@
 \usepackage{bm}
 \usepackage{amsthm}
 \usepackage{amssymb}
+\usepackage{mathtools}
 \usepackage{centernot}
+\usepackage{changepage}
 \usepackage{enumitem}
 \usepackage{stmaryrd}
 \usepackage{xcolor}
@@ -39,18 +41,20 @@
 \setlist[itemize]{leftmargin=.5cm}
 \setlist[enumerate]{leftmargin=.7cm}
 
+\newif\ifishypconc
+\ishypconcfalse
 \newcommand{\newthm}[2]{
     \newenvironment{#1}[1][]
     {\par\begin{minipage}{\textwidth}\noindent\normalfont\ifstrempty{##1}{\textbf{#2.}}{\textbf{#2} (##1).}\par\nopagebreak%
-      \begin{mdframed}[
-         linewidth=1pt,
-         linecolor=black,
-         bottomline=false,topline=false,rightline=false,
-         innerrightmargin=0pt,innertopmargin=0pt,innerbottommargin=0pt,
-         innerleftmargin=1em,
-         skipabove=.5\baselineskip
-       ]}
-   {\end{mdframed}\end{minipage}}
+    \begin{mdframed}[
+        linewidth=1pt,
+        linecolor=black,
+        bottomline=false,topline=false,rightline=false,
+        innerrightmargin=0pt,innertopmargin=0pt,innerbottommargin=0pt,
+        innerleftmargin=1em,
+        skipabove=.4\baselineskip
+    ]}
+    {\ifishypconc \end{adjustwidth} \fi\end{mdframed}\end{minipage}\ishypconcfalse}
 }
 
 
@@ -157,6 +161,7 @@
 \DeclareDocumentCommand\K{}{\mathbb K}
 \newcommand\indep{\protect\mathpalette{\protect\indepT}{\perp}}
 \def\indepT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\newcommand\suit{\hookrightarrow}
 
 \makeatletter
 \newcommand*{\xnrightarrow}[2][]{%
@@ -185,10 +190,10 @@
 \newcommand{\hyp}{\circled{H}}
 \newcommand{\conc}{\circled{C}}
 
-\newcommand{\Hyp}{~\\[.1cm] \circled{H}\hspace{1em}}
-\newcommand{\Conc}{~\\[.1cm] \circled{C}\hspace{1em}}
+\newcommand{\Hyp}{\ishypconctrue\begin{adjustwidth}{3em}{}~\\[.1cm] \hspace*{-3em}\hyp\hspace{1em}}
+\newcommand{\Conc}{~\\[.1cm] \hspace*{-3em}\conc\hspace{1em}}
 \newenvironment{concenum}{
-~\\[0.1cm]\begin{tabular}{@{}lp{15cm}} \conc & \vspace{-.45cm}
+    ~\\[0.1cm]\hspace*{-3em}\begin{tabular}{@{}lp{15cm}} \conc & \vspace{-.45cm}
 \begin{enumerate}[leftmargin=.5cm]
 }
 {
