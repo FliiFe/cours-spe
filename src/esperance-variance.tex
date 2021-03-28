@@ -1,0 +1,89 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Espérance -- Variance} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Espérance -- Variance}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Espérance}
+
+\begin{dfn}
+    On note $(\Omega, \mathcal  A, \P)$ un espace probabilisé, $X$ une variable aléatoire \textbf{réelle} discrète. On dira que $X$ est d'\textbf{espérance fini}\index{espérance} si  $(x\P(X=x))_{x\in X(\Omega)}$ est sommable. Dans ce cas, on appelle \textbf{espérance} la quantité \[
+        \E(X)= \sum_{x \in  X(\Omega)}x\P(X=x)
+    \] 
+\end{dfn}
+
+\begin{rem}[Rappel]
+    Si $X(\Omega)=\{x_n,\quad n\in \N\} $, les $x_n$ deux à deux distincts, alors  \[
+        \sum_{n\in \N}|x_n|\P(X=x_n) \text{ CV } \iff \left( x_n\P(X=x_n) \right)_{n \in  \N}\text{ sommable }
+    \]
+\end{rem}
+
+\begin{ex}~
+    \begin{itemize}
+        \item $X\suit G(p)$ est d'espérance finie car  $(nq^{n-1}p)_n$ est sommable, et \[
+                \E(X)=\sum_{n\geq 0}nq^{n-1}p=\frac{1}{p}
+        \] 
+    \item $X\suit \mathcal  P(\lambda)$ pour $\lambda>0$, on a  $n\P(X=n)=e^{-\lambda}\frac{n\lambda^n}{n!}$ et $ \E(X)=\lambda$
+    \item $X=\1_A$ pour  $A\in \mathcal  A$, $\E(X)=\P(X=1)=\P(A)$
+    \end{itemize}
+\end{ex}
+
+\section{Formule de transfert}
+
+\begin{thm}
+    \Hyp $(\Omega, \mathcal  A, \P)$ un espace probabilisé, $X$ une v.a.r.d et  $f:X(\Omega)\to \R$
+    \begin{concenum}
+    \item $f(X)$ est une v.a.r.d
+    \item  $f(X)$ est d'espérance finie  si et seulement si $(f(x)\P(X=x))_{x\in X(\Omega)}$ et dans ce cas, \[
+            \E(f(X))=\sum_{x\in X(\Omega)}f(x)\P(X=x)
+    \] 
+    \end{concenum}
+\end{thm}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Lemme des coalitions
+        \item Pour $y\in f(X(\Omega))$, on note $I_y=f^{-1}(\{y\} )$. On a \[
+                [f(X)=y]=\bigcup_{x\in I_y}[X=x] 
+        \] 
+        et cette union est disjointe donc \[
+            \P(f(X)=y)=\sum_{x\in I_y}\P(X=x).
+        \]
+        La famille $(I_y)_{y\in f(X(\Omega))}$ forme une partition de $X(\Omega)$. Puis  \[
+            \sum_{x \in  I_y}\P(X=x)f(x)=y\sum_{x\in I_y}\P(f(X)=y)=y\P(f(X)=y).
+        \] Si la famille $(f(x)\P(X=x))_{x \in  X(\Omega)}$ est sommable, alors pour tout $y\in f(X(\Omega))$, $(f(x)\P(X=x))_{x\in I_y}$ est sommable et $(I_y)$ est une partition donc la famille  \[
+        \left( \sum_{x \in  I_y} P(X=x)f(x)\right) _{y\in f(X(\Omega))}
+        \] 
+        est sommable et \[
+            \sum_{x\in X(\Omega)}f(x)\P(X=x)=\sum_{y\in f(X(\Omega))}\sum_{x \in  I_y}f(x)\P(X=x)=\sum_{y\in f(X(\Omega))}y\P(f(X)=y)=\E(f(X)).
+        \] 
+        Si $f(X)$ est d'espérance finie, alors $(|y|\P(f(X)=y))_{y\in  f(X(\Omega))}$ est sommable et \[
+            |y|\P(f(X)=y)=\sum_{x \in  I_y}|f(x)|\P(X=x)
+        \] 
+        donc $(|f(x)|P(X=x))_{x\in X(\Omega)}$ est sommable.
+    \end{enumerate}
+\end{proof}
+
+\begin{ex}
+    $X\suit G(p)$, $Y=X^2$. La variable $Y$ est-elle d'espérance finie ? La famille $(n^2q^{n-1}p)_n$ est sommable donc $Y$ a une espérance finie et \[
+        \E(Y)=\sum_{n\geq 1}n^2q^{n-1}p=\frac{2-p}{p^2}
+    \] 
+    On peut faire de même avec $Y=\exp (-X)$, ou encore si $X\suit \mathcal  P(\lambda)$, $Y=\cos  X$
+\end{ex}
+
+\section{Conséquences du théorème de transfert}
+
+\begin{prop}
+    \Hyp $(\Omega, \mathcal  A, \P)$ un espace probabilisé, $X,Y$ deux v.a.r.d, $Y$ d'espérance finie
+    \Conc Si  $|X|\leq Y$, alors  $X$ est d'espérance finie et $\E(|X|)\leq \E(Y)$
+\end{prop}
