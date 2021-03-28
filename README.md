@@ -20,7 +20,7 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 - [ ] Limite - Continuité - Fonctions vectorielles
 - [ ] Compacité - Connexité
 - [x] Séries entières
-- [ ] Variables aléatoires discrètes
+- [x] Variables aléatoires discrètes
 - [ ] Espérance - Variance
 - [ ] Les intégrales à paramètres
 - [ ] Les équations différentielles

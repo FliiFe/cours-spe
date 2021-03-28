@@ -341,9 +341,13 @@ Or (on le verra), $\E(\1_A)=\P(A)$ et $\E$ est linéaire, ce qui conclut.
 
 \section{Indépendance}
 
+\subsection{Indépendance d'événements}
+
 \begin{dfn}
     $(\Omega, \mathcal A, \P)$ un espace probabilisé. Deux événements $A,B\in \mathcal A$ sont dits \textbf{indépendants}\index{evenements independants@événements indépendants} si et seulement si $\P(A\cap B)=\P(A)\P(B)$. Si $\P(B)\neq 0$, c'est équivalent à $\P(A|B)=\P(A)$
 \end{dfn}
+
+\subsection{Indépendance de variables aléatoires}
 
 \begin{dfn}
     Soit $(\Omega, \mathcal A, \P)$ un espace probabilisé. \begin{itemize}
@@ -355,3 +359,165 @@ Or (on le verra), $\E(\1_A)=\P(A)$ et $\E$ est linéaire, ce qui conclut.
     \item Si $X, Y$ sont des v.a.d indépendantes, on note $X\indep Y$
     \end{itemize}
 \end{dfn}
+
+\begin{rem}
+    En général, l'indépendance mutuelle implique l'indépendance des variables deux à deux, mais la réciproque est fausse.
+\end{rem}
+
+\subsection{Coalitions}
+
+On note $(\Omega, \mathcal A, \P)$ un espace probabilisé, $X, Y, Z: \Omega \to  \N$ mutuellement indépendantes. On note $U=X+Y$.  $U(\Omega)$ est fini ou dénombrable. Pour  $n\in  \N$, \[
+    [U=n]=\bigcup_{k=0}^{n}[X=k,Y=n-k]\in \mathcal A
+\] 
+donc $U$ est une variable aléatoire discrète. A-t-on  $U\indep Z$ ? On a  \[
+    [U=n,Z=m]=\bigcup_{k=0}^{n}[X=k,Y=n-k,Z=m]
+\]
+donc \[
+    P(U=n,Z=m)=P(Z=m) \sum_{k=0}^{n} \P(X=k)\P(Y=n-k)=\P(U=n)\P(Z=m)
+\]
+donc $U\indep Z$
+
+\begin{lmm}[Coalitions\index{Coalitions (lemme des -- )}]
+    \Hyp $X_1,\cdots, X_n$ des v.a.d mutuellement indépendantes à valeurs dans $\R$, $d\in \llbracket 1, n\rrbracket$, $f: \R^d\to  E,\quad g: \R^{n-d}\to F$
+    \Conc $f(X_1,\cdots, X_d)\indep g(X_{d+1},\cdots ,X_n)$
+\end{lmm}
+
+\begin{proof}
+    $X=f(X_1,\cdots ,X_d),Y=g(X_{d+1},\cdots ,X_n)$ sont des v.a.d car pour $x\in X(\Omega)$, \[
+        X^{-1}(\{x\} )=\bigcup_{(x_1,\cdots ,x_n)\in f^{-1}(\{x\} )} [X_1=x_1,\cdots ,X_n=x_n]\in \mathcal A
+    \] car $f^{-1}(\{x\} )\subset E_1\times \cdots \times E_d$. Soient $x\in X(\Omega),y\in Y(\Omega)$. \[
+    [X=x,Y=y]=\;\;\;\;\smashoperator{\bigcup_{\substack{(x_1,\cdots ,x_d)\in E_1\times \cdots \times E_d\\(y_{d+1},\cdots ,y_n)\in E_{d+1}\times \cdots \times E_n\\ f(x_1,\cdots ,x_n)=x\\g(y_{d+1},\cdots ,y_n)=y}}} \;\;\;\;[X_1=x_1,\cdots ,X_d=x_d,Y_{d+1},\cdots ,X_n=y_n]
+\] donc \begin{align*}
+\P(X=x,Y=y)&=\;\;\;\;\smashoperator[lr]{\sum_{\substack{(x_1,\cdots ,x_d)\in E_1\times \cdots \times E_d\\(y_{d+1},\cdots ,y_n)\in E_{d+1}\times \cdots \times E_n\\ f(x_1,\cdots ,x_n)=x\\g(y_{d+1},\cdots ,y_n)=y}}}\;\;\;\; \P(X_1=x_1)\P(X_2=x_2)\cdots \P(X_d=x_d)\P(X_{d+1}=y_{d+1})\cdots \P(X_n=y_n) \\
+           &= \;\;\;\;\smashoperator[l]{\sum_{\substack{(x_1,\cdots ,x_d)\in E_1\times \cdots \times E_d\\ f(x_1,\cdots ,x_n)=x}}}\;\;
+           \smashoperator[r]{\sum_{\substack{(y_{d+1},\cdots ,y_n)\in E_{d+1}\times \cdots \times E_n\\ g(y_{d+1},\cdots ,y_n)=y}}}\;\;\;\; \P(X_1=x_1)\cdots \P(X_n=y_n) \\
+           &= \P(X=x)\P(Y=y)
+\end{align*}
+ce qui conclut.
+\end{proof}
+
+\begin{rem}
+    Le fait que les $X_i$ soient à valeur dans  $\R$ est sans importance. Par ailleurs, on peut généraliser le résultat en \[
+        f_1(X_1,\cdots ,X_{d_1}),\cdots ,f_p(X_{d_{p-1}+1},\cdots ,X_n)
+    \] 
+    mutuellement indépendantes.
+\end{rem}
+
+\begin{dfn}
+    Soit $(\Omega, \mathcal A, \P)$ un espace probabilisé et $(X_n)_{n\in \N}$ une suite de variables aléatoires discrètes. On dira que la famille $(X_n)_{n\in \N}$ est est mutuellement indépendante si pour toute partie finie $I\subset \N$, les $(X_i)_{i\in I}$ sont mutuellement indépendantes
+\end{dfn}
+
+\begin{thm}
+    \Hyp $(E_n)_{n\in \N}$ une suite d'ensembles dénombrables, $(\P_n)_{n\in \N}$ une suite de probabilités sur $(E_n, \mathcal P(E_n))$.
+    \Conc Il existe un espace probabilisé $(\Omega, \mathcal A, \P)$ et une suite $(X_n)$ de variables aléatoires discrètes avec  $X_n:\Omega\to E_n$ telles que \begin{itemize}
+        \item $\forall n\in \N,\forall x\in E_n,\quad \P(X_n=x)=\P_n(\{x\} )$
+        \item $(X_n)_{n\in \N}$ sont mutuellement indépendantes.
+    \end{itemize}
+\end{thm}
+
+\begin{proof}
+    Admise.
+\end{proof}
+
+\section{Exemples de lois}
+
+\begin{dfn}
+    Soit $p\in ]0,1[$ et $(\Omega,\mathcal  A,\P)$ probabilisé. On dira que $X:\Omega\to \N^\star$ suit une loi géométrique de paramètre $p$ si \begin{itemize}
+        \item $X$ est une v.a.r.d
+        \item $\P(X=n)=q^{n-1}p$ où $q=p-1$.
+    \end{itemize}
+    On écrira $X\suit G(p)$\index{loi géométrique}
+\end{dfn}
+
+\begin{rem}
+    $(q^{n-1}p)_n$ est un germe de probabilité donc il existe des v.a.d qui suivent cette loi.
+\end{rem}
+
+\begin{thm}
+    \Hyp $(\Omega, \mathcal A, \P)$ espace probabilisé, $X\suit G(p)$
+     \begin{concenum}
+     \item Pour $n,k\in \N,\quad \P(X>n+k|X>n)=\P(X>k)$. On dit que $X$ est sans mémoire
+     \item Si $X$ est une v.a.r.d à valeurs dans $\N^\star$ et si $\forall  n,k\in \N,\quad \P(X>n+k|X>n)=\P(X>k)$ alors $X\suit G(\P(X=1))$
+    \end{concenum}
+\end{thm}
+
+\begin{proof}~
+\begin{enumerate}
+    \item \[
+            \P(X>n)=\sum_{k\geq 1}\P(X=n+k)=\sum_{k\geq 1}q^{m+k-1}p= \frac{q^mp}{1-q}=q^m \neq 0
+    \] et \[
+    \P(X>n+k|X>k)= \frac{\P(X>n+k,X>n)}{\P(X>m)}=\frac{q^{n+k}}{q^m}=q^k=\P(X>k)
+    \] 
+\item On pose $F(n)=P(X>n)$. L'hypothèse donne  $\forall  n,k \in  \N, F(n+k)=F(n)F(k)$. Avec $q=F(1)$, on a  $\forall  n\in \N^\star, F(n)=q^n$ et $F(0)=P(X>0)=1=q^0$. Ainsi,  \[
+        \forall  n\in \N,\quad \P(X=n)=F(n-1)-F(n)=q^{n-1}(1-q)
+\] 
+et $p\defeq1-q$. La suite des $[X>n]$ est décroissante donc par continuité,  \[
+    \P(\emptyset)=0=\P \left( \bigcap_{n \in  \N} [X>n] \right) =\lim_{n\to+\infty}q^n\implies p,q\in ]0,1[
+\] 
+\end{enumerate}
+\end{proof}
+
+\begin{rem}
+    On prend $(X_n)_n$ une suite de variables aléatoires discrètes indépendantes de loi $\mathcal  B(p)$ sur $(\Omega, \mathcal A, \P)$ espace probabilisé. Pour $\omega \in  \Omega$, on pose (avec la convention $\min \emptyset=+\infty$)\[
+        T(\omega)=\min \{n\in  \N^\star,\quad X_n(\omega)=1\} 
+    \]
+    \begin{itemize}
+        \item $T(\Omega)=\N^\star\cup \{+\infty\} $ est dénombrable
+        \item On a \[
+                [T=n]=[X_1=0,\cdots ,X_{n-1}=0,X_n=1]\in \mathcal  A
+        \] 
+        et \[
+            [T=+\infty]= \left( \bigcup_{n\in \N^\star}[T=n]  \right)^c\in \mathcal  A.
+        \] 
+    \end{itemize}
+    Ainsi, $T$ est une v.a.d. Pour $n\in \N$, \[
+        \P(T=n)=\P(X_1=0,\cdots ,X_{n-1}=0,X_n=1)=q^{n-1}p
+    \] 
+    et \[
+        \P(T=+\infty)=1-\sum_{n\geq 0}\P(T=n)=1-\frac{p}{1-q}=0
+    \] 
+    Par abus, on dit que $T\suit G(p)$ même si  $T$ est à valeurs dans $\N^\star\cup \{+\infty\} $
+\end{rem}
+
+\begin{exo}
+Avec les mêmes notations, on note \[
+    T_n=\min \{i\in \N^\star,\quad (X_1+\cdots +X_n)(\omega)=n\} 
+\] 
+Trouver la loi de $T_n$
+\end{exo}
+
+\begin{proof}[Résolution]
+C'est bien une v.a.d et \[
+    \P(T_n=j)=\sum_{\substack{\epsilon_1+\cdots +\epsilon_{j-1}=n-1\\\epsilon_i\in \{0,1\} }}\underbrace{\P(X_1=\epsilon_1)\cdots \P(X_{j-1}=\epsilon_{j-1})\P(X_j=1)}_{(1-q)^{n-1}q^{j-n}(1-q)}=\binom{j-1}{n-1}(1-p)^nq^{j-n}
+\]
+et puis \[
+    1-\P(T_n=+\infty)=\P\left( \bigcup_{j\geq n} [T_n=j] \right) =\sum_{j\geq n}\binom{j-1}{n-1}q^{j-n}p^n=\sum_{j\geq n}\frac{(j-1)\cdots (j-n+1)}{(n-1)!}q^{j-1}p^n
+\] 
+Or en posant $f:z\in ]-1,1[ \longmapsto \frac{1}{1-z}$, \[
+    f^{(n-1)}(q)=\sum_{j\geq n}(j-1)\cdots (j-n+1)q^{j-n}=\frac{(n-1)!}{(1-q)^n}
+\] 
+d'où \[
+    \P(T_n=+\infty)=1-\frac{p^n}{(1-q)^n}=0
+\]
+\end{proof}
+
+\begin{dfn}
+    Soit $(\Omega, \mathcal  A, \P)$ un espace probabilisé. On dira que $X:\Omega\to \N$ suit une loi de Poisson\index{Poisson (loi de -- )}\index{loi de Poisson} de paramètre $\lambda>0$ si pour  $n\in \N$, $\P(X=n)=e^{-\lambda}\frac{\lambda^n}{n!}$. On écrira $X\suit \mathcal  P(\lambda)$
+\end{dfn}
+
+\begin{rem}
+    Il existe bien des v.a.r.d qui suivent cette loi car $\displaystyle\left(e^{-\lambda}\frac{\lambda^n}{n!}\right)$ est un germe de probabilité.
+\end{rem}
+
+\begin{rem}
+    On va montrer que si $X_1\suit\mathcal P(\lambda_1),X_2\suit \mathcal  P(\lambda_2)$ avec $X_1\indep X_2$, alors $X_1+X_2 \suit \mathcal  P(\lambda_1+\lambda_2)$. On note $X=X_1+X_2$. On a \begin{itemize}
+        \item $X(\Omega)\subset \N$
+        \item $\displaystyle [X=n]=\bigcup_{k=0}^n[X_1=k,X_2=n-k] $ 
+    \end{itemize}
+    Donc \begin{align*}
+        \P(X=n)&=\sum_{k=0}^n\P(X_1=k,X_2=n-k)\\&= \sum_{k=0}^{n} e^{-\lambda_1}\frac{\lambda_1^k}{k!}e^{-\lambda_2}\frac{\lambda_2^{n-k}}{(n-k)!}\\&=\frac{e^{-\lambda_1-\lambda_2}}{n!} \sum_{k=0}^{n} \binom nk \lambda_1^k\lambda_2^{n-k}\\&=e^{-\lambda_1-\lambda_2}\frac{(\lambda_1+\lambda_2)^n}{n!}
+    \end{align*}
+    Donc $X\suit \mathcal  P(\lambda_1+\lambda_2)$
+\end{rem}
+
+\endchapter
