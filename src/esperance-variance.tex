@@ -87,3 +87,123 @@
     \Hyp $(\Omega, \mathcal  A, \P)$ un espace probabilisé, $X,Y$ deux v.a.r.d, $Y$ d'espérance finie
     \Conc Si  $|X|\leq Y$, alors  $X$ est d'espérance finie et $\E(|X|)\leq \E(Y)$
 \end{prop}
+
+\begin{proof}
+    On note $Z=(X,Y)$ qui est une v.a.d et  $f:\R^2\to \R,(x,y)\longmapsto x$ de sorte que $X=f(Z)$. Alors  \begin{align*}
+        X\text{ d'espérance finie } &\iff (f(x, y)\P(X=x,Y=y))_{(x,y)\in X(\Omega)\times Y(\Omega)}\text{ sommable } \\ &\iff  (x\P(X=x,Y=y))_{(x,y)\in X(\Omega)\times Y(\Omega)}\text{ sommable }
+    \end{align*}
+    On a \[
+        |x\P(X=x,Y=y)|\leq y\P(X=x,Y=y)\tag{$\star$}
+    \] 
+    Or \[
+        [Y=y]=\bigcup_{x \in  X(\Omega)}[X=x,Y=y] \qquad \therefore \qquad  \P(Y=y)=\sum_{x \in  X(\Omega)}\P(X=x,Y=y)
+    \]
+    donc $(y\P(X=x,Y=y))_{x \in  X(\Omega)}$ est sommable. $Y$ est d'espérance finie donc  \[
+        (y\P(Y=y))_{y\in Y(\Omega)}=\left( \sum_{x\in X(\Omega)}y\P(X=x,Y=y) \right) _{y \in  Y(\Omega)}
+    \] 
+    est sommable, donc $(y\P(X=x,Y=y))_{(x,y)\in  X(\Omega)\times Y(\Omega)}$ est sommable et $(\star)$ conclut sur la sommabilité. Puis  \begin{align*}
+        \E(|X|)=\E(|f(Z)|)&=\sum_{\substack{x \in  X(\Omega)\\y\in Y(\Omega)}}|x|\P(X=x,Y=y)\\&\leq \sum_{\substack{x \in  X(\Omega)\\y\in Y(\Omega)}}y\P(X=x,Y=y)\\&\leq \sum_{y\in Y(\Omega)}\sum_{x\in X(\Omega)}y\P(X=x,Y=y)=\E(Y)
+    \end{align*}
+\end{proof}
+
+\begin{thm}
+    \Hyp $(\Omega, \mathcal A, \P)$ espace probabilisé, $\lambda\in \R$ est $X,Y$ des v.a.r.d. d'espérance finie.
+     \begin{concenum}
+     \item $X+Y$ et $\lambda X$ sont des v.a.r.d d'espérance finie et  $\E(X+Y)=\E(X)+\E(Y)$ et $ \E(\lambda X)=\lambda \E(X)$
+     \item $X\geq 0 \implies \E(X)\geq 0$
+     \item $X\geq Y\implies\E(X)\geq \E(Y)$
+     \item Si $X$ et $Y$ sont indépendantes, $\E(XY)=\E(X)\E(Y)$
+    \end{concenum}
+\end{thm}
+
+\begin{proof}~
+\begin{enumerate}
+    \item L'homogénéité est évidente. On montre l'additivité. On pose $Z=(X,Y)$ et  $f:(x,y)\longmapsto x+y$ de sorte que $T=f(Z)$ est une v.a.r.d par le lemme des coalitions.  $T$ est d'espérance finie  si et seulement si $((x+y)\P(X=x,Y=y))_{x,y}$ est sommable.
+
+        La famille $(|x|\P(X=x,Y=y))_{y}$ est sommable car \[
+            [X=x]=\bigcup_{y \in  Y(\Omega)} [X=x,Y=y] \qquad \therefore \qquad  \sum_{y \in  Y(\Omega)}|x|\P(X=x,Y=y)=|x|\P(X=x)
+        \]
+        sommable pour $x$ donc $(|x|\P(X=x,Y=y))_{x,y}$ est sommable, idem pour $(|y|\P(X=x,Y=y))_{x,y}$ donc $X+Y$ est d'espérance finie. Finalement,  \[
+            \E(T)=\sum_x \left( \sum_y x\P(X=x,Y=y) \right) +\sum_y \left( \sum_x y\P(X=x,Y=y) \right) =\E(X)+\E(Y)
+        \] 
+    \item On applique la définition
+    \item On utilise $2$ et $1$.
+    \item $XY$ d'espérance finie  si et seulement si $(xy\P(X=x,Y=y))_{x,y}$ est sommable soit encore si la famille  $(x\P(X=x)y\P(Y=y))_{x,y}$ est sommable. Le théorème de Fubini discret donne la sommabilité et \[
+            \sum_{x,y}xy\P(X=x)\P(Y=y)=\E(X)\E(Y)
+    \]
+\end{enumerate}
+\end{proof}
+
+\begin{ex}
+    On note $(E, (\;|\;))$ un espace euclidien,  $v_1,\cdots ,v_n$ des vecteurs unitaires. On veut montrer qu'il existe $\epsilon_1,\cdots ,\epsilon_n\in \{-1,1\} $ tels que \[
+        \|\epsilon_1v_1+\cdots +\epsilon_nv_n\|\leq \sqrt{n}
+    \] 
+    On se donne $X_1,\cdots ,X_n \quad  \indep$ qui suivent une loi de Rademacher\index{loi de Rademacher}, c'est-à-dire $\P(X_i=-1)=\P(X_i=1)=\frac{1}{2}$. On note \[
+        N=\|X_1v_1+\cdots +X_nv_n\|^2
+    \] 
+    On a \[
+        \E(N)=\sum_{i=1}^n\underbrace{\E(X_i^2)\|v_i\|^2}_{=1}+\sum_{i\neq  j}\underbrace{\E(X_iX_j)}_{=\E(X_i)\E(X_j)=0}(v_i|v_j)=n
+    \]
+    Donc $\P(N\leq n)\neq 0$ ce qui conclut.
+\end{ex}
+
+\section{Variance}
+
+\begin{thmdef}
+    \Hyp $(\Omega, \mathcal  A, \P)$ un espace probabilisé, $X$ une v.a.r.d
+     \begin{concenum}
+     \item Si $X^2$ est d'espérance finie, alors  $X$ est d'espérance finie et  $E(X)^2\leq E(X^2)$.
+     \item Dans ce cas, on appelle \textbf{variance}\index{variance} la quantité $V(X)=\E((X-\E(X))^2)$ et \textbf{écart-type} la quantité $\sigma(X)=\sqrt{V(X)}$ 
+     \item $V(X)=\E(X^2)-\E(X)^2$ (König-Huygens\index{Konig-Huygens@König-Huygens})
+     \item $V(aX+b)=a^2V(X)$
+    \end{concenum}
+\end{thmdef}
+
+\begin{proof}~
+\begin{enumerate}
+    \item $|X|\leq \frac{X^2+1}{2}$ et $\E((X+t)^2)=\E(X^2)+2t\E(X)+t^2\geq 0$ donc $\Delta\leq 0$ ie \conc
+        \stepcounter{enumi}
+    \item $\E((X-\E(X))^2)=\E(X^2-2X\E(X)+E(X)^2)=\E(X^2)-2\E(X)\E(X)+\E(X)^2=\E(X^2)-\E(X)^2$
+\end{enumerate}
+\end{proof}
+
+\begin{rem}
+On note $X$ une vard de variance non nulle. La variable \textbf{centrée réduite} \[
+    Y=\frac{X-\E(X)}{\sigma(X)}
+\] 
+est telle que $\E(Y)=0$ et $V(Y)=1$
+\end{rem}
+
+\begin{rem}
+    Si la quantité $\E(X^n)$ existe, on l'appelle \textbf{moment d'ordre $\bm n$} de $X$ \index{moment d'ordre supérieur} 
+\end{rem}
+
+\begin{exo}
+    Pour $X\suit G(p)$, montrer  $\E(X)=\frac{1}{p}$ et $V(X)=\frac{q}{p^2}$. Pour $X\suit \mathcal  P(\lambda)$, montrer $ \E(X)=\lambda, \quad  V(X)=\lambda$
+\end{exo}
+
+\begin{thmdef}
+    \Hyp $(\Omega, \mathcal  A, \P)$ un espace probabilisé, $X,Y$ des vard avec variance.
+    \begin{concenum}
+    \item $X,Y$ sont d'espérances finies et  \[
+            \E(XY)^2\leq \E(X^2)\E(Y^2)
+    \] 
+\item Dans ce cas, on appelle covariance de $X$ et $Y$ la quantité \[
+        \Cov(X,Y)=\E((X-\E(X))(Y-\E(Y)))
+\] 
+et on a \[
+    \Cov(X,Y)=\E(XY)-\E(X)\E(Y)
+\] 
+\item Lorsqu'il existe ($\sigma(X)\sigma(Y)\neq 0$), on appelle coefficient de corrélation le réel \[
+        P(X,Y)=\frac{\Cov(X,Y)}{\sigma(X)\sigma(Y)}\in [-1, 1]
+\]
+    \end{concenum}
+\end{thmdef}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item $|XY|\leq \frac{X^2+Y^2}{2}$ d'où l'existence de l'espérance puis la négativité du discriminant dans $\E((X+tY)^2)\geq 0$ conclut, sauf si $\E(Y^2)=0$, auquel cas $\E((X+tY)^2)$ est une constante, ce qui donne $E(XY)=0$.
+        \item C'est la linéarité de l'espérance.
+        \item $|\Cov(X,Y)|^2\leq \E((X-\E(X))^2)\E((Y-\E(Y))^2)=\sigma^2(X)\sigma^2(Y)$
+    \end{enumerate}
+\end{proof}
