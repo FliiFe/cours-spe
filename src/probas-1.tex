@@ -201,3 +201,157 @@ Or (on le verra), $\E(\1_A)=\P(A)$ et $\E$ est linéaire, ce qui conclut.
         \forall i\leq n, \qquad 0<\P(A_1\cap\cdots\cap A_n)\leq \P(A_1\cap \cdots \cap A_i)
     \] 
 \end{proof}
+
+\begin{ex}
+    On se donne un sac dans lequel il y a une boule blanche et une boule noire. À chaque tour, on tire une boule et on en remet deux de la même couleur dans le sac. Quelle est la probabilité de tirer $n$ boules blanches lors des $n$ premiers tirages ?
+
+    On note $A_n$ l'événement cherché et: \begin{itemize}
+        \item $ \P(A_1)=\frac{1}{2}$
+        \item $\P(A_n|A_{n-1})=\dfrac n{n+1}$
+        \item \begin{align*}
+                \P(A_n)&=\P(A_1\cap \cdots \cap A_n) \\ &= \P(A_1)\cdot \P(A_2|A_1)\cdots \P(A_n|A_1\cap\cdots \cap A_{n-1}) \\ &=\P(A_1)\P(A_2|A_1)\cdots \P(A_n|A_{n-1}) \\ &= \frac{1}{2} \times \frac{2}{3} \times \cdots \times \frac{n}{n+1}\\&=\frac{1}{n+1}
+        \end{align*}
+    \end{itemize}
+\end{ex}
+
+\begin{ex}[Monty Hall]
+    Dans le jeu télévisé \emph{Let's make a deal}, un candidat doit choisir une porte parmi trois. Derrière deux d'entre elles, il y a une chèvre, et derrière la troisième il y a une voiture. On note $X$ la variable aléatoire qui correspond au premier choix. Une fois le choix effectué, le présentateur révèle une chèvre parmi les portes non choisies, et le candidat a l'occasion de changer son choix. On note alors $Y$ la variable aléatoire qui vaut $0$ si le candidat ne change pas son choix et $1$ s'il le change. Le candidat a-t-il intérêt à changer son choix ?
+
+    On suppose que la porte gagnante est la porte numéro $1$ et on note $A$ l'événement qui correspond à une victoire du candidat. On a \begin{itemize}
+        \item $\P(A|X=1,Y=1)=1$
+        \item $\P(A|X=2,Y=1)=0$
+        \item $\P(A|X=3,Y=1)=0$
+        \item $\P(A|X=1,Y=0)=0$
+        \item $\P(A|X=2,Y=0)=1$
+        \item $\P(A|X=3,Y=0)=1$
+    \end{itemize}
+    Donc \[
+        \P(A|Y=1)=\P(A|X=1,Y=1)+\P(A|X=2,Y=1)\P(X=2)+\P(A|X=3,Y=1)\P(X=3)=\frac{2}{3}
+    \]
+    Donc le candidat a intérêt à changer son choix.
+\end{ex}
+
+\begin{defprop}[Trace]
+    \Hyp $(\Omega, \mathcal A, \P)$ est un espace probabilisé, $A\in \mathcal A$ un événement tel que $\P(A)>0$
+    \begin{concenum}
+        \item $\mathcal A_A\defeq\{A\cap B, \quad B\in \mathcal A\}$ est une tribu de $A$
+        \item $(A,\mathcal A_A, \P_A)$ est un espace probabilisé, avec {\begin{align*}
+                \P_A:\mathcal A_A  &\longrightarrow [0,1] \\
+                B &\longmapsto \frac{\P(B)}{\P(A)}
+        \end{align*}}
+    \end{concenum}
+\end{defprop}
+
+\begin{prop}
+    \Hyp $(\Omega, \mathcal A, \P)$ est un espace probabilisé, $A\in \mathcal A$ un événement tel que $\P(A)>0$
+    \Conc $(\Omega, \mathcal A, \P_A)$ est un espace probabilisé avec { \begin{align*}
+            \P_A: \mathcal A &\longrightarrow [0,1] \\
+            B &\longmapsto \frac{\P(A\cap B)}{\P(A)}
+    \end{align*} }
+\end{prop}
+
+\begin{thmdef}
+    \Hyp $(\Omega, \mathcal A, \P)$ espace probabilisé
+    \begin{concenum}
+    \item On dira que $(A_n)\in \mathcal A^{\N}$ est un \textbf{système complet d'événements}\index{système complet d'événements} si \begin{itemize}
+        \item $ \forall n\in \N,\quad A_n \neq \emptyset$
+        \item Les $A_i$ sont deux à deux incompatibles
+        \item $\bigcup_{i \in  \N}A_i  =\Omega$ 
+    \end{itemize}
+    \item Pour tout $A\in \mathcal A$ on a dans ce cas \[
+            \P(A)=\sum_{n \in  \N} \P(A\cap A_n)=\sum_{n \in  \N} \P_{A_n}(A)\P(A_n)
+    \] 
+    en convenant que si $\P(A_n)=0$ alors $\P(A_n)\P_{A_n}(A)=0$
+    \end{concenum}
+\end{thmdef}
+
+\begin{proof}
+    C'est la $\sigma$-additivité.
+\end{proof}
+
+\begin{rem}
+    On peut se dispenser de l'hypothèse $A_i\neq \emptyset$, et on peut se contenter de  $\P(\bigcup A_n )=1$ au lieu de $ \bigcup A_n=\Omega $. On parle alors de système pseudo-complet ou presque-complet.
+\end{rem}
+
+\section{Formule de Bayes}
+
+\begin{thm}[Bayes]
+    \Hyp $(\Omega, \mathcal A, \P)$ espace probabilisé
+    \begin{concenum}
+        \item Si $A,B\in \mathcal A$ sont tels que $\P(A), \P(B)>0$, alors \[
+            \P(B|A)=\frac{\P(A|B)\P(B)}{\P(A)}
+        \] 
+    \item Si $(A_n)\in  \mathcal A^{\N}$ est un SCE, $B\in \mathcal A$ est tel que $\P(B)>0$, alors \[
+            \P_B(A_i)=\frac{\P_{A_i}(B)\P(A_i)}{\sum_{n=0}^{+\infty} \P_{A_n}(B)\P(A_n)}
+    \] 
+    \end{concenum}
+\end{thm}
+
+\section{Germes de probabilités}
+
+\begin{prop}[Germe de probabilité\index{germe de probabilité}]
+    \Hyp $\Omega=\{x_i, \quad i \in  \N\}$, $\mathcal A=\mathcal P(\Omega)$ et $(p_i)_{i \in \N} \in (\R^+)^{\N}$ telle que $\sum p_i=1$
+    \Conc Il existe une unique probabilité $\P$ sur $(\Omega, \mathcal A)$ telle que $\forall i \in  \N,\quad \P(\{x_i\})=p_i$, et elle est donnée par \[
+        \forall X \in  \mathcal A,\quad \P(X)=\sum_{\substack{i \in  \N\\x_i\in X}}p_i
+    \] 
+\end{prop}
+
+\begin{proof}
+    Unicité facile, existence facile.
+\end{proof}
+
+\section{Variables aléatoires discrètes}
+
+\begin{dfn}
+    Soit $(\Omega, \mathcal A, \P)$ un espace probabilisé et $E$ un ensemble. On appelle \textbf{variable aléatoire discrète}\index{variable aléatoire discrète} à valeurs dans $E$ une application $X:\Omega \to  E$ telle que \begin{itemize}
+        \item $X(\Omega)$ est fini ou dénombrable
+        \item  $ \forall x \in  E,\quad X^{-1}(\{x\} )\in  \mathcal A$
+    \end{itemize}
+\end{dfn}
+
+\begin{ex}
+    $A\in \mathcal A,\quad \1_A$ est une v.a.d
+\end{ex}
+
+\begin{rem}
+    Si $E$ est dénombrable, alors $E$ s'écri t  $\{x_n,\quad n\in \N\} $ avec les $x_n$ deux à deux distincts. Si  $X:\Omega \to  E$ est une v.a.d alors \begin{itemize}
+        \item $A_n=X^{-1}(\{x_n\} )$. Les $(A_n)_n$ forment un SCE (ou un quasi-SCE)
+        \item $p_n=\P(A_n)$ définit un germe de probabilité
+        \item Une probabilité sur $(E, \mathcal P(E))$ est donnée par \[
+                \forall B\subset E,\quad \sum_{\substack{n\geq 0\\ x_n\in  B}}p_n
+        \] 
+        et on a \[
+            [X\in B]=\bigcup_{\substack{n\geq 0\\x_n\in  B}}X^{-1}(\{x_n\} )\in  \mathcal A 
+        \] 
+        donc \[
+            \P(X\in  B)=\sum_{\substack{n\geq 0\\x_n\in B}}\P(A_n)=\P_\star (B)
+        \] 
+    \end{itemize}
+    On a ainsi une probabilité sur $(E, \mathcal P(E))$ à partir de $(\Omega, \mathcal A, \P)$ sans connaître $\Omega$. On a seulement besoin de connaître les $p_n$ (la loi de $X$)
+\end{rem}
+
+\begin{thm}
+    \Hyp $E=\{x_n, \quad n\in \N\} $, les $x_n$ deux à deux distincts, $(p_n)_{n\in \N}\in (\R^+)^{\N}, \quad \sum p_n=1$
+    \Conc Il existe $\Omega$, une tribu $\mathcal A$ de $\Omega$, $\P$ une probabilité telle que $(\Omega, \mathcal A,\P)$ est un espace probabilisé et $X:\Omega\to E$ est une v.a.d satisfaisant $\P(X=x_n)=p_n$
+\end{thm}
+
+\begin{proof}
+    Admis(e) mais facile ($\Omega=E, \mathcal A=\mathcal P(E)$)
+\end{proof}
+
+\section{Indépendance}
+
+\begin{dfn}
+    $(\Omega, \mathcal A, \P)$ un espace probabilisé. Deux événements $A,B\in \mathcal A$ sont dits \textbf{indépendants}\index{evenements independants@événements indépendants} si et seulement si $\P(A\cap B)=\P(A)\P(B)$. Si $\P(B)\neq 0$, c'est équivalent à $\P(A|B)=\P(A)$
+\end{dfn}
+
+\begin{dfn}
+    Soit $(\Omega, \mathcal A, \P)$ un espace probabilisé. \begin{itemize}
+        \item Si $X_1, \cdots, X_n$ sont des v.a.d sur $\Omega$, $E_i=X_i(\Omega)$, on dira que $X_1, \cdots,X_n$ sont \textbf{mutuellement indépendantes}\index{indépendance mutuelle} si \[
+                \forall (A_1,\cdots,A_n)\in \mathcal P(E_1)\times \cdots \times \mathcal P(E_n), \qquad \P(X_1\in  A_1,\cdots,X_n\in A_n)=P(X_1\in A_1)\cdots \P(X_n\in A_n)
+        \] ou de manière équivalente \[
+        \forall (x_1,\cdots,x_n)\in E_1\times \cdots \times E_n, \qquad \P(X_1=x_1,\cdots,X_n=x_n)=\P(X_1=x_1)\cdots \P(X_n=x_n)
+        \] 
+    \item Si $X, Y$ sont des v.a.d indépendantes, on note $X\indep Y$
+    \end{itemize}
+\end{dfn}

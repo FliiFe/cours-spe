@@ -155,6 +155,8 @@
 \DeclareDocumentCommand\C{}{\mathbb C}
 \DeclareDocumentCommand\E{}{\mathbb E}
 \DeclareDocumentCommand\K{}{\mathbb K}
+\newcommand\indep{\protect\mathpalette{\protect\indepT}{\perp}}
+\def\indepT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
 
 \makeatletter
 \newcommand*{\xnrightarrow}[2][]{%
