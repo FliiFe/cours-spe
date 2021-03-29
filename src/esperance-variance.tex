@@ -347,7 +347,7 @@ Les sommes partielles sont majorées, donc $X$ est d'espérance finie.
             \rule{0pt}{2em} $\mathcal B(n,p)$ &  $(q+pt)^n$ &  $+\infty$ & $np$ \\
             \rule{0pt}{2em} $\mathcal  P(\lambda)$ & $\exp (\lambda(t-1))$ & $+\infty$ & $\lambda$ \\
             \rule{0pt}{2em} $\mathcal  G(p)$ & $\dfrac{pt}{1-qt}$ &  $\dfrac{1}{q}$ & $\dfrac{1}{p}$ \\
-            \rule{0pt}{2em} $\mathcal U(\llbracket 0,n-1 \rrbracket )$ & $\displaystyle \frac{1}{n} \frac{t^n-1}{t-1}$ & $+\infty$ &  $\dfrac{n-1}2$ \\
+            \rule{0pt}{2em} $\mathcal U(\llbracket 0,n-1 \rrbracket )$ & $\displaystyle \frac{1}{n} \frac{t^n-1}{t-1}$ & $+\infty$ &  $\dfrac{n-1}2$ \\[1em]
             \hline
         \end{tabular}
     \end{center}
@@ -367,3 +367,111 @@ Si $ X_1,\cdots ,X_n$ sont des vard indépendantes à valeurs dans $ \N$, \[
     \end{enumerate}
     Dans ce cas, $G_X''(1^-)=\E(X(X-1))$
 \end{thm}
+
+\begin{proof}
+    $(1\implies 2)$ \hyp $X$ a une variance donc  $X$ a une espérance et  \[
+        G'_X(1)= \sum_{n=1}^{+\infty} n\P(X=n)
+    \] 
+    donc \[
+        \frac{G_X'(t)-G_X'(1)}{t-1}=\sum_{n\geq 2}n\P(X=n) \frac{t^{n-1}-1}{t-1}
+    \] 
+    qui converge normalement ($X^2$ a une espérance finie  car $X$ a une variance), le théorème de la double limite conclut.
+
+    $(2\implies 1)$ On a cette fois ci \[
+        \frac{G_X'(t)-G_X'(1)}{t-1}\geq \sum_{k=0}^{N} k(k-1)\P(X=k)(1+t+\cdots +t^{n-1})
+    \]
+    donc avec $t\to 1^-$, \[
+        G''_X(1)\geq  \sum_{n=0}^{N} n(n-1)\P(X=n)\geq 0
+    \] 
+    d'où la convergence de la série et \conc.
+\end{proof}
+
+\section{Somme aléatoire de v.a.r.d}
+
+On note $(X_n)_{n\in \N^\star}$ une suite de vard sur $(\Omega, \mathcal  A, \P)$, mutuellement indépendantes à valeurs dans $\N$. On note $N:\Omega\to \N^\star$ une vard indépendante des $X_i$ et  \[
+    S\defeq X_1+\cdots +X_N
+\] 
+On suppose que les $X_i$ ont même loi. On a  \[
+    [S=n]=\bigcup_{k \in  \N^\star}[N=k,X_1+\cdots +X_k=n]
+\] 
+donc \[
+    G_S(t)= \sum_{n\geq 0}\sum_{k\geq 1} \P(N=k)\P(X_1+\cdots +X_k=n)t^n=\sum_{k\geq 1}\P(N=k)G_X(t)^k =G_N\circ G_X(t)
+\] 
+
+\section{Résultats asymptotiques}
+
+\begin{prop}
+    \Hyp $(\Omega, \mathcal  A, \P)$ est un espace probabilisé, $X_n\suit \mathcal  B(n, p_n)$ avec $np_n \to  \lambda>0$
+    \Conc Pour tout $ k\in \N$, \[
+        \P(X_n=l) \xrightarrow[n\to+\infty]{}e^{-\lambda}\frac{\lambda^k}{k!}
+    \]
+\end{prop}
+
+\begin{proof}
+    Pas dur.
+\end{proof}
+
+\begin{thm}
+    \Hyp $(\Omega, \mathcal  A, \P)$, $X_1,\cdots , X_n$ des vard $\indep$ de même loi avec variance (iid\footnotemark), $S_n=X_1+\cdots +X_n$ et $m=\E(X_1)$
+    \Conc \[
+        \forall  \epsilon>0,qa\P\left( \left| \frac{S_n}{n}-m\geq \epsilon \right| \right) \leq \frac{V(X_1)}{n\epsilon^2} \xrightarrow[n\to+\infty]{}0
+    \] 
+\end{thm}
+\footnotetext{indépendantes et identiquement distribuées}
+
+\begin{proof}
+Tchebychev
+\end{proof}
+
+\section{Exemples}
+
+\subsection{Loi du minimum}
+
+On cherche la loi de $Y=\min(X_1,\cdots ,X_n)$ si $X_1,\cdots ,X_n\suit G(p)$ sont $\indep$. On a  \[
+    \P(Y>k)=\P(X_1>k)^p=q^{kn}
+\]
+et \[
+    \forall  k\geq 1, \qquad  \P(Y=k)=\P(Y>k-1)-\P(Y>k)=q^{kn-n}-q^{kn}=q^{(k-1)n}(1-q^n)
+\] 
+donc $Y\suit G(1-q^n)$ 
+
+\subsection{Décomposabilité de la loi uniforme}
+
+On note $Z$ une vard sur  $(\Omega, \mathcal A, \P)$ à valeurs dans $\N$. On dit que $Z$ est décomposable s'il existe  $X\indep Y$ presque sûrement non constantes telles que  $Z\sim X+Y$ (même loi). On va montrer que  $Z\suit \mathcal  U(\llbracket 0,n-1 \rrbracket )$ est indécomposable si et seulement si $n$ est premier.
+
+\begin{itemize}
+    \item Si $n=uv$ avec  $u,v\geq 2$, alors \[
+            G_Z(t)=\frac{1}{uv} \frac{t^{uv}-1}{t-1}=\frac{1}{v} \frac{(t^u)^v-1}{t^u-1} \cdot \frac{1}{u} \frac{t^u-1}{t-1}.
+    \]
+    $\displaystyle \frac{1}{u} \frac{t^u-1}{t-1}$ est la fonction génératrice d'une vard qui suit une loi uniforme sur $\llbracket 0,u-1 \rrbracket $. Puis $\displaystyle \frac{1}{v}\frac{(t^u)^v-1}{t^u-1}$ est la fonction génératrice d'une vard qui suit une loi uniforme sur $u\cdot \llbracket 0,v-1 \rrbracket $
+     Il existe donc $X\indep Y$ presque sûrement non constantes qui suivent des lois uniformes et telles que  $Z\sim X+Y$
+
+ \item On suppose que $n=p$ est premier et que $Z$ est décomposable en $X+Y$, avec  $X\indep Y$ non constantes presque sûrement. On a alors \[
+         G_Z(t)=G_X(t)G_Y(t)=\frac{1}{p} (1+t+\cdots +t^{p-1})
+ \] 
+ Si $G_X$ n'est pas polynômial, alors il y a une infinité de $k$ tels que $\P(X=k)t^k\neq 0$, et si $\P(Y=i)t^i\neq 0$, le coef de $t^{k+i}$ dans  $G_Z$ est non nul (produit de Cauchy avec des coefs positifs) donc  $G_Z$ n'est pas polynômial, ce qui est absurde. Donc $G_X$ et  $G_Y$ sont des polynômes.
+
+ On suppose qu'il existe  $P, Q$ unitaires à coefficients positifs (les coefficients d'une série génératrice sont positifs) tels que  $P(t)Q(t)=1+\cdots +t^{p-1}$. Le polynôme $PQ$ divise $T^p-1$ donc ses racines sont unitaires et  \[
+     P(T)=(T-a_1)\cdots (T-a_r)=\overline{P}(T)=\left( T-\frac{1}{a_1} \right) \cdots \left( T-\frac{1}{a_r} \right) = \frac{(-1)^r}{a_1\cdots a_r}T^rP\left( \frac{1}{T} \right) 
+ \] 
+ et vu les relations coefficients-racines, $\dfrac{(-1)^r}{a_1\cdots a_r}=1$ donc $P(T)=T^r P\left( \dfrac 1T \right) $ et $P$ est un polynôme réciproque. Par le même raisonnement,  $Q$ aussi. On note  $r=\deg P$ et  $s=\deg Q$. On suppose  $r\leq s$ et on a \[
+     P(t)Q(t)=(t^r+\alpha_{r-1}t^{r-1}+\cdots +1)(t^s+\beta_{s-1}t^{s-1}+\cdots +1)=1+\cdots +t^{p-1}
+ \] 
+ donc (coef de $t^r$)\[
+     \sum_{i+j=r}\alpha_i\beta_j= \underbrace{\alpha_r\beta_0}_{=1}+\underbrace{\alpha_{r-1}\beta_1}_{\geq 0}+\cdots +\underbrace{\alpha_0\beta_r}_{\geq 0}=1
+ \] 
+ donc $\alpha_{r-1}\beta_1=\cdots =\alpha_0\beta_r=0$ et $\beta_r=0$
+
+ On va montrer que  $\beta_r$ ne peut pas être nul. On note  $\omega=\exp (\frac{2i\pi }{p})$ et les racines de $Q$ s'écrivent  $\omega^{i_1},\cdots ,\omega^{i_s}$. Le coefficient de $t^r$ dans  $Q$ vaut  \[
+     (-1)^{s-r}\sum_{\substack{J\subset \llbracket 1,s \rrbracket \\ \#J=s-r}}\prod_{j\in J}\omega^{i_j}=(-1)^{s-r}(a_0+a_1\omega+\cdots +a_{p-1}\omega^{p-1})
+ \]
+ avec les $a_i$ non tous nuls. On note \[
+     \hat{P} (X)=a_0+a_1X+\cdots +a_{p-1}X^{p-1} \in \Z[X]
+ \]
+ Le polynôme $1+X+\cdots +X^{p-1}$ est irréductible dans $\Z[X]$ (traité dans le chapitre de complément sur les polynômes), unitaire et annulateur de $\omega$ donc c'est son polynôme minimal.  $\hat{P}$ est donc proportionnel à ce polynôme (car on a supposé $\beta_r=0$) et $a_0=\cdots =a_{p-1}\in  \N^\star$. Puis $\hat{P}(1)=p\;\dom \hat{P}$ correspond aussi au nombre de termes dans la somme: \[
+     p\;\dom \hat{P}=\binom s{s-r}
+ \] 
+ ce qui est absurde car $s<p$ donne  \[
+     v_p\left( \binom s{s-r} \right) =v_p(s!)-v_p((s-r)!)-v_p(r!)=0
+ \] 
+\end{itemize}

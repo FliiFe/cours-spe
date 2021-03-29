@@ -21,7 +21,7 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 - [ ] Compacité - Connexité
 - [x] Séries entières
 - [x] Variables aléatoires discrètes
-- [ ] Espérance - Variance
+- [x] Espérance - Variance
 - [ ] Les intégrales à paramètres
 - [ ] Les équations différentielles
 - [ ] Espaces préhilbertiens réels
