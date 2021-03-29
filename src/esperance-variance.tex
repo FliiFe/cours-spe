@@ -207,3 +207,163 @@ et on a \[
         \item $|\Cov(X,Y)|^2\leq \E((X-\E(X))^2)\E((Y-\E(Y))^2)=\sigma^2(X)\sigma^2(Y)$
     \end{enumerate}
 \end{proof}
+
+\begin{rem}
+    On note $(X_i)_{1\leq i\leq n}$ une suite de v.a.r.d de $(\Omega, \mathcal  A, \P)$, $S_n=X_1+\cdots +X_n$. On a \begin{itemize}
+        \item $\displaystyle \E(S_n^2)= \sum_{i=1}^{n} \E(X_i^2)+2\sum_{i<j}\E(X_iX_j)$
+        \item $\displaystyle \E(S_n)^2= \sum_{i=1}^{n} \E(X_i)^2+2\sum_{i<j}\E(X_i)\E(X_j)$
+        \item $\displaystyle V(S_n)=\E(S_n^2)-E(S_n)^2= \sum_{i=1}^{n} V(X_i)+2\sum_{i<j}\Cov(X_i,X_j)$
+    \end{itemize}
+    Si les $X_i$ sont deux à deux indépendants, alors $V(S_n)=V(X_1)+\cdots +V(X_n)$
+\end{rem}
+
+\begin{ex}
+    On munit $\mathfrak S_n $ de la probabilité uniforme. On note $S_n(\sigma)$ le nombre de points fixes de  $\sigma$. Donner l'espérance et la variance de  $S_n$.
+\end{ex}
+
+\begin{proof}[Résolution]
+    On introduit $X_i:\sigma \longmapsto \delta_{i,\sigma(i)}$ de sorte que $S_n(\sigma)=X_1+\cdots +X_n$. Dans ce cas, on a  \[
+        \P(X_i=1)=\frac{(n-1)!}{n!}=\frac{1}{n}
+    \] 
+    donc $ \E(X_i)=\frac{1}{n}$ (Bernoulli) et $\E(S_n)=1$. Puis, \[
+        V(S_n)=\E(S_n^2)-E(S_n)^2= \sum_{i=1}^{n} V(X_i)+2\sum_{i<j}\Cov(X_i,X_j)=n\left( \frac{1}{n}-\frac{1}{n^2} \right) 2 \frac{n(n-1)}{2}\left( \frac{1}{n(n-1)}-\frac{1}{n^2} \right) =1
+    \] 
+\end{proof}
+
+\begin{dfn}
+    Soient $X,Y$ des v.a.d sur $(\Omega, \mathcal  A, \P)$ et $Z=(X,Y)$.  \begin{itemize}
+        \item On appelle \textbf{loi} de $Z$ la donnée de  $(\P(X=x,Y=y))_{\substack{x\in X(\Omega)\\y\in Y(\Omega)}}$ appelée \textbf{loi conjointe}\index{loi conjointe} de $X$ et $Y$.
+        \item On appelle \textbf{loi marginale}\index{loi marginale} de $Z$ la loi de $X$ et la loi de $Y$. Elles s'expriment à partir de la loi conjointe: \[
+                \P(X=x)=\sum_{y \in  Y(\Omega)}\P(X=x,Y=y) \qquad \qquad \P(Y=y)=\sum_{x \in  X(\Omega)}\P(X=x,Y=y)
+        \] 
+    \end{itemize}
+\end{dfn}
+\begin{rem}
+    Si $(a_{x,y})_{(x,y)\in  I\times J}$ est une famille sommable de $[0,1]$, alors il existe une v.a.r.d $Z$ à valeurs dans $I\times J$ telle que $ \forall (x,y)\in I\times J,\quad  \P(Z=(x,y))=a_{x,y}$ si et seulement si la somme de la famille vaut $1$
+\end{rem}
+
+\section{Inégalités classiques}
+
+\begin{thm}[Markov, Tchebychev\index{Markov (inégalité de -- )}\index{Tchebychev!inégalité}]
+    \Hyp $(\Omega, \mathcal  A, \P)$ espace probabilisé, $X$ une v.a.r.d
+     \begin{concenum}
+     \item Soit $a>0$. Si $X$ est d'espérance finie alors \[
+             \P(|X|\geq a)\leq \frac{\E(|X|)}{a}\tag{Markov}
+     \] 
+ \item Soit $a>0$. Si  $X$ possède une variance alors  \[
+         \P(|X-\E(X)|\geq a)\leq \frac{V(X)}{a^2}\tag{Tchebychev}
+ \] 
+    \end{concenum}
+\end{thm}
+
+\begin{proof}
+~ \begin{enumerate}
+    \item $a\1_{|X|\geq a}\leq |X|$ et croissance de l'espérance
+    \item  $ \P(|X-\E(X)|\geq a)=\P((X-\E(X))^2\geq a^2)$ puis Markov.
+\end{enumerate}
+\end{proof}
+
+\begin{ex}
+    On note $(X_i)_{i\geq 1}$ une suite de v.a.r.d $\indep \quad \suit \mathcal  B(\frac{1}{2})$. On note $S_n=X_1+\cdots +X_n$ le nombre de succès en $n$ lancés. $\P(S_n\geq \frac{3}{4}n)$ ?
+    \begin{itemize}
+        \item Markov: $\displaystyle\P(S_n\geq \frac{3}{4}n)\leq \frac{\frac{n}{2}}{\frac{3n}{4}}=\frac{2}{3}$
+        \item Tchebychev: $\displaystyle\P(S_n\geq \frac{3}{4})=\P(S_n-\E(S_n)\geq \frac{n}{4}) \leq \P(|S_n-\E(S_n)|\geq \frac{n}{4}\leq \frac{4}{n}$
+    \end{itemize}
+\end{ex}
+
+\begin{ex}
+    On note $X\suit G(\frac{1}{4})$. On va majorer $\P(X\geq n)$. \begin{itemize}
+        \item Markov: $\P(X\geq n)\leq \dfrac{\E(X)}{n}=\dfrac{4}{n}$
+        \item Tchebychev $\P(X\geq n)\leq \dfrac{V(X)}{(n-4)^2}=\dfrac{12}{(n-4)^2}$
+        \item En posant $Y=\left( \dfrac{5}{4} \right) ^X$, on a $\E(Y)=5$ donc \[
+                \P(X\geq n)\leq 5\left( \frac{4}{5} \right) ^n
+        \] 
+    \end{itemize}
+\end{ex}
+
+\section{Variables aléatoires à valeurs entières}
+
+\begin{defprop}
+    \Hyp $(\Omega, \mathcal A,\P)$ espace probabilisé, $X:\Omega\to \N$ une v.a.d
+    \begin{concenum}
+    \item Pour tout $t\in [-1,1]$, $t^X$ est d'espérance finie
+    \item  Pour tout $t \in  [-1, 1]$, on note \[
+            G_X(t)=\E(t^X)= \sum_{n=0}^{+\infty} \P(X=n)t^n
+    \] 
+    On appelle cette fonction la \textbf{fonction génératrice} de $X$.\index{fonction génératrice d'une v.a.d} \begin{enumerate}
+        \item La série a un rayon de convergence $R\geq 1$
+        \item Il y a convergence normale sur $ \mathcal  D_f(0,1)$
+    \end{enumerate}
+    \end{concenum}
+\end{defprop}
+
+\begin{proof}
+    Pour $t\in [-1,1]$, $|t^X|\leq 1$ or  $1$ a une espérance finie, puis la formule de transfert justifie l'expression de  $\E(t^X)$. La série converge pour $t=1$ donc il y a bien CVN et  $R\geq 1$
+\end{proof}
+
+\begin{thm}
+\Hyp $X:\Omega\to \N$ une v.a.d
+\begin{concenum}
+\item $X$ est d'espérance finie si et seulement si $\sum \P(X\geq n)$ converge et dans ce cas \[
+        \E(X)=\sum_{n\geq 1}\P(X\geq n)
+\] 
+\item Il y a équivalence entre \begin{enumerate}
+    \item $X$ a une espérance finie
+    \item  $G_X$ est dérivable à gauche en  $1$
+\end{enumerate}
+Dans ce cas, $ \E(X)=G_X'(1^-)$
+\end{concenum}
+\end{thm}
+
+\begin{proof}
+~ \begin{enumerate}
+    \item $X$ est d'espérance finie  si et seulement si $(k\P(X=k))_{k \in  \N^\star}$ est sommable. On note \[
+            a_{i,k}\defeq \P(X=k)\1_{\llbracket 1,k \rrbracket }(i)
+    \] 
+    La famille $(a_{i,k})_{i\in \N^\star}$ est sommable et \[
+        \sum_{i=1}^{+\infty} a_{i,k}=k\P(X=k)
+    \] 
+    et c'est le terme général d'une famille sommable, donc Fubini discret conclut.
+\item $(a\implies b)$ $X$ d'espérance finie. Pour $t\in [0,1[$, \[
+        \frac{G_X(t)-G_X(1)}{t-1} = \sum_{n=0}^{+\infty} \P(X=n)\frac{t^n-1}{t-1}= \sum_{n=1}^{+\infty} \P(X=n)(1+t+\cdots +t^{n-1})
+\] 
+et le terme général de cette série est inférieur en valeur absolu à $n\P(X=n)$ qui est le terme général d'une série convergente. Il y a donc convergence normale et le théorème de la double limite donne \[
+    \lim_{t \to 1^-} \frac{G_X(t)-G_X(1)}{t-1}= \sum_{n=1}^{+\infty} \P(X=n)n=\E(X)
+\] 
+
+$(b\implies a)$ $G_X$ dérivable à gauche en $1$. Pour $N\in \N^\star$ fixé, \[
+    \frac{G_X(t)-G_X(1)}{t-1}\geq \sum_{n=0}^{N} \P(X=n)(1+t+\cdots +t^{n-1}) \underset{t\to 1^-}\implies G_X'(1)\geq \sum_{n=0}^{N} n\P(X=n)
+\]
+Les sommes partielles sont majorées, donc $X$ est d'espérance finie.
+\end{enumerate}
+\end{proof}
+
+\begin{ex}~
+    \begin{center}
+        \begin{tabular}{cccc}
+            \hline \hline Loi de $X$ & $G_X$ & $R(G_X)$ & $ \E(X)$ \\
+            \hline
+            \rule{0pt}{2em} $\mathcal  B(p)$ &  $q+pt$ &  $+\infty$ &  $p$ \\
+            \rule{0pt}{2em} $\mathcal B(n,p)$ &  $(q+pt)^n$ &  $+\infty$ & $np$ \\
+            \rule{0pt}{2em} $\mathcal  P(\lambda)$ & $\exp (\lambda(t-1))$ & $+\infty$ & $\lambda$ \\
+            \rule{0pt}{2em} $\mathcal  G(p)$ & $\dfrac{pt}{1-qt}$ &  $\dfrac{1}{q}$ & $\dfrac{1}{p}$ \\
+            \rule{0pt}{2em} $\mathcal U(\llbracket 0,n-1 \rrbracket )$ & $\displaystyle \frac{1}{n} \frac{t^n-1}{t-1}$ & $+\infty$ &  $\dfrac{n-1}2$ \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{ex}
+
+\begin{rem}
+Si $ X_1,\cdots ,X_n$ sont des vard indépendantes à valeurs dans $ \N$, \[
+    G_{X_1+\cdots +X_n}(t)=\E\left(t^{X_1+\cdots +X_n}\right)\underset\indep=G_{X_1}(t)\times \cdots \times G_{X_n}(t)
+\] 
+\end{rem}
+
+\begin{thm}
+    \Hyp $(\Omega,\mathcal A,\P)$ espace probabilisé, $X:\Omega\to \N$ une vad.
+    \Conc Il y a équivalence entre \begin{enumerate}
+        \item $X$ a une variance
+        \item  $G_X$ est deux fois dérivable à gauche en  $1$.
+    \end{enumerate}
+    Dans ce cas, $G_X''(1^-)=\E(X(X-1))$
+\end{thm}
