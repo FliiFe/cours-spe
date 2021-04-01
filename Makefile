@@ -18,7 +18,7 @@ FIGURES := $(patsubst %.tex,%.pdf,$(wildcard src/figures/*.tex))
 ifndef VERBOSE
 SILENT := -silent
 endif
-LATEXMK := latexmk -pdfxe $(SILENT) # -use-make
+LATEXMK := latexmk $(SILENT)
 MAIN_TARGET := target/$(MAIN_FN).pdf
 
 help: ## Print available targets
