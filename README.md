@@ -19,7 +19,7 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 - [ ] Analyse réelle et fonctions convexes
 - [ ] Espaces vectoriels normés
 - [ ] Limite - Continuité - Fonctions vectorielles
-- [ ] Compacité - Connexité
+- [x] Compacité - Connexité
 - [x] Séries entières
 - [x] Variables aléatoires discrètes
 - [x] Espérance - Variance
