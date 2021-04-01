@@ -1,0 +1,139 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Compacité -- Connexité} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Compacité -- Connexité}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Définitions}
+
+\begin{dfn}
+On note $E$ un  $\K$-e.v.n. \begin{enumerate}
+    \item On dira que $(x_n)\in E^{\N}$ possède une \textbf{valeur d'adhérence}\index{valeur d'adhérence} $\ell$ s'il y a une suite extraite de $ (x_n)$ qui tend vers  $\ell$
+    \item Pour  $x=(x_n)$, on notera  $V(x)$ l'ensemble des valeurs d'adhérence.
+\end{enumerate}
+\end{dfn}
+
+\begin{ex}~
+\begin{enumerate}
+    \item $E=\R,\qquad x=((-1)^n),\qquad V(x)=\{-1,1\} $
+    \item $E=\R,\qquad x_n \xrightarrow[n\to+\infty]{}\ell,\qquad  V(x)=\{\ell\} $
+    \item $E=\R,\qquad (r_n)$ une énumération de $\Q$. $V(r)=\R$ (par densité)
+\end{enumerate}
+\end{ex}
+
+\section{Compacité}
+
+\begin{dfn}
+On dira que $A\subset E$ est une partie compact si  $A=\emptyset$ ou si toute suite d'éléments de  $A$ possède une valeur d'adhérence dans  $A$
+\end{dfn}
+
+\subsection{Propriétés topologiques}
+
+\begin{prop}
+\Hyp $A\subset E$
+ \begin{concenum}
+ \item Si  $A$ est compacte, alors c'est une partie fermée bornée
+ \item Un fermé inclus dans  $A$ est compact
+\end{concenum}
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+    \item Soit $(x_n)\in A^{\N}$ qui converge vers $\ell$. C'est la seule valeur d'adhérence de  $x$ donc elle est dans  $A$ et $A$ est fermé. Si  $A$ n'est pas bornée, la suite  $(x_n)$ définie par  \[
+            \forall  n \in  \N,\qquad  x_n \in  A\setminus    \mathcal  B_f(0,n)
+    \] 
+    est bien définie et n'a aucune VA, ce qui est absurde.
+\item C'est évident avec les définitions
+\end{enumerate}
+\end{proof}
+
+\begin{prop}
+\Hyp $K$ compact de $E$,  $u$ une suite de  $K^{\N}$ 
+\Conc Il y a équivalence entre \begin{enumerate}
+    \item $u$ converge
+    \item  $u$ a une seule valeur d'adhérence
+\end{enumerate}
+\end{prop}
+
+\begin{proof} ~
+
+    $(1\implies 2)$ évident
+
+    $(2\implies 1)$ On note $\ell$ la VA de  $u$, et on suppose par l'absurde  \[
+        x_n \xnrightarrow[n\to+\infty]{}\ell
+    \]
+    Alors $\exists \epsilon>0,\forall  N \in  \N,\exists  n\geq N, |u_n-\ell|\geq \epsilon$. Pour un tel $\epsilon$, on construit la suite extraite suivante \begin{itemize}
+        \item $N=1$, il existe  $n_1\geq 1$ tel que $|u_{n_1}-\ell|\geq \ell$
+        \item $\vdots$
+        \item  $N=n_{N-1}+1$, on construit $n_N$
+    \end{itemize}
+    On a ainsi construit une suite extraite qui n'admet pas $\ell$ comme VA, donc elle admet une autre VA  $\ell'$ dans  $K$ ce qui est absurde.
+\end{proof}
+
+
+\begin{exo}
+On note $u$ une suite bornée réelle telle que  \[
+    u_n+\frac{1}{2}u_{2n} \xrightarrow[n\to+\infty]{}0
+\] 
+Montrer que $u$ converge.
+\end{exo}
+
+ \begin{rem}
+ Soit $u \in  E^{\N}$. On va montrer que \[
+     V(u)=\bigcap_{n\geq 0} \overline{\{ u_k,\quad k\geq n\}}
+ \]
+ On note $U_n=\{u_k, k\geq n\}, F_n=\overline{U_n}$ et $ F$ l'intersection des  $F_n$. Si  $ \ell  \in V(u)$ alors il existe une extractrice $\varphi$ telle que  $u_{\varphi (k)} \xrightarrow[n\to+\infty]{}\ell $ donc $\ell  \in  \overline{ U_n }=F_n$ pour tout $n$, donc  $\ell  \in  F$.
+
+ Si $\ell  \in  F$, alors on construit $(k_n)$ de la manière suivante:  \begin{itemize}
+     \item $\mathcal  B_o(\ell ,1)\cap U_1$ est non vide ($ \ell  \in  F_1$) donc $ \exists  k_1\geq 1,\quad |u_{k_1}-\ell |\leq 1$
+     \item $\mathcal  B_o(\ell ,\dfrac{1}{2}) \cap U_{k_1+1}$ est non vide ($\ell  \in  F_{k_1+1}$) donc $ \exists  k_2>k_1,\quad |u_{k_2}-\ell |\leq \dfrac{1}{2}$
+     \item $\cdots $
+ \end{itemize}
+ Et on a ainsi construit une suite extraite qui tend vers $\ell $, ce qui conclut.
+ \end{rem}
+
+ \subsection{Produit cartésien}
+
+ \begin{prop}
+     \Hyp $(E_1, \|\;\|_1),\cdots ,(E_p,\|\;\|_p)$ des evn, $A_1\subset E_1, \cdots , A_p\subset E_p$ des compacts, et $\|\;\|=\sum_i \| \;\|_i$ 
+     \Conc $A_1\times \cdots  \times A_p$ est un compact de $E=E_1\times \cdots \times E_p$ pour la norme $\|\;\|$
+ \end{prop}
+
+ \begin{proof}
+     On note $(X_n)=(x_{n,1},\cdots ,x_{n,p})\in (A_1\times \cdots \times A_p)^{\N}$. Alors \begin{itemize}
+         \item $(x_{n,1})$ est une suite d'éléments de $A_1$ qui est un compact donc il existe une extractrice  $\varphi_1$ qui fait converger la suite extraite vers $\ell_{1} \in  A_1$ pour $\|\;\|_1$
+         \item  $(x_{\varphi_1(n),2})$ est une suite du compact $A_2$, on fait pareil. 
+         \item $\cdots $
+     \end{itemize}
+     Et ainsi $(X_{\varphi_p\circ \cdots \circ \varphi_1(n)})$ converge vers $(l_1,\cdots ,l_p)\in  A_1\times \cdots \times A_p$.
+ \end{proof}
+
+ \begin{rem}
+     $\R^p=\R\times \cdots \times \R$ munit de $\|\;\|_1$ (c'est la norme produit avec $|\;|$ sur  $\R$), $[-1,1]^p$ est compact pour  $\|\;\|_1$ donc pour $\|\;\|_\infty$ (équivalence des normes en dimension finie) et $\mathcal  B_f^\infty(0,1)$ est un fermé inclus dans $[-1,1]^p$ donc c'est un compact.
+
+     Plus généralement,  $\mathcal  B_f^\infty(0,r)$ est compact donc toute partie finie bornée pour $\|\;\|_\infty$ est compacte.
+ \end{rem}
+
+ \subsection{Théorème des bornes atteintes}
+
+ \begin{thm}
+     \Hyp $(E, \|\;\|)$ un $\K$-evn, $A\subset E$ un compact et  $f:A\to \R$ continue.\index{bornes atteints (théorème des -- )}
+\begin{concenum}
+\item $f(A)$ est un compact de  $\R$
+\item $ \exists  a,b\in A,\quad \quad f(a)=\sup_A\limits f$ et $f(b)=\inf_A\limits f$
+\end{concenum}
+ \end{thm}
+
+ \begin{proof}
+ 
+ \end{proof}

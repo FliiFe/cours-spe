@@ -1,0 +1,56 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Algèbre Linéaire} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Algèbre Linéaire}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Rappels}
+
+\begin{dfn}
+    Pour un corps $\K$, $(E, +, \cdot)$ est un  $\K$-espace vectoriel\index{espace vectoriel} si \begin{itemize}
+        \item $(E, +)$ est un groupe abélien
+        \item $\forall \lambda \in \K,\quad \forall  x,y\in E,\quad \lambda(x+y)=\lambda x+\lambda y$
+        \item $\forall \lambda,\mu \in  \K,\quad  \forall  x \in  E,\quad (\lambda+\mu)x=\lambda x+\mu x$ et $\lambda(\mu x)=(\lambda\mu)x$
+        \item $\forall x \in  E, \quad  1_{\K}\cdot x=x$
+    \end{itemize}
+\end{dfn}
+
+\subsection{Calculs dans un espace vectoriel}
+
+\begin{rem}[Rappel]
+    $(E, +, \cdot)$ un  $\K$-ev. Alors \begin{itemize}
+        \item $\forall  x \in  E,\quad 0_{\K}=0_E$
+        \item $\forall  \lambda \in  \K,\quad  \lambda \cdot 0_E=0_E$ et $\qquad \lambda x=0_E \iff \lambda=0_K$ ou $x=0_E$
+    \end{itemize}
+\end{rem}
+
+\begin{dfn}
+    On note $(E, +, \cdot)$ un  $\K$-ev et $I$ un ensemble non vide quelconque. On appelle  \textbf{famille de vecteurs}\index{famille de vecteurs} de $E$ indexée par  $I$ la donnée d'une fonction  $x:I\to E$. On la note $(x_i)_{i \in  I}$ avec $x_i=x(i)$
+    
+    On appelle \textbf{combinaison linéaire}\index{combinaison linéaire} de $(x_i)_{i \in  I}$ la donnée de $J\subset I$ fini, d'une famille  $(\lambda_j)_{j \in  J}$ de scalaires de $\K$ et du vecteur \[
+    \sum_{j \in  J} \lambda_j x_j
+    \] 
+\end{dfn}
+
+\todo{Compléter cette section}
+
+\section{Les sous-espaces vectoriels}
+
+\subsection{Constructeurs d'espaces vectoriels}
+
+Si $(E, +, \cdot)$ et  $(F, +, \cdot)$ sont des  $\K$-ev alors $(E\times F, +, \cdot)$ est un  $\K$-ev avec les lois qui s'appliquent terme à terme.
+
+Si $X$ est un ensemble non vide, et $E$ est un  $\K$-ev, alors $\mathcal F(X,E)$ est un  $\K$-ev
+
+\subsection{Rappels}
+
