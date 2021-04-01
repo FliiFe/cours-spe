@@ -134,6 +134,331 @@ Montrer que $u$ converge.
 \end{concenum}
  \end{thm}
 
- \begin{proof}
- 
+ \begin{proof}~
+\begin{enumerate}
+    \item On note $(y_n)$ une suite de $f(A)^{\N}$, et $(x_n)\in A^{\N}$ une suite d'antécédents de $(y_n)$ par $f$. La suite $x$ a une valeur d'adhérence $\ell  \in  A$ donc on peut en extraire une suite convergente \[
+            x_{\varphi(n)} \xrightarrow[n\to+\infty]{}\ell  \in  A.
+    \]
+    On a alors \[
+        y_{\varphi(n)}\xrightarrow[n\to+\infty]{}f(\ell )\in f(A)
+    \] 
+    donc $A$ est un compact.
+\item Il existe  $(x_n)\in A^{\N}$ telle que $f(x_n)\xrightarrow[n\to+\infty]{}\sum_A\limits f$, vu la compacité de $A$ on peut supposer que  $(x_n)$ converge (quitte à extraire) vers  $\ell  \in A $ de sorte que $f(\ell)$ est la borne supérieure cherchée.
+\end{enumerate} 
  \end{proof}
+
+ \begin{prop}
+ \Hyp $A\subset E$ compact,  $E,F$ des  $\K$-evn. On note $f:A\to F$ continue.
+ \Conc $f(A)$ compact
+ \end{prop}
+
+ \begin{proof}
+ Même démo que dans $\R$.
+ \end{proof}
+
+ \begin{ex}[Compacité d'une enveloppe convexe]
+     On pose
+     \[
+        \begin{matrix}
+            f:& \R_+^n & \longrightarrow & \R \\
+              & (\lambda_1,\cdots ,\lambda_n) & \longmapsto & \lambda_1+\cdots +\lambda_n
+        \end{matrix}
+     \] 
+     et pour $x_1, \cdots , x_n \in  E$, \[
+     \begin{matrix}
+         \varphi:& \R^n & \longrightarrow & E \\
+                 & (\lambda_1,\cdots ,\lambda_n) & \longmapsto & \lambda_1 x_1+\cdots +\lambda_n x_n
+     \end{matrix}
+     \] 
+     L'ensemble $f^{-1}(\{1\} )$ est un compact (fermé inclus dans $[0,1]^n$ compact) pour $\|\;\|_\infty$, les deux fonctions sont continues donc \[
+         \Conv(x_1, \cdots , x_n)= \left\{ \lambda_1x_1+\cdots +\lambda_n,x_n,\qquad \lambda_i\geq 0, \sum\lambda_i=1 \right\}=\varphi(f^{-1}(\{1\} ))
+     \] 
+     est compact
+\end{ex}
+
+\begin{thm}[Heine\index{Heine (théorème de -- )}]
+\Hyp $A\subset E$ compact,  $f:A\to F$ continue
+\Conc $f$ est uniformément continue
+\end{thm}
+
+\begin{proof}
+Supposons que $f$ n'est pas uniformément continue: \[
+    \exists   \epsilon>0,\forall  \delta>0,\exists x,y \in  A, \|x-y\|_E \leq \delta \text{ et } \|f(x)-f(y)\|_F\geq \epsilon
+\] 
+Pour un tel $\epsilon$, on prend $\delta_n=\dfrac{1}{n}$ et il existe $x_n,y_n \in  A$ tels que \[
+\|x_n-y_n\|_E \leq \delta \qquad  \text{ et } \qquad  \|f(x_n)-f(y_n)\|_F\geq \epsilon
+\] 
+On note $\varphi$ une extractrice de  $(x_n)$ telle que  $(x_{\varphi(n)})$ converge vers $\alpha \in  A$ (existe par compacité), donc \linebreak $y_{\varphi(n)}\xrightarrow[n\to+\infty]{}\alpha$ donc \[
+\underbrace{\|f(x_n)-f(y_n)\|}_{\displaystyle \geq \epsilon} \xrightarrow[n\to+\infty]{}0
+\] 
+et c'est absurde
+\end{proof}
+
+\section{Équivalence des normes en dimension finie}
+
+\begin{thm}
+\begin{enumerate}
+    \item Toutes les normes sur $\K^n$ sont équivalentes. \index{equivalence des normes@équivalence des normes en dimension finie}
+    \item En dimension finie, toutes les normes sont équivalentes.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item On va montrer que toutes les normes sont équivalents à la norme infinie. On se donne une norme $\|\;\|$. Si $(e_1,\cdots ,e_n)$ désigne la base canonique de $\K^n$, et si $x=x_1e_1+\cdots +x_ne_n$, alors \[
+                \|x\|\leq |x_1|\|e_1\|+\cdots +|x_n|\|e_n\|\leq \|x\|_\infty \underbrace{\|e_1\|+\cdots +\|e_n\|}_{C}
+        \] 
+        Puis \[
+        \forall  x, y \in  E, \qquad |\|x\|-\|y\||\leq \|x-y\|\leq C \|x-y\|_\infty
+        \] 
+        donc  \[
+        \begin{matrix}
+            \phi:& \R^n & \longrightarrow & \R \\
+            & x & \longmapsto & \|x\|
+        \end{matrix}
+        \] 
+        est continue de $(\R^n, \|\;\|_\infty)$ dans $(\R,|\;|)$. On note $S= \{x \in  \R^n, \quad \|x\|=1\} $ qui est un compact de $(\R^n,\|\;\|_\infty)$. Ainsi, $\varphi$ atteint ses bornes sur  $S$ et on note  $c$ le minimum de  $\phi$ de sorte que  \[
+        \forall  x \in  E\setminus \{ 0\} , \qquad \frac{x}{\|x\|_\infty} \in  S
+        \] 
+        donc \[
+            c \leq  \phi \left( \frac{x}{\|x\|_\infty} \right) = \frac{\|x\|}{\|x\|_\infty}
+        \] 
+        ce qui donne finalement, \[
+        \forall  x \in  E, \qquad  c\|x\|_\infty \leq  \|x\|\leq C \|x\|_\infty
+        \]
+        donc toutes les normes sont équivalentes.
+    \item On note $(e_1,\cdots ,e_n)$ une base de $E$ un  $\K$-evn de dimension finie, $\|\;\|_1$ et $\|\;\|_2$ deux normes. Pour $i=1$ et  $i=2$, on définit  \[
+    \begin{matrix}
+        N_i:& \K^n & \longrightarrow & \R_+ \\
+            & (x_1,\cdots ,x_n) & \longmapsto & \|x_1e_1+\cdots +x_ne_n\|_i
+    \end{matrix}
+    \] 
+    qui sont  deux normes équivalentes, donc les deux normes de départ sont équivalentes.
+    \end{enumerate}
+\end{proof}
+
+\begin{thm}
+    \Hyp $A\subset E$,  $E$ un  $\K$-evn de dimension finie
+    \Conc Il y a équivalence entre \begin{enumerate}
+        \item $A$ est une partie compacte
+        \item  $A$ est fermée bornée
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+~
+
+$(1\implies 2)$ déjà fait
+
+$(2 \implies  1)$ On note $\mathcal  B=(e_1,\cdots ,e_n)$ une base de $E$ et  $x_1,\cdots ,x_n$ les coordonnées de $x$ dans cette base. On note \[
+    \|x\|\defeq \max_{1\leq i\leq n} |x_i|
+\] 
+Par équivalence des normes, $A$ est fermée bornée pour toutes les normes. On note $(X_p)_p$ une suite de  $A^{\N}$ de coordonnées $x_{1,p},\cdots ,x_{n,p}$. Chacune des suites $(x_{i,p})_p$ est bornée dans $\K$ donc admet une suite extraite convergente, donc on peut extraire une suite de $(X_p)$ qui converge, et la limite de cette suite extraite est bien dans  $A$ car c'est une partie fermée.
+\end{proof}
+
+\begin{rem}
+    En dimension finie, si $A$ est une partie bornée, alors  $\overline{A} $ est un compact. Cela généralise le théorème de \textbf{Bolzano-Weierstrass}\index{Bolzano-Weierstrass}
+\end{rem}
+
+% Pas trop compris cette remarque: c'est un cex à quoi ? 
+
+% En dimension infinie, c'est faux. Par exemple, on se place dans $E=\R[X]$ est on considère les deux normes \[
+%     \|P\|_\infty=\sum_{[0,1]}|P| \qquad \text{ et }\qquad \|P\|_1=\int_0^1|P|
+% \] 
+% La suite $(X^n)_n$ est bornée pour  les deux normes. Pourtant, s'il existe une suite extraite convergente vers $P$, on a  \[
+%     |\underbrace{\|X^{\varphi(n)}\|_1}_{\to 0}-\|P\|_1|\leq \|X^{\varphi(n)}-P\|_1\leq \|X^{\varphi(n)}-P\|_\infty \xrightarrow[n\to+\infty]{}0
+% \] 
+% donc $\|P\|_1=0$ or \[
+%     \|X^{\varphi(n)}\|_\infty=1 \xnrightarrow[n\to+\infty]{}0
+% \] 
+
+\begin{prop}
+    \Hyp $(E, \|\;\|)$ un $\K$-evn de dimension finie et $x=(x_n)$ une suite bornée
+    \Conc Il y a équivalence entre \begin{enumerate}
+        \item $x$ converge
+        \item  $x$ a une unique valeur d'adhérence
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+    Si $A= \{x_n, \quad  n \in  \N\} $, alors $\overline{A}$ est un compact ce qui conclut (propriété de début de cours).
+\end{proof}
+
+\section{Algèbre linéaire et compacité}
+
+\begin{thm}
+\Hyp $E$ un  $\K$-evn de norme $\|\;\|$
+\Conc Si $F$ est un sev de dimension finie de  $E$ alors c'est un fermé
+\end{thm}
+
+\begin{proof}
+    On note $\mathcal  B=(e_1,\cdots ,e_n)$ une base de $F$,  $\|\;\|_\infty$ la norme usuelle associée. Sur $F$, cette norme est équivalente à la norme  $\|\;\|$. On note $(x_n) \in  F^{\N}$ une suite convergente pour $\|\;\|$ vers $\ell $. On doit montrer que $\ell \in F$. La suite $(x_n)$ est bornée pour  $\|\;\|$ donc pour $\|\;\|_\infty$ donc il existe $(x_{\varphi(n)})$ convergente vers $\ell ' \in  F$ pour $\|\;\|$ donc pour $\|\;\|$ d'où \[
+        x_{\varphi(n)} \xrightarrow[n\to+\infty]{\|\;\|}\ell '
+    \] 
+    d'où finalement $\ell =\ell '\in F$
+\end{proof}
+
+\begin{thm}
+    \Hyp $E,F$ des  $\K$-evn, $E$ de dimension finie 
+    \Conc Toute application linéaire $f:E\to F$ est continue
+\end{thm}
+
+\begin{proof}
+    On note $\mathcal  B=(e_1,\cdots ,e_p)$ une base de $E$ muni de  $\|\;\|_\infty$ associée. On note $x_1,\cdots,x_n$ les coordonnées de $x$ dans cette base et on a
+    \begin{align*}
+        \|f(x)\|_F&=\|x_1f(e_1)+\cdots +x_pf(e_p)\|_F \\ &\leq  \|x\|_\infty (\|f(e_1)\|_F+\cdots +\|f(e_p)\|_F)=\|x\|_\infty M \\ &\leq CM \|x\|_E
+    \end{align*}
+    par équivalence des normes, pour un $C>0$.
+\end{proof}
+
+\begin{thm}
+    \Hyp $(E_1, \|\;\|_1),\cdots ,(E_p,\|\;\|_p)$ des evn de dimension finie, $(F, \|\;\|_F)$ un $\K$-evn. $B:E_1\times \cdots \times E_p\to F$ multilinéaire.
+    \begin{concenum}
+    \item $B$ est continue
+    \item  \[
+            \exists  k>0, \quad \forall  u=(u_1,\cdots ,u_p)\in E_1\times \cdots \times E_p, \qquad  \|B(u)\|_F \leq  k \|u_1\|_1 \cdots  \|u_p\|_p
+    \] 
+    \end{concenum}
+\end{thm}
+
+\begin{proof}
+    On se donne $\mathcal  B_j=(e_{1,j},\cdots ,e_{r_j,j})$ une base de $E_j$, de sorte que  \[
+        B(u)= \sum_{k_1=1}^{r_1} \cdots  \sum_{k_p=1}^{r_p} t_{k_1,1}\cdots t_{k_p,p}B(e_{k_1,1},\cdots ,e_{k_p,p})
+    \] 
+    donc \begin{align*}
+        \|B(u)\|&\leq\sum_{k_1=1}^{r_1} \cdots  \sum_{k_p=1}^{r_p} |t_{k_1,1}\cdots t_{k_p,p}|\underbrace{\|B(e_{k_1,1},\cdots ,e_{k_p,p})\|}_{\text{majoré par un }M} \\ &\leq M \left( \sum_{k_1=1}^{r_1} |t_{k_1,1}| \right) \times \cdots \times \left( \sum_{k_p=1}^{r_p} |t_{k_p,p}| \right) \\&\leq kM \|u_1\|_1 \cdots  \|u_p\|_p
+    \end{align*}
+    par équivalence des normes.
+
+    Puis si $u_n \to  a$, alors \begin{align*}
+        B(u_n)-B(a)&=B(u_{n,1}-a_1,\cdots ,u_{n,p})+B(a_1,u_{n,2}-a_2,u_{n,3},\cdots ,u_{n,p})+\cdots  \\
+                   &\hspace{3em} + B(a_1,...,a_{p-1},u_{n,p}-a_{p})
+    \end{align*}
+    donc \begin{align*}
+        \|B(u_n)-B(a)\|_F\leq k \underbrace{\|u_{n,1}-a_1\|_1}_{\to 0} \underbrace{ \|u_{n,2}\|_2\cdots \|u_{n,p}\|_p }_{\text{borné}} + \cdots \xrightarrow[n\to+\infty]{}0
+    \end{align*}
+    d'où la continuité.
+\end{proof}
+
+\section{Propriété de Heine-Borel-Lebesgue}
+
+\index{Heine-Borel-Lebesgue (propriété de -- )}
+On note $(E, \|\;\|)$ un $\K$-evn. On va montrer l'équivalence entre \begin{enumerate}
+    \item $A\subset E$ compact de  $E$
+    \item Si $(O_i)_{i \in  I}$ est une famille d'ouverts de $E$ dont l'union contient  $A$ (on appelle alors cette famille un recouvrement de $A$ par des ouverts), alors il existe $i_1, \cdots ,i_p$ tels que \[
+    A \subset \bigcup_{k=1}^p O_{i_k}
+    \] 
+\end{enumerate}
+
+\boldmath
+$(1 \implies  2)$
+\unboldmath
+
+\textbf{Première étape.} On montre l'existence de $\epsilon_0>0$ tel que  $ \forall x \in  A, \exists  i \in  I, \mathcal  B_o(x, \epsilon_0)\subset O_i$. Par l'absurde, on suppose que pour $ n \in \N^\star$, il existe $x_n \in  A$ tel que $ \forall  i \in  I, \mathcal  B_o(x_n, \frac{1}{n})\not\subset O_i$. Il existe une extractrice $\varphi$ telle que  $(x_{\varphi(n)})$ converge vers $a \in  A$. On note $i_0 \in  I$ tel que $ a \in  O_i$, donc il existe $r_0>0$ tel que  $\mathcal  B_o(a, r_0) \subset O_{i_0}$. Or, APCR,  \[
+    \|x_{\varphi(n)}-a\|+\frac{1}{\varphi(n)}\leq \frac{r_0}{2}
+\] 
+donc $\mathcal  B_o(x_{\varphi(n)},\frac{1}{\varphi(n)})\subset \mathcal B_o(a,r_0)\subset O_{i_0}$, c'est absurde.
+
+\textbf{Deuxième étape.}  On se donne $\epsilon>0$ et on va montrer qu'on peut recouvrir  $A$ avec un nombre fini de boules de rayon  $\epsilon$
+
+On raisonne par l'absurde et on construit la suite  $(x_n) \in  A^{\N}$ de la manière suivante : \begin{itemize}
+    \item $ \exists x_0 \in  A$ et on a $A\not\subset \mathcal  B_o(x_0,\epsilon)$
+    \item $ \exists  x_1 \in  A\setminus \mathcal  B_o(x_0, \epsilon)$ et $A\not\subset \mathcal  B_o(x_0,\epsilon)\cup \mathcal  B_o(x_1,\epsilon)$
+    \item $\cdots $
+\end{itemize}
+Par construction, on a \[
+p\neq q \implies \|x_p-x_q\|\geq \epsilon
+\] 
+donc toutes les suites extraites ne sont pas de Cauchy donc ne sont pas convergentes, ce qui est absurde car c'est une suite d'un compact.
+
+\textbf{Troisième étape.} On applique la deuxième étape avec le $\epsilon_0$ de la première étape. Cela conclut immédiatement. 
+
+\boldmath$(2 \implies  1)$ \unboldmath
+
+\textbf{Première étape.} On va montrer que si $(F_n)$ est une suite décroissante de fermés relatifs de $A$ non vides, alors $\cap F_n\neq \emptyset$.
+
+On suppose que  $\cap F_n=\emptyset$, de sorte que  $(A\setminus F_n)_n$ est un recouvrement d'ouverts de $A$. On en extrait un recouvrement fini:  \[
+    \exists  i_1,\cdots ,i_p, \qquad  A\subseteq (A\setminus F_{i_1})\cup \cdots \cup (A\setminus F_{i_p})=A\setminus\underbrace{(F_{i_1}\cap \cdots \cap F_{i_p})}_{\neq \emptyset } \subsetneq A
+\] 
+absurde.
+
+\textbf{Deuxième étape.} $(x_n) \in  A^{\N}$. Pour $p \in  \N$, $F_p=\overline{ \{x_p, n\geq p\}  }$ est une suite décroissante de fermés non vides relatifs de $A$, donc  $(x_n)$ a une valeur d'adhérence dans  $A$.
+
+\section{Théorème de Riesz}
+
+\index{Riesz (théorème de compacité)}On note  $(E, \|\;\|)$ un $\K$-evn. On va montrer que $E$ est de dimension finie  si et seulement si $\mathcal  B_f(0,1)$ est compact
+
+Le sens direct est immédiat. On suppose que $E$ est de dimension infinie et on va montrer que la boule fermée $\mathcal  B$ unité n'est pas compacte. On la suppose compacte par l'absurde, et Heine-Borel-Lebesgue donne \[
+    \exists  a_1,\cdots ,a_p , \qquad  \mathcal  B \subset \mathcal  B_o(a_1, \frac{1}{2})\cup \cdots  \cup \mathcal B_o(a_p,\frac{1}{2})
+\] 
+On note $F=\Vect(a_1,\cdots ,a_p)\neq E$. Il existe $x \in  E\setminus F$ et $d(x, F)>0$ car $F$ est un fermé (sev en dimension finie). Il existe $(x_n) \in  F^{\N}$ telle que $d(x,x_n)\longrightarrow d(x, F)$ et  \[
+\frac{x-x_n}{\|x-x_n\|} \in  \mathcal  B
+\] 
+donc il existe $\varphi$ extractrice telle que  \[
+    \frac{x-x_{\varphi(n)}}{\|x-x_{\varphi(n)}\|} \xrightarrow[n\to+\infty]{} \ell \in  \mathcal  B
+\] 
+Il existe $i \in  \llbracket 1, p \rrbracket $ tel que $\|\ell  - a_i\|<\dfrac{1}{2}.$ On pose $y_n=x_n+ \|x-x_n\|a_i \in  F$ de sorte que \[
+    y_n-x=x_n-x+\|x-x_n\|a_i=\|x-x_n\|\left( a_i-\frac{x-x_n}{\|x-x_n\|} \right) \xrightarrow[n\to+\infty]{} d(x,F)(a_i-\ell )
+\] 
+d'où \[
+    \|y_n-x\| \xrightarrow[n\to+\infty]{}d(x,F)\|a_i-\ell \|<\frac{d(x,F)}{2}
+\] 
+et donc APCR, $\|y_n-x\|<d(x,F)$ absurde.
+
+\section{Connexité par arcs}
+
+On note $(E, \|\;\|)$ un $\K$-evn, $A\subset E$ et  $a, b \in  A$. On appelle \textbf{chemin} de $a$ à  $b$ une application continue  $\gamma:[0, 1]\to E$ telle que $\gamma(0)=a$ et  $\gamma(b)=b$. On écrira \[
+    a \xrightarrow[A]{}b \qquad \text{ ou } \qquad  a \xrightarrow[A]{\gamma}b
+\] 
+
+\begin{dfn}
+    On dira que $A$ est connexe par arcs (abrégé c.p.a.) \index{connexe par arcs}  si chaque paire de points est connectée par un chemin de $A$.
+\end{dfn}
+
+\begin{ex}
+Les convexes sont connexes par arcs.
+\end{ex}
+
+\begin{prop}
+    Les connexes par arcs de $\R$ sont les intervalles (i.e. les convexes)
+\end{prop}
+
+\begin{proof}
+    Si $A\subset R$ est convexe, alors  $]\inf A, \sup A[\subset A$ par connexité et TVI, et $\overline{ A }\subset [\inf A, \sup A]$ ce qui conclut.
+\end{proof}
+
+\section{Image des connexes par arcs}
+
+\begin{thm}
+\Hyp $f:E\to F$ continue et $A\subset E$
+ \begin{concenum}
+ \item Si $A$ est connexe par arcs alors $f(A)$ aussi
+ \item Si  $A$ est connexe par arcs et  $F=\R$, alors $f(A)$ est un intervalle.
+\end{concenum}
+\end{thm}
+
+\begin{proof}~
+\begin{enumerate}
+    \item On note $\alpha = f(a)$,  $\beta=f(b)$. L'application  $f\circ \gamma$ avec  $a \xrightarrow[A]{\gamma}$ convient.
+    \item Clair.
+\end{enumerate}
+\end{proof}
+
+\begin{exo}
+Montrer que $\R^2\setminus \Q^2$ est connexe par arcs.
+\end{exo}
+
+\section{Composantes connexes par arcs}
+
+\begin{defprop}
+\Hyp $A\subset E$
+\Conc On note  $\mathcal  R$ la relation sur $A$  $a\mathcal Ry\iff \exists \gamma , a \xrightarrow[A]{\gamma}b$. C'est une relation d'équivalence dont les classes d'équivalences sont appelées composantes connexes par arcs.\index{composantes connexes par arcs}
+\end{defprop}
+
+\begin{exo}
+    Montrer qu'un $\R$-evn de dimension finie privé d'un hyperplan a deux composantes connexes et les décrire.
+\end{exo}
+
+\begin{proof}[Esquisse de réslution]
+    Les deux composantes sont $\varphi^{-1}(\R_+^\star)$ et $\varphi^{-1}(\R_-^\star)$ avec $\varphi$ une FL telle que $H=\Ker\varphi$
+\end{proof}
