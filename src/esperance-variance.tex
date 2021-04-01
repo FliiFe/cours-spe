@@ -96,7 +96,7 @@
         |x\P(X=x,Y=y)|\leq y\P(X=x,Y=y)\tag{$\star$}
     \] 
     Or \[
-        [Y=y]=\bigcup_{x \in  X(\Omega)}[X=x,Y=y] \qquad \therefore \qquad  \P(Y=y)=\sum_{x \in  X(\Omega)}\P(X=x,Y=y)
+    [Y=y]=\bigcup_{x \in  X(\Omega)}[X=x,Y=y]  \] ce qui donne \[   \P(Y=y)=\sum_{x \in  X(\Omega)}\P(X=x,Y=y)
     \]
     donc $(y\P(X=x,Y=y))_{x \in  X(\Omega)}$ est sommable. $Y$ est d'espérance finie donc  \[
         (y\P(Y=y))_{y\in Y(\Omega)}=\left( \sum_{x\in X(\Omega)}y\P(X=x,Y=y) \right) _{y \in  Y(\Omega)}
@@ -121,7 +121,7 @@
     \item L'homogénéité est évidente. On montre l'additivité. On pose $Z=(X,Y)$ et  $f:(x,y)\longmapsto x+y$ de sorte que $T=f(Z)$ est une v.a.r.d par le lemme des coalitions.  $T$ est d'espérance finie  si et seulement si $((x+y)\P(X=x,Y=y))_{x,y}$ est sommable.
 
         La famille $(|x|\P(X=x,Y=y))_{y}$ est sommable car \[
-            [X=x]=\bigcup_{y \in  Y(\Omega)} [X=x,Y=y] \qquad \therefore \qquad  \sum_{y \in  Y(\Omega)}|x|\P(X=x,Y=y)=|x|\P(X=x)
+        [X=x]=\bigcup_{y \in  Y(\Omega)} [X=x,Y=y]  \] et \[   \sum_{y \in  Y(\Omega)}|x|\P(X=x,Y=y)=|x|\P(X=x)
         \]
         sommable pour $x$ donc $(|x|\P(X=x,Y=y))_{x,y}$ est sommable, idem pour $(|y|\P(X=x,Y=y))_{x,y}$ donc $X+Y$ est d'espérance finie. Finalement,  \[
             \E(T)=\sum_x \left( \sum_y x\P(X=x,Y=y) \right) +\sum_y \left( \sum_x y\P(X=x,Y=y) \right) =\E(X)+\E(Y)
@@ -414,7 +414,7 @@ donc \[
 \begin{thm}
     \Hyp $(\Omega, \mathcal  A, \P)$, $X_1,\cdots , X_n$ des vard $\indep$ de même loi avec variance (iid\footnotemark), $S_n=X_1+\cdots +X_n$ et $m=\E(X_1)$
     \Conc \[
-        \forall  \epsilon>0,qa\P\left( \left| \frac{S_n}{n}-m\geq \epsilon \right| \right) \leq \frac{V(X_1)}{n\epsilon^2} \xrightarrow[n\to+\infty]{}0
+        \forall  \epsilon>0,\quad \P\left( \left| \frac{S_n}{n}-m\geq \epsilon \right| \right) \leq \frac{V(X_1)}{n\epsilon^2} \xrightarrow[n\to+\infty]{}0
     \] 
 \end{thm}
 \footnotetext{indépendantes et identiquement distribuées}
