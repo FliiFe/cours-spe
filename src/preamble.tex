@@ -1,6 +1,10 @@
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
 \usepackage[a4paper, margin=2cm]{geometry}
-\usepackage{lmodern} 
+\usepackage[activate={true,nocompatibility},final,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\usepackage{lmodern}
+% \usepackage{mlmodern} 
 \usepackage{amsmath}
 \usepackage{bbm}
 \usepackage{bm}
@@ -153,14 +157,14 @@
 \renewcommand\geq\geqslant
 \newcommand\floor[1]{\left\lfloor#1\right\rfloor}
 \newcommand\ceil[1]{\left\lceil#1\right\rceil}
-\DeclareDocumentCommand\P{}{\mathbb P}
-\DeclareDocumentCommand\R{}{\mathbb R}
-\DeclareDocumentCommand\N{}{\mathbb N}
-\DeclareDocumentCommand\Z{}{\mathbb Z}
-\DeclareDocumentCommand\Q{}{\mathbb Q}
-\DeclareDocumentCommand\C{}{\mathbb C}
-\DeclareDocumentCommand\E{}{\mathbb E}
-\DeclareDocumentCommand\K{}{\mathbb K}
+\DeclareDocumentCommand\P{}{\mathbf P}
+\DeclareDocumentCommand\R{}{\mathbf R}
+\DeclareDocumentCommand\K{}{\mathbf K}
+\DeclareDocumentCommand\N{}{\mathbf N}
+\DeclareDocumentCommand\Z{}{\mathbf Z}
+\DeclareDocumentCommand\Q{}{\mathbf Q}
+\DeclareDocumentCommand\C{}{\mathbf C}
+\DeclareDocumentCommand\E{}{\mathbf E}
 \newcommand\indep{\protect\mathpalette{\protect\indepT}{\perp}}
 \def\indepT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
 \newcommand\suit{\hookrightarrow}
@@ -195,7 +199,7 @@
 \newcommand{\Hyp}{\ishypconctrue\begin{adjustwidth}{3em}{}~\\[.1cm] \hspace*{-3em}\hyp\hspace{1em}}
 \newcommand{\Conc}{~\\[.1cm] \hspace*{-3em}\conc\hspace{1em}}
 \newenvironment{concenum}{
-    ~\\[0.1cm]\hspace*{-3em}\begin{tabular}{@{}lp{15cm}} \conc & \vspace{-.45cm}
+    ~\\[0.1cm]\hspace*{-3em}\begin{tabular}{@{}lp{\textwidth-4em}} \conc & \vspace{-.45cm}
 \begin{enumerate}[leftmargin=.5cm]
 }
 {
