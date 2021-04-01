@@ -16,6 +16,7 @@ jobs:
       with:
         run: |
           apk add make
+          tlmgr install mlmodern
           env VERBOSE=y make all
     # - name: Compilation
     #   uses: xu-cheng/latex-action@master
