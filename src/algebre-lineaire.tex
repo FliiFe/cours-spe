@@ -1,16 +1,16 @@
 \ifsolo
-    ~
+~
 
-    \vspace{1cm}
+\vspace{1cm}
 
-    \begin{center}
-        \textbf{\LARGE Algèbre Linéaire} \\[1em]
-    \end{center}
-    \tableofcontents
+\begin{center}
+    \textbf{\LARGE Algèbre Linéaire} \\[1em]
+\end{center}
+\tableofcontents
 \else
-    \chapter{Algèbre Linéaire}
+\chapter{Algèbre Linéaire}
 
-    \minitoc
+\minitoc
 \fi
 \thispagestyle{empty}
 
@@ -31,26 +31,395 @@
     $(E, +, \cdot)$ un  $\K$-ev. Alors \begin{itemize}
         \item $\forall  x \in  E,\quad 0_{\K}=0_E$
         \item $\forall  \lambda \in  \K,\quad  \lambda \cdot 0_E=0_E$ et $\qquad \lambda x=0_E \iff \lambda=0_K$ ou $x=0_E$
-    \end{itemize}
+        \end{itemize}
+    \end{rem}
+
+    \begin{dfn}
+        On note $(E, +, \cdot)$ un  $\K$-ev et $I$ un ensemble non vide quelconque. On appelle  \textbf{famille de vecteurs}\index{famille de vecteurs} de $E$ indexée par  $I$ la donnée d'une fonction  $x:I\to E$. On la note $(x_i)_{i \in  I}$ avec $x_i=x(i)$
+
+        On appelle \textbf{combinaison linéaire}\index{combinaison linéaire} de $(x_i)_{i \in  I}$ la donnée de $J\subset I$ fini, d'une famille  $(\lambda_j)_{j \in  J}$ de scalaires de $\K$ et du vecteur \[
+            \sum_{j \in  J} \lambda_j x_j
+        \]
+    \end{dfn}
+
+    \todo{Compléter cette section}
+
+    \section{Les sous-espaces vectoriels}
+
+    \subsection{Constructeurs d'espaces vectoriels}
+
+    Si $(E, +, \cdot)$ et  $(F, +, \cdot)$ sont des  $\K$-ev alors $(E\times F, +, \cdot)$ est un  $\K$-ev avec les lois qui s'appliquent terme à terme.
+
+    Si $X$ est un ensemble non vide, et $E$ est un  $\K$-ev, alors $\mathcal F(X,E)$ est un  $\K$-ev
+
+    \subsection{Rappels}
+
+    \begin{dfn}
+        $F$ est un \textbf{sous-espace vectoriel}  du  $\K$-e.v. $E$  si et seulement si c'est un $\K$-e.v. pour les mêmes lois et qu'il est inclus dans $E$, ou bien de manière équivalente, $F$ est tel que  \begin{itemize}
+            \item $F\subset E$
+            \item  $F\neq \emptyset$
+            \item  $ \forall  \lambda \in  \K, \quad  \forall  x, y \in  F, \qquad  \lambda x+y \in  F$
+        \end{itemize}
+    \end{dfn}
+
+    \begin{defprop}
+        \Hyp $E$ un $\K$-ev, $(F_i)_i$ une famille de sev de  $E$
+        \begin{concenum}
+        \item $\bigcap_{i \in I }\limits F_i $ sev de $E$
+        \item On note $A$ une partie de  $E$, $\mathcal  E_A$ l'ensemble des sev de $E$ qui contiennent  $A$ \begin{enumerate}
+            \item $\bigcap_{F \in  \mathcal  E_A}\limits F$ est le sous-espace engendré par $A$, on le note aussi  $\Vect(A)$ ou  $\langle A\rangle$
+            \item  $F \in  \mathcal  E_A \implies  \Vect(A)\subset F$
+            \item $\Vect(A)= \left\{ \sum_{i=1}^n\limits \lambda_ia_i,\qquad  n \in  \N, \lambda_i \in  \K,a_i \in  A \right\}$
+        \end{enumerate}
+    \end{concenum}
+\end{defprop}
+
+\begin{rem}
+    Pour montrer qu'un ensemble est un sev on peut: revenir à la définition, reconnaître un espace engendré, montrer que c'est le noyau ou l'image d'une application linéaire.
 \end{rem}
 
-\begin{dfn}
-    On note $(E, +, \cdot)$ un  $\K$-ev et $I$ un ensemble non vide quelconque. On appelle  \textbf{famille de vecteurs}\index{famille de vecteurs} de $E$ indexée par  $I$ la donnée d'une fonction  $x:I\to E$. On la note $(x_i)_{i \in  I}$ avec $x_i=x(i)$
-    
-    On appelle \textbf{combinaison linéaire}\index{combinaison linéaire} de $(x_i)_{i \in  I}$ la donnée de $J\subset I$ fini, d'une famille  $(\lambda_j)_{j \in  J}$ de scalaires de $\K$ et du vecteur \[
-    \sum_{j \in  J} \lambda_j x_j
+\subsection{Union de sous-espaces vectoriels}
+
+On note $E$ un  $\K$-espace vectoriel. On va montrer que si $\K$ est infini, alors la réunion d'un nombre fini de sous espaces stricts de $E$ ne peut pas valoir  $E$.
+
+Soient $E_1, \cdots, E_n$ des sev de $E$ tels que \[
+    \bigcup_{i=1}^nE_i=E
+\]
+Quitte à éliminer les redondances et supposer $n$ minimal, on peut faire en sorte (sans modifier l'union) que \[
+    E_1\not\subset \bigcup_{j=2}^n E_j
+\]
+Ainsi, si $u\in E_1\setminus \bigcup_{i=2}^nE_i$ et $v\in E\setminus E_1$, l'ensemble $v+\K u$ est disjoint de $E_1$ et contient au plus un vecteur de chaque autre espace vectoriel (car si $\alpha_1\neq \alpha_2$ sont tels que $v+\alpha_1 u, v+\alpha_2 u \in E_i$, alors $u \in  E_i$ absurde). Ainsi, \[
+    v+\K u= \bigcup_{j=1} ^n (E_j\cap (v + \K u))
+\]
+est un ensemble fini de cardinal au plus $n-1$, ce qui est absurde si  $\K$ est infini.
+
+\paragraph{Application aux endomorphismes cycliques.} On note $f \in  \mathcal  L(E)$ pour $E$ un  $\C$-ev et on suppose que $f$ n'a qu'un nombre fini de sous espaces stables. On définit les espaces (stables) suivants: \[
+    \forall  x \in  E, \qquad  E_{f,x}\defeq \Vect(f^{k}(x), k \in  \N)
+\]
+Supposons que $\forall  x \in  E, E_{f,x}\neq  E$. On construit alors la suite $(x_k)_{k \in  \N^\star}$ ainsi: \begin{itemize}
+    \item $x_1 \in  E\setminus \{0\} $
+    \item $ x_2 \in  E\setminus E_{f,x_1}$ et $E \neq  E_{f,x_1}\cup E_{f,x_2}$
+    \item $\cdots $
+    \item $x_{n+1} \in  E \setminus  (E_{f,x_1}\cup \cdots \cup E_{f,x_n})$ et $E \neq  E_{f,x_1}\cup \cdots \cup E_{f,x_{n+1}}$
+\end{itemize}
+Les $E_{f,x}$ sont stables par $f$ est deux à deux distincts puisqu'on peut construire la suite. On en a une infinité, c'est absurde donc il existe  $x \in  E$ tel que $E_{f,x}=E$. On dit alors que $f$ est  \textbf{cyclique}\index{endomorphisme cyclique}
+
+Si $E$ est de dimension finie, alors on note  $r$ le plus grand entier tel que  $(x, \cdots , f^{r}(x))$ est libre. Cette famille constitue alors une base de $E_{f,x}=E$ (si on rajoute un autre vecteur de la partie génératrice, c'est une CL d'éléments de la famille libre exprimée). La matrice de $f$ dans cette base s'écrit  \[
+    \mathcal  M_{\mathcal  B}(f)= \begin{pmatrix}
+        0 & \cdots & \cdots & 0 & a_0 \\
+        1 & 0 & \ddots & \vdots & \vdots \\
+        0 & 1 & \ddots & \vdots & \vdots \\
+        \vdots & \ddots & \ddots & \vdots & \vdots \\
+        0 & \cdots & 0 & 1 & a_r
+    \end{pmatrix}
+\]
+C'est une matrice compagnon.
+
+\section{Somme simple, somme directe}
+
+On note $E$ un $\K$-ev, $E_1,\cdots ,E_n$ des sev de $E$ et on pose  \[
+    E_1+\cdots +E_n= \{x_1+\cdots +x_n, \quad \forall  i \in  \llbracket 1,n \rrbracket , x_i \in  E_i\}
+\]
+C'est un sev de $E$ en tant qu'image d'une application linéaire.
+
+\begin{thmdef}
+    \Hyp $E_1,\cdots ,E_n$ sev de $E$
+    \begin{concenum}
+    \item La somme $E_1+\cdots +E_n$ est dite \textbf{directe}\index{somme directe} si \[
+            \forall  (x_1,\cdots ,x_n) \in  E_1\times \cdots \times E_n, \qquad  x_1+\cdots +x_n =0 \implies (x_1, \cdots , x_n)=0
+        \]
+        On notera alors $E_1\oplus \cdots \oplus E_n$
+    \item C'est équivalent à ce que l'une des trois propositions suivantes soit vérifiée: \begin{enumerate}
+        \item $\forall  j \in  \llbracket 2, n \rrbracket , \qquad  (E_1+\cdots+E_{j-1})\cap E_j= \{0\} $
+        \item $\dim(E_1+\cdots +E_n)=\dim E_1+\cdots +\dim E_n$
+        \item La concaténations de bases des $E_i$ est une base de la somme simple.
+    \end{enumerate}
+\end{concenum}
+\end{thmdef}
+
+\begin{proof}~
+    \begin{itemize}
+        \item (def $\implies a$) Facile
+        \item $(a\implies c)$ $\mathcal  B$ génératrice de $E_1+\cdots +E_n$, $ \mathcal  B_{\ell }=(e_{i,\ell })_i$ base de $E_{\ell }$. On considère une CL nulle, on isole un coefficient: il est nul. On itère.
+        \item $(c \implies b)$ Immédiat
+        \item $(b \implies c)$ Une famille génératrice du cardinal de la dimension est une base
+        \item $(c \implies \text{def})$ On décompose sur la base concaténée: tous les coefs sont nuls donc les  $x_i$ sont nuls.
+    \end{itemize}
+\end{proof}
+
+\subsection{Application linéaire définie par morceaux}
+
+\begin{thm}
+    \Hyp $E_1, \cdots , E_n$ des sev de $E$
+
+    \begin{concenum}
+    \item  $E_1\oplus\cdots \oplus E_n$ si et seulement si \[
+            \forall  x \in  E_1+\cdots +E_n, \exists !(x_1,\cdots ,x_n) \in  E_1\times \cdots \times E_n, \quad  x=x_1+\cdots +x_n
+        \]
+    \item Dans ce cas, \begin{enumerate}
+        \item L'application \[
+                \begin{matrix}
+                    \varphi:& E_1\times \cdots \times E_n & \longrightarrow & E_1\oplus \cdots \oplus E_n \\
+                            & (x_1, \cdots , x_n) & \longmapsto & x_1+\cdots +x_n
+                \end{matrix}
+            \]
+            est un isomorphisme
+        \item On a : \[
+                \forall  x \in  E_1\oplus \cdots \oplus E_n, \forall  i \in  \llbracket 1, n \rrbracket , \exists !x_i \in  E_i, \quad  \quad  x-x_i \in  \bigoplus_{\substack{j=1\\j\neq i}}^n E_j
+            \]
+            On note $\pi_i(x)=x_i$
+        \item Les  $\pi_i$ sont des projecteurs et  $\sum \pi_i$ est l'application identité sur  $E_1\oplus\cdots \oplus E_n$. On les appelle les \textbf{projecteurs associés à la décomposition}
+    \end{enumerate}
+\item $F$ un  $\K$-ev, $f_1 \in  \mathcal  L(E_1, F), \cdots , f_n \in  \mathcal  L(E_n,F)$. \[
+    \exists !f \in  \mathcal  L(E_1\oplus \cdots \oplus E_n, F), \qquad f_{|E_i}=f_i \]
+    et \[
+        f=\sum_i f_i\circ \pi_i
+    \]
+\end{concenum}
+ \end{thm}
+
+ \begin{proof}
+     Facile
+ \end{proof}
+
+ \subsection{Lemme de décomposition et d'isomorphisme}
+
+ Si $E=F\oplus G$ et  $H$, alors  \[
+     \begin{matrix}
+         \psi:& \mathcal  L(E, H) & \longrightarrow & \mathcal  L(F, H)\times \mathcal  L(G, H) \\
+              & f & \longmapsto & (f_{|F}, f_{|G})
+     \end{matrix}
+ \]
+ est un isomorphisme.
+
+ Si $\pi_1, \pi_2$ sont les projecteurs associés à $(F_1\times \{0\} )\oplus (\{ 0\}\times F_2 )$, alors \[
+     \begin{matrix}
+         \varphi:& \mathcal  L(E, F_1\times  F_2) & \longrightarrow & \mathcal  L(E, F_1)\times \mathcal  L(E, F_2)  \\
+                 & f & \longmapsto & (\pi_1\circ f, \pi_2\circ f)
+     \end{matrix}
+ \]
+ est aussi un isomorphisme.
+
+ \subsection{Lemme de factorisation}
+
+ \paragraph{Premier lemme}
+ Soient $u \in  \mathcal  L(E, F), v \in  \mathcal  L(E, G)$ tels que $\Ker u \subset \Ker v$. On va montrer qu'il existe  $w \in  \mathcal  L(F, G)$ telle que $v=w\circ u$.
+
+ On note $V$ un supplémentaire de  $\Ker u$ dans  $E$.  $u_{|V}$ est un isomorphisme de $V$ dans  $\Img u$. On peut prendre  $w_{|\Img u}=v_{|V}\circ (u_{|V}^{-1})$ et $w$ nulle sur un supplémentaire de  $\Img u$
+
+ \paragraph{Second lemme}
+ $u \in  \mathcal  L(E, G), v \in  \mathcal  L(F, G)$ et $\Img u \subset \Img v$. Il existe  $w \in  \mathcal  L(E, F)$ telle que $u=v\circ w$
+
+ La démonstration est similaire.
+
+ \section{Théorème du rang}
+
+ \begin{thm}[Rang\index{theoreme du rang@théorème du rang}]
+     \Hyp $E, F$ des  $\K$-ev et $f \in  \mathcal  L(E, F)$
+     \begin{concenum}
+     \item Si $V$ est un supplémentaire de  $\Ker f$ dans  $E$ alors  $f_{|V}$ est un isomorphisme de $V$ dans  $\Img f$
+     \item  $\dim E<+\infty \implies  \dim(\Img f)<+\infty$ et $\dim E=\dim\Ker f+\rg f$
+     \end{concenum}
+ \end{thm}
+
+ \begin{proof}
+     Simple (sup)
+ \end{proof}
+
+\begin{rem}
+Le rang est invariant par composition de son argument avec un isomorphisme: si $u,v$ sont des isomorphismes,  $\rg f=\rg f\circ v=\rg u\circ f$
+\end{rem}
+
+\begin{exo}
+    $f,g\in \mathcal  L(E)$. Montrer que \[
+        |\rg f-\rg g|\leq \rg(f+g)\leq \rg f+\rg g
     \] 
-\end{dfn}
+\end{exo}
 
-\todo{Compléter cette section}
+\begin{proof}[Résolution]
+    $(f+g)(E)\subset f(E)+g(E)$ d'où l'inégalité de droite. Puis  \[
+        \rg f = \rg (f+g-g)\leq \rg (f+g)+\rg (-g)=\rg (f+g)+\rg g
+    \] 
+    et par symétrie des rôles, on a l'autre inégalité.
+\end{proof}
 
-\section{Les sous-espaces vectoriels}
+\section{Monotonie des noyaux itérés, décomposition de Fitting}
 
-\subsection{Constructeurs d'espaces vectoriels}
+\begin{res}[Propriété d'essoufflement des noyaux itérés\index{essoufflement (propriété des noyaux itérés)}]
+On note $f$ un endomorphisme en dimension finie $n$. La suite \[
+    \left(\Ker(f^k)\right)_k.
+\]
+est strictement croissante sur $d$ premiers termes (on peut avoir $d=0$) puis stationnaire. De plus, la suite $(\delta_n)_n$ définie par \[
+    \forall k\in \N, \delta_k=\dim(\Ker(f^{k+1}))-\dim(\Ker(f^k))
+\]
+est décroissante (cette monotonie est appelée \textbf{propriété d'essoufflement}).
+\end{res}
 
-Si $(E, +, \cdot)$ et  $(F, +, \cdot)$ sont des  $\K$-ev alors $(E\times F, +, \cdot)$ est un  $\K$-ev avec les lois qui s'appliquent terme à terme.
+\begin{proof}
+    La croissance simple de la suite des noyaux est directe: si $f^k(x)=0$ alors $f(f^k(x))=f(0)=0$. On a forcément croissance stricte sur les premiers termes jusqu'à atteindre une égalité (éventuellement la croissance stricte ne concerne aucun termes). Cette égalité est atteinte car la suite $(\dim(\Ker(f^k)))$ est une suite entière croissante majorée donc stationnaire. Il reste à montrer que dès qu'une égalité est atteinte, la suite devient constante. Supposons \[
+    \Ker(f^k)=\Ker(f^{k+1})
+\]
+Alors, \[
+    \Ker(f^{k+2})=\{x, \quad f(f^{k+1}(x))=0\}=\{x, \quad f(f^k(x))=0\}=\Ker(f^k)
+\]
+La suite est donc bien strictement croissante puis stationnaire. On va maintenant montrer la décroissance de $(\delta_n)_n$. On a, en appliquant le théorème du rang,
+\begin{align*}
+    \dim(\Img(f^k))&=\dim\left(\Ker\left(f\left|_{\Img(f^k)}\right.\right)\right)+\dim\left(\Img\left(f\left|_{\Img(f^k)}\right.\right)\right)\\
+    &=\dim\left(\Ker\left(f\left|_{\Img(f^k)}\right.\right)\right)+\dim(\Img(f^{k+1}))
+\end{align*}
+d'où \[
+    \delta_k=\dim(\Img(f^k))-\dim(\Img(f^{k+1}))=\dim\left(\Ker\left(f\left|_{\Img(f^k)}\right.\right)\right)=\dim(\Img(f^k)\cap \Ker(f)).
+\]
+Or la suite des images est décroissante donc $(\delta_k)_k$ décroît.
+\end{proof}
 
-Si $X$ est un ensemble non vide, et $E$ est un  $\K$-ev, alors $\mathcal F(X,E)$ est un  $\K$-ev
+\begin{res}[Décomposition de Fitting\index{Fitting (décomposition de -- )}]
+    Si $r$ est tel que  $\Ker f^r=\Ker f^{r+1}$, alors  $E=\Ker f^r\oplus \Img f^r$
+\end{res}
+
+\begin{proof}
+    Si $x \in  \Img f^r\cap \Ker f^r$ alors $x=f^r(t)$ et  $f^r(x)=0$ donc  $t \in  \Ker f^{2r}=\Ker f^r$ et $x=0$, ce qui donne la somme directe. Puis on a la bonne dimension avec le théorème du rang.
+\end{proof}
+
+\section{Formes linéaires}
 
 \subsection{Rappels}
+
+\begin{dfn}
+    Si $E$ est un  $\K$-ev, on appelle \textbf{forme linéaire}\index{forme linéaire} sur $E$ une application de  $\mathcal  L(E, \K)\defeq E^\star$. On appelle  \textbf{hyperplan} le noyau d'une forme linéaire non nulle.
+\end{dfn}
+
+\begin{thm}
+\Hyp $E$ un  $\K$-ev, $H$ un sev de  $E$
+\Conc Il y a équivalence entre \begin{enumerate}
+    \item $H$ est un hyperplan de  $E$
+    \item  $\forall   a \in  E\setminus H, \quad  H\oplus \K a=E$
+    \item $ \exists a \in  E\setminus H, \quad  H\oplus \K a=E$
+    \item $\dim H=\dim E-1$ si  $E$ est de dimension finie
+    \item  $ \exists  \varphi \in  \mathcal  L(E, \K)\setminus \{0\}, \quad  H=\Ker \varphi$
+\end{enumerate}
+\end{thm}
+
+\begin{proof}~\\
+    $(1 \iff 5)$ c'est la déf \\
+        $(1\implies 2)$ Si $\varphi$ est une FL non nulle telle que  $\Ker\varphi=H$ et si  $a \in  E\setminus H$ alors $\varphi(a)\neq 0$ et  \[
+            x=\left(x-\frac{\varphi(x)}{\varphi(a)}a\right)+\frac{\varphi(x)}{\varphi(a)}a
+        \] 
+        d'où $E=H+\K a$. L'intersection vaut $\{ 0\} $ donc la somme est directe. \\
+        $(2\implies 3)$ Trivial\\
+        $(3\implies 1)$ $\varphi_{H}=0$, $\varphi(a)=1$.
+\end{proof}
+
+\subsection{Base antéduale}
+
+\begin{exo}
+On note E un $\K$-ev de dimension n et $(\varphi_1,\cdots,\varphi_n)$ une base de $E^\star$. Montrer qu'il existe $(x_1,\cdots,x_n)\in  E^n$ tels que $\varphi_i(x_j) = \delta_{i,j}$
+\end{exo}
+
+\begin{proof}
+On note
+\begin{align*}
+    \psi : E &\longrightarrow \K^n\\
+  x &\longmapsto (\varphi_1(x),\cdots,\varphi_n(x))
+\end{align*}
+Si $\psi$ n'est pas surjective alors $\dim \Img(\psi)<n$ donc $\Img \psi$ est inclus dans un hyperplan de $\K^n$. Il existe $(a_1,\cdots,a_n)\in \K^n\setminus \{0\}$ tels que
+\[\forall x \in E, a_1 \varphi_1(x) + \cdots + a_n\varphi_n(x)=0\]
+donc $(\varphi_1,\cdots,\varphi_n)$ est liée, ce qui est absurde.  L'application $\psi$ est donc une AL surjective et $\dim E= \dim \K^n=n$ donc $\psi$ est un isomorphisme.
+
+On note $x_1=\psi^{-1}(1,0,\cdots,0),\;x_2= \psi^{-1}(0,1,\cdots,0)\;,\cdots,\;x_n= \psi^{-1}(0,,\cdots,1)$ et la famille $(x_1,\cdots,x_n)$ convient.
+
+C'est une base car c'est l'image par $\psi^{-1}$ de la base canonique de $\K^n$. Cette base s'appelle la \textbf{base antéduale} de $(\varphi_1,\cdots,\varphi_n)$
+
+\end{proof}
+
+\subsection{Base duale}
+
+Si on note $(e_1,\cdots,e_n)$ est une base de $E$, alors pour chaque $i$, on note $e_i^\star$ la forme linéaire donnée par $e_i^\star(e_j) \defeq \delta_{i,j}$.
+
+La famille $(e_1^\star, \cdots , e_n^\star)$ est une famille de $n$ vecteurs en dimension  $n$, qui est libre donc c'est une base, appelée  \textbf{base duale}  de $(e_1, \cdots , e_n)$
+
+
+\subsection{Un exercice classique}
+
+\begin{exo}
+    Soit $E$ un $\K$-ev de dimension finie $n$. On note $\varphi_1,\cdots,\varphi_p \in E^\star$
+
+Montrer que $ \varphi \in \Vect(\varphi_1,\cdots,\varphi_p)\iff \Ker \varphi_1 \cap\cdots \cap \Ker \varphi_p \subset \Ker \varphi$
+\end{exo}
+
+\begin{proof}[Résolution] ~\\
+    $(\implies )$ Si $\varphi \in \Vect(\varphi_1,\cdots,\varphi_p)$ alors il existe $a_1,\cdots,a_p\in \K$ tels que:
+    \[ \varphi = a_1 \varphi_1 + \cdots + a_p \varphi_p \]
+    et $\forall x \in \Ker \varphi_1 \cap\cdots \cap \Ker \varphi_p$,
+    \[
+        \varphi(x) = a_1 \varphi_1(x) + \cdots + a_p \varphi_p(x)
+                = 0 + \cdots + 0 = 0 
+            \]
+    donc $x \in \Ker \varphi$ d'où l'inclusion et le sens direct. \\
+    $(\impliedby )$
+    On suppose que $(\varphi_1,\cdots,\varphi_p)$ est libre, et on complète en une base $(\varphi_1,\cdots,\varphi_p,\varphi_{p+1},\cdots,\varphi_n)$.  Ainsi, il existe $(a_1,\cdots,a_n)\in \K^n$ tels que 
+    \[ \varphi = a_1 \varphi_1 + \cdots + a_n \varphi_n  \]
+    On note $(x_1,\cdots,x_n)$ la base antéduale de $(\varphi_1, \cdots , \varphi_n)$. Alors, $x_{p+1} \in \Ker \varphi_1 \cap\cdots \cap \Ker \varphi_p$ donc $x_{p+1} \in \Ker(\varphi)$ ce qui donne $\varphi(x_{p+1}) = 0 = a_{p+1}$.
+    En recommençant  pour $x_{p+2},\cdots,x_{n}$, on trouve $a_{p+1}=\cdots=a_n=0$ d'où la conclusion.
+    
+    Dans le cas général, on extrait de $(\varphi_1, \cdots , \varphi_p)$ une base de $\Vect(\varphi_1, \cdots , \varphi_p)$ qu'on note $(\varphi_1, \cdots , \varphi_r)$ (on renomme si besoin). On a $\Ker\varphi_1\cap \cdots\cap \Ker \varphi_r\subset \Ker \varphi_{r+1},\cdots ,\Ker\varphi_p$
+
+\end{proof}
+
+\subsection{Intersection}
+
+On note $E$ un $ \K$-ev, $\varphi_1,\cdots,\varphi_p\in E^\star$ et $H_i = \Ker \varphi_i$.  On va montrer que $\dim(H_1\cap\cdots\cap H_p)\geq n-p$ avec égalité si et seulement si $(\varphi_1,\cdots,\varphi_p)$ est libre. \begin{itemize}
+    \item $\dim H_1 \geq  n-1$
+    \item $\varphi_{2|H_1}$ est une FL sur $H_1$ donc  $\dim(\Ker \varphi_{2|H_1})=\dim(\Ker \varphi_2\cap \Ker \varphi_1)=\dim H_1-1\geq n-2$
+    \item $\cdots$
+\end{itemize}
+Puis il y a égalité si et seulement si on a une égalité à chaque étape.
+\begin{itemize}
+    \item $\varphi_1 \neq 0$ donc $(\varphi_1)$ libre.
+    \item  $H_1\not\subset H_2$ donc  $\varphi_2 \not\in\Vect(\varphi_1)$ et  $(\varphi_1, \varphi_2)$ libre
+    \item $\cdots $
+\end{itemize}
+
+\section{Idéaux de \texorpdfstring{$\mathcal  L(E)$ }{L(E)}}
+
+On note $E$ un $\K$-ev de dimension $n$. Quitte à se donner une base  $\mathcal  B$, on a $\mathcal  L(E) \cong\mathcal  M_n(\K)$ (c'est un isomorphisme d'algèbres).
+
+$I$ est un idéal à gauche (resp. à droite) si  $(I, +)$ est un groupe et  $\forall M \in  I, \forall  A \in  \mathcal  M_n(\K), MA \in  I$ (resp. $AM \in  I$). Un idéal est bilatère si c'est un idéal à droite et à gauche.
+
+\subsection{Idéaux bilatères}
+
+$I=\{ 0 \}$ en est un, on suppose désormais que $I\neq\{0\}$.  Il existe donc $A\in I$ tel que $\rg(A)=r>0$ donc il existe $P,Q\in \mathrm{GL}_n(\K)$ telles que 
+\[
+A = P \Jr Q \text{ donc } J_r = P^{-1}AQ^{-1} \in I.
+\]
+Puis $J_1=J_r J_1 \in I$. Les matrices de rang $1$ sont équivalentes à $J_1$ donc sont dans $I$, ce qui est le cas des matrices de la base canonique $E_{i,j}$, donc $I=\mathcal  M_n(\K)$
+
+Les idéaux bilatères de $\mathcal M_n(\K)$ sont donc $\{0\}$ et $\mathcal M_n(\K)$.
+
+
+\subsection{Idéaux à gauche}
+
+\begin{rem}
+    Un idéal de $\mathcal  M_n(\K)$ est toujours un espace vectoriel.
+\end{rem}
+
+On note $(A_1,\cdots,A_r)$ une base de $I$ et $M \in I$ de rang maximal.  On a $M \cdot \mathcal M_n(\K) \subset I$. Soit $A\in I$, si $\Img A\subset \Img M$ alors il existe $B$ tel que $A=MB$ (lemme de factorisation) donc $A\in M \mathcal M_n(\K)$.
+
+Soit $A\in I$. Par l'absurde si $\Img A \not \subset \Img M$ alors $M$ non inversible et il existe $X$ un vecteur colonne tel que $AX\not \in \Img M$. On note $(X_1,\cdots,X_n)$ une base d'un supplémentaire de $\Ker M$.
+On note $(X_{r+1},\cdots,X_n)$ une base de $\Ker M$ et on note $B$ telle que.
+\[
+    \begin{cases}
+BX_1=\cdots=BX_r=0 \\
+BX_{r+1}=X \\
+BX_{r+2}=\cdots=BX_n=0
+    \end{cases}
+\]
+
+La matrice $M+AB$ est dans $I$ et son image contient $(MX_1,\cdots,MX_r,AX)$ donc $rg(M+AB)\geq r+1 >r$ absurde donc $\Img A \not \subset \Img M$.
+
+Les idéaux à gauche de $\mathcal M_n(\K)$ sont docn les ensembles du type $A \mathcal M_n(\K)$ avec $A \in \mathcal M_n(\K)$.
+
+
+\section{Matrices élémentaires}
+
 
