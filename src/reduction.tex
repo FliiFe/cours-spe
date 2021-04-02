@@ -57,7 +57,7 @@ Si $a$ n'est pas racine de $P$, on convient que $a$ est racine de multiplicité 
     est un isomorphisme.
 \end{proof}
 
-\section{Idéaux de {$\K[X]$} et arithmétique}
+\section{Idéaux de \texorpdfstring{$\K[X]$}{K[X]} et arithmétique}
 
 \begin{thm}
     $\K[X]$ est principal
@@ -869,20 +869,36 @@ et on fait pareil sur l'autre noyau.
 
 \section{Autour du crochet de Lie}
 
+% \begin{dfn}[Hors-Programme]
+%     On appelle \textbf{crochet de Lie\index{crochet de Lie}} la loi de composition interne \[
+%         [\cdot, \cdot]: (u, v)\longmapsto u\circ v-v\circ u
+%     \]
+%     ou matriciellement \[
+%         [\cdot, \cdot]: (A, B)\longmapsto AB-BA
+%     \]
+% \end{dfn}
+
 \begin{dfn}[Hors-Programme]
-    On appelle \textbf{crochet de Lie\index{crochet de Lie}} la loi de composition interne \[
-        [\cdot, \cdot]: (u, v)\longmapsto u\circ v-v\circ u
+    On appelle \textbf{crochet de Lie}\index{crochet de Lie} tout loi de composition interne $[\,\cdot\,,\,\cdot\,]:E^2\to E$ bilinéaire alternée qui satisfait la relation de Jacobi \[
+        \forall x,y,z \in  E,\qquad [x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0
     \]
-    ou matriciellement \[
-        [\cdot, \cdot]: (A, B)\longmapsto AB-BA
-    \]
+    On dira alors que $(E, +, [\,\cdot\,,\,\cdot\,])$ est une \textbf{algèbre de Lie}\index{algèbre de Lie}.
 \end{dfn}
 
-\subsection{Nilpotence de {$\varphi: B\longmapsto [A,B]$} pour $A$ nilpotente}
+\begin{rem}
+On n'aborde ici que le cas où le crochet de Lie est le \textbf{commutateur} dans l'espace des endomorphismes d'un espace vectoriel: \[
+    \forall  f,g \in  \mathcal  L(E),\qquad  [f,g]=f\circ g-g\circ f
+\] 
+ou bien matriciellement: \[
+    \forall  A,B \in  \mathcal  M_n(\K), \qquad  [A, B]=AB-BA
+\] 
+\end{rem}
+
+\subsection{Nilpotence de \texorpdfstring{$\varphi: B\longmapsto [A,B]$}{B -> [A,B]} pour $A$ nilpotente}
 
 On note $A\in\mathcal M_n(\K)$ nilpotente, $\varphi:B\longmapsto [A, B]$. On introduit $T_G:B\longmapsto AB$ et $T_D:B\longmapsto BA$. Ces deux endomorphismes commutent et $\varphi=T_G-T_D$. Les deux endomorphismes sont nilpotents (car $A$ nilpotente) donc $\varphi$ aussi
 
-\subsection{Diagonalisabilité de {$\varphi: B\longmapsto [A, B]$} pour $A$ diagonale ou diagonalisable}
+\subsection{Diagonalisabilité de \texorpdfstring{$\varphi: B\longmapsto [A, B]$}{B -> [A,B]} pour $A$ diagonale ou diagonalisable}
 
 \begin{itemize}
     \item Si $A=\diag (\lambda_1, \cdots, \lambda_n)$ alors $\varphi(E_{i, j})=(\lambda_i-\lambda_j)E_{i,j}$ donc $\varphi$ diagonalisable (on a trouvé une base de vecteurs propres)
