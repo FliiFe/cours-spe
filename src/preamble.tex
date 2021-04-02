@@ -2,16 +2,19 @@
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
 \usepackage[a4paper, margin=2cm]{geometry}
-% \usepackage[activate={true,nocompatibility},final,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
-% \usepackage{lmodern}
-\usepackage{mlmodern} 
+\usepackage[activate={true,nocompatibility},final,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\usepackage{lmodern}
+% \usepackage{mlmodern}
 \usepackage{amsmath}
 \usepackage{bbm}
 \usepackage{bm}
 \usepackage{amsthm}
 \usepackage{amssymb}
-\usepackage[cal=pxtx]{mathalpha}
+\usepackage[cal=boondoxo]{mathalpha}
 \usepackage{mathtools}
+\usepackage{array}
+\usepackage{stackengine}
+\stackMath
 \usepackage{centernot}
 \usepackage{changepage}
 \usepackage{enumitem}
@@ -238,3 +241,21 @@
 \[\star \qquad \quad \star \qquad \quad \star \qquad \quad \star \qquad \quad \star\]
 \vfill
 }
+
+\newcommand\undermat[2]{%
+  \makebox[0pt][l]{$\smash{\underbrace{\phantom{%
+    \begin{matrix}#2\end{matrix}}}_{\text{$#1$}}}$}#2}
+
+\newcommand{\Jr}{\underbrace{%
+\addstackgap[16pt]{%
+\left(\begin{array}{ccc|ccc}%
+        1        &    0   &  \cdots  & \cdots & \cdots &    0   \\
+        0        & \ddots &  \ddots  &        &        & \vdots \\
+     \vdots      & \ddots &     1    & \ddots &        & \vdots \\
+  \hline \vdots  &        &  \ddots  &  0     & \ddots & \vdots \\
+     \vdots      &        &          & \ddots & \ddots &    0   \\
+\undermat{r}{0   & \cdots & \cdots } & \cdots &    0   &    0   \\
+\end{array}
+\right)}
+}_{J_r}}
+
