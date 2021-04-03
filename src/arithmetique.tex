@@ -328,7 +328,7 @@ possède une solution $x\in\N$ et $v_{p_i}(x+i)=1$ donc $x+i$ n'est pas une puis
     \includegraphics{src/figures/arithmetique-points-visibles.pdf}
 \end{center}
 
-On considère l'ensemble des points (qu'on appelle \emph{points visibles}) de $\Z^2$ tels que pour un point $(x, y)$, l'ensemble $\{(1-t)(0, 0)+t(x, y), \quad t\in ]0, 1[\}$ ne contient pas de point de $\Z^2$. On veut montrer qu'il existe des rectangles pleins arbitrairement grands dans cet ensemble, c'est à dire que pour tout $n\in\N$, il existe $(a, b)$ tel que $\forall i, j\leq n, (a+i, a+j)$ est invisible.
+On considère l'ensemble des points (qu'on appelle \emph{points visibles}) de $\Z^2$ tels que pour un point $(x, y)$, l'ensemble $\{(1-t)(0, 0)+t(x, y), \quad t\in ]0, 1[\}$ ne contient pas de point de $\Z^2$. On veut montrer qu'il existe des rectangles pleins arbitrairement grands hors de cet ensemble, c'est à dire que pour tout $n\in\N$, il existe $(a, b)$ tel que $\forall i, j\leq n, (a+i, b+j)$ est invisible.
 
 On vérifie facilement que cet ensemble est l'ensemble $\{(a, b)\in\Z^2, \quad a\land b=1\}$. On note $A$ une matrice $k\times k$ dont les coefficients sont des nombres premiers deux à deux distincts. On note $m_i$ le produit de la $i$-ième ligne, $M_i$ le produit de la $i$-ième colonne. Le théorème chinois donne l'existence de $a$, $b$ tels que \[
     \begin{cases}
