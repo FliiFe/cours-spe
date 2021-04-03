@@ -702,3 +702,98 @@ On montre par récurrence que \[
         V(\lambda_1, \cdots , \lambda_{n+1})=P(\lambda_{n+1})=\prod_{i<j}(\lambda_j-\lambda_i)
     \] 
 \end{itemize}
+
+\paragraph{Déterminant tridiagonal}
+
+\[
+D_n = \begin{vmatrix}
+a & c & 0 & \dots & 0\\
+b & a & c & \ddots & 0\\
+0 & b & a & \ddots & 0\\
+\vdots & \ddots & \ddots &\ddots &\vdots \\
+0 & 0 & 0 & \dots & a 
+\end{vmatrix}
+\] 
+On trouve facilement \[
+D_{n+2}=aD_{n+1}-bcD_n
+\] 
+C'est une suite qui satisfait une relation de récurrence linéaire d'ordre $2$, on connait  $D_1=a, D_0=1$ donc sait en trouver une forme close.
+
+\paragraph{Déterminant circulant}
+
+On appelle \textbf{déterminant circulant} le déterminant de la matrice suivante:
+\[  D = \begin{pmatrix} a_0 & a_1 & \cdots & a_{n-1} \\ a_{n-1} & a_0 & \cdots & a_{n-2} \\ \vdots & \vdots & \ddots & \vdots \\ a_1 & a_2 & \cdots & a_0 \end{pmatrix} .\]
+On va montrer que
+\[ \det D = \prod_{k=0}^{n-1} P(\omega^k)\]
+où $\omega$ est une racine primitive $n$-ième de l'unité et $\displaystyle P = \sum_{k=0}^{n-1} a_k X^k$.  
+
+Pour $i\in\llbracket 0, n-1\rrbracket$, on pose
+\[V_i = \begin{pmatrix} 1 \\ \omega^{i} \\ \vdots \\ \omega^{i(n - 1)} \end{pmatrix}.\]
+Remarquons alors que $DV_i = P(\omega^i)V_i$. En posant la matrice $Q = (V_0, V_1,\dots, V_{n-1} )$ il vient \linebreak$DQ = Q\times \diag(P(1), P(\omega),\dots, P(\omega^{n-1}) $ donc nous avons \[\det(D)\det(Q) = \det(Q)\prod_{i = 0}^{n - 1}P(\omega^i).\]
+Et le déterminant de $Q$ est non nul ($\det Q = V(1, \omega, \dots, \omega^{n-1})$ avec $V$ le déterminant de Vandermonde et les $\omega^i$ sont deux à deux distincts) ce qui conclut la preuve. 
+
+\subsection{Comatrice}
+
+\begin{dfn}
+    Le \textbf{mineur} d'indice $i,j$ de  $A \in  \mathcal  M_n(\K)$ est $\det(A')$ où  $A'$ est la matrice  $A$ privée de la ligne  $i$ et de la colonne  $j$ . Si $i=j$, on dit que c'est un mineur principale. On note  $\Delta_{i,j}(A)$ les mineurs de $A$.
+
+    On appelle  \textbf{comatrice}\index{comatrice} de $A$ la matrice  $\Com(A)=((-1)^{i+j}\Delta_{i,j}(A))$. Les coefficients de cette matrice sont appelés \textbf{cofacteurs}.
+\end{dfn}
+
+\begin{thm}
+    \Hyp $A \in  \mathcal  M_n(\K)$
+    \begin{concenum}
+    \item $ \forall  i \in  \llbracket 1, n \rrbracket , \qquad  \displaystyle \det A=\sum_{j=1}^n (-1)^{i+j}\Delta_{i,j}(A)$
+    \item $ \forall  j \in  \llbracket 1, n \rrbracket , \qquad  \displaystyle \det A=\sum_{i=1}^n (-1)^{i+j}\Delta_{i,j}(A)$
+    \item $A\Com(A)^\top = \Com(A)^\top A=\det A I_n$
+    \end{concenum}
+\end{thm}
+
+% TODO: taper cette partie ? Flemme monumentale de typeset les blocs
+% \section{Matrices et déterminants par blocs}
+
+\section{Système d'équation linéaire}
+
+On appelle système linéaire d'inconnues $x_1, \cdots , x_p$ un système du type \[
+\begin{cases}
+    a_{1,1}x_1+\cdots +a_{1,p}x_p=b_1\\
+    \vdots \\
+    a_{n,1}x_1+\cdots +a_{n,p}x_p=b_p
+\end{cases}
+\] 
+
+\subsection{Interprétation matricielle}
+
+On pose $A=(a_{i,j}) _{\substack{1\leq i\leq n\\1\leq j\leq p}}$, $\displaystyle B= \begin{pmatrix}
+    b_1\\ \vdots \\ b_n
+\end{pmatrix} $ et $\displaystyle X= \begin{pmatrix}
+    x_1 \\ \vdots \\ x_p
+\end{pmatrix}$. $(x_1, \cdots , x_p)$ est solution si et seulement si $AX=B$.
+
+Il y a une unique solution si  $A$ est inversible, c'est à dire  $n=p$ et  $A \in  \mathrm{GL}_n(\K)$. On dit alors que c'est un système de Cramer et $X=A^{-1}B$ est l'unique solution.
+
+Dans le cas général, il y a une solution si et seulement si $B \in  \Img (A)$. Dans ce cas là, pour $X_0$ solution, l'ensemble des solutions est  \[
+    \{X \in \mathcal M_{p,1}, \qquad  X-X_0 \in  \Ker(A)\} 
+\] 
+
+
+\subsection{Interprétation géométrique}
+
+On note $\varphi_i: x \longmapsto a_{i,1}x_1+\cdots +a_{i,p}x_p$ des formes linéaires. Les équations $\varphi_i(x)=b_i$ sont des équations d'hyperplans affines. Ainsi,  $x$ est solution  si et seulement si $x$ dans  l'intersection des hyperplans d'équations  $\varphi_i(x)=b_i$
+
+\subsection{Interprétation vectorielle}
+
+Si $C_1, \cdots , C_p$ sont les colonnes de $A$, alors  \[
+    x \text{ solution } \iff  x_1C_1+\cdots +x_pC_p=B
+\]
+Dans le cas d'un système de Cramer, pour $x$ solution, \[
+    \det(B, C_2, \cdots , C_n)=\det(x_1C_1+\cdots +x_nC_n, C_2, \cdots , C_n)=x_1 \det A
+\] 
+donc  \[
+    x_1= \frac{\det(B, C_2, \cdots , C_n)}{\det A}.
+\]
+De même, \[
+    x_j= \frac{\det(C_1, \cdots , C_{j-1}, B, C_{j+1},\cdots ,C_n)}{\det A}
+\] 
+
+\endchapter

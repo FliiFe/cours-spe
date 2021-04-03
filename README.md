@@ -14,7 +14,7 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 - [ ] Suites et séries de fonctions
 - [x] Algèbre générale
 - [x] Arithmétique
-- [ ] Algèbre linéaire
+- [x] Algèbre linéaire
 - [x] Réduction des endomorphismes
 - [ ] Analyse réelle et fonctions convexes
 - [ ] Espaces vectoriels normés
