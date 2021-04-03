@@ -422,4 +422,283 @@ Les idéaux à gauche de $\mathcal M_n(\K)$ sont docn les ensembles du type $A \
 
 \section{Matrices élémentaires}
 
+\subsection{Rappels}
 
+\begin{rem}[Produit de matrices $E_{i,j}$]
+    Dans $ \mathcal  M_n(\K)$,
+\[
+E_{i,j}E_{k,l}=\delta_{j,k}E_{i,l}
+\] 
+\end{rem}
+
+\begin{dfn}
+    On définit les matrices élémentaires\index{matrices élémentaires} suivantes: \begin{itemize}
+        \item Matrices de transposition: \[
+                T_{i,j}=I_n-E_{i,i}-E_{j,j}+E_{i,j}+E_{j,i}=
+                \begin{gmatrix}[p]
+                    1          &        &   &        &   &        &   &        &   &        & \\
+                               & \ddots &   &        &   &        &   &        &   &  (0)   & \\
+                               &        & 1 &        &   &        &   &        &   &        & \\
+                               &        &   & 0      &   & \cdots &   & 1      &   &        & \\
+                               &        &   &        & 1 &        &   &        &   &        & \\
+                               &        &   & \vdots &   & \ddots &   & \vdots &   &        & \\
+                               &        &   &        &   &        & 1 &        &   &        & \\
+                               &        &   & 1      &   & \cdots &   & 0      &   &        & \\
+                               &        &   &        &   &        &   &        & 1 &        & \\
+                               &  (0)   &   &        &   &        &   &        &   & \ddots & \\
+                               &        &   &        &   &        &   &        &   &        & 1
+                       \colops
+                       \swap[i][j]37
+                       \rowops
+                       \swap[i][j]37
+                \end{gmatrix}
+        \] 
+    \item Matrices de transvection: pour $i\neq j$, \[
+            T_{i,j}(\lambda)=I_n+\lambda E_{i,j}= \begin{pmatrix}
+        1 &   &        &         & \\
+          & 1 &        & \lambda & \\
+          &   & \ddots &         & \\
+          &   &        & 1       & \\
+          &   &        &         & 1
+    \end{pmatrix}
+    \] 
+\item Matrices de dilataion: \[
+    D_i(\lambda)=I_n+(\lambda-1)E_{i,i}= \begin{pmatrix}
+        1   &        &   &         &   &        & \\
+            & \ddots &   &         &   &        & \\
+            &        & 1 &         &   &        & \\
+            &        &   & \lambda &   &        & \\
+            &        &   &         & 1 &        & \\
+            &        &   &         &   & \ddots & \\
+            &        &   &         &   &        & 1
+    \end{pmatrix}
+\] 
+    \end{itemize}
+\end{dfn}
+
+\subsection{Actions des matrices élémentaires}
+
+La multiplication à gauche par une matrice élémentaire agit sur les lignes, et la multiplication à droite agit sur les colonnes. \begin{itemize}
+    \item La multiplication à gauche par $T_{i,j}$ fait $L_i \leftrightarrow L_j$
+    \item La multiplication à gauche par $T_{i,j}(\lambda)$ fait $L_i \leftarrow L_i+\lambda L_j$
+    \item La multiplication à gauche par $D_i(\lambda)$ fait  $L_i \leftarrow \lambda L_i$
+    \item La multiplication à gauche par $E_{i,j}$ fait $L_k \leftarrow \delta_{k,i}L_j$
+\end{itemize}
+Les opérations sont identiques mais avec les colonnes pour la multiplication à droite
+
+\subsection{Générateurs de \texorpdfstring{$\mathrm{GL}_n(\K)$ }{GLn(K)} et \texorpdfstring{$\mathrm{SL}_n(\K)$ }{SLn(K)}}
+
+On va montrer que les éléments de $\mathrm{GL}_n(\K)$ s'écrivent comme un produit de transvections et d'une dilatation.
+
+\begin{rem}
+    L'inverse d'une transvection est une transvection: $T_{i,j}(\lambda)^{-1}=T_{i,j}(-\lambda)$
+\end{rem}
+
+On procède par récurrence pour montrer que si $A$ est inversible, il existe  $T_1, \cdots , T_r$ des transvections telles que \[
+    T_1\cdots T_rA=D_n(\det A)
+\] \begin{itemize}
+    \item L'initialisation est trivialle: pour $n=1$, toutes les matrices sont des matrices de dilatation.
+    \item Soit  $n> 1$. On suppose la propriété vraie au rang  $n-1$ et on note  $A \in  \mathrm{GL}_{n}(\K)$. On note $(a_{i,j})$ les coefficients de $A$. Quitte à multiplier par une transvection, on peut supposer  $a_{1,1}\neq 0$ et l'utiliser comme pivot: \begin{align*}
+            \left( \begin{array}{c}
+                    a_{1,1}  \\
+                    \vdots \\
+                    \vdots \\
+                    a_{n,1}
+            \end{array}
+            \hspace{2em}\star\hspace{2em}
+            \right) &\xrightarrow{\text{pivot avec} a_{1,1}} \left( \begin{array}{c|ccc}
+                a_{1,1} & & \star &\\
+            \hline 0 \\
+            \vdots & &\star &\\
+            0
+        \end{array}
+         \right) 
+        \\
+                    & \xrightarrow{L_2 \leftarrow L_2+L_1}\left( \begin{array}{c|ccc}
+                a_{1,1} & & \star &\\
+            \hline a_{1,1} \\
+            \vdots & &\star &\\
+            0
+        \end{array}
+         \right) 
+        \\
+                    & \xrightarrow{L_1 \leftarrow L_1+(1-a_{1,1})L_2}\left( \begin{array}{c|ccc}
+                1 & & \star &\\
+            \hline a_{1,1} \\
+            \vdots & &\star &\\
+            0
+        \end{array}
+         \right) 
+        \\
+                    & \xrightarrow{L_2 \leftarrow L_2-a_{1,1}L_1}\left( \begin{array}{c|ccc}
+                1 & & \star &\\
+            \hline 0 \\
+            \vdots & &\star &\\
+            0
+        \end{array}
+         \right) 
+        \\
+                    & \xrightarrow{\;\;\mathrm{HR}\;\;}\left( \begin{array}{c|cccc}
+                1 & &  &\star \\
+                \hline 0 & 1\\
+            \vdots & &\ddots &\\
+            \vdots & & & 1 \\
+            0 & & & & \det A
+        \end{array}
+         \right) 
+        \\
+                    & \xrightarrow{C_i \leftarrow C_i-a_{1,i}C_1}\left( \begin{array}{ccccc}
+                1 & &  & \\
+             & 1\\
+             & &\ddots &\\
+             & & & 1 \\
+             & & & & \det A
+        \end{array}
+         \right) 
+     \end{align*}
+\end{itemize}
+d'où la conclusion.
+
+\begin{exo}
+    Montrer que $\mathrm{SL}_n(\K)=\ker (\det)= \{A \in  \mathrm{GL}_n(\K), \det A=1\} $ est engendré par les matrices de transvection
+\end{exo}
+
+\begin{proof}[Résolution]
+On vient de le voir.
+\end{proof}
+
+\section{Matrices}
+
+\subsection{Rappels}
+
+$\mathcal  B=(e_1, \cdots , e_p)$, $\mathcal  F=(f_1, \cdots , f_n)$ des bases de $E, F$ et  $f \in  \mathcal  L(E, F)$. On note $\mathcal  M_{\mathcal  B, \mathcal  F}(f)$ la matrice de taille $n\times p$ dans laquelle la colonne  $i$ est le vecteur des coordonées de  $f(e_i)$ dans le base  $\mathcal  F$
+
+Si $\mathcal  B'=(e_1', \cdots , e_p')$ est une base de $E$ alors on définit la matrice de passage  $P_{\mathcal  B, \mathcal  B'}$ par  \[
+    P_{\mathcal  B, \mathcal  B'}\defeq \mathcal  M_{\mathcal  B, \mathcal  B'}(f)
+\] 
+où $f:e_i\longmapsto e_i'$. Si $x$ s'écrit  $X_{\mathcal  B}$ dans $\mathcal  B$ et $X_{\mathcal  B'}$ dans $\mathcal B'$, alors \[
+X_{\mathcal  B}=P_{\mathcal  B, \mathcal B'}X_{\mathcal  B'}
+\] 
+
+\subsection{Interprétation combinatoire}
+
+On note $G=(S, A)$ un graphe simple orienté avec  $|S|=n$. La matrice d'adjacence  $M \in  \mathcal  M_n(\K)$ est la matrice de terme général $(\1_A((i, j)))_{i, j \in  \llbracket 1, n \rrbracket }$ 
+
+\begin{exo}
+    Montrer que $[A^m]_{i,j}$ est le nombre de chemins de longueur $m$ de  $i$ vers  $j$. On pourra procéder par récurrence sur  $m$.
+\end{exo}
+
+\subsection{Crochet de Lie}
+
+On s'intéresse au commutateur comme crochet de Lie dans $\mathcal  M_n(\K)$: $[A, B]\defeq AB-BA$
+
+ \begin{exo}
+Montrer l'identité de Jacobi: \[
+    [A, [B, C]]+[B, [C, A]]+[C, [A, B]]=0
+\]
+\end{exo}
+
+\begin{exo}
+    Si $A$  et  $[A, B]$ commutent, alors  \[
+        \forall  k \in  \N^\star, \qquad [A^k,B]=k[A, B]A^{k-1}
+    \] 
+\end{exo}
+\begin{proof}
+    Par récurrence en écrivant $AB=[A, B]+BA$
+\end{proof}
+
+\begin{exo}
+    Montrer que si $A \in  \mathcal  M_n(\C)$ est de trace nulle, alors  il existe $B, C$ tels que  $A=[B, C]$
+\end{exo}
+\begin{proof}[Résolution]
+    On commence par le cas où $A$ est de diagonale nulle. On pose  $B=\diag(1, \cdots , n)$. Si $C$ existe alors  \[
+        A=[B, C] \underset{\text{calcul}}\iff \forall  i, j, \quad  A_{i,j}=(i-j)C_{i,j}
+    \] 
+    donc la matrice $C$ existe bien (on prend $0$ pour la diagonale)
+
+ 
+    On va maintenant montrer que toute matrice de trace nulle est semblable à une matrice de diagonale nulle, ce qui conclura. On procède par récurrence sur la dimension. \begin{itemize}
+        \item L'initialisation est évidente
+        \item $A \in \mathcal  M_{n+1}(\C)$, $\Tr(A)=0$. Il y a deux cas:  \begin{itemize}
+            \item $ \forall  X \in  \mathcal  M_{n+1,1}(\C), \quad  (X, AX)$ liée. Donc $A=\lambda I_{n+1}=0$.
+            \item $ \exists  X \in  \mathcal  M_{n+1,1}(\C), \quad  (X, AX)$ libre.
+        \end{itemize}
+        Il n'y a que le second cas à traiter. On complète $(X, AX)$ en une base  $\mathcal  B$ et la matrice de $A$ dans cette base s'écrit  \[
+            \left( \begin{array}{c|ccc}
+                    0 & & \star& \\
+                    \hline 1\\
+                    0 & &  \\
+                    \vdots&\phantom{0}&A' \\
+                    0
+            \end{array}
+             \right) 
+        \] 
+        et $\Tr(A')=\Tr(A)$. Puis l'hypothèse de récurrence permet de conclure (considérer les matrices $\hat{P}=\diag(1, P)$ pour $P \in  \mathcal  M_n(\C)$ matrice de passage)
+    \end{itemize}
+\end{proof}
+
+\section{Déterminants}
+
+\subsection{Rappels}
+
+On note $\mathcal  B=(e_1, \cdots , e_n)$ une base de $E$ et  $\mathcal  F=(f_1, \cdots , f_n)$ une famille de vecteurs de $E$. On note  $f_{i,j}$ la coordonnée de $f_j$ sur  $e_i$ dans $\mathcal  B$. \[
+    \det_{\mathcal  B}(\mathcal  F)=\sum_{\sigma \in  \mathfrak S_n}\epsilon(\sigma)f_{1,\sigma(1)}\cdots x_{n, \sigma(n)}
+\] 
+
+\begin{thm}
+    \Hyp $E$ un  $\K$-ev de base $\mathcal  B=(e_1, \cdots , e_n)$
+    \Conc $\det_{\mathcal  B}$ est l'unique forme $n$-linéaire alternée dont l'image de $\mathcal  B$ est $1$
+\end{thm}
+
+\begin{prop}
+\Hyp $\mathcal  B, \mathcal  C$ des bases de $E$
+\Conc  $\det_{\mathcal  C}=\det_C(\mathcal  B)\det_{\mathcal  B}$
+\end{prop}
+
+\begin{defprop}
+    \Hyp $\mathcal  B$ est une base de $E$ un $\K$-ev de dimension finie,  $f,g \in  \mathcal  L(E)$
+    \begin{concenum}
+    \item $\det f$ est l'unique scalaire tel que  \[
+            \forall  x_1, \cdots , x_n \in  E, \qquad  \det_{\mathcal  B}(f(x_1), \cdots , f(x_n))=\det f\times \det_{\mathcal  B}(x_1, \cdots , x_n)
+    \] 
+\item $\det(f \circ g)=\det f \times \det g$
+\item  $f \in  \mathrm{GL}_n(\K) \iff  \det f \neq 0$
+    \end{concenum}
+\end{defprop}
+
+\subsection{Déterminants classiques}
+
+\paragraph{Vandermonde}
+
+Pour $(\lambda_1, \cdots , \lambda_n) \in  \K$, on note \[
+    V(\lambda_1, \cdots , \lambda_n)= \begin{vmatrix}
+        1 & \lambda_1 & \cdots & \lambda_1^{n-1} \\
+        1 & \lambda_2 & \cdots & \lambda_2^{n-1} \\
+        \vdots & & & \vdots \\
+        1 & \lambda_n & \cdots & \lambda_n^{n-1}
+    \end{vmatrix}
+\] 
+On montre par récurrence que \[
+    V(\lambda_1, \cdots , \lambda_n)=\prod_{i<j}(\lambda_j-\lambda_i)
+\] 
+\begin{itemize}
+    \item Initialisation claire
+    \item On se place dans le cas où les $\lambda_i$ sont deux à deux distincts (car sinon deux lignes sont identiques, le déterminant et nulle et la formule reste vraie). On pose\[
+            P(X)=V(\lambda_1, \cdots , \lambda_n, X)= \begin{vmatrix}
+                1 & \lambda_1 & \cdots & \lambda_1^{n-1} & \lambda_1^n\\
+        1 & \lambda_2 & \cdots & \lambda_2^{n-1}  & \lambda_2^n\\
+        \vdots & & & &\vdots \\
+        1 & \lambda_n & \cdots & \lambda_n^{n-1} & \lambda_n^n \\
+        1 & X & \cdots & X^{n-1} & X^n
+    \end{vmatrix}
+    \] 
+    $P$ est un polynôme de degré  $n$, qui admet  $\lambda_1, \cdots , \lambda_n$ pour racines distinctes donc il s'écrit \[
+        P(X)=\mu(X-\lambda_1)\cdots (X-\lambda_n)
+    \] 
+    et en développant par rapport à la dernière colonne, on identifie \[
+        \mu=V(\lambda_1, \cdots , \lambda_n)
+    \] 
+    donc \[
+        V(\lambda_1, \cdots , \lambda_{n+1})=P(\lambda_{n+1})=\prod_{i<j}(\lambda_j-\lambda_i)
+    \] 
+\end{itemize}
