@@ -866,7 +866,7 @@ c'est absurde, donc $\ord a = m$. Puis $m=\ord a\;|\;p-1$ donc $p$ est un terme 
 
 Nous allons montrer que les polynômes cyclotomiques sont irréductibles par un argument de Landau.
 
-On note $\alpha$ une racine primirive $n$-ième de l'unité et $P$ son polynôme minimal. La suite $(P(\alpha^k))_{k\in\N}$ est $n$-périodique à valeurs dans $\Z[\alpha]$ et chacun des termes s'écrit  de manière unique $Q_k(\alpha)$ pour un polynôme $Q_k$ de degré $<\deg P$.
+On note $\alpha$ une racine primitive $n$-ième de l'unité et $P$ son polynôme minimal. La suite $(P(\alpha^k))_{k\in\N}$ est $n$-périodique à valeurs dans $\Z[\alpha]$ et chacun des termes s'écrit  de manière unique $Q_k(\alpha)$ pour un polynôme $Q_k$ de degré $<\deg P$.
 
 On note $A$ le plus grand coefficient de tous les $Q_k$ en valeurs absolues. Dans $\Z_p[X]$, $P(X^p)=P(X)^p$ (Frobenius) donc il existe $U\in\Z[X]$ tel que \[
     P(X^p)=P(X)^p+pU(X)
@@ -931,15 +931,15 @@ $A$ est un corps
 
 \index{multiplicativité des degrés}
 
-On note $a$ algébrique sur $K$ de degré $d$. \[
-    \varphi: P\in K[X] \longmapsto P(a)
+On note $a$ algébrique sur $\K$ de degré $d$. \[
+    \varphi: P\in \K[X] \longmapsto P(a)
 \]
-est un morphisme de $K$-algèbres donc $\Img\varphi=\Vect_K(1, \cdots, a^{p-1})$ est une $K$-algèbre, notée $K[a]$.
+est un morphisme de $\K$-algèbres donc $\Img\varphi=\Vect_{\K}(1, \cdots, a^{p-1})$ est une $\K$-algèbre, notée $\K[a]$.
 
-$K[d]$ est une algèbre de dimension finie $d$ sur $K$ et pour $x\in K[a]\setminus \{0\}$, \[
-    \psi: y\in K[a]\longmapsto xy\in K[a]
+$\K[d]$ est une algèbre de dimension finie $d$ sur $\K$ et pour $x\in \K[a]\setminus \{0\}$, \[
+    \psi: y\in \K[a]\longmapsto xy\in \K[a]
 \]
-est un endomorphime injectif en dimension finie donc c'est un automorphisme et $x$ a un inverse dans $K[a]$, qui est donc un corps.
+est un endomorphisme injectif en dimension finie donc c'est un automorphisme et $x$ a un inverse dans $\K[a]$, qui est donc un corps.
 
 \begin{dfn}
 Si $K\subset L$ alors $L$ est un $K$-ev et si $L$ est de dimension finie sur $K$ alors on note \[
@@ -963,7 +963,7 @@ Si $K\subset L$ alors $L$ est un $K$-ev et si $L$ est de dimension finie sur $K$
         [N:K]<+\infty
     \]
     Vérifions que $(\ell_in_j)_{\substack{1\leq i\leq q\\ 1\leq j\leq p}}$ est libre sur $\Q$. \[
-        \sum_{i, j}\lambda_{i, j}\ell_in_j=0\implies \sum_{j=1}^pn_j\sum_{i=1}^q\lambda_{i, j}\ell_i=0 \implies \forall j\in\llbracket 1, p\rrbracket \sum_{i=1}^q\lambda_{i, j}\ell_i=0\implies \forall i, j, \lambda_{i, j}=0
+        \sum_{i, j}\lambda_{i, j}\ell_in_j=0\implies \sum_{j=1}^pn_j\sum_{i=1}^q\lambda_{i, j}\ell_i=0 \implies \forall j\in\llbracket 1, p\rrbracket, \sum_{i=1}^q\lambda_{i, j}\ell_i=0\implies \forall i, j, \lambda_{i, j}=0
     \]
     \item C'est une conséquence directe de $1.$
 \end{enumerate}
@@ -985,7 +985,7 @@ est bien définit et est un produit scalaire sur $\R[X]$
 Il existe une unique famille $(P_k)_k$ de polynômes unitaires tels que
 \begin{itemize}
     \item $\forall k\in\N, \quad \deg P_k=k$
-    \item les $P_k$ sont deux à deux orthogonaux
+    \item Les $P_k$ sont deux à deux orthogonaux
 \end{itemize}
 \end{prop}
 
@@ -994,7 +994,7 @@ Il existe une unique famille $(P_k)_k$ de polynômes unitaires tels que
 \begin{itemize}
     \item $P_0=1$ (unitaire de degré $0$)
     \item Si $P_0, \cdots, P_k$ conviennent, alors \[
-        P_{k+1}=\underbrace{X^{k+1}}_{unitaire} + \underbrace{\lambda_0P_0+\cdots +\lambda_k P_k}_{\deg \leq k \text{ se décompose sur }P_0, \cdots, P_k}
+            P_{k+1}=\underbrace{X^{k+1}}_{\text{unitaire}} + \underbrace{\lambda_0P_0+\cdots +\lambda_k P_k}_{\deg \leq k \text{ se décompose sur }P_0, \cdots, P_k}
     \]
 et l'orthogonalité détermine de manière unique les $\lambda_i$
 \end{itemize}
