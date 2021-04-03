@@ -144,5 +144,152 @@ Donc $|u(x)-\ell |\leq |u(x)-u_M(x)|+|u_M(x)-\ell _M| + |\ell _M-\ell |\leq 3\ep
 \end{thm}
 
 \begin{proof}
-    $[\alpha, \beta] \subset I, J$ plus petit segment qui contient  $a, \alpha, \beta$
+    $[\alpha, \beta] \subset I, J$ plus petit segment qui contient  $a, \alpha, \beta$. On a sur $J$, avec $\mu(J)=\int_J\diff x$ (constant): \[
+        \|U_n-U\|_{\infty}\leq \mu(J) \|u_n-u\|_\infty \xrightarrow[n\to+\infty]{}0
+    \] 
+    donc $U_n \xrightarrow[J]{\text{CVU}}U$ d'où la conclusion sur la CVUTS. Puis, \[
+        \int_\alpha^\beta u_n=U_n(\beta)-U_n(\alpha) \xrightarrow[n\to+\infty]{}U(\beta)-U(\alpha)
+    \] 
 \end{proof}
+
+\begin{ex}
+    $u_n:x \in  [0, 1] \longmapsto n^2x^n(1-x)$ converge simplement vers la fonction nulle. Puis \[
+        \int_0^1 u_n = n^2 \left( \frac{1}{n+1}-\frac{1}{n+2} \right) \xrightarrow[n\to+\infty]{}1\neq \int_0^10=0
+    \] 
+    donc il n'y a pas CVU.
+\end{ex}
+
+\begin{thm}[Dérivation]
+    \Hyp $(u_n)$ suite de fonctions $\mathcal  C^1$ sur  $I$, telles que \[
+        u_n \xrightarrow[I]{\text{CVS}}u \qquad  \text{ et }\qquad  u_n' \xrightarrow[I]{\text{CVUTS}}v
+    \] 
+    \begin{concenum}
+    \item  $u_n \xrightarrow[I]{\text{CVUTS}}u$
+    \item $v$ est continue et  $u'=v$
+    \end{concenum}
+\end{thm}
+
+\begin{proof}
+    On se donne  $a \in  I$ fixé, on écrit \[
+        u_n(x)=u_n(a)+\int_a^xu_n'
+    \] 
+    et $n\to +\infty$ donne \[
+        u(x)=u(a)+\int_a^xv
+    \] 
+    donc $u$ est  $\mathcal C^1$ et $u'=v$. Puis,  \[
+        \int_a^xu_n \xrightarrow[I]{\text{CVUTS}}\int_a^x u'
+    \] 
+    donc \[
+        u_n \xrightarrow[I]{\text{CVUTS}}u
+    \] 
+\end{proof}
+
+\begin{thm}[Dérivation itérée]
+    \Hyp \index{dérivation itérée (suite de fonctions)} $(u_n)$ fonctions  $\mathcal  C^p$, \[
+        \forall  k \in  \llbracket 0, p-1 \rrbracket , \qquad  u_n^{(i)}\xrightarrow[I]{\text{CVS}}\varphi_i
+    \] 
+    et  \[
+        u_n^{(p)}\xrightarrow[I]{\text{CVUTS}}\varphi_p
+    \] 
+    \begin{concenum}
+    \item Il y a CVUTS à la place de la CVS pour toutes les dérivées d'ordre  $\leq p$
+    \item $\varphi_0$ est  $\mathcal  C^p$ et $\varphi_0^{(k)}=\varphi_k$
+    \end{concenum}
+\end{thm}
+
+\begin{proof}
+    Admis. (Récurrence)
+\end{proof}
+
+\begin{thm}[Convergence dominée\index{convergence dominée (suites)}]
+    \Hyp $(u_n), u$ des fonctions  $\CPM(I, \K)$, $u_n \xrightarrow[I]{\text{CVS}}u$\\ $ \exists \varphi \in  \mathcal  L^1(I, \R_+), \quad  \forall  x \in  I, \forall  n \in  \N, \quad  |u_n(x)|\leq \varphi(x)$
+    \begin{concenum}
+    \item $u_n$ et $u$ intégrable sur $I$
+    \item  $\displaystyle \lim_{n\to +\infty}\int_Iu_n=\int_Iu$
+    \end{concenum}
+\end{thm}
+
+\begin{proof}
+Admis
+\end{proof}
+
+\begin{rem}
+On note \[
+\begin{matrix}
+    f_n:& \R_+ & \longrightarrow &\R  \\
+    & x & \longmapsto & \dfrac{x^ne^{-x}}{n!}
+\end{matrix}
+\] 
+Les $f_n$ sont  $\mathcal  C^1$ et \[
+    f_n'(x)=\frac{e^{-x}}{n!}\left( -x^n+nx^{n-1} \right) =\frac{x^{n-1}e^x(n-x)}{n!}
+\] 
+Le calcul donne \[
+    \sup_{\R_+}|f_n| \xrightarrow[n\to+\infty]{}0 \qquad  \text{ donc } \qquad  f_n \xrightarrow[\R_+]{\text{CVU}}0
+\]
+Les $f_n$ sont intégrables (ce sont des $o(\frac{1}{x^2})$) et \[
+    \int_0^{+\infty}f_n= \underbrace{\left[ -\frac{x^ne^{-x}}{n!} \right]_0^{+\infty}}_{=0}+\int_0^{+\infty} \frac{x^{n-1}}{(n-1)!}e^{-x}\diff x=\cdots =\int_0^{+\infty}e^{-x}\diff x=1
+\]
+Ainsi  \[
+    \lim_{n\to +\infty} \int_0^{+\infty} \frac{x^ne^{-x}}{n!}\diff x=1 \neq  \int_0^{+\infty} \left( \lim_{n\to +\infty}f_n(x) \right) \diff x=0
+\] 
+Le théorème ne s'applique pas sans hypothèse de domination
+\end{rem}
+
+\begin{ex}
+\[
+\Gamma:x\longmapsto \int_{{0}}^{{+\infty}} {e^{-t}t^{x-1}}\;\diff t
+\] 
+Cette fonction est bien définie car l'intégrande est intégrable. On note \[
+    f_n:t\longmapsto \1_{[0,n]}(t) \left( t-\frac{t}{n} \right) ^nt^{x-1}
+\]
+Ce sont des fonctions $\CPM$ sur  $\R_+^\star$. On a \[
+    f_n \xrightarrow[\R_+^\star]{\text{CVS}}e^{-t}t^{x-1}
+\]
+Donc $\forall  n \in  \N^\star,$ \[ \forall  t >0, \qquad  0\leq f_n(t)\leq \1_{[0, n]}\exp\left(n \ln \left(1-\frac{t}{n}\right)\right)\leq e^{-t}t^{x-1} \]
+et le membre de droite est $\CPM$ intégrable. Par convergence dominée,  \[
+    \int_{0}^{+\infty} f_n \xrightarrow[t\to +\infty]{}\int_0^{+\infty}f=\Gamma(x) 
+\] 
+Puis (calculer) \[
+    \int_0^{+\infty}f_n=\frac{n^xn!}{x(x+1)\cdots (x+n)}
+\] 
+donc \[
+    \frac{n^xn!}{x(x+1)\cdots (x+n)} \xrightarrow[n\to+\infty]{}\Gamma(x)
+\] 
+\end{ex}
+
+\section{Méthodes pour la convergence uniforme}
+
+On suppose que l'on a une suite $(u_n)_n$ de fonctions de  $I$ dans  $\C$ et $u$ de  $I$ dans  $\C$ telle que \[
+    u_n \xrightarrow[I]{\text{CVS}}u
+\]
+Comment établir $u_n \xrightarrow[I]{\text{CVS}}u$ ?
+\begin{itemize}
+    \item Étude de $|u_n-u|$ (ou $u_n-u$ pour les fonctions réelles)
+    \item On trouve $(a_n)$ tel que  $\forall  x \in  I, \quad  |u_n(x)-u(x)|\leq a_n$ et $a_n\longrightarrow 0$
+    \item Autre (il faut réfléchir)
+\end{itemize}
+
+Comment montrer qu'il n'y a pas CVU ?
+\begin{itemize}
+    \item Étudier $\sup_I|u_n-u|$ et vérifier que ça ne tend pas vers  $0$
+    \item Trouver  $(x_n)$ tel que  $(u_n-u)(x_n)$ ne tend pas vers  $0$
+    \item Trouver un segment  $I$ tel que  $\int_I u_n$ ne tend pas vers  $\int_Iu$
+    \item Régularité de la limite simple
+    \item Autre (réfléchir)
+\end{itemize}
+
+\subsection{Un premier exemple}
+
+\[
+    f_n(x)= \begin{cases}
+        \dfrac{\sin(n^2x)^2}{n\sin x} &\text{ si } x \in  ]0, \frac{\pi}{2}]\\
+        0 &\text{si }x=0
+    \end{cases}
+\] 
+On a \[
+    f_n \xrightarrow[]{\text{CVS}}0
+\] 
+mais \[
+    f_n \left( \frac{1}{n} \right) \underset{}\sim \sin(n)^2 \xnrightarrow{}0
+\] 
+donc il n'y a pas CVU.

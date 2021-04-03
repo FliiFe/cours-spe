@@ -15,7 +15,7 @@
 \renewcommand\colswaptolabel[1]{#1}
 \renewcommand\rowswapfromlabel[1]{#1}
 \renewcommand\rowswaptolabel[1]{#1}
-% \usepackage[cal=boondoxo]{mathalpha}
+\usepackage[cal=rsfso]{mathalpha}
 \usepackage{mathtools}
 \usepackage{array}
 \usepackage{stackengine}
@@ -28,6 +28,7 @@
 \usepackage{mdframed}
 \usepackage{etoolbox}
 \usepackage{xparse}
+\usepackage{tocloft}
 \usepackage{parskip}
 \usepackage{tikz,tkz-tab}
 \usepackage{pgfplots}
@@ -38,13 +39,13 @@
 \usepackage{lastpage}
 \usepackage[nohints,french]{minitoc}
 \fi
-\usepackage{tocloft}
 \usepackage{enumitem}
 \usepackage{needspace}
-\usepackage[noautomatic]{imakeidx}
+\usepackage[noautomatic,quiet]{imakeidx}
 \usepackage[normalem]{ulem}
 \usepackage[hidelinks]{hyperref}
 
+\indexsetup{firstpagestyle=empty}
 \makeindex[intoc,columns=2]%,options={-s indexstyle.ist -o build/\jobname.ind}]
 \makeatletter
 \def\@idxitem{\par\hangindent 0pt}
@@ -56,30 +57,30 @@
 
 \newif\ifishypconc
 \ishypconcfalse
-\newcommand{\newthm}[2]{
+\NewDocumentCommand{\newthm}{mms}{
     \newenvironment{#1}[1][]
-    {\par\begin{minipage}{\textwidth}\noindent\normalfont\ifstrempty{##1}{\textbf{#2.}}{\textbf{#2} (##1).}\par\nopagebreak%
+    {\needspace{2cm}\par\noindent\normalfont\ifstrempty{##1}{\textbf{#2.}}{\textbf{#2} (##1).}\par\nopagebreak%
     \begin{mdframed}[
         linewidth=1pt,
         linecolor=black,
+        nobreak=\IfBooleanTF{#3}{true}{false},
         bottomline=false,topline=false,rightline=false,
         innerrightmargin=0pt,innertopmargin=0pt,innerbottommargin=0pt,
         innerleftmargin=1em,
         skipabove=.4\baselineskip
     ]}
-    {\ifishypconc \end{adjustwidth} \fi\end{mdframed}\end{minipage}\ishypconcfalse}
+    {\ifishypconc \end{adjustwidth} \fi\end{mdframed}\ishypconcfalse}
 }
 
-
 \theoremstyle{definition}
-\newthm{thm}{Théorème}
-\newthm{thmdef}{Théorème -- Définition}
+\newthm{thm}{Théorème}*
+\newthm{thmdef}{Théorème -- Définition}*
 \newthm{dfn}{Définition}
-\newthm{defprop}{Définition -- Proposition}
-\newthm{lmm}{Lemme}
+\newthm{defprop}{Définition -- Proposition}*
+\newthm{lmm}{Lemme}*
 \newthm{rem}{Remarque}
-\newthm{res}{Résultat}
-\newthm{prop}{Proposition}
+\newthm{res}{Résultat}*
+\newthm{prop}{Proposition}*
 \newthm{cor}{Corollaire}
 \newthm{exo}{Exercice}
 \newthm{notation}{Notation}
