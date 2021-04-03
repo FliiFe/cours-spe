@@ -1,7 +1,7 @@
 \usepackage[T1]{fontenc} 
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
-\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage[a4paper, margin=2.5cm]{geometry}
 \usepackage[activate={true,nocompatibility},final,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
 \usepackage{lmodern}
 % \usepackage{mlmodern}
@@ -57,34 +57,33 @@
 
 \newif\ifishypconc
 \ishypconcfalse
-\NewDocumentCommand{\newthm}{mms}{
+\NewDocumentCommand{\newthm}{mm}{
     \newenvironment{#1}[1][]
-    {\needspace{2cm}\par\noindent\normalfont\ifstrempty{##1}{\textbf{#2.}}{\textbf{#2} (##1).}\par\nopagebreak%
+    {\begin{minipage}{\textwidth}\par\noindent\normalfont\ifstrempty{##1}{\textbf{#2.}}{\textbf{#2} (##1).}\par\nopagebreak%
     \begin{mdframed}[
         linewidth=1pt,
         linecolor=black,
-        nobreak=\IfBooleanTF{#3}{true}{false},
         bottomline=false,topline=false,rightline=false,
         innerrightmargin=0pt,innertopmargin=0pt,innerbottommargin=0pt,
         innerleftmargin=1em,
         skipabove=.4\baselineskip
     ]}
-    {\ifishypconc \end{adjustwidth} \fi\end{mdframed}\ishypconcfalse}
+    {\ifishypconc \end{adjustwidth} \fi\end{mdframed}\end{minipage}\ishypconcfalse}
 }
 
 \theoremstyle{definition}
-\newthm{thm}{Théorème}*
-\newthm{thmdef}{Théorème -- Définition}*
+\newthm{thm}{Théorème}
+\newthm{thmdef}{Théorème -- Définition}
 \newthm{dfn}{Définition}
-\newthm{defprop}{Définition -- Proposition}*
-\newthm{lmm}{Lemme}*
+\newthm{defprop}{Définition -- Proposition}
+\newthm{lmm}{Lemme}
 \newthm{rem}{Remarque}
-\newthm{res}{Résultat}*
-\newthm{prop}{Proposition}*
+\newthm{res}{Résultat}
+\newthm{prop}{Proposition}
 \newthm{cor}{Corollaire}
 \newthm{exo}{Exercice}
 \newthm{notation}{Notation}
-\newtheorem*{ex}{Exemple}
+\newtheorem{ex}{Exemple}
 \newtheorem{csq}{Conséquence}[subsection]
 \newtheorem*{csq*}{Conséquence}
 \renewcommand{\thecsq}{\arabic{csq}}
