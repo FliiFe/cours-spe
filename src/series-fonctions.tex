@@ -55,4 +55,94 @@ Dans tout le chapitre, $I$ est un intervalle non trivial, $A$ est une partie non
     Évident.
 \end{proof}
 
+\begin{rem}
+Pour la convergence simple, on a $u_nv_n \longrightarrow uv$, mais pas pour la  CVU ou la CVUTS. Par exemple, \[
+\begin{matrix}
+    u:& \R_+ & \longrightarrow &\R  \\
+    & x & \longmapsto & e^x+\frac{1}{n}
+\end{matrix}
+\] 
+On a \[
+    u_n \xrightarrow[\R_+]{\text{CVU}} u
+\] 
+On a aussi  \[
+    u_n^2 \xrightarrow[\R_+]{\text{CVS}} u^2
+\]
+donc si $u_n^2$ converge uniformément, \[
+    u_n^2(x)-u^2(x) = \frac{2e^x}{n}+\frac{1}{n^2} \xrightarrow[n\to+\infty]{}0
+\] 
+ce qui est absurde
+\end{rem}
 
+\begin{prop}[Propriétées héritées par CVS]
+    \Hyp $u_n: I\to \K$, $u_n \xrightarrow[]{\text{CVS}} u$ sur $I$
+    \Conc La monotonie, la convexité, le caractère $k$-lipschitzien, la positivité sont hérités.
+\end{prop}
+
+\begin{proof}
+On écrit les inégalités et on passe à la limite.
+\end{proof}
+
+\section{Propriétés héritées par CVU}
+
+\begin{thm}[Double limite\index{double limite (théorème)}]
+    \Hyp $u_n \xrightarrow[]{\text{CVU}} u$ sur $A$,  $a$ point adhérent de  $A$,  $u_n(x) \xrightarrow[x\to a]{}\ell _n \in  \K$
+    \begin{concenum}
+    \item $(\ell _n)$ converge vers $\ell  \in \K$
+    \item La fonction $u$ a pour limite  $\ell $ en $a$, i.e.  \[
+            \lim_{\substack{x \to  a\\x \in  A}} \lim_{x \to  +\infty} u_n(x)=\lim_{n \to  +\infty}\lim_{\substack{x \to  a\\ x \in  A}} u_n(x)
+    \] 
+    \end{concenum}
+\end{thm}
+
+\begin{proof}~
+\begin{enumerate}
+    \item (admis) On va construire $(n_k)$ strictement croissante telle que  $ \forall  n\geq n_k, |\ell _n-\ell _{n_k}| \leq  \dfrac{1}{2^k}$. \begin{itemize}
+        \item $\forall \epsilon>0, \exists  N \in  \N, \forall  n\geq N, \forall  x \in  A, |u_n(x)-u(x)|\leq \epsilon'$
+        \item $\forall  n, p\geq N, |u_n(x)-u_p(x)|\leq |u_n(x)-u(x)|+|u(x)-u_p(x)|\leq 2\epsilon'=\epsilon$ et $x \longrightarrow a$ donne  $|\ell _n-\ell _p|\leq \epsilon$
+        \item Pour $\epsilon=1$, il existe  $n_0 \in  \N$ tel que $\forall n\geq n_0, |\ell _n-\ell _{n_0}|\leq 1$
+        \item Pour $k \in  \N$, si on suppose $n_0<\cdots <n_k$ construits, pour $\epsilon=\frac{1}{2^{k+1}}$, il existe $N \in  \N$ tel que $\forall  p \geq N, |\ell  _n-\ell _p|\leq \epsilon$. On prend $n_{k+1}=\max(N, n_0,\cdots , n_k+1)$.
+    \end{itemize}
+    Puis $|\ell _{n_{k+1}}-\ell _{n_k}|\leq \frac{1}{2^k}$, c'est le terme général d'une série convergente donc $(\ell _{n_k})$ converge.
+
+     Soit $\epsilon>0$. Il existe $K$ tel que  $k\geq K$, $\frac{1}{2^k}\leq \epsilon'$ et $|\ell  -\ell _{n_k}|\leq \epsilon'$ donc pour $n\geq n_k$, \[
+    |\ell _n-\ell |\leq |\ell _n-\ell _{n_k}|+|\ell _{n_k}-\ell |\leq 2\epsilon'=\epsilon
+    \] 
+    donc $\ell _n \longrightarrow \ell $ 
+\item On suppose $a \in  \R$. Soit $\epsilon>0$.  \begin{itemize}
+    \item $\exists N \in  \N, \forall  n \geq  N, \forall  x \in  A, \quad  |u_n(x)-u(x)|\leq \epsilon'$
+    \item $\exists N_1 \in  \N, \forall  n\geq N_1, \quad  |\ell _n-\ell |\leq \epsilon'$
+    \item $M=\max(N, N_1). \qquad  \exists \delta>0, \forall  x \in  ]a-\delta, a+\delta[\cap A, |u_M(x)-\ell _M|\leq \epsilon'$.
+\end{itemize}
+Donc $|u(x)-\ell |\leq |u(x)-u_M(x)|+|u_M(x)-\ell _M| + |\ell _M-\ell |\leq 3\epsilon'=\epsilon$
+\end{enumerate}
+\end{proof}
+
+\begin{rem}
+    $a$ est un point adhérent  si et seulement si $ \exists  (a_n) \in  A^{\N}, a_n \longrightarrow a$
+\end{rem}
+
+\begin{cor}
+    \Hyp $(u_n)$ une suite de fonctions continues sur  $A$ qui converge uniformément sur  $A$ vers  $u$
+    \Conc  $u$ est continue sur  $A$
+\end{cor}
+
+\begin{proof}
+    $a \in  A$ donc $a$ est un point adhérent de  $A$,  $u_n \xrightarrow[A]{\text{CVU}}u$ et $\forall  n \in  \N$, \[
+        \lim_{\substack{x \to  a\\x \in  A}}u_n(x)=u_n(a) \quad (=\ell _n)
+    \] 
+    et TDL: \[
+        \lim_{\substack{x \to  a\\x \in  A}}u(x)=\lim_{n \to  +\infty}u_n(x)=u(a)
+    \] 
+\end{proof}
+
+\section{Convergence uniforme, dérivation, intégration}
+
+\begin{thm}
+    \Hyp $u_n:I\to K$, $u:I\to K$ et $u_n \xrightarrow[I]{\text{CVUTS}}u$, $a \in  I$, $u_n$ et  $u$ sont $\CPM(I, \K)$. On note $U_n:x \in  I \longmapsto \displaystyle\int_a^xu_n$ et $U:x \in  I \longmapsto \displaystyle \int_a^x u$
+    \Conc $U_n \xrightarrow[I]{\text{CVUTS}} U$ et en particulier $ \forall \alpha, \beta \in  I, \displaystyle \int_{\alpha}^\beta u_n \xrightarrow[n\to+\infty]{}\int_\alpha^\beta u$
+\end{thm}
+
+\begin{proof}
+    $[\alpha, \beta] \subset I, J$ plus petit segment qui contient  $a, \alpha, \beta$
+\end{proof}
