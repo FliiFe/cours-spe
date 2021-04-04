@@ -185,7 +185,7 @@ Donc $|u(x)-\ell |\leq |u(x)-u_M(x)|+|u_M(x)-\ell _M| + |\ell _M-\ell |\leq 3\ep
 \end{proof}
 
 \begin{thm}[Dérivation itérée]
-    \Hyp \index{dérivation itérée (suite de fonctions)} $(u_n)$ fonctions  $\mathcal  C^p$, \[
+    \Hyp \index{derivation iteree suite@dérivation itérée (suite de fonctions)} $(u_n)$ fonctions  $\mathcal  C^p$, \[
         \forall  k \in  \llbracket 0, p-1 \rrbracket , \qquad  u_n^{(i)}\xrightarrow[I]{\text{CVS}}\varphi_i
     \] 
     et  \[
@@ -293,3 +293,255 @@ mais \[
     f_n \left( \frac{1}{n} \right) \underset{}\sim \sin(n)^2 \xnrightarrow{}0
 \] 
 donc il n'y a pas CVU.
+
+\subsection{Un deuxième exemple}
+
+\[
+    \begin{array}{rrcl}
+    \varphi_n:& \left[ 0, \frac{\pi}{2} \right] & \longrightarrow & \R \\
+    & x & \longmapsto & n\cos^n x\sin x
+\end{array}
+\] 
+La suite $(\varphi_n)$ converge simplement vers la fonction nulle, or  \[
+    \int_{0}^{\frac{\pi }{2}} \varphi_n=\frac{n}{n+1} \xrightarrow[n\to+\infty]{}1\neq 0
+\] 
+Donc il n'y a pas CVU.
+
+\subsection{Approximation de l'exponentielle}
+
+On va montrer que pour tout $R>0$,  \[
+    \left( 1+\frac{z}{n} \right) ^n \xrightarrow[\displaystyle\mathcal  D_f(0, R)]{\text{CVU}}e^z
+\] 
+On remarque d'abord (Taylor) \[
+    \forall  z \in  \mathcal  D_f(0, R), \quad  \left| e^z- \sum_{k=0}^{n} \frac{z^k}{k!} \right| = \left| z^{n+1}\int_0^1 \frac{(1-t)^n}{n!}e^{tz}\;\diff t \right| \leq \sup_{|z|\leq R} \left|e^z\right| \frac{R^{n+1}}{(n+1)!}=a_n \xrightarrow[n\to+\infty]{}0
+\] 
+donc \[
+    P_n(z)\defeq \sum_{k=0}^{n} \frac{z^k}{k!} \xrightarrow[\mathcal  D_f(0, R)]{\text{CVU}} e^z.
+\]
+Puis, \[
+    P_n(z)-\left( 1-\frac{z}{n} \right) ^n= \sum_{k=0}^{n} \underbrace{\left( \frac{1}{k!}-\frac{n(n-1)\cdots (n-k+1)}{k!n^k} \right) }_{\geq 0}z^k
+\] 
+donc \[
+    \left| P_n(z)- \left( 1+\frac{z}{n} \right) ^n \right| \leq P_n(R)- \left( 1+\frac{R}{n} \right) ^n \xrightarrow[n\to+\infty]{}0
+\] 
+et finalement \[
+    e^z-\left( 1+\frac{z}{n} \right) ^n= \underbrace{e^z-P_n(z)}_{\text{CVU vers } 0}+\underbrace{P_n(z)-\left( 1+\frac{z}{n} \right) ^n}_{\text{CVU vers }0} \xrightarrow[\mathcal D_f(0, R)]{\text{CVU}}0
+\] 
+
+\subsection{Suite récurrente de fonctions}
+
+On se place sur $[0, \frac{\pi}{2}]$ et on pose \[
+    u_0=\id \qquad  \qquad  \forall  n\geq 0, \quad  u_{n+1}=\sin(u_n)
+\] 
+On observe que les $u_n$ sont croissantes donc  \[
+    0\leq u_n(x)\leq u_n\left( \frac{\pi }{2} \right) \xrightarrow[n\to+\infty]{}0
+\] 
+Donc $u_n \xrightarrow[]{\text{CVU}}0$ 
+
+\section{Résultats de densité}
+
+\subsection{Fonctions en escalier}
+
+On a montré que $f \in  \CPM([a, b], \C)$ est limite uniforme de fonctions en escalier sur $[a, b]$ (vu en sup).
+
+\subsection{Fonctions continues affines par morceaux}
+
+On va montrer que toutes les fonctions continues sur un segment sont limites uniforme de fonctions continues affines par morceaux.
+
+On prend $f \in  \mathcal  C([a, b], \C)$. Soit $\epsilon>0$. Il existe  $\varphi$ en escalier qui approche  $f$ à  $\epsilon'=\frac{\epsilon}{3}$ près. On note $\sigma=(a_0, \cdots , a_n)$ une subdivision adaptée à $\varphi$ (on note $|\sigma|$ le pas de cette subdivision, c'est à dire le minimum des écarts entre deux termes consécutifs). On note $\delta>0$ tel que  $\delta < \frac{|\sigma|}{2}$, et on note $c_i$ la valeur de  $\varphi$ sur  $]a_i, a_{i+1}[$. On a: \[
+    \forall  i \in  \llbracket 1, n-1 \rrbracket , \quad  |c_i-f(a_{i+1})|\leq \epsilon' \text{ et } |c_{i+1}-f(a_{i+1})|\leq \epsilon' \qquad  \text{ donc } \qquad  |c_{i+1}-c_i| \leq 2\epsilon'
+\] 
+On pose $g$ l'unique fonction continue affine sur les intervalles du type $[a_i-\delta, a_i+\delta]$ et qui coïncide avec  $\varphi$ ailleurs. On a dans tous les cas $|g(x)-\varphi(x)|\leq 2\epsilon'$ et donc \[
+    \forall  x \in  [a, b] , \qquad  |g(x)-f(x)|\leq 3\epsilon'
+\] 
+
+\subsection{Théorème de Weierstrass}
+
+\begin{thm}[Weierstrass\index{Weierstrass (théorème de -- )}]
+    \Hyp $f \in  \mathcal  C^0([a, b], \R)$
+    \Conc $f$ est limite uniforme de polynômes:  \[
+        \forall  \epsilon>0, \exists  P \in  \R[X], \forall  x \in  [a, b], \quad  |f(x)-P(x)|\leq \epsilon
+    \] 
+\end{thm}
+
+\begin{proof}[Démonstration par les polynômes de Bernstein]
+    On commence par le cas $[a, b]=[0, 1]$. Pour $f \in  \mathcal  C^0([0, 1], \R)$, on note \[
+        B_n(f)(x)\defeq \sum_{k=0}^{n} \binom knx^k(1-x)^{n-k}f\left( \frac{k}{n} \right) 
+    \] 
+    Le calcul donne \begin{itemize}
+        \item $B_n(1)(x)=1$
+        \item  $B_n(X)(x)=x$
+        \item  $B_n(X^2)(x)=\dfrac{x}{n}(nx-x+1)=x^2+\dfrac{x-x^2}{n}$ donc \[
+                B_n(X^2)(x) \xrightarrow[ \detokenize{[0, 1]} ]{\text{CVU}} x^2
+        \]
+    \end{itemize}
+    On en déduit \[
+        \sum_{k=0}^{n} \binom nkx^k(1-x)^{n-k}(k-nx)^2=n^2B_n(X^2)(x)-2n^2xB_n(X)(x)+n^2B_n(1)(x)=nx(1-x)
+    \] 
+    On va montrer que $B_n(f)$ converge uniformément vers  $f$ sur $[0, 1]$. La fonction $f$ est continue sur un segment donc (Heine) elle est uniformément continue. Soit  $\alpha>0$, il existe  $\delta>0$ associé tel que  \[
+        |x-y|\leq \delta \implies |f(x)-f(y)|\leq \alpha
+    \] 
+    On a \begin{align*}
+        B_n(f)(x)-f(x)= &\sum_{\substack{k=0\\|\frac{k}{n}-x|\leq \delta}}^{n} \left( f\left( \frac{k}{n} \right)-f(x)  \right) \binom nkx^k(1-x)^{n-k} \\
+                        &+\sum_{\substack{k=0\\|\frac{k}{n}-x|> \delta}}^n \left( f\left( \frac{k}{n} \right)-f(x)  \right) \binom nkx^k(1-x)^{n-k}
+    \end{align*}
+    On note $M$ un majorant de  $|f|$ sur  $[0, 1]$, et en remarquant que $ \left| \frac{k}{n}-x \right|>\delta \iff  (n\delta)^2<(k-nx)^2$, on a \begin{align*}
+            (n\delta)^2 \sum_{\substack{k=0\\|\frac{k}{n}-x|> \delta}}^n \binom nk x^k(1-x)^{n-k}&\leq \sum_{\substack{k=0\\|\frac{k}{n}-x|> \delta}}^n(k-nx)^2 \binom nk x^k(1-x)^{n-k} \\
+                                                                                                 &\leq  \sum_{k=0}^n(k-nx)^2 \binom nk x^k(1-x)^{n-k} \\
+                                                                                                 &=nx(1-x)\leq \frac{n}{4}
+        \end{align*}
+        d'où finalement \[
+            \sum_{\substack{k=0\\|\frac{k}{n}-x|> \delta}}^n \binom nk x^k(1-x)^{n-k}\leq \frac{1}{4n\delta^2}
+        \] 
+        et \[
+            \left| B_n(f)(x)-f(x) \right|\leq \frac{2M}{4n\delta^2}+\alpha<\epsilon
+        \] 
+        d'où la CVU.
+
+        Pour le cas général, on compose à droite par une application affine (polynômiale).
+\end{proof}
+
+\section{Séries de fonctions}
+
+\begin{dfn}
+    On note $(f_n)_{n \in  \N}$ une suite de fonctions de $I$ dans  $\K$. \begin{itemize}
+        \item On appelle série de fonctions associée à $f=(f_n)$ la suite  $(S_n(f))_n$, où \[
+                S_n(f): x \in  I \longmapsto  \sum_{k=0}^nf_k(x)
+        \] 
+        On la note $\sum f_n$
+    \item On dira que  $\sum f_n$ converge simplement ou uniformément si la suite sous-jacente $(S_n(f))$ aussi. 
+    \item On dira que $\sum f_n$ converge normalement si  $\|f_n\|_\infty$ est le terme général d'une série convergente.
+    \end{itemize}
+\end{dfn}
+
+\begin{rem}
+    La convergence normale entraine tous les autres types de convergences, c'est une contrainte plus forte. En effet, si $\sum f_n$ converge normalement, alors il y a CVS car $\sum |f_n(x)|$ converge. On note  $S$ la limite simple et on a\[
+        \forall  x \in  I, \forall  n \in  N, \qquad  \left| S_n(f)(x) -S(x)\right|= \left| \sum_{k=n+1}^{+\infty} f_k(x) \right|\leq \sum_{k=n+1}^{+\infty} \|f_k\|_\infty \xrightarrow[n\to+\infty]{}0
+\] 
+d'où la CVU.
+\end{rem}
+
+\section{Propriétés héritées}
+
+\begin{prop}
+\Hyp $f_n:I\to \K$ continues, $\sum f_n$ CVU
+\Conc  $\displaystyle S:x \in  I \longmapsto  \sum_{n=0}^{+\infty}f_n(x)$ est continue
+\end{prop}
+
+\begin{proof}
+    Les $S_n(f)$ sont continues et il y a CVU.
+\end{proof}
+
+\begin{prop}[Dérivation]
+    \Hyp $f_n:I\to \K \quad  \in \mathcal  C^1$, $\sum f_n$ CVU et  $\sum f_n'$ CVUTS
+    \Conc  $\displaystyle S:x \in  I \longmapsto  \sum_{n=0}^{+\infty}f_n(x)$ est $\mathcal  C^1$ et \[
+        S'(x)= \sum_{n=0}^{+\infty} f_n'(x)
+    \] 
+\end{prop}
+
+\begin{prop}[Double limite\index{double limite (théorème)}]
+    \Hyp $f_n : I \to  \K$, $a$ adhérent à  $I$,  $\sum f_n$ CVU,  $ \qquad \displaystyle\lim_{\substack{x\to a\\x \in  I}}f_n(x)=\ell _n \in  \K$
+    \begin{concenum}
+    \item $\sum \ell _n$ converge
+    \item $\displaystyle \lim_{x\to a}\sum_{n=0}^{+\infty}f_n(x)=\sum_{n=0}^{+\infty}\ell _n$
+    \end{concenum}
+\end{prop}
+
+\begin{prop}[Dérivation itérée\index{derivation iteree serie@dérivation itérée (série de fonctions)}]
+    \Hyp $f_n \in  \mathcal  C^p(I, \K)$, $ \quad \sum f_n, \cdots , \sum f_n^{(p-1)}$ CVS et $\sum f_n^{(p)}$ CVUTS
+    \Conc Les CVS sont des CVUTS et  \[
+        \forall  \ell  \in \llbracket 0, p \rrbracket , \quad  S^{(\ell )}(x)= \sum_{n=0}^{+\infty} f_n^{\ell }(x)
+    \] 
+\end{prop}
+
+\section{Exemples}
+
+\subsection{\texorpdfstring{Étude de $\sum_{n\geq 0}\frac{1}{n!(x+n)}$}{Premier exemple}}
+
+On a bien CVS sur $\R_+^\star$ et pour $k>0$\[
+    \left| \frac{1}{k!(x+k)} \right|\leq \frac{1}{k!} \text{ tg série CV }
+\] 
+donc il y a CVN et CVU. La somme $S$ est continue et on a  \[
+    S(x)=\frac{1}{x}+ \underbrace{\sum_{n\geq 1}f_n}_{\text{borné}} \underset{0^+}\sim \frac{1}{x}
+\] 
+Puis, $xS(x)$ converge normalement et  \[
+    \lim_{x \to  +\infty} \frac{x}{n!(x+n)}=\frac{1}{n!}
+\] 
+Donc par théorème de la double limite, \[
+    xS(x) \xrightarrow[x \to  +\infty]{}e \qquad  \text{donc} \qquad  S(x)\underset{+\infty}\sim \frac{e}{x}
+\] 
+On étudie $S(x)-\frac{e}{x}$. \[
+    S(x)-\frac{e}{x}= \sum_{n=0}^{+\infty} \frac{1}{n!} \frac{-n}{x(x+n)}=-\frac{1}{x} \sum_{n=1}^{+\infty}\frac{1}{(n-1)!(x+n)}=-\frac{1}{x}S(1+x) \underset{+\infty}\sim \frac{e}{x^2}
+\] 
+D'où finalement \[
+    S(x)=\frac{e}{x}-\frac{e}{x^2}+o_{+\infty}\left( \frac{1}{x^2} \right) 
+\] 
+La fonction $S$ est  $\mathcal  C^1$ sur $\R_+^\star$ car \begin{itemize}
+    \item Les $f_n$ sont  $\mathcal C^1$
+    \item Il y a CVS
+    \item Sur un segment $[a, b]$, $\|f_n'\|_\infty\leq \frac{1}{n!(a+n)^2}$ qui est le terme général d'une série convergente, indépendant de $x$. Donc  $\sum f_n'$ CVN donc CVUTS
+\end{itemize}
+
+\subsection{\texorpdfstring{Étude de $\sum (-1)^n\ln(1+1 / n^2x^2)$}{Second exemple}}
+
+On pose  \[
+    \forall x \in  \R_+^\star, \qquad  f(x)= \sum_{n\geq 1} (-1)^n \ln \left( 1+\frac{1}{n^2x^2} \right) 
+\] 
+La série converge absolument donc on a bien la CVS, les $f_n$ sont continus puis il y a CVN sur chaque segment donc  $f$ est continue.
+
+Puis, sur $[1, +\infty[$, on a $x^2\ln(1+\frac{1}{n^2x^2})\leq \frac{1}{n^2}$ donc il y a CVN et  \[
+    \forall  n \in  \N^\star, \quad  \lim_{x \to +\infty} (-1)^nx^2\ln\left( 1+\frac{1}{n^2x^2} \right) = \frac{(-1)^n}{n^2}
+\] 
+donc (double limite): \[
+    f(x)\underset{+\infty}\sim \frac{1}{x^2}\sum_{n\geq 1}\frac{(-1)^n}{n^2}
+\] 
+
+\begin{rem}
+    \[
+        \zeta(2)=\frac{\pi ^2}{6}=\underbrace{\sum_{n\geq 1}\frac{1}{(2n)^2}}_{\frac{1}{4}\cdot \frac{\pi ^2}{6}}+\sum_{n\geq 0} \frac{1}{(2n+1)^2}
+    \] 
+    donc \[
+        \sum_{n=1}^{+\infty}\frac{(-1)^n}{n^2}=\frac{1}{4}\cdot \frac{\pi ^2}{6}- \frac{\pi^2}{8}=-\frac{\pi^2}{12}
+    \] 
+    et $f(x)\underset{+\infty}\sim -  \dfrac{\pi ^2}{12x^2}$
+\end{rem}
+
+\section{Intégration terme à terme}
+
+L'intégration terme à terme dans le cas uniforme est identique au cas des suites.
+
+\begin{thm}[Intégration terme à terme uniforme]
+    \Hyp $f_n \in \CPM([a, b], \R)$, $\sum f_n$ CVU et  $\sum_{n\geq 0} f_n$  $\CPM$
+    \Conc  $\displaystyle \int_a^b\sum f_n=\sum \int_a^bf_n$
+\end{thm}
+
+\begin{thm}[Intégration dominée]
+    \Hyp $f_n \in  \CPM$ sur $I$, intégrable. $\sum f_n$ CVS,  $\sum_{n\geq 0} f_n$ $\CPM$ et  $\sum \int_I|f_n|$ converge
+    \Conc  $\sum_{n\geq 0}f_n$ est intégrable sur  $I$ et  \[
+        \int_I\sum_{n\geq 0}f_n=\sum_{n\geq 0}\int_If_n
+    \] 
+\end{thm}
+
+\begin{ex}
+    Calcul de $\displaystyle \int_0^{+\infty}\frac{t}{e^t-1}\;\diff t$.
+
+Pour $t>0$,  \[
+    \frac{t}{e^t-1}=\frac{t}{e^t(1-e^{-t})}=\frac{t}{e^t}\sum_{k=0}^{+\infty}e^{-tk}=\sum_{k=0}^{+\infty}te^{-(k+1)t}
+\] 
+On note $f_k:t\longmapsto te^{-(k+1)t} \in  \CPM(\R_+^\star)$. On a $\sum f_n$ CVS sur $\R_+^\star$ et $\sum_{n\geq 0}f_n$ est  continue sur  $ \R_+^\star$. Puis, pour $k\geq 0$,  \[
+    \int_0^{+\infty}|f_k|= \int_{0}^{+\infty} te^{-(k+1)t}\;\diff t = \frac{1}{(k+1)^2} \text{ tg série CV }
+\] 
+donc on peut intégrer terme à terme: \[
+    \int_{0}^{+\infty} \frac{t}{e^t-1}\;\diff t=\sum_{k=0}^{+\infty}\int_0^{+\infty}te^{-(k+1)t}\;\diff t=  \frac{\pi ^2}{6} 
+\] 
+\end{ex}
+
+\begin{ex}
+Calcul de $\displaystyle I= \int_{0}^{+\infty} \frac{\ln u}{1+u}\;\diff u $.
+
+\emph{Première méthode.} $u=e^{-t}$ donne $\displaystyle I=- \int_{0}^{+\infty}  \frac{t}{e^t-1}\;\diff t$ et on a calculé cette intégrale
+
+\emph{Seconde méthode.} $\displaystyle \frac{\ln u}{1+u}=\sum_{k\geq 0}(-1)^ku^k\ln u$ et on applique le théorème d'intégration terme à terme (version simple)
+\end{ex}
+
+
