@@ -96,7 +96,7 @@ figures: $(FIGURES) ## Build every figure in src/figures/
 
 .SECONDEXPANSION:
 PER := %
-target/%.pdf: %.tex src/preamble.tex src/%.tex $$(patsubst $$(PER).tex,$$(PER).pdf,$$(wildcard src/figures/%-*.tex))
+target/%.pdf: %.tex src/preamble.tex src/preamble/*.tex src/%.tex $$(patsubst $$(PER).tex,$$(PER).pdf,$$(wildcard src/figures/%-*.tex))
 	@echo "$(GREEN)Compiling $(YELLOW)$(<)$(GREEN) into $(YELLOW)$@$(RESET)"
 	$(LATEXMK) $<
 	cp build/$(@F) $@

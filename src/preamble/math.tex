@@ -1,0 +1,133 @@
+\usepackage{amsmath}
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{gauss}
+\renewcommand\colswapfromlabel[1]{#1}
+\renewcommand\colswaptolabel[1]{#1}
+\renewcommand\rowswapfromlabel[1]{#1}
+\renewcommand\rowswaptolabel[1]{#1}
+\usepackage[cal=rsfso]{mathalpha}
+\usepackage{mathtools}
+\usepackage{esvect}
+\usepackage{array}
+\usepackage{stackengine}
+\stackMath
+\usepackage{centernot}
+\usepackage{stmaryrd}
+\usepackage{amssymb}
+% strikeout as \sout
+\usepackage[normalem]{ulem}
+
+% opérateurs usuels
+\NewDocumentCommand\genmrm{O{#2}m}{%
+    \expandafter\NewDocumentCommand\csname#1\endcsname{}{%
+        \mathop{\mathrm{#2}}%
+    }%
+}
+\genmrm{Ker}
+\genmrm{dom}
+\genmrm{Vect}
+\genmrm{Sp}
+\genmrm[Img]{Im}
+\genmrm{id}
+\genmrm{rg}
+\genmrm{ord}
+\genmrm{Tr}
+\genmrm{Com}
+\genmrm{Cov}
+\genmrm{Conv}
+\genmrm{diag}
+\genmrm{Hom}
+\genmrm{sh}
+\genmrm{ch}
+\genmrm{Aut}
+
+% continu par morceaux
+\NewDocumentCommand\CPM{O{0}}{\mathcal{C}^{#1}_{{P\!M}}}
+
+% d droit pour les différentielles (intégrale, calcul diff)
+\newcommand\diff{\mathop{}\!\mathrm d}
+
+% norme d'opérateur
+\newcommand\nop{\|\hspace{-1pt}|}
+
+% :=
+\newcommand\defeq{\;\underset{\text{def}}=\;}
+
+% fonction indicatrice
+\newcommand\1{\mathbbm{1}}
+
+\renewcommand\Im{\mathfrak{Im}}
+\renewcommand\Re{\mathfrak{Re}}
+% intérieur topologique
+\renewcommand\mathring[1]{\overset\circ{#1}}
+
+\renewcommand\epsilon\varepsilon
+\renewcommand\emptyset\varnothing
+
+\renewcommand\geq\geqslant
+\renewcommand\leq\leqslant
+
+\newcommand\floor[1]{\left\lfloor#1\right\rfloor}
+\newcommand\ceil[1]{\left\lceil#1\right\rceil}
+% Probabilité, Espérance
+\DeclareDocumentCommand\P{}{\mathbf P}
+\DeclareDocumentCommand\E{}{\mathbf E}
+% usual sets
+\DeclareDocumentCommand\R{}{\mathbf R}
+\DeclareDocumentCommand\N{}{\mathbf N}
+\DeclareDocumentCommand\Z{}{\mathbf Z}
+\DeclareDocumentCommand\Q{}{\mathbf Q}
+\DeclareDocumentCommand\C{}{\mathbf C}
+% fields
+\DeclareDocumentCommand\K{}{\mathbf K}
+\DeclareDocumentCommand\F{}{\mathbf F}
+% logo d'indépendance
+\newcommand\indep{\protect\mathpalette{\protect\indepT}{\perp}}
+\def\indepT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+% suit la loi de proba ...
+\newcommand\suit{\hookrightarrow}
+% vv from esvect
+\renewcommand\vec\vv
+\renewcommand\bar[1]{\overline{#1}}
+% if inside \left...\right use \middle
+\newcommand*{\suchthat}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
+
+% \xnrightarrow pour "ne tend pas vers"
+\makeatletter
+\newcommand*{\xnrightarrow}[2][]{%
+  \ext@arrow 0359\nrightarrowfill@{#1}{#2}%
+}
+\newcommand*{\nrightarrowfill@}{%
+    \narrowfill@\relbar\relbar\rightarrow{\not \relbar}
+}
+\newcommand*{\narrowfill@}[5]{%
+  $\m@th\thickmuskip0mu\medmuskip\thickmuskip\thinmuskip\thickmuskip
+  \relax#5#1\mkern-8mu%
+  \cleaders\hbox{$#5\mkern-2mu#2\mkern-2mu$}\hfill
+  \mkern-5mu %
+  #4%
+  \mkern-5mu %
+  \cleaders\hbox{$#5\mkern-2mu#2\mkern-2mu$}\hfill
+  \mkern-7mu#3$%
+}
+\makeatother
+
+% underbrace pour une partie d'une matrice
+\newcommand\undermat[2]{%
+  \makebox[0pt][l]{$\smash{\underbrace{\phantom{%
+    \begin{matrix}#2\end{matrix}}}_{\text{$#1$}}}$}#2}
+
+% Matrice Jr = diag(Ir, 0)
+\newcommand{\Jr}{\underbrace{%
+\addstackgap[16pt]{%
+\left(\begin{array}{ccc|ccc}%
+        1        &    0   &  \cdots  & \cdots & \cdots &    0   \\
+        0        & \ddots &  \ddots  &        &        & \vdots \\
+     \vdots      & \ddots &     1    & \ddots &        & \vdots \\
+  \hline \vdots  &        &  \ddots  &  0     & \ddots & \vdots \\
+     \vdots      &        &          & \ddots & \ddots &    0   \\
+\undermat{r}{0   & \cdots & \cdots } & \cdots &    0   &    0   \\
+\end{array}
+\right)}
+}_{J_r}}

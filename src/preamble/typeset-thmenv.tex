@@ -1,0 +1,63 @@
+\usepackage{etoolbox} % used for AtBeginEnvironment
+\usepackage{amsthm}
+\usepackage{changepage} % adjustwidth
+\usepackage{mdframed}
+\usepackage{needspace}
+
+% generator for thm-like environment in a mdframed box inside a minipage (to prevent page break)
+\newif\ifishypconc
+\ishypconcfalse
+\NewDocumentCommand{\newthm}{mm}{
+    \newenvironment{#1}[1][]
+    {\begin{minipage}{\textwidth}\par\noindent\normalfont\ifstrempty{##1}{\textbf{#2.}}{\textbf{#2} (##1).}\par\nopagebreak%
+    \begin{mdframed}[
+        linewidth=1pt,
+        linecolor=black,
+        bottomline=false,topline=false,rightline=false,
+        innerrightmargin=0pt,innertopmargin=0pt,innerbottommargin=0pt,
+        innerleftmargin=1em,
+        skipabove=.4\baselineskip
+    ]}
+    {\ifishypconc \end{adjustwidth} \fi\end{mdframed}\end{minipage}\ishypconcfalse}
+}
+
+\theoremstyle{definition}
+\newthm{thm}{Théorème}
+\newthm{thmdef}{Théorème -- Définition}
+\newthm{dfn}{Définition}
+\newthm{defprop}{Définition -- Proposition}
+\newthm{lmm}{Lemme}
+\newthm{rem}{Remarque}
+\newthm{res}{Résultat}
+\newthm{prop}{Proposition}
+\newthm{cor}{Corollaire}
+\newthm{exo}{Exercice}
+\newthm{notation}{Notation}
+\newtheorem{ex}{Exemple}
+\newtheorem{csq}{Conséquence}[subsection]
+\newtheorem*{csq*}{Conséquence}
+\renewcommand{\thecsq}{\arabic{csq}}
+
+% \AtBeginEnvironment{thmdef}{\Needspace{5\baselineskip}}
+% \AtBeginEnvironment{defprop}{\Needspace{5\baselineskip}}
+
+% circled character generator
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}~}
+
+\newcommand{\hyp}{\circled{H}}
+\newcommand{\conc}{\circled{C}}
+
+% when inside a thm-like env, \Hyp makes sure all the text is shifted to the right.
+\newcommand{\Hyp}{\ishypconctrue\begin{adjustwidth}{3em}{}~\\[.1cm] \hspace*{-3em}\hyp\hspace{1em}}
+% only works when there was previously a \Hyp in the environment
+\newcommand{\Conc}{~\\[.1cm] \hspace*{-3em}\conc\hspace{1em}}
+\newenvironment{concenum}{
+    ~\\[0.1cm]\hspace*{-3em}\begin{tabular}{@{}lp{\textwidth-4em}} \conc & \vspace{-.45cm}
+\begin{enumerate}[leftmargin=.5cm]
+}
+{
+\end{enumerate}
+\end{tabular}
+}
+

@@ -1,0 +1,73 @@
+% font & input
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[activate={true,nocompatibility},final,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\usepackage{lmodern}
+% \usepackage{mlmodern} % lmodern but less spindly
+
+% Page setup
+\usepackage[a4paper, margin=2.5cm]{geometry}
+
+% TOC
+\usepackage{tocloft}
+\tocloftpagestyle{empty}
+\ifsolo
+\addto\captionsfrench{
+  \renewcommand{\contentsname}%
+    {Plan du cours}%
+}
+\else
+\usepackage[nohints,french]{minitoc}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\mtcsetoffset{minitoc}{-2em}
+\renewcommand{\cftsecfont}{\small\bfseries}
+\setcounter{tocdepth}{1}
+\setlength{\cftchapnumwidth}{1.4cm}
+\fi
+
+% spacing in toc
+\setlength{\cftsecnumwidth}{0.6cm}
+\renewcommand{\cftsecpresnum}{}
+\renewcommand{\cftsecaftersnum}{}
+
+
+% No indent on paragraphs
+\usepackage{parskip}
+% force footnotes t appear on bottom of page
+\usepackage[bottom,stable]{footmisc}
+
+% Lists
+\usepackage{enumitem}
+% bullets instead of dashes
+\AtBeginDocument{\def\labelitemi{$\bullet$}}
+% margin on lists
+\setlist[itemize]{leftmargin=.5cm}
+\setlist[enumerate]{leftmargin=.7cm}
+
+% End of chapter
+\NewDocumentCommand\endchapter{}{%
+\vfill
+\[\star \qquad \quad \star \qquad \quad \star \qquad \quad \star\]
+\[\star \qquad \quad \star \qquad \quad \star \qquad \quad \star \qquad \quad \star\]
+\vfill
+}
+
+% Header, footer
+\usepackage{titleps}
+\usepackage{lastpage}
+\newpagestyle{main}{
+  \setheadrule{1pt}
+  \ifsolo\else \setfootrule{1pt}\fi
+  \sethead{\thesection ~--~\textsc{\sectiontitle}}{}{Page \thepage\ifsolo\else~/~\pageref{LastPage}\fi}
+  \setfoot{\ifsolo\else\textbf{Chapitre \thechapter} : \textsc{\chaptertitle}\fi}{}{}
+}
+\pagestyle{main}
+
+
+% Section number typesetting
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\emph{\alph{subsection}})}
+\renewcommand{\thesubsubsection}{\emph{\roman{subsubsection}})}
+
+% Create clickable links in the output pdf
+\usepackage[hidelinks]{hyperref}
