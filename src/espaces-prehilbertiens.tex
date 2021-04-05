@@ -1,0 +1,293 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Espaces préhilbertiens réels} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Espaces préhilbertiens réels}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Rappels}
+
+Dans tout le chapitre on ne considèrera que des $ \R$-espaces vectoriels, sauf mention contraire.
+
+\begin{dfn}
+    On appelle \textbf{produit scalaire}\index{produit scalaire} sur $E$ une forme bilinéaire symétrique définie positive. Un $ \R$-espace vectoriel $E$ muni d'un produit scalaire  $ \scalar{\;}{\;} $ se note $(E, \scalar{\;}{\;} )$. Si $E$ est de dimension finie, on dit qu'il est  \textbf{euclidien}\index{espace euclidien}. Sinon, il est dit \textbf{préhilbertien}\index{espace préhilbertien réel}. On dit que $x$ et  $y$ sont  \textbf{orthogonaux} si $ \scalar{x}{y} =0$
+\end{dfn}
+
+\begin{defprop}
+    \Hyp $(E, \left\langle\; \middle| \; \right\rangle )$ un espace préhilbertien réel
+
+    \begin{concenum}
+    \item Pour $x \in E$, l'application $x\longmapsto \sqrt{\scalar{x}{x}} $ est une norme. On l'appelle norme associée à $ \scalar{\;}{\;} $
+    \item $\forall  x, y \in  E, \quad  \|x+y\|^2 = \|x\|^2 + 2 \scalar{x}{y} +\|y\|^2$
+    \item $\displaystyle\forall  x, y \in  E, \quad  \scalar{x}{y} =\frac{1}{2}\left( \|x+y\|^2 - \|x\|^2 -\|y\|^2 \right) =\frac{1}{4} (\|x+y\|^2 -\|x-y\|^2 )$
+    \item $\forall  x, y \in  E, \quad  \|x+y\|^2 +\|x-y\|^2 =2 (\|x\|^2 +\|y\|^2 )$ (identité du parallélogramme)
+    \end{concenum}
+\end{defprop}
+
+\begin{proof}
+On verra une preuve du premier point plus tard. Le reste est facile.
+\end{proof}
+
+\begin{dfn}
+    Si $A\subset E$ où  $(E, \scalar{\;}{\;} )$ est préhilbertien et $A\neq \emptyset$, on définit \begin{enumerate}
+        \item $A^\perp= \left\{  x \in  E \suchthat \forall  a \in  A, \scalar{x}{a} =0 \right\} $
+        \item $A\perp B \iff  \forall  a \in  A, \forall  b \in  B, \scalar{a}{b} =0$
+    \end{enumerate}
+\end{dfn}
+
+\begin{rem}
+$\forall  a \in  A, \varphi_a:x \longmapsto \scalar{a}{x} \in E^\star$ et \[
+A^\perp = \bigcap_{a \in  A}  \Ker \varphi_a
+\] 
+\end{rem}
+
+\section{Produits scalaires usuels}
+
+\subsection{Produits scalaires sur \texorpdfstring{$\R^n$ }{R\^{}n}}
+
+On prend $x=(x_1, \cdots , x_n)$ et $y=(y_1, \cdots , y_n)$. Le produit scalaire canonique est définit par \[
+    \scalar{x}{y} =\sum_{i=1}^nx_iy_i
+\] 
+
+\subsection{Produit scalaire à poids sur \texorpdfstring{$\R[X]$ }{R[X]}}
+
+On se donne une fonction poids $f \in  \mathcal  C(I, \R_+)\setminus \left\{ 0 \right\} $ telle que $\forall  n \in  \N, t\longmapsto t^nf(t)$ est intégrable sur l'intervalle $I$. Dans ce cas on peut définir \[
+    \scalar{P}{Q} =\int_I f(t)P(t)Q(t)\diff t
+\] 
+
+\subsection{Produit scalaire dans \texorpdfstring{$\mathcal  L_c^2(I, \R)$}{les fonctions continues de carré intégrable}}
+
+On a $\forall  f,g \in  \mathcal  L_c^2(I, \R), \qquad  |fg|\leq \dfrac{f^2+g^2}{2}$ donc $fg$ est intégrable sur  $I$ et on peut poser  \[
+\scalar{f}{g} =\int_Ifg
+\] 
+
+\begin{rem}
+    On peut définir un produit scalaire à poids $w \in  \mathcal  C(I, \R_+^\star)$ sur l'ensemble \[ \mathcal  L_{c,w}^2= \left\{  f \in  \mathcal  C(I, \R) \suchthat wf^2 \text{ intégrable } \right\} \]
+\end{rem}
+
+\section{Projections orthogonales}
+
+\begin{thmdef}
+    \Hyp $(E, \scalar{\;}{\;} )$ préhilbertien réel, $F$ un sev de  $E$ de dimension finie et  $(e_1, \cdots , e_n)$ une base orthonormée de $F$
+     \begin{concenum}
+     \item $F^\perp$ est un sev de  $E$
+     \item  $E=F\oplus F^\perp$
+     \item  On appelle \textbf{projection orthogonale}\index{projection orthogonale} sur $F$ l'application linéaire définie par  \[\forall  x \in  E, \quad  \pi_F(x)= \scalar{e_1}{x}e_1+\cdots +\scalar{e_n}{x} e_n \]
+     \item $(F^\perp)^\perp$ si  $E$ est euclidien
+    \end{concenum}
+\end{thmdef}
+
+\begin{proof}~
+\begin{enumerate}
+    \item C'est la linéarité du produit scalaire
+    \item  On se donne $x \in E$, et on pose $y= \scalar{x}{e_1} e_1+\cdots +\scalar{x}{e_n} e_n$. On a \[
+            \forall  i \in  \llbracket 1, n \rrbracket, \quad   \scalar{x-y}{e_i} = \scalar{x}{e_i} - \sum_{i=j}^n \scalar{y}{e_j} \scalar{e_i}{e_j} =0
+    \] 
+    donc $x-y \in  F^\perp$ et $x=y+(x-y)$ d'où la somme directe. Puis la somme est directe car  $F\cap F^\perp = \left\{  0 \right\} $ 
+    \stepcounter{enumi}
+\item $F\subset (F^\perp)^\perp$ et même dimension finie.
+\end{enumerate}
+\end{proof}
+
+\begin{defprop}
+    \Hyp $(E, \scalar{\;}{\;} )$ préhilbertien, $p \in  \mathcal  L(E)$ projecteur
+    \begin{concenum}
+    \item On dira que $p$ est un \textbf{projecteur orthogonal}\index{projection orthogonale} si $\Ker p\perp \Img p$
+    \item Il y a équivalence entre  \begin{enumerate}
+        \item $p$ est un projecteur orthogonal
+        \item $p$ est \textbf{autoadjoint}:  $\forall  x, y \in  E, \quad  \scalar{p(x)}{y}= \scalar{x}{p(y)}  $
+    \end{enumerate}
+    \end{concenum}
+\end{defprop}
+
+\begin{proof}~\\
+    $(a\implies b)$ $x, y \in  E$ \[
+        \scalar{p(x)}{y} = \scalar{p(x)}{y-p(y)+p(y)} =\scalar{p(x)}{p(y)} =\scalar{p(y)}{p(x)} =\scalar{x}{p(y)} 
+    \] 
+    $(b\implies a)$ $x \in  \Ker p, y \in  \Img p$, \[
+        \scalar{x}{y} = \scalar{x}{p(y)} = \scalar{p(x)}{y}=0
+    \]
+\end{proof}
+
+\begin{exo}
+    Montrer que dans $E$ préhilbertien, un projecteur $p$ tel que  $\forall  x \in  E, \quad  \|p(x)\|\leq \|x\|$ est orthogonal
+\end{exo}
+
+\begin{proof}[Résolution]
+Soit $x \in  \Ker p, y \in  \Img p, t \in  \R$. \[
+    \|p(y)\|^2 =\|p(y+tx)\|^2 \leq \|y+tx\| \iff  \|p(y)\|^2=\|y\|^2  \leq \|y\|^2 +2t \scalar{y}{x} + \|x\|^2 t ^2 
+\] 
+donc  \[
+    0\leq 2t \scalar{y}{x} + \|x\|^2 t^2
+\] 
+d'où $\scalar{x}{y} =0$ ($\Delta\leq 0$)
+\end{proof}
+
+\section{Distance d'un point à un sous-espace}
+
+\begin{thmdef}
+    \Hyp $(E, \scalar{\;}{\;} )$ préhilbertien réel et $F$ sev de $E$
+    \begin{concenum}
+    \item Soit $a \in  E$. On pose \[
+            d(a, F)=\inf_{x \in  F} \|x-a\|
+    \] 
+\item En dimension finie, $d(a, F)=\|a-\pi_F(a)\|=\|\pi_{F^\perp}(a)\|$
+    \end{concenum}
+\end{thmdef}
+
+\begin{proof}
+    2. $\|a-x\|^2 =\|a-\pi_F(x)\|^2 + \|\pi_F-x\|^2 \geq \|a-\pi_F(a)\|^2 $
+\end{proof}
+
+\begin{ex}
+Déterminons \[
+    d=\inf_{a, b \in  \R}\int_0^1 (\ln x-ax-b)^2 \diff x
+\] 
+On se place sur $E=\mathcal  L_c^1(]0, 1], \R)$ avec le produit scalaire usuel. On note $F=\R_1[X]$ de dimension finie, et on a \[
+    d=d(\ln, F)^2
+\] 
+On cherche $a, b \in  \R$ tels que $\ln(x)-ax-b\perp F$. C'est équivalent à  \[
+\begin{dcases}
+    \scalar{\ln x - ax - b}{1} =0 \\
+    \scalar{\ln x - ax - b}{x} =0
+\end{dcases}
+\iff  \int_0^1(\ln x-ax-b)\diff x=\int_0^1 x\ln x-ax^2 -bx\diff x=0
+\] 
+soit encore $a=3$ et  $b=-\dfrac{5}{2}$. On en déduit $d=\dfrac{1}{4}$
+\end{ex}
+
+\subsection{Méthode de Gauss.}
+On note $(E, \scalar{\;}{\;} )$ euclidien, $x=(x_1, \cdots , x_p)$ une famille de $p$ vecteurs. On appelle \textbf{matrice de Gram}\index{matrice de Gram} la matrice \[
+    G(x)= \begin{pmatrix}
+        \scalar{x_1}{x_1} & \cdots & \scalar{x_1}{x_p} \\
+        \vdots & \ddots & \vdots \\
+        \scalar{x_p}{x_1} & \cdots  & \scalar{x_p}{x_p} 
+    \end{pmatrix}
+\] 
+On note \[
+T= \begin{pmatrix}
+    t_1 \\ \cdots \\ t_p
+\end{pmatrix} \in  \mathcal  M_{p,1}(\R)
+\] 
+de sorte que \begin{align*}
+    T^\top G(x)T&=(t_1, \cdots , t_p) \begin{pmatrix}
+        \scalar{x_1}{x_1} & \cdots & \scalar{x_1}{x_p} \\
+        \vdots & \ddots & \vdots \\
+        \scalar{x_p}{x_1} & \cdots  & \scalar{x_n}{x_p} 
+    \end{pmatrix}\begin{pmatrix}
+    t_1 \\ \cdots \\ t_p
+\end{pmatrix} \\ &= \|t_1x_1+\cdots +t_px_p\|^2 
+\end{align*}
+Si $x$ est libre, alors \[
+    G(x)T=0 \implies T^\top G(x)T=0 \implies \|t_1x_1+\cdots +t_px_p\|^2 =0 \implies T=0
+\] 
+donc $G(x) \in  \mathrm{GL}_n(\R)$. On suppose $G(x)$ inversible.  \[
+    t_1x_1+\cdots +t_px_p=0 \implies G(x)T=0=0\implies T=0
+\] 
+donc $x$ est libre. On a donc $\rg(G(x))=p \iff  \rg(x)=p$. Supposons que $\rg(x)=m$ et quitte à permutter, on suppose  $(x_1, \cdots , x_m)$ libre.
+
+Pour $k\geq m+1$, on écrit \[
+    x_k=\sum_{j=1}^m \alpha_{k,j}x_j
+\] 
+Avec des transvections (qui ne modifient pas le rang) on se ramène, en partant de $G(x)$, à  \[
+\begin{pmatrix}
+    \scalar{x_1}{x_1} & \cdots  & \scalar{x_1}{x_m} & 0 & \cdots  & 0 \\
+    \vdots &  & \vdots & \vdots & & \vdots\\
+    \scalar{x_p}{x_1} &\cdots & \scalar{x_p}{x_m} &0 & \cdots & 0
+\end{pmatrix}
+\] 
+qui est de rang $m$ (on peut en extraire $G(x_1, \cdots , x_m)$ donc $\rg(G(x))\geq m$ et l'autre inégalité est évidente). On a donc toujours $\rg (G(x))=\rg(x)$.
+
+
+\paragraph{Lien entre les déterminants de Gram et les distances}
+On note $F$ un sev de  $E$ de base  $(x_1, \cdots , x_p)$. On note $u \in  E$ et $\pi_F(u)=\lambda_1 x_1+\cdots +\lambda_px_p$.
+\[
+    \det(G(x, u)) = \begin{vmatrix}
+        \scalar{x_1}{x_1} & \cdots  & \scalar{x_1}{x_p} & \scalar{x_1}{u} \\
+        \vdots & \ddots & \vdots & \vdots \\
+        \scalar{x_p}{x_1} & \cdots  & \scalar{x_p}{x_p} & \scalar{x_p}{u} \\
+        \scalar{u}{x_1} & \cdots  & \scalar{u}{x_p}  &\scalar{u}{u} 
+    \end{vmatrix}
+\] 
+On fait $C_{p+1}\leftarrow C_{p+1}-\lambda C_1-\cdots -\lambda_p C_p$ et idem sur les lignes, on obtient  \[
+\begin{vmatrix}
+    \scalar{x_1}{x_1} & \cdots  & \scalar{x_1}{x_p} & \scalar{x_1}{u-\pi_F(u)} \\
+        \vdots & \ddots & \vdots & \vdots \\
+        \scalar{x_p}{x_1} & \cdots  & \scalar{x_p}{x_p} & \scalar{x_p}{u-\pi_F(u)} \\
+        \scalar{u-\pi_F(u)}{x_1} & \cdots  & \scalar{u-\pi_F(u)}{x_p}  &\scalar{u-\pi_F(u)}{u-\pi_F(u)} 
+    \end{vmatrix}=\|u-\pi_F(u)\|^2 \det(G(x))
+\] 
+donc \[
+    d(u, F)^2 = \frac{\det(G(x, u))}{\det(G(x))}
+\] 
+
+\subsection{Projection sur un compact convexe}
+
+\paragraph{Existence et unicité du projeté.}
+On note $(E, \scalar{\;}{\;} )$ euclidien, $C$ un compact convexe. On va montrer que  \[
+\forall  a \in  F, \quad  \exists  ! c \in  C, \qquad  \inf_{x \in  C}\|x-a\|=\|c-a\|
+\] 
+On note $\Delta$ l'inf et  $(c_n) \in  C^{\N}$ une suite telle que \[
+\|c_n-a\| \xrightarrow[n\to+\infty]{}\Delta
+\] 
+Une telle suite existe et $C$ est compact donc on peut supposer (quitte à extraire) que c'est une suite convergente de limite  $x \in  C$, ce qui montre l'existence.
+
+Si $c, c' \in  C$ conviennent, on note $u=c-a$ et  $v=c'-a$. L'identité du parallélogramme donne  \[
+    \|x+y\|^2 + \|u-v\|^2 =2(\|u\|^2 + \|v\|^2 )
+\] 
+donc \[
+    \|c-c'\|^2 +\underbrace{4 \|\frac{c+c'}{2}-a\|}_{\geq 4\Delta^2}=4\Delta^2
+\] 
+et $\|c-c'\|\leq 0 \implies c=c'$
+
+\begin{rem}
+    Si on ne suppose pas que $C$ est compact, alors l'unicité reste vraie mais pas l'existence. Mais, si  $(c_n) \in  C^{\N}$ est minimisante, \[
+        \|c_n-c_m\|^2 =\underbrace{2(\|c_n-a\|^2 +\|c_m-a\|^2 )}_{\leq 4\Delta^2+\epsilon \text{ APCR }}-\underbrace{4 \|\frac{c_n+c_m}{2}-a\|}_{\geq 4\Delta^2} \leq \epsilon\text{ PARC }
+    \] 
+    donc $(c_n)$ est une suite de Cauchy, qui converge (car $E$ est un espace de Banach). Si $C$ est fermé,  $(c_n)$ converge vers un élément  $c \in  C$
+\end{rem}
+
+\begin{notation}
+    On note $c=\pi_C(a)$
+\end{notation}
+
+\paragraph{Caractérisation du projeté.}
+On va maintenant montrer qu'il y a équivalence entre \begin{enumerate}
+    \item $z=\pi_C(a)$
+    \item $\forall  y \in  C, \quad  \scalar{y-z}{a-z} \leq 0$
+\end{enumerate}
+
+$(1\implies 2)$ Pour $t \in  [0, 1]$, on a $(1-t)z+ty \in  C$ pour $y \in  C$. Puis \[
+    \|a-z\|^2 \leq \|a-(1-t)z+ty\|^2 =\|a-z\|^2 +2t \scalar{a-z}{z-y} +t^2 \|z-y\|^2 
+\] 
+donc \[
+2 \scalar{a-z}{y-z} \leq t \|z-y\|^2 
+\] 
+et $t \to  0$ permet de conclure.
+
+$(2 \implies  1)$ $\forall  t \in  [0, 1], \forall  y \in  C,$ \[
+    t\scalar{a-z}{y-z} \leq t \|y-z\|^2 \implies   \|a-z\|^2 \leq  \|a-y\|^2 
+\] 
+par le raisonnement inverse, en prenant $t=1$.
+
+\paragraph{Caractère lipschitzien.} 
+Pour $x, x' \in  E,$ \[
+    \scalar{\pi_C(x')-\pi_C(x)}{x-\pi_C(x)} \leq 0 \qquad  \text{ et } \qquad  \scalar{\pi_C(x)-\pi_C(x')}{x'-\pi_C(x')} \leq 0
+\] 
+donc en ajoutant les deux inégalités \[
+    \|\pi_C(x')-\pi_C(x)\|^2 \leq \scalar{\pi_C(x')-\pi_C(x)}{x'-x} \underset{\text{CS}}\leq \|\pi_C(x')-\pi_C(x)\|\times \|x'-x\|
+\] 
+d'où le caractère $1$-lipschitzien (on divise par $\|\pi_C(x')-\pi_C(x)\|$ si c'est non nul, le cas nul est évident)
+
+\subsection{Procédé de Gram-Schmidt}
+
+

@@ -92,6 +92,8 @@
 \renewcommand\bar[1]{\overline{#1}}
 % if inside \left...\right use \middle
 \newcommand*{\suchthat}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
+% scalar product
+\NewDocumentCommand\scalar{mm}{\ensuremath{\left\langle \, #1 \;\middle|\; #2 \,\right\rangle}}
 
 % \xnrightarrow pour "ne tend pas vers"
 \makeatletter
