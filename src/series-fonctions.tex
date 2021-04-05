@@ -237,7 +237,7 @@ Le théorème ne s'applique pas sans hypothèse de domination
 
 \begin{ex}
 \[
-\Gamma:x\longmapsto \int_{{0}}^{{+\infty}} {e^{-t}t^{x-1}}\;\diff t
+\Gamma:x\longmapsto \int_{{0}}^{{+\infty}} {e^{-t}t^{x-1}}\diff t
 \] 
 Cette fonction est bien définie car l'intégrande est intégrable. On note \[
     f_n:t\longmapsto \1_{[0,n]}(t) \left( t-\frac{t}{n} \right) ^nt^{x-1}
@@ -313,7 +313,7 @@ On va montrer que pour tout $R>0$,  \[
     \left( 1+\frac{z}{n} \right) ^n \xrightarrow[\displaystyle\mathcal  D_f(0, R)]{\text{CVU}}e^z
 \] 
 On remarque d'abord (Taylor) \[
-    \forall  z \in  \mathcal  D_f(0, R), \quad  \left| e^z- \sum_{k=0}^{n} \frac{z^k}{k!} \right| = \left| z^{n+1}\int_0^1 \frac{(1-t)^n}{n!}e^{tz}\;\diff t \right| \leq \sup_{|z|\leq R} \left|e^z\right| \frac{R^{n+1}}{(n+1)!}=a_n \xrightarrow[n\to+\infty]{}0
+    \forall  z \in  \mathcal  D_f(0, R), \quad  \left| e^z- \sum_{k=0}^{n} \frac{z^k}{k!} \right| = \left| z^{n+1}\int_0^1 \frac{(1-t)^n}{n!}e^{tz}\diff t \right| \leq \sup_{|z|\leq R} \left|e^z\right| \frac{R^{n+1}}{(n+1)!}=a_n \xrightarrow[n\to+\infty]{}0
 \] 
 donc \[
     P_n(z)\defeq \sum_{k=0}^{n} \frac{z^k}{k!} \xrightarrow[\mathcal  D_f(0, R)]{\text{CVU}} e^z.
@@ -523,25 +523,216 @@ L'intégration terme à terme dans le cas uniforme est identique au cas des suit
 \end{thm}
 
 \begin{ex}
-    Calcul de $\displaystyle \int_0^{+\infty}\frac{t}{e^t-1}\;\diff t$.
+    Calcul de $\displaystyle \int_0^{+\infty}\frac{t}{e^t-1}\diff t$.
 
 Pour $t>0$,  \[
     \frac{t}{e^t-1}=\frac{t}{e^t(1-e^{-t})}=\frac{t}{e^t}\sum_{k=0}^{+\infty}e^{-tk}=\sum_{k=0}^{+\infty}te^{-(k+1)t}
 \] 
 On note $f_k:t\longmapsto te^{-(k+1)t} \in  \CPM(\R_+^\star)$. On a $\sum f_n$ CVS sur $\R_+^\star$ et $\sum_{n\geq 0}f_n$ est  continue sur  $ \R_+^\star$. Puis, pour $k\geq 0$,  \[
-    \int_0^{+\infty}|f_k|= \int_{0}^{+\infty} te^{-(k+1)t}\;\diff t = \frac{1}{(k+1)^2} \text{ tg série CV }
+    \int_0^{+\infty}|f_k|= \int_{0}^{+\infty} te^{-(k+1)t}\diff t = \frac{1}{(k+1)^2} \text{ tg série CV }
 \] 
 donc on peut intégrer terme à terme: \[
-    \int_{0}^{+\infty} \frac{t}{e^t-1}\;\diff t=\sum_{k=0}^{+\infty}\int_0^{+\infty}te^{-(k+1)t}\;\diff t=  \frac{\pi ^2}{6} 
+    \int_{0}^{+\infty} \frac{t}{e^t-1}\diff t=\sum_{k=0}^{+\infty}\int_0^{+\infty}te^{-(k+1)t}\diff t=  \frac{\pi ^2}{6} 
 \] 
 \end{ex}
 
 \begin{ex}
-Calcul de $\displaystyle I= \int_{0}^{+\infty} \frac{\ln u}{1+u}\;\diff u $.
+Calcul de $\displaystyle I= \int_{0}^{+\infty} \frac{\ln u}{1+u}\diff u $.
 
-\emph{Première méthode.} $u=e^{-t}$ donne $\displaystyle I=- \int_{0}^{+\infty}  \frac{t}{e^t-1}\;\diff t$ et on a calculé cette intégrale
+\emph{Première méthode.} $u=e^{-t}$ donne $\displaystyle I=- \int_{0}^{+\infty}  \frac{t}{e^t-1}\diff t$ et on a calculé cette intégrale
 
 \emph{Seconde méthode.} $\displaystyle \frac{\ln u}{1+u}=\sum_{k\geq 0}(-1)^ku^k\ln u$ et on applique le théorème d'intégration terme à terme (version simple)
 \end{ex}
 
+\section{Méthodes pour la convergence uniforme}
 
+Pour montrer la convergence uniforme, on peut montrer \begin{itemize}
+    \item la convergence normale
+    \item la convergence simple puis la convergence uniforme du reste vers $0$
+    \item autre (il faut réfléchir)
+\end{itemize}
+
+\subsection{TSA uniforme}
+
+Si $(u_n)$ est une suite de fonctions de  $I$ dans  $ \R_+$, que $\forall  x \in  I, (u_n(x))$ décroît et $u_n$ converge uniformément vers  $0$, alors  $\sum (-1)^ku_k$ converge simplement sur  $I$ par TSA et  \[
+    \forall  x \in  I, \qquad , \left| \sum_{k=n+1}^{+\infty}(-1)^ku_k(x) \right|\leq u_{n+1}(x) \xrightarrow[I]{\text{CVU}}0
+\] 
+donc $\sum u_n$ CVU. 
+
+\subsection{Étude de \texorpdfstring{$\zeta$}{zeta}}
+
+On note \[
+    \forall  s >1, \qquad  \zeta(s)=\sum_{k\geq 1} \frac{1}{k^s}
+\] 
+et \[
+    \forall  x >0, \qquad  \varphi(x)=\sum_{n\geq 1}\frac{(-1)^{n-1}}{n^x}
+\] 
+On note $u_n: x \longmapsto \dfrac 1n$
+
+\paragraph{Étude de régularité.} On va montrer que $\zeta$ est  $\mathcal  C^\infty$. Soit $n>1$.  \begin{itemize}
+    \item Les $u_k$ sont  $\mathcal  C^\infty$
+    \item Pour $i \in  \llbracket 0, n-1 \rrbracket ,$ on a \[
+            u_k^{(i)}(x)=\frac{(-1)^i\ln^i(k)}{k^x}
+    \] 
+    donc pour $x>1$,  \[
+        u_k^{(i)}(x)=o_{+\infty}\left( \frac{1}{k^{\frac{x+1}{2}}} \right) \text{ tg série CV }
+    \] 
+    donc $\sum u_k^{(i)}$ CVS
+\item Soit $[a, b] \subset ]1, +\infty[$. Alors  \[
+        \forall  x \in  [a, b], \forall  k \geq 1, \qquad  |u_k^{(n)}(x)|\leq \frac{\ln^nk}{k^a}=o_{+\infty}\left( \frac{1}{k^{\frac{1+a}2}} \right) 
+\] 
+d'où la CVUTS.
+\end{itemize}
+$\zeta$ est donc  $\mathcal  C^n$ pour tout $n$, donc  $\zeta \in \mathcal  C^\infty$ et \[
+    \zeta^{(n)}(s)=\sum_{k\geq 1} \frac{(-1)^n\ln^nk}{k^s}
+\] 
+Des arguments identiques montrent le même résultat pour $\varphi$ sur $\R_+^\star$ (pour montrer la CVUTS on utilise le TSA à partir d'un certain rang). 
+
+\paragraph{Étude en \boldmath $1^+$\unboldmath.}
+Pour $x>1$ et  $n\geq 1$, \[
+    \frac{1}{(n+1)^x}\leq \int_n^{n+1} \frac{\diff t}{t^x}
+\] 
+donc \[
+    \zeta(x)-1\leq \left[ \frac{t^{x+1}}{1-x} \right]_1^{+\infty}=\frac{1}{x-1}\leq \zeta(x)
+\] 
+et finalement \[
+    \zeta(x)\underset{1^+}\sim \frac{1}{x-1}
+\] 
+Pour aller plus loin, on note \[
+    f_n:x\longmapsto \frac{1}{n^x}-\int_n^{n+1}\frac{\diff t}{t^x}
+\] 
+On a CVS car \[
+    \forall  x \geq 1, \forall  n\geq 0, \quad  0\leq f_n(x)\leq \frac{1}{n^x}-\frac{1}{(n+1)^x}\text{ tg série CV }
+\] 
+et il y a CVU sur $[1, +\infty[$ car \[
+    \forall  x\geq 1, n\geq 1, \quad 0\leq \sum_{k=n+1}^{+\infty}f_k(x)\leq \sum_{k=n+1}^{+\infty}\frac{1}{k^x}-\frac{1}{(k+1)^x}=\frac{1}{(n+1)^2}\leq \frac{1}{n+1} \xrightarrow[n\to+\infty]{}0
+\] 
+Ainsi, \[
+    S:x \longmapsto \sum_{n\geq 1}f_n(x)
+\] 
+est continue et \[
+    \zeta(s)-\frac{1}{s-1} \xrightarrow[s \to  1^+]{}S(1)=\sum_{n\geq 1}\lim _{s \to 1^+}f_n(s)=\sum_{n\geq 1}\left( \frac{1}{n}-(\ln(n+1)-\ln n) \right) =\gamma
+\] 
+donc finalement \[
+    \zeta(s)=\frac{1}{s-1}+\gamma+o(1)
+\] 
+
+\paragraph{Étude en \boldmath $+\infty$\unboldmath.} \[
+    \forall  s\geq 1, \forall  n\geq 1 , \qquad  n^s\left( \zeta(s)-\sum_{k=1}^n \frac{1}{k^s} \right) =\sum_{k=n+1}^{+\infty} \left( \frac{n}{k} \right) ^s\] 
+et \[
+    \forall  s\geq 2, \forall  k\geq n+1, \qquad  \left(\frac{n}{k}\right)^s\leq  \left( \frac{n}{k} \right)^2\text{ tg série CV (variable $k$) }
+\]
+donc $\sum(\frac{n}{k})^s$ converge normalement sur $[2, +\infty[$
+Une interversion des limites donne  \[
+    \lim _{s\to +\infty} \left( \frac{n}{k} \right) ^s=0 \qquad  \text{ donc } \qquad  \zeta(s)=\sum_{k=1}^n \frac{1}{k^s}+o(\frac{1}{n^s})
+\] 
+
+\paragraph{Lien entre \boldmath $\varphi$ et  $\zeta$\unboldmath.}
+\[
+    \forall  s \geq 1, \qquad  -\varphi(s)+\zeta(s)=\sum_{n\geq 1}\frac{1-(-1)^{n-1}}{k^s}=2\sum_{n\geq 1}\frac{1}{(2n)^s}
+\] 
+donc \[
+    \zeta(s)= \cfrac{1}{1-\cfrac{1}{2^{s-1}}}\;\varphi(s)
+\] 
+On en déduit ainsi un prolongement de $\zeta$ sur  $]0, 1[$. 
+
+\section{Méthodes pour les équivalents}
+
+\subsection{Un développement asymptotique à trois termes}
+
+On note \[
+a_n=\int_0^1 \frac{\diff t}{1+t^n}
+\] 
+On a \[
+    a_n-1=-\frac{1}{n} \int_0^1 \frac{u^{\frac{1}{n}}}{1+u}\diff u
+\] 
+On note donc \[
+    f_n:u\longmapsto \frac{u^{\frac{1}{n}}}{1+u} \in  \mathcal  C([0, 1], \R)
+\] 
+On a la convergence simple suivante: \[
+    f_n(u) \xrightarrow[\detokenize{[0, 1]}]{\text{CVS}} \begin{cases}
+        \dfrac{1}{1+u} & \text{ si } u>0 \\ 0 & \text{ sinon }
+    \end{cases}
+\] 
+Puis \[
+\forall  n \in  \N, \forall  u \in  [0, 1], \qquad  |f_n(u)|\leq \frac{1}{1+u} \text{ continu intégrable sur } [0, 1]
+\] 
+donc par convergence dominée, \[
+    \int_0^1 \frac{u^{\frac{1}{n}}}{1+u}\diff u \xrightarrow[n\to+\infty]{}\int_0^1 \frac{\diff u}{1+u}=\ln 2
+\] 
+donc \[
+    a_n=1-\frac{\ln 2}{n}+o \left( \frac{1}{n} \right) 
+\] 
+Puis \[
+    a_n-1+\frac{\ln 2}{n}=\frac{1}{n}\int_0^1 \frac{1-u^{\frac{1}{n}}}{1+u}\diff u
+\] 
+et (Taylor-Lagrange), pour $u \in  [0, 1]$,  \[
+    \left| u^{\frac{1}{n}}-1-\frac{1}{n} \ln u \right| \leq  \frac{(\ln u)^2}{n^2} \sup_{[\ln(u)/ n, 0]} |\exp| \leq \frac{(\ln u)^2}{n^2}
+\] 
+En appliquant la même méthode, \[
+    a_n=1- \frac{\ln 2}{n}-\frac{1}{n^2}\int_0^1 \frac{\ln u}{1+u} \diff u + o\left( \frac{1}{n^2} \right) 
+\] 
+
+\subsection{Étude d'une norme}
+
+\paragraph{Étude en \boldmath $0^+$\unboldmath.}
+On définit \[
+    I(\alpha)= \left( \int_0^1f^{\alpha} \right) ^{\frac{1}{\alpha}}=\|f\|_{\alpha}
+\] 
+avec $f \in  \mathcal  C([0, 1], \R_+^\star)$. Pour $x \in  [0, 1]$ fixé, \[
+    f^\alpha(x)=e^{\alpha \ln f(x)}=1+\alpha \ln(f(x))+\epsilon(\alpha, x)
+\] 
+donc \[
+    I(\alpha)=\exp \biggl( \frac{1}{\alpha} \ln \biggl( 1+\alpha \int_0^1 \ln f + \underbrace{\int_0^1 \epsilon(\alpha, x)\diff x}_{o(\alpha) ?} \biggr)  \biggr) 
+\]
+Taylor-Lagrange donne, si $\alpha$ est assez petit pour avoir $[\alpha \ln (f(x)), 0]\subset [-2, 2]$, \[
+    |\epsilon(\alpha, x)| \leq  \frac{(\alpha \ln f(x))^2}{2}e^2
+\] 
+donc \[
+    \int_0^1 \epsilon(\alpha, x)\diff x=o(\alpha)
+\] 
+et \[
+    I(\alpha) \xrightarrow[\alpha\to 0^+]{} \exp \left( \int_0^1\ln f \right) 
+\] 
+
+\paragraph{Étude en \boldmath $+\infty$\unboldmath.} On va montrer que $\|f\|_\alpha \xrightarrow[\alpha\to +\infty]{}\|f\|_{\infty}=\max |f|$ (cette valeur existe car $f$ est définie sur un segment). On note $x_0$ un antécédent du maximum de  $|f|$.
+
+On suppose $x_0 \in  ]0, 1[$. Soit $\epsilon>0$,  $\delta>0$ associé tel que  \[
+    \forall  x \in  [x_0-\delta, x_0+\delta]\subset [0, 1], \quad  M-\epsilon'\leq f(x)\leq M
+\] 
+de sorte que \[
+    (M-\epsilon')^\alpha 2\delta\leq \int_{x_0-\delta}^{x_0+\delta}f^\alpha \leq \int_0^1f^\alpha\leq M^\alpha
+\] 
+et \[
+    \underbrace{(M-\epsilon')(2\delta)^{\frac{1}{\alpha}}}_{\displaystyle \xrightarrow[\alpha\to +\infty]{}M-\epsilon'} \leq I(\alpha) \leq M
+\] 
+Donc il existe $A>0$ tel que pour  $\alpha>A$,  $M-2\epsilon'=M-\epsilon\leq I(\alpha)\leq M$ donc \[
+    I(\alpha) = \|f\|_\alpha\xrightarrow[\alpha \to +\infty]{}M= \|f\|_\infty
+\] 
+
+\subsection{Une série de primitives}
+
+On note $f_0: [a, b] \to  \R$ continue et pour $n\geq 1$, \[
+\begin{array}{rrcl}
+    f_n:& [a, b] & \longrightarrow & \R \\
+    & x & \longmapsto & \displaystyle\int_a^xf_{n-1}
+\end{array}
+\] 
+Que dire de $\sum _{n\geq 1}f_n$ ?
+
+On note $M= \|f\|_\infty=\sup_{[a, b]}\limits|f|$. Par récurrence, on montre que \[
+    \forall  x \in  [a, b], \qquad  |f_n(x)| \leq M \frac{(x-a)^n}{n!}
+\] 
+Puis \[
+    \forall  x \in  [a, b], \qquad  |f_n(x)|\leq M \frac{(b-a)^n}{n!} \text{ tg série CV }
+\]
+donc $\sum f_n$ converge normalement sur  $[a, b]$. On note  $S$ la somme de cette série.
+
+Les  $f_n$ dont  $\mathcal  C^1$ donc $S$ aussi (facile) et  \[
+    S'=\sum_{n\geq 1}f_{n-1}=f_0+S
+\] 
+Avec $S(a)=0$, on déduit \[
+    \forall  x \in  [a, b], \qquad  S(x)=e^x\int_a^xe^{-t}f_0(t)\diff t
+\] 
+
+\endchapter
