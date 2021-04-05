@@ -163,4 +163,39 @@ jobs:
         asset_path: ./target/series-entieres.pdf
         asset_name: series-entieres.pdf
         asset_content_type: application/pdf
-
+    - name: Release algebre-lineaire
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/algebre-lineaire.pdf
+        asset_name: algebre-lineaire.pdf
+        asset_content_type: application/pdf
+    - name: Release connexite-compacite
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/compacite-connexite.pdf
+        asset_name: compacite-connexite.pdf
+        asset_content_type: application/pdf
+    - name: Release esperance-variance
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/esperance-variance.pdf
+        asset_name: esperance-variance.pdf
+        asset_content_type: application/pdf
+    - name: Release vad
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/vad.pdf
+        asset_name: variables-aleatoires.pdf
+        asset_content_type: application/pdf
