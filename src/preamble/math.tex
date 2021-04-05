@@ -93,7 +93,8 @@
 % if inside \left...\right use \middle
 \newcommand*{\suchthat}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
 % scalar product
-\NewDocumentCommand\scalar{mm}{\ensuremath{\left\langle \, #1 \;\middle|\; #2 \,\right\rangle}}
+\NewDocumentCommand\scalar{mmO{\langle}O{\rangle}}{\ensuremath{\left#3 \, #1 \;\middle|\; #2 \,\right#4}}
+\NewDocumentCommand\pscalar{mm}{\scalar{#1}{#2}[(][)]}
 
 % \xnrightarrow pour "ne tend pas vers"
 \makeatletter

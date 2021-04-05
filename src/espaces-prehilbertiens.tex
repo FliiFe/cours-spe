@@ -290,4 +290,115 @@ d'où le caractère $1$-lipschitzien (on divise par $\|\pi_C(x')-\pi_C(x)\|$ si 
 
 \subsection{Procédé de Gram-Schmidt}
 
+\index{Gram-Schmidt}
+On note $E$ un espace préhilbertien réel,  $(f_1, \cdots , f_n)$ une famille libre. On va montrer qu'il existe une famille $(e_1, \cdots , e_n)$ orthogonale telle que $\forall  i \leq n, \Vect(e_1, \cdots , e_i)=\Vect(f_1, \cdots , f_i)$.
 
+Principe: \begin{itemize}
+    \item On pose $e_1=f_1$
+    \item On suppose  $e_1, \cdots , e_i$ construits. On cherche $e_{i+1}$ de la forme \[
+    e_{i+1}=\lambda_{i,1}e_1+\cdots +\lambda_{i,i}e_i+f_{i+1}
+    \] 
+    La condition $e_{i+1}\perp e_1, \cdots , e_i$ impose \[
+        \scalar{e_{i+1}}{e_1} = \cdots =\scalar{e_{i+1}}{e_i} =0 \iff  \begin{dcases}
+            0=\lambda_{i,1} \scalar{e_1}{e_i} + \scalar{f_{i+1}}{e_1} \\
+            \cdots \\
+            0=\lambda_{i,i}\scalar{e_i}{e_i} +\scalar{f_{i+1}}{e_i} 
+        \end{dcases} \implies \lambda_{i,k}=- \frac{\scalar{f_{i+1}}{e_k} }{\scalar{e_k}{e_k} }
+    \] 
+    et ces valeurs conviennent.
+\end{itemize}
+
+\begin{rem}
+La matrice de passage entre une famille libre et son orthogonalisée de Gram-Schmidt est triangulaire supérieure, et sa diagonale ne contient que la valeur propre $1$.
+\end{rem}
+
+\section{Inégalité de Hadamard}
+
+On note $\mathcal  F=(f_1, \cdots , f_p)$ une famille libre de $E$, et  $\mathcal  E=(e_1, \cdots , e_p)$ la famille orthonormée construite par le procédé de Gram-Schmidt.
+
+On note $P_{\mathcal  F, \mathcal  E}=\mathcal  M_{\mathcal  F, \mathcal  E}(\id)$ de sorte que \[
+    f_j=\sum_{i=1}^p \left( P_{\mathcal  F, \mathcal  E} \right) _{i,j}e_i \qquad  \text{ et } \qquad  e_j=\sum_{i=1}^p \left( P_{\mathcal  E, \mathcal  F} \right) _{i,j}f_i
+\] 
+On note $T=P_{\mathcal  E, \mathcal  F}  $, et on a \begin{align*}
+    \left( T^\top G(\mathcal  F)T \right) _{i,j}&=\sum_{1\leq k,l\leq p} (T^\top)_{i,k}G(\mathcal  F)_{k,l}T_{l,j} \\
+                                                &= \sum_{1\leq k,l\leq p} T_{k,i} \scalar{f_k}{f_l} T_{l,j} \\
+                                                &= \scalar{\sum_{k=1}^pT_{k,i}f_k}{\sum_{l=1}^pT_{l,j}f_l} =\scalar{e_i}{e_j} =\delta_{i,j}
+\end{align*}
+donc \[
+    T^\top G(\mathcal  F)T=I_p \qquad \text{ et }\qquad \det(G(\mathcal  F))=\frac{1}{(\det T)^2}=\prod_{i=1}^p \scalar{f_i}{e_i} ^2 \underset{\text{CS}}\leq \prod_{i=1}^p \|f_i\|^2 
+\] 
+Avec égalité si et seulement si $(f_1, \cdots , f_p)$ est orthogonale, i.e. si $e_i=\dfrac{f_i}{\|f_i\|^2 }$ 
+
+Prenons $A \in  \mathcal M_n(\R)$ inversible, on note $C_1, \cdots  ,C_n$ ses colonnes. On a \[
+A^\top A= \begin{pmatrix}
+    C_1^\top \\ \vdots \\ C_n^\top
+\end{pmatrix} (C_1, \cdots , C_n)= (\underbrace{C_i^\top C_j}_{\scalar{C_i}{C_j} })_{i,j}
+\] 
+donc \[
+    \det(A^\top A)=\det(A)^2\leq \prod_{i=1}^n \|C_i\|^2
+\] 
+ce qui reste vrai pour $A$ non inversible. On a donc finalement toujours  \[
+    \det(A)^2\leq \prod_{n=1}^{n} \|C_i\|^2
+\] 
+
+\section{Famille totale}
+
+\begin{dfn}
+    On se place dans $(E, \scalar{\;}{\;} )$ un espace préhilbertien réel de dimension infinie. On dira que $(e_k)_{k \in \N} \in E^{\N}$ est totale si c'est une famille orthonormale et si \[
+        \bar{\Vect\left( (e_k)_{k \in  \N} \right) }=E
+    \] 
+\end{dfn}
+
+\begin{thm}
+    \Hyp $(e_k)_{k \in  \N}$ famille totale, $E_n=\Vect(e_1, \cdots , e_n)$, $\pi_n$ projecteur orthogonal sur $E_n$
+     \begin{concenum}
+     \item $\forall  x \in  E, \quad  \|x-\pi_n(x)\|^2 \xrightarrow[n\to+\infty]{}0$
+     \item Égalité de Parseval: \index{Parseval (égalité de -- )}\[
+     \forall  x \in  E, \|x\|^2 = \sum_{k=0}^{+\infty} \scalar{x}{e_k} ^2 
+     \] 
+    \end{concenum}
+\end{thm}
+
+\begin{proof}~
+\begin{enumerate}
+    \item $E= \bar{\Vect((e_k)_k)}$. On note $x \in  E$, $\epsilon>0$. Il existe $y \in  \Vect((e_k)_k)$ tel que $\|x-y\|\leq \epsilon$ et il existe $N \in  \N$ tel que $\forall  n\geq N, y \in  E_n$ donc $\|x-\pi_n(x)\|\leq \|x-y\|\leq \epsilon$
+    \item \[
+            \|x\|^2 = \|x-\pi_n(x)\|^2 + \|\pi_n(x)\|^2 
+    \]
+    et \[
+        \pi_n(x)=\sum_{k=0}^n \scalar{x}{e_k} e_k \quad \text{ donc } \quad  \|\pi_n(x)\|^2 =\sum_{k=0}^n \scalar{x}{e_k} ^2 .
+    \] 
+    Finalement, \[
+        \|x\|^2 = \underbrace{\|x-\pi_n(x)\|^2}_{\xrightarrow[n\to+\infty]{}0} +\|\pi_n(x)\|^2 \xrightarrow[n\to+\infty]{} \sum_{n=0}^{+\infty} \scalar{x}{e_n} ^2 
+    \] 
+\end{enumerate}
+\end{proof}
+
+\begin{rem}
+    \begin{itemize}
+        \item On peut écrire \[
+                \pi_n(x)= \sum_{n=0}^{n} \scalar{x}{e_n} e_n \xrightarrow[n\to+\infty]{}x \qquad  \text{ donc } \qquad  x= \sum_{n=0}^{+\infty} \scalar{x}{e_n} e_n
+        \] 
+    \item On se donne $(e_k)$ orthonormale. Pour  $x \in  E$, on pose $f_n:x\longmapsto \|x-\pi_n(x)\|$. Si $(e_k)$ est totale alors pour chaque  $x$,  $f_n(x) \xrightarrow[\hspace{1em}]{}0$. Si pour chaque $x$,  $f_n(x) \xrightarrow[\hspace{1em}]{}0$, alors $ \pi_n(x) \xrightarrow[\hspace{1em}]{}x$ et $x \in  \bar{ \Vect((e_k)_k) }$ donc la famille est totale.
+    \end{itemize}
+\end{rem}
+
+\section{Les séries de Fourier}
+
+On note $f \in  \mathcal  C^0_{2\pi}(\R, \C)$, et on définit \[
+    c_n(f)= \frac{1}{2\pi}\int_0^{2\pi} f(t)e^{-int}\diff t=\frac{1}{2\pi}\int_{-\pi}^\pi f(t)e^{-int}\diff t
+\] 
+et \[
+    S_n(f):x \longmapsto \sum_{k=-n}^{n} c_k(f)e_k(x) \qquad  \text{ où } \qquad e_k:x \longmapsto e^{ikx}
+\] 
+On introduit le produit hermitien \[
+    \pscalar{f}{g}=\frac{1}{4\pi} \int_0^{2\pi} \bar{f}g
+\] 
+
+Quelques remarques: \begin{itemize}
+    \item $c_n(f)\xrightarrow[n \to  +\infty]{}0$ (Riemann-Lebesgue)
+    \item  $ \pscalar{e_k}{e_l}=\delta_{k,l} $
+    \item Si $k \in  \llbracket -n, n \rrbracket $, \[
+            \pscalar{f-S_n(f)}{e_k} = \pscalar{f}{e_k} - \pscalar{\sum_{l=-n}^{n} c_l(f)e_l}{e_k}= \pscalar f{e_k}-\sum_{l=-n}^n \bar{c_l(f)} \scalar{e_l}{e_k} =0
+    \] 
+\end{itemize}
