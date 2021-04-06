@@ -208,7 +208,7 @@ Avec des transvections (qui ne modifient pas le rang) on se ramène, en partant 
 qui est de rang $m$ (on peut en extraire $G(x_1, \cdots , x_m)$ donc $\rg(G(x))\geq m$ et l'autre inégalité est évidente). On a donc toujours $\rg (G(x))=\rg(x)$.
 
 
-\paragraph*{Lien entre les déterminants de Gram et les distances.}
+\paragraph{Lien entre les déterminants de Gram et les distances.}
 On note $F$ un sev de  $E$ de base  $(x_1, \cdots , x_p)$. On note $u \in  E$ et $\pi_F(u)=\lambda_1 x_1+\cdots +\lambda_px_p$.
 \[
     \det(G(x, u)) = \begin{vmatrix}
@@ -232,7 +232,7 @@ donc \[
 
 \subsection{Projection sur un compact convexe}
 
-\paragraph*{Existence et unicité du projeté.}
+\paragraph{Existence et unicité du projeté.}
 On note $(E, \scalar{\;}{\;} )$ euclidien, $C$ un compact convexe. On va montrer que  \[
 \forall  a \in  F, \quad  \exists  ! c \in  C, \qquad  \inf_{x \in  C}\|x-a\|=\|c-a\|
 \] 
@@ -260,7 +260,7 @@ et $\|c-c'\|\leq 0 \implies c=c'$
     On note $c=\pi_C(a)$
 \end{notation}
 
-\paragraph*{Caractérisation du projeté.}
+\paragraph{Caractérisation du projeté.}
 On va maintenant montrer qu'il y a équivalence entre \begin{enumerate}
     \item $z=\pi_C(a)$
     \item $\forall  y \in  C, \quad  \scalar{y-z}{a-z} \leq 0$
@@ -279,7 +279,7 @@ $(2 \implies  1)$ $\forall  t \in  [0, 1], \forall  y \in  C,$ \[
 \] 
 par le raisonnement inverse, en prenant $t=1$.
 
-\paragraph*{Caractère lipschitzien.} 
+\paragraph{Caractère lipschitzien.} 
 Pour $x, x' \in  E,$ \[
     \scalar{\pi_C(x')-\pi_C(x)}{x-\pi_C(x)} \leq 0 \qquad  \text{ et } \qquad  \scalar{\pi_C(x)-\pi_C(x')}{x'-\pi_C(x')} \leq 0
 \] 
@@ -406,14 +406,14 @@ En particulier, $\pscalar{f-S_n(f)}{S_n(f)} =0$ et \[
     \pscalar{f}{f} =\pscalar{f-S_n(f)}{f-S_n(f)} + \pscalar{S_n(f)}{S_n(f)} \geq \pscalar{S_n(f)}{S_n(f)} = \sum_{k=-n}^{n} |c_k(f)|^2 \text{ CV }
 \] 
 
-\subsection{Théorème de Féjer\index{Féjer (théorème de -- )}}
+\subsection{Théorème de Féjer}\index{Féjer (théorème de -- )}
 
 On va montrer que \[
     \sigma_n(f):x \longmapsto \frac{1}{n+1}\sum_{k=0}^nS_k(f)(x)
 \] 
 converge uniformément vers $f \in  \mathcal  C^0_{2\pi}(\R, \C)$
 
-\paragraph*{Un lemme.}
+\paragraph{Un lemme.}
 Pour $x \not \in  2\pi\Z$, \[
     S_n(x)= \sum_{k=-n}^{k=n} e^{ikx}=e^{-inx} \frac{1-e^{i(2n+1)x}}{1-e^{ix}}= \frac{\sin\left( \frac{2n+1}{2}x \right) }{\sin\left( \frac{x}{2} \right) }
 \] 
@@ -422,11 +422,145 @@ et cette expression se prolonge par continuité sur $2\pi\Z$. On note $s_n=\sigm
 \] 
 qu'on prolonge encore sur $2\pi\Z$.
 
-\paragraph*{Preuve du théorème.}
+\paragraph{Preuve du théorème.}
 On a: \[
     \sigma_n(f)(x)=\frac{1}{2\pi}\int_0^{2\pi} \frac{f(t)}{n+1}\sum_{l=0}^n\sum_{k=-l}^l e^{ik(x-t)} \diff t=\frac{1}{2\pi}\int_0^{2\pi} f(t)s_n(x-t)\diff t
 \] 
 Pour $f\equiv 1$, on a  $\sigma_n(f)\equiv 1$ donc  \[
     \frac{1}{2\pi}\int_0^{2\pi} s_n(x-t)\diff t=1
 \] 
-Pour $f$ quelconque
+Pour $f \in  \mathcal  C^0_{2\pi}(\R, \C)$ quelconque, on a \[
+    \sigma_n(f)(x)-f(x)=\frac{1}{2\pi}\int_0^{2\pi}(f(t)-f(x))s_n(x-t)\diff t
+\] 
+Soit $\epsilon>0$.  $f$ est continue périodique donc uniformément continue (Heine + périodicité) sur  $\R$ et il existe $\delta>0$ tel que  $|u-v|\leq \delta \implies  |f(u)-f(v)|\leq \epsilon'$. Dans ce cas, \[
+    \sigma_n(f)(x)-f(x)=\frac{1}{2\pi} \int_{-\pi}^\pi (f(x-u)-f(x))s_n(u)\diff u
+\] 
+et on peut séparer l'intégrale en trois intégrales adaptées à l'écriture $[-\pi,\pi]=[-\pi,-\delta]\cup[-\delta, \delta]\cup [\delta, \pi]$. Sur $[-\delta, \delta]$,  \[
+    \left| \frac{1}{2\pi}\int_{-\delta}^\delta (f(x-u)-f(x))\underbrace{s_n(u)}_{\geq 0}\diff u\right|\leq \frac{1}{2\pi}\int_{-\delta}^\delta \underbrace{|f(x-u)-f(x)|}_{\leq \epsilon'} s_n(u)\diff u\leq \epsilon'
+\] 
+et sur $[\delta, \pi]$ (le troisième intervalle se traite identiquement), \[
+    \left| \frac{1}{2\pi}\int_{\delta}^\pi (f(x-u)-f(x)) s_n(u)\diff u \right|\leq \frac{2 \|f\|_{\infty}}{2\pi} \frac{\pi-\delta}{n+1} \cdot \frac{1}{\sin^2  \frac{\delta}{2}} \xrightarrow[n\to+\infty]{}0
+\] 
+donc $\leq \epsilon'$ APCR. Ainsi, APCR, $\|\sigma_n(f)-f\|_\infty \leq 3\epsilon'=\epsilon$ donc \[
+    \sigma_n(f) \xrightarrow[\R]{\text{CVU}}f
+\] 
+
+\subsection{Weierstrass trigonométrique}
+
+Pour tout $f$, $\sigma_n(f)$ est un polynôme trigonométrique. Le théorème de Féjer permet alors de montrer le théorème de Weierstrass trigonométrique\index{Weierstrass trigonométrique (théorème de -- )}: toute fonction continue $2\pi$-périodique est limite d'une suite de polynômes trigonométriques. Ainsi, \begin{itemize}
+    \item dans $ \C, \quad  \bar{\Vect(e_k, k \in  \Z)}=\mathcal  C^0_{2\pi}(\R, \C)$
+    \item dans $ \R, \quad  \bar{\Vect(\sin\circ (k\id), \cos \circ (k\id), k \in  \Z)}=\mathcal  C^0_{2\pi}(\R, \R)$
+\end{itemize}
+Dans les deux cas, la famille est orthogonale dénombrable. On obtient une famille totale en normalisant.
+
+\section{Théorème de Müntz-Szász}
+\index{Muntz-Szasz@Müntz-Szász (théorème de -- )}
+
+On se place dans $E=\mathcal  C^0([0, 1], \R)$ muni du produit scalaire usuel \[
+\scalar{f}{g} =\int_0^1fg
+\] 
+On note $\mathcal  F=(t \longmapsto t^{\lambda_i})_{i \in  \N}$ pour $(\lambda_i)_{i \in  \N}$ une suite strictement croissante qui tend vers $+\infty$\footnote{Il s'agit d'une version plus faible du théorème pour lequel on ne suppose pas $\lambda_i \to  +\infty$}
+
+On note $E_n=\Vect(t\longmapsto t^{\lambda_i}, i \in  \llbracket 1, n \rrbracket )$ et $d_n(t^k)=d(t^k,E_n)$.
+
+On va montrer que $\bar{\Vect(\mathcal  F)}=\mathcal  C^0([0, 1], \R)$ si et seulement si $\sum\frac{1}{\lambda_i}$ diverge. Puisque $\bar{\R[X]}=\mathcal  C^0([0, 1], \R)$, on va en fait montrer que $\forall  k \in \N, t^k \in  \bar{\Vect(\mathcal  F)} \iff  \sum \frac{1}{\lambda_i}$ DV.
+
+On a $\scalar{t^{\lambda_i}}{t^{\lambda_j}} = \dfrac{1}{\lambda_i+\lambda_j+1}$ donc \[
+    G_n\defeq G(\mathcal  F_n)= \begin{pmatrix}
+        \displaystyle \frac{1}{\lambda_1+\lambda_1+1} & \cdots  & \displaystyle\frac{1}{\lambda_1+\lambda_n+1} \\
+        \vdots & \ddots & \vdots \\
+        \displaystyle \frac{1}{\lambda_n+\lambda_1+1} & \cdots  & \displaystyle\frac{1}{\lambda_n+\lambda_n+1}
+    \end{pmatrix}
+\] 
+On va calculer son déterminant. On pose \[
+    \Delta_n(X)= \begin{vmatrix}
+        \displaystyle \frac{1}{\lambda_1+\lambda_1+1} & \cdots  & \displaystyle\frac{1}{\lambda_1+X+1} \\
+        \vdots & \ddots & \vdots \\
+        \displaystyle \frac{1}{\lambda_n+\lambda_1+1} & \cdots  & \displaystyle\frac{1}{\lambda_n+X+1}
+    \end{vmatrix}= \frac{P_n(X)}{(\lambda_1+X+1)\cdots (\lambda_n+X+1)}
+\] 
+avec $\deg P_n\leq n-1$. Pour $x=\lambda_1, \cdots , \lambda_{n-1}$, $P_n(x)$ est nul car deux colonnes sont identiques. On a donc $P_n(X)=A_n(X-\lambda_1)\cdots (X-\lambda_{n-1})$ où $A_n=\dom P_n$. Une décomposition en éléments simples donne \[
+    \frac{A_n(X-\lambda_1)\cdots (X-\lambda_{n-1})}{(\lambda_1+X+1)\cdots (\lambda_n+X+1)}= \frac{A_n(-\lambda_{n}-1-\lambda_1)\cdots (-\lambda_n-1-\lambda_{n-1})}{(\lambda_1-\lambda_n)\cdots (\lambda_{n-1}-\lambda_n)(\lambda_n+X+1)}+\text{ autres pôles }
+\] 
+or en décomposant par rapport à la dernière colonne, \[
+    \Delta_n(X)=\frac{\Delta_{n-1}(X)}{\lambda_n+X+1}+\text{ autres pôles }
+\] 
+donc par unicité des décompositions en éléments simples, \[
+    \Delta_{n-1}= \frac{A_n(-1)^{n-1}(\lambda_1+\lambda_n+1)\cdots (\lambda_{n-1}+\lambda_n+1)}{(\lambda_n-\lambda_{n-1})\cdots (\lambda_n-\lambda_1)(-1)^{n-1}}
+\] 
+soit encore \[
+    \Delta_n(X)= \frac{(\lambda_n-\lambda_{n-1})\cdots (\lambda_n-\lambda_1)}{(\lambda_1+\lambda_n+1)\cdots (\lambda_{n-1}+\lambda_n+1)}\Delta_{n-1} \frac{(X-\lambda_1)\cdots (X-\lambda_{n-1})}{(\lambda_1+X+1)\cdots (\lambda_n+X+1)}
+\] 
+et si on note $\delta_n=\Delta_n(\lambda_n)$, on a  \[
+    \delta_n=\frac{(\lambda_n-\lambda_1)^2 \cdots (\lambda_n-\lambda_{n-1})^2 }{(\lambda_1+\lambda_n+1)^2 \cdots (\lambda_{n-1}+\lambda_n+1)^2 }\cdot \frac{\Delta_{n-1}}{2\lambda_n+1} %=\frac{\displaystyle\prod_{i<j}(\lambda_j-\lambda_i)^2 }{\displaystyle\prod_{i<j}(\lambda_j+\lambda_i+1)^2 \prod_{i}(2\lambda_i+1)}
+\] 
+et d'après la formule de Gram, \[
+    d_n(t^k)^2 = \frac{\det(G(t^{\lambda_1}, \cdots , t^{\lambda_n}, t^k))}{\delta_n}= \frac{(k-\lambda_1)^2\cdots (k-\lambda_n)^2 }{(k+\lambda_1+1)^2 \cdots (k+\lambda_n+1)^2 } \cdot \frac{1}{2k+1}
+\] 
+Il s'agit de voir si $d_n(t^k) \xrightarrow[n\to+\infty]{}0$. On écrit \[
+    d_n(t^k)^2 =\frac{1}{2k+1} \left( \cfrac{1-\cfrac k{\lambda_1}}{1+\cfrac{k+1}{\lambda_1}} \right) ^2  \cdots 
+    \left( \cfrac{1-\cfrac k{\lambda_n}}{1+\cfrac{k+1}{\lambda_n}} \right) ^2
+\] 
+de sorte que \[
+    \ln(d_n(t^k)^2 )= \ln\left( \frac{1}{2k+1} \right) + 2 \sum_{i=1}^{n} \ln\left( \cfrac{1-\cfrac k{\lambda_i}}{1+\cfrac{k+1}{\lambda_i}} \right) 
+\] 
+or \begin{align*}
+    \ln\left( \cfrac{1-\cfrac k{\lambda_i}}{1+\cfrac{k+1}{\lambda_i}} \right) &= \ln \left( \left( 1-\frac{k}{\lambda_i} \right)  \left( 1-\frac{k+1}{\lambda_i}+o\left( \frac{1}{\lambda_i} \right)  \right) \right) \\ &=\ln\left( 1-\frac{2k+1}{\lambda_i}+o\left( \frac{1}{\lambda_i} \right)  \right) \\&\underset{+\infty}\sim -\frac{2k+1}{\lambda_i}
+\end{align*}
+donc \[
+    d_n(t^k) \xrightarrow[n\to+\infty]{}0 \iff  \sum \frac{1}{\lambda_i}\text{ DV }
+\] 
+
+\section{Endomorphismes symétriques}
+
+\begin{defprop}
+    \Hyp $(E, \scalar{\;}{\;} )$ est un espace préhilbertien réel
+    \begin{concenum}
+    \item On dira que $f \in  \mathcal  L(E)$ est \textbf{symétrique}\index{endomorphisme symétrique} ou \textbf{autoadjoint}\index{endomorphisme autoadjoint} si $\forall  x, y \in  E, \scalar{f(x)}{y} = \scalar{x}{f(y)} $ 
+    \item On note $\mathrm S(E)$ l'ensemble des endomorphismes symétriques de  $E$
+    \item  $\mathrm S(E)$ est un sev de  $\mathcal  L(E)$
+    \end{concenum}
+\end{defprop}
+
+\begin{ex}
+Les projecteurs orthogonaux sont symétriques
+\end{ex}
+
+\begin{rem}
+    Si $f \in  \mathrm  S(E)$ et $\mathcal  B=(e_1, \cdots , e_n)$ est une base orthonormée de $E$, alors  \[
+        \mathcal  M_{\mathcal  B}(f)= \begin{pmatrix}
+            \scalar{f(e_1)}{e_1} & \cdots  & \scalar{f(e_n)}{e_1} \\
+            \vdots & \ddots & \vdots \\
+            \scalar{f(e_1)}{e_n} & \cdots  & \scalar{f(e_n)}{e_n} 
+        \end{pmatrix} \in  \mathrm S_n(\R)
+    \] 
+\end{rem}
+
+\begin{prop}
+    \Hyp $f \in  \mathrm S(E)$ en dimension finie, $F$ un sev stable par  $f$
+    \Conc  $F^\perp$ est stable par  $f$
+\end{prop}
+
+\begin{proof}
+     \[
+         \forall  x \in  F, \forall  y \in  F^\perp, \quad  \scalar{x}{f(y)} =\scalar{f(x)}{y} =0 \qquad  \text{ ie } f(y) \in  F^\perp
+    \] 
+\end{proof}
+
+\begin{thm}[Spectral\index{théorème spectral}]
+    \Hyp $E$ euclidien,  $f \in  \mathrm  S(E)$
+    \begin{concenum}
+    \item $\chi_f(X)$ est scindé sur  $ \R$
+    \item Les $E_{\lambda}(f)$ sont en somme directe orthogonale
+    \item $\displaystyle E=\bigoplus_{\lambda \in  \Sp(f)}E_{\lambda}(f)$. En particulier, $f$ est diagonalisable dans une base orthonormée.
+    \end{concenum}
+\end{thm}
+\begin{proof}~
+\begin{enumerate}
+    \item On note $\mathcal  B$ une base orthonormée de $E$,  $A=\mathcal  M_{\mathcal  B}(f) \in  \mathrm S_n(\R)$. Soit $ \lambda \in  \Sp_{\C}(A)$ et $X \in \C^n$ un vecteur propre associé. On a $\bar{X}^\top AX=\lambda \bar{X}^\top X\in \R_+$ Puis, $X^\top A \bar{X}=\bar{\lambda} \bar{X}^\top X = \bar{\bar{X}^\top AX}$ donc $ \lambda=\bar\lambda$ et $\lambda \in  \R$. On a donc $\Sp_{\C}(A)\subset \R$. Puis, $\chi_A$ est scindé en tant que polynôme complexe, et a ses racines dans $\R$ donc scindé dans $\R[X]$.
+    \item Si $x \in  E_{\lambda}(f), y \in  E_{\mu}(f)$, \[
+            \scalar{f(x)}{y} =\lambda \scalar{x}{y} = \scalar{x}{f(y)} = \mu \scalar{x}{y} \implies \lambda=\mu \text{ ou } \scalar{x}{y} =0
+    \] 
+\item 
+\end{enumerate}
+\end{proof}
