@@ -208,7 +208,7 @@ Avec des transvections (qui ne modifient pas le rang) on se ramène, en partant 
 qui est de rang $m$ (on peut en extraire $G(x_1, \cdots , x_m)$ donc $\rg(G(x))\geq m$ et l'autre inégalité est évidente). On a donc toujours $\rg (G(x))=\rg(x)$.
 
 
-\paragraph{Lien entre les déterminants de Gram et les distances}
+\paragraph*{Lien entre les déterminants de Gram et les distances.}
 On note $F$ un sev de  $E$ de base  $(x_1, \cdots , x_p)$. On note $u \in  E$ et $\pi_F(u)=\lambda_1 x_1+\cdots +\lambda_px_p$.
 \[
     \det(G(x, u)) = \begin{vmatrix}
@@ -232,7 +232,7 @@ donc \[
 
 \subsection{Projection sur un compact convexe}
 
-\paragraph{Existence et unicité du projeté.}
+\paragraph*{Existence et unicité du projeté.}
 On note $(E, \scalar{\;}{\;} )$ euclidien, $C$ un compact convexe. On va montrer que  \[
 \forall  a \in  F, \quad  \exists  ! c \in  C, \qquad  \inf_{x \in  C}\|x-a\|=\|c-a\|
 \] 
@@ -260,7 +260,7 @@ et $\|c-c'\|\leq 0 \implies c=c'$
     On note $c=\pi_C(a)$
 \end{notation}
 
-\paragraph{Caractérisation du projeté.}
+\paragraph*{Caractérisation du projeté.}
 On va maintenant montrer qu'il y a équivalence entre \begin{enumerate}
     \item $z=\pi_C(a)$
     \item $\forall  y \in  C, \quad  \scalar{y-z}{a-z} \leq 0$
@@ -279,7 +279,7 @@ $(2 \implies  1)$ $\forall  t \in  [0, 1], \forall  y \in  C,$ \[
 \] 
 par le raisonnement inverse, en prenant $t=1$.
 
-\paragraph{Caractère lipschitzien.} 
+\paragraph*{Caractère lipschitzien.} 
 Pour $x, x' \in  E,$ \[
     \scalar{\pi_C(x')-\pi_C(x)}{x-\pi_C(x)} \leq 0 \qquad  \text{ et } \qquad  \scalar{\pi_C(x)-\pi_C(x')}{x'-\pi_C(x')} \leq 0
 \] 
@@ -399,6 +399,34 @@ Quelques remarques: \begin{itemize}
     \item $c_n(f)\xrightarrow[n \to  +\infty]{}0$ (Riemann-Lebesgue)
     \item  $ \pscalar{e_k}{e_l}=\delta_{k,l} $
     \item Si $k \in  \llbracket -n, n \rrbracket $, \[
-            \pscalar{f-S_n(f)}{e_k} = \pscalar{f}{e_k} - \pscalar{\sum_{l=-n}^{n} c_l(f)e_l}{e_k}= \pscalar f{e_k}-\sum_{l=-n}^n \bar{c_l(f)} \scalar{e_l}{e_k} =0
+            \pscalar{f-S_n(f)}{e_k} = \pscalar{f}{e_k} - \pscalar{\sum_{l=-n}^{n} c_l(f)e_l}{e_k}= \pscalar f{e_k}-\sum_{l=-n}^n \bar{c_l(f)} \pscalar{e_l}{e_k} =0
     \] 
 \end{itemize}
+En particulier, $\pscalar{f-S_n(f)}{S_n(f)} =0$ et \[
+    \pscalar{f}{f} =\pscalar{f-S_n(f)}{f-S_n(f)} + \pscalar{S_n(f)}{S_n(f)} \geq \pscalar{S_n(f)}{S_n(f)} = \sum_{k=-n}^{n} |c_k(f)|^2 \text{ CV }
+\] 
+
+\subsection{Théorème de Féjer\index{Féjer (théorème de -- )}}
+
+On va montrer que \[
+    \sigma_n(f):x \longmapsto \frac{1}{n+1}\sum_{k=0}^nS_k(f)(x)
+\] 
+converge uniformément vers $f \in  \mathcal  C^0_{2\pi}(\R, \C)$
+
+\paragraph*{Un lemme.}
+Pour $x \not \in  2\pi\Z$, \[
+    S_n(x)= \sum_{k=-n}^{k=n} e^{ikx}=e^{-inx} \frac{1-e^{i(2n+1)x}}{1-e^{ix}}= \frac{\sin\left( \frac{2n+1}{2}x \right) }{\sin\left( \frac{x}{2} \right) }
+\] 
+et cette expression se prolonge par continuité sur $2\pi\Z$. On note $s_n=\sigma_n(\id)$ de sorte que \[
+    s_n(x)=\frac{1}{n+1}\Im\left( \frac{e^{i\frac{x}{2}}}{\sin \frac{x}{2}}  \sum_{k=0}^{n} e^{ikx}\right) =\frac{1}{n+1} \frac{\sin^2 (\frac{n+1}{2}x)}{\sin^2 \frac{x}{2}}
+\] 
+qu'on prolonge encore sur $2\pi\Z$.
+
+\paragraph*{Preuve du théorème.}
+On a: \[
+    \sigma_n(f)(x)=\frac{1}{2\pi}\int_0^{2\pi} \frac{f(t)}{n+1}\sum_{l=0}^n\sum_{k=-l}^l e^{ik(x-t)} \diff t=\frac{1}{2\pi}\int_0^{2\pi} f(t)s_n(x-t)\diff t
+\] 
+Pour $f\equiv 1$, on a  $\sigma_n(f)\equiv 1$ donc  \[
+    \frac{1}{2\pi}\int_0^{2\pi} s_n(x-t)\diff t=1
+\] 
+Pour $f$ quelconque
