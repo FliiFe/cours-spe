@@ -561,6 +561,79 @@ Les projecteurs orthogonaux sont symétriques
     \item Si $x \in  E_{\lambda}(f), y \in  E_{\mu}(f)$, \[
             \scalar{f(x)}{y} =\lambda \scalar{x}{y} = \scalar{x}{f(y)} = \mu \scalar{x}{y} \implies \lambda=\mu \text{ ou } \scalar{x}{y} =0
     \] 
-\item 
+\item On note $F$ la somme directe des espaces propres, et on suppose  $F\neq E$.  $F$ est stable par  $f$ donc  $F^\perp$ aussi,  $E=F\oplus F^\perp$, et  $f_{|F^\perp}$ est un endomorphisme symétrique en dimension finie. Son polynôme caractéristique est scindé, donc admet une racine et cette racine est une valeur propre, ce qui est absurde car $F^\perp$ ne contient aucun espace propre. Donc,  $F=E$, ce qui conclut.
 \end{enumerate}
 \end{proof}
+
+\begin{rem}
+    Cela montre que les matrices réelles symétriques sont diagonalisables dans une base orthonormée pour le produit scalaire usuel de $ \mathcal  M_{n,1}(\R)$.
+\end{rem}
+
+\section{Matrices orthogonales}
+
+\subsection{Groupe orthogonal}
+On se place dans $E$ un espace euclidien.
+
+ \begin{thmdef}
+\begin{enumerate}
+    \item $f \in  \mathcal  L(E)$ est un automorphisme \textbf{orthogonal}\index{automorphisme orthogonal} si il satisfait l'une des deux deux propriétés équivalentes suivantes \begin{enumerate}
+        \item $ \forall  x, y \in  E, \quad  \scalar{f(x)}{f(y)}= \scalar{x}{y}$
+        \item $\forall  x \in  E, \quad  \|f(x)\|=\|x\|$
+    \end{enumerate}
+\item On note $\mathrm  O(E)$ l'ensemble des automorphisme orthogonaux. C'est un sous-groupe de $(\mathrm {GL}(E), \circ)$
+\end{enumerate}
+\end{thmdef}
+
+\begin{proof}
+\begin{enumerate}
+    \item Le sens direct est évident avec $x=y$, et dans l'autre on applique la formule de polarisation
+    \item L'injectivité est directe avec (b) donc  $\mathrm O(E)\subset \mathrm {GL}(E)$. Si $f, g$ sont orthogonaux alors  \[
+            \forall  x \in  E, \quad  \|f^{-1}\circ g(x)\|=\|f\circ f^{-1}\circ g(x)\|=\|g(x)\|=\|x\|
+    \] 
+    donc $f^{-1}\circ g \in \mathrm O(E)$. L'identité est dans $\mathrm  O(E)$.
+\end{enumerate}
+\end{proof}
+
+\begin{thm}
+    \Hyp $f \in  \mathcal  L(E)$
+    \Conc Il y a équivalence entre \begin{enumerate}
+        \item $f \in  \mathrm   O(E)$
+        \item  $ \forall  \;\mathcal  B \text{ ON }, \quad  f(\mathcal B) \text{ ON }$
+        \item  $ \exists  \;\mathcal  B \text{ ON }, \quad  f(\mathcal B) \text{ ON }$
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}~\\
+    $(1\implies 2)$ $ \scalar{f(e_i)}{f(e_j)} = \scalar{e_i}{e_j} =\delta_{i,j}$\\
+    $(2\implies 3)$ direct car il existe des bases ON\\
+    $(3\implies 1)$ En décomposant sur $\mathcal  B$, on trouve bien $\scalar{f(x)}{f(y)} = \scalar{x}{y} $
+\end{proof}
+
+\begin{thmdef}
+\begin{enumerate}
+    \item $A \in  \mathcal  M_n(\R)$ est dite orthogonale si $A^\top A=AA^\top=I_n$. On note  $\mathrm  O_n(\R)$ l'ensemble des matrices orthogonales.
+    \item $\mathrm  O_n(\R)$ est un sous-groupe de $\mathrm {GL}_n(\R)$
+    \item Si $f \in  \mathcal  L(E)$, il y a équivalence \begin{enumerate}
+        \item $f \in  \mathrm  O(E)$
+        \item $\forall  \; \mathcal  B \text{ ON }, \quad  \mathcal M_{\mathcal  B}(f) \in  \mathrm  O_n(\R)$
+        \item $\exists  \; \mathcal  B \text{ ON }, \quad  \mathcal M_{\mathcal  B}(f) \in  \mathrm  O_n(\R)$
+    \end{enumerate}
+\end{enumerate}
+\end{thmdef}
+
+\begin{proof}
+~\\ $(a\implies b)$ Si $A=\mathcal  M_{\mathcal  B}(f)$ pour $\mathcal  B$ ON, alors on calcule \[ \rrbracket A^\top A=( \scalar{C_i}{C_j}  )_{1\leq i,j\leq n}=( \scalar{f(e_i)}{f(e_j)}  )_{1\leq 1,j\leq n} \]\\
+$(b\implies c)$ direct \\
+$(c\implies a)$ Si $A^\top A=I_n$, alors on trouve bien  $\scalar{f(e_i)}{f(e_j)} =\delta_{i,j}$, donc $f(\mathcal  B)$ est ON.
+\end{proof}
+
+\begin{rem}
+    Une matrice orthogonale est telle que $\det(A)^2=1 \iff  \det A=\pm1$
+\end{rem}
+
+\begin{rem}
+    Avec le produit scalaire $\scalar{M}{N} = \Tr(M^\top N)$ sur $\mathcal  M_n(\R)$, on a $\forall  A \in  \mathrm  O_n(\R), \quad  \scalar{A}{A} = \|A\|^2 =n$ donc $\mathrm  O_n(\R)$ est borné. Puis si \[
+    f:M\longmapsto M^\top M-I_n
+    \] 
+    alors $f$ est continue et  $\mathrm  O_n(\R)=f^{-1}(\left\{  0 \right\} )$ donc $\mathrm  O_n(\R)$ est compact.
+\end{rem}
