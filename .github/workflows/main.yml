@@ -199,3 +199,12 @@ jobs:
         asset_path: ./target/vad.pdf
         asset_name: variables-aleatoires.pdf
         asset_content_type: application/pdf
+    - name: Release espaces-prehilbertiens
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/espaces-prehilbertiens.pdf
+        asset_name: espaces-prehilbertiens.pdf
+        asset_content_type: application/pdf
