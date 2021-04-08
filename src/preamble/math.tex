@@ -20,10 +20,12 @@
 
 % opérateurs usuels
 \NewDocumentCommand\genmrm{O{#2}m}{%
-    \expandafter\NewDocumentCommand\csname#1\endcsname{}{%
-        \mathop{\mathrm{#2}}%
+    \expandafter\DeclareDocumentCommand\csname#1\endcsname{}{%
+        \mathop{\mathrm{#2}}\nolimits%
     }%
 }
+\genmrm{det}
+\genmrm{ker}
 \genmrm{Ker}
 \genmrm{dom}
 \genmrm{Vect}

@@ -569,9 +569,8 @@ Les projecteurs orthogonaux sont symétriques
     Cela montre que les matrices réelles symétriques sont diagonalisables dans une base orthonormée pour le produit scalaire usuel de $ \mathcal  M_{n,1}(\R)$.
 \end{rem}
 
-\section{Matrices orthogonales}
+\section{Groupe orthogonal}
 
-\subsection{Groupe orthogonal}
 On se place dans $E$ un espace euclidien.
 
  \begin{thmdef}
@@ -637,3 +636,128 @@ $(c\implies a)$ Si $A^\top A=I_n$, alors on trouve bien  $\scalar{f(e_i)}{f(e_j)
     \] 
     alors $f$ est continue et  $\mathrm  O_n(\R)=f^{-1}(\left\{  0 \right\} )$ donc $\mathrm  O_n(\R)$ est compact.
 \end{rem}
+
+\section{Groupe spécial orthogonal}
+
+\begin{thmdef}
+    \begin{enumerate}
+        \item $f \in  \mathrm  O(E)$ est une \textbf{rotation}\index{rotation} si $\det f=1$. On note  $\mathrm {SO}(E)$ l'ensemble des rotations de $\mathrm  O(E)$
+        \item C'est un sous-groupe de $\mathrm O(E)$, qu'on appelle \textbf{groupe spécial orthogonal}\index{groupe spécial orthogonal}.
+        \item Identiquement, $\mathrm {SO}_n(\R)$ est le sous-groupe de $\mathrm  O_n(\R)$ constitué des matrices orthogonales de déterminant $1$
+    \end{enumerate}
+\end{thmdef}
+
+\begin{proof}
+    $\mathrm  {SO}(E)=\ker f$ où $f:A\longmapsto \det A$ donc c'est un groupe.
+\end{proof}
+
+\subsection{Orientation}
+
+Si $\mathcal  B$ et $\mathcal B'$ sont des bases orthonormées de $E$, alors  $P_{\mathcal  B, \mathcal  B'}=\mathcal M_{\mathcal  B}(h)$ avec $h:e_i\longmapsto e_i'$, alors $h \in  \mathrm O(E)$ car l'image d'une base ON est ON. On a donc $\det P_{\mathcal  B, \mathcal  B'}=\det h=\pm1$ et $P_{\mathcal  B, \mathcal  B'} \in  O_n(\R)$
+
+\begin{dfn}
+\begin{enumerate}
+    \item Deux bases orthonormées ont même \textbf{orientation} si la matrice de passage de l'une à l'autre est celle d'une rotation ($\det P=1$)
+    \item La relation $\mathcal  B \; \mathcal  R\; \mathcal  B' \iff  \det P_{\mathcal  B, \mathcal B'}=1$ est une relation d'équivalence sur l'ensemble des bases orthonormées, il y a deux classes d'équivalences
+    \item Un espace euclidien est dit \textbf{orienté} lorsqu'on a choisi l'une de ces deux classes, qui sera alors la classe des bases orthonormées \textbf{directes} 
+    \item Si $H$ est un hyperplan,  $u$ un vecteur unitaire orthogonal à  $H$, et  $\mathcal  B=(e_1, \cdots , e_{n-1})$ une base orthonormée de $H$, alors $\mathcal  B$ est directe si $(e_1, \cdots , e_{n-1}, u)$ est une base directe de $E$. On dira que  $H$ est orienté par  $u$.
+\end{enumerate}
+\end{dfn}
+
+\begin{prop}
+    \Hyp $(E, \scalar{\;}{\;} )$ euclidien orienté, $u \in  \mathcal  L(E)$
+    \Conc Il y a équivalence entre \begin{enumerate}
+        \item $u \in  \mathrm {SO}(E)$
+        \item $\forall \;\; \mathcal  B, \quad  u(\mathcal  B)$ orthonormée directe
+        \item $\exists \;\; \mathcal  B, \quad  u(\mathcal  B)$ orthonormée directe
+        \item $\forall \;\; \mathcal  B$ orthonormée directe, $\mathcal M_{\mathcal  B}(u) \in  \mathrm  {SO}_n(\R)$
+        \item $\exists \;\; \mathcal  B$ orthonormée directe, $\mathcal M_{\mathcal  B}(u) \in  \mathrm  {SO}_n(\R)$
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+Facile
+\end{proof}
+
+\subsection{Le cas du plan}
+
+On se place dans $E=\R^2 $ muni du produit scalaire canonique et de l'orientation usuelle. \begin{align*}
+    A= \begin{pmatrix}
+        a&b\\c&d
+    \end{pmatrix} \in  \mathrm O_2(\R) & \iff  \begin{dcases}
+    a^2 + c^2 = 1 \\ b^2 + d^2 = 1 \\ ab+cd=0
+    \end{dcases} \\
+    & \iff \exists \theta, \theta' \in  \R , \begin{dcases}
+        a = \cos \theta & c=\sin \theta \\ b=\sin \theta' & d=\cos \theta' \\ ab+cd=0
+    \end{dcases} \\
+    & \iff  \exists \theta, \theta' \in  \R , \begin{dcases}
+        a = \cos \theta & c=\sin \theta \\ b=\sin \theta' & d=\cos \theta' \\ \theta+\theta'\equiv 0\pmod\pi
+    \end{dcases} \\
+    &\iff  \exists  \theta \in  \R, \quad  A = \begin{pmatrix}
+        \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta
+    \end{pmatrix}
+    \quad  \text{ ou } \quad A = \begin{pmatrix}
+        \cos \theta & \sin \theta \\ \sin \theta & -\cos \theta
+    \end{pmatrix}
+\end{align*}
+et \[
+    A \in  \mathrm {SO}_2(\R) \iff  A= \begin{pmatrix}
+        \cos \theta & -\sin \theta \\
+        \sin \theta & \cos \theta
+    \end{pmatrix}\defeq R_{\theta}
+\] 
+On a par ailleurs $R_{\theta}R_{\theta'}=R_{\theta+\theta'}$ donc $\mathrm {SO}_2(\R)$ est abélien
+
+\begin{prop}
+    Soit $u \in  \mathrm {SO}(\R^2)$. La matrice $\mathcal  M_{\mathcal B}(u)$ est indépendante de la base orthonormée directe choisie et \[
+        \exists  !\theta \in  [0, 2\pi[, \quad  \mathcal  M_{\mathcal  B}(u)=R_{\theta}
+    \] 
+    On dit alors que $u$ est la rotation d'angle $\theta$
+\end{prop}
+
+\begin{proof}
+    $\mathrm {SO}_2(\R)$ est abélien donc les matrices de passage n'ont pas d'influence.
+\end{proof}
+
+\begin{rem}[Angle orienté\index{angle orienté}]
+    Pour $x, y \in  E$ ($E$ euclidien orienté de dimension  $2$) et $\mathcal  B$ orthonormée directe, on a (calculer explicitement) \[
+        \scalar{x}{y} ^2 + \det_{\mathcal  B}(x, y)^2 = \|x\|^2 \|y\|^2 
+    \] 
+    donc si $x, y\neq 0$, il existe un unique $\theta \pmod{2\pi}$ tel que \[
+    \begin{dcases}
+        \scalar{x}{y} = \|x\|\|y\|\cos \theta \\
+        \det_{\mathcal  B}(x, y)= \|x\|\|y\|\sin \theta
+    \end{dcases}
+    \] 
+    Ce réel $\theta$ est alors appelé angle orienté  $\widehat{(x, y)}$
+\end{rem}
+
+\section{Produit vectoriel}
+
+\begin{thm}[Théorème de représentation de Riesz\index{Riesz (théorème de -- )}]
+\Hyp $E$ euclidien
+\Conc $\forall \varphi \in  E^\star, \quad  \exists  ! a \in  E, \quad  \forall  x \in  E, \quad  \varphi(x)=\scalar{a}{x} $
+\end{thm}
+
+\begin{proof}
+    \[
+    \begin{array}{rrcl}
+        \psi:& E & \longrightarrow &  E^\star \\
+             & a & \longmapsto & \displaystyle (x \longmapsto \scalar{a}{x} )
+    \end{array}
+    \] 
+    Est une AL injective et $\dim E=\dim E^\star$ donc c'est un isomorphisme.
+\end{proof}
+
+\begin{thmdef}
+\Hyp $E$ est un espace euclidien orienté de dimension  $3$
+ \begin{concenum}
+ \item $u, v, w \in  E$. La quantité $\det_{\mathcal  B}(u,v,w)$ ne dépend pas de $ \mathcal  B$ OND. On la note $[u, v, w]$
+ \item  $u, v \in  E. \exists !w \in  E, \quad  \forall  x \in  E, [u, v, x]= \scalar{w}{x} $. On note alors $w=u\wedge v$
+ \item  $(u,v)\longmapsto u\wedge v$ est bilinéaire antisymétrique
+ \item $u\wedge v=0 \iff  u,v$ colinéaires
+ \item $u\wedge v\perp u,v$
+ \item Si  $(e_1, e_2, e_3)$ OND alors  $e_1\wedge e_2=e_3, e_2\wedge e_3=e_1, e_3\wedge e_1=e_2$
+ \item Si  $(e_1, e_2, e_3)$ ON alors cette base est directe  si et seulement si $e_1\wedge e_2=e_3$
+\end{concenum}
+\end{thmdef}
