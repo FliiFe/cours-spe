@@ -1,0 +1,98 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Espaces vectoriels normés} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Espaces vectoriels normés}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+Dans tout le chapitre, $E$ désigne un $\K$-espace vectoriel, avec $\K=\R$ ou $\K=\C$, et $I$ est un intervalle.
+\section{Normes}
+
+\begin{dfn}
+    $N:E \to \R$ est une norme si \begin{itemize}
+        \item $\forall  x \in  E, N(x)=0 \implies  x = 0$
+        \item $\forall  x \in  E, N(x)\geq 0$
+        \item $\forall  x \in  E, \forall  \lambda \in  \K, N(\lambda x)= |\lambda| N(x)$
+        \item $\forall  x,y \in  E, N(x+y)\leq N(x)+N(y)$
+    \end{itemize}
+    On dira alors que $(E, N)$ est un espace vectoriel normé (e.v.n). \index{Espace vectoriel normé} \index{e.v.n}
+\end{dfn}
+
+\begin{rem}
+    Si $(E, N)$ est un e.v.n, alors \begin{itemize}
+        \item $\forall  x \in  E, N(-x)=N(x)$
+        \item $\forall  x, y \in  E, |N(x)-N(y)|\leq N(x-y)$
+    \end{itemize}
+\end{rem}
+
+
+\section{Normes usuelles}
+
+\subsection{Dans \texorpdfstring{$\K^n$}{K\^{}n}}
+
+Pour $(x_1, \cdots , x_n) \in  \K^n$, on pose \[
+    \|x\|_p = \left( \sum_{k=1}^{n} |x_k|^{p} \right) ^{1 / p}
+\]
+et similairement \[
+    \|x\|_\infty = \max(|x_1|, \cdots , |x_n|)
+\]
+Ce sont bien des normes (c'est facile pour $p = 1, 2, \infty$ en exploitant Cauchy-Schwarz, on verra avec l'\textbf{\hyperref[sec:minkowski-holder]{inégalité de Minkowski}} \index{Minkowski (inégalité de -- )} que c'est vrai pour tout $p$)
+
+On a les inégalités suivantes, pour tout $x \in  \K^n$ \begin{itemize}
+    \item $\|x\|_1 \leq  n \|x\|_\infty$
+    \item $\|x\|_1 \leq  \sqrt{n} \|x\|_2$ (C-S)
+    \item $\|x\|_2 \leq  \|x\|_1$
+    \item $\|x\|_\infty \leq  \|x\|_1$ 
+    \item $\|x\|_2 \leq  \sqrt{ n } \|x\|_\infty$
+    \item $\|x\|_\infty \leq  \|x\|_2$
+\end{itemize}
+Il y a à chaque fois des cas d'égalité non nuls.
+
+\subsection{Norme de la convergence uniforme}
+
+\begin{prop}
+    \Hyp $E = \mathcal  C^0_b(I, \K)$ (espaces des continues bornées)
+    \begin{concenum}
+    \item Pour $f \in  E$, on pose $\|f\|_\infty = \sup_{I}|f|$. C'est une norme sur $E$
+    \item Il y a équivalence entre  \begin{enumerate}
+        \item $f_n \xrightarrow{\text[I]{CVU}}f$
+        \item  $\|f_n-f\|\xrightarrow[n\to +\infty]{}0$
+    \end{enumerate}
+    \end{concenum}
+\end{prop}
+
+\begin{rem}
+    Si $I$ est un segment,  $E=\mathcal  C^0(I, \K)$
+\end{rem}
+
+\subsection{Norme sur les fonctions intégrables}
+
+Dans $\mathcal  L^1_c(I, \K)$, on peut poser \[
+\|f\|_1=\int_I|f|.
+\] 
+C'est une norme.
+
+\subsection{Norme sur les fonctions de carré intégrable}
+
+Dans $\mathcal  L^2_c(I, \K)$, on peut poser \[
+    \|f\|_2=\left( \int_I|f|^2 \right) ^{1 / 2}.
+\] 
+C'est une norme. Pour voir l'inégalité triangulaire:
+\begin{align*}
+    \|f+g\|_{\infty} \leq  \|f\|_\infty+\|g\|_\infty &\iff  \int_I|f+g|^2 \leq \|f\|_1+\|g\|_1 + 2 \sqrt{\left( \int_I|f|^2  \right) \left( \int_I|g|^2  \right) } \\
+                                                     &\iff  \int_I(f \bar{g} + \bar{f} g)=\Re\left(2\int_If \bar{g}\right) \leq 2 \sqrt{\left( \int_I|f|^2  \right) \left( \int_I|g|^2  \right) }
+\end{align*}
+et cette dernière inégalité correspond à Cauchy-Schwarz.
+
+\subsection{Normes sur les fonction continues sur un segment}
+
+

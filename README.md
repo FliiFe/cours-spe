@@ -17,7 +17,7 @@ Les cours sont ceux qui m'ont été dispensés en MP* à Faidherbe. La dernière
 - [x] Algèbre linéaire
 - [x] Réduction des endomorphismes
 - [ ] Analyse réelle et fonctions convexes
-- [ ] Espaces vectoriels normés
+- [x] Espaces vectoriels normés (partiellement)
 - [ ] Limite - Continuité - Fonctions vectorielles
 - [x] Compacité - Connexité
 - [x] Séries entières
