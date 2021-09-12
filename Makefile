@@ -91,6 +91,8 @@ target:
 clean: ## Delete compiled documents and latex-generated files
 	rm -rf target build
 	cd src/figures && latexmk -C
+	mkdir build
+	ln -s ../indexstyle.ist build/
 
 figures: $(FIGURES) ## Build every figure in src/figures/
 

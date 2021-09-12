@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# vim: set ft=bash:
+
+FILENAME_NO_EXT=$(basename -- $TEXPAD_ROOTFILE_NO_EXT)
+
+echo Making target target/$FILENAME_NO_EXT.pdf
+make target/$FILENAME_NO_EXT.pdf 2>&1
+echo Copying output file to $FILENAME_NO_EXT.pdf
+cp target/$FILENAME_NO_EXT.pdf $FILENAME_NO_EXT.pdf
