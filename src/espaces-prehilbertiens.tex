@@ -732,7 +732,7 @@ On a par ailleurs $R_{\theta}R_{\theta'}=R_{\theta+\theta'}$ donc $\mathrm {SO}_
     Ce réel $\theta$ est alors appelé angle orienté  $\widehat{(x, y)}$
 \end{rem}
 
-\section{Produit vectoriel}
+\subsection{Produit vectoriel}
 \index{produit vectoriel}
 
 \begin{thm}[Théorème de représentation de Riesz\index{Riesz (théorème de représentation de -- )}]
@@ -762,3 +762,97 @@ On a par ailleurs $R_{\theta}R_{\theta'}=R_{\theta+\theta'}$ donc $\mathrm {SO}_
  \item Si  $(e_1, e_2, e_3)$ ON alors cette base est directe  si et seulement si $e_1\wedge e_2=e_3$
 \end{concenum}
 \end{thmdef}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Le changement de base introduit un facteur $1$.
+        \item C'est le Théorème de représentation de Riesz
+        \item Le déterminant est multilinéaire antisymétrique
+        \item $(u,v)$ liée car sinon il existe $x$ tel que $(u,v,x)$ est une base. La réciproque est évidente.
+        \item $x=u, x=v$
+        \item Facile
+        \item Admis (facile)
+    \end{enumerate}
+\end{proof}
+
+\begin{rem}
+    $(e_1, e_2, e_3)$ OND, $x \leftrightarrow (x_1, x_2, x_3), y\leftrightarrow (y_1, y_2, y_3)$. En abusant de la notation du déterminant, on peut écrire \begin{align*}
+        x\wedge y &= (x_1e_1+x_2e_2+x_3e_3)\wedge (y_1e_1+y_2e_2+y_3e_3) \\
+        &= \cdots \\
+        &= \begin{vmatrix}
+            x_1 & y_1 & e_1 \\
+            x_2 & y_2 & e_2 \\
+            x_3 & y_3 & e_3 \\
+        \end{vmatrix}
+    \end{align*}
+\end{rem}
+
+\subsection{Rotation dans l'espace}
+
+On se place dans l'espace euclidien tridimensionnel $E$.
+
+\begin{dfn}
+    Si $e$ est un vecteur unitaire et $\theta \in \R$, on appelle rotation d'axe $\R e$ orienté par $e$ d'angle $\theta$ l'application linéaire telle que $r(e)=e$, $r_{|e^\bot}$ est la rotation d'angle $\theta$ pour l'orientation de $e^\bot$ par $e$. L'application $r$ se note $r_{\theta, e}$.
+\end{dfn}
+
+\begin{rem}
+    Si $\mathcal B=(e_1, e_2, e_3)$ OND alors $e_3^\bot=\Vect(e_1, e_2)$ et $(e_1, e_2)$ OND pour l'orientation par $e_3$.
+     \begin{align*}
+         \mathcal  M_{\mathcal  B}(r) &=
+         \begin{pmatrix}
+             \cos \theta & - \sin \theta & 0 \\
+             \sin \theta & \cos \theta & 0 \\
+             0 & 0& 1
+         \end{pmatrix}
+                                      &= \cos \theta
+                                      \begin{pmatrix}
+                                          1&0&0\\
+                                          0&1&0\\
+                                          0&0&1
+                                      \end{pmatrix} +
+                                      (1-\cos \theta)
+                                      \begin{pmatrix}
+                                          0&0&0\\
+                                          0&0&0\\
+                                          0&0&1
+                                      \end{pmatrix}
+                                      + \sin \theta
+                                      \begin{pmatrix}
+                                          0&-1&0\\
+                                          1&0&0\\
+                                          0&0&0
+                                      \end{pmatrix}
+                                      &=
+                                      \cos \theta \mathcal M_{\mathcal  B}(\id_E)+(1-\cos \theta) \mathcal  M_{\mathcal  B} (\pi_{\R e_3}) + \sin \theta \mathcal  M_{\mathcal  B}(x \longmapsto e_3\wedge x)
+    \end{align*}
+    donc $r(x)=\cos \theta x + (1-\cos \theta) \pi_{\R e_3}(x)+\sin \theta e_3 \wedge x$
+\end{rem}
+
+Soit $A \in \mathrm {SO}_3(\R)$. $A$ admet une valeur propre réelle (polynôme caractéristique réel de degré impaire).
+
+\[
+    AX=\lambda X \implies (AX)^\top AX=\lambda ^2 X^\top X=X^\top A^\top AX=X^\top X \implies  \lambda = \pm 1
+\]
+
+Si $ \lambda = -1$ et $X_3$ est un vecteur propre associé,  $X_3^\bot$ est stable par $A$ donc si  $(X_1, X_2, X_3)$ OND,
+ \[
+     \mathcal M_{\mathcal  B}(A)
+\begin{pmatrix}
+    a&b&0\\
+    c&d&0\\0&0&-1
+\end{pmatrix}
+\]
+et $ \begin{pmatrix}
+    a&b\\c&d
+\end{pmatrix} \in  O_2(\R), \quad  \det \begin{pmatrix}
+    a&b\\c&d
+\end{pmatrix}=-1
+$
+donc il existe $\theta \in  \R$ tel que $\begin{pmatrix}
+    a&b\\c&d
+\end{pmatrix} = \begin{pmatrix}
+    \cos \theta&\sin \theta \\
+    \sin \theta & -\cos \theta
+\end{pmatrix}
+$
+et le polynôme caractéristique de $A$ est  $\chi_A(X)=(X+1)(X^2 -\cos^2 \theta)-\sin^2 \theta=(X+1)(X^2 -1)$ donc $1$ est toujours une valeur propre de  $A$.
