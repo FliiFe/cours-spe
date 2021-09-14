@@ -55,7 +55,7 @@ Soit $(\mathcal A_i)_{i\in I}$ une famille de tribus. L'ensemble \[
 est une tribu (facile).
 
 \begin{rem}
-    On définit ainsi la notion de tribu engendrée: la tribu engendrée par $\mathcal E\subset \mathcal \P(\Omega)$ est l'intersection de toutes les tribus contenant $\mathcal E$.
+    On définit ainsi la notion de tribu engendrée: la tribu engendrée par $\mathcal E\subset \mathcal P(\Omega)$ est l'intersection de toutes les tribus contenant $\mathcal E$.
 \end{rem}
 
 \begin{dfn}
@@ -290,7 +290,7 @@ Or (on le verra), $\E(\1_A)=\P(A)$ et $\E$ est linéaire, ce qui conclut.
 \section{Germes de probabilités}
 
 \begin{prop}[Germe de probabilité\index{germe de probabilité}]
-    \Hyp $\Omega=\{x_i, \quad i \in  \N\}$, $\mathcal A=\mathcal \P(\Omega)$ et $(p_i)_{i \in \N} \in (\R^+)^{\N}$ telle que $\sum p_i=1$
+    \Hyp $\Omega=\{x_i, \quad i \in  \N\}$, $\mathcal A=\mathcal P(\Omega)$ et $(p_i)_{i \in \N} \in (\R^+)^{\N}$ telle que $\sum p_i=1$
     \Conc Il existe une unique probabilité $\P$ sur $(\Omega, \mathcal A)$ telle que $\forall i \in  \N,\quad \P(\{x_i\})=p_i$, et elle est donnée par \[
         \forall X \in  \mathcal A,\quad \P(X)=\sum_{\substack{i \in  \N\\x_i\in X}}p_i
     \] 
@@ -317,7 +317,7 @@ Or (on le verra), $\E(\1_A)=\P(A)$ et $\E$ est linéaire, ce qui conclut.
     Si $E$ est dénombrable, alors $E$ s'écri t  $\{x_n,\quad n\in \N\} $ avec les $x_n$ deux à deux distincts. Si  $X:\Omega \to  E$ est une v.a.d alors \begin{itemize}
         \item $A_n=X^{-1}(\{x_n\} )$. Les $(A_n)_n$ forment un SCE (ou un quasi-SCE)
         \item $p_n=\P(A_n)$ définit un germe de probabilité
-        \item Une probabilité sur $(E, \mathcal \P(E))$ est donnée par \[
+        \item Une probabilité sur $(E, \mathcal P(E))$ est donnée par \[
                 \forall B\subset E,\quad \sum_{\substack{n\geq 0\\ x_n\in  B}}p_n
         \] 
         et on a \[
@@ -327,7 +327,7 @@ Or (on le verra), $\E(\1_A)=\P(A)$ et $\E$ est linéaire, ce qui conclut.
             \P(X\in  B)=\sum_{\substack{n\geq 0\\x_n\in B}}\P(A_n)=\P_\star (B)
         \] 
     \end{itemize}
-    On a ainsi une probabilité sur $(E, \mathcal \P(E))$ à partir de $(\Omega, \mathcal A, \P)$ sans connaître $\Omega$. On a seulement besoin de connaître les $p_n$ (la loi de $X$)
+    On a ainsi une probabilité sur $(E, \mathcal P(E))$ à partir de $(\Omega, \mathcal A, \P)$ sans connaître $\Omega$. On a seulement besoin de connaître les $p_n$ (la loi de $X$)
 \end{rem}
 
 \begin{thm}
@@ -336,7 +336,7 @@ Or (on le verra), $\E(\1_A)=\P(A)$ et $\E$ est linéaire, ce qui conclut.
 \end{thm}
 
 \begin{proof}
-    Admis(e) mais facile ($\Omega=E, \mathcal A=\mathcal \P(E)$)
+    Admis(e) mais facile ($\Omega=E, \mathcal A=\mathcal P(E)$)
 \end{proof}
 
 \section{Indépendance}
@@ -352,7 +352,7 @@ Or (on le verra), $\E(\1_A)=\P(A)$ et $\E$ est linéaire, ce qui conclut.
 \begin{dfn}
     Soit $(\Omega, \mathcal A, \P)$ un espace probabilisé. \begin{itemize}
         \item Si $X_1, \cdots, X_n$ sont des v.a.d sur $\Omega$, $E_i=X_i(\Omega)$, on dira que $X_1, \cdots,X_n$ sont \textbf{mutuellement indépendantes}\index{indépendance mutuelle} si \[
-                \forall (A_1,\cdots,A_n)\in \mathcal \P(E_1)\times \cdots \times \mathcal \P(E_n), \qquad \P(X_1\in  A_1,\cdots,X_n\in A_n)=\P(X_1\in A_1)\cdots \P(X_n\in A_n)
+                \forall (A_1,\cdots,A_n)\in \mathcal P(E_1)\times \cdots \times \mathcal P(E_n), \qquad \P(X_1\in  A_1,\cdots,X_n\in A_n)=\P(X_1\in A_1)\cdots \P(X_n\in A_n)
         \] ou de manière équivalente \[
         \forall (x_1,\cdots,x_n)\in E_1\times \cdots \times E_n, \qquad \P(X_1=x_1,\cdots,X_n=x_n)=\P(X_1=x_1)\cdots \P(X_n=x_n)
         \] 
@@ -408,7 +408,7 @@ ce qui conclut.
 \end{dfn}
 
 \begin{thm}
-    \Hyp $(E_n)_{n\in \N}$ une suite d'ensembles dénombrables, $(\P_n)_{n\in \N}$ une suite de probabilités sur $(E_n, \mathcal \P(E_n))$.
+    \Hyp $(E_n)_{n\in \N}$ une suite d'ensembles dénombrables, $(\P_n)_{n\in \N}$ une suite de probabilités sur $(E_n, \mathcal P(E_n))$.
     \Conc Il existe un espace probabilisé $(\Omega, \mathcal A, \P)$ et une suite $(X_n)$ de variables aléatoires discrètes avec  $X_n:\Omega\to E_n$ telles que \begin{itemize}
         \item $\forall n\in \N,\forall x\in E_n,\quad \P(X_n=x)=\P_n(\{x\} )$
         \item $(X_n)_{n\in \N}$ sont mutuellement indépendantes.
@@ -510,7 +510,7 @@ d'où \[
 \end{rem}
 
 \begin{rem}
-    On va montrer que si $X_1\suit\mathcal \P(\lambda_1),X_2\suit \mathcal  \P(\lambda_2)$ avec $X_1\indep X_2$, alors $X_1+X_2 \suit \mathcal  \P(\lambda_1+\lambda_2)$. On note $X=X_1+X_2$. On a \begin{itemize}
+    On va montrer que si $X_1\suit\mathcal P(\lambda_1),X_2\suit \mathcal  \P(\lambda_2)$ avec $X_1\indep X_2$, alors $X_1+X_2 \suit \mathcal  \P(\lambda_1+\lambda_2)$. On note $X=X_1+X_2$. On a \begin{itemize}
         \item $X(\Omega)\subset \N$
         \item $\displaystyle [X=n]=\bigcup_{k=0}^n[X_1=k,X_2=n-k] $ 
     \end{itemize}
