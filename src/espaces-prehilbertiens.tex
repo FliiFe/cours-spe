@@ -557,7 +557,15 @@ Les projecteurs orthogonaux sont symétriques
 \end{thm}
 \begin{proof}~
 \begin{enumerate}
-    \item On note $\mathcal  B$ une base orthonormée de $E$,  $A=\mathcal  M_{\mathcal  B}(f) \in  \mathrm S_n(\R)$. Soit $ \lambda \in  \Sp_{\C}(A)$ et $X \in \C^n$ un vecteur propre associé. On a $\bar{X}^\top AX=\lambda \bar{X}^\top X\in \R_+$ Puis, $X^\top A \bar{X}=\bar{\lambda} \bar{X}^\top X = \bar{\bar{X}^\top AX}$ donc $ \lambda=\bar\lambda$ et $\lambda \in  \R$. On a donc $\Sp_{\C}(A)\subset \R$. Puis, $\chi_A$ est scindé en tant que polynôme complexe, et a ses racines dans $\R$ donc scindé dans $\R[X]$.
+    \item     On note $\mathcal  B$ une base orthonormée de $E$,  $A=\mathcal  M_{\mathcal  B}(f) \in \S_n(\R)$. Soit $ \lambda \in  \Sp_{\C}(A)$ et $X \in \C^n$ un vecteur propre associé. On a 
+\begin{align*}
+    {}^t \bar X AX &= \lambda {}^t \bar XX \\
+                         &= {}^t \bar X{}^t \bar AX\\
+                         &= {}^t (\bar{A X})X \\
+                         &= \bar\lambda {}^t \bar XX
+\end{align*}
+    donc $ \lambda=\bar\lambda$ et $\lambda \in  \R$. On a donc $\Sp_{\C}(A)\subset \R$. Puis, $\chi_A$ est scindé en tant que polynôme complexe, et a ses racines dans $\R$ et est donc scindé dans $\R[X]$.
+
     \item Si $x \in  E_{\lambda}(f), y \in  E_{\mu}(f)$, \[
             \scalar{f(x)}{y} =\lambda \scalar{x}{y} = \scalar{x}{f(y)} = \mu \scalar{x}{y} \implies \lambda=\mu \text{ ou } \scalar{x}{y} =0
     \] 
